@@ -1,0 +1,234 @@
+# Project Brief: LiquidBench
+
+## Objective and Research Scope
+
+Build **LiquidBench**, an open-source benchmarking and post-training research framework for measuring how domain-specific agent skills and supervised fine-tuning affect a small coding model's performance on Shopify-related development tasks.
+
+The primary research question is:
+
+**How do skill injection and Shopify-specific supervised fine-tuning, separately and together, change one small model's task success under a fixed agent harness and inference budget?**
+
+The central deliverable is a credible four-configuration experiment. No improvement, or a regression, is a valid research result. Proprietary-model comparisons and an interactive leaderboard are supporting work after the evaluation foundation is reliable and affordable.
+
+The initial benchmark measures offline Liquid/code competence on explicitly supported features. It does not establish full Shopify storefront correctness. Claims about real variant interactions, theme-editor integration, accessibility, or performance require evaluation that actually exercises those behaviors.
+
+The open-source Ruby Liquid runtime is not equivalent to Shopify's extended storefront Liquid. Declare the supported rendering subset, and identify unsupported Shopify behavior explicitly. Do not silently replace it with mocks and claim Shopify integration coverage.
+
+## Core Experiment
+
+Compare four configurations of the same provisional base model, `Qwen2.5-Coder-7B-Instruct`:
+
+1. **Base:** Without Shopify-specific skills.
+2. **Base + skills:** With Ben Sehl's Liquid skill bundle.
+3. **Fine-tuned:** After domain-specific supervised fine-tuning using QLoRA.
+4. **Fine-tuned + skills:** The same fine-tuned checkpoint with the original skill bundle.
+
+Use the same minimal Python agent loop, task instructions, tool definitions, and task environments across all four configurations. Change only model weights and skill availability. Keep inference precision, serving configuration, and decoding settings matched between base and fine-tuned runs.
+
+Results describe performance inside this harness; they do not automatically describe performance in vendor coding products.
+
+### Skills Treatment
+
+Use the complete, unmodified [Ben Sehl Liquid skills bundle](https://github.com/benjaminsehl/liquid-skills) at a pinned repository revision:
+
+- Liquid/theme fundamentals.
+- Frontend standards.
+- Accessibility.
+
+For every skills-enabled run, load all three entry instructions deterministically and expose the associated reference files for on-demand reads. Record the exact revision, entry instructions, and reference material loaded. Skills-disabled runs must not have access to the bundle through the task workspace or tool environment.
+
+This experiment measures the bundle's effect. Identifying individual skills' contributions requires a later ablation study.
+
+### Resource Controls
+
+Give all configurations the same token, tool-call, and timeout limits. Skill instructions and reference reads count toward the token allowance. Freeze the exact limits after development runs and cost measurements, before final evaluation.
+
+Record actual input/output tokens, tool calls, latency, and estimated cost alongside success. Specify accounting consistently across providers, including repeated context and any reported caching behavior.
+
+## Task Sets and Separation
+
+### Five Development Tasks
+
+Build the MVP around these tasks:
+
+1. Repair conditional logic and fallback values.
+2. Render product-card markup from supplied fixture data, including escaping and missing fields.
+3. Repair a section's settings and presets schema.
+4. Fix broken asset and translation references.
+5. Modify an existing section while preserving specified behavior.
+
+Use these tasks to debug the harness, calibrate budgets, check tool operation, and inspect failure modes. Exclude them from headline research results because they will be repeatedly inspected during development.
+
+Browser interaction and performance tasks belong to later expansion. Offline fixtures establish behavior over supplied inputs, not real Shopify object or storefront semantics.
+
+### Held-Out Evaluation
+
+Target **20 held-out tasks with three independent attempts per task per configuration**, for **240 evaluated attempts** across the four configurations. This target is subject to the pilot cost estimate. Revise the design before freezing it if the forecast exceeds the budget.
+
+Freeze task definitions and grading before tuning the research model or generating its training data. Separate task construction from training-data generation so held-out tasks, tests, reference solutions, and evaluation feedback do not enter training or tuning contexts.
+
+Separate source examples, task families, and related templates across development, training/validation, and held-out evaluation. Split source material before generating variants, and check for duplicates. Rewording a prompt or changing product names does not create independent coverage. Broad categories such as schema editing may appear in multiple partitions, provided their underlying examples and related templates remain separate.
+
+Use original task fixtures and record provenance. Do not construct evaluation tasks by copying worked examples from the skill bundle. Public material may already occur in model pretraining; disclose that limitation rather than claiming contamination is impossible.
+
+### Task Contract
+
+Every task must include:
+
+- A stable identifier and version.
+- A natural-language problem statement and explicit acceptance criteria.
+- An initial theme/code environment and declared supported runtime features.
+- Category, difficulty, source, and task-family metadata.
+- Permitted edit scope and any visible development checks.
+- Hidden automated evaluation checks and a passing reference solution.
+- An initially failing state and deliberately incorrect candidate solutions for grader validation.
+
+Evaluate actual code changes. Hidden tests may conceal fixtures and edge cases, but must not introduce unstated requirements.
+
+## Evaluation Architecture
+
+Python provides the runner, provider adapters, agent loop, result collection, and grading interface. Prefer established tools and minimal interfaces over a general-purpose agent framework.
+
+Use pinned grading subprocesses:
+
+- **Ruby Liquid:** Strict parsing and rendering for the declared core-language subset, with errors surfaced rather than silently tolerated.
+- **JSON/schema validation:** Documented section/schema constraints and explicit task requirements.
+- **Node-based Shopify Theme Check:** Static Liquid, JSON, and theme checks.
+
+Theme Check is a static checker, not proof of functional storefront correctness. Browser testing, including Playwright where appropriate, is a later layer when tasks require actual browser behavior.
+
+### Agent Execution and Isolation
+
+Provide consistent tools for file reading, editing, search, and constrained command execution.
+
+For each attempt:
+
+1. Create a clean task workspace inside a disposable Linux container.
+2. Expose the task, applicable skills, and visible development checks.
+3. Execute agent commands with network access disabled and dependencies preinstalled.
+4. Make model requests through the host orchestrator.
+5. Capture the final changes and complete execution trace.
+6. Run hidden grading separately against the resulting files, with evaluator-owned tests and configuration inaccessible to the agent.
+7. Save the result and resource accounting, including any retry history.
+
+Protect grader configuration, and detect newly introduced lint suppressions. The agent must not be able to improve its score by weakening checks or modifying the evaluator.
+
+### Grading Contract and Integrity
+
+The primary task result is binary: all stated acceptance criteria must pass. Preserve individual check results as diagnostic information.
+
+Accept valid alternative implementations. Skill-specific conventions, such as a particular CSS naming scheme, are required only if the task explicitly requests them. Do not reward compliance with the treatment instructions as universal correctness.
+
+Before admitting a task, demonstrate that its grader:
+
+- Accepts a reference solution.
+- Rejects the broken starting state.
+- Rejects plausible incorrect solutions and shortcuts, including hardcoded fixture outputs, omitted edge cases, and disabled checks where applicable.
+
+A reference solution passing alone is insufficient evidence of grader quality.
+
+### Failure Accounting
+
+Invalid model tool calls consume the attempt's budget. Broken submitted code, exhausted budgets, and agent timeouts count as task failures.
+
+Independently identifiable provider outages or infrastructure crashes follow a bounded retry policy fixed before final evaluation. Record every attempt and the reason for each retry. Unresolved infrastructure failures remain explicitly missing; do not silently discard them or relabel them as model failures. Report missing coverage and scoring denominators.
+
+### Results and Reproducibility
+
+Capture task and environment versions, model/checkpoint identifiers, skill revision, prompts, loaded references, tool calls, final patches, grader output, decoding settings, randomness controls where supported, token usage, latency, and estimated cost.
+
+Report average single-attempt success, counts, uncertainty, and paired task-level differences across configurations. Do not present best-of-three success as single-attempt performance. Account for repeated attempts within each task; they do not create independent task coverage.
+
+Treat the first study as exploratory. Report per-category results with their small sample sizes visible, and document runtime limitations, missing runs, provenance limits, and relevant implementation details.
+
+## Post-Training Pipeline
+
+### Readiness Gate
+
+Proceed to fine-tuning only after demonstrating:
+
+1. Reliable graders with reference and incorrect-solution checks.
+2. A base model that can operate the shared tools.
+3. Enough unsolved development tasks to show measurable headroom.
+4. Failures attributable to model capability rather than broken infrastructure or unsupported Shopify behavior.
+5. A cost forecast that fits the agreed planning ceiling.
+
+Postpone training if these conditions are not met. Do not force a training run merely to complete the four-cell experiment.
+
+### Data and Training
+
+1. Create original training tasks with recorded provenance, separate from the benchmark.
+2. Create a training validation partition separated by task family before generating examples.
+3. Use a stronger coding model to generate short tool-use trajectories in the benchmark's interaction format, including edits and useful visible development checks.
+4. Do not supply Ben's skill bundle to the teacher for the first experiment. Keep hidden evaluator output out of model contexts and training trajectories.
+5. Validate final solutions automatically and reject failures.
+6. Measure validation yield, trajectory length, and generation cost in a small pilot before setting dataset size. Approximately 300–500 examples remains a provisional target.
+7. Fine-tune the provisional Qwen model using QLoRA, with Unsloth as the preferred training tool subject to compatibility verification.
+8. Select the checkpoint using training validation, without consulting the held-out benchmark.
+9. Freeze weights, prompts, skill revision, budgets, serving settings, and graders before running the final four-way comparison.
+
+Changes prompted by held-out results belong to a subsequent experiment. Distinct training and evaluation files alone do not establish meaningful separation.
+
+## Compute and Budget
+
+Initial planning ceiling: **$100 USD total**, allocated as:
+
+- Up to **$50 for rented GPU compute**, including training and matched base/fine-tuned evaluation.
+- Up to **$50 for model/API inference**, including teacher generation, optional proprietary comparisons, and retries.
+
+Track both categories from the first paid run. Estimate the complete experiment before committing to dataset size or the final evaluation design. The ceiling is a planning constraint, not purchase authorization or a guarantee that every proposed run fits.
+
+Use the local Mac for orchestration and task development. Plan rented NVIDIA compute for training and matched base/fine-tuned inference, using the same serving configuration where applicable.
+
+Environment inspection during planning found an Apple M1 with 8 GiB RAM, Python 3.10.1, system Ruby 2.6.10, Node 22.22.3, and uv. No Docker command was available on PATH. Recheck during implementation; provision compatible pinned runtimes and a container runtime rather than relying on the existing system packages.
+
+## Deliverables and Milestones
+
+### Phase 1A: One Executable Task
+
+Establish the smallest reliable end-to-end path:
+
+1. Define the minimal repository structure, task manifest, agent/tool protocol, and grading result format.
+2. Pin dependencies and establish the container execution boundary.
+3. Implement one development task with reference and incorrect-solution checks.
+4. Run one coding model through the shared Python agent loop.
+5. Produce the final code changes, automated grade, trace, and resource accounting.
+
+### Phase 1B: Five-Task Development MVP
+
+Complete the five development tasks, integrate the pinned skills treatment, validate failure accounting, and measure model/tool reliability, inference costs, and suitable limits.
+
+### Phase 2: Evaluation and Training Readiness
+
+Construct and validate the separate held-out set, freeze its tasks and graders, establish source/family separation, and complete cost forecasting. Resolve the training readiness gate using development evidence. Do not use held-out outcomes to tune the setup.
+
+### Phase 3: Post-Training and Controlled Study
+
+Pilot training-data generation, scale within budget, fine-tune, select the checkpoint on validation, freeze the full experiment, and run the four configurations on held-out tasks. Publish findings even if skills or training do not improve performance.
+
+### Phase 4: Publication and Supporting Comparisons
+
+Publish the open-source runner, versioned task dataset, grading system, training pipeline, reproducibility artifacts, methodology, limitations, and findings. Add proprietary-model comparisons, a short demonstration, and an interactive leaderboard as supporting work when resources permit.
+
+“Hidden” means inaccessible to the agent during execution. Publish held-out tasks, graders, and reference solutions after the first experiment is frozen and completed. Exclude credentials and material without redistribution rights from released artifacts and traces.
+
+After publication, disclose that later models may have encountered the benchmark. Fresh evaluation material is required for future claims about unseen-task generalization.
+
+## Engineering Principles
+
+Act as the lead engineer and research collaborator. Prioritize rigorous evaluation, working implementations, reproducibility, and clear limitations over abstractions or presentation work.
+
+Use Python for benchmarking and training infrastructure, with narrow subprocess interfaces to the grading runtimes. Keep provider adapters interchangeable without expanding the initial scope beyond one model and one executable task.
+
+Exact dependency versions, command policies, resource limits, and retry counts must be measured or specified during implementation and frozen before research runs. Do not silently invent them in the reported methodology.
+
+## Technical References
+
+- Skill bundle: https://github.com/benjaminsehl/liquid-skills
+- Open-source Liquid parsing and rendering: https://github.com/Shopify/liquid#readme
+- Shopify Liquid extensions: https://shopify.dev/docs/api/liquid#variations-of-liquid
+- Section schema: https://shopify.dev/docs/storefronts/themes/architecture/sections/section-schema
+- Theme Check: https://shopify.dev/docs/storefronts/themes/tools/theme-check
+- Theme Check configuration and suppressions: https://shopify.dev/docs/storefronts/themes/tools/theme-check/configuration
+- Theme Check library: https://github.com/Shopify/theme-tools/blob/main/packages/theme-check-common/README.md
+- Store-backed theme development: https://shopify.dev/docs/api/shopify-cli/theme/theme-dev
