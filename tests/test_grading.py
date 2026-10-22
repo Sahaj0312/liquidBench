@@ -31,3 +31,10 @@ def test_malformed_or_duplicate_structure_rejected():
     assert not matches_card(VALID.replace("</h2>", "</p>"), PRODUCT)
     assert not matches_card(VALID + VALID, PRODUCT)
     assert not matches_card(VALID.replace("<h2>", '<h2 class="x" class="y">'), PRODUCT)
+
+
+def test_malformed_declarations_and_bare_duplicate_attributes_do_not_crash():
+    assert not matches_card("<![nonsense]>" + VALID, PRODUCT)
+    assert not matches_card(
+        VALID.replace("class='product-card'", "class class='product-card'"), PRODUCT
+    )

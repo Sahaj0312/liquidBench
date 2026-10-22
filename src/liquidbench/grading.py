@@ -16,8 +16,13 @@ class CardParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         if tag not in {"article", "h2", "p", "span"}:
             self.invalid = True
+        if len({name for name, _ in attrs}) != len(attrs):
+            self.invalid = True
         attrs = [
-            (name, " ".join(sorted(set(value.split()))) if name == "class" and value else value)
+            (
+                name,
+                " ".join(sorted(set(value.split()))) if name == "class" and value else value or "",
+            )
             for name, value in attrs
         ]
         node = {"tag": tag, "attrs": sorted(attrs), "children": [], "text": ""}
@@ -42,8 +47,13 @@ class CardParser(HTMLParser):
 
 def matches_card(html, product):
     parser = CardParser()
-    parser.feed(html)
-    parser.close()
+    try:
+        parser.feed(html)
+        parser.close()
+    except (ValueError, AssertionError):
+        # HTMLParser can raise on malformed declarations; submitted markup is
+        # a task failure, not a crashed evaluator or a missing infrastructure run.
+        return False
     if parser.invalid or len(parser.stack) != 1 or parser.root["text"].strip():
         return False
     roots = parser.root["children"]
