@@ -1,0 +1,23 @@
+[project]
+name = "liquidbench"
+version = "0.1.0"
+description = "Controlled offline Liquid coding-agent experiments"
+requires-python = ">=3.11"
+dependencies = ["httpx==0.28.1"]
+
+[project.scripts]
+liquidbench = "liquidbench.cli:main"
+
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = ["pytest==8.3.5", "ruff==0.11.13"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["integration: requires the built Docker runtime"]
+
+[tool.ruff]
+line-length = 100

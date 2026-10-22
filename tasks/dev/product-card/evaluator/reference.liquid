@@ -1,0 +1,7 @@
+{% assign card_title = product.title | default: 'Untitled product' %}
+{% assign card_vendor = product.vendor | default: '' | strip %}
+<article class="product-card">
+  <h2>{{ card_title | escape }}</h2>
+  {% if card_vendor != empty %}<p class="vendor">{{ card_vendor | escape }}</p>{% endif %}
+  <span class="availability">{% if product.available %}In stock{% else %}Sold out{% endif %}</span>
+</article>

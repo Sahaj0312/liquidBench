@@ -1,0 +1,14 @@
+[
+  {"id":"ordinary", "product":{"title":"Cotton Tee", "vendor":"North", "available":true}},
+  {"id":"unavailable", "product":{"title":"Wool Hat", "vendor":"South", "available":false}},
+  {"id":"null-title", "product":{"title":null, "vendor":"North", "available":true}},
+  {"id":"empty-title", "product":{"title":"", "vendor":"North", "available":false}},
+  {"id":"null-vendor", "product":{"title":"Tee", "vendor":null, "available":true}},
+  {"id":"empty-vendor", "product":{"title":"Tee", "vendor":"", "available":false}},
+  {"id":"blank-vendor", "product":{"title":"Tee", "vendor":" \t\n ", "available":true}},
+  {"id":"trim-vendor", "product":{"title":"Tee", "vendor":"  Maker & Co  ", "available":false}},
+  {"id":"escape", "product":{"title":"<script>alert(1)</script> & \"tee\"", "vendor":"<img src=x onerror=alert(2)>", "available":true}},
+  {"id":"entities", "product":{"title":"&lt;literal&gt;", "vendor":"A &amp; B", "available":false}},
+  {"id":"unicode", "product":{"title":"Café 🧶 東京", "vendor":"Été", "available":true}},
+  {"id":"novel", "product":{"title":"Larch-9f31", "vendor":"Juniper-c082", "available":false}}
+]

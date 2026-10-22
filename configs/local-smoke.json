@@ -1,0 +1,18 @@
+{
+  "purpose": "development smoke test only; not the 7B research baseline",
+  "endpoint": "http://127.0.0.1:8087/v1",
+  "model": "liquidbench-smoke",
+  "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+  "image": "liquidbench-runtime:0.1",
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "seed": 42,
+  "max_turns": 12,
+  "max_total_tokens": 24000,
+  "max_output_tokens": 1024,
+  "max_seconds": 300,
+  "request_timeout": 90,
+  "provider_retries": 2,
+  "input_usd_per_million": 0.0,
+  "output_usd_per_million": 0.0
+}
