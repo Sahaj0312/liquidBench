@@ -44,6 +44,13 @@ class CardParser(HTMLParser):
     def handle_decl(self, decl):
         self.invalid = True
 
+    def parse_html_declaration(self, index):
+        # Newer Python versions treat some invalid declarations as comments.
+        # Reject declarations consistently, without rejecting ordinary comments.
+        if not self.rawdata.startswith("<!--", index):
+            self.invalid = True
+        return super().parse_html_declaration(index)
+
 
 def matches_card(html, product):
     parser = CardParser()

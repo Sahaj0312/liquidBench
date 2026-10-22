@@ -9,6 +9,7 @@ VALID = (
 
 def test_dom_accepts_quote_and_whitespace_variants():
     assert matches_card("\n" + VALID + "\n", PRODUCT)
+    assert matches_card("<!-- ordinary comment -->" + VALID, PRODUCT)
     assert matches_card(VALID.replace("class='product-card'", "class=' product-card  '"), PRODUCT)
 
 

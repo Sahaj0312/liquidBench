@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import re
 import subprocess
+import sys
 import time
 import uuid
 
@@ -106,6 +107,7 @@ def source_version():
         "git_commit": git("rev-parse", "HEAD"),
         "git_status": git("status", "--porcelain"),
         "python_source_digest": fingerprint(sources),
+        "python_version": sys.version,
     }
 
 
