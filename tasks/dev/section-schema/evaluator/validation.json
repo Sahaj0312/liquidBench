@@ -1,0 +1,121 @@
+[
+  {
+    "name": "duplicate_id",
+    "expected_pass": false,
+    "changes": {
+      "sections/feature-panel.liquid": "<div class=\"feature-panel\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% if section.settings.show_summary %}<p>Built for daily use.</p>{% endif %}\n</div>\n{% schema %}\n{\n  \"name\": \"Feature panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Highlights\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"heading\",\n      \"label\": \"Show summary\",\n      \"default\": true\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Feature panel\",\n      \"settings\": {\n        \"heading\": \"Featured picks\",\n        \"show_summary\": false,\n        \"columns\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "checkbox_string",
+    "expected_pass": false,
+    "changes": {
+      "sections/feature-panel.liquid": "<div class=\"feature-panel\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% if section.settings.show_summary %}<p>Built for daily use.</p>{% endif %}\n</div>\n{% schema %}\n{\n  \"name\": \"Feature panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Highlights\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_summary\",\n      \"label\": \"Show summary\",\n      \"default\": \"true\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Feature panel\",\n      \"settings\": {\n        \"heading\": \"Featured picks\",\n        \"show_summary\": false,\n        \"columns\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "numeric_boolean",
+    "expected_pass": false,
+    "changes": {
+      "sections/feature-panel.liquid": "<div class=\"feature-panel\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% if section.settings.show_summary %}<p>Built for daily use.</p>{% endif %}\n</div>\n{% schema %}\n{\n  \"name\": \"Feature panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Highlights\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_summary\",\n      \"label\": \"Show summary\",\n      \"default\": true\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": true\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Feature panel\",\n      \"settings\": {\n        \"heading\": \"Featured picks\",\n        \"show_summary\": false,\n        \"columns\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "out_of_range_default",
+    "expected_pass": false,
+    "changes": {
+      "sections/feature-panel.liquid": "<div class=\"feature-panel\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% if section.settings.show_summary %}<p>Built for daily use.</p>{% endif %}\n</div>\n{% schema %}\n{\n  \"name\": \"Feature panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Highlights\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_summary\",\n      \"label\": \"Show summary\",\n      \"default\": true\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 7\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Feature panel\",\n      \"settings\": {\n        \"heading\": \"Featured picks\",\n        \"show_summary\": false,\n        \"columns\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "unknown_preset_setting",
+    "expected_pass": false,
+    "changes": {
+      "sections/feature-panel.liquid": "<div class=\"feature-panel\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% if section.settings.show_summary %}<p>Built for daily use.</p>{% endif %}\n</div>\n{% schema %}\n{\n  \"name\": \"Feature panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Highlights\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_summary\",\n      \"label\": \"Show summary\",\n      \"default\": true\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Feature panel\",\n      \"settings\": {\n        \"heading\": \"Featured picks\",\n        \"show_summary\": false,\n        \"columns\": 2,\n        \"show_summry\": false\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "missing_preset",
+    "expected_pass": false,
+    "changes": {
+      "sections/feature-panel.liquid": "<div class=\"feature-panel\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% if section.settings.show_summary %}<p>Built for daily use.</p>{% endif %}\n</div>\n{% schema %}\n{\n  \"name\": \"Feature panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Highlights\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_summary\",\n      \"label\": \"Show summary\",\n      \"default\": true\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": []\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong_preset_value",
+    "expected_pass": false,
+    "changes": {
+      "sections/feature-panel.liquid": "<div class=\"feature-panel\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% if section.settings.show_summary %}<p>Built for daily use.</p>{% endif %}\n</div>\n{% schema %}\n{\n  \"name\": \"Feature panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Highlights\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_summary\",\n      \"label\": \"Show summary\",\n      \"default\": true\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Feature panel\",\n      \"settings\": {\n        \"heading\": \"Featured picks\",\n        \"show_summary\": true,\n        \"columns\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "duplicate_json_key",
+    "expected_pass": false,
+    "changes": {
+      "sections/feature-panel.liquid": "<div class=\"feature-panel\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% if section.settings.show_summary %}<p>Built for daily use.</p>{% endif %}\n</div>\n{% schema %}\n{\n  \"name\": \"Feature panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Highlights\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_summary\",\n      \"label\": \"Show summary\",\n      \"default\": false, \"default\": true\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Feature panel\",\n      \"settings\": {\n        \"heading\": \"Featured picks\",\n        \"show_summary\": false,\n        \"columns\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "schema_in_comment",
+    "expected_pass": false,
+    "changes": {
+      "sections/feature-panel.liquid": "<div class=\"feature-panel\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% if section.settings.show_summary %}<p>Built for daily use.</p>{% endif %}\n</div>\n{% comment %}{% schema %}\n{\n  \"name\": \"Feature panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Highlights\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_summary\",\n      \"label\": \"Show summary\",\n      \"default\": true\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Feature panel\",\n      \"settings\": {\n        \"heading\": \"Featured picks\",\n        \"show_summary\": false,\n        \"columns\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n{% endcomment %}\n"
+    }
+  },
+  {
+    "name": "nested_schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/feature-panel.liquid": "{% if true %}<div class=\"feature-panel\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% if section.settings.show_summary %}<p>Built for daily use.</p>{% endif %}\n</div>\n{% schema %}\n{\n  \"name\": \"Feature panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Highlights\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_summary\",\n      \"label\": \"Show summary\",\n      \"default\": true\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Feature panel\",\n      \"settings\": {\n        \"heading\": \"Featured picks\",\n        \"show_summary\": false,\n        \"columns\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n{% endif %}\n"
+    }
+  },
+  {
+    "name": "two_schemas",
+    "expected_pass": false,
+    "changes": {
+      "sections/feature-panel.liquid": "<div class=\"feature-panel\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% if section.settings.show_summary %}<p>Built for daily use.</p>{% endif %}\n</div>\n{% schema %}\n{\n  \"name\": \"Feature panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Highlights\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_summary\",\n      \"label\": \"Show summary\",\n      \"default\": true\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Feature panel\",\n      \"settings\": {\n        \"heading\": \"Featured picks\",\n        \"show_summary\": false,\n        \"columns\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n{% schema %}\n{\n  \"name\": \"Feature panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Highlights\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_summary\",\n      \"label\": \"Show summary\",\n      \"default\": true\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Feature panel\",\n      \"settings\": {\n        \"heading\": \"Featured picks\",\n        \"show_summary\": false,\n        \"columns\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "modified_markup",
+    "expected_pass": false,
+    "changes": {
+      "sections/feature-panel.liquid": "<div class=\"feature-panel\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% if section.settings.show_summary %}<p>Changed copy.</p>{% endif %}\n</div>\n{% schema %}\n{\n  \"name\": \"Feature panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Highlights\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_summary\",\n      \"label\": \"Show summary\",\n      \"default\": true\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Feature panel\",\n      \"settings\": {\n        \"heading\": \"Featured picks\",\n        \"show_summary\": false,\n        \"columns\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "malformed_json",
+    "expected_pass": false,
+    "changes": {
+      "sections/feature-panel.liquid": "<div class=\"feature-panel\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% if section.settings.show_summary %}<p>Built for daily use.</p>{% endif %}\n</div>\n{% schema %}\n{\n  \"name\": \"Feature panel\"\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Highlights\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_summary\",\n      \"label\": \"Show summary\",\n      \"default\": true\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Feature panel\",\n      \"settings\": {\n        \"heading\": \"Featured picks\",\n        \"show_summary\": false,\n        \"columns\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "reordered_settings",
+    "expected_pass": true,
+    "changes": {
+      "sections/feature-panel.liquid": "<div class=\"feature-panel\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% if section.settings.show_summary %}<p>Built for daily use.</p>{% endif %}\n</div>\n{% schema %}\n{\n  \"name\": \"Feature panel\",\n  \"settings\": [\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_summary\",\n      \"label\": \"Show summary\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Highlights\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Feature panel\",\n      \"settings\": {\n        \"heading\": \"Featured picks\",\n        \"show_summary\": false,\n        \"columns\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/feature-panel.liquid": "{% # theme-check-disable %}\n<div class=\"feature-panel\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% if section.settings.show_summary %}<p>Built for daily use.</p>{% endif %}\n</div>\n{% schema %}\n{\n  \"name\": \"Feature panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Highlights\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_summary\",\n      \"label\": \"Show summary\",\n      \"default\": true\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Feature panel\",\n      \"settings\": {\n        \"heading\": \"Featured picks\",\n        \"show_summary\": false,\n        \"columns\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "grader_config",
+    "expected_pass": false,
+    "changes": {
+      ".theme-check.yml": "extends: []\n"
+    }
+  },
+  {
+    "name": "deleted_submission",
+    "expected_pass": false,
+    "changes": {
+      "sections/feature-panel.liquid": null
+    }
+  }
+]

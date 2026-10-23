@@ -1,0 +1,246 @@
+[
+  {
+    "id": "schema-preservation",
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Announcement\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"enabled\",\n      \"label\": \"Enabled\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Updates\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"subtitle\",\n      \"label\": \"Subtitle\",\n      \"default\": \"Latest news\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_body\",\n      \"label\": \"Show body\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"body\",\n      \"label\": \"Body\",\n      \"default\": \"From the studio\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Announcement\"\n    }\n  ]\n}\n{% endschema %}"
+  },
+  {
+    "id": "combination-1",
+    "variables": {
+      "section": {
+        "id": "notice-1",
+        "settings": {
+          "enabled": true,
+          "heading": "Studio updates",
+          "subtitle": null,
+          "show_body": true,
+          "body": "Made for you"
+        }
+      }
+    }
+  },
+  {
+    "id": "combination-2",
+    "variables": {
+      "section": {
+        "id": "notice-2",
+        "settings": {
+          "enabled": true,
+          "heading": "Studio updates",
+          "subtitle": "  New arrivals  ",
+          "show_body": true,
+          "body": "Made for you"
+        }
+      }
+    }
+  },
+  {
+    "id": "combination-3",
+    "variables": {
+      "section": {
+        "id": "notice-3",
+        "settings": {
+          "enabled": true,
+          "heading": "Studio updates",
+          "subtitle": "  \t\n ",
+          "show_body": true,
+          "body": "Made for you"
+        }
+      }
+    }
+  },
+  {
+    "id": "combination-4",
+    "variables": {
+      "section": {
+        "id": "notice-4",
+        "settings": {
+          "enabled": true,
+          "heading": "Studio updates",
+          "subtitle": null,
+          "show_body": false,
+          "body": "Made for you"
+        }
+      }
+    }
+  },
+  {
+    "id": "combination-5",
+    "variables": {
+      "section": {
+        "id": "notice-5",
+        "settings": {
+          "enabled": true,
+          "heading": "Studio updates",
+          "subtitle": "  New arrivals  ",
+          "show_body": false,
+          "body": "Made for you"
+        }
+      }
+    }
+  },
+  {
+    "id": "combination-6",
+    "variables": {
+      "section": {
+        "id": "notice-6",
+        "settings": {
+          "enabled": true,
+          "heading": "Studio updates",
+          "subtitle": "  \t\n ",
+          "show_body": false,
+          "body": "Made for you"
+        }
+      }
+    }
+  },
+  {
+    "id": "combination-7",
+    "variables": {
+      "section": {
+        "id": "notice-7",
+        "settings": {
+          "enabled": false,
+          "heading": "Studio updates",
+          "subtitle": null,
+          "show_body": true,
+          "body": "Made for you"
+        }
+      }
+    }
+  },
+  {
+    "id": "combination-8",
+    "variables": {
+      "section": {
+        "id": "notice-8",
+        "settings": {
+          "enabled": false,
+          "heading": "Studio updates",
+          "subtitle": "  New arrivals  ",
+          "show_body": true,
+          "body": "Made for you"
+        }
+      }
+    }
+  },
+  {
+    "id": "combination-9",
+    "variables": {
+      "section": {
+        "id": "notice-9",
+        "settings": {
+          "enabled": false,
+          "heading": "Studio updates",
+          "subtitle": "  \t\n ",
+          "show_body": true,
+          "body": "Made for you"
+        }
+      }
+    }
+  },
+  {
+    "id": "combination-10",
+    "variables": {
+      "section": {
+        "id": "notice-10",
+        "settings": {
+          "enabled": false,
+          "heading": "Studio updates",
+          "subtitle": null,
+          "show_body": false,
+          "body": "Made for you"
+        }
+      }
+    }
+  },
+  {
+    "id": "combination-11",
+    "variables": {
+      "section": {
+        "id": "notice-11",
+        "settings": {
+          "enabled": false,
+          "heading": "Studio updates",
+          "subtitle": "  New arrivals  ",
+          "show_body": false,
+          "body": "Made for you"
+        }
+      }
+    }
+  },
+  {
+    "id": "combination-12",
+    "variables": {
+      "section": {
+        "id": "notice-12",
+        "settings": {
+          "enabled": false,
+          "heading": "Studio updates",
+          "subtitle": "  \t\n ",
+          "show_body": false,
+          "body": "Made for you"
+        }
+      }
+    }
+  },
+  {
+    "id": "escape",
+    "variables": {
+      "section": {
+        "id": "n\" onclick=\"evil",
+        "settings": {
+          "enabled": true,
+          "heading": "<script>alert(1)</script>",
+          "subtitle": "<img src=x> & \"new\"",
+          "show_body": true,
+          "body": "<b>Text</b>"
+        }
+      }
+    }
+  },
+  {
+    "id": "entities",
+    "variables": {
+      "section": {
+        "id": "a&amp;b",
+        "settings": {
+          "enabled": true,
+          "heading": "&lt;head&gt;",
+          "subtitle": "&amp;subtitle",
+          "show_body": true,
+          "body": "&quot;body"
+        }
+      }
+    }
+  },
+  {
+    "id": "unicode",
+    "variables": {
+      "section": {
+        "id": "étage-4",
+        "settings": {
+          "enabled": true,
+          "heading": "Été",
+          "subtitle": "  東京 🧶  ",
+          "show_body": true,
+          "body": "Nouveautés"
+        }
+      }
+    }
+  },
+  {
+    "id": "empty-strings",
+    "variables": {
+      "section": {
+        "id": "empty",
+        "settings": {
+          "enabled": true,
+          "heading": "",
+          "subtitle": "",
+          "show_body": true,
+          "body": ""
+        }
+      }
+    }
+  }
+]

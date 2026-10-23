@@ -1,0 +1,15 @@
+{
+  "id": "announcement-subtitle",
+  "version": 1,
+  "split": "development",
+  "category": "section-modification",
+  "difficulty": "easy",
+  "family": "announcement-preserved-controls",
+  "provenance": "Original synthetic LiquidBench development fixture; no external theme copied.",
+  "runtime_subset": "Core Liquid section body rendered after AST-verified extraction of one unchanged top-level schema; supplied section hash, no Shopify lifecycle/defaults.",
+  "editable_files": [
+    "sections/announcement.liquid"
+  ],
+  "prompt": "Add optional subtitle output to sections/announcement.liquid while preserving existing behavior. All input keys are supplied: section.id is a string; section.settings.enabled and show_body are booleans; heading and body are strings; subtitle is null or a string. If enabled is false output no elements or non-whitespace text. Otherwise keep exactly one section with class announcement and escaped data-section-id matching section.id; its children, in order, must be: h2 with escaped heading unchanged; p with class announcement__subtitle only when subtitle trimmed of surrounding ASCII whitespace is nonempty, containing that trimmed escaped text; p with class announcement__body only if show_body is true, containing escaped body unchanged. No extra elements or attributes. Preserve the entire existing schema block byte-for-byte; its subtitle setting already exists. Change only this section file. Do not hardcode values or disable checks. Use core Liquid empty comparison instead of Shopify blank. For a visible body render, pass strip_schema:true to render; this extracts metadata and supplies hashes, it does not emulate Shopify section objects or default settings. Whitespace between elements and quote style are unrestricted.",
+  "evaluator": "announcement-subtitle-v1"
+}

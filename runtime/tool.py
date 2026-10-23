@@ -49,6 +49,15 @@ def snapshot():
     return files
 
 
+def analyze(source):
+    proc = subprocess.run(['node', '/opt/liquidbench/analyze.mjs'],
+                          input=json.dumps({'source': source}),
+                          capture_output=True, text=True, timeout=10)
+    if proc.returncode:
+        raise RuntimeError('Liquid analysis runtime failed: ' + proc.stderr[:1000])
+    return json.loads(proc.stdout)
+
+
 def execute(request):
     tool = request['tool']
     args = request.get('args', {})
@@ -91,8 +100,17 @@ def execute(request):
         if proc.returncode:
             raise RuntimeError('Theme Check runtime failed: ' + proc.stderr[:1000])
         return {'offenses': json.loads(proc.stdout)}
+    if tool == 'analyze':
+        return analyze(path(args['path']).read_text())
     if tool == 'render':
         source = path(args['path']).read_text()
+        if args.get('strip_schema', False):
+            parsed = analyze(source)
+            if not parsed['ok']:
+                return parsed
+            if len(parsed['schemas']) != 1 or not parsed['schemas'][0]['top_level']:
+                raise ValueError('Expected exactly one top-level schema block')
+            source = parsed['body_source']
         proc = subprocess.run(['ruby', '/opt/liquidbench/render.rb'],
                               input=json.dumps({'source': source, 'variables': args['variables']}),
                               capture_output=True, text=True, timeout=10)

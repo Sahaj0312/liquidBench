@@ -81,3 +81,87 @@ def test_strict_renderer_rejects_unknown_filters(image):
         )
         assert not result["ok"]
         assert "UndefinedFilter" in result["error"]
+
+
+NEW_TASKS = [
+    Task.load(path.parent)
+    for path in sorted((ROOT / "tasks/dev").glob("*/task.json"))
+    if path.parent.name != "product-card"
+]
+NEW_CANDIDATES = [(task, name) for task in NEW_TASKS for name in validation_candidates(task)]
+
+
+@pytest.mark.parametrize(
+    "task,candidate",
+    NEW_CANDIDATES,
+    ids=[f"{t.manifest['id']}/{name}" for t, name in NEW_CANDIDATES],
+)
+def test_new_task_references_and_adversarial_solutions(image, task, candidate):
+    files, expected = validation_candidates(task)[candidate]
+    result = grade(task, files, image)
+    assert result["passed"] == expected, result
+
+
+ALL_TASKS = [Task.load(path.parent) for path in sorted((ROOT / "tasks/dev").glob("*/task.json"))]
+
+
+@pytest.mark.parametrize("task", ALL_TASKS, ids=lambda t: t.manifest["id"])
+def test_agent_container_contains_only_initial_workspace(image, task):
+    with Sandbox(image, task.initial) as sandbox:
+        assert sandbox.snapshot() == task.initial
+        assert sandbox.call("list_files")["files"] == sorted(task.initial)
+        for path in ["evaluator/cases.json", "evaluator/validation.json", "task.json"]:
+            with pytest.raises(ToolError):
+                sandbox.call("read_file", {"path": path})
+
+
+@pytest.mark.parametrize("task", ALL_TASKS, ids=lambda t: t.manifest["id"])
+def test_full_pipeline_with_reference_fixture_provider(image, task, tmp_path):
+    # Synthetic integration evidence only; this is deliberately not a model score.
+    import json
+    from liquidbench.runner import load_config, run
+    from test_runner import ScriptedProvider
+
+    replies = [
+        json.dumps({"tool": "write_file", "args": {"path": path, "content": content}})
+        for path, content in task.reference_files.items()
+        if task.initial[path] != content
+    ]
+    replies.append('{"tool":"finish","args":{}}')
+    config = load_config(ROOT / "configs/local-smoke.json")
+    config.update(image=image, purpose="synthetic reference-fixture integration test")
+    destination, result = run(task, config, tmp_path, provider=ScriptedProvider(replies))
+    assert result["status"] == "passed", result
+    assert result["snapshot_captured"]
+    assert (destination / "changes.patch").read_text()
+    assert (destination / "trace.jsonl").exists()
+
+
+def test_analysis_distinguishes_real_and_commented_schema(image):
+    files = {
+        "comment.liquid": "{% comment %}{% schema %}{}{% endschema %}{% endcomment %}",
+        "valid.liquid": 'before{% schema %}{"name":"é"}{% endschema %}after',
+        "nested.liquid": "{% if true %}{% schema %}{}{% endschema %}{% endif %}",
+    }
+    with Sandbox(image, files) as sandbox:
+        assert sandbox.call("analyze", {"path": "comment.liquid"})["schemas"] == []
+        parsed = sandbox.call("analyze", {"path": "valid.liquid"})
+        assert parsed["body_source"] == "beforeafter"
+        assert parsed["schemas"][0]["top_level"]
+        assert not sandbox.call("analyze", {"path": "nested.liquid"})["schemas"][0]["top_level"]
+        with pytest.raises(ToolError):
+            sandbox.call(
+                "render", {"path": "comment.liquid", "variables": {}, "strip_schema": True}
+            )
+        with pytest.raises(ToolError):
+            sandbox.call("analyze", {"path": "../evaluator/cases.json"})
+
+
+def test_schema_extraction_does_not_enable_shopify_filters(image):
+    files = {"section.liquid": '{{ "file.css" | asset_url }}{% schema %}{}{% endschema %}'}
+    with Sandbox(image, files) as sandbox:
+        result = sandbox.call(
+            "render", {"path": "section.liquid", "variables": {}, "strip_schema": True}
+        )
+        assert not result["ok"]
+        assert "UndefinedFilter" in result["error"]

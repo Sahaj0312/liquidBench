@@ -23,13 +23,15 @@ list_files: args {}
 read_file: args {"path":"relative/path"}
 write_file: args {"path":"relative/path","content":"complete file content"}
 search: args {"text":"literal substring"}
-render: args {"path":"relative/path.liquid","variables":{"product":{...}}}
+render: args {"path":"relative/path.liquid","variables":{...},"strip_schema":false}
+  For section bodies, set strip_schema:true to remove one top-level schema block.
+analyze: args {"path":"relative/path.liquid"} (static AST and schema extraction)
 check: args {} (runs Shopify Theme Check)
 finish: args {} (submit final files)
 Paths must remain within the workspace. No network or package installation.
 Only the task's declared files may change. Hidden grading is unavailable.
 Tool errors consume the same budget as successful calls. Finish explicitly when done."""
-TOOLS = {"list_files", "read_file", "write_file", "search", "render", "check", "finish"}
+TOOLS = {"list_files", "read_file", "write_file", "search", "render", "analyze", "check", "finish"}
 
 
 def parse_action(content):
@@ -102,7 +104,10 @@ def source_version():
         result = subprocess.run(["git", *args], capture_output=True, text=True)
         return result.stdout.strip() if result.returncode == 0 else None
 
-    sources = {path.name: path.read_text() for path in Path(__file__).parent.glob("*.py")}
+    source_root = Path(__file__).parent
+    sources = {
+        str(path.relative_to(source_root)): path.read_text() for path in source_root.rglob("*.py")
+    }
     return {
         "git_commit": git("rev-parse", "HEAD"),
         "git_status": git("status", "--porcelain"),

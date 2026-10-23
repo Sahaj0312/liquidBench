@@ -1,0 +1,6 @@
+{% assign threshold = settings.threshold | default: 5000 %}
+{% assign message = settings.message | default: '' | strip %}
+{% if message == empty %}{% assign message = 'Keep shopping' %}{% endif %}
+{% if settings.enabled %}
+  <p class="shipping-message">{% if cart.item_count == 0 %}Your cart is empty{% elsif cart.total >= threshold %}Free shipping unlocked{% else %}{{ message | escape }}{% endif %}</p>
+{% endif %}

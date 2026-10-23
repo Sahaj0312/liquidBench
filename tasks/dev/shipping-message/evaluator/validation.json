@@ -1,0 +1,79 @@
+[
+  {
+    "name": "strict_threshold",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-message.liquid": "{% assign threshold = settings.threshold | default: 5000 %}\n{% assign message = settings.message | default: '' | strip %}\n{% if message == empty %}{% assign message = 'Keep shopping' %}{% endif %}\n{% if settings.enabled %}\n  <p class=\"shipping-message\">{% if cart.item_count == 0 %}Your cart is empty{% elsif cart.total > threshold %}Free shipping unlocked{% else %}{{ message | escape }}{% endif %}</p>\n{% endif %}\n"
+    }
+  },
+  {
+    "name": "false_default",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-message.liquid": "{% assign threshold = settings.threshold | default: 5000 %}\n{% assign message = settings.message | default: '' | strip %}\n{% if message == empty %}{% assign message = 'Keep shopping' %}{% endif %}\n{% assign enabled = settings.enabled | default: true %}{% if enabled %}\n  <p class=\"shipping-message\">{% if cart.item_count == 0 %}Your cart is empty{% elsif cart.total >= threshold %}Free shipping unlocked{% else %}{{ message | escape }}{% endif %}</p>\n{% endif %}\n"
+    }
+  },
+  {
+    "name": "wrong_priority",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-message.liquid": "{% assign threshold = settings.threshold | default: 5000 %}\n{% assign message = settings.message | default: '' | strip %}\n{% if message == empty %}{% assign message = 'Keep shopping' %}{% endif %}\n{% if settings.enabled %}\n  <p class=\"shipping-message\">{% if cart.item_count < 0 %}Your cart is empty{% elsif cart.total >= threshold %}Free shipping unlocked{% else %}{{ message | escape }}{% endif %}</p>\n{% endif %}\n"
+    }
+  },
+  {
+    "name": "unescaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-message.liquid": "{% assign threshold = settings.threshold | default: 5000 %}\n{% assign message = settings.message | default: '' | strip %}\n{% if message == empty %}{% assign message = 'Keep shopping' %}{% endif %}\n{% if settings.enabled %}\n  <p class=\"shipping-message\">{% if cart.item_count == 0 %}Your cart is empty{% elsif cart.total >= threshold %}Free shipping unlocked{% else %}{{ message }}{% endif %}</p>\n{% endif %}\n"
+    }
+  },
+  {
+    "name": "untrimmed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-message.liquid": "{% assign threshold = settings.threshold | default: 5000 %}\n{% assign message = settings.message | default: '' %}\n{% if message == empty %}{% assign message = 'Keep shopping' %}{% endif %}\n{% if settings.enabled %}\n  <p class=\"shipping-message\">{% if cart.item_count == 0 %}Your cart is empty{% elsif cart.total >= threshold %}Free shipping unlocked{% else %}{{ message | escape }}{% endif %}</p>\n{% endif %}\n"
+    }
+  },
+  {
+    "name": "fixed_threshold",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-message.liquid": "{% assign threshold = 5000 %}\n{% assign message = settings.message | default: '' | strip %}\n{% if message == empty %}{% assign message = 'Keep shopping' %}{% endif %}\n{% if settings.enabled %}\n  <p class=\"shipping-message\">{% if cart.item_count == 0 %}Your cart is empty{% elsif cart.total >= threshold %}Free shipping unlocked{% else %}{{ message | escape }}{% endif %}</p>\n{% endif %}\n"
+    }
+  },
+  {
+    "name": "hardcoded",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-message.liquid": "<p class=\"shipping-message\">Keep shopping</p>\n"
+    }
+  },
+  {
+    "name": "alternative_case_branch",
+    "expected_pass": true,
+    "changes": {
+      "snippets/shipping-message.liquid": "{% assign threshold = settings.threshold | default: 5000 %}\n{% assign message = settings.message | default: '' | strip %}\n{% if message == empty %}{% assign message = 'Keep shopping' %}{% endif %}\n{% if settings.enabled %}\n  <p class=\"shipping-message\">{% if cart.item_count < 1 %}Your cart is empty{% elsif cart.total >= threshold %}Free shipping unlocked{% else %}{{ message | escape }}{% endif %}</p>\n{% endif %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-message.liquid": "{% # theme-check-disable %}\n{% assign threshold = settings.threshold | default: 5000 %}\n{% assign message = settings.message | default: '' | strip %}\n{% if message == empty %}{% assign message = 'Keep shopping' %}{% endif %}\n{% if settings.enabled %}\n  <p class=\"shipping-message\">{% if cart.item_count == 0 %}Your cart is empty{% elsif cart.total >= threshold %}Free shipping unlocked{% else %}{{ message | escape }}{% endif %}</p>\n{% endif %}\n"
+    }
+  },
+  {
+    "name": "grader_config",
+    "expected_pass": false,
+    "changes": {
+      ".theme-check.yml": "extends: []\n"
+    }
+  },
+  {
+    "name": "deleted_submission",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-message.liquid": null
+    }
+  }
+]

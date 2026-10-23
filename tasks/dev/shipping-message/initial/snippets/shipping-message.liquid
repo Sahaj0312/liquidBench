@@ -1,0 +1,9 @@
+{% assign threshold = settings.threshold | default: 5000 %}
+{% assign enabled = settings.enabled | default: true %}
+{% if enabled %}
+  {% if cart.total > threshold %}
+    <p class="shipping-message">Free shipping unlocked</p>
+  {% else %}
+    <p class="shipping-message">{{ settings.message }}</p>
+  {% endif %}
+{% endif %}

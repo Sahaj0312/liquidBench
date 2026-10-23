@@ -1,0 +1,240 @@
+[
+  {
+    "id": "below-default",
+    "variables": {
+      "cart": {
+        "item_count": 1,
+        "total": 1000
+      },
+      "settings": {
+        "enabled": true,
+        "threshold": null,
+        "message": null
+      }
+    }
+  },
+  {
+    "id": "empty-cart-priority",
+    "variables": {
+      "cart": {
+        "item_count": 0,
+        "total": 9000
+      },
+      "settings": {
+        "enabled": true,
+        "threshold": null,
+        "message": null
+      }
+    }
+  },
+  {
+    "id": "default-boundary",
+    "variables": {
+      "cart": {
+        "item_count": 1,
+        "total": 5000
+      },
+      "settings": {
+        "enabled": true,
+        "threshold": null,
+        "message": null
+      }
+    }
+  },
+  {
+    "id": "just-below",
+    "variables": {
+      "cart": {
+        "item_count": 1,
+        "total": 4999
+      },
+      "settings": {
+        "enabled": true,
+        "threshold": null,
+        "message": null
+      }
+    }
+  },
+  {
+    "id": "custom-boundary",
+    "variables": {
+      "cart": {
+        "item_count": 1,
+        "total": 2300
+      },
+      "settings": {
+        "enabled": true,
+        "threshold": 2300,
+        "message": null
+      }
+    }
+  },
+  {
+    "id": "custom-below",
+    "variables": {
+      "cart": {
+        "item_count": 1,
+        "total": 2299
+      },
+      "settings": {
+        "enabled": true,
+        "threshold": 2300,
+        "message": null
+      }
+    }
+  },
+  {
+    "id": "custom-above",
+    "variables": {
+      "cart": {
+        "item_count": 1,
+        "total": 2301
+      },
+      "settings": {
+        "enabled": true,
+        "threshold": 2300,
+        "message": null
+      }
+    }
+  },
+  {
+    "id": "empty-message",
+    "variables": {
+      "cart": {
+        "item_count": 1,
+        "total": 1000
+      },
+      "settings": {
+        "enabled": true,
+        "threshold": null,
+        "message": ""
+      }
+    }
+  },
+  {
+    "id": "whitespace-message",
+    "variables": {
+      "cart": {
+        "item_count": 1,
+        "total": 1000
+      },
+      "settings": {
+        "enabled": true,
+        "threshold": null,
+        "message": " \t\n "
+      }
+    }
+  },
+  {
+    "id": "trim-message",
+    "variables": {
+      "cart": {
+        "item_count": 1,
+        "total": 1000
+      },
+      "settings": {
+        "enabled": true,
+        "threshold": null,
+        "message": "  Add another item  "
+      }
+    }
+  },
+  {
+    "id": "escaped-message",
+    "variables": {
+      "cart": {
+        "item_count": 1,
+        "total": 1000
+      },
+      "settings": {
+        "enabled": true,
+        "threshold": null,
+        "message": "<img src=x onerror=alert(1)> & \"items\""
+      }
+    }
+  },
+  {
+    "id": "literal-entity",
+    "variables": {
+      "cart": {
+        "item_count": 1,
+        "total": 1000
+      },
+      "settings": {
+        "enabled": true,
+        "threshold": null,
+        "message": "&lt;keep&gt;"
+      }
+    }
+  },
+  {
+    "id": "unicode-message",
+    "variables": {
+      "cart": {
+        "item_count": 1,
+        "total": 1000
+      },
+      "settings": {
+        "enabled": true,
+        "threshold": null,
+        "message": "Encore 🧶 東京"
+      }
+    }
+  },
+  {
+    "id": "novel-message",
+    "variables": {
+      "cart": {
+        "item_count": 1,
+        "total": 1000
+      },
+      "settings": {
+        "enabled": true,
+        "threshold": null,
+        "message": "Juniper-81b7"
+      }
+    }
+  },
+  {
+    "id": "disabled-empty",
+    "variables": {
+      "cart": {
+        "item_count": 0,
+        "total": 0
+      },
+      "settings": {
+        "enabled": false,
+        "threshold": null,
+        "message": null
+      }
+    }
+  },
+  {
+    "id": "disabled-below",
+    "variables": {
+      "cart": {
+        "item_count": 1,
+        "total": 100
+      },
+      "settings": {
+        "enabled": false,
+        "threshold": null,
+        "message": null
+      }
+    }
+  },
+  {
+    "id": "disabled-above",
+    "variables": {
+      "cart": {
+        "item_count": 1,
+        "total": 9000
+      },
+      "settings": {
+        "enabled": false,
+        "threshold": null,
+        "message": null
+      }
+    }
+  }
+]

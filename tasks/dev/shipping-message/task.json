@@ -1,0 +1,15 @@
+{
+  "id": "shipping-message",
+  "version": 1,
+  "split": "development",
+  "category": "conditional-logic",
+  "difficulty": "easy",
+  "family": "cart-threshold-message",
+  "provenance": "Original synthetic LiquidBench development fixture; no external theme copied.",
+  "runtime_subset": "Core Ruby Liquid only; supplied cart/settings hashes, no Shopify cart or currency semantics.",
+  "editable_files": [
+    "snippets/shipping-message.liquid"
+  ],
+  "prompt": "Repair snippets/shipping-message.liquid. Inputs are supplied hashes: settings.enabled is a boolean, settings.threshold is null or a positive integer (cents), settings.message is null or a string; cart.item_count and cart.total are nonnegative integers. All keys are present. When enabled is false output no elements or non-whitespace text. Otherwise output exactly one p with class shipping-message, no other attributes/elements. Its text is: Your cart is empty when item_count is 0 (this takes priority over total); Free shipping unlocked when total is at least the threshold (use 5000 if threshold is null); otherwise the message trimmed of surrounding ASCII whitespace, falling back to Keep shopping if null/empty/whitespace-only. Escape custom message text as HTML. Respect false, the exact threshold boundary, and custom thresholds. Change only this snippet, do not hardcode fixture-specific values or disable checks. Use core Liquid only; empty-string comparison uses empty, not Shopify blank. Whitespace outside the p and quote style are unrestricted.",
+  "evaluator": "shipping-message-v1"
+}

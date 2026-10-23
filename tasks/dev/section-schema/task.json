@@ -1,0 +1,15 @@
+{
+  "id": "section-schema",
+  "version": 1,
+  "split": "development",
+  "category": "section-schema",
+  "difficulty": "easy",
+  "family": "feature-panel-setting-contract",
+  "provenance": "Original synthetic LiquidBench development fixture; no external theme copied.",
+  "runtime_subset": "Static Shopify section-schema JSON constraints and Theme Check only; no theme editor or storefront rendering.",
+  "editable_files": [
+    "sections/feature-panel.liquid"
+  ],
+  "prompt": "Repair only the JSON schema in sections/feature-panel.liquid. Keep every byte outside the schema block unchanged. Include exactly one top-level schema block with strict JSON (no comments, duplicate JSON keys, or non-finite numbers). Its root fields must be exactly name, settings, presets; name must remain Feature panel. Declare exactly three unique settings, in any order, each with a nonempty label: heading (text, default Highlights), show_summary (checkbox, boolean default true), and columns (range, min 1, max 4, step 1, numeric default 3). Each setting may contain only the listed fields plus id/type/label. Include exactly one preset named Feature panel, with exactly these settings: heading = Featured picks, show_summary = false, columns = 2. No other preset fields, unknown setting IDs, or changes to markup. Do not disable checks. This task validates schema structure and declared values offline, not theme-editor behavior.",
+  "evaluator": "section-schema-v1"
+}

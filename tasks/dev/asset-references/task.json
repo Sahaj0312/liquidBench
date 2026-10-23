@@ -1,0 +1,15 @@
+{
+  "id": "asset-references",
+  "version": 1,
+  "split": "development",
+  "category": "theme-references",
+  "difficulty": "easy",
+  "family": "promo-literal-references",
+  "provenance": "Original synthetic LiquidBench development fixture; no external theme copied.",
+  "runtime_subset": "Static parsed Liquid output/filter references and protected asset/locale resolution; no CDN or translation runtime emulation.",
+  "editable_files": [
+    "snippets/promo-assets.liquid"
+  ],
+  "prompt": "Fix the three broken string-literal references in snippets/promo-assets.liquid. Use the existing assets/promo-banner.css stylesheet through asset_url then stylesheet_tag, the existing promo.heading key in the h2, and promo.cta in the p through t (translate is also accepted). Both locale files must resolve these keys to strings. Only edit the three literal operands; preserve the surrounding markup, live outputs, filter order, and absence of conditional wrappers. Quote style and whitespace between elements/around Liquid delimiters may vary. Do not hardcode URLs or translated copy, remove outputs, move code into comments/raw/dead branches, change protected asset/locale files, add files, or suppress checks. The check/analyze tools provide static feedback; these Shopify filters are not supported by the offline render tool.",
+  "evaluator": "asset-references-v1"
+}

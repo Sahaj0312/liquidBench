@@ -1,0 +1,100 @@
+[
+  {
+    "name": "missing_asset",
+    "expected_pass": false,
+    "changes": {
+      "snippets/promo-assets.liquid": "{{ 'missing.css' | asset_url | stylesheet_tag }}\n<div class=\"promo-banner\">\n  <h2>{{ 'promo.heading' | t }}</h2>\n  <p>{{ 'promo.cta' | t }}</p>\n</div>\n"
+    }
+  },
+  {
+    "name": "missing_translation",
+    "expected_pass": false,
+    "changes": {
+      "snippets/promo-assets.liquid": "{{ 'promo-banner.css' | asset_url | stylesheet_tag }}\n<div class=\"promo-banner\">\n  <h2>{{ 'promo.heading' | t }}</h2>\n  <p>{{ 'promo.missing' | t }}</p>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong_existing_key",
+    "expected_pass": false,
+    "changes": {
+      "snippets/promo-assets.liquid": "{{ 'promo-banner.css' | asset_url | stylesheet_tag }}\n<div class=\"promo-banner\">\n  <h2>{{ 'promo.heading' | t }}</h2>\n  <p>{{ 'promo.heading' | t }}</p>\n</div>\n"
+    }
+  },
+  {
+    "name": "removed_output",
+    "expected_pass": false,
+    "changes": {
+      "snippets/promo-assets.liquid": "{{ 'promo-banner.css' | asset_url | stylesheet_tag }}\n<div class=\"promo-banner\">\n  <h2>{{ 'promo.heading' | t }}</h2>\n  <p></p>\n</div>\n"
+    }
+  },
+  {
+    "name": "comment_decoy",
+    "expected_pass": false,
+    "changes": {
+      "snippets/promo-assets.liquid": "{% comment %}{{ 'promo-banner.css' | asset_url | stylesheet_tag }}\n<div class=\"promo-banner\">\n  <h2>{{ 'promo.heading' | t }}</h2>\n  <p>{{ 'promo.cta' | t }}</p>\n</div>\n{% endcomment %}\n<div class=\"promo-banner\">Fresh arrivals</div>"
+    }
+  },
+  {
+    "name": "dead_branch",
+    "expected_pass": false,
+    "changes": {
+      "snippets/promo-assets.liquid": "{% if false %}{{ 'promo-banner.css' | asset_url | stylesheet_tag }}\n<div class=\"promo-banner\">\n  <h2>{{ 'promo.heading' | t }}</h2>\n  <p>{{ 'promo.cta' | t }}</p>\n</div>\n{% endif %}\n"
+    }
+  },
+  {
+    "name": "raw_decoy",
+    "expected_pass": false,
+    "changes": {
+      "snippets/promo-assets.liquid": "{% raw %}{{ 'promo-banner.css' | asset_url | stylesheet_tag }}\n<div class=\"promo-banner\">\n  <h2>{{ 'promo.heading' | t }}</h2>\n  <p>{{ 'promo.cta' | t }}</p>\n</div>\n{% endraw %}\n"
+    }
+  },
+  {
+    "name": "hardcoded_translation",
+    "expected_pass": false,
+    "changes": {
+      "snippets/promo-assets.liquid": "{{ 'promo-banner.css' | asset_url | stylesheet_tag }}\n<div class=\"promo-banner\">\n  <h2>Fresh arrivals</h2>\n  <p>{{ 'promo.cta' | t }}</p>\n</div>\n"
+    }
+  },
+  {
+    "name": "url_bypass",
+    "expected_pass": false,
+    "changes": {
+      "snippets/promo-assets.liquid": "{{ '/assets/promo-banner.css' }}\n<div class=\"promo-banner\">\n  <h2>{{ 'promo.heading' | t }}</h2>\n  <p>{{ 'promo.cta' | t }}</p>\n</div>\n"
+    }
+  },
+  {
+    "name": "quote_and_filter_alias",
+    "expected_pass": true,
+    "changes": {
+      "snippets/promo-assets.liquid": "{{ \"promo-banner.css\" | asset_url | stylesheet_tag }}\n<div class=\"promo-banner\">\n  <h2>{{ \"promo.heading\" | translate }}</h2>\n  <p>{{ \"promo.cta\" | translate }}</p>\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/promo-assets.liquid": "{% # theme-check-disable %}\n{{ 'promo-banner.css' | asset_url | stylesheet_tag }}\n<div class=\"promo-banner\">\n  <h2>{{ 'promo.heading' | t }}</h2>\n  <p>{{ 'promo.cta' | t }}</p>\n</div>\n"
+    }
+  },
+  {
+    "name": "grader_config",
+    "expected_pass": false,
+    "changes": {
+      ".theme-check.yml": "extends: []\n"
+    }
+  },
+  {
+    "name": "deleted_submission",
+    "expected_pass": false,
+    "changes": {
+      "snippets/promo-assets.liquid": null
+    }
+  },
+  {
+    "name": "protected_file_edit",
+    "expected_pass": false,
+    "changes": {
+      "assets/promo-banner.css": ".promo-banner { padding: 1rem; }\n\n"
+    }
+  }
+]

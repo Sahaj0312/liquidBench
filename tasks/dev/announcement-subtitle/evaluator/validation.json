@@ -1,0 +1,93 @@
+[
+  {
+    "name": "enabled_regression",
+    "expected_pass": false,
+    "changes": {
+      "sections/announcement.liquid": "{% if true %}\n<section class=\"announcement\" data-section-id=\"{{ section.id | escape }}\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% assign subtitle = section.settings.subtitle | default: '' | strip %}\n  {% if subtitle != empty %}<p class=\"announcement__subtitle\">{{ subtitle | escape }}</p>{% endif %}\n  {% if section.settings.show_body %}<p class=\"announcement__body\">{{ section.settings.body | escape }}</p>{% endif %}\n</section>\n{% endif %}\n{% schema %}\n{\n  \"name\": \"Announcement\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"enabled\",\n      \"label\": \"Enabled\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Updates\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"subtitle\",\n      \"label\": \"Subtitle\",\n      \"default\": \"Latest news\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_body\",\n      \"label\": \"Show body\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"body\",\n      \"label\": \"Body\",\n      \"default\": \"From the studio\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Announcement\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "body_regression",
+    "expected_pass": false,
+    "changes": {
+      "sections/announcement.liquid": "{% if section.settings.enabled %}\n<section class=\"announcement\" data-section-id=\"{{ section.id | escape }}\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% assign subtitle = section.settings.subtitle | default: '' | strip %}\n  {% if subtitle != empty %}<p class=\"announcement__subtitle\">{{ subtitle | escape }}</p>{% endif %}\n  {% if true %}<p class=\"announcement__body\">{{ section.settings.body | escape }}</p>{% endif %}\n</section>\n{% endif %}\n{% schema %}\n{\n  \"name\": \"Announcement\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"enabled\",\n      \"label\": \"Enabled\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Updates\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"subtitle\",\n      \"label\": \"Subtitle\",\n      \"default\": \"Latest news\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_body\",\n      \"label\": \"Show body\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"body\",\n      \"label\": \"Body\",\n      \"default\": \"From the studio\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Announcement\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "unescaped_subtitle",
+    "expected_pass": false,
+    "changes": {
+      "sections/announcement.liquid": "{% if section.settings.enabled %}\n<section class=\"announcement\" data-section-id=\"{{ section.id | escape }}\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% assign subtitle = section.settings.subtitle | default: '' | strip %}\n  {% if subtitle != empty %}<p class=\"announcement__subtitle\">{{ subtitle }}</p>{% endif %}\n  {% if section.settings.show_body %}<p class=\"announcement__body\">{{ section.settings.body | escape }}</p>{% endif %}\n</section>\n{% endif %}\n{% schema %}\n{\n  \"name\": \"Announcement\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"enabled\",\n      \"label\": \"Enabled\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Updates\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"subtitle\",\n      \"label\": \"Subtitle\",\n      \"default\": \"Latest news\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_body\",\n      \"label\": \"Show body\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"body\",\n      \"label\": \"Body\",\n      \"default\": \"From the studio\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Announcement\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "untrimmed_subtitle",
+    "expected_pass": false,
+    "changes": {
+      "sections/announcement.liquid": "{% if section.settings.enabled %}\n<section class=\"announcement\" data-section-id=\"{{ section.id | escape }}\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% assign subtitle = section.settings.subtitle | default: '' %}\n  {% if subtitle != empty %}<p class=\"announcement__subtitle\">{{ subtitle | escape }}</p>{% endif %}\n  {% if section.settings.show_body %}<p class=\"announcement__body\">{{ section.settings.body | escape }}</p>{% endif %}\n</section>\n{% endif %}\n{% schema %}\n{\n  \"name\": \"Announcement\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"enabled\",\n      \"label\": \"Enabled\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Updates\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"subtitle\",\n      \"label\": \"Subtitle\",\n      \"default\": \"Latest news\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_body\",\n      \"label\": \"Show body\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"body\",\n      \"label\": \"Body\",\n      \"default\": \"From the studio\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Announcement\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "always_subtitle",
+    "expected_pass": false,
+    "changes": {
+      "sections/announcement.liquid": "{% if section.settings.enabled %}\n<section class=\"announcement\" data-section-id=\"{{ section.id | escape }}\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% assign subtitle = section.settings.subtitle | default: '' | strip %}\n  {% if true %}<p class=\"announcement__subtitle\">{{ subtitle | escape }}</p>{% endif %}\n  {% if section.settings.show_body %}<p class=\"announcement__body\">{{ section.settings.body | escape }}</p>{% endif %}\n</section>\n{% endif %}\n{% schema %}\n{\n  \"name\": \"Announcement\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"enabled\",\n      \"label\": \"Enabled\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Updates\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"subtitle\",\n      \"label\": \"Subtitle\",\n      \"default\": \"Latest news\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_body\",\n      \"label\": \"Show body\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"body\",\n      \"label\": \"Body\",\n      \"default\": \"From the studio\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Announcement\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "heading_regression",
+    "expected_pass": false,
+    "changes": {
+      "sections/announcement.liquid": "{% if section.settings.enabled %}\n<section class=\"announcement\" data-section-id=\"{{ section.id | escape }}\">\n  <h2>{{ 'Updates' }}</h2>\n  {% assign subtitle = section.settings.subtitle | default: '' | strip %}\n  {% if subtitle != empty %}<p class=\"announcement__subtitle\">{{ subtitle | escape }}</p>{% endif %}\n  {% if section.settings.show_body %}<p class=\"announcement__body\">{{ section.settings.body | escape }}</p>{% endif %}\n</section>\n{% endif %}\n{% schema %}\n{\n  \"name\": \"Announcement\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"enabled\",\n      \"label\": \"Enabled\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Updates\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"subtitle\",\n      \"label\": \"Subtitle\",\n      \"default\": \"Latest news\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_body\",\n      \"label\": \"Show body\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"body\",\n      \"label\": \"Body\",\n      \"default\": \"From the studio\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Announcement\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "identity_regression",
+    "expected_pass": false,
+    "changes": {
+      "sections/announcement.liquid": "{% if section.settings.enabled %}\n<section class=\"announcement\" data-section-id=\"{{ 'fixed' }}\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% assign subtitle = section.settings.subtitle | default: '' | strip %}\n  {% if subtitle != empty %}<p class=\"announcement__subtitle\">{{ subtitle | escape }}</p>{% endif %}\n  {% if section.settings.show_body %}<p class=\"announcement__body\">{{ section.settings.body | escape }}</p>{% endif %}\n</section>\n{% endif %}\n{% schema %}\n{\n  \"name\": \"Announcement\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"enabled\",\n      \"label\": \"Enabled\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Updates\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"subtitle\",\n      \"label\": \"Subtitle\",\n      \"default\": \"Latest news\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_body\",\n      \"label\": \"Show body\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"body\",\n      \"label\": \"Body\",\n      \"default\": \"From the studio\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Announcement\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "schema_regression",
+    "expected_pass": false,
+    "changes": {
+      "sections/announcement.liquid": "{% if section.settings.enabled %}\n<section class=\"announcement\" data-section-id=\"{{ section.id | escape }}\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% assign subtitle = section.settings.subtitle | default: '' | strip %}\n  {% if subtitle != empty %}<p class=\"announcement__subtitle\">{{ subtitle | escape }}</p>{% endif %}\n  {% if section.settings.show_body %}<p class=\"announcement__body\">{{ section.settings.body | escape }}</p>{% endif %}\n</section>\n{% endif %}\n{% schema %}\n{\n  \"name\": \"Announcement\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"enabled\",\n      \"label\": \"Enabled\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Changed\",\n      \"default\": \"Updates\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"subtitle\",\n      \"label\": \"Subtitle\",\n      \"default\": \"Latest news\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_body\",\n      \"label\": \"Show body\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"body\",\n      \"label\": \"Body\",\n      \"default\": \"From the studio\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Announcement\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "subtitle_wrong_order",
+    "expected_pass": false,
+    "changes": {
+      "sections/announcement.liquid": "{% if section.settings.enabled %}\n<section class=\"announcement\" data-section-id=\"{{ section.id | escape }}\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% if section.settings.show_body %}<p class=\"announcement__body\">{{ section.settings.body | escape }}</p>{% endif %}\n  {% assign subtitle = section.settings.subtitle | default: '' | strip %}\n  {% if subtitle != empty %}<p class=\"announcement__subtitle\">{{ subtitle | escape }}</p>{% endif %}\n</section>\n{% endif %}\n{% schema %}\n{\n  \"name\": \"Announcement\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"enabled\",\n      \"label\": \"Enabled\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Updates\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"subtitle\",\n      \"label\": \"Subtitle\",\n      \"default\": \"Latest news\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_body\",\n      \"label\": \"Show body\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"body\",\n      \"label\": \"Body\",\n      \"default\": \"From the studio\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Announcement\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "alternative_unless",
+    "expected_pass": true,
+    "changes": {
+      "sections/announcement.liquid": "{% if section.settings.enabled %}\n<section class=\"announcement\" data-section-id=\"{{ section.id | escape }}\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% assign subtitle = section.settings.subtitle | default: '' | strip %}\n  {% unless subtitle == empty %}<p class=\"announcement__subtitle\">{{ subtitle | escape }}</p>{% endunless %}\n  {% if section.settings.show_body %}<p class=\"announcement__body\">{{ section.settings.body | escape }}</p>{% endif %}\n</section>\n{% endif %}\n{% schema %}\n{\n  \"name\": \"Announcement\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"enabled\",\n      \"label\": \"Enabled\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Updates\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"subtitle\",\n      \"label\": \"Subtitle\",\n      \"default\": \"Latest news\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_body\",\n      \"label\": \"Show body\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"body\",\n      \"label\": \"Body\",\n      \"default\": \"From the studio\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Announcement\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/announcement.liquid": "{% # theme-check-disable %}\n{% if section.settings.enabled %}\n<section class=\"announcement\" data-section-id=\"{{ section.id | escape }}\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {% assign subtitle = section.settings.subtitle | default: '' | strip %}\n  {% if subtitle != empty %}<p class=\"announcement__subtitle\">{{ subtitle | escape }}</p>{% endif %}\n  {% if section.settings.show_body %}<p class=\"announcement__body\">{{ section.settings.body | escape }}</p>{% endif %}\n</section>\n{% endif %}\n{% schema %}\n{\n  \"name\": \"Announcement\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"enabled\",\n      \"label\": \"Enabled\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Updates\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"subtitle\",\n      \"label\": \"Subtitle\",\n      \"default\": \"Latest news\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_body\",\n      \"label\": \"Show body\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"body\",\n      \"label\": \"Body\",\n      \"default\": \"From the studio\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Announcement\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "grader_config",
+    "expected_pass": false,
+    "changes": {
+      ".theme-check.yml": "extends: []\n"
+    }
+  },
+  {
+    "name": "deleted_submission",
+    "expected_pass": false,
+    "changes": {
+      "sections/announcement.liquid": null
+    }
+  }
+]
