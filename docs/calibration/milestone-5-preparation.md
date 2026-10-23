@@ -1,11 +1,11 @@
 # Milestone 5: skills A/B preparation
 
-Historical preparation record. The user subsequently approved the shared budgets
-and one 90-minute/$2 session. That session was terminated after the near-window
-preflight failed; see the [preflight report and cleanup evidence](milestone-5-preflight.md).
-The ten task attempts have not run. The [v2 preflight/runbook](preflight-v2.md)
-supersedes the endpoint gate and deployment commands below for the next session;
-the experiment configurations and paired design are unchanged.
+Historical preparation record. The first approved session stopped at the original
+near-window gate; see its [unchanged failure evidence](milestone-5-preflight.md).
+A separately approved session using the [v2 gate](preflight-v2.md) subsequently
+completed all ten attempts: [baseline 2/5, skills 0/5](milestone-5-results.md).
+The text below records the original proposal; the experiment configurations and
+paired design remained unchanged after approval.
 
 Preparation is complete; **no paired model attempts or paid deployment have been
 launched**. The full upstream entry instructions cannot fit the old 8K context.

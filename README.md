@@ -2,7 +2,7 @@
 
 A Python harness for controlled experiments on offline Liquid coding tasks. The research design is in [brief.txt](brief.txt).
 
-LiquidBench implements five **development** tasks, a modular grader, and an agent protocol with explicit context accounting. The runner gives an agent isolated tools, submits its final files to a separate grader, and saves the grade, trace, patch, token usage, latency, and estimated inference cost. No held-out benchmark or research results are claimed yet. The [7B pilot](docs/calibration/milestone-4-results.md) passed 2/5 tasks; Milestone 5 adds pinned optional skills, but its [approved GPU session stopped at preflight](docs/calibration/milestone-5-preflight.md) before the paired experiment. The [revised preflight and deployment plan](docs/calibration/preflight-v2.md) separates serving checks from representative-length model diagnostics; a new GPU session still needs approval.
+LiquidBench implements five **development** tasks, a modular grader, and an agent protocol with explicit context accounting. The runner gives an agent isolated tools, submits its final files to a separate grader, and saves the grade, trace, patch, token usage, latency, and estimated inference cost. No held-out benchmark or research results are claimed yet. The [7B pilot](docs/calibration/milestone-4-results.md) passed 2/5 tasks. The completed [Milestone 5 paired experiment](docs/calibration/milestone-5-results.md) scored **2/5 baseline versus 0/5 with full pinned skills**, using 9.07× as many treatment tokens. All ten attempts and cleanup evidence are preserved; post-training has not begun.
 
 | Task | Required repair | Grading evidence |
 | --- | --- | --- |
@@ -143,7 +143,7 @@ uv run --with transformers==5.19.0 --with tokenizers==0.23.3 --with jinja2==3.1.
 uv run python scripts/run_skills_ab.py  # dry plan only
 ```
 
-All three entries require **9,457 raw tokens**, exceeding the pilot's 8K context. The approved matched configs use 32K context and a 393,216-token cumulative ceiling, retaining 12 turns and all other execution/decoding limits. The first approved session failed the near-window preflight and was terminated; **no paired task attempts have occurred**. See the [measurements and run plan](docs/calibration/milestone-5-preparation.md) and [preflight findings](docs/calibration/milestone-5-preflight.md). Another paid session requires approval. No fine-tuning, new tasks, training data or leaderboard are implemented.
+All three entries require **9,457 raw tokens**, exceeding the pilot's 8K context. Both paired conditions used the approved 32K context and 393,216-token cumulative ceiling, retaining 12 turns and all other execution/decoding limits. After an [aborted original preflight](docs/calibration/milestone-5-preflight.md), a separately approved session passed [preflight v2](docs/calibration/preflight-v2.md) and completed all ten attempts. See the [full comparison and evidence](docs/calibration/milestone-5-results.md): baseline 2/5, skills 0/5, no on-demand reference reads. The GPU was deleted. Further paid runs require approval; no fine-tuning, new tasks, training data or leaderboard are implemented.
 
 ## Development
 

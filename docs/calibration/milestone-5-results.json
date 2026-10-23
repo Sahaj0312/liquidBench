@@ -1,0 +1,3239 @@
+{
+  "kind": "paired_development_skills_experiment",
+  "completed": true,
+  "development_only": true,
+  "research_result": false,
+  "source_commit": "2c3ff9355e5aed222fdbcf63ff6acf44e6597df4",
+  "plan": {
+    "development_only": true,
+    "research_result": false,
+    "system_sha256": "130d38c607cce4a0497237760c4bc3c874f85360aa4ee8e78381de9cbe2c2387",
+    "skills": {
+      "revision": "483f969bed623c87c9e26ac34324d8d7d8fe68c3",
+      "repository": "https://github.com/benjaminsehl/liquid-skills.git",
+      "manifest_sha256": "5fa41f7cb6ad2deab5b6bde868c9c42c854bb55cb738f36cb950cebdc86040b8",
+      "files": {
+        "skills/liquid-theme-a11y/SKILL.md": {
+          "bytes": 12830,
+          "sha256": "0fd335818464328aa6b8a8511fba45526b63624c004b8b1d301d311a9ef089ba"
+        },
+        "skills/liquid-theme-a11y/references/component-patterns.md": {
+          "bytes": 5980,
+          "sha256": "cfaa618f3deca7f32bee5b90733c6b05d451e51240d53543d2ec1b1e5cffeb29"
+        },
+        "skills/liquid-theme-a11y/references/focus-and-keyboard.md": {
+          "bytes": 4854,
+          "sha256": "007a9ded63c6e4cb1e582a19aca6dc95d30d19a5752982c2a93427162f59229a"
+        },
+        "skills/liquid-theme-standards/SKILL.md": {
+          "bytes": 12145,
+          "sha256": "cb8a1d571be5d05111e90d7bd28758c98ed46e520bb93fad6c9e92b8bb466144"
+        },
+        "skills/liquid-theme-standards/references/css-patterns.md": {
+          "bytes": 4328,
+          "sha256": "04b5b842cc3807cbeea26749ef5351b072c91848b08094cf5992b133aaf8e491"
+        },
+        "skills/liquid-theme-standards/references/javascript-patterns.md": {
+          "bytes": 6617,
+          "sha256": "d0ae2481621d73f7fee266f57f397b569368defba45a53445ea9c507c73d56f3"
+        },
+        "skills/shopify-liquid-themes/SKILL.md": {
+          "bytes": 11681,
+          "sha256": "f4f2a4c779783251f9083f868db1e7292431d516ddd754a71827bdde6de65861"
+        },
+        "skills/shopify-liquid-themes/references/examples.md": {
+          "bytes": 8839,
+          "sha256": "6725d1b3ef215520f019e1fd446fd85b945d28c04b226a50081f76ffa65ed900"
+        },
+        "skills/shopify-liquid-themes/references/filters-commerce.md": {
+          "bytes": 10265,
+          "sha256": "0d64638aafc0421aaa523035cf66044439086f330fcc3f4ece97799e0fd5a781"
+        },
+        "skills/shopify-liquid-themes/references/filters-html-media.md": {
+          "bytes": 11846,
+          "sha256": "a5ad13ce341cc552e2433c675677fae4fb9efa502835bdb7b2345786a0825e73"
+        },
+        "skills/shopify-liquid-themes/references/filters-language.md": {
+          "bytes": 19537,
+          "sha256": "5fa36019a03b607385ef75fa4b18668f2253e25cc4c95a8953d8814add804a71"
+        },
+        "skills/shopify-liquid-themes/references/objects-commerce.md": {
+          "bytes": 18421,
+          "sha256": "179e6e32c6b42d2fd90ba29f5fcb5475c4ab80550d421f21a9ca34198c6a3864"
+        },
+        "skills/shopify-liquid-themes/references/objects-content.md": {
+          "bytes": 15211,
+          "sha256": "dab65acc3a5e7ff9c14a09f2977d0ab5bc06a0b2f9f67566395306210de75507"
+        },
+        "skills/shopify-liquid-themes/references/objects-tier2.md": {
+          "bytes": 17889,
+          "sha256": "0fa9ae207ff05f270778d185503af3edfbd46c05698de125eed83146a548e1f8"
+        },
+        "skills/shopify-liquid-themes/references/objects-tier3.md": {
+          "bytes": 5973,
+          "sha256": "8c6a0111f146337b7e6a1441fa5fb331a1d1989f7ccb87daa358ab1b229e8d8d"
+        },
+        "skills/shopify-liquid-themes/references/schema-and-settings.md": {
+          "bytes": 8944,
+          "sha256": "3db0101a87de679701bf652cb02dc507a11c3afbdb8f6da477f4f0940b3f54b5"
+        },
+        "skills/shopify-liquid-themes/references/tags.md": {
+          "bytes": 18724,
+          "sha256": "bb31ed32a61a7fe17acb9d5bbfc55e7f6140790d3a9694fab51017a3659e727c"
+        }
+      },
+      "entries": [
+        "skills/shopify-liquid-themes/SKILL.md",
+        "skills/liquid-theme-standards/SKILL.md",
+        "skills/liquid-theme-a11y/SKILL.md"
+      ]
+    },
+    "configs": {
+      "base": {
+        "purpose": "Milestone 5 paired development experiment; proposed budget adjustment requires approval before inference",
+        "endpoint": "http://127.0.0.1:8000/v1",
+        "model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+        "model_revision": "Qwen/Qwen2.5-Coder-7B-Instruct@c03e6d358207e414f1eca0bb1891e29f1db0e242; planned BF16 vLLM; serving build must be pinned before use",
+        "image": "liquidbench-runtime:0.1",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "seed": 42,
+        "max_turns": 12,
+        "max_total_tokens": 393216,
+        "max_output_tokens": 1024,
+        "max_seconds": 300,
+        "request_timeout": 90,
+        "provider_retries": 2,
+        "input_usd_per_million": null,
+        "output_usd_per_million": null,
+        "max_context_tokens": 32768,
+        "token_counting": "vllm",
+        "response_format": "json_object",
+        "skills": null
+      },
+      "skills": {
+        "purpose": "Milestone 5 paired development experiment; proposed budget adjustment requires approval before inference",
+        "endpoint": "http://127.0.0.1:8000/v1",
+        "model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+        "model_revision": "Qwen/Qwen2.5-Coder-7B-Instruct@c03e6d358207e414f1eca0bb1891e29f1db0e242; planned BF16 vLLM; serving build must be pinned before use",
+        "image": "liquidbench-runtime:0.1",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "seed": 42,
+        "max_turns": 12,
+        "max_total_tokens": 393216,
+        "max_output_tokens": 1024,
+        "max_seconds": 300,
+        "request_timeout": 90,
+        "provider_retries": 2,
+        "input_usd_per_million": null,
+        "output_usd_per_million": null,
+        "max_context_tokens": 32768,
+        "token_counting": "vllm",
+        "response_format": "json_object",
+        "skills": {
+          "manifest": "skills/liquid-skills.lock.json",
+          "checkout": ".cache/liquid-skills",
+          "revision": "483f969bed623c87c9e26ac34324d8d7d8fe68c3"
+        }
+      }
+    },
+    "order": [
+      {
+        "task_id": "announcement-subtitle",
+        "condition": "base",
+        "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286"
+      },
+      {
+        "task_id": "announcement-subtitle",
+        "condition": "skills",
+        "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286"
+      },
+      {
+        "task_id": "asset-references",
+        "condition": "skills",
+        "task_digest": "6acd37b41699971e1010f0717f1e449e4418a7ace7bccf8ea5efd764d9c5ae97"
+      },
+      {
+        "task_id": "asset-references",
+        "condition": "base",
+        "task_digest": "6acd37b41699971e1010f0717f1e449e4418a7ace7bccf8ea5efd764d9c5ae97"
+      },
+      {
+        "task_id": "product-card",
+        "condition": "base",
+        "task_digest": "35d1c090716cf27a197156ee92bfed3302456ef2c84fd4e17b1347a929e69140"
+      },
+      {
+        "task_id": "product-card",
+        "condition": "skills",
+        "task_digest": "35d1c090716cf27a197156ee92bfed3302456ef2c84fd4e17b1347a929e69140"
+      },
+      {
+        "task_id": "section-schema",
+        "condition": "skills",
+        "task_digest": "cbb16e3776caacd65d7b43ef9e4a437dd9a1b16ecfdd32a0766b54c7d3089606"
+      },
+      {
+        "task_id": "section-schema",
+        "condition": "base",
+        "task_digest": "cbb16e3776caacd65d7b43ef9e4a437dd9a1b16ecfdd32a0766b54c7d3089606"
+      },
+      {
+        "task_id": "shipping-message",
+        "condition": "base",
+        "task_digest": "e144fc10bf1225dc5c9c32fa226419906ce439e9459e8738eab7e76ea4841e6b"
+      },
+      {
+        "task_id": "shipping-message",
+        "condition": "skills",
+        "task_digest": "e144fc10bf1225dc5c9c32fa226419906ce439e9459e8738eab7e76ea4841e6b"
+      }
+    ],
+    "endpoint_count_checks": [
+      {
+        "task": "announcement-subtitle",
+        "condition": "base",
+        "local": 712,
+        "endpoint": 712
+      },
+      {
+        "task": "announcement-subtitle",
+        "condition": "skills",
+        "local": 10532,
+        "endpoint": 10532
+      },
+      {
+        "task": "asset-references",
+        "condition": "base",
+        "local": 646,
+        "endpoint": 646
+      },
+      {
+        "task": "asset-references",
+        "condition": "skills",
+        "local": 10466,
+        "endpoint": 10466
+      },
+      {
+        "task": "product-card",
+        "condition": "base",
+        "local": 673,
+        "endpoint": 673
+      },
+      {
+        "task": "product-card",
+        "condition": "skills",
+        "local": 10493,
+        "endpoint": 10493
+      },
+      {
+        "task": "section-schema",
+        "condition": "base",
+        "local": 681,
+        "endpoint": 681
+      },
+      {
+        "task": "section-schema",
+        "condition": "skills",
+        "local": 10501,
+        "endpoint": 10501
+      },
+      {
+        "task": "shipping-message",
+        "condition": "base",
+        "local": 696,
+        "endpoint": 696
+      },
+      {
+        "task": "shipping-message",
+        "condition": "skills",
+        "local": 10516,
+        "endpoint": 10516
+      }
+    ],
+    "preflight_sha256": "df8547ae1b8c72d3ac9e0ddfdce17ccd7a8e9681531761b795106d280b87bd1f"
+  },
+  "observed_serving": {
+    "pod_id": "4ye95u0h25wk0f",
+    "image": "vllm/vllm-openai@sha256:6ee133356d49ed24cee03dd0cda3d3980279a11c107ce3e752c89e76540f41c9",
+    "model": {
+      "revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+      "snapshot": "/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-Coder-7B-Instruct/snapshots/c03e6d358207e414f1eca0bb1891e29f1db0e242",
+      "files": {
+        ".gitattributes": {
+          "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+          "bytes": 1519
+        },
+        "LICENSE": {
+          "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+          "bytes": 11343
+        },
+        "README.md": {
+          "sha256": "3c090be37f829adc1e4cdb78733667437732541470430ab2cd785d7f0d460077",
+          "bytes": 6392
+        },
+        "config.json": {
+          "sha256": "c0242402ad6a13b331ea320feea8c7e3776ffb7a4eff0757b9cd667e116d9a28",
+          "bytes": 663
+        },
+        "generation_config.json": {
+          "sha256": "1a628a5775bc69cde01c6749a531150ca4d3189652c618a174f7077923acf3b1",
+          "bytes": 242
+        },
+        "merges.txt": {
+          "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+          "bytes": 1671839
+        },
+        "model-00001-of-00004.safetensors": {
+          "sha256": "0b6f069918b07c064cbba8ae4f00f529aa9bbf84b7cdfcb7fc2694a40f6aa8ef",
+          "bytes": 4877660776
+        },
+        "model-00002-of-00004.safetensors": {
+          "sha256": "c3d46733e7aa054ea7b063fbccd0a5a08446e7bd1814bef26936c5aa1331da62",
+          "bytes": 4932751008
+        },
+        "model-00003-of-00004.safetensors": {
+          "sha256": "9fe45dacee087385b3d2d6dd27a7413a8a56d95f145772facc148fa86fc73446",
+          "bytes": 4330865200
+        },
+        "model-00004-of-00004.safetensors": {
+          "sha256": "5aa6e5cbe642377fd441fb4e60e83cca96b2bcd9820e245b9ea06d94653f17f2",
+          "bytes": 1089994880
+        },
+        "model.safetensors.index.json": {
+          "sha256": "998a078123ffc97763690de7f2a677eb89168af5eaf8a5e12e6bc24d18e25bdb",
+          "bytes": 27752
+        },
+        "tokenizer.json": {
+          "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+          "bytes": 7031645
+        },
+        "tokenizer_config.json": {
+          "sha256": "959e7f1d9a1b7641a6d6ce05ca97b75c7894fcb66cbe5a040406458fb1128ee4",
+          "bytes": 7305
+        },
+        "vocab.json": {
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+          "bytes": 2776833
+        }
+      },
+      "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+      "config": {
+        "architectures": [
+          "Qwen2ForCausalLM"
+        ],
+        "attention_dropout": 0.0,
+        "bos_token_id": 151643,
+        "eos_token_id": 151645,
+        "hidden_act": "silu",
+        "hidden_size": 3584,
+        "initializer_range": 0.02,
+        "intermediate_size": 18944,
+        "max_position_embeddings": 32768,
+        "max_window_layers": 28,
+        "model_type": "qwen2",
+        "num_attention_heads": 28,
+        "num_hidden_layers": 28,
+        "num_key_value_heads": 4,
+        "rms_norm_eps": 1e-06,
+        "rope_theta": 1000000.0,
+        "sliding_window": 131072,
+        "tie_word_embeddings": false,
+        "torch_dtype": "bfloat16",
+        "transformers_version": "4.44.0",
+        "use_cache": true,
+        "use_sliding_window": false,
+        "vocab_size": 152064
+      }
+    },
+    "software": {
+      "python": "3.12.3",
+      "packages": {
+        "vllm": "0.32.0",
+        "torch": "2.13.0+cu130",
+        "transformers": "5.19.0",
+        "tokenizers": "0.23.3",
+        "xgrammar": "0.2.8"
+      },
+      "torch_cuda": "13.0",
+      "gpu": "NVIDIA A40",
+      "compute_capability": [
+        8,
+        6
+      ],
+      "bf16_supported": true,
+      "gpu_memory_bytes": 47699722240
+    },
+    "command": [
+      "vllm",
+      "serve",
+      "Qwen/Qwen2.5-Coder-7B-Instruct",
+      "--revision",
+      "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+      "--tokenizer-revision",
+      "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+      "--dtype",
+      "bfloat16",
+      "--kv-cache-dtype",
+      "auto",
+      "--max-model-len",
+      "32768",
+      "--max-num-seqs",
+      "1",
+      "--tensor-parallel-size",
+      "1",
+      "--gpu-memory-utilization",
+      "0.9",
+      "--generation-config",
+      "vllm",
+      "--structured-outputs-config",
+      "{\"backend\":\"xgrammar\"}",
+      "--seed",
+      "42",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000"
+    ],
+    "all_pinned_model_files_verified": true,
+    "source": {
+      "git_commit": "2c3ff9355e5aed222fdbcf63ff6acf44e6597df4",
+      "git_status": ""
+    },
+    "host_fingerprint": "SHA256:4aLfolHXplahpjxz+8Bye55fsbFeWY5qnhZTH+hZbk0",
+    "runtime_image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+    "health_http_status": 200
+  },
+  "preflight": {
+    "kind": "synthetic_endpoint_preflight",
+    "policy": "liquidbench-preflight-v2",
+    "source_sha256": "701eda53ddc78f09f7be683edf42c511efd69700d1c2e65ff997140c281c51da",
+    "system_sha256": "130d38c607cce4a0497237760c4bc3c874f85360aa4ee8e78381de9cbe2c2387",
+    "research_result": false,
+    "started_utc": "2026-10-23T19:09:06.459217+00:00",
+    "config": {
+      "purpose": "Milestone 5 paired development experiment; proposed budget adjustment requires approval before inference",
+      "endpoint": "http://127.0.0.1:8000/v1",
+      "model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+      "model_revision": "Qwen/Qwen2.5-Coder-7B-Instruct@c03e6d358207e414f1eca0bb1891e29f1db0e242; planned BF16 vLLM; serving build must be pinned before use",
+      "image": "liquidbench-runtime:0.1",
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "seed": 42,
+      "max_turns": 12,
+      "max_total_tokens": 393216,
+      "max_output_tokens": 1024,
+      "max_seconds": 300,
+      "request_timeout": 90,
+      "provider_retries": 2,
+      "input_usd_per_million": null,
+      "output_usd_per_million": null,
+      "max_context_tokens": 32768,
+      "token_counting": "vllm",
+      "response_format": "json_object",
+      "skills": null
+    },
+    "checks": [
+      {
+        "name": "short_action",
+        "prompt_count": 522,
+        "count_delta": 0,
+        "count_agrees": true,
+        "finish_reason": "stop",
+        "served_model_agrees": true,
+        "within_output_limit": true,
+        "infrastructure_errors": [],
+        "model_errors": [],
+        "json_object": true,
+        "expected_action": true,
+        "model_passed": true,
+        "infrastructure_passed": true,
+        "passed": true
+      },
+      {
+        "name": "tool_feedback_roles",
+        "prompt_count": 613,
+        "count_delta": 0,
+        "count_agrees": true,
+        "finish_reason": "stop",
+        "served_model_agrees": true,
+        "within_output_limit": true,
+        "infrastructure_errors": [],
+        "model_errors": [],
+        "json_object": true,
+        "expected_action": true,
+        "model_passed": true,
+        "infrastructure_passed": true,
+        "passed": true
+      },
+      {
+        "name": "json_enforcement",
+        "prompt_count": 42,
+        "count_delta": 0,
+        "count_agrees": true,
+        "finish_reason": "stop",
+        "served_model_agrees": true,
+        "within_output_limit": true,
+        "infrastructure_errors": [],
+        "model_errors": [],
+        "json_object": true,
+        "model_passed": true,
+        "infrastructure_passed": true,
+        "passed": true
+      },
+      {
+        "name": "near_window_accounting",
+        "prompt_count": 31712,
+        "over_prompt_count": 32736,
+        "generation_performed": false,
+        "stable_counts": true,
+        "near_admitted": true,
+        "over_rejected": true,
+        "infrastructure_errors": [],
+        "infrastructure_passed": true,
+        "passed": true
+      },
+      {
+        "name": "representative_10k",
+        "prompt_count": 10500,
+        "count_delta": 0,
+        "count_agrees": true,
+        "finish_reason": "stop",
+        "served_model_agrees": true,
+        "within_output_limit": true,
+        "infrastructure_errors": [],
+        "model_errors": [],
+        "json_object": true,
+        "expected_action": true,
+        "model_passed": true,
+        "infrastructure_passed": true,
+        "passed": true
+      },
+      {
+        "name": "representative_17k",
+        "prompt_count": 17000,
+        "count_delta": 0,
+        "count_agrees": true,
+        "finish_reason": "stop",
+        "served_model_agrees": true,
+        "within_output_limit": true,
+        "infrastructure_errors": [],
+        "model_errors": [],
+        "json_object": true,
+        "expected_action": true,
+        "model_passed": true,
+        "infrastructure_passed": true,
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "failure_kind": null,
+    "model_failures": [],
+    "gpu_precision_revision_verified": false,
+    "note": "Host evidence and actual sandbox tool execution require separate verification."
+  },
+  "preflight_responses": [
+    {
+      "line": 4,
+      "name": "short_action",
+      "input_tokens": 522,
+      "output_tokens": 18,
+      "elapsed_seconds": 1.193462833063677,
+      "content": "{\"tool\":\"read_file\",\"args\":{\"path\":\"snippets/probe.liquid\"}}",
+      "metadata": {
+        "served_model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+        "system_fingerprint": "vllm-0.32.0-9da1cd72",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 522,
+          "total_tokens": 540,
+          "completion_tokens": 18,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": null
+        }
+      }
+    },
+    {
+      "line": 8,
+      "name": "tool_feedback_roles",
+      "input_tokens": 613,
+      "output_tokens": 10,
+      "elapsed_seconds": 0.36472054198384285,
+      "content": "{\"tool\":\"finish\",\"args\":{}}",
+      "metadata": {
+        "served_model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+        "system_fingerprint": "vllm-0.32.0-9da1cd72",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 613,
+          "total_tokens": 623,
+          "completion_tokens": 10,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": null
+        }
+      }
+    },
+    {
+      "line": 12,
+      "name": "json_enforcement",
+      "input_tokens": 42,
+      "output_tokens": 9,
+      "elapsed_seconds": 0.32797995884902775,
+      "content": "{ \"status\": \"READY\" }",
+      "metadata": {
+        "served_model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+        "system_fingerprint": "vllm-0.32.0-9da1cd72",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 42,
+          "total_tokens": 51,
+          "completion_tokens": 9,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": null
+        }
+      }
+    },
+    {
+      "line": 128,
+      "name": "representative_10k",
+      "input_tokens": 10500,
+      "output_tokens": 12,
+      "elapsed_seconds": 2.005505958106369,
+      "content": "{\"tool\": \"finish\", \"args\": {}}",
+      "metadata": {
+        "served_model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+        "system_fingerprint": "vllm-0.32.0-9da1cd72",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 10500,
+          "total_tokens": 10512,
+          "completion_tokens": 12,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": null
+        }
+      }
+    },
+    {
+      "line": 168,
+      "name": "representative_17k",
+      "input_tokens": 17000,
+      "output_tokens": 12,
+      "elapsed_seconds": 1.8003140829969198,
+      "content": "{\"tool\": \"finish\", \"args\": {}}",
+      "metadata": {
+        "served_model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+        "system_fingerprint": "vllm-0.32.0-9da1cd72",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 17000,
+          "total_tokens": 17012,
+          "completion_tokens": 12,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": null
+        }
+      }
+    }
+  ],
+  "preflight_usage": {
+    "input_tokens": 28677,
+    "output_tokens": 61
+  },
+  "analysis": {
+    "development_only": true,
+    "research_result": false,
+    "cost": {
+      "currency": "USD",
+      "gpu_hourly_rate": 0.59,
+      "ephemeral_disk_gb": 100,
+      "storage_usd_per_gb_month": 0.1,
+      "month_hours_assumed": 720,
+      "created_utc": "2026-10-23T19:07:12.345000+00:00",
+      "deletion_requested_utc": "2026-10-23T19:13:01+00:00",
+      "seconds_to_deletion_request": 348.655,
+      "estimated_gpu_usd": 0.05714068055555555,
+      "estimated_storage_usd": 0.001345119598765432,
+      "settled_invoice_usd": null,
+      "billing_records_at_cleanup": 0,
+      "approved_all_in_usd": 2,
+      "approved_minutes": 90,
+      "cleanup_verified": true,
+      "estimated_total_usd": 0.058485800154320984
+    },
+    "conditions": {
+      "base": {
+        "totals": {
+          "attempts": 5,
+          "statuses": {
+            "failed": 3,
+            "passed": 2
+          },
+          "terminations": {
+            "finished": 4,
+            "turn_budget": 1
+          },
+          "input_tokens": 35068,
+          "output_tokens": 2129,
+          "model_calls": 27,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "length_stops": 0,
+          "elapsed_seconds": 91.02734379214235,
+          "total_tokens": 37197,
+          "read_before_write_tasks": 5,
+          "tasks_using_validation": 4,
+          "action_counts": {
+            "read_file": 5,
+            "write_file": 10,
+            "finish": 4,
+            "check": 8
+          },
+          "reference_reads": 0,
+          "injected_entries_delivered": 0,
+          "provider_errors": 0,
+          "max_prompt_tokens": 2760
+        },
+        "tasks": [
+          {
+            "task_id": "announcement-subtitle",
+            "artifacts": "runs/skills-ab-01/base/20261023T190933Z-3ba4b449",
+            "status": "failed",
+            "termination": "finished",
+            "input_tokens": 3360,
+            "output_tokens": 446,
+            "total_tokens": 3806,
+            "model_calls": 3,
+            "elapsed_seconds": 22.978496624855325,
+            "max_prompt_tokens": 1541,
+            "action_counts": {
+              "read_file": 1,
+              "write_file": 1,
+              "finish": 1
+            },
+            "actions": [
+              {
+                "line": 3,
+                "tool": "read_file",
+                "path": "sections/announcement.liquid"
+              },
+              {
+                "line": 7,
+                "tool": "write_file",
+                "path": "sections/announcement.liquid"
+              },
+              {
+                "line": 11,
+                "tool": "finish",
+                "path": null
+              }
+            ],
+            "reads": [
+              {
+                "line": 3,
+                "path": "sections/announcement.liquid"
+              }
+            ],
+            "writes": [
+              {
+                "line": 7,
+                "path": "sections/announcement.liquid",
+                "content_sha256": "bd939d63559e096d3fd2a9ed0ee2bd90dea6a902fd7379f62eded1fd3081a46b"
+              }
+            ],
+            "validation_feedback": [],
+            "read_before_first_write": true,
+            "grade_checks": [
+              {
+                "name": "edit_scope",
+                "passed": true
+              },
+              {
+                "name": "no_suppressions",
+                "passed": true
+              },
+              {
+                "name": "theme_check",
+                "passed": false
+              },
+              {
+                "name": "preserved_schema",
+                "passed": true
+              },
+              {
+                "name": "combination-1",
+                "passed": false
+              },
+              {
+                "name": "combination-2",
+                "passed": false
+              },
+              {
+                "name": "combination-3",
+                "passed": false
+              },
+              {
+                "name": "combination-4",
+                "passed": false
+              },
+              {
+                "name": "combination-5",
+                "passed": false
+              },
+              {
+                "name": "combination-6",
+                "passed": false
+              },
+              {
+                "name": "combination-7",
+                "passed": false
+              },
+              {
+                "name": "combination-8",
+                "passed": false
+              },
+              {
+                "name": "combination-9",
+                "passed": false
+              },
+              {
+                "name": "combination-10",
+                "passed": false
+              },
+              {
+                "name": "combination-11",
+                "passed": false
+              },
+              {
+                "name": "combination-12",
+                "passed": false
+              },
+              {
+                "name": "escape",
+                "passed": false
+              },
+              {
+                "name": "entities",
+                "passed": false
+              },
+              {
+                "name": "unicode",
+                "passed": false
+              },
+              {
+                "name": "empty-strings",
+                "passed": false
+              }
+            ],
+            "skill_accesses": [],
+            "artifact_sha256": {
+              "trace": "05abdb569adc5b77c05f8d1caacde31e110815b7c68a8fd9531363a0cd21fc28",
+              "result": "b7e5d42a375b60723699ecb0d477543c8592acdc3e952d573b463be549492ccf",
+              "patch": "883cd84654edb3715dee87e5472b0f31c9b041eb3c152a342c587dc8bee7a2bb"
+            }
+          },
+          {
+            "task_id": "asset-references",
+            "artifacts": "runs/skills-ab-01/base/20261023T191035Z-2310ec70",
+            "status": "passed",
+            "termination": "finished",
+            "input_tokens": 3340,
+            "output_tokens": 154,
+            "total_tokens": 3494,
+            "model_calls": 4,
+            "elapsed_seconds": 8.7449152499903,
+            "max_prompt_tokens": 1033,
+            "action_counts": {
+              "read_file": 1,
+              "write_file": 1,
+              "check": 1,
+              "finish": 1
+            },
+            "actions": [
+              {
+                "line": 3,
+                "tool": "read_file",
+                "path": "snippets/promo-assets.liquid"
+              },
+              {
+                "line": 7,
+                "tool": "write_file",
+                "path": "snippets/promo-assets.liquid"
+              },
+              {
+                "line": 11,
+                "tool": "check",
+                "path": null
+              },
+              {
+                "line": 15,
+                "tool": "finish",
+                "path": null
+              }
+            ],
+            "reads": [
+              {
+                "line": 3,
+                "path": "snippets/promo-assets.liquid"
+              }
+            ],
+            "writes": [
+              {
+                "line": 7,
+                "path": "snippets/promo-assets.liquid",
+                "content_sha256": "62ae045e665f65907706a35d8c4b088da25104da0788f1e8931add65a440b321"
+              }
+            ],
+            "validation_feedback": [
+              {
+                "line": 13,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": [
+                    {
+                      "type": "LiquidHtml",
+                      "check": "OrphanedSnippet",
+                      "message": "This snippet is not referenced by any other files",
+                      "uri": "file:///workspace/snippets/promo-assets.liquid",
+                      "severity": 1,
+                      "start": {
+                        "index": 0,
+                        "line": 0,
+                        "character": 0
+                      },
+                      "end": {
+                        "index": 1,
+                        "line": 0,
+                        "character": 1
+                      }
+                    }
+                  ]
+                },
+                "error": null
+              }
+            ],
+            "read_before_first_write": true,
+            "grade_checks": [
+              {
+                "name": "edit_scope",
+                "passed": true
+              },
+              {
+                "name": "no_suppressions",
+                "passed": true
+              },
+              {
+                "name": "theme_check",
+                "passed": true
+              },
+              {
+                "name": "preserved_live_structure",
+                "passed": true
+              },
+              {
+                "name": "output_count",
+                "passed": true
+              },
+              {
+                "name": "stylesheet_reference",
+                "passed": true
+              },
+              {
+                "name": "stylesheet_resolves",
+                "passed": true
+              },
+              {
+                "name": "heading_reference",
+                "passed": true
+              },
+              {
+                "name": "heading_resolves",
+                "passed": true
+              },
+              {
+                "name": "cta_reference",
+                "passed": true
+              },
+              {
+                "name": "cta_resolves",
+                "passed": true
+              }
+            ],
+            "skill_accesses": [],
+            "artifact_sha256": {
+              "trace": "ef1fbbc3254f049ffa0cd137cd07b1f86e8bc6a5600129777ff68573b644d2dc",
+              "result": "52eb8a4422b0ad034d9da4955c3bb2b172483d3d5fd661d2f55c25ca8868e176",
+              "patch": "c18d1337a63587f63166670f89d65c56f664930ce52e68b73b89f3fff726dd5d"
+            }
+          },
+          {
+            "task_id": "product-card",
+            "artifacts": "runs/skills-ab-01/base/20261023T191044Z-8b3e2cf2",
+            "status": "failed",
+            "termination": "turn_budget",
+            "input_tokens": 19993,
+            "output_tokens": 885,
+            "total_tokens": 20878,
+            "model_calls": 12,
+            "elapsed_seconds": 34.20405350020155,
+            "max_prompt_tokens": 2760,
+            "action_counts": {
+              "read_file": 1,
+              "write_file": 6,
+              "check": 5
+            },
+            "actions": [
+              {
+                "line": 3,
+                "tool": "read_file",
+                "path": "snippets/product-card.liquid"
+              },
+              {
+                "line": 7,
+                "tool": "write_file",
+                "path": "snippets/product-card.liquid"
+              },
+              {
+                "line": 11,
+                "tool": "check",
+                "path": null
+              },
+              {
+                "line": 15,
+                "tool": "write_file",
+                "path": "snippets/product-card.liquid"
+              },
+              {
+                "line": 19,
+                "tool": "check",
+                "path": null
+              },
+              {
+                "line": 23,
+                "tool": "write_file",
+                "path": "snippets/product-card.liquid"
+              },
+              {
+                "line": 27,
+                "tool": "check",
+                "path": null
+              },
+              {
+                "line": 31,
+                "tool": "write_file",
+                "path": "snippets/product-card.liquid"
+              },
+              {
+                "line": 35,
+                "tool": "check",
+                "path": null
+              },
+              {
+                "line": 39,
+                "tool": "write_file",
+                "path": "snippets/product-card.liquid"
+              },
+              {
+                "line": 43,
+                "tool": "check",
+                "path": null
+              },
+              {
+                "line": 47,
+                "tool": "write_file",
+                "path": "snippets/product-card.liquid"
+              }
+            ],
+            "reads": [
+              {
+                "line": 3,
+                "path": "snippets/product-card.liquid"
+              }
+            ],
+            "writes": [
+              {
+                "line": 7,
+                "path": "snippets/product-card.liquid",
+                "content_sha256": "f9ecbbf9a0046366a18eaac68f330764a88682b462366ee54c7ce2e743512b4f"
+              },
+              {
+                "line": 15,
+                "path": "snippets/product-card.liquid",
+                "content_sha256": "f9ecbbf9a0046366a18eaac68f330764a88682b462366ee54c7ce2e743512b4f"
+              },
+              {
+                "line": 23,
+                "path": "snippets/product-card.liquid",
+                "content_sha256": "f9ecbbf9a0046366a18eaac68f330764a88682b462366ee54c7ce2e743512b4f"
+              },
+              {
+                "line": 31,
+                "path": "snippets/product-card.liquid",
+                "content_sha256": "f9ecbbf9a0046366a18eaac68f330764a88682b462366ee54c7ce2e743512b4f"
+              },
+              {
+                "line": 39,
+                "path": "snippets/product-card.liquid",
+                "content_sha256": "f9ecbbf9a0046366a18eaac68f330764a88682b462366ee54c7ce2e743512b4f"
+              },
+              {
+                "line": 47,
+                "path": "snippets/product-card.liquid",
+                "content_sha256": "f9ecbbf9a0046366a18eaac68f330764a88682b462366ee54c7ce2e743512b4f"
+              }
+            ],
+            "validation_feedback": [
+              {
+                "line": 13,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": [
+                    {
+                      "type": "LiquidHtml",
+                      "check": "OrphanedSnippet",
+                      "message": "This snippet is not referenced by any other files",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 1,
+                      "start": {
+                        "index": 0,
+                        "line": 0,
+                        "character": 0
+                      },
+                      "end": {
+                        "index": 1,
+                        "line": 0,
+                        "character": 1
+                      }
+                    },
+                    {
+                      "type": "LiquidHtml",
+                      "check": "LiquidSyntaxError",
+                      "message": "Syntax error in 'if' tag",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 0,
+                      "start": {
+                        "index": 103,
+                        "line": 2,
+                        "character": 2
+                      },
+                      "end": {
+                        "index": 208,
+                        "line": 4,
+                        "character": 13
+                      }
+                    }
+                  ]
+                },
+                "error": null
+              },
+              {
+                "line": 21,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": [
+                    {
+                      "type": "LiquidHtml",
+                      "check": "OrphanedSnippet",
+                      "message": "This snippet is not referenced by any other files",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 1,
+                      "start": {
+                        "index": 0,
+                        "line": 0,
+                        "character": 0
+                      },
+                      "end": {
+                        "index": 1,
+                        "line": 0,
+                        "character": 1
+                      }
+                    },
+                    {
+                      "type": "LiquidHtml",
+                      "check": "LiquidSyntaxError",
+                      "message": "Syntax error in 'if' tag",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 0,
+                      "start": {
+                        "index": 103,
+                        "line": 2,
+                        "character": 2
+                      },
+                      "end": {
+                        "index": 208,
+                        "line": 4,
+                        "character": 13
+                      }
+                    }
+                  ]
+                },
+                "error": null
+              },
+              {
+                "line": 29,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": [
+                    {
+                      "type": "LiquidHtml",
+                      "check": "OrphanedSnippet",
+                      "message": "This snippet is not referenced by any other files",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 1,
+                      "start": {
+                        "index": 0,
+                        "line": 0,
+                        "character": 0
+                      },
+                      "end": {
+                        "index": 1,
+                        "line": 0,
+                        "character": 1
+                      }
+                    },
+                    {
+                      "type": "LiquidHtml",
+                      "check": "LiquidSyntaxError",
+                      "message": "Syntax error in 'if' tag",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 0,
+                      "start": {
+                        "index": 103,
+                        "line": 2,
+                        "character": 2
+                      },
+                      "end": {
+                        "index": 208,
+                        "line": 4,
+                        "character": 13
+                      }
+                    }
+                  ]
+                },
+                "error": null
+              },
+              {
+                "line": 37,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": [
+                    {
+                      "type": "LiquidHtml",
+                      "check": "OrphanedSnippet",
+                      "message": "This snippet is not referenced by any other files",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 1,
+                      "start": {
+                        "index": 0,
+                        "line": 0,
+                        "character": 0
+                      },
+                      "end": {
+                        "index": 1,
+                        "line": 0,
+                        "character": 1
+                      }
+                    },
+                    {
+                      "type": "LiquidHtml",
+                      "check": "LiquidSyntaxError",
+                      "message": "Syntax error in 'if' tag",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 0,
+                      "start": {
+                        "index": 103,
+                        "line": 2,
+                        "character": 2
+                      },
+                      "end": {
+                        "index": 208,
+                        "line": 4,
+                        "character": 13
+                      }
+                    }
+                  ]
+                },
+                "error": null
+              },
+              {
+                "line": 45,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": [
+                    {
+                      "type": "LiquidHtml",
+                      "check": "OrphanedSnippet",
+                      "message": "This snippet is not referenced by any other files",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 1,
+                      "start": {
+                        "index": 0,
+                        "line": 0,
+                        "character": 0
+                      },
+                      "end": {
+                        "index": 1,
+                        "line": 0,
+                        "character": 1
+                      }
+                    },
+                    {
+                      "type": "LiquidHtml",
+                      "check": "LiquidSyntaxError",
+                      "message": "Syntax error in 'if' tag",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 0,
+                      "start": {
+                        "index": 103,
+                        "line": 2,
+                        "character": 2
+                      },
+                      "end": {
+                        "index": 208,
+                        "line": 4,
+                        "character": 13
+                      }
+                    }
+                  ]
+                },
+                "error": null
+              }
+            ],
+            "read_before_first_write": true,
+            "grade_checks": [
+              {
+                "name": "edit_scope",
+                "passed": true
+              },
+              {
+                "name": "no_suppressions",
+                "passed": true
+              },
+              {
+                "name": "theme_check",
+                "passed": false
+              },
+              {
+                "name": "ordinary",
+                "passed": false
+              },
+              {
+                "name": "unavailable",
+                "passed": false
+              },
+              {
+                "name": "null-title",
+                "passed": false
+              },
+              {
+                "name": "empty-title",
+                "passed": false
+              },
+              {
+                "name": "null-vendor",
+                "passed": false
+              },
+              {
+                "name": "empty-vendor",
+                "passed": false
+              },
+              {
+                "name": "blank-vendor",
+                "passed": false
+              },
+              {
+                "name": "trim-vendor",
+                "passed": false
+              },
+              {
+                "name": "escape",
+                "passed": false
+              },
+              {
+                "name": "entities",
+                "passed": false
+              },
+              {
+                "name": "unicode",
+                "passed": false
+              },
+              {
+                "name": "novel",
+                "passed": false
+              }
+            ],
+            "skill_accesses": [],
+            "artifact_sha256": {
+              "trace": "de2e2bad242ba1903bf54ef37abad8d14435b81903a38525ecd27d63b52a812b",
+              "result": "b5c0cde0f02877674829109de8ba324dad5bd3060e7340361641a4dddc62300c",
+              "patch": "854c355594cd9e1b28dd7611804bb83155c35622d6e57ae98d963c028119fe3a"
+            }
+          },
+          {
+            "task_id": "section-schema",
+            "artifacts": "runs/skills-ab-01/base/20261023T191201Z-5337e77c",
+            "status": "passed",
+            "termination": "finished",
+            "input_tokens": 4507,
+            "output_tokens": 377,
+            "total_tokens": 4884,
+            "model_calls": 4,
+            "elapsed_seconds": 13.27480574999936,
+            "max_prompt_tokens": 1423,
+            "action_counts": {
+              "read_file": 1,
+              "write_file": 1,
+              "check": 1,
+              "finish": 1
+            },
+            "actions": [
+              {
+                "line": 3,
+                "tool": "read_file",
+                "path": "sections/feature-panel.liquid"
+              },
+              {
+                "line": 7,
+                "tool": "write_file",
+                "path": "sections/feature-panel.liquid"
+              },
+              {
+                "line": 11,
+                "tool": "check",
+                "path": null
+              },
+              {
+                "line": 15,
+                "tool": "finish",
+                "path": null
+              }
+            ],
+            "reads": [
+              {
+                "line": 3,
+                "path": "sections/feature-panel.liquid"
+              }
+            ],
+            "writes": [
+              {
+                "line": 7,
+                "path": "sections/feature-panel.liquid",
+                "content_sha256": "39c812dd61e909d9646dac5b58105b01ee72026a38ee8a4fe3f7e3c92c17c6a7"
+              }
+            ],
+            "validation_feedback": [
+              {
+                "line": 13,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": []
+                },
+                "error": null
+              }
+            ],
+            "read_before_first_write": true,
+            "grade_checks": [
+              {
+                "name": "edit_scope",
+                "passed": true
+              },
+              {
+                "name": "no_suppressions",
+                "passed": true
+              },
+              {
+                "name": "theme_check",
+                "passed": true
+              },
+              {
+                "name": "single_top_level_schema",
+                "passed": true
+              },
+              {
+                "name": "preserved_markup",
+                "passed": true
+              },
+              {
+                "name": "strict_schema_json",
+                "passed": true
+              },
+              {
+                "name": "root_contract",
+                "passed": true
+              },
+              {
+                "name": "unique_setting_ids",
+                "passed": true
+              },
+              {
+                "name": "setting_heading",
+                "passed": true
+              },
+              {
+                "name": "setting_show_summary",
+                "passed": true
+              },
+              {
+                "name": "setting_columns",
+                "passed": true
+              },
+              {
+                "name": "preset_contract",
+                "passed": true
+              }
+            ],
+            "skill_accesses": [],
+            "artifact_sha256": {
+              "trace": "ff7f948cf4f59ef43a8428a78d300d7e9499ba0d0a896f22396753e7272ed259",
+              "result": "95d833b687aa3e9daee728b3ad0c8782f04843fcb54a4ddc3022d6702c64fa04",
+              "patch": "9b8e5dd3175eda70e5b1b76af55a72ca26a79f52625f430eefac332d1d0076e0"
+            }
+          },
+          {
+            "task_id": "shipping-message",
+            "artifacts": "runs/skills-ab-01/base/20261023T191214Z-d8b87f56",
+            "status": "failed",
+            "termination": "finished",
+            "input_tokens": 3868,
+            "output_tokens": 267,
+            "total_tokens": 4135,
+            "model_calls": 4,
+            "elapsed_seconds": 11.82507266709581,
+            "max_prompt_tokens": 1230,
+            "action_counts": {
+              "read_file": 1,
+              "write_file": 1,
+              "check": 1,
+              "finish": 1
+            },
+            "actions": [
+              {
+                "line": 3,
+                "tool": "read_file",
+                "path": "snippets/shipping-message.liquid"
+              },
+              {
+                "line": 7,
+                "tool": "write_file",
+                "path": "snippets/shipping-message.liquid"
+              },
+              {
+                "line": 11,
+                "tool": "check",
+                "path": null
+              },
+              {
+                "line": 15,
+                "tool": "finish",
+                "path": null
+              }
+            ],
+            "reads": [
+              {
+                "line": 3,
+                "path": "snippets/shipping-message.liquid"
+              }
+            ],
+            "writes": [
+              {
+                "line": 7,
+                "path": "snippets/shipping-message.liquid",
+                "content_sha256": "e210f866cc631557156ce6659590b716047be04698adf62834b48f0a5961f6ac"
+              }
+            ],
+            "validation_feedback": [
+              {
+                "line": 13,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": [
+                    {
+                      "type": "LiquidHtml",
+                      "check": "OrphanedSnippet",
+                      "message": "This snippet is not referenced by any other files",
+                      "uri": "file:///workspace/snippets/shipping-message.liquid",
+                      "severity": 1,
+                      "start": {
+                        "index": 0,
+                        "line": 0,
+                        "character": 0
+                      },
+                      "end": {
+                        "index": 1,
+                        "line": 0,
+                        "character": 1
+                      }
+                    }
+                  ]
+                },
+                "error": null
+              }
+            ],
+            "read_before_first_write": true,
+            "grade_checks": [
+              {
+                "name": "edit_scope",
+                "passed": true
+              },
+              {
+                "name": "no_suppressions",
+                "passed": true
+              },
+              {
+                "name": "theme_check",
+                "passed": true
+              },
+              {
+                "name": "below-default",
+                "passed": true
+              },
+              {
+                "name": "empty-cart-priority",
+                "passed": true
+              },
+              {
+                "name": "default-boundary",
+                "passed": true
+              },
+              {
+                "name": "just-below",
+                "passed": true
+              },
+              {
+                "name": "custom-boundary",
+                "passed": true
+              },
+              {
+                "name": "custom-below",
+                "passed": true
+              },
+              {
+                "name": "custom-above",
+                "passed": true
+              },
+              {
+                "name": "empty-message",
+                "passed": true
+              },
+              {
+                "name": "whitespace-message",
+                "passed": true
+              },
+              {
+                "name": "trim-message",
+                "passed": true
+              },
+              {
+                "name": "escaped-message",
+                "passed": true
+              },
+              {
+                "name": "literal-entity",
+                "passed": true
+              },
+              {
+                "name": "unicode-message",
+                "passed": true
+              },
+              {
+                "name": "novel-message",
+                "passed": true
+              },
+              {
+                "name": "disabled-empty",
+                "passed": false
+              },
+              {
+                "name": "disabled-below",
+                "passed": false
+              },
+              {
+                "name": "disabled-above",
+                "passed": false
+              }
+            ],
+            "skill_accesses": [],
+            "artifact_sha256": {
+              "trace": "961216a009457f7eb37d5c5a1417e174f29221b2bd09526ce52774c329578ea1",
+              "result": "601c9cd2f3a2889ee7e185d3bc53b17381083f76fb1026d0537d3192d1349355",
+              "patch": "1ac2b33ceb126d33ad5064b86bf22dd7805bf58de655898a95a2118413a14235"
+            }
+          }
+        ]
+      },
+      "skills": {
+        "totals": {
+          "attempts": 5,
+          "statuses": {
+            "failed": 5
+          },
+          "terminations": {
+            "finished": 3,
+            "turn_budget": 2
+          },
+          "input_tokens": 335261,
+          "output_tokens": 2048,
+          "model_calls": 30,
+          "protocol_errors": 0,
+          "tool_errors": 2,
+          "length_stops": 0,
+          "elapsed_seconds": 89.58451299974695,
+          "total_tokens": 337309,
+          "read_before_write_tasks": 2,
+          "tasks_using_validation": 2,
+          "action_counts": {
+            "write_file": 13,
+            "finish": 3,
+            "read_file": 5,
+            "check": 9
+          },
+          "reference_reads": 0,
+          "injected_entries_delivered": 15,
+          "provider_errors": 0,
+          "max_prompt_tokens": 12398
+        },
+        "tasks": [
+          {
+            "task_id": "announcement-subtitle",
+            "artifacts": "runs/skills-ab-01/skills/20261023T190956Z-30d96758",
+            "status": "failed",
+            "termination": "finished",
+            "input_tokens": 21527,
+            "output_tokens": 446,
+            "total_tokens": 21973,
+            "model_calls": 2,
+            "elapsed_seconds": 16.770594000117853,
+            "max_prompt_tokens": 10995,
+            "action_counts": {
+              "write_file": 1,
+              "finish": 1
+            },
+            "actions": [
+              {
+                "line": 9,
+                "tool": "write_file",
+                "path": "sections/announcement.liquid"
+              },
+              {
+                "line": 13,
+                "tool": "finish",
+                "path": null
+              }
+            ],
+            "reads": [],
+            "writes": [
+              {
+                "line": 9,
+                "path": "sections/announcement.liquid",
+                "content_sha256": "5f612582df07a453ac832c2862ffc1e74ea146df681f381fd117527d4befbbe9"
+              }
+            ],
+            "validation_feedback": [],
+            "read_before_first_write": false,
+            "grade_checks": [
+              {
+                "name": "edit_scope",
+                "passed": true
+              },
+              {
+                "name": "no_suppressions",
+                "passed": true
+              },
+              {
+                "name": "theme_check",
+                "passed": false
+              },
+              {
+                "name": "preserved_schema",
+                "passed": false
+              }
+            ],
+            "skill_accesses": [
+              {
+                "path": "skills/shopify-liquid-themes/SKILL.md",
+                "mode": "injected",
+                "turn": null,
+                "first_model_turn": 0,
+                "bytes": 11681,
+                "sha256": "f4f2a4c779783251f9083f868db1e7292431d516ddd754a71827bdde6de65861"
+              },
+              {
+                "path": "skills/liquid-theme-standards/SKILL.md",
+                "mode": "injected",
+                "turn": null,
+                "first_model_turn": 0,
+                "bytes": 12145,
+                "sha256": "cb8a1d571be5d05111e90d7bd28758c98ed46e520bb93fad6c9e92b8bb466144"
+              },
+              {
+                "path": "skills/liquid-theme-a11y/SKILL.md",
+                "mode": "injected",
+                "turn": null,
+                "first_model_turn": 0,
+                "bytes": 12830,
+                "sha256": "0fd335818464328aa6b8a8511fba45526b63624c004b8b1d301d311a9ef089ba"
+              }
+            ],
+            "artifact_sha256": {
+              "trace": "685cbb55f1765b6643d7df44b417f19b35c3c10768bcc6eb9aecd4a1a3496743",
+              "result": "197a38f93485c5375f2cd56e17fce9629f2eea3a58d28475a88b1617a6e87757",
+              "patch": "2295ba9b676e1eef163744c53ff4998552ff735a45119f2afa742b6b3b957d6c"
+            }
+          },
+          {
+            "task_id": "asset-references",
+            "artifacts": "runs/skills-ab-01/skills/20261023T191013Z-51b802d3",
+            "status": "failed",
+            "termination": "turn_budget",
+            "input_tokens": 134522,
+            "output_tokens": 489,
+            "total_tokens": 135011,
+            "model_calls": 12,
+            "elapsed_seconds": 22.05473779188469,
+            "max_prompt_tokens": 11990,
+            "action_counts": {
+              "read_file": 4,
+              "write_file": 4,
+              "check": 4
+            },
+            "actions": [
+              {
+                "line": 9,
+                "tool": "read_file",
+                "path": "snippets/promo-assets.liquid"
+              },
+              {
+                "line": 13,
+                "tool": "write_file",
+                "path": "snippets/promo-assets.liquid"
+              },
+              {
+                "line": 17,
+                "tool": "check",
+                "path": null
+              },
+              {
+                "line": 21,
+                "tool": "read_file",
+                "path": "config/settings_data.json"
+              },
+              {
+                "line": 25,
+                "tool": "read_file",
+                "path": "config/settings_schema.json"
+              },
+              {
+                "line": 29,
+                "tool": "read_file",
+                "path": "locales/en.default.json"
+              },
+              {
+                "line": 33,
+                "tool": "write_file",
+                "path": "snippets/promo-assets.liquid"
+              },
+              {
+                "line": 37,
+                "tool": "check",
+                "path": null
+              },
+              {
+                "line": 41,
+                "tool": "write_file",
+                "path": "assets/promo-banner.css"
+              },
+              {
+                "line": 45,
+                "tool": "check",
+                "path": null
+              },
+              {
+                "line": 49,
+                "tool": "write_file",
+                "path": "assets/promo-banner.css"
+              },
+              {
+                "line": 53,
+                "tool": "check",
+                "path": null
+              }
+            ],
+            "reads": [
+              {
+                "line": 9,
+                "path": "snippets/promo-assets.liquid"
+              },
+              {
+                "line": 21,
+                "path": "config/settings_data.json"
+              },
+              {
+                "line": 25,
+                "path": "config/settings_schema.json"
+              },
+              {
+                "line": 29,
+                "path": "locales/en.default.json"
+              }
+            ],
+            "writes": [
+              {
+                "line": 13,
+                "path": "snippets/promo-assets.liquid",
+                "content_sha256": "332d7f08658abb9fcad794fc3f508b43dcbee748498c2a2a431dc3c0f39441ee"
+              },
+              {
+                "line": 33,
+                "path": "snippets/promo-assets.liquid",
+                "content_sha256": "332d7f08658abb9fcad794fc3f508b43dcbee748498c2a2a431dc3c0f39441ee"
+              },
+              {
+                "line": 41,
+                "path": "assets/promo-banner.css",
+                "content_sha256": "6a801e5e652374ea86a563affd370907909847b42702e38661b6a804442953c6"
+              },
+              {
+                "line": 49,
+                "path": "assets/promo-banner.css",
+                "content_sha256": "6a801e5e652374ea86a563affd370907909847b42702e38661b6a804442953c6"
+              }
+            ],
+            "validation_feedback": [
+              {
+                "line": 19,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": [
+                    {
+                      "type": "LiquidHtml",
+                      "check": "OrphanedSnippet",
+                      "message": "This snippet is not referenced by any other files",
+                      "uri": "file:///workspace/snippets/promo-assets.liquid",
+                      "severity": 1,
+                      "start": {
+                        "index": 0,
+                        "line": 0,
+                        "character": 0
+                      },
+                      "end": {
+                        "index": 1,
+                        "line": 0,
+                        "character": 1
+                      }
+                    },
+                    {
+                      "type": "LiquidHtml",
+                      "check": "MissingAsset",
+                      "message": "'assets/assets/promo-banner.css' does not exist",
+                      "uri": "file:///workspace/snippets/promo-assets.liquid",
+                      "severity": 0,
+                      "start": {
+                        "index": 3,
+                        "line": 0,
+                        "character": 3
+                      },
+                      "end": {
+                        "index": 28,
+                        "line": 0,
+                        "character": 28
+                      }
+                    }
+                  ]
+                },
+                "error": null
+              },
+              {
+                "line": 39,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": [
+                    {
+                      "type": "LiquidHtml",
+                      "check": "OrphanedSnippet",
+                      "message": "This snippet is not referenced by any other files",
+                      "uri": "file:///workspace/snippets/promo-assets.liquid",
+                      "severity": 1,
+                      "start": {
+                        "index": 0,
+                        "line": 0,
+                        "character": 0
+                      },
+                      "end": {
+                        "index": 1,
+                        "line": 0,
+                        "character": 1
+                      }
+                    },
+                    {
+                      "type": "LiquidHtml",
+                      "check": "MissingAsset",
+                      "message": "'assets/assets/promo-banner.css' does not exist",
+                      "uri": "file:///workspace/snippets/promo-assets.liquid",
+                      "severity": 0,
+                      "start": {
+                        "index": 3,
+                        "line": 0,
+                        "character": 3
+                      },
+                      "end": {
+                        "index": 28,
+                        "line": 0,
+                        "character": 28
+                      }
+                    }
+                  ]
+                },
+                "error": null
+              },
+              {
+                "line": 47,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": [
+                    {
+                      "type": "LiquidHtml",
+                      "check": "OrphanedSnippet",
+                      "message": "This snippet is not referenced by any other files",
+                      "uri": "file:///workspace/snippets/promo-assets.liquid",
+                      "severity": 1,
+                      "start": {
+                        "index": 0,
+                        "line": 0,
+                        "character": 0
+                      },
+                      "end": {
+                        "index": 1,
+                        "line": 0,
+                        "character": 1
+                      }
+                    },
+                    {
+                      "type": "LiquidHtml",
+                      "check": "MissingAsset",
+                      "message": "'assets/assets/promo-banner.css' does not exist",
+                      "uri": "file:///workspace/snippets/promo-assets.liquid",
+                      "severity": 0,
+                      "start": {
+                        "index": 3,
+                        "line": 0,
+                        "character": 3
+                      },
+                      "end": {
+                        "index": 28,
+                        "line": 0,
+                        "character": 28
+                      }
+                    }
+                  ]
+                },
+                "error": null
+              },
+              {
+                "line": 55,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": [
+                    {
+                      "type": "LiquidHtml",
+                      "check": "OrphanedSnippet",
+                      "message": "This snippet is not referenced by any other files",
+                      "uri": "file:///workspace/snippets/promo-assets.liquid",
+                      "severity": 1,
+                      "start": {
+                        "index": 0,
+                        "line": 0,
+                        "character": 0
+                      },
+                      "end": {
+                        "index": 1,
+                        "line": 0,
+                        "character": 1
+                      }
+                    },
+                    {
+                      "type": "LiquidHtml",
+                      "check": "MissingAsset",
+                      "message": "'assets/assets/promo-banner.css' does not exist",
+                      "uri": "file:///workspace/snippets/promo-assets.liquid",
+                      "severity": 0,
+                      "start": {
+                        "index": 3,
+                        "line": 0,
+                        "character": 3
+                      },
+                      "end": {
+                        "index": 28,
+                        "line": 0,
+                        "character": 28
+                      }
+                    }
+                  ]
+                },
+                "error": null
+              }
+            ],
+            "read_before_first_write": true,
+            "grade_checks": [
+              {
+                "name": "edit_scope",
+                "passed": false
+              },
+              {
+                "name": "no_suppressions",
+                "passed": true
+              }
+            ],
+            "skill_accesses": [
+              {
+                "path": "skills/shopify-liquid-themes/SKILL.md",
+                "mode": "injected",
+                "turn": null,
+                "first_model_turn": 0,
+                "bytes": 11681,
+                "sha256": "f4f2a4c779783251f9083f868db1e7292431d516ddd754a71827bdde6de65861"
+              },
+              {
+                "path": "skills/liquid-theme-standards/SKILL.md",
+                "mode": "injected",
+                "turn": null,
+                "first_model_turn": 0,
+                "bytes": 12145,
+                "sha256": "cb8a1d571be5d05111e90d7bd28758c98ed46e520bb93fad6c9e92b8bb466144"
+              },
+              {
+                "path": "skills/liquid-theme-a11y/SKILL.md",
+                "mode": "injected",
+                "turn": null,
+                "first_model_turn": 0,
+                "bytes": 12830,
+                "sha256": "0fd335818464328aa6b8a8511fba45526b63624c004b8b1d301d311a9ef089ba"
+              }
+            ],
+            "artifact_sha256": {
+              "trace": "99aa5107a7b02077457754603630f662e48c9dc3d7655d1be3b9a3ccc2d7293a",
+              "result": "83e63230f5f1f02f70152a06b597d926dbf4070ba3e247ea84e72f5febf0b705",
+              "patch": "9dc56689b2c7758ec74d243683cc1d228e4d9a91c11379503e78dbfe4f67a4d1"
+            }
+          },
+          {
+            "task_id": "product-card",
+            "artifacts": "runs/skills-ab-01/skills/20261023T191118Z-11a898bc",
+            "status": "failed",
+            "termination": "turn_budget",
+            "input_tokens": 136711,
+            "output_tokens": 680,
+            "total_tokens": 137391,
+            "model_calls": 12,
+            "elapsed_seconds": 32.07573258294724,
+            "max_prompt_tokens": 12398,
+            "action_counts": {
+              "read_file": 1,
+              "write_file": 6,
+              "check": 5
+            },
+            "actions": [
+              {
+                "line": 9,
+                "tool": "read_file",
+                "path": "snippets/product-card.liquid"
+              },
+              {
+                "line": 13,
+                "tool": "write_file",
+                "path": "snippets/product-card.liquid"
+              },
+              {
+                "line": 17,
+                "tool": "check",
+                "path": null
+              },
+              {
+                "line": 21,
+                "tool": "write_file",
+                "path": "snippets/product-card.liquid"
+              },
+              {
+                "line": 25,
+                "tool": "check",
+                "path": null
+              },
+              {
+                "line": 29,
+                "tool": "write_file",
+                "path": "snippets/product-card.liquid"
+              },
+              {
+                "line": 33,
+                "tool": "check",
+                "path": null
+              },
+              {
+                "line": 37,
+                "tool": "write_file",
+                "path": "snippets/product-card.liquid"
+              },
+              {
+                "line": 41,
+                "tool": "check",
+                "path": null
+              },
+              {
+                "line": 45,
+                "tool": "write_file",
+                "path": "snippets/product-card.liquid"
+              },
+              {
+                "line": 49,
+                "tool": "check",
+                "path": null
+              },
+              {
+                "line": 53,
+                "tool": "write_file",
+                "path": "snippets/product-card.liquid"
+              }
+            ],
+            "reads": [
+              {
+                "line": 9,
+                "path": "snippets/product-card.liquid"
+              }
+            ],
+            "writes": [
+              {
+                "line": 13,
+                "path": "snippets/product-card.liquid",
+                "content_sha256": "b42af881492b6d6cd01ce14132a042cb1f375efaebe9397a3f83d917a903d303"
+              },
+              {
+                "line": 21,
+                "path": "snippets/product-card.liquid",
+                "content_sha256": "b42af881492b6d6cd01ce14132a042cb1f375efaebe9397a3f83d917a903d303"
+              },
+              {
+                "line": 29,
+                "path": "snippets/product-card.liquid",
+                "content_sha256": "b42af881492b6d6cd01ce14132a042cb1f375efaebe9397a3f83d917a903d303"
+              },
+              {
+                "line": 37,
+                "path": "snippets/product-card.liquid",
+                "content_sha256": "b42af881492b6d6cd01ce14132a042cb1f375efaebe9397a3f83d917a903d303"
+              },
+              {
+                "line": 45,
+                "path": "snippets/product-card.liquid",
+                "content_sha256": "b42af881492b6d6cd01ce14132a042cb1f375efaebe9397a3f83d917a903d303"
+              },
+              {
+                "line": 53,
+                "path": "snippets/product-card.liquid",
+                "content_sha256": "b42af881492b6d6cd01ce14132a042cb1f375efaebe9397a3f83d917a903d303"
+              }
+            ],
+            "validation_feedback": [
+              {
+                "line": 19,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": [
+                    {
+                      "type": "LiquidHtml",
+                      "check": "OrphanedSnippet",
+                      "message": "This snippet is not referenced by any other files",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 1,
+                      "start": {
+                        "index": 0,
+                        "line": 0,
+                        "character": 0
+                      },
+                      "end": {
+                        "index": 1,
+                        "line": 0,
+                        "character": 1
+                      }
+                    },
+                    {
+                      "type": "LiquidHtml",
+                      "check": "LiquidSyntaxError",
+                      "message": "Syntax error in 'if' tag",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 0,
+                      "start": {
+                        "index": 73,
+                        "line": 2,
+                        "character": 2
+                      },
+                      "end": {
+                        "index": 166,
+                        "line": 2,
+                        "character": 95
+                      }
+                    }
+                  ]
+                },
+                "error": null
+              },
+              {
+                "line": 27,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": [
+                    {
+                      "type": "LiquidHtml",
+                      "check": "OrphanedSnippet",
+                      "message": "This snippet is not referenced by any other files",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 1,
+                      "start": {
+                        "index": 0,
+                        "line": 0,
+                        "character": 0
+                      },
+                      "end": {
+                        "index": 1,
+                        "line": 0,
+                        "character": 1
+                      }
+                    },
+                    {
+                      "type": "LiquidHtml",
+                      "check": "LiquidSyntaxError",
+                      "message": "Syntax error in 'if' tag",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 0,
+                      "start": {
+                        "index": 73,
+                        "line": 2,
+                        "character": 2
+                      },
+                      "end": {
+                        "index": 166,
+                        "line": 2,
+                        "character": 95
+                      }
+                    }
+                  ]
+                },
+                "error": null
+              },
+              {
+                "line": 35,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": [
+                    {
+                      "type": "LiquidHtml",
+                      "check": "OrphanedSnippet",
+                      "message": "This snippet is not referenced by any other files",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 1,
+                      "start": {
+                        "index": 0,
+                        "line": 0,
+                        "character": 0
+                      },
+                      "end": {
+                        "index": 1,
+                        "line": 0,
+                        "character": 1
+                      }
+                    },
+                    {
+                      "type": "LiquidHtml",
+                      "check": "LiquidSyntaxError",
+                      "message": "Syntax error in 'if' tag",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 0,
+                      "start": {
+                        "index": 73,
+                        "line": 2,
+                        "character": 2
+                      },
+                      "end": {
+                        "index": 166,
+                        "line": 2,
+                        "character": 95
+                      }
+                    }
+                  ]
+                },
+                "error": null
+              },
+              {
+                "line": 43,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": [
+                    {
+                      "type": "LiquidHtml",
+                      "check": "OrphanedSnippet",
+                      "message": "This snippet is not referenced by any other files",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 1,
+                      "start": {
+                        "index": 0,
+                        "line": 0,
+                        "character": 0
+                      },
+                      "end": {
+                        "index": 1,
+                        "line": 0,
+                        "character": 1
+                      }
+                    },
+                    {
+                      "type": "LiquidHtml",
+                      "check": "LiquidSyntaxError",
+                      "message": "Syntax error in 'if' tag",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 0,
+                      "start": {
+                        "index": 73,
+                        "line": 2,
+                        "character": 2
+                      },
+                      "end": {
+                        "index": 166,
+                        "line": 2,
+                        "character": 95
+                      }
+                    }
+                  ]
+                },
+                "error": null
+              },
+              {
+                "line": 51,
+                "tool": "check",
+                "ok": true,
+                "result": {
+                  "offenses": [
+                    {
+                      "type": "LiquidHtml",
+                      "check": "OrphanedSnippet",
+                      "message": "This snippet is not referenced by any other files",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 1,
+                      "start": {
+                        "index": 0,
+                        "line": 0,
+                        "character": 0
+                      },
+                      "end": {
+                        "index": 1,
+                        "line": 0,
+                        "character": 1
+                      }
+                    },
+                    {
+                      "type": "LiquidHtml",
+                      "check": "LiquidSyntaxError",
+                      "message": "Syntax error in 'if' tag",
+                      "uri": "file:///workspace/snippets/product-card.liquid",
+                      "severity": 0,
+                      "start": {
+                        "index": 73,
+                        "line": 2,
+                        "character": 2
+                      },
+                      "end": {
+                        "index": 166,
+                        "line": 2,
+                        "character": 95
+                      }
+                    }
+                  ]
+                },
+                "error": null
+              }
+            ],
+            "read_before_first_write": true,
+            "grade_checks": [
+              {
+                "name": "edit_scope",
+                "passed": true
+              },
+              {
+                "name": "no_suppressions",
+                "passed": true
+              },
+              {
+                "name": "theme_check",
+                "passed": false
+              },
+              {
+                "name": "ordinary",
+                "passed": false
+              },
+              {
+                "name": "unavailable",
+                "passed": false
+              },
+              {
+                "name": "null-title",
+                "passed": false
+              },
+              {
+                "name": "empty-title",
+                "passed": false
+              },
+              {
+                "name": "null-vendor",
+                "passed": false
+              },
+              {
+                "name": "empty-vendor",
+                "passed": false
+              },
+              {
+                "name": "blank-vendor",
+                "passed": false
+              },
+              {
+                "name": "trim-vendor",
+                "passed": false
+              },
+              {
+                "name": "escape",
+                "passed": false
+              },
+              {
+                "name": "entities",
+                "passed": false
+              },
+              {
+                "name": "unicode",
+                "passed": false
+              },
+              {
+                "name": "novel",
+                "passed": false
+              }
+            ],
+            "skill_accesses": [
+              {
+                "path": "skills/shopify-liquid-themes/SKILL.md",
+                "mode": "injected",
+                "turn": null,
+                "first_model_turn": 0,
+                "bytes": 11681,
+                "sha256": "f4f2a4c779783251f9083f868db1e7292431d516ddd754a71827bdde6de65861"
+              },
+              {
+                "path": "skills/liquid-theme-standards/SKILL.md",
+                "mode": "injected",
+                "turn": null,
+                "first_model_turn": 0,
+                "bytes": 12145,
+                "sha256": "cb8a1d571be5d05111e90d7bd28758c98ed46e520bb93fad6c9e92b8bb466144"
+              },
+              {
+                "path": "skills/liquid-theme-a11y/SKILL.md",
+                "mode": "injected",
+                "turn": null,
+                "first_model_turn": 0,
+                "bytes": 12830,
+                "sha256": "0fd335818464328aa6b8a8511fba45526b63624c004b8b1d301d311a9ef089ba"
+              }
+            ],
+            "artifact_sha256": {
+              "trace": "4a666c23d617ca0ab400f7d975153370ce0bf00530d8789f85fc7956e3fd6dd9",
+              "result": "14fc9b856ba7eca17bb896a54c9680d32f169332dae818a19a6aa041d664040b",
+              "patch": "ca513ca294c0d4b19c7836f99c3fb9594f213ffe07dadcd8b5d1ede1a142f696"
+            }
+          },
+          {
+            "task_id": "section-schema",
+            "artifacts": "runs/skills-ab-01/skills/20261023T191150Z-f75f9574",
+            "status": "failed",
+            "termination": "finished",
+            "input_tokens": 21311,
+            "output_tokens": 292,
+            "total_tokens": 21603,
+            "model_calls": 2,
+            "elapsed_seconds": 10.531430499861017,
+            "max_prompt_tokens": 10810,
+            "action_counts": {
+              "write_file": 1,
+              "finish": 1
+            },
+            "actions": [
+              {
+                "line": 9,
+                "tool": "write_file",
+                "path": "sections/feature-panel.liquid"
+              },
+              {
+                "line": 13,
+                "tool": "finish",
+                "path": null
+              }
+            ],
+            "reads": [],
+            "writes": [
+              {
+                "line": 9,
+                "path": "sections/feature-panel.liquid",
+                "content_sha256": "38f2ca20d7feccbcbc1b6eeeda332b51f7d6571a0984165bfe85199ca104e5ee"
+              }
+            ],
+            "validation_feedback": [],
+            "read_before_first_write": false,
+            "grade_checks": [
+              {
+                "name": "edit_scope",
+                "passed": true
+              },
+              {
+                "name": "no_suppressions",
+                "passed": true
+              },
+              {
+                "name": "theme_check",
+                "passed": false
+              },
+              {
+                "name": "single_top_level_schema",
+                "passed": true
+              },
+              {
+                "name": "preserved_markup",
+                "passed": false
+              },
+              {
+                "name": "strict_schema_json",
+                "passed": true
+              },
+              {
+                "name": "root_contract",
+                "passed": true
+              },
+              {
+                "name": "unique_setting_ids",
+                "passed": true
+              },
+              {
+                "name": "setting_heading",
+                "passed": true
+              },
+              {
+                "name": "setting_show_summary",
+                "passed": true
+              },
+              {
+                "name": "setting_columns",
+                "passed": true
+              },
+              {
+                "name": "preset_contract",
+                "passed": true
+              }
+            ],
+            "skill_accesses": [
+              {
+                "path": "skills/shopify-liquid-themes/SKILL.md",
+                "mode": "injected",
+                "turn": null,
+                "first_model_turn": 0,
+                "bytes": 11681,
+                "sha256": "f4f2a4c779783251f9083f868db1e7292431d516ddd754a71827bdde6de65861"
+              },
+              {
+                "path": "skills/liquid-theme-standards/SKILL.md",
+                "mode": "injected",
+                "turn": null,
+                "first_model_turn": 0,
+                "bytes": 12145,
+                "sha256": "cb8a1d571be5d05111e90d7bd28758c98ed46e520bb93fad6c9e92b8bb466144"
+              },
+              {
+                "path": "skills/liquid-theme-a11y/SKILL.md",
+                "mode": "injected",
+                "turn": null,
+                "first_model_turn": 0,
+                "bytes": 12830,
+                "sha256": "0fd335818464328aa6b8a8511fba45526b63624c004b8b1d301d311a9ef089ba"
+              }
+            ],
+            "artifact_sha256": {
+              "trace": "0ba35c223f1457d13b6252219612ae31eac98ed40ebcd973882a3ff2870d8240",
+              "result": "668b7781a6885bb60f713ce258192620c8657fcec738a3b8e6cfe6691d170bd4",
+              "patch": "109d110dd5b329014335b04789b9e275bf312b0adb409f8cbdde39163b029876"
+            }
+          },
+          {
+            "task_id": "shipping-message",
+            "artifacts": "runs/skills-ab-01/skills/20261023T191226Z-b458c314",
+            "status": "failed",
+            "termination": "finished",
+            "input_tokens": 21190,
+            "output_tokens": 141,
+            "total_tokens": 21331,
+            "model_calls": 2,
+            "elapsed_seconds": 8.152018124936149,
+            "max_prompt_tokens": 10674,
+            "action_counts": {
+              "write_file": 1,
+              "finish": 1
+            },
+            "actions": [
+              {
+                "line": 9,
+                "tool": "write_file",
+                "path": "snippets/shipping-message.liquid"
+              },
+              {
+                "line": 13,
+                "tool": "finish",
+                "path": null
+              }
+            ],
+            "reads": [],
+            "writes": [
+              {
+                "line": 9,
+                "path": "snippets/shipping-message.liquid",
+                "content_sha256": "6e600f45626640a0e36f22e8b8ed6bb69d1ed2a63e098c5f9ac840a3021d32c1"
+              }
+            ],
+            "validation_feedback": [],
+            "read_before_first_write": false,
+            "grade_checks": [
+              {
+                "name": "edit_scope",
+                "passed": true
+              },
+              {
+                "name": "no_suppressions",
+                "passed": true
+              },
+              {
+                "name": "theme_check",
+                "passed": true
+              },
+              {
+                "name": "below-default",
+                "passed": false
+              },
+              {
+                "name": "empty-cart-priority",
+                "passed": true
+              },
+              {
+                "name": "default-boundary",
+                "passed": true
+              },
+              {
+                "name": "just-below",
+                "passed": false
+              },
+              {
+                "name": "custom-boundary",
+                "passed": true
+              },
+              {
+                "name": "custom-below",
+                "passed": true
+              },
+              {
+                "name": "custom-above",
+                "passed": true
+              },
+              {
+                "name": "empty-message",
+                "passed": false
+              },
+              {
+                "name": "whitespace-message",
+                "passed": false
+              },
+              {
+                "name": "trim-message",
+                "passed": false
+              },
+              {
+                "name": "escaped-message",
+                "passed": false
+              },
+              {
+                "name": "literal-entity",
+                "passed": false
+              },
+              {
+                "name": "unicode-message",
+                "passed": false
+              },
+              {
+                "name": "novel-message",
+                "passed": false
+              },
+              {
+                "name": "disabled-empty",
+                "passed": true
+              },
+              {
+                "name": "disabled-below",
+                "passed": true
+              },
+              {
+                "name": "disabled-above",
+                "passed": true
+              }
+            ],
+            "skill_accesses": [
+              {
+                "path": "skills/shopify-liquid-themes/SKILL.md",
+                "mode": "injected",
+                "turn": null,
+                "first_model_turn": 0,
+                "bytes": 11681,
+                "sha256": "f4f2a4c779783251f9083f868db1e7292431d516ddd754a71827bdde6de65861"
+              },
+              {
+                "path": "skills/liquid-theme-standards/SKILL.md",
+                "mode": "injected",
+                "turn": null,
+                "first_model_turn": 0,
+                "bytes": 12145,
+                "sha256": "cb8a1d571be5d05111e90d7bd28758c98ed46e520bb93fad6c9e92b8bb466144"
+              },
+              {
+                "path": "skills/liquid-theme-a11y/SKILL.md",
+                "mode": "injected",
+                "turn": null,
+                "first_model_turn": 0,
+                "bytes": 12830,
+                "sha256": "0fd335818464328aa6b8a8511fba45526b63624c004b8b1d301d311a9ef089ba"
+              }
+            ],
+            "artifact_sha256": {
+              "trace": "facef2398171dc0599b8127ea36190b45bf2059e64c7234668a0cf291b4e31dc",
+              "result": "e764485ff1710e09299c20930c704947b28bd9e7bccb6f96c35d41d3ce7578ac",
+              "patch": "28e2d5430751ec5ba11e0a4dc4ad52c909af4dad62bb51318c9be4e30f88c7e8"
+            }
+          }
+        ]
+      }
+    },
+    "paired_effect": {
+      "baseline_passed": 2,
+      "skills_passed": 0,
+      "gains": 0,
+      "regressions": 2,
+      "unchanged_failures": 3,
+      "accuracy_difference_percentage_points": -40,
+      "total_token_ratio_skills_over_base": 9.068177541199558,
+      "input_token_ratio_skills_over_base": 9.560311395003993
+    }
+  },
+  "cleanup": {
+    "pod_id": "4ye95u0h25wk0f",
+    "delete_status": 204,
+    "independent_get_status": 404,
+    "remaining_pods": 0,
+    "remaining_network_volumes": 0,
+    "checked_utc": "2026-10-23T19:13:08Z",
+    "local_vm_stopped": true
+  },
+  "archive": {
+    "path": "runs/liquidbench-skills-ab-20261023.tar.gz",
+    "sha256": "7dcdbc7f3c1af75c5dc564cbb156bd1a3c066942087862c6caf650f1e4de6aeb",
+    "evidence_files": 91,
+    "bytes": 838091,
+    "verified": true,
+    "contains_upstream_skill_text": true,
+    "redistribution": "Keep local; upstream redistribution permission not established."
+  },
+  "evidence_manifest": {
+    "runs/m5-endpoint-preflight-v2-01/report.json": {
+      "sha256": "df8547ae1b8c72d3ac9e0ddfdce17ccd7a8e9681531761b795106d280b87bd1f",
+      "bytes": 3869
+    },
+    "runs/m5-endpoint-preflight-v2-01/trace.jsonl": {
+      "sha256": "97d88413f761c9e93c3df7eb3badcd79b66efe7d65d8e42acb6dcfb9275303dc",
+      "bytes": 5884089
+    },
+    "runs/skills-ab-01/analysis.json": {
+      "sha256": "734f1ad3430d6c4a86a35fa5b3c71254b20790e6a4362722bc75f4330a4ab93b",
+      "bytes": 67463
+    },
+    "runs/skills-ab-01/base/20261023T190933Z-3ba4b449/changes.patch": {
+      "sha256": "883cd84654edb3715dee87e5472b0f31c9b041eb3c152a342c587dc8bee7a2bb",
+      "bytes": 535
+    },
+    "runs/skills-ab-01/base/20261023T190933Z-3ba4b449/final/sections/announcement.liquid": {
+      "sha256": "bd939d63559e096d3fd2a9ed0ee2bd90dea6a902fd7379f62eded1fd3081a46b",
+      "bytes": 1147
+    },
+    "runs/skills-ab-01/base/20261023T190933Z-3ba4b449/result.json": {
+      "sha256": "b7e5d42a375b60723699ecb0d477543c8592acdc3e952d573b463be549492ccf",
+      "bytes": 6567
+    },
+    "runs/skills-ab-01/base/20261023T190933Z-3ba4b449/task.json": {
+      "sha256": "53103481d0a30ce7ce105005149cbd763cd52d23e8f9c39ecb70aebd793cae05",
+      "bytes": 1813
+    },
+    "runs/skills-ab-01/base/20261023T190933Z-3ba4b449/trace.jsonl": {
+      "sha256": "05abdb569adc5b77c05f8d1caacde31e110815b7c68a8fd9531363a0cd21fc28",
+      "bytes": 9466
+    },
+    "runs/skills-ab-01/base/20261023T191035Z-2310ec70/changes.patch": {
+      "sha256": "c18d1337a63587f63166670f89d65c56f664930ce52e68b73b89f3fff726dd5d",
+      "bytes": 382
+    },
+    "runs/skills-ab-01/base/20261023T191035Z-2310ec70/final/assets/promo-banner.css": {
+      "sha256": "fd66335b3342c58df0daf4c68e1aa003dafad918eb658e336e9d5b6e00b544c9",
+      "bytes": 33
+    },
+    "runs/skills-ab-01/base/20261023T191035Z-2310ec70/final/locales/en.default.json": {
+      "sha256": "b0e25b917a38853a907dd7cda4184e9bdaa259c27a55432bd03b1e5a2532cf4d",
+      "bytes": 90
+    },
+    "runs/skills-ab-01/base/20261023T191035Z-2310ec70/final/locales/fr.json": {
+      "sha256": "a303916631f966b2b07726e9c1dc956940216583ff6da5d2f8b42322c83e2225",
+      "bytes": 97
+    },
+    "runs/skills-ab-01/base/20261023T191035Z-2310ec70/final/snippets/promo-assets.liquid": {
+      "sha256": "62ae045e665f65907706a35d8c4b088da25104da0788f1e8931add65a440b321",
+      "bytes": 156
+    },
+    "runs/skills-ab-01/base/20261023T191035Z-2310ec70/result.json": {
+      "sha256": "52eb8a4422b0ad034d9da4955c3bb2b172483d3d5fd661d2f55c25ca8868e176",
+      "bytes": 3742
+    },
+    "runs/skills-ab-01/base/20261023T191035Z-2310ec70/task.json": {
+      "sha256": "d4a68a8ab8747a9c1fd0fa4226a8259f9c164a5d8b7975aa35c11b37430642e8",
+      "bytes": 1362
+    },
+    "runs/skills-ab-01/base/20261023T191035Z-2310ec70/trace.jsonl": {
+      "sha256": "ef1fbbc3254f049ffa0cd137cd07b1f86e8bc6a5600129777ff68573b644d2dc",
+      "bytes": 7937
+    },
+    "runs/skills-ab-01/base/20261023T191044Z-8b3e2cf2/changes.patch": {
+      "sha256": "854c355594cd9e1b28dd7611804bb83155c35622d6e57ae98d963c028119fe3a",
+      "bytes": 537
+    },
+    "runs/skills-ab-01/base/20261023T191044Z-8b3e2cf2/final/snippets/product-card.liquid": {
+      "sha256": "f9ecbbf9a0046366a18eaac68f330764a88682b462366ee54c7ce2e743512b4f",
+      "bytes": 320
+    },
+    "runs/skills-ab-01/base/20261023T191044Z-8b3e2cf2/result.json": {
+      "sha256": "b5c0cde0f02877674829109de8ba324dad5bd3060e7340361641a4dddc62300c",
+      "bytes": 5917
+    },
+    "runs/skills-ab-01/base/20261023T191044Z-8b3e2cf2/task.json": {
+      "sha256": "083d117c1e92df4f7a0e2287e7acd0d6d342481cf1f4a6390065abd7a4c46ff4",
+      "bytes": 1452
+    },
+    "runs/skills-ab-01/base/20261023T191044Z-8b3e2cf2/trace.jsonl": {
+      "sha256": "de2e2bad242ba1903bf54ef37abad8d14435b81903a38525ecd27d63b52a812b",
+      "bytes": 20563
+    },
+    "runs/skills-ab-01/base/20261023T191201Z-5337e77c/changes.patch": {
+      "sha256": "9b8e5dd3175eda70e5b1b76af55a72ca26a79f52625f430eefac332d1d0076e0",
+      "bytes": 678
+    },
+    "runs/skills-ab-01/base/20261023T191201Z-5337e77c/final/sections/feature-panel.liquid": {
+      "sha256": "39c812dd61e909d9646dac5b58105b01ee72026a38ee8a4fe3f7e3c92c17c6a7",
+      "bytes": 811
+    },
+    "runs/skills-ab-01/base/20261023T191201Z-5337e77c/result.json": {
+      "sha256": "95d833b687aa3e9daee728b3ad0c8782f04843fcb54a4ddc3022d6702c64fa04",
+      "bytes": 3335
+    },
+    "runs/skills-ab-01/base/20261023T191201Z-5337e77c/task.json": {
+      "sha256": "33b2f3652d9847fac1415cf046d47ae3ab14257970ffa0483980b2bb24a1cdbf",
+      "bytes": 1454
+    },
+    "runs/skills-ab-01/base/20261023T191201Z-5337e77c/trace.jsonl": {
+      "sha256": "ff7f948cf4f59ef43a8428a78d300d7e9499ba0d0a896f22396753e7272ed259",
+      "bytes": 9479
+    },
+    "runs/skills-ab-01/base/20261023T191214Z-d8b87f56/changes.patch": {
+      "sha256": "1ac2b33ceb126d33ad5064b86bf22dd7805bf58de655898a95a2118413a14235",
+      "bytes": 785
+    },
+    "runs/skills-ab-01/base/20261023T191214Z-d8b87f56/final/snippets/shipping-message.liquid": {
+      "sha256": "e210f866cc631557156ce6659590b716047be04698adf62834b48f0a5961f6ac",
+      "bytes": 579
+    },
+    "runs/skills-ab-01/base/20261023T191214Z-d8b87f56/result.json": {
+      "sha256": "601c9cd2f3a2889ee7e185d3bc53b17381083f76fb1026d0537d3192d1349355",
+      "bytes": 4648
+    },
+    "runs/skills-ab-01/base/20261023T191214Z-d8b87f56/task.json": {
+      "sha256": "0066b2eaa8844a96c7a04e2fb834d754469a88de50562a5ac1dd3cc81d6e9a55",
+      "bytes": 1561
+    },
+    "runs/skills-ab-01/base/20261023T191214Z-d8b87f56/trace.jsonl": {
+      "sha256": "961216a009457f7eb37d5c5a1417e174f29221b2bd09526ce52774c329578ea1",
+      "bytes": 8812
+    },
+    "runs/skills-ab-01/base/summary.json": {
+      "sha256": "f8cdf09328fc542d37a4b3e8bac5ee36e4f991bc1d72a246a3c7d78b012effb2",
+      "bytes": 945
+    },
+    "runs/skills-ab-01/comparison.json": {
+      "sha256": "443f116e1a5665ee92b67012bf47ce110b3e920d5079c3bb263e0cdd1e9a9021",
+      "bytes": 64386
+    },
+    "runs/skills-ab-01/plan.json": {
+      "sha256": "284cb2eb73c675049d4e78b05e67fe17bea4bf0f7397363cdf54fd020e1cd9f0",
+      "bytes": 8619
+    },
+    "runs/skills-ab-01/skills/20261023T190956Z-30d96758/changes.patch": {
+      "sha256": "2295ba9b676e1eef163744c53ff4998552ff735a45119f2afa742b6b3b957d6c",
+      "bytes": 2081
+    },
+    "runs/skills-ab-01/skills/20261023T190956Z-30d96758/final/sections/announcement.liquid": {
+      "sha256": "5f612582df07a453ac832c2862ffc1e74ea146df681f381fd117527d4befbbe9",
+      "bytes": 1262
+    },
+    "runs/skills-ab-01/skills/20261023T190956Z-30d96758/result.json": {
+      "sha256": "197a38f93485c5375f2cd56e17fce9629f2eea3a58d28475a88b1617a6e87757",
+      "bytes": 10870
+    },
+    "runs/skills-ab-01/skills/20261023T190956Z-30d96758/task.json": {
+      "sha256": "53103481d0a30ce7ce105005149cbd763cd52d23e8f9c39ecb70aebd793cae05",
+      "bytes": 1813
+    },
+    "runs/skills-ab-01/skills/20261023T190956Z-30d96758/trace.jsonl": {
+      "sha256": "685cbb55f1765b6643d7df44b417f19b35c3c10768bcc6eb9aecd4a1a3496743",
+      "bytes": 48428
+    },
+    "runs/skills-ab-01/skills/20261023T191013Z-51b802d3/changes.patch": {
+      "sha256": "9dc56689b2c7758ec74d243683cc1d228e4d9a91c11379503e78dbfe4f67a4d1",
+      "bytes": 575
+    },
+    "runs/skills-ab-01/skills/20261023T191013Z-51b802d3/final/assets/promo-banner.css": {
+      "sha256": "6a801e5e652374ea86a563affd370907909847b42702e38661b6a804442953c6",
+      "bytes": 79
+    },
+    "runs/skills-ab-01/skills/20261023T191013Z-51b802d3/final/locales/en.default.json": {
+      "sha256": "b0e25b917a38853a907dd7cda4184e9bdaa259c27a55432bd03b1e5a2532cf4d",
+      "bytes": 90
+    },
+    "runs/skills-ab-01/skills/20261023T191013Z-51b802d3/final/locales/fr.json": {
+      "sha256": "a303916631f966b2b07726e9c1dc956940216583ff6da5d2f8b42322c83e2225",
+      "bytes": 97
+    },
+    "runs/skills-ab-01/skills/20261023T191013Z-51b802d3/final/snippets/promo-assets.liquid": {
+      "sha256": "332d7f08658abb9fcad794fc3f508b43dcbee748498c2a2a431dc3c0f39441ee",
+      "bytes": 163
+    },
+    "runs/skills-ab-01/skills/20261023T191013Z-51b802d3/result.json": {
+      "sha256": "83e63230f5f1f02f70152a06b597d926dbf4070ba3e247ea84e72f5febf0b705",
+      "bytes": 6797
+    },
+    "runs/skills-ab-01/skills/20261023T191013Z-51b802d3/task.json": {
+      "sha256": "d4a68a8ab8747a9c1fd0fa4226a8259f9c164a5d8b7975aa35c11b37430642e8",
+      "bytes": 1362
+    },
+    "runs/skills-ab-01/skills/20261023T191013Z-51b802d3/trace.jsonl": {
+      "sha256": "99aa5107a7b02077457754603630f662e48c9dc3d7655d1be3b9a3ccc2d7293a",
+      "bytes": 59686
+    },
+    "runs/skills-ab-01/skills/20261023T191118Z-11a898bc/changes.patch": {
+      "sha256": "ca513ca294c0d4b19c7836f99c3fb9594f213ffe07dadcd8b5d1ede1a142f696",
+      "bytes": 493
+    },
+    "runs/skills-ab-01/skills/20261023T191118Z-11a898bc/final/snippets/product-card.liquid": {
+      "sha256": "b42af881492b6d6cd01ce14132a042cb1f375efaebe9397a3f83d917a903d303",
+      "bytes": 278
+    },
+    "runs/skills-ab-01/skills/20261023T191118Z-11a898bc/result.json": {
+      "sha256": "14fc9b856ba7eca17bb896a54c9680d32f169332dae818a19a6aa041d664040b",
+      "bytes": 10262
+    },
+    "runs/skills-ab-01/skills/20261023T191118Z-11a898bc/task.json": {
+      "sha256": "083d117c1e92df4f7a0e2287e7acd0d6d342481cf1f4a6390065abd7a4c46ff4",
+      "bytes": 1452
+    },
+    "runs/skills-ab-01/skills/20261023T191118Z-11a898bc/trace.jsonl": {
+      "sha256": "4a666c23d617ca0ab400f7d975153370ce0bf00530d8789f85fc7956e3fd6dd9",
+      "bytes": 61069
+    },
+    "runs/skills-ab-01/skills/20261023T191150Z-f75f9574/changes.patch": {
+      "sha256": "109d110dd5b329014335b04789b9e275bf312b0adb409f8cbdde39163b029876",
+      "bytes": 1163
+    },
+    "runs/skills-ab-01/skills/20261023T191150Z-f75f9574/final/sections/feature-panel.liquid": {
+      "sha256": "38f2ca20d7feccbcbc1b6eeeda332b51f7d6571a0984165bfe85199ca104e5ee",
+      "bytes": 683
+    },
+    "runs/skills-ab-01/skills/20261023T191150Z-f75f9574/result.json": {
+      "sha256": "668b7781a6885bb60f713ce258192620c8657fcec738a3b8e6cfe6691d170bd4",
+      "bytes": 8283
+    },
+    "runs/skills-ab-01/skills/20261023T191150Z-f75f9574/task.json": {
+      "sha256": "33b2f3652d9847fac1415cf046d47ae3ab14257970ffa0483980b2bb24a1cdbf",
+      "bytes": 1454
+    },
+    "runs/skills-ab-01/skills/20261023T191150Z-f75f9574/trace.jsonl": {
+      "sha256": "0ba35c223f1457d13b6252219612ae31eac98ed40ebcd973882a3ff2870d8240",
+      "bytes": 47439
+    },
+    "runs/skills-ab-01/skills/20261023T191226Z-b458c314/changes.patch": {
+      "sha256": "28e2d5430751ec5ba11e0a4dc4ad52c909af4dad62bb51318c9be4e30f88c7e8",
+      "bytes": 788
+    },
+    "runs/skills-ab-01/skills/20261023T191226Z-b458c314/final/snippets/shipping-message.liquid": {
+      "sha256": "6e600f45626640a0e36f22e8b8ed6bb69d1ed2a63e098c5f9ac840a3021d32c1",
+      "bytes": 362
+    },
+    "runs/skills-ab-01/skills/20261023T191226Z-b458c314/result.json": {
+      "sha256": "e764485ff1710e09299c20930c704947b28bd9e7bccb6f96c35d41d3ce7578ac",
+      "bytes": 9132
+    },
+    "runs/skills-ab-01/skills/20261023T191226Z-b458c314/task.json": {
+      "sha256": "0066b2eaa8844a96c7a04e2fb834d754469a88de50562a5ac1dd3cc81d6e9a55",
+      "bytes": 1561
+    },
+    "runs/skills-ab-01/skills/20261023T191226Z-b458c314/trace.jsonl": {
+      "sha256": "facef2398171dc0599b8127ea36190b45bf2059e64c7234668a0cf291b4e31dc",
+      "bytes": 46970
+    },
+    "runs/skills-ab-01/skills/summary.json": {
+      "sha256": "9b722534aac3c8f46af448341b2b3e4afc2d6145d87501054dd3d2584ff15409",
+      "bytes": 948
+    },
+    "runs/skills-ab-session-v2-01/approval.json": {
+      "sha256": "fb728fa3c3390c7735175873262b491ee4e6afbd89b2eccdc911325f922afce9",
+      "bytes": 330
+    },
+    "runs/skills-ab-session-v2-01/boot-log.json": {
+      "sha256": "9bc8a4688ce92c77e409e45d12ed3b546de42830bc1ad3769f414f8118f49017",
+      "bytes": 19907
+    },
+    "runs/skills-ab-session-v2-01/boot.sh": {
+      "sha256": "24e6690e1fc82f3fe797d45b456207366e50c4599c01a9944b1b6085845c1f92",
+      "bytes": 2449
+    },
+    "runs/skills-ab-session-v2-01/cleanup.json": {
+      "sha256": "1a10f941716a8e625493e8fccb227229a7cebcd9edfe5699e705b9878ebee12a",
+      "bytes": 1717
+    },
+    "runs/skills-ab-session-v2-01/cost.json": {
+      "sha256": "fcc7858a380902215dd76e5fba1f24c99d7d3c078b9d1b46a8d9875d4ef305bf",
+      "bytes": 584
+    },
+    "runs/skills-ab-session-v2-01/create-pod.json": {
+      "sha256": "4d1841cc921f393d86d1c1ee0b6992a185b959f7dccdc4ab27fcaeb49bd286d4",
+      "bytes": 3261
+    },
+    "runs/skills-ab-session-v2-01/create-result.json": {
+      "sha256": "40001e3c7144adc1fa360ed7e6d862288085f419330467bccfbf2cf660bb627d",
+      "bytes": 7430
+    },
+    "runs/skills-ab-session-v2-01/deadlines.json": {
+      "sha256": "7b126eca703ba278aca140a5bfa0046274b9cc6cf387170037b4465726529a5c",
+      "bytes": 175
+    },
+    "runs/skills-ab-session-v2-01/dry-plan.json": {
+      "sha256": "f82b18b2b32aecdabbf59f7401ca36043665b46e8f1950caa40993baa8738e20",
+      "bytes": 7308
+    },
+    "runs/skills-ab-session-v2-01/host-evidence/command.json": {
+      "sha256": "3fcdd46ca32f2c7c976a97c4bdf20a0bef087d4970dbd0b5b450e7dad453bc3d",
+      "bytes": 493
+    },
+    "runs/skills-ab-session-v2-01/host-evidence/disk.txt": {
+      "sha256": "1b7dc6a8a275741ec8c9a8a6503f258642b20dd68e14b0ad2652092e316fdc3b",
+      "bytes": 744
+    },
+    "runs/skills-ab-session-v2-01/host-evidence/memory.txt": {
+      "sha256": "b8e5b5190a168132b86a13218b7039ca8c9ffb126b6bac9d6e658387f7ce0f0e",
+      "bytes": 207
+    },
+    "runs/skills-ab-session-v2-01/host-evidence/model-files.json": {
+      "sha256": "e722d0131a4e7d8341d0df17cc767af49f03a257acd4d8d653f6b9bc8ecbc6f6",
+      "bytes": 3038
+    },
+    "runs/skills-ab-session-v2-01/host-evidence/nvidia-smi-final.txt": {
+      "sha256": "4f7b97f3d6d8081aeb4e7b9d64ab179e95c6b9d77c9f6f49bb7c2119ec29987a",
+      "bytes": 14524
+    },
+    "runs/skills-ab-session-v2-01/host-evidence/nvidia-smi.txt": {
+      "sha256": "ae427a449175efdd0191ba23dea86bea271b4686e0a0fdc6368447494a783f0c",
+      "bytes": 14250
+    },
+    "runs/skills-ab-session-v2-01/host-evidence/processes-final.txt": {
+      "sha256": "3f4adbf2b825dd73d0fda2647a32b67cb6752aa5e57c691d1b81387f577bd3fa",
+      "bytes": 3480
+    },
+    "runs/skills-ab-session-v2-01/host-evidence/processes.txt": {
+      "sha256": "bf8d986bfc63e6d40dbef8ee10e030af11a1c5cc88a888cd616ffa5e0fe6e274",
+      "bytes": 3356
+    },
+    "runs/skills-ab-session-v2-01/host-evidence/server.log": {
+      "sha256": "34d8db043cb8c822509890efe7b2281e8d023cd358cba621f623ea30d7484cb1",
+      "bytes": 36616
+    },
+    "runs/skills-ab-session-v2-01/host-evidence/software.json": {
+      "sha256": "e2349e4c91c4d804af1cba76c376c3b6d17b0fe58f0ebf388a1a206803d32e7f",
+      "bytes": 331
+    },
+    "runs/skills-ab-session-v2-01/known_hosts": {
+      "sha256": "f7f5e3056bed26f02124f2d0628ff67ed371779a0c48da3a439c6e7fbf71b303",
+      "bytes": 165
+    },
+    "runs/skills-ab-session-v2-01/observed-serving.json": {
+      "sha256": "9017859565f52e34377d7bf2f259cb898fcd086b230c691cd315ce361db1e43a",
+      "bytes": 4715
+    },
+    "runs/skills-ab-session-v2-01/pod-before-delete.json": {
+      "sha256": "a72b83ed39a06d6d333be18910ff88dc7e454371eeeb0901dd0dce24966af057",
+      "bytes": 8086
+    },
+    "runs/skills-ab-session-v2-01/pod-connected.json": {
+      "sha256": "6160961ac2f45bc80e146c9912499966fe8ca40a1811a91af15e12acf49215d1",
+      "bytes": 8083
+    },
+    "runs/skills-ab-session-v2-01/pod-readback.json": {
+      "sha256": "40001e3c7144adc1fa360ed7e6d862288085f419330467bccfbf2cf660bb627d",
+      "bytes": 7430
+    },
+    "runs/skills-ab-session-v2-01/quote.json": {
+      "sha256": "97845af011d5a335d5a541bd19001585286d825b76ca01a77d652e285f77d010",
+      "bytes": 1295
+    },
+    "runs/skills-ab-session-v2-01/ssh_config": {
+      "sha256": "2d5e1c4e841cba37e362d8ac1e49984eb48ebaabef91097463bb49f0966faee4",
+      "bytes": 365
+    },
+    "runs/skills-ab-session-v2-01/summarize.py": {
+      "sha256": "3ecba45b16fd82f045f81b10223e3658ba02d71dee3d8dd7681bd8dbe85f6595",
+      "bytes": 5457
+    },
+    "runs/skills-ab-session-v2-01/termination.json": {
+      "sha256": "6ef46380db2dd1fed7234f9c48f1c9d01a3f4de5df41c75fb00ce2f7b68cc36d",
+      "bytes": 197
+    }
+  },
+  "limitations": [
+    "Five development tasks; one attempt per condition; no held-out or publishable research claims.",
+    "Entry injection is observed exposure, not proof of attention or reasoning.",
+    "No optional reference document was read.",
+    "Historical 8K pilot is not the control arm.",
+    "Latency includes validation/grading and cache/order effects; no speed claim.",
+    "Cost is an estimate; settled billing was unavailable at cleanup."
+  ],
+  "recommendation": "Expand development coverage and replicate the preregistered comparison before considering post-training; preserve this negative result and do not weaken graders or modify the pinned bundle in place."
+}

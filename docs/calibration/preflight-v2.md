@@ -1,9 +1,10 @@
 # Milestone 5: revised endpoint gate and next deployment
 
-**Predeclared policy: `liquidbench-preflight-v2`. No new GPU session or model
-inference has run under this policy.** It replaces the preflight gate, not the
-experiment. Deployment still needs fresh approval. The prior single-session
-approval was consumed by the aborted session.
+**Predeclared policy: `liquidbench-preflight-v2`.** The [subsequently approved
+session](milestone-5-results.md) passed this gate, completed all ten attempts and
+terminated its Pod. The criteria and commands below were frozen before that
+deployment. This policy replaces the preflight gate, not the experiment; any
+future paid session still requires fresh approval.
 
 ## Why change the gate
 
