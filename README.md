@@ -69,7 +69,7 @@ The initial command interface deliberately exposes only `render` and `check`, al
 
 ## Task and grading contract
 
-`tasks/dev/product-card/task.json` declares the prompt, editable files, category, difficulty, family, provenance, and supported runtime subset. `initial/` contains the starting files. `evaluator/` contains host-only fixtures and the reference solution; these files are excluded from the runtime image.
+`tasks/dev/product-card/task.json` declares the prompt, editable files, category, difficulty, family, provenance, and supported runtime subset. `initial/` contains the starting files. `evaluator/` contains host-only cases, a `reference/` tree of replacement files, and declarative `validation.json` mutations; these files are excluded from the runtime image. The manifest selects a versioned evaluator from an explicit Python registry. Shared grading enforces edit scope, suppression policy, and Theme Check before combining task-specific boolean checks; task data cannot import or execute Python code.
 
 The grader requires:
 

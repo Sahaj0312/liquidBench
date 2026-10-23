@@ -1,0 +1,44 @@
+[
+  {
+    "name": "unescaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-card.liquid": "{% assign card_title = product.title | default: 'Untitled product' %}\n{% assign card_vendor = product.vendor | default: '' | strip %}\n<article class=\"product-card\">\n  <h2>{{ card_title }}</h2>\n  {% if card_vendor != empty %}<p class=\"vendor\">{{ card_vendor }}</p>{% endif %}\n  <span class=\"availability\">{% if product.available %}In stock{% else %}Sold out{% endif %}</span>\n</article>\n"
+    }
+  },
+  {
+    "name": "always_in_stock",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-card.liquid": "{% assign card_title = product.title | default: 'Untitled product' %}\n{% assign card_vendor = product.vendor | default: '' | strip %}\n<article class=\"product-card\">\n  <h2>{{ card_title | escape }}</h2>\n  {% if card_vendor != empty %}<p class=\"vendor\">{{ card_vendor | escape }}</p>{% endif %}\n  <span class=\"availability\">{% if true %}In stock{% else %}Sold out{% endif %}</span>\n</article>\n"
+    }
+  },
+  {
+    "name": "missing_fallback",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-card.liquid": "{% assign card_title = product.title %}\n{% assign card_vendor = product.vendor | default: '' | strip %}\n<article class=\"product-card\">\n  <h2>{{ card_title | escape }}</h2>\n  {% if card_vendor != empty %}<p class=\"vendor\">{{ card_vendor | escape }}</p>{% endif %}\n  <span class=\"availability\">{% if product.available %}In stock{% else %}Sold out{% endif %}</span>\n</article>\n"
+    }
+  },
+  {
+    "name": "hardcoded",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-card.liquid": "<article class=\"product-card\"><h2>Cotton Tee</h2><p class=\"vendor\">North</p><span class=\"availability\">In stock</span></article>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-card.liquid": "{% # theme-check-disable %}{% assign card_title = product.title | default: 'Untitled product' %}\n{% assign card_vendor = product.vendor | default: '' | strip %}\n<article class=\"product-card\">\n  <h2>{{ card_title | escape }}</h2>\n  {% if card_vendor != empty %}<p class=\"vendor\">{{ card_vendor | escape }}</p>{% endif %}\n  <span class=\"availability\">{% if product.available %}In stock{% else %}Sold out{% endif %}</span>\n</article>\n"
+    }
+  },
+  {
+    "name": "grader_config",
+    "expected_pass": false,
+    "changes": {
+      ".theme-check.yml": "extends: []"
+    }
+  }
+]

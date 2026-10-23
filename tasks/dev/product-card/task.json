@@ -1,12 +1,15 @@
 {
   "id": "product-card",
-  "version": 1,
+  "version": 2,
   "split": "development",
   "category": "liquid-rendering",
   "difficulty": "easy",
   "family": "nullable-product-card",
   "provenance": "Original synthetic fixture authored for LiquidBench; no external theme copied.",
   "runtime_subset": "Ruby Liquid core; product is a supplied hash with title, vendor, and available keys. No Shopify drops or filters.",
-  "editable_files": ["snippets/product-card.liquid"],
-  "prompt": "Fix snippets/product-card.liquid. The input product hash always has title (string or null), vendor (string or null), and available (boolean). Render one article with class product-card. It must contain, in order: one h2 showing the title, or Untitled product when title is null or empty; a p with class vendor only when the vendor is nonempty after trimming surrounding whitespace, showing that trimmed vendor; and one span with class availability showing In stock if available is true, otherwise Sold out. Escape title and vendor as HTML text. Preserve the article structure and class names. Do not add other elements or attributes, hardcode particular fixture values, disable checks, or modify other files. Whitespace between elements and HTML quote style are unrestricted. Only core Liquid is supported. You may use read_file, write_file, list_files, search, render with your own fixture variables, and check. Finish explicitly when done."
+  "editable_files": [
+    "snippets/product-card.liquid"
+  ],
+  "prompt": "Fix snippets/product-card.liquid. The input product hash always has title (string or null), vendor (string or null), and available (boolean). Render one article with class product-card. It must contain, in order: one h2 showing the title, or Untitled product when title is null or empty; a p with class vendor only when the vendor is nonempty after trimming surrounding whitespace, showing that trimmed vendor; and one span with class availability showing In stock if available is true, otherwise Sold out. Escape title and vendor as HTML text. Preserve the article structure and class names. Do not add other elements or attributes, hardcode particular fixture values, disable checks, or modify other files. Whitespace between elements and HTML quote style are unrestricted. Only core Liquid is supported. You may use read_file, write_file, list_files, search, render with your own fixture variables, and check. Finish explicitly when done.",
+  "evaluator": "product-card-v1"
 }
