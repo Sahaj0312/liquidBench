@@ -6,6 +6,13 @@ execution. No additional session, substitution, top-up or extension is authorize
 Block 0 remains part of the study. This note changes operational session grouping,
 not the experiment, its attempt order, or any per-attempt limit.
 
+**Completed:** all 224 remaining attempts ran in order with the approved 120-minute
+admission reserve. The one session lasted 95m11.88s through verified cleanup,
+estimated $0.958150 before unreported adjustments; final settled billing is pending.
+Both preflights passed and all resources were deleted. See the
+[complete study report](milestone-6-results.md). The authorization and historical
+proposal below remain as provenance, not permission for another rental.
+
 ## Proposed session and spending authorization
 
 Target **one A40 session for all remaining 224 attempts**, with a maximum of

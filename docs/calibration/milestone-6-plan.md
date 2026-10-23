@@ -1,9 +1,10 @@
 # Milestone 6: expanded development coverage and loading study
 
-Status: **predeclared plan; Block 0 has now completed with verified cleanup**.
-See the [Block 0 report](milestone-6-block-0-results.md). The other 14 blocks remain
-unattempted and need fresh approval. The local preparation described below involved
-no inference or GPU rental.
+Status: **all 240 predeclared attempts completed; GPU/storage cleanup verified**.
+See the [complete comparison](milestone-6-results.md), retaining the original
+[Block 0 report](milestone-6-block-0-results.md). Blocks 1–14 ran in their frozen
+order in one separately approved session. The preparation and experimental rules
+below are preserved; no further paid execution or post-training is authorized.
 The four-condition plan is frozen in [m6-plan.json](../../experiments/m6-plan.json).
 The [exact tokenizer report](milestone-6-feasibility.json) binds that plan, including
 all task digests, Python source, system instructions, configs, and document hashes.
