@@ -41,8 +41,9 @@ Paths must remain within the workspace. No network or package installation.
 Only the task's declared files may change. Hidden grading is unavailable.
 Tool errors consume the same budget as successful calls. Finish explicitly when done.
 Example of a read action: {"tool":"read_file","args":{"path":"snippets/example.liquid"}}
-Example of saving a whole file: {"tool":"write_file","args":{"path":"snippets/example.liquid","content":"<p>Example</p>"}}
-These are protocol examples, not files or solutions for your task."""
+The read example uses a fictional path; use the actual task paths.
+To submit, reply exactly: {"tool":"finish","args":{}}
+Even tools with no arguments require the empty args object."""
 TOOLS = {"list_files", "read_file", "write_file", "search", "render", "analyze", "check", "finish"}
 ARGUMENTS = {
     "list_files": {},
@@ -69,7 +70,10 @@ def parse_action(content):
         or action["tool"] not in TOOLS
         or not isinstance(action["args"], dict)
     ):
-        raise ValueError('Expected exactly {"tool": an available tool, "args": an object}')
+        raise ValueError(
+            'Expected {"tool":"TOOL_NAME","args":{...}}. '
+            'To submit saved files, use exactly {"tool":"finish","args":{}}.'
+        )
     required = ARGUMENTS[action["tool"]]
     args = action["args"]
     optional = {"strip_schema": bool} if action["tool"] == "render" else {}
@@ -187,7 +191,7 @@ def run(
     destination.mkdir(parents=True, exist_ok=False)
     result = {
         "schema_version": 2,
-        "protocol_version": "json-actions-v2",
+        "protocol_version": "json-actions-v3",
         "run_id": run_id,
         "task_id": task.manifest["id"],
         "task_version": task.manifest["version"],
