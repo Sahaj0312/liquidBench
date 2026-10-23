@@ -74,3 +74,38 @@ def test_missing_usage_is_not_reported_as_zero(monkeypatch):
     )
     with pytest.raises(ProviderError, match="token usage"):
         ChatProvider(load_config(ROOT / "configs/local-smoke.json")).complete([], 10, 5)
+
+
+@pytest.mark.parametrize("mode", ["text", "json_object"])
+def test_output_format_is_explicit_and_has_no_task_schema(monkeypatch, mode):
+    config = load_config(ROOT / "configs/local-smoke.json")
+    config["response_format"] = mode
+
+    def post(self, route, payload, timeout):
+        if mode == "json_object":
+            assert payload["response_format"] == {"type": "json_object"}
+        else:
+            assert "response_format" not in payload
+        assert "tools" not in payload
+        assert "schema" not in payload
+        return {
+            "choices": [{"message": {"content": "{}"}}],
+            "usage": {"prompt_tokens": 1, "completion_tokens": 1},
+        }
+
+    monkeypatch.setattr(ChatProvider, "post", post)
+    assert ChatProvider(config).complete([], 10, 5).content == "{}"
+
+
+def test_unsupported_json_mode_is_not_silently_retried_as_text(monkeypatch):
+    calls = []
+
+    def post(*args, **kwargs):
+        calls.append(kwargs["json"])
+        return httpx.Response(400, text="unsupported response_format")
+
+    monkeypatch.setattr(httpx.Client, "post", post)
+    with pytest.raises(ProviderError) as caught:
+        ChatProvider(load_config(ROOT / "configs/local-smoke.json")).complete([], 10, 5)
+    assert not caught.value.retryable
+    assert len(calls) == 1

@@ -153,6 +153,7 @@ def test_7b_config_matches_supported_chat_protocol(monkeypatch):
         assert url.endswith("/v1/chat/completions")
         assert json["model"] == config["model"]
         assert json["max_tokens"] == 1024
+        assert json["response_format"] == {"type": "json_object"}
         assert "tools" not in json  # Portable JSON-in-content, not native tool calling.
         return httpx.Response(
             200,

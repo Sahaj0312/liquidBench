@@ -16,5 +16,6 @@
   "input_usd_per_million": null,
   "output_usd_per_million": null,
   "max_context_tokens": 8192,
-  "token_counting": "vllm"
+  "token_counting": "vllm",
+  "response_format": "json_object"
 }

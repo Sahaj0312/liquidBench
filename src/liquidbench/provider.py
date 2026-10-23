@@ -117,6 +117,8 @@ class ChatProvider:
             "seed": self.config["seed"],
             "stream": False,
         }
+        if self.config["response_format"] == "json_object":
+            payload["response_format"] = {"type": "json_object"}
         data = self.post("/chat/completions", payload, timeout)
         try:
             content = data["choices"][0]["message"]["content"]

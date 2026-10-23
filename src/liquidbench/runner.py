@@ -102,6 +102,7 @@ def load_config(path):
         "max_output_tokens",
         "max_context_tokens",
         "token_counting",
+        "response_format",
         "max_seconds",
         "request_timeout",
         "provider_retries",
@@ -118,6 +119,8 @@ def load_config(path):
             raise ValueError(f"{key} must be a positive integer")
     if config["token_counting"] not in {"llama_cpp", "vllm", "conservative_bytes"}:
         raise ValueError("Unsupported token_counting mode")
+    if config["response_format"] not in {"text", "json_object"}:
+        raise ValueError("response_format must be text or json_object")
     if config["max_output_tokens"] + 32 >= config["max_context_tokens"]:
         raise ValueError("Context must fit both the prompt and reserved output")
     if (
@@ -191,7 +194,7 @@ def run(
     destination.mkdir(parents=True, exist_ok=False)
     result = {
         "schema_version": 2,
-        "protocol_version": "json-actions-v3",
+        "protocol_version": "json-actions-v4",
         "run_id": run_id,
         "task_id": task.manifest["id"],
         "task_version": task.manifest["version"],
