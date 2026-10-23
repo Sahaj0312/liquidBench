@@ -10,12 +10,129 @@ from pathlib import Path
 import sys
 
 from liquidbench.study import CONDITIONS
-from liquidbench.task import fingerprint
+from liquidbench.task import discover_tasks, fingerprint
 from analyze_runs import summarize
+
+
+ROOT = Path(__file__).resolve().parents[1]
+COMPARISONS = (
+    ("full", "base"),
+    ("on_demand", "base"),
+    ("neutral", "base"),
+    ("full", "neutral"),
+    ("on_demand", "full"),
+    ("on_demand", "neutral"),
+)
+# Preserve original manifest categories and also expose an explicit broad-domain crosswalk.
+DOMAINS = {
+    "conditional-logic": "liquid-syntax",
+    "liquid-syntax": "liquid-syntax",
+    "liquid-rendering": "rendering",
+    "rendering": "rendering",
+    "section-schema": "schema",
+    "theme-references": "references",
+    "section-modification": "theme-modification",
+    "theme-modification": "theme-modification",
+}
+
+
+def task_metadata(plan, root=ROOT / "tasks/dev"):
+    expected = {r["task_id"]: r["task_digest"] for r in plan["order"]}
+    metadata = {}
+    for task in discover_tasks(root):
+        name = task.manifest["id"]
+        if name not in expected:
+            continue
+        if task.digest != expected[name]:
+            raise ValueError("Task metadata differs from frozen task digest")
+        category = task.manifest["category"]
+        metadata[name] = {
+            "category": category,
+            "difficulty": task.manifest["difficulty"],
+            "domain": DOMAINS[category],
+        }
+    if set(metadata) != set(expected):
+        raise ValueError("Missing task metadata")
+    return metadata
+
+
+def paired_counts(pairs):
+    def counts(rows, left, right):
+        out = dict.fromkeys(
+            (
+                "planned_pairs",
+                "comparable_pairs",
+                "wins",
+                "ties",
+                "losses",
+                "ties_passed",
+                "ties_failed",
+                "missing_pairs",
+                "infrastructure_pairs",
+            ),
+            0,
+        )
+        for row in rows:
+            a, b = (row["conditions"][c]["status"] for c in (left, right))
+            if a not in {"passed", "failed", "missing", "infrastructure_error"} or b not in {
+                "passed",
+                "failed",
+                "missing",
+                "infrastructure_error",
+            }:
+                raise ValueError("Unknown outcome status")
+            out["planned_pairs"] += 1
+            # Disjoint operational categories: any missing member takes precedence.
+            if "missing" in (a, b):
+                out["missing_pairs"] += 1
+            elif "infrastructure_error" in (a, b):
+                out["infrastructure_pairs"] += 1
+            else:
+                out["comparable_pairs"] += 1
+                if a == b:
+                    out["ties"] += 1
+                    out["ties_passed" if a == "passed" else "ties_failed"] += 1
+                else:
+                    out["wins" if a == "passed" else "losses"] += 1
+        return out
+
+    reports = []
+    for left, right in COMPARISONS:
+        repeats = []
+        for repetition in sorted({p["repetition"] for p in pairs}):
+            rows = [p for p in pairs if p["repetition"] == repetition]
+            groups = {}
+            for dimension in ("category", "domain", "difficulty"):
+                groups["by_" + dimension] = {
+                    value: counts([p for p in rows if p[dimension] == value], left, right)
+                    for value in sorted({p[dimension] for p in rows})
+                }
+            groups["by_category_and_difficulty"] = [
+                {
+                    "category": category,
+                    "difficulty": difficulty,
+                    **counts(
+                        [
+                            p
+                            for p in rows
+                            if (p["category"], p["difficulty"]) == (category, difficulty)
+                        ],
+                        left,
+                        right,
+                    ),
+                }
+                for category, difficulty in sorted({(p["category"], p["difficulty"]) for p in rows})
+            ]
+            repeats.append(
+                {"repetition": repetition, "overall": counts(rows, left, right), **groups}
+            )
+        reports.append({"left": left, "right": right, "by_repetition": repeats})
+    return reports
 
 
 def compare(plan, directories, *, reader=summarize):
     expected = {(r["repetition"], r["task_id"], r["condition"]): r for r in plan["order"]}
+    metadata = task_metadata(plan)
     found = {}
     for directory in directories:
         summary = json.loads((directory / "summary.json").read_text())
@@ -81,7 +198,9 @@ def compare(plan, directories, *, reader=summarize):
         conditions = {
             c: found.get((repetition, task, c), {"status": "missing"}) for c in CONDITIONS
         }
-        pairs.append({"repetition": repetition, "task_id": task, "conditions": conditions})
+        pairs.append(
+            {"repetition": repetition, "task_id": task, **metadata[task], "conditions": conditions}
+        )
     totals = {
         c: dict(Counter(pair["conditions"][c]["status"] for pair in pairs)) for c in CONDITIONS
     }
@@ -91,6 +210,8 @@ def compare(plan, directories, *, reader=summarize):
         "plan_sha256": fingerprint(plan),
         "totals": totals,
         "paired_outcomes": pairs,
+        "paired_win_tie_loss": paired_counts(pairs),
+        "pairing_rule": "Per repetition, left condition versus right; passed/failed use unchanged attempt status. Missing pairs precede infrastructure pairs; neither counts as a tie. No pooling of repeats as independent samples.",
         "interpretation": "Exposure/reads do not establish use or causation. Fixed-seed repeats are not independent samples.",
     }
 
