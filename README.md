@@ -58,7 +58,7 @@ uv run liquidbench run-suite --config configs/local-smoke.json
 
 This small quantized model is a development smoke test, **not the planned 7B research baseline**. The model download is approximately 1 GB. Stop the server with Ctrl-C when finished. Stop the dedicated VM with `colima stop --profile liquidbench` when it is no longer needed.
 
-For an already available Qwen 7B endpoint, edit a copy of `configs/qwen-base.json`, then run it with `--config`. Its checkpoint revision is pinned, but the serving build and actual 7B inference remain unvalidated. Set the endpoint, prices, precision and pinned serving settings before research use. This repository does not provision or purchase GPU instances.
+For an approved Qwen 7B deployment, follow the [pinned pilot runbook](docs/calibration/qwen-7b-pilot.md), including host evidence and the synthetic endpoint preflight, before `run-suite`. The checkpoint and candidate serving image are pinned; actual GPU deployment and 7B inference remain unvalidated. The [Milestone 4 preparation report](docs/calibration/milestone-4.md) records the compute gap, rental estimate and research gate. This repository does not provision or purchase GPU instances.
 
 CLI exit codes: `0` passed, `1` model/task failure or failed grader validation, `2` infrastructure/configuration error. A real model failure is a valid captured attempt.
 

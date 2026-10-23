@@ -1,5 +1,11 @@
 # Preparing Qwen2.5-Coder-7B-Instruct without paid inference
 
+Milestone 4 now supplies a [pinned deployment manifest](qwen-7b-pilot.json),
+[execution runbook](qwen-7b-pilot.md), and [preparation/cost report](milestone-4.md).
+No suitable compute was available; the user chose preparation only. The candidate
+vLLM 0.32.0 image is pinned but has not been GPU-tested. Use the runbook's complete
+arguments and verification gates for the future approved session.
+
 The adapter is compatible at the HTTP/schema level: the official model supports
 chat messages through a vLLM chat-completions server, and LiquidBench consumes
 text content plus prompt/completion usage. It deliberately does not require
@@ -18,8 +24,8 @@ local calibration. [Official model card](https://huggingface.co/Qwen/Qwen2.5-Cod
 
 ## Proposed serving configuration
 
-On an already available compatible GPU host, after selecting and recording a
-pinned vLLM/container/CUDA build (not provisioned by this milestone):
+The original minimal serving command is below. Milestone 4's runbook adds the
+pinned container, explicit JSON backend and evidence capture to these settings:
 
 ```sh
 vllm serve Qwen/Qwen2.5-Coder-7B-Instruct \
@@ -74,8 +80,9 @@ uses the official 3B Q4_K_M model (about 2.1 GB on disk).
 
 ## Cost planning
 
-No vendor or paid endpoint is selected. `qwen-base.json` therefore keeps prices
-`null`; actual dollar totals must remain unknown until rates are supplied.
+No paid endpoint is allocated. The Milestone 4 report supplies a candidate hourly
+rental estimate. `qwen-base.json` keeps token prices `null`; a rental invoice must
+be tracked separately from token-based estimates.
 
 For input/output prices `p_in` and `p_out` in dollars per million tokens, an
 observed run costs `(input_tokens*p_in + output_tokens*p_out)/1e6`. Cached input

@@ -89,6 +89,6 @@
     "planned_dtype": "bfloat16",
     "native_context": 32768,
     "planned_served_context": 8192,
-    "vllm_build": "not selected or tested"
+    "vllm_build": "candidate 0.32.0 pinned in qwen-7b-pilot.json; not GPU-tested"
   }
 }
