@@ -1,0 +1,3083 @@
+{
+  "development_only": true,
+  "suites": {
+    "before": {
+      "runs": [
+        {
+          "task_id": "announcement-subtitle",
+          "run_id": "20261023T001559Z-48bbc8e0",
+          "artifacts": "runs/suite-20261023T001559Z-b132dee1/20261023T001559Z-48bbc8e0",
+          "sha256": {
+            "trace": "67f58ba5cd758b3177b4b973b6fdf2a2353cde48ec626e7c203ae276afbcc80c",
+            "result": "d65380f8230d7ab222000f29f4898a9c949fb137fa4c4b594e964b121259cc09",
+            "patch": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "e6049e1e5ae12b10bd604491ff64c009b64328dd",
+            "git_status": "M runtime/package-lock.json\n M runtime/package.json\n M runtime/tool.py\n M src/liquidbench/cli.py\n M src/liquidbench/evaluators/__init__.py\n M src/liquidbench/evaluators/common.py\n M src/liquidbench/evaluators/product_card.py\n M src/liquidbench/runner.py\n M tests/test_integration.py\n?? runtime/analyze.mjs\n?? src/liquidbench/evaluators/announcement_subtitle.py\n?? src/liquidbench/evaluators/asset_references.py\n?? src/liquidbench/evaluators/dom.py\n?? src/liquidbench/evaluators/section_schema.py\n?? src/liquidbench/evaluators/shipping_message.py\n?? tasks/dev/announcement-subtitle/\n?? tasks/dev/asset-references/\n?? tasks/dev/section-schema/\n?? tasks/dev/shipping-message/\n?? tests/test_modular.py\n?? tests/test_suite.py",
+            "python_source_digest": "76d4db280ddf28d7d9fc42d40860800236ff39bad9d870416e2152d868cfc6e6",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1032,
+          "output_tokens": 126,
+          "model_calls": 2,
+          "elapsed_seconds": 13.145079625071958,
+          "max_prompt_tokens": 590,
+          "max_output_tokens": 107,
+          "length_stops": 0,
+          "count_deltas": [],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 1,
+          "provider_errors": [],
+          "action_counts": {
+            "render": 1,
+            "finish": 1
+          },
+          "changed_files": [],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "render",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 6,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": [
+            {
+              "line": 4,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Liquid::UndefinedVariable: Liquid error: undefined variable heading"
+            }
+          ]
+        },
+        {
+          "task_id": "asset-references",
+          "run_id": "20261023T001612Z-dd83a45f",
+          "artifacts": "runs/suite-20261023T001559Z-b132dee1/20261023T001612Z-dd83a45f",
+          "sha256": {
+            "trace": "7f092e0cb6c0b038f976eebc59fccafa1e11b0795230b04bb81238bc7ddf2073",
+            "result": "d2d5376758c6fcee8bcb676e730b5e167429842e0bea6e7515fa6a85c4660ee6",
+            "patch": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "task_digest": "6acd37b41699971e1010f0717f1e449e4418a7ace7bccf8ea5efd764d9c5ae97",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "e6049e1e5ae12b10bd604491ff64c009b64328dd",
+            "git_status": "M runtime/package-lock.json\n M runtime/package.json\n M runtime/tool.py\n M src/liquidbench/cli.py\n M src/liquidbench/evaluators/__init__.py\n M src/liquidbench/evaluators/common.py\n M src/liquidbench/evaluators/product_card.py\n M src/liquidbench/runner.py\n M tests/test_integration.py\n?? runtime/analyze.mjs\n?? src/liquidbench/evaluators/announcement_subtitle.py\n?? src/liquidbench/evaluators/asset_references.py\n?? src/liquidbench/evaluators/dom.py\n?? src/liquidbench/evaluators/section_schema.py\n?? src/liquidbench/evaluators/shipping_message.py\n?? tasks/dev/announcement-subtitle/\n?? tasks/dev/asset-references/\n?? tasks/dev/section-schema/\n?? tasks/dev/shipping-message/\n?? tests/test_modular.py\n?? tests/test_suite.py",
+            "python_source_digest": "76d4db280ddf28d7d9fc42d40860800236ff39bad9d870416e2152d868cfc6e6",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0
+          },
+          "status": "failed",
+          "termination": "turn_budget",
+          "input_tokens": 12300,
+          "output_tokens": 1068,
+          "model_calls": 12,
+          "elapsed_seconds": 27.196249875007197,
+          "max_prompt_tokens": 1674,
+          "max_output_tokens": 89,
+          "length_stops": 0,
+          "count_deltas": [],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 12,
+          "provider_errors": [],
+          "action_counts": {
+            "render": 12
+          },
+          "changed_files": [],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "render",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 6,
+              "tool": "render",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 9,
+              "tool": "render",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 12,
+              "tool": "render",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 15,
+              "tool": "render",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 18,
+              "tool": "render",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 21,
+              "tool": "render",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 24,
+              "tool": "render",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 27,
+              "tool": "render",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 30,
+              "tool": "render",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 33,
+              "tool": "render",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 36,
+              "tool": "render",
+              "path": "snippets/promo-assets.liquid"
+            }
+          ],
+          "errors": [
+            {
+              "line": 4,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 7,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 10,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 13,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 16,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 19,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 22,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 25,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 28,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 31,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 34,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 37,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            }
+          ]
+        },
+        {
+          "task_id": "product-card",
+          "run_id": "20261023T001639Z-bf9de566",
+          "artifacts": "runs/suite-20261023T001559Z-b132dee1/20261023T001639Z-bf9de566",
+          "sha256": {
+            "trace": "1e048a6852812799cb80a63cd3a7a5c7792a8212be92c87c2418cf2a24c56893",
+            "result": "92469788280da53386db7696aca5f5acd6770cb2b4a3c56f9263a766e978d9c3",
+            "patch": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "task_digest": "35d1c090716cf27a197156ee92bfed3302456ef2c84fd4e17b1347a929e69140",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "e6049e1e5ae12b10bd604491ff64c009b64328dd",
+            "git_status": "M runtime/package-lock.json\n M runtime/package.json\n M runtime/tool.py\n M src/liquidbench/cli.py\n M src/liquidbench/evaluators/__init__.py\n M src/liquidbench/evaluators/common.py\n M src/liquidbench/evaluators/product_card.py\n M src/liquidbench/runner.py\n M tests/test_integration.py\n?? runtime/analyze.mjs\n?? src/liquidbench/evaluators/announcement_subtitle.py\n?? src/liquidbench/evaluators/asset_references.py\n?? src/liquidbench/evaluators/dom.py\n?? src/liquidbench/evaluators/section_schema.py\n?? src/liquidbench/evaluators/shipping_message.py\n?? tasks/dev/announcement-subtitle/\n?? tasks/dev/asset-references/\n?? tasks/dev/section-schema/\n?? tasks/dev/shipping-message/\n?? tests/test_modular.py\n?? tests/test_suite.py",
+            "python_source_digest": "76d4db280ddf28d7d9fc42d40860800236ff39bad9d870416e2152d868cfc6e6",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0
+          },
+          "status": "failed",
+          "termination": "turn_budget",
+          "input_tokens": 11766,
+          "output_tokens": 912,
+          "model_calls": 12,
+          "elapsed_seconds": 32.0284632910043,
+          "max_prompt_tokens": 1558,
+          "max_output_tokens": 76,
+          "length_stops": 0,
+          "count_deltas": [],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 12,
+          "provider_errors": [],
+          "action_counts": {
+            "render": 12
+          },
+          "changed_files": [],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 6,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 9,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 12,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 15,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 18,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 21,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 24,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 27,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 30,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 33,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 36,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            }
+          ],
+          "errors": [
+            {
+              "line": 4,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 7,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 10,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 13,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 16,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 19,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 22,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 25,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 28,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 31,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 34,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 37,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            }
+          ]
+        },
+        {
+          "task_id": "section-schema",
+          "run_id": "20261023T001711Z-d2868907",
+          "artifacts": "runs/suite-20261023T001559Z-b132dee1/20261023T001711Z-d2868907",
+          "sha256": {
+            "trace": "c859dd40cbb2e8128fc5bcddc7783325dbd5959e5b1136cedac699f5d9d3b803",
+            "result": "a2e821b776110909ce299387feb56fede9c7fd87025141b4f9d20f7cb4f00ff1",
+            "patch": "c5f1398c332c0f25abeceda817e2cc8ca20d78ae62bc3daf20e13a69fbac3a3a"
+          },
+          "task_digest": "cbb16e3776caacd65d7b43ef9e4a437dd9a1b16ecfdd32a0766b54c7d3089606",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "e6049e1e5ae12b10bd604491ff64c009b64328dd",
+            "git_status": "M runtime/package-lock.json\n M runtime/package.json\n M runtime/tool.py\n M src/liquidbench/cli.py\n M src/liquidbench/evaluators/__init__.py\n M src/liquidbench/evaluators/common.py\n M src/liquidbench/evaluators/product_card.py\n M src/liquidbench/runner.py\n M tests/test_integration.py\n?? runtime/analyze.mjs\n?? src/liquidbench/evaluators/announcement_subtitle.py\n?? src/liquidbench/evaluators/asset_references.py\n?? src/liquidbench/evaluators/dom.py\n?? src/liquidbench/evaluators/section_schema.py\n?? src/liquidbench/evaluators/shipping_message.py\n?? tasks/dev/announcement-subtitle/\n?? tasks/dev/asset-references/\n?? tasks/dev/section-schema/\n?? tasks/dev/shipping-message/\n?? tests/test_modular.py\n?? tests/test_suite.py",
+            "python_source_digest": "76d4db280ddf28d7d9fc42d40860800236ff39bad9d870416e2152d868cfc6e6",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 4619,
+          "output_tokens": 317,
+          "model_calls": 3,
+          "elapsed_seconds": 14.133484999882057,
+          "max_prompt_tokens": 2249,
+          "max_output_tokens": 265,
+          "length_stops": 0,
+          "count_deltas": [],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "analyze": 1,
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "sections/feature-panel.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "analyze",
+              "path": "sections/feature-panel.liquid"
+            },
+            {
+              "line": 6,
+              "tool": "write_file",
+              "path": "sections/feature-panel.liquid"
+            },
+            {
+              "line": 9,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "shipping-message",
+          "run_id": "20261023T001726Z-7f9a88ba",
+          "artifacts": "runs/suite-20261023T001559Z-b132dee1/20261023T001726Z-7f9a88ba",
+          "sha256": {
+            "trace": "a864c69988acd32c5e8e5c5cdaa70fcb3269f02c355299880c79410d20537810",
+            "result": "3bfa9dd7007b6be6970d1dd343c255dcd3c11dca5be17ea7236bed0a3f52925c",
+            "patch": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "task_digest": "e144fc10bf1225dc5c9c32fa226419906ce439e9459e8738eab7e76ea4841e6b",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "e6049e1e5ae12b10bd604491ff64c009b64328dd",
+            "git_status": "M runtime/package-lock.json\n M runtime/package.json\n M runtime/tool.py\n M src/liquidbench/cli.py\n M src/liquidbench/evaluators/__init__.py\n M src/liquidbench/evaluators/common.py\n M src/liquidbench/evaluators/product_card.py\n M src/liquidbench/runner.py\n M tests/test_integration.py\n?? runtime/analyze.mjs\n?? src/liquidbench/evaluators/announcement_subtitle.py\n?? src/liquidbench/evaluators/asset_references.py\n?? src/liquidbench/evaluators/dom.py\n?? src/liquidbench/evaluators/section_schema.py\n?? src/liquidbench/evaluators/shipping_message.py\n?? tasks/dev/announcement-subtitle/\n?? tasks/dev/asset-references/\n?? tasks/dev/section-schema/\n?? tasks/dev/shipping-message/\n?? tests/test_modular.py\n?? tests/test_suite.py",
+            "python_source_digest": "76d4db280ddf28d7d9fc42d40860800236ff39bad9d870416e2152d868cfc6e6",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0
+          },
+          "status": "failed",
+          "termination": "turn_budget",
+          "input_tokens": 12504,
+          "output_tokens": 996,
+          "model_calls": 12,
+          "elapsed_seconds": 32.30678379209712,
+          "max_prompt_tokens": 1658,
+          "max_output_tokens": 83,
+          "length_stops": 0,
+          "count_deltas": [],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 12,
+          "provider_errors": [],
+          "action_counts": {
+            "render": 12
+          },
+          "changed_files": [],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "render",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 6,
+              "tool": "render",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 9,
+              "tool": "render",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 12,
+              "tool": "render",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 15,
+              "tool": "render",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 18,
+              "tool": "render",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 21,
+              "tool": "render",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 24,
+              "tool": "render",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 27,
+              "tool": "render",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 30,
+              "tool": "render",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 33,
+              "tool": "render",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 36,
+              "tool": "render",
+              "path": "snippets/shipping-message.liquid"
+            }
+          ],
+          "errors": [
+            {
+              "line": 4,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 7,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 10,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 13,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 16,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 19,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 22,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 25,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 28,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 31,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 34,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            },
+            {
+              "line": 37,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Expected exactly one top-level schema block"
+            }
+          ]
+        }
+      ],
+      "totals": {
+        "attempts": 5,
+        "statuses": {
+          "failed": 5
+        },
+        "terminations": {
+          "finished": 2,
+          "turn_budget": 3
+        },
+        "input_tokens": 42221,
+        "output_tokens": 3419,
+        "model_calls": 41,
+        "protocol_errors": 0,
+        "tool_errors": 37,
+        "length_stops": 0
+      }
+    },
+    "candidate": {
+      "runs": [
+        {
+          "task_id": "announcement-subtitle",
+          "run_id": "20261023T012009Z-849924b2",
+          "artifacts": "runs/suite-20261023T012009Z-c324f706/20261023T012009Z-849924b2",
+          "sha256": {
+            "trace": "87522b3cd30afdf24990a256e4b750d9bd704c45d1d74191f1690cc46bf3ae34",
+            "result": "1aa2d168eee7446d02217892f28a1d213e83fc0de528000c380c617b03e1ddb8",
+            "patch": "10ae399e22c5c99188ed4ddb69a5d97025b2eacc862d8629b0b376eeb6b617ee"
+          },
+          "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "f626dc7df53cda9849e1ba29ef415af2472ae332",
+            "git_status": "?? docs/",
+            "python_source_digest": "52631a7911e0dfef78f4985ec8abcdfa111d89dd4fd46db7c1d0f53377f14ce7",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1392,
+          "output_tokens": 63,
+          "model_calls": 2,
+          "elapsed_seconds": 9.251397249987349,
+          "max_prompt_tokens": 734,
+          "max_output_tokens": 44,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "sections/announcement.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "write_file",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "asset-references",
+          "run_id": "20261023T012018Z-9f51d9ca",
+          "artifacts": "runs/suite-20261023T012009Z-c324f706/20261023T012018Z-9f51d9ca",
+          "sha256": {
+            "trace": "2364e2476b241d3c6ccec815923bb5839c1b5b7bd5d536ca65cac8aeb24a7d63",
+            "result": "54fd08d88a21e82ab47c93d805afbb3c362b889720f5c289c725f1077149e8b4",
+            "patch": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "task_digest": "6acd37b41699971e1010f0717f1e449e4418a7ace7bccf8ea5efd764d9c5ae97",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "f626dc7df53cda9849e1ba29ef415af2472ae332",
+            "git_status": "?? docs/",
+            "python_source_digest": "52631a7911e0dfef78f4985ec8abcdfa111d89dd4fd46db7c1d0f53377f14ce7",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp"
+          },
+          "status": "failed",
+          "termination": "turn_budget",
+          "input_tokens": 13195,
+          "output_tokens": 290,
+          "model_calls": 12,
+          "elapsed_seconds": 10.59189279191196,
+          "max_prompt_tokens": 1582,
+          "max_output_tokens": 100,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 9,
+          "protocol_errors": 9,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "search": 1,
+            "read_file": 1,
+            "write_file": 1
+          },
+          "changed_files": [],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "search",
+              "path": null
+            },
+            {
+              "line": 7,
+              "tool": "read_file",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "write_file",
+              "path": "snippets/promo-assets.liquid"
+            }
+          ],
+          "errors": [
+            {
+              "line": 16,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expected exactly {\"tool\": an available tool, \"args\": an object}"
+            },
+            {
+              "line": 19,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expected exactly {\"tool\": an available tool, \"args\": an object}"
+            },
+            {
+              "line": 22,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expected exactly {\"tool\": an available tool, \"args\": an object}"
+            },
+            {
+              "line": 25,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expected exactly {\"tool\": an available tool, \"args\": an object}"
+            },
+            {
+              "line": 28,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expected exactly {\"tool\": an available tool, \"args\": an object}"
+            },
+            {
+              "line": 31,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expected exactly {\"tool\": an available tool, \"args\": an object}"
+            },
+            {
+              "line": 34,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expected exactly {\"tool\": an available tool, \"args\": an object}"
+            },
+            {
+              "line": 37,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expected exactly {\"tool\": an available tool, \"args\": an object}"
+            },
+            {
+              "line": 40,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expected exactly {\"tool\": an available tool, \"args\": an object}"
+            }
+          ]
+        },
+        {
+          "task_id": "product-card",
+          "run_id": "20261023T012029Z-2934a473",
+          "artifacts": "runs/suite-20261023T012009Z-c324f706/20261023T012029Z-2934a473",
+          "sha256": {
+            "trace": "bff0bea38d6e3ee671e4b084ec54b2022c699f9d24314b512cc49c0fd0c113a0",
+            "result": "0d365d20179cb59422c2ad5ddb0d9770d8344d04dfa06ffd5db6f9c153843606",
+            "patch": "988ac0f22fc62268fb77ad11d388db22e2a3ac4828b07b69a7965e65806f3f75"
+          },
+          "task_digest": "35d1c090716cf27a197156ee92bfed3302456ef2c84fd4e17b1347a929e69140",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "f626dc7df53cda9849e1ba29ef415af2472ae332",
+            "git_status": "?? docs/",
+            "python_source_digest": "52631a7911e0dfef78f4985ec8abcdfa111d89dd4fd46db7c1d0f53377f14ce7",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp"
+          },
+          "status": "failed",
+          "termination": "turn_budget",
+          "input_tokens": 15520,
+          "output_tokens": 724,
+          "model_calls": 12,
+          "elapsed_seconds": 21.725996042136103,
+          "max_prompt_tokens": 1954,
+          "max_output_tokens": 90,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 4,
+          "protocol_errors": 4,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "render": 4,
+            "write_file": 4
+          },
+          "changed_files": [
+            "snippets/product-card.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 14,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 18,
+              "tool": "write_file",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 25,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 29,
+              "tool": "write_file",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 36,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 40,
+              "tool": "write_file",
+              "path": "snippets/product-card.liquid"
+            }
+          ],
+          "errors": [
+            {
+              "line": 12,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expected exactly {\"tool\": an available tool, \"args\": an object}"
+            },
+            {
+              "line": 23,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expected exactly {\"tool\": an available tool, \"args\": an object}"
+            },
+            {
+              "line": 34,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expected exactly {\"tool\": an available tool, \"args\": an object}"
+            },
+            {
+              "line": 45,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expected exactly {\"tool\": an available tool, \"args\": an object}"
+            }
+          ]
+        },
+        {
+          "task_id": "section-schema",
+          "run_id": "20261023T012051Z-707d9775",
+          "artifacts": "runs/suite-20261023T012009Z-c324f706/20261023T012051Z-707d9775",
+          "sha256": {
+            "trace": "37a30ab3d4dfbbc9a6488bf269288b9623fd441affabf49d46b4ec365b793a24",
+            "result": "05e06a991dc58bdee09559316ba7fa6fbbb64590bec82e36d5ff0301ee6875fd",
+            "patch": "810dfe46665f53f54478890eb5f06659ddbaa4d5ea0a38ff0348b9b41902d963"
+          },
+          "task_digest": "cbb16e3776caacd65d7b43ef9e4a437dd9a1b16ecfdd32a0766b54c7d3089606",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "f626dc7df53cda9849e1ba29ef415af2472ae332",
+            "git_status": "?? docs/",
+            "python_source_digest": "52631a7911e0dfef78f4985ec8abcdfa111d89dd4fd46db7c1d0f53377f14ce7",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 5111,
+          "output_tokens": 142,
+          "model_calls": 3,
+          "elapsed_seconds": 8.042604290880263,
+          "max_prompt_tokens": 2303,
+          "max_output_tokens": 90,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "analyze": 1,
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "sections/feature-panel.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "analyze",
+              "path": "sections/feature-panel.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "sections/feature-panel.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "shipping-message",
+          "run_id": "20261023T012059Z-c12ff325",
+          "artifacts": "runs/suite-20261023T012009Z-c324f706/20261023T012059Z-c12ff325",
+          "sha256": {
+            "trace": "d2f9d1e2344eda3375e5cc5b9a607921bfb9f21c6aa5209d7bb362f750408313",
+            "result": "bd0364623b9ede6edc10586c713c9cccba4c73fba2bb0d94a6f94fc743940b24",
+            "patch": "8e8f5de7d5389a75905ce6c4c2a96e90ffb84d2fac881e5f53b7ea1c22892a78"
+          },
+          "task_digest": "e144fc10bf1225dc5c9c32fa226419906ce439e9459e8738eab7e76ea4841e6b",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "f626dc7df53cda9849e1ba29ef415af2472ae332",
+            "git_status": "?? docs/",
+            "python_source_digest": "52631a7911e0dfef78f4985ec8abcdfa111d89dd4fd46db7c1d0f53377f14ce7",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1445,
+          "output_tokens": 148,
+          "model_calls": 2,
+          "elapsed_seconds": 6.838074458064511,
+          "max_prompt_tokens": 803,
+          "max_output_tokens": 129,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/shipping-message.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "write_file",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "totals": {
+        "attempts": 5,
+        "statuses": {
+          "failed": 5
+        },
+        "terminations": {
+          "finished": 3,
+          "turn_budget": 2
+        },
+        "input_tokens": 36663,
+        "output_tokens": 1367,
+        "model_calls": 31,
+        "protocol_errors": 13,
+        "tool_errors": 0,
+        "length_stops": 0
+      }
+    },
+    "text_1_5b": {
+      "runs": [
+        {
+          "task_id": "announcement-subtitle",
+          "run_id": "20261023T012201Z-3d8ea598",
+          "artifacts": "runs/suite-20261023T012201Z-2b1c55a2/20261023T012201Z-3d8ea598",
+          "sha256": {
+            "trace": "dc604feb863d1844480c0cdca919efec40ad1dc681717ac9a32a198fc46ff7dc",
+            "result": "654531612c83c4d147666d7e9b26f75590e2b1a05e3ee04a1141d9a186114e92",
+            "patch": "c2c9cd39ed7435e7946db362771a2db9021a553e4620616a370114e6375da208"
+          },
+          "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "6a66d0e8b1c870753c6a1ca8cc82dc93bfd5ee18",
+            "git_status": "?? docs/",
+            "python_source_digest": "43c9c03b0e1ae6d6468eae0762ff9791332a597f68d5a856733197fe33362d53",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1465,
+          "output_tokens": 148,
+          "model_calls": 2,
+          "elapsed_seconds": 6.01664033299312,
+          "max_prompt_tokens": 813,
+          "max_output_tokens": 129,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "sections/announcement.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "write_file",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "asset-references",
+          "run_id": "20261023T012207Z-0c3beaea",
+          "artifacts": "runs/suite-20261023T012201Z-2b1c55a2/20261023T012207Z-0c3beaea",
+          "sha256": {
+            "trace": "39348522f6427f4fe9c782729e0f49e3c378f271d4390bf20545122b492745a2",
+            "result": "1f72f34e355ea80fe3e1449de8f149845e11e81ffd272501422b96b110c88ab6",
+            "patch": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "task_digest": "6acd37b41699971e1010f0717f1e449e4418a7ace7bccf8ea5efd764d9c5ae97",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "6a66d0e8b1c870753c6a1ca8cc82dc93bfd5ee18",
+            "git_status": "?? docs/",
+            "python_source_digest": "43c9c03b0e1ae6d6468eae0762ff9791332a597f68d5a856733197fe33362d53",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp"
+          },
+          "status": "failed",
+          "termination": "turn_budget",
+          "input_tokens": 17229,
+          "output_tokens": 984,
+          "model_calls": 12,
+          "elapsed_seconds": 27.069968874799088,
+          "max_prompt_tokens": 2303,
+          "max_output_tokens": 82,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 12,
+          "protocol_errors": 12,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {},
+          "changed_files": [],
+          "actions": [],
+          "errors": [
+            {
+              "line": 4,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting ',' delimiter: line 1 column 261 (char 260)"
+            },
+            {
+              "line": 7,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting ',' delimiter: line 1 column 261 (char 260)"
+            },
+            {
+              "line": 10,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting ',' delimiter: line 1 column 261 (char 260)"
+            },
+            {
+              "line": 13,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting ',' delimiter: line 1 column 261 (char 260)"
+            },
+            {
+              "line": 16,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting ',' delimiter: line 1 column 261 (char 260)"
+            },
+            {
+              "line": 19,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting ',' delimiter: line 1 column 261 (char 260)"
+            },
+            {
+              "line": 22,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting ',' delimiter: line 1 column 261 (char 260)"
+            },
+            {
+              "line": 25,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting ',' delimiter: line 1 column 261 (char 260)"
+            },
+            {
+              "line": 28,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting ',' delimiter: line 1 column 261 (char 260)"
+            },
+            {
+              "line": 31,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting ',' delimiter: line 1 column 261 (char 260)"
+            },
+            {
+              "line": 34,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting ',' delimiter: line 1 column 261 (char 260)"
+            },
+            {
+              "line": 37,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting ',' delimiter: line 1 column 261 (char 260)"
+            }
+          ]
+        },
+        {
+          "task_id": "product-card",
+          "run_id": "20261023T012234Z-ce6aafab",
+          "artifacts": "runs/suite-20261023T012201Z-2b1c55a2/20261023T012234Z-ce6aafab",
+          "sha256": {
+            "trace": "fe6a7ddcb9f60f41fe5e115ad41fd7aff1ad34408daf96db805e6e5607ca301a",
+            "result": "2fd4a6ee2202926dd1c58f75085c370cec95ef47feb50738d27609b440ee0ca5",
+            "patch": "c390bf2e87d7fa28c873c0275456e7c4ba064edfeaba18f357e86dbdd5a396df"
+          },
+          "task_digest": "35d1c090716cf27a197156ee92bfed3302456ef2c84fd4e17b1347a929e69140",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "6a66d0e8b1c870753c6a1ca8cc82dc93bfd5ee18",
+            "git_status": "?? docs/",
+            "python_source_digest": "43c9c03b0e1ae6d6468eae0762ff9791332a597f68d5a856733197fe33362d53",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 2282,
+          "output_tokens": 184,
+          "model_calls": 3,
+          "elapsed_seconds": 7.566187416901812,
+          "max_prompt_tokens": 895,
+          "max_output_tokens": 89,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "render": 1,
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/product-card.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "section-schema",
+          "run_id": "20261023T012242Z-6b3b822f",
+          "artifacts": "runs/suite-20261023T012201Z-2b1c55a2/20261023T012242Z-6b3b822f",
+          "sha256": {
+            "trace": "3e5fb98172daa7d2e03e52eda0573f63aac8b9101cf0cf7a58301290eec27c2f",
+            "result": "0e1776fb14ba9557ee028f1e4e4c91265a14aed9dbea2dd87ac476c43f952be0",
+            "patch": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "task_digest": "cbb16e3776caacd65d7b43ef9e4a437dd9a1b16ecfdd32a0766b54c7d3089606",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "6a66d0e8b1c870753c6a1ca8cc82dc93bfd5ee18",
+            "git_status": "?? docs/",
+            "python_source_digest": "43c9c03b0e1ae6d6468eae0762ff9791332a597f68d5a856733197fe33362d53",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp"
+          },
+          "status": "failed",
+          "termination": "token_budget",
+          "input_tokens": 19281,
+          "output_tokens": 2790,
+          "model_calls": 9,
+          "elapsed_seconds": 68.59876475017518,
+          "max_prompt_tokens": 3680,
+          "max_output_tokens": 310,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 9,
+          "protocol_errors": 9,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {},
+          "changed_files": [],
+          "actions": [],
+          "errors": [
+            {
+              "line": 4,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 5 column 18 (char 100)"
+            },
+            {
+              "line": 7,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 5 column 18 (char 100)"
+            },
+            {
+              "line": 10,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 5 column 18 (char 100)"
+            },
+            {
+              "line": 13,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 5 column 18 (char 100)"
+            },
+            {
+              "line": 16,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 5 column 18 (char 100)"
+            },
+            {
+              "line": 19,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 5 column 18 (char 100)"
+            },
+            {
+              "line": 22,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 5 column 18 (char 100)"
+            },
+            {
+              "line": 25,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 5 column 18 (char 100)"
+            },
+            {
+              "line": 28,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 5 column 18 (char 100)"
+            }
+          ]
+        },
+        {
+          "task_id": "shipping-message",
+          "run_id": "20261023T012350Z-bf8204fa",
+          "artifacts": "runs/suite-20261023T012201Z-2b1c55a2/20261023T012350Z-bf8204fa",
+          "sha256": {
+            "trace": "970c1a595f933313b3035b46ad9913494c1de009f122d7adb0fe065bb93c7702",
+            "result": "571504a6caeac8a4909ef9c93303ea811bb19d00aa1b54aad482acfaf4510815",
+            "patch": "8e8f5de7d5389a75905ce6c4c2a96e90ffb84d2fac881e5f53b7ea1c22892a78"
+          },
+          "task_digest": "e144fc10bf1225dc5c9c32fa226419906ce439e9459e8738eab7e76ea4841e6b",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "6a66d0e8b1c870753c6a1ca8cc82dc93bfd5ee18",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "43c9c03b0e1ae6d6468eae0762ff9791332a597f68d5a856733197fe33362d53",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1433,
+          "output_tokens": 148,
+          "model_calls": 2,
+          "elapsed_seconds": 6.909188750199974,
+          "max_prompt_tokens": 797,
+          "max_output_tokens": 129,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/shipping-message.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "write_file",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "totals": {
+        "attempts": 5,
+        "statuses": {
+          "failed": 5
+        },
+        "terminations": {
+          "finished": 3,
+          "turn_budget": 1,
+          "token_budget": 1
+        },
+        "input_tokens": 41690,
+        "output_tokens": 4254,
+        "model_calls": 28,
+        "protocol_errors": 21,
+        "tool_errors": 0,
+        "length_stops": 0
+      }
+    },
+    "text_3b": {
+      "runs": [
+        {
+          "task_id": "announcement-subtitle",
+          "run_id": "20261023T012540Z-cc529527",
+          "artifacts": "runs/suite-20261023T012537Z-01442a59/20261023T012540Z-cc529527",
+          "sha256": {
+            "trace": "a710744532746e412ca838f053308562a9d3c1773fab6d095158c52b42edfa49",
+            "result": "1900245ce7703f67f5ab9fac43716dcf9215f1a6e67635d7fb5d10f5d78a98ae",
+            "patch": "784b03e9d846394ef348aab2e5bdc07c7236f9f1259f1e6a09a64c4e7d43db0e"
+          },
+          "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "6a66d0e8b1c870753c6a1ca8cc82dc93bfd5ee18",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "43c9c03b0e1ae6d6468eae0762ff9791332a597f68d5a856733197fe33362d53",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development calibration diagnostic with larger local model; not a research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-3b",
+            "model_revision": "Qwen/Qwen2.5-Coder-3B-Instruct-GGUF@f74adce6aa16316c625447af059dbebe4983757c; Q4_K_M sha256:724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 5040,
+          "output_tokens": 490,
+          "model_calls": 4,
+          "elapsed_seconds": 33.25170374987647,
+          "max_prompt_tokens": 1887,
+          "max_output_tokens": 405,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "read_file": 2,
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "sections/announcement.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "read_file",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "read_file",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "write_file",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 15,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "asset-references",
+          "run_id": "20261023T012613Z-899b064f",
+          "artifacts": "runs/suite-20261023T012537Z-01442a59/20261023T012613Z-899b064f",
+          "sha256": {
+            "trace": "ff8d62d5cccee2d6d32fd7d546e446139b02ed5ced72b9c152cdb5a5662c8853",
+            "result": "81aea896d060d735020c423b5513bcb2fe5a4be820618e2e07ccec42f9507eb0",
+            "patch": "c7ff41a8407d3461bfc6c334756fd38fad44fcb136b68adc1a25f800f5ed7080"
+          },
+          "task_digest": "6acd37b41699971e1010f0717f1e449e4418a7ace7bccf8ea5efd764d9c5ae97",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "6a66d0e8b1c870753c6a1ca8cc82dc93bfd5ee18",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "43c9c03b0e1ae6d6468eae0762ff9791332a597f68d5a856733197fe33362d53",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development calibration diagnostic with larger local model; not a research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-3b",
+            "model_revision": "Qwen/Qwen2.5-Coder-3B-Instruct-GGUF@f74adce6aa16316c625447af059dbebe4983757c; Q4_K_M sha256:724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 2141,
+          "output_tokens": 153,
+          "model_calls": 3,
+          "elapsed_seconds": 9.82396704191342,
+          "max_prompt_tokens": 843,
+          "max_output_tokens": 99,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "read_file": 1,
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/promo-assets.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "read_file",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "product-card",
+          "run_id": "20261023T012623Z-b2b3d65f",
+          "artifacts": "runs/suite-20261023T012537Z-01442a59/20261023T012623Z-b2b3d65f",
+          "sha256": {
+            "trace": "1c488a01889e341a623e24638dea67a7d1349eedc54a38dafacdc853663216ec",
+            "result": "e69f4d5ead3bd0d2357e24963ede47e1cdff9ef6f6ad6c59b06a453278ab70dc",
+            "patch": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "task_digest": "35d1c090716cf27a197156ee92bfed3302456ef2c84fd4e17b1347a929e69140",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "6a66d0e8b1c870753c6a1ca8cc82dc93bfd5ee18",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "43c9c03b0e1ae6d6468eae0762ff9791332a597f68d5a856733197fe33362d53",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development calibration diagnostic with larger local model; not a research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-3b",
+            "model_revision": "Qwen/Qwen2.5-Coder-3B-Instruct-GGUF@f74adce6aa16316c625447af059dbebe4983757c; Q4_K_M sha256:724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp"
+          },
+          "status": "failed",
+          "termination": "turn_budget",
+          "input_tokens": 21051,
+          "output_tokens": 1656,
+          "model_calls": 12,
+          "elapsed_seconds": 77.33477650000714,
+          "max_prompt_tokens": 2913,
+          "max_output_tokens": 138,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 12,
+          "protocol_errors": 12,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {},
+          "changed_files": [],
+          "actions": [],
+          "errors": [
+            {
+              "line": 4,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting value: line 5 column 16 (char 97)"
+            },
+            {
+              "line": 7,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting value: line 5 column 16 (char 97)"
+            },
+            {
+              "line": 10,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting value: line 5 column 16 (char 97)"
+            },
+            {
+              "line": 13,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting value: line 5 column 16 (char 97)"
+            },
+            {
+              "line": 16,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting value: line 5 column 16 (char 97)"
+            },
+            {
+              "line": 19,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting value: line 5 column 16 (char 97)"
+            },
+            {
+              "line": 22,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting value: line 5 column 16 (char 97)"
+            },
+            {
+              "line": 25,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting value: line 5 column 16 (char 97)"
+            },
+            {
+              "line": 28,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting value: line 5 column 16 (char 97)"
+            },
+            {
+              "line": 31,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting value: line 5 column 16 (char 97)"
+            },
+            {
+              "line": 34,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting value: line 5 column 16 (char 97)"
+            },
+            {
+              "line": 37,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Expecting value: line 5 column 16 (char 97)"
+            }
+          ]
+        },
+        {
+          "task_id": "section-schema",
+          "run_id": "20261023T012741Z-76e651ee",
+          "artifacts": "runs/suite-20261023T012537Z-01442a59/20261023T012741Z-76e651ee",
+          "sha256": {
+            "trace": "48e8ca7841f7543af900063d14486cd9a85b3f1aea2862625b745554deab58e7",
+            "result": "42107649ce5950cae5e35d52688544d3c8676d39c68873e23bd83834217040a0",
+            "patch": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "task_digest": "cbb16e3776caacd65d7b43ef9e4a437dd9a1b16ecfdd32a0766b54c7d3089606",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "6a66d0e8b1c870753c6a1ca8cc82dc93bfd5ee18",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "43c9c03b0e1ae6d6468eae0762ff9791332a597f68d5a856733197fe33362d53",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development calibration diagnostic with larger local model; not a research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-3b",
+            "model_revision": "Qwen/Qwen2.5-Coder-3B-Instruct-GGUF@f74adce6aa16316c625447af059dbebe4983757c; Q4_K_M sha256:724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp"
+          },
+          "status": "failed",
+          "termination": "token_budget",
+          "input_tokens": 19216,
+          "output_tokens": 1705,
+          "model_calls": 11,
+          "elapsed_seconds": 72.04948833398521,
+          "max_prompt_tokens": 2890,
+          "max_output_tokens": 155,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 11,
+          "protocol_errors": 11,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {},
+          "changed_files": [],
+          "actions": [],
+          "errors": [
+            {
+              "line": 4,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 1 column 83 (char 82)"
+            },
+            {
+              "line": 7,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 1 column 83 (char 82)"
+            },
+            {
+              "line": 10,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 1 column 83 (char 82)"
+            },
+            {
+              "line": 13,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 1 column 83 (char 82)"
+            },
+            {
+              "line": 16,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 1 column 83 (char 82)"
+            },
+            {
+              "line": 19,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 1 column 83 (char 82)"
+            },
+            {
+              "line": 22,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 1 column 83 (char 82)"
+            },
+            {
+              "line": 25,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 1 column 83 (char 82)"
+            },
+            {
+              "line": 28,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 1 column 83 (char 82)"
+            },
+            {
+              "line": 31,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 1 column 83 (char 82)"
+            },
+            {
+              "line": 34,
+              "tool": null,
+              "type": "protocol_errors",
+              "error": "Invalid control character at: line 1 column 83 (char 82)"
+            }
+          ]
+        },
+        {
+          "task_id": "shipping-message",
+          "run_id": "20261023T012853Z-06b2b086",
+          "artifacts": "runs/suite-20261023T012537Z-01442a59/20261023T012853Z-06b2b086",
+          "sha256": {
+            "trace": "4cae83a6af7979a1a174fbdffad2afe0e4d493cb2ba34576d037116f187b6f97",
+            "result": "3d661f3251978230cd7e0758e0ea9a121422ee28b2d3b2ca01851fefa8bbe0f4",
+            "patch": "b290210712b62b8a87626a8895236d6de4266236dfa038be1db0f57fc1baf124"
+          },
+          "task_digest": "e144fc10bf1225dc5c9c32fa226419906ce439e9459e8738eab7e76ea4841e6b",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "6a66d0e8b1c870753c6a1ca8cc82dc93bfd5ee18",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "43c9c03b0e1ae6d6468eae0762ff9791332a597f68d5a856733197fe33362d53",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development calibration diagnostic with larger local model; not a research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-3b",
+            "model_revision": "Qwen/Qwen2.5-Coder-3B-Instruct-GGUF@f74adce6aa16316c625447af059dbebe4983757c; Q4_K_M sha256:724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 2359,
+          "output_tokens": 160,
+          "model_calls": 3,
+          "elapsed_seconds": 11.05244274996221,
+          "max_prompt_tokens": 939,
+          "max_output_tokens": 123,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "read_file": 1,
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/shipping-message.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "read_file",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "totals": {
+        "attempts": 5,
+        "statuses": {
+          "failed": 5
+        },
+        "terminations": {
+          "finished": 3,
+          "turn_budget": 1,
+          "token_budget": 1
+        },
+        "input_tokens": 49807,
+        "output_tokens": 4164,
+        "model_calls": 33,
+        "protocol_errors": 23,
+        "tool_errors": 0,
+        "length_stops": 0
+      }
+    },
+    "json_3b": {
+      "runs": [
+        {
+          "task_id": "announcement-subtitle",
+          "run_id": "20261023T012954Z-4d10a199",
+          "artifacts": "runs/suite-20261023T012954Z-ef72862f/20261023T012954Z-4d10a199",
+          "sha256": {
+            "trace": "886835ad63ef872d111aa04a5302802ca2f66fece197915f976056415922035d",
+            "result": "c78e837c1c7b6336e3699f4d8f6f0ef4cdefeb49fc027d8a07d3679cf991491e",
+            "patch": "784b03e9d846394ef348aab2e5bdc07c7236f9f1259f1e6a09a64c4e7d43db0e"
+          },
+          "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development calibration diagnostic with larger local model; not a research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-3b",
+            "model_revision": "Qwen/Qwen2.5-Coder-3B-Instruct-GGUF@f74adce6aa16316c625447af059dbebe4983757c; Q4_K_M sha256:724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 3179,
+          "output_tokens": 449,
+          "model_calls": 3,
+          "elapsed_seconds": 31.365209417184815,
+          "max_prompt_tokens": 1480,
+          "max_output_tokens": 401,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "read_file": 1,
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "sections/announcement.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "read_file",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "asset-references",
+          "run_id": "20261023T013026Z-fd9e57e9",
+          "artifacts": "runs/suite-20261023T012954Z-ef72862f/20261023T013026Z-fd9e57e9",
+          "sha256": {
+            "trace": "62ccd7e41abaa5807ca4309fd0eee8a59ef353299559df2c6ed0bef8e5c0b220",
+            "result": "8763bedf2be12c176ac04f5f9e60bde59e8c2c5e616b9cedec46d7ab78a4410d",
+            "patch": "c7ff41a8407d3461bfc6c334756fd38fad44fcb136b68adc1a25f800f5ed7080"
+          },
+          "task_digest": "6acd37b41699971e1010f0717f1e449e4418a7ace7bccf8ea5efd764d9c5ae97",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development calibration diagnostic with larger local model; not a research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-3b",
+            "model_revision": "Qwen/Qwen2.5-Coder-3B-Instruct-GGUF@f74adce6aa16316c625447af059dbebe4983757c; Q4_K_M sha256:724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 2129,
+          "output_tokens": 145,
+          "model_calls": 3,
+          "elapsed_seconds": 10.055969417095184,
+          "max_prompt_tokens": 835,
+          "max_output_tokens": 95,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "read_file": 1,
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/promo-assets.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "read_file",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "product-card",
+          "run_id": "20261023T013036Z-51a6b929",
+          "artifacts": "runs/suite-20261023T012954Z-ef72862f/20261023T013036Z-51a6b929",
+          "sha256": {
+            "trace": "6d6b2b8ef5d33dfeff9b8d2c0e342e7f41f38a86da6a9993884c7326c1b793de",
+            "result": "013e7e8250a8ef05f15269f63cbf29a56f085bacd6372360b360d58399e9010d",
+            "patch": "6bc940738a94513d894d019aac1233f97831252a231652a16cbe683ac0697a6c"
+          },
+          "task_digest": "35d1c090716cf27a197156ee92bfed3302456ef2c84fd4e17b1347a929e69140",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development calibration diagnostic with larger local model; not a research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-3b",
+            "model_revision": "Qwen/Qwen2.5-Coder-3B-Instruct-GGUF@f74adce6aa16316c625447af059dbebe4983757c; Q4_K_M sha256:724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1402,
+          "output_tokens": 163,
+          "model_calls": 2,
+          "elapsed_seconds": 12.324462542077526,
+          "max_prompt_tokens": 789,
+          "max_output_tokens": 148,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/product-card.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "write_file",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "section-schema",
+          "run_id": "20261023T013048Z-ff5387d8",
+          "artifacts": "runs/suite-20261023T012954Z-ef72862f/20261023T013048Z-ff5387d8",
+          "sha256": {
+            "trace": "151a4f76e4f7c7ec5704b350ec7d70308a79d0196b7e1982c0cfb0a842f67a4e",
+            "result": "df3f7ae6dff19c3f05b8db2131f48da126ad83d286deb3fcfde3de82a9fa6a47",
+            "patch": "7c55ff25364c5e89b4ebe35098e93d4c5c3d1ac586123a326f5b02b9a81a9437"
+          },
+          "task_digest": "cbb16e3776caacd65d7b43ef9e4a437dd9a1b16ecfdd32a0766b54c7d3089606",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development calibration diagnostic with larger local model; not a research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-3b",
+            "model_revision": "Qwen/Qwen2.5-Coder-3B-Instruct-GGUF@f74adce6aa16316c625447af059dbebe4983757c; Q4_K_M sha256:724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1536,
+          "output_tokens": 276,
+          "model_calls": 2,
+          "elapsed_seconds": 14.74043379095383,
+          "max_prompt_tokens": 915,
+          "max_output_tokens": 266,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "sections/feature-panel.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "write_file",
+              "path": "sections/feature-panel.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "shipping-message",
+          "run_id": "20261023T013103Z-654db58e",
+          "artifacts": "runs/suite-20261023T012954Z-ef72862f/20261023T013103Z-654db58e",
+          "sha256": {
+            "trace": "7d0aaeb24a8abd39b29901063454327721c4308e4ffedc23c46bda9857811086",
+            "result": "7444071a38713661c38420eb2df3bd3cf27b7c94cb86ddea8e0f0f3df9777fa1",
+            "patch": "b290210712b62b8a87626a8895236d6de4266236dfa038be1db0f57fc1baf124"
+          },
+          "task_digest": "e144fc10bf1225dc5c9c32fa226419906ce439e9459e8738eab7e76ea4841e6b",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development calibration diagnostic with larger local model; not a research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-3b",
+            "model_revision": "Qwen/Qwen2.5-Coder-3B-Instruct-GGUF@f74adce6aa16316c625447af059dbebe4983757c; Q4_K_M sha256:724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 2347,
+          "output_tokens": 152,
+          "model_calls": 3,
+          "elapsed_seconds": 11.608801417052746,
+          "max_prompt_tokens": 931,
+          "max_output_tokens": 119,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "read_file": 1,
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/shipping-message.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "read_file",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "totals": {
+        "attempts": 5,
+        "statuses": {
+          "failed": 5
+        },
+        "terminations": {
+          "finished": 5
+        },
+        "input_tokens": 10593,
+        "output_tokens": 1185,
+        "model_calls": 13,
+        "protocol_errors": 0,
+        "tool_errors": 0,
+        "length_stops": 0
+      }
+    },
+    "after": {
+      "runs": [
+        {
+          "task_id": "announcement-subtitle",
+          "run_id": "20261023T013147Z-5faf2bec",
+          "artifacts": "runs/suite-20261023T013146Z-f5c34ab9/20261023T013147Z-5faf2bec",
+          "sha256": {
+            "trace": "af47b9840d23015017a9a686f044ff513550d31483a0410d1cf5b0457c887068",
+            "result": "358bae16cf1ac00ae5a953bd268bd61e6b189d9ed31d96a8a3354b5876a0469c",
+            "patch": "c2c9cd39ed7435e7946db362771a2db9021a553e4620616a370114e6375da208"
+          },
+          "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1461,
+          "output_tokens": 144,
+          "model_calls": 2,
+          "elapsed_seconds": 6.151486916933209,
+          "max_prompt_tokens": 809,
+          "max_output_tokens": 129,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "sections/announcement.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "write_file",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "asset-references",
+          "run_id": "20261023T013153Z-16d4381a",
+          "artifacts": "runs/suite-20261023T013146Z-f5c34ab9/20261023T013153Z-16d4381a",
+          "sha256": {
+            "trace": "23ff3054b84250cc7ea45ea1be8350abf00ae50e65bfb31f4fe236293cdf992a",
+            "result": "c64d66c86f37fda940d78c20ca3cf5caf0c2cb23b911917fdfbfd002c3cca2d5",
+            "patch": "db3eee8d0c3a9c91343e18bc8e4eed1531d6f4e3f0ffc641ad3854cec5a26ef5"
+          },
+          "task_digest": "6acd37b41699971e1010f0717f1e449e4418a7ace7bccf8ea5efd764d9c5ae97",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1286,
+          "output_tokens": 93,
+          "model_calls": 2,
+          "elapsed_seconds": 3.6967776669189334,
+          "max_prompt_tokens": 700,
+          "max_output_tokens": 83,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/promo-assets.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "write_file",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "product-card",
+          "run_id": "20261023T013156Z-1be9ca8a",
+          "artifacts": "runs/suite-20261023T013146Z-f5c34ab9/20261023T013156Z-1be9ca8a",
+          "sha256": {
+            "trace": "0a120096d4cf57fb443209f5452d24ffd07ffb69ca3f702606ac9af195b00442",
+            "result": "70d85df8214d857e7844051fc69a0209281c799d112fa962d1b23e0a10331a64",
+            "patch": "c390bf2e87d7fa28c873c0275456e7c4ba064edfeaba18f357e86dbdd5a396df"
+          },
+          "task_digest": "35d1c090716cf27a197156ee92bfed3302456ef2c84fd4e17b1347a929e69140",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 2270,
+          "output_tokens": 176,
+          "model_calls": 3,
+          "elapsed_seconds": 8.992987874895334,
+          "max_prompt_tokens": 887,
+          "max_output_tokens": 85,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "render": 1,
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/product-card.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "section-schema",
+          "run_id": "20261023T013205Z-547f84c2",
+          "artifacts": "runs/suite-20261023T013146Z-f5c34ab9/20261023T013205Z-547f84c2",
+          "sha256": {
+            "trace": "2a73e600b8ca4cd678fef6a737ce593c4c8e12524a3878fb713f243589e4e5d1",
+            "result": "a983ad2759a984b1ade03fe89b5018ebe4bbc349e08b49014e4ef5586e45de03",
+            "patch": "2a4df9767116c600fee69170e46e75c50b8476de91da9bcde223ffa43a7b84fc"
+          },
+          "task_digest": "cbb16e3776caacd65d7b43ef9e4a437dd9a1b16ecfdd32a0766b54c7d3089606",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1694,
+          "output_tokens": 439,
+          "model_calls": 2,
+          "elapsed_seconds": 12.636740749934688,
+          "max_prompt_tokens": 1073,
+          "max_output_tokens": 424,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "sections/feature-panel.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "write_file",
+              "path": "sections/feature-panel.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "shipping-message",
+          "run_id": "20261023T013218Z-069e98c8",
+          "artifacts": "runs/suite-20261023T013146Z-f5c34ab9/20261023T013218Z-069e98c8",
+          "sha256": {
+            "trace": "46f983a15d8c05c9632c439e5b5b3a1bbf7d151317cff5f2b7d01d06278eea96",
+            "result": "ef6fce86282714baa312d6da7c256084f7c492cc916e68ce3984287b5331f234",
+            "patch": "8e8f5de7d5389a75905ce6c4c2a96e90ffb84d2fac881e5f53b7ea1c22892a78"
+          },
+          "task_digest": "e144fc10bf1225dc5c9c32fa226419906ce439e9459e8738eab7e76ea4841e6b",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1429,
+          "output_tokens": 144,
+          "model_calls": 2,
+          "elapsed_seconds": 7.513720958959311,
+          "max_prompt_tokens": 793,
+          "max_output_tokens": 129,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/shipping-message.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "write_file",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "totals": {
+        "attempts": 5,
+        "statuses": {
+          "failed": 5
+        },
+        "terminations": {
+          "finished": 5
+        },
+        "input_tokens": 8140,
+        "output_tokens": 996,
+        "model_calls": 11,
+        "protocol_errors": 0,
+        "tool_errors": 0,
+        "length_stops": 0
+      }
+    }
+  }
+}

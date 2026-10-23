@@ -2,7 +2,7 @@
 
 A Python harness for controlled experiments on offline Liquid coding tasks. The research design is in [brief.txt](brief.txt).
 
-Milestone 2 implements five **development** tasks and a modular grader. The runner gives an agent isolated tools, submits its final files to a separate grader, and saves the grade, trace, patch, token usage, latency, and estimated inference cost. No held-out benchmark or research results are claimed yet.
+LiquidBench implements five **development** tasks, a modular grader, and an agent protocol with explicit context accounting. The runner gives an agent isolated tools, submits its final files to a separate grader, and saves the grade, trace, patch, token usage, latency, and estimated inference cost. No held-out benchmark or research results are claimed yet. See the [Milestone 3 failure analysis](docs/calibration/milestone-3.md) and [7B preparation notes](docs/calibration/qwen-7b.md).
 
 | Task | Required repair | Grading evidence |
 | --- | --- | --- |
@@ -43,7 +43,7 @@ For a free local smoke test on Apple Silicon:
 brew install llama.cpp
 llama-server -hf Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF:Q4_K_M \
   --host 127.0.0.1 --port 8087 --alias liquidbench-smoke \
-  --ctx-size 8192 --parallel 1 --threads 4
+  --ctx-size 8192 --parallel 1 --threads 4 --no-context-shift
 ```
 
 In another terminal:
@@ -58,7 +58,7 @@ uv run liquidbench run-suite --config configs/local-smoke.json
 
 This small quantized model is a development smoke test, **not the planned 7B research baseline**. The model download is approximately 1 GB. Stop the server with Ctrl-C when finished. Stop the dedicated VM with `colima stop --profile liquidbench` when it is no longer needed.
 
-For a separately provisioned Qwen 7B endpoint, edit a copy of `configs/qwen-base.json`, then run it with `--config`. That configuration is deliberately marked provisional. Set its checkpoint revision, endpoint, prices, and serving settings before research use. This repository does not provision or purchase GPU instances.
+For an already available Qwen 7B endpoint, edit a copy of `configs/qwen-base.json`, then run it with `--config`. Its checkpoint revision is pinned, but the serving build and actual 7B inference remain unvalidated. Set the endpoint, prices, precision and pinned serving settings before research use. This repository does not provision or purchase GPU instances.
 
 CLI exit codes: `0` passed, `1` model/task failure or failed grader validation, `2` infrastructure/configuration error. A real model failure is a valid captured attempt.
 
@@ -108,7 +108,13 @@ The same system instruction and loop apply to every model. Each assistant turn r
 
 Tools are `list_files`, `read_file`, `write_file`, `search`, `analyze`, `render`, `check`, and `finish`. One surrounding Markdown JSON fence is normalized; extra prose, malformed JSON, and unknown tools are errors. Tool errors consume turns and remain in the trace. The agent must explicitly finish.
 
-Development defaults: 12 turns, 24,000 cumulative reported tokens, 1,024 output tokens per request, 300 seconds, and up to two retries for transient provider failures. Input context is conservatively reserved using UTF-8 byte length plus message overhead before requests; actual input/output usage comes from the provider. A measured token overrun fails before executing its action. This is a development admission estimate, not an exact tokenizer guarantee; calibrate or replace it before controlled research runs. Cached prompt tokens are still counted toward the common allowance. Request and tool output limits bound context growth.
+The calibrated configurations set `response_format: "json_object"` for server-enforced JSON syntax. This is model-agnostic and contains no task-specific schema. Tool names, arguments, edits and grading remain strictly validated. Use explicit `"text"` only to reproduce unconstrained experiments; an unsupported JSON mode fails without silently falling back.
+
+Development defaults: 12 turns, 24,000 cumulative reported tokens, 1,024 output tokens per request, 300 seconds, and up to two retries for transient provider failures. Each request must separately fit an 8,192-token context, including the output reservation. The cumulative budget counts all repeated/cached input across turns; it is not a context-window size.
+
+Configurations require `max_context_tokens` and `token_counting`: `llama_cpp` counts the server's templated prompt via `/apply-template` and `/tokenize`; `vllm` uses chat `/tokenize`. Both reserve an additional 32 tokens and check reported usage before executing actions. Counting failures or count overruns are infrastructure failures. Overfull history stops with `context_budget`; history is never silently shortened. `conservative_bytes` is an explicit approximate fallback, unsuitable for exact controlled comparisons. The server's actual context must match configuration; disable automatic context shifting.
+
+Argument names/types are validated. Render failures return `ok:false`, with public recovery guidance for schema-flag misuse and repeated failures. Output-length stops never execute truncated actions. Results record protocol errors, tool errors and output truncations separately; these errors consume the normal budget.
 
 Provider authentication errors are not retried. Transient errors and every retry are logged. Failed requests with unknown usage make total estimated cost unknown; observed usage cost is retained separately. Docker/evaluator faults are infrastructure errors, with zero automatic runtime retries. Budget exhaustion, invalid tool actions, and incorrect code are model failures. Research aggregation must report missing infrastructure runs explicitly.
 
@@ -128,8 +134,8 @@ Unknown pricing yields `null`, not a fabricated zero. Local smoke configuration 
 ## Development
 
 ```sh
-uv run ruff check src tests
-uv run ruff format --check src tests
+uv run ruff check src tests scripts
+uv run ruff format --check src tests scripts
 uv run pytest -q -m 'not integration'
 LIQUIDBENCH_INTEGRATION=1 uv run pytest -q -m integration
 ```
@@ -146,7 +152,11 @@ tests/             grading, accounting, failure, and isolation checks
 
 Milestone 2 verification: 139 tests passed locally (54 unit and 85 container integration), including all 71 candidate verdicts, successful scripted-reference end-to-end runs for every task, and hidden-data isolation checks. A free Qwen2.5-Coder-1.5B Q4_K_M `run-suite` smoke completed all five real-model attempts: zero passed, five failed, zero infrastructure errors. Two attempts finished with invalid submissions and three exhausted the turn budget. These small-model development attempts are not research scores; successful scripted-reference runs are harness tests, not model results.
 
-Recommended next step: audit the failed local traces and calibrate the action protocol and budgets, then freeze the development task/evaluator versions before controlled model comparisons. Skills integration, post-training, held-out tasks, real storefront tests, and a leaderboard remain outside this milestone.
+Milestone 3 adds trace-based failure reporting, backend prompt counting, clearer tool instructions/error feedback, and a reproducible comparison script. Run `uv run python scripts/analyze_runs.py before=runs/<suite> after=runs/<suite>` to summarize saved attempts without calling a model or loading hidden evaluator data. Full calibration results and remaining readiness gates are in the [failure report](docs/calibration/milestone-3.md). Skills integration, post-training, held-out tasks, real storefront tests, and a leaderboard remain outside this milestone.
+
+The final local JSON-mode suites completed with zero protocol/tool/infrastructure errors for both Qwen 1.5B and 3B, but each passed 0/5 tasks due to incorrect code. The 1.5B token total fell from 45,640 to 9,136 as failure loops disappeared and submissions finished earlier. This supports a 7B development pilot, not research-readiness or a task-solving claim. All intermediate calibration attempts are reported; budgets and graders were unchanged.
+
+Milestone 3 validation: **161 tests passed** (76 unit, 85 container integration), including all 71 unchanged grader verdicts. Lint and formatting also passed.
 
 ## Sources
 

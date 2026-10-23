@@ -1,0 +1,9 @@
+{
+  "purpose": "generic near-window accounting probe; no task/evaluation data",
+  "prompt_count": 7022,
+  "reported_input": 7022,
+  "output_tokens": 1,
+  "configured_context": 8192,
+  "finish_reason": "stop",
+  "count_matches": true
+}
