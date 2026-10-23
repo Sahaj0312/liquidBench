@@ -1,0 +1,1385 @@
+{
+  "development_only": true,
+  "research_result": false,
+  "suite": "runs/suite-20261023T175220Z-4b832a5f",
+  "suites": {
+    "qwen_1_5b": {
+      "runs": [
+        {
+          "task_id": "announcement-subtitle",
+          "run_id": "20261023T013147Z-5faf2bec",
+          "artifacts": "runs/suite-20261023T013146Z-f5c34ab9/20261023T013147Z-5faf2bec",
+          "sha256": {
+            "trace": "af47b9840d23015017a9a686f044ff513550d31483a0410d1cf5b0457c887068",
+            "result": "358bae16cf1ac00ae5a953bd268bd61e6b189d9ed31d96a8a3354b5876a0469c",
+            "patch": "c2c9cd39ed7435e7946db362771a2db9021a553e4620616a370114e6375da208"
+          },
+          "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1461,
+          "output_tokens": 144,
+          "model_calls": 2,
+          "elapsed_seconds": 6.151486916933209,
+          "max_prompt_tokens": 809,
+          "max_output_tokens": 129,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "sections/announcement.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "write_file",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "asset-references",
+          "run_id": "20261023T013153Z-16d4381a",
+          "artifacts": "runs/suite-20261023T013146Z-f5c34ab9/20261023T013153Z-16d4381a",
+          "sha256": {
+            "trace": "23ff3054b84250cc7ea45ea1be8350abf00ae50e65bfb31f4fe236293cdf992a",
+            "result": "c64d66c86f37fda940d78c20ca3cf5caf0c2cb23b911917fdfbfd002c3cca2d5",
+            "patch": "db3eee8d0c3a9c91343e18bc8e4eed1531d6f4e3f0ffc641ad3854cec5a26ef5"
+          },
+          "task_digest": "6acd37b41699971e1010f0717f1e449e4418a7ace7bccf8ea5efd764d9c5ae97",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1286,
+          "output_tokens": 93,
+          "model_calls": 2,
+          "elapsed_seconds": 3.6967776669189334,
+          "max_prompt_tokens": 700,
+          "max_output_tokens": 83,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/promo-assets.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "write_file",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "product-card",
+          "run_id": "20261023T013156Z-1be9ca8a",
+          "artifacts": "runs/suite-20261023T013146Z-f5c34ab9/20261023T013156Z-1be9ca8a",
+          "sha256": {
+            "trace": "0a120096d4cf57fb443209f5452d24ffd07ffb69ca3f702606ac9af195b00442",
+            "result": "70d85df8214d857e7844051fc69a0209281c799d112fa962d1b23e0a10331a64",
+            "patch": "c390bf2e87d7fa28c873c0275456e7c4ba064edfeaba18f357e86dbdd5a396df"
+          },
+          "task_digest": "35d1c090716cf27a197156ee92bfed3302456ef2c84fd4e17b1347a929e69140",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 2270,
+          "output_tokens": 176,
+          "model_calls": 3,
+          "elapsed_seconds": 8.992987874895334,
+          "max_prompt_tokens": 887,
+          "max_output_tokens": 85,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "render": 1,
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/product-card.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "render",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "section-schema",
+          "run_id": "20261023T013205Z-547f84c2",
+          "artifacts": "runs/suite-20261023T013146Z-f5c34ab9/20261023T013205Z-547f84c2",
+          "sha256": {
+            "trace": "2a73e600b8ca4cd678fef6a737ce593c4c8e12524a3878fb713f243589e4e5d1",
+            "result": "a983ad2759a984b1ade03fe89b5018ebe4bbc349e08b49014e4ef5586e45de03",
+            "patch": "2a4df9767116c600fee69170e46e75c50b8476de91da9bcde223ffa43a7b84fc"
+          },
+          "task_digest": "cbb16e3776caacd65d7b43ef9e4a437dd9a1b16ecfdd32a0766b54c7d3089606",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1694,
+          "output_tokens": 439,
+          "model_calls": 2,
+          "elapsed_seconds": 12.636740749934688,
+          "max_prompt_tokens": 1073,
+          "max_output_tokens": 424,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "sections/feature-panel.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "write_file",
+              "path": "sections/feature-panel.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "shipping-message",
+          "run_id": "20261023T013218Z-069e98c8",
+          "artifacts": "runs/suite-20261023T013146Z-f5c34ab9/20261023T013218Z-069e98c8",
+          "sha256": {
+            "trace": "46f983a15d8c05c9632c439e5b5b3a1bbf7d151317cff5f2b7d01d06278eea96",
+            "result": "ef6fce86282714baa312d6da7c256084f7c492cc916e68ce3984287b5331f234",
+            "patch": "8e8f5de7d5389a75905ce6c4c2a96e90ffb84d2fac881e5f53b7ea1c22892a78"
+          },
+          "task_digest": "e144fc10bf1225dc5c9c32fa226419906ce439e9459e8738eab7e76ea4841e6b",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development smoke test only; not the 7B research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-smoke",
+            "model_revision": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF@f86cb2c1fa58255f8052cc32aeede1b7482d4361; Q4_K_M sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1429,
+          "output_tokens": 144,
+          "model_calls": 2,
+          "elapsed_seconds": 7.513720958959311,
+          "max_prompt_tokens": 793,
+          "max_output_tokens": 129,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/shipping-message.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "write_file",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "totals": {
+        "attempts": 5,
+        "statuses": {
+          "failed": 5
+        },
+        "terminations": {
+          "finished": 5
+        },
+        "input_tokens": 8140,
+        "output_tokens": 996,
+        "model_calls": 11,
+        "protocol_errors": 0,
+        "tool_errors": 0,
+        "length_stops": 0,
+        "elapsed_seconds": 38.991714167641476
+      }
+    },
+    "qwen_3b": {
+      "runs": [
+        {
+          "task_id": "announcement-subtitle",
+          "run_id": "20261023T012954Z-4d10a199",
+          "artifacts": "runs/suite-20261023T012954Z-ef72862f/20261023T012954Z-4d10a199",
+          "sha256": {
+            "trace": "886835ad63ef872d111aa04a5302802ca2f66fece197915f976056415922035d",
+            "result": "c78e837c1c7b6336e3699f4d8f6f0ef4cdefeb49fc027d8a07d3679cf991491e",
+            "patch": "784b03e9d846394ef348aab2e5bdc07c7236f9f1259f1e6a09a64c4e7d43db0e"
+          },
+          "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development calibration diagnostic with larger local model; not a research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-3b",
+            "model_revision": "Qwen/Qwen2.5-Coder-3B-Instruct-GGUF@f74adce6aa16316c625447af059dbebe4983757c; Q4_K_M sha256:724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 3179,
+          "output_tokens": 449,
+          "model_calls": 3,
+          "elapsed_seconds": 31.365209417184815,
+          "max_prompt_tokens": 1480,
+          "max_output_tokens": 401,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "read_file": 1,
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "sections/announcement.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "read_file",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "asset-references",
+          "run_id": "20261023T013026Z-fd9e57e9",
+          "artifacts": "runs/suite-20261023T012954Z-ef72862f/20261023T013026Z-fd9e57e9",
+          "sha256": {
+            "trace": "62ccd7e41abaa5807ca4309fd0eee8a59ef353299559df2c6ed0bef8e5c0b220",
+            "result": "8763bedf2be12c176ac04f5f9e60bde59e8c2c5e616b9cedec46d7ab78a4410d",
+            "patch": "c7ff41a8407d3461bfc6c334756fd38fad44fcb136b68adc1a25f800f5ed7080"
+          },
+          "task_digest": "6acd37b41699971e1010f0717f1e449e4418a7ace7bccf8ea5efd764d9c5ae97",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development calibration diagnostic with larger local model; not a research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-3b",
+            "model_revision": "Qwen/Qwen2.5-Coder-3B-Instruct-GGUF@f74adce6aa16316c625447af059dbebe4983757c; Q4_K_M sha256:724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 2129,
+          "output_tokens": 145,
+          "model_calls": 3,
+          "elapsed_seconds": 10.055969417095184,
+          "max_prompt_tokens": 835,
+          "max_output_tokens": 95,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "read_file": 1,
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/promo-assets.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "read_file",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "product-card",
+          "run_id": "20261023T013036Z-51a6b929",
+          "artifacts": "runs/suite-20261023T012954Z-ef72862f/20261023T013036Z-51a6b929",
+          "sha256": {
+            "trace": "6d6b2b8ef5d33dfeff9b8d2c0e342e7f41f38a86da6a9993884c7326c1b793de",
+            "result": "013e7e8250a8ef05f15269f63cbf29a56f085bacd6372360b360d58399e9010d",
+            "patch": "6bc940738a94513d894d019aac1233f97831252a231652a16cbe683ac0697a6c"
+          },
+          "task_digest": "35d1c090716cf27a197156ee92bfed3302456ef2c84fd4e17b1347a929e69140",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development calibration diagnostic with larger local model; not a research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-3b",
+            "model_revision": "Qwen/Qwen2.5-Coder-3B-Instruct-GGUF@f74adce6aa16316c625447af059dbebe4983757c; Q4_K_M sha256:724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1402,
+          "output_tokens": 163,
+          "model_calls": 2,
+          "elapsed_seconds": 12.324462542077526,
+          "max_prompt_tokens": 789,
+          "max_output_tokens": 148,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/product-card.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "write_file",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "section-schema",
+          "run_id": "20261023T013048Z-ff5387d8",
+          "artifacts": "runs/suite-20261023T012954Z-ef72862f/20261023T013048Z-ff5387d8",
+          "sha256": {
+            "trace": "151a4f76e4f7c7ec5704b350ec7d70308a79d0196b7e1982c0cfb0a842f67a4e",
+            "result": "df3f7ae6dff19c3f05b8db2131f48da126ad83d286deb3fcfde3de82a9fa6a47",
+            "patch": "7c55ff25364c5e89b4ebe35098e93d4c5c3d1ac586123a326f5b02b9a81a9437"
+          },
+          "task_digest": "cbb16e3776caacd65d7b43ef9e4a437dd9a1b16ecfdd32a0766b54c7d3089606",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development calibration diagnostic with larger local model; not a research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-3b",
+            "model_revision": "Qwen/Qwen2.5-Coder-3B-Instruct-GGUF@f74adce6aa16316c625447af059dbebe4983757c; Q4_K_M sha256:724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 1536,
+          "output_tokens": 276,
+          "model_calls": 2,
+          "elapsed_seconds": 14.74043379095383,
+          "max_prompt_tokens": 915,
+          "max_output_tokens": 266,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "sections/feature-panel.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "write_file",
+              "path": "sections/feature-panel.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        },
+        {
+          "task_id": "shipping-message",
+          "run_id": "20261023T013103Z-654db58e",
+          "artifacts": "runs/suite-20261023T012954Z-ef72862f/20261023T013103Z-654db58e",
+          "sha256": {
+            "trace": "7d0aaeb24a8abd39b29901063454327721c4308e4ffedc23c46bda9857811086",
+            "result": "7444071a38713661c38420eb2df3bd3cf27b7c94cb86ddea8e0f0f3df9777fa1",
+            "patch": "b290210712b62b8a87626a8895236d6de4266236dfa038be1db0f57fc1baf124"
+          },
+          "task_digest": "e144fc10bf1225dc5c9c32fa226419906ce439e9459e8738eab7e76ea4841e6b",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "3d7ea86c8951dd5aa333b77947f949b26045d90c",
+            "git_status": "M README.md\n?? docs/",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "development calibration diagnostic with larger local model; not a research baseline",
+            "endpoint": "http://127.0.0.1:8087/v1",
+            "model": "liquidbench-3b",
+            "model_revision": "Qwen/Qwen2.5-Coder-3B-Instruct-GGUF@f74adce6aa16316c625447af059dbebe4983757c; Q4_K_M sha256:724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": 0.0,
+            "output_usd_per_million": 0.0,
+            "max_context_tokens": 8192,
+            "token_counting": "llama_cpp",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 2347,
+          "output_tokens": 152,
+          "model_calls": 3,
+          "elapsed_seconds": 11.608801417052746,
+          "max_prompt_tokens": 931,
+          "max_output_tokens": 119,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "read_file": 1,
+            "write_file": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/shipping-message.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "read_file",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "totals": {
+        "attempts": 5,
+        "statuses": {
+          "failed": 5
+        },
+        "terminations": {
+          "finished": 5
+        },
+        "input_tokens": 10593,
+        "output_tokens": 1185,
+        "model_calls": 13,
+        "protocol_errors": 0,
+        "tool_errors": 0,
+        "length_stops": 0,
+        "elapsed_seconds": 80.0948765843641
+      }
+    },
+    "qwen_7b": {
+      "runs": [
+        {
+          "task_id": "announcement-subtitle",
+          "run_id": "20261023T175220Z-fcef422f",
+          "artifacts": "runs/suite-20261023T175220Z-4b832a5f/20261023T175220Z-fcef422f",
+          "sha256": {
+            "trace": "d2882f97b520af96bc7513c062a784cbae48029ebf20844026059c00f35f5796",
+            "result": "1bce68bb123d921a6db59cd20d71ed7c29053ab10faeb0b1465bede731fab022",
+            "patch": "5f446fb888f48b75fe4a2076127158304373a6670948894f8f72c9ca70173f4c"
+          },
+          "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "fec13dd6d2f916d00ae2835bc9c5beb5b4751524",
+            "git_status": "",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "provisional development configuration; calibrate before final evaluation",
+            "endpoint": "http://127.0.0.1:8000/v1",
+            "model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+            "model_revision": "Qwen/Qwen2.5-Coder-7B-Instruct@c03e6d358207e414f1eca0bb1891e29f1db0e242; planned BF16 vLLM; serving build must be pinned before use",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": null,
+            "output_usd_per_million": null,
+            "max_context_tokens": 8192,
+            "token_counting": "vllm",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 9180,
+          "output_tokens": 1050,
+          "model_calls": 6,
+          "elapsed_seconds": 35.3425469591748,
+          "max_prompt_tokens": 2278,
+          "max_output_tokens": 402,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 1,
+          "provider_errors": [],
+          "action_counts": {
+            "read_file": 1,
+            "write_file": 2,
+            "render": 2,
+            "finish": 1
+          },
+          "changed_files": [
+            "sections/announcement.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "read_file",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "render",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 15,
+              "tool": "write_file",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 19,
+              "tool": "render",
+              "path": "sections/announcement.liquid"
+            },
+            {
+              "line": 23,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": [
+            {
+              "line": 13,
+              "tool": "render",
+              "type": "tool_errors",
+              "error": "Liquid::SyntaxError: Liquid syntax error: Expected end_of_string but found pipe in \"section.settings.subtitle | strip != ''\""
+            }
+          ],
+          "failed_check_names": [
+            "combination-1",
+            "combination-2",
+            "combination-3",
+            "combination-4",
+            "combination-5",
+            "combination-6",
+            "unicode"
+          ]
+        },
+        {
+          "task_id": "asset-references",
+          "run_id": "20261023T175256Z-e047de98",
+          "artifacts": "runs/suite-20261023T175220Z-4b832a5f/20261023T175256Z-e047de98",
+          "sha256": {
+            "trace": "1cfbc535383419e970ced273ef4c709d3803a3312374009c74d29610e1847a8c",
+            "result": "dd7797e6d63aad8d53968ae1a9d69954fec2aa6be8d5b73e820f1f1a21f6f540",
+            "patch": "c18d1337a63587f63166670f89d65c56f664930ce52e68b73b89f3fff726dd5d"
+          },
+          "task_digest": "6acd37b41699971e1010f0717f1e449e4418a7ace7bccf8ea5efd764d9c5ae97",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "fec13dd6d2f916d00ae2835bc9c5beb5b4751524",
+            "git_status": "",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "provisional development configuration; calibrate before final evaluation",
+            "endpoint": "http://127.0.0.1:8000/v1",
+            "model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+            "model_revision": "Qwen/Qwen2.5-Coder-7B-Instruct@c03e6d358207e414f1eca0bb1891e29f1db0e242; planned BF16 vLLM; serving build must be pinned before use",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": null,
+            "output_usd_per_million": null,
+            "max_context_tokens": 8192,
+            "token_counting": "vllm",
+            "response_format": "json_object"
+          },
+          "status": "passed",
+          "termination": "finished",
+          "input_tokens": 3100,
+          "output_tokens": 154,
+          "model_calls": 4,
+          "elapsed_seconds": 6.5592844588682055,
+          "max_prompt_tokens": 973,
+          "max_output_tokens": 93,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "read_file": 1,
+            "write_file": 1,
+            "check": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/promo-assets.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "read_file",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "snippets/promo-assets.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "check",
+              "path": null
+            },
+            {
+              "line": 15,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": [],
+          "failed_check_names": []
+        },
+        {
+          "task_id": "product-card",
+          "run_id": "20261023T175302Z-5e68d20a",
+          "artifacts": "runs/suite-20261023T175220Z-4b832a5f/20261023T175302Z-5e68d20a",
+          "sha256": {
+            "trace": "be314007854078a0db9f0ad2133bf202d405afa77a088bf2e4beec7aef39bf98",
+            "result": "5619d1643dd6f17f3215bbe867836c26ddf8ad17f7a8860f105c3af6808b5756",
+            "patch": "854c355594cd9e1b28dd7611804bb83155c35622d6e57ae98d963c028119fe3a"
+          },
+          "task_digest": "35d1c090716cf27a197156ee92bfed3302456ef2c84fd4e17b1347a929e69140",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "fec13dd6d2f916d00ae2835bc9c5beb5b4751524",
+            "git_status": "",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "provisional development configuration; calibrate before final evaluation",
+            "endpoint": "http://127.0.0.1:8000/v1",
+            "model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+            "model_revision": "Qwen/Qwen2.5-Coder-7B-Instruct@c03e6d358207e414f1eca0bb1891e29f1db0e242; planned BF16 vLLM; serving build must be pinned before use",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": null,
+            "output_usd_per_million": null,
+            "max_context_tokens": 8192,
+            "token_counting": "vllm",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "turn_budget",
+          "input_tokens": 19273,
+          "output_tokens": 885,
+          "model_calls": 12,
+          "elapsed_seconds": 32.06161420815624,
+          "max_prompt_tokens": 2700,
+          "max_output_tokens": 130,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "read_file": 1,
+            "write_file": 6,
+            "check": 5
+          },
+          "changed_files": [
+            "snippets/product-card.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "read_file",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "check",
+              "path": null
+            },
+            {
+              "line": 15,
+              "tool": "write_file",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 19,
+              "tool": "check",
+              "path": null
+            },
+            {
+              "line": 23,
+              "tool": "write_file",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 27,
+              "tool": "check",
+              "path": null
+            },
+            {
+              "line": 31,
+              "tool": "write_file",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 35,
+              "tool": "check",
+              "path": null
+            },
+            {
+              "line": 39,
+              "tool": "write_file",
+              "path": "snippets/product-card.liquid"
+            },
+            {
+              "line": 43,
+              "tool": "check",
+              "path": null
+            },
+            {
+              "line": 47,
+              "tool": "write_file",
+              "path": "snippets/product-card.liquid"
+            }
+          ],
+          "errors": [],
+          "failed_check_names": [
+            "theme_check",
+            "ordinary",
+            "unavailable",
+            "null-title",
+            "empty-title",
+            "null-vendor",
+            "empty-vendor",
+            "blank-vendor",
+            "trim-vendor",
+            "escape",
+            "entities",
+            "unicode",
+            "novel"
+          ]
+        },
+        {
+          "task_id": "section-schema",
+          "run_id": "20261023T175335Z-0436938b",
+          "artifacts": "runs/suite-20261023T175220Z-4b832a5f/20261023T175335Z-0436938b",
+          "sha256": {
+            "trace": "5bb46cb7cd1c4d0ef227aaeacee1229f99af639c22ad43bfea8a0a4cda72e1f9",
+            "result": "a2f77f1cd24e78012e35516fc14a19b1cd3c278bbdd05cb24c7c241bef35a3eb",
+            "patch": "9b8e5dd3175eda70e5b1b76af55a72ca26a79f52625f430eefac332d1d0076e0"
+          },
+          "task_digest": "cbb16e3776caacd65d7b43ef9e4a437dd9a1b16ecfdd32a0766b54c7d3089606",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "fec13dd6d2f916d00ae2835bc9c5beb5b4751524",
+            "git_status": "",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "provisional development configuration; calibrate before final evaluation",
+            "endpoint": "http://127.0.0.1:8000/v1",
+            "model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+            "model_revision": "Qwen/Qwen2.5-Coder-7B-Instruct@c03e6d358207e414f1eca0bb1891e29f1db0e242; planned BF16 vLLM; serving build must be pinned before use",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": null,
+            "output_usd_per_million": null,
+            "max_context_tokens": 8192,
+            "token_counting": "vllm",
+            "response_format": "json_object"
+          },
+          "status": "passed",
+          "termination": "finished",
+          "input_tokens": 4267,
+          "output_tokens": 377,
+          "model_calls": 4,
+          "elapsed_seconds": 12.910325875040144,
+          "max_prompt_tokens": 1363,
+          "max_output_tokens": 317,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "read_file": 1,
+            "write_file": 1,
+            "check": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "sections/feature-panel.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "read_file",
+              "path": "sections/feature-panel.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "sections/feature-panel.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "check",
+              "path": null
+            },
+            {
+              "line": 15,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": [],
+          "failed_check_names": []
+        },
+        {
+          "task_id": "shipping-message",
+          "run_id": "20261023T175347Z-ad63fa6e",
+          "artifacts": "runs/suite-20261023T175220Z-4b832a5f/20261023T175347Z-ad63fa6e",
+          "sha256": {
+            "trace": "b22f6a078f87d26d708608be0cb7d05b25f7c9c98d2df72791c304da8e7ad0dd",
+            "result": "130fd79a9ba0fa4dfef1da7327c5ee3a861ef2ebf7029632ace9ccbf984c7059",
+            "patch": "1ac2b33ceb126d33ad5064b86bf22dd7805bf58de655898a95a2118413a14235"
+          },
+          "task_digest": "e144fc10bf1225dc5c9c32fa226419906ce439e9459e8738eab7e76ea4841e6b",
+          "image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+          "source": {
+            "git_commit": "fec13dd6d2f916d00ae2835bc9c5beb5b4751524",
+            "git_status": "",
+            "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+            "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+          },
+          "config": {
+            "purpose": "provisional development configuration; calibrate before final evaluation",
+            "endpoint": "http://127.0.0.1:8000/v1",
+            "model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+            "model_revision": "Qwen/Qwen2.5-Coder-7B-Instruct@c03e6d358207e414f1eca0bb1891e29f1db0e242; planned BF16 vLLM; serving build must be pinned before use",
+            "image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "seed": 42,
+            "max_turns": 12,
+            "max_total_tokens": 24000,
+            "max_output_tokens": 1024,
+            "max_seconds": 300,
+            "request_timeout": 90,
+            "provider_retries": 2,
+            "input_usd_per_million": null,
+            "output_usd_per_million": null,
+            "max_context_tokens": 8192,
+            "token_counting": "vllm",
+            "response_format": "json_object"
+          },
+          "status": "failed",
+          "termination": "finished",
+          "input_tokens": 3628,
+          "output_tokens": 267,
+          "model_calls": 4,
+          "elapsed_seconds": 11.361572874942794,
+          "max_prompt_tokens": 1170,
+          "max_output_tokens": 206,
+          "length_stops": 0,
+          "count_deltas": [
+            0
+          ],
+          "malformed_envelopes": 0,
+          "protocol_errors": 0,
+          "tool_errors": 0,
+          "provider_errors": [],
+          "action_counts": {
+            "read_file": 1,
+            "write_file": 1,
+            "check": 1,
+            "finish": 1
+          },
+          "changed_files": [
+            "snippets/shipping-message.liquid"
+          ],
+          "actions": [
+            {
+              "line": 3,
+              "tool": "read_file",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 7,
+              "tool": "write_file",
+              "path": "snippets/shipping-message.liquid"
+            },
+            {
+              "line": 11,
+              "tool": "check",
+              "path": null
+            },
+            {
+              "line": 15,
+              "tool": "finish",
+              "path": null
+            }
+          ],
+          "errors": [],
+          "failed_check_names": [
+            "disabled-empty",
+            "disabled-below",
+            "disabled-above"
+          ]
+        }
+      ],
+      "totals": {
+        "attempts": 5,
+        "statuses": {
+          "failed": 3,
+          "passed": 2
+        },
+        "terminations": {
+          "finished": 4,
+          "turn_budget": 1
+        },
+        "input_tokens": 39448,
+        "output_tokens": 2733,
+        "model_calls": 30,
+        "protocol_errors": 0,
+        "tool_errors": 1,
+        "length_stops": 0,
+        "elapsed_seconds": 98.23534437618218
+      }
+    }
+  },
+  "cost": {
+    "currency": "USD",
+    "created_utc": "2026-10-23T17:49:53.980000+00:00",
+    "termination_requested_utc": "2026-10-23T17:54:19+00:00",
+    "wall_seconds_to_delete_request": 265.02,
+    "gpu_hourly_rate": 0.59,
+    "storage_gb": 100,
+    "storage_monthly_rate_per_gb": 0.1,
+    "storage_month_hours_assumption": 720,
+    "gpu_estimate_usd": 0.04343383333333333,
+    "storage_estimate_usd": 0.0010224537037037036,
+    "total_estimate_usd": 0.04445628703703703,
+    "invoice_total_usd": null,
+    "billing_status": "Not posted: post-termination billing API returned no records, not evidence of free usage.",
+    "approved_limit_usd": 3,
+    "approved_hours": 2,
+    "extra_topups": 0,
+    "cleanup_verified": true,
+    "cleanup_evidence": "runs/runpod-pilot-preparation/cleanup-verification.json"
+  }
+}

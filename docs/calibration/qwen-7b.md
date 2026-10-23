@@ -1,17 +1,19 @@
-# Preparing Qwen2.5-Coder-7B-Instruct without paid inference
+# Qwen2.5-Coder-7B-Instruct deployment and calibration
 
 Milestone 4 now supplies a [pinned deployment manifest](qwen-7b-pilot.json),
 [execution runbook](qwen-7b-pilot.md), and [preparation/cost report](milestone-4.md).
-No suitable compute was available; the user chose preparation only. The candidate
-vLLM 0.32.0 image is pinned but has not been GPU-tested. Use the runbook's complete
-arguments and verification gates for the future approved session.
+After the initial preparation-only milestone, the user approved an A40 session.
+The pinned vLLM 0.32.0 deployment passed preflight and solved **2/5 development
+tasks**. The GPU was terminated after export. See the [pilot results](milestone-4-results.md)
+and [observed serving metadata](qwen-7b-observed.json). Use the runbook's complete
+arguments and verification gates for any future approved session.
 
 The adapter is compatible at the HTTP/schema level: the official model supports
 chat messages through a vLLM chat-completions server, and LiquidBench consumes
 text content plus prompt/completion usage. It deliberately does not require
 native function calling. Automated tests exercise the 7B configuration, request
-shape, finish reason and usage parsing. **7B inference has not been executed**;
-this is not an end-to-end certification of a GPU deployment.
+shape, finish reason and usage parsing. The completed pilot also verifies this
+path on the recorded A40/BF16 deployment; it does not certify other serving builds.
 
 The checked checkpoint is
 `Qwen/Qwen2.5-Coder-7B-Instruct@c03e6d358207e414f1eca0bb1891e29f1db0e242`.
@@ -22,7 +24,7 @@ explicit **8,192-token serving limit**, matching `configs/qwen-base.json` and th
 local calibration. [Official model card](https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct),
 [pinned config](https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct/blob/c03e6d358207e414f1eca0bb1891e29f1db0e242/config.json).
 
-## Proposed serving configuration
+## Serving configuration
 
 The original minimal serving command is below. Milestone 4's runbook adds the
 pinned container, explicit JSON backend and evidence capture to these settings:
@@ -43,8 +45,8 @@ chosen serving build; it must remain identical across all four configurations.
 defaults. Record GPU model, driver/CUDA/vLLM versions, container digest, complete
 command, effective generation settings, tokenizer/chat-template hashes, precision,
 KV-cache dtype, checkpoint revision and runtime image ID. Do not use an unpinned
-`latest` image for comparisons. The server build must be smoke-tested before its
-version is frozen; no untested build is presented here as validated.
+`latest` image for comparisons. The pinned build passed the recorded pilot
+preflight. Recheck any replacement build before freezing it for comparisons.
 [vLLM serving documentation](https://docs.vllm.ai/en/latest/serving/online_serving/openai_compatible_server/).
 
 The `vllm` counting adapter sends the same messages/model to `/tokenize` with a
@@ -57,8 +59,8 @@ then `/tokenize`; the local runs test actual agreement.
 
 For a remote endpoint, use authenticated HTTPS or an SSH tunnel to localhost;
 credentials stay in `api_key_env`, never task files. Remote HTTPS must also expose
-the authorized `/tokenize` route on the same endpoint prefix. No service, GPU,
-or paid API has been purchased or started by this work.
+the authorized `/tokenize` route on the same endpoint prefix. The approved pilot
+used an SSH tunnel and has been terminated; no paid endpoint remains allocated.
 
 ## Precision and memory
 
@@ -80,9 +82,10 @@ uses the official 3B Q4_K_M model (about 2.1 GB on disk).
 
 ## Cost planning
 
-No paid endpoint is allocated. The Milestone 4 report supplies a candidate hourly
-rental estimate. `qwen-base.json` keeps token prices `null`; a rental invoice must
-be tracked separately from token-based estimates.
+No paid endpoint remains allocated. The completed pilot estimates $0.0445 in
+rental charges; the provider invoice was not yet posted when recorded.
+`qwen-base.json` keeps token prices `null`; a rental invoice must be tracked
+separately from token-based estimates.
 
 For input/output prices `p_in` and `p_out` in dollars per million tokens, an
 observed run costs `(input_tokens*p_in + output_tokens*p_out)/1e6`. Cached input
@@ -107,9 +110,10 @@ retries, provider accounting overruns, hosting minimums and storage. Report such
 exceptions rather than treating the admission cap as a billing guarantee.
 
 For an hourly GPU, estimate `hourly_rate * billed_hours`, including model loading,
-warmup and idle time. Token pricing cannot estimate rented-GPU cost; first measure
-throughput on an already available host, then obtain a current quote if paid work
-is authorized later. This milestone incurred **zero API inference charges**.
+warmup and idle time. Token pricing cannot estimate rented-GPU cost. The pilot used
+265 seconds from Pod creation to deletion request at $0.59/hour plus ephemeral
+storage. Future sessions still require a current quote and explicit spending
+approval; the previous session approval is not an ongoing rental authorization.
 
 ## Gate before a controlled four-configuration comparison
 
@@ -120,7 +124,8 @@ context stops and infrastructure errors visible. Rerun every condition after any
 harness change. Future skill tokens must count against the same context and
 cumulative allowances; do not silently enlarge one condition's budget.
 
-First run 7B on the five development tasks with the frozen harness, confirm
-token-count agreement and inspect remaining failures. If that reveals a harness
-problem, fix and recalibrate before comparisons. This milestone adds no skills,
-post-training, held-out tasks or leaderboard.
+The five-task pilot is complete with exact token-count agreement and interpretable
+model failures. The next recommended gate is a matched base/base-plus-skills
+development ablation, after pinning and reviewing the skill bundle. Five easy
+fixtures do not establish research generalization or difficulty tiers. This
+milestone adds no skills, post-training, held-out tasks or leaderboard.

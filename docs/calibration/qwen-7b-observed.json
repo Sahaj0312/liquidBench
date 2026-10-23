@@ -1,0 +1,264 @@
+{
+  "status": "pilot_completed_and_resources_terminated",
+  "pod_id": "vxk35bw5h56smi",
+  "gpu": "NVIDIA A40",
+  "driver": "595.91.07",
+  "cloud": "SECURE",
+  "data_center": "CA-MTL-1",
+  "serving_image": "vllm/vllm-openai@sha256:6ee133356d49ed24cee03dd0cda3d3980279a11c107ce3e752c89e76540f41c9",
+  "software": {
+    "python": "3.12.3",
+    "packages": {
+      "vllm": "0.32.0",
+      "torch": "2.13.0+cu130",
+      "transformers": "5.19.0",
+      "tokenizers": "0.23.3",
+      "xgrammar": "0.2.8"
+    },
+    "torch_cuda": "13.0",
+    "gpu": "NVIDIA A40",
+    "compute_capability": [
+      8,
+      6
+    ],
+    "bf16_supported": true,
+    "gpu_memory_bytes": 47699722240
+  },
+  "model": {
+    "revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+    "snapshot": "/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-Coder-7B-Instruct/snapshots/c03e6d358207e414f1eca0bb1891e29f1db0e242",
+    "files": {
+      ".gitattributes": {
+        "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+        "bytes": 1519
+      },
+      "LICENSE": {
+        "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+        "bytes": 11343
+      },
+      "README.md": {
+        "sha256": "3c090be37f829adc1e4cdb78733667437732541470430ab2cd785d7f0d460077",
+        "bytes": 6392
+      },
+      "config.json": {
+        "sha256": "c0242402ad6a13b331ea320feea8c7e3776ffb7a4eff0757b9cd667e116d9a28",
+        "bytes": 663
+      },
+      "generation_config.json": {
+        "sha256": "1a628a5775bc69cde01c6749a531150ca4d3189652c618a174f7077923acf3b1",
+        "bytes": 242
+      },
+      "merges.txt": {
+        "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+        "bytes": 1671839
+      },
+      "model-00001-of-00004.safetensors": {
+        "sha256": "0b6f069918b07c064cbba8ae4f00f529aa9bbf84b7cdfcb7fc2694a40f6aa8ef",
+        "bytes": 4877660776
+      },
+      "model-00002-of-00004.safetensors": {
+        "sha256": "c3d46733e7aa054ea7b063fbccd0a5a08446e7bd1814bef26936c5aa1331da62",
+        "bytes": 4932751008
+      },
+      "model-00003-of-00004.safetensors": {
+        "sha256": "9fe45dacee087385b3d2d6dd27a7413a8a56d95f145772facc148fa86fc73446",
+        "bytes": 4330865200
+      },
+      "model-00004-of-00004.safetensors": {
+        "sha256": "5aa6e5cbe642377fd441fb4e60e83cca96b2bcd9820e245b9ea06d94653f17f2",
+        "bytes": 1089994880
+      },
+      "model.safetensors.index.json": {
+        "sha256": "998a078123ffc97763690de7f2a677eb89168af5eaf8a5e12e6bc24d18e25bdb",
+        "bytes": 27752
+      },
+      "tokenizer.json": {
+        "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+        "bytes": 7031645
+      },
+      "tokenizer_config.json": {
+        "sha256": "959e7f1d9a1b7641a6d6ce05ca97b75c7894fcb66cbe5a040406458fb1128ee4",
+        "bytes": 7305
+      },
+      "vocab.json": {
+        "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "bytes": 2776833
+      }
+    },
+    "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+    "config": {
+      "architectures": [
+        "Qwen2ForCausalLM"
+      ],
+      "attention_dropout": 0.0,
+      "bos_token_id": 151643,
+      "eos_token_id": 151645,
+      "hidden_act": "silu",
+      "hidden_size": 3584,
+      "initializer_range": 0.02,
+      "intermediate_size": 18944,
+      "max_position_embeddings": 32768,
+      "max_window_layers": 28,
+      "model_type": "qwen2",
+      "num_attention_heads": 28,
+      "num_hidden_layers": 28,
+      "num_key_value_heads": 4,
+      "rms_norm_eps": 1e-06,
+      "rope_theta": 1000000.0,
+      "sliding_window": 131072,
+      "tie_word_embeddings": false,
+      "torch_dtype": "bfloat16",
+      "transformers_version": "4.44.0",
+      "use_cache": true,
+      "use_sliding_window": false,
+      "vocab_size": 152064
+    }
+  },
+  "command": [
+    "vllm",
+    "serve",
+    "Qwen/Qwen2.5-Coder-7B-Instruct",
+    "--revision",
+    "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+    "--tokenizer-revision",
+    "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+    "--dtype",
+    "bfloat16",
+    "--kv-cache-dtype",
+    "auto",
+    "--max-model-len",
+    "8192",
+    "--max-num-seqs",
+    "1",
+    "--tensor-parallel-size",
+    "1",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--generation-config",
+    "vllm",
+    "--structured-outputs-config",
+    "{\"backend\":\"xgrammar\"}",
+    "--seed",
+    "42",
+    "--host",
+    "0.0.0.0",
+    "--port",
+    "8000"
+  ],
+  "weight_shards_match_pinned_huggingface_sha256": true,
+  "dtype": "bfloat16",
+  "quantization": null,
+  "kv_cache_dtype": "auto; resolves to model BF16 dtype",
+  "context": 8192,
+  "structured_output_backend": "xgrammar",
+  "preflight": "runs/7b-preflight-01",
+  "preflight_passed": true,
+  "all_preflight_count_deltas": [
+    0
+  ],
+  "runtime_image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+  "source": {
+    "git_commit": "fec13dd6d2f916d00ae2835bc9c5beb5b4751524",
+    "git_status": "",
+    "python_source_digest": "87ca74e16eb387fa893f84349880a21296a12bbd9a4eec2c927eddfb0bde0ee9",
+    "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+  },
+  "transport": "SSH tunnel to 127.0.0.1:8000; only SSH exposed",
+  "bootstrap": "Pinned image plus openssh-server installation; no serving Python package changes",
+  "boot_evidence_directory": "runs/runpod-pilot-preparation/host-evidence",
+  "preflight_checks": [
+    {
+      "name": "short_action",
+      "prompt_count": 462,
+      "count_delta": 0,
+      "count_agrees": true,
+      "normal_stop": true,
+      "served_model_agrees": true,
+      "within_output_limit": true,
+      "json_object": true,
+      "expected_action": true,
+      "passed": true
+    },
+    {
+      "name": "tool_feedback_roles",
+      "prompt_count": 553,
+      "count_delta": 0,
+      "count_agrees": true,
+      "normal_stop": true,
+      "served_model_agrees": true,
+      "within_output_limit": true,
+      "json_object": true,
+      "expected_action": true,
+      "passed": true
+    },
+    {
+      "name": "json_enforcement",
+      "prompt_count": 42,
+      "count_delta": 0,
+      "count_agrees": true,
+      "normal_stop": true,
+      "served_model_agrees": true,
+      "within_output_limit": true,
+      "json_object": true,
+      "passed": true
+    },
+    {
+      "name": "near_window",
+      "prompt_count": 7136,
+      "count_delta": 0,
+      "count_agrees": true,
+      "normal_stop": true,
+      "served_model_agrees": true,
+      "within_output_limit": true,
+      "json_object": true,
+      "expected_action": true,
+      "passed": true
+    }
+  ],
+  "cost": {
+    "currency": "USD",
+    "created_utc": "2026-10-23T17:49:53.980000+00:00",
+    "termination_requested_utc": "2026-10-23T17:54:19+00:00",
+    "wall_seconds_to_delete_request": 265.02,
+    "gpu_hourly_rate": 0.59,
+    "storage_gb": 100,
+    "storage_monthly_rate_per_gb": 0.1,
+    "storage_month_hours_assumption": 720,
+    "gpu_estimate_usd": 0.04343383333333333,
+    "storage_estimate_usd": 0.0010224537037037036,
+    "total_estimate_usd": 0.04445628703703703,
+    "invoice_total_usd": null,
+    "billing_status": "Not posted: post-termination billing API returned no records, not evidence of free usage.",
+    "approved_limit_usd": 3,
+    "approved_hours": 2,
+    "extra_topups": 0,
+    "cleanup_verified": true,
+    "cleanup_evidence": "runs/runpod-pilot-preparation/cleanup-verification.json"
+  },
+  "evidence_sha256": {
+    "boot.sh": "8eee7192ca444e8f23e0ba574ff92108816a282c74a58d62ff49d8d22c44f2aa",
+    "capture-model.py": "d45aa8443e1a909358e0c492c6ee65ff11acec09a7f59ba107cb8e0453c6ba55",
+    "catalog-evidence.json": "12133db93b9af09721dd0417569aa12017305d4c9d9545a7b182a59c51bb6ab7",
+    "cleanup-verification.json": "7e933b6b7627aebe32c5279378b75a5d66241651c61b104e76e8c475cf48c466",
+    "cost.json": "66dd3d317ae969f8cf3b7a938c36e92e2cf416891ee11a2c6aa647c80b28d19b",
+    "create-pod.json": "48e4c9988b81b9b3fbc9fd80dd496da7a5452d0ac6eafba7f56bbc049e78772c",
+    "create-result.json": "11c1725a39b3f9667f87e62ee784f4257c1d83c3e2dfd3b117745d78297d5e91",
+    "final-billing-read.json": "eccd1edb0a1443bf21528249f40269fdb5f827ed5cabcbe28e61676776cd1e05",
+    "host-evidence/cache-config-source.txt": "eb5e10c4ec66951456d64f2dfb439f74dab5812baae390fe28aca2639ef00cce",
+    "host-evidence/command.json": "8230c5f0a91e2abd8b1a2a229c2d1216a33ae1fd2d6aac805dfec56e11d908dc",
+    "host-evidence/disk.txt": "54653669c297c840737eccd7442b381284e96c03a7cfb64a45571a209d2f3436",
+    "host-evidence/memory.txt": "b65c48727a91013e1c8c82ce9c681e7a7108e250f24032f731bbe6ad7b524877",
+    "host-evidence/model-files.json": "e722d0131a4e7d8341d0df17cc767af49f03a257acd4d8d653f6b9bc8ecbc6f6",
+    "host-evidence/nvidia-smi-final.txt": "eee01435ca57eed7503b6985b9b08b23ccc0fbb88e11e9511de4d1336e97d01d",
+    "host-evidence/nvidia-smi.txt": "37117213596a7fe0d26282a16ec6845effa1e77d9928b44e6837cb07eda74029",
+    "host-evidence/process-arguments.txt": "6b1a8ba8e259c0f616c04e2bcec228176998ce0d1a08b1b1f3680ae84d1cd27a",
+    "host-evidence/server.log": "67ffce60bd81ff89039bad93d25a4fd1aeaea6d1af7762ce702a58db7e887400",
+    "host-evidence/software.json": "e2349e4c91c4d804af1cba76c376c3b6d17b0fe58f0ebf388a1a206803d32e7f",
+    "host-evidence/ssh-package.txt": "d6db81827fffa96d0682711587b6a344a4b579f678ff5e0d1119356bece7f58b",
+    "huggingface-model-metadata.json": "0a384fd5f8cd8594f47612995c0e6bd6040bb6369d5ff4f8eaf62561d3a0e5d3",
+    "pod-before-termination.json": "05bcd09e2171b2ffb6a9ac70dd3456ad20745ce415cfe6323ed58b91da0bf7fb",
+    "quote.json": "1b7d1abd340a71bc9fdc6ff8eebda3586b67a77ebc878423227e3d2d8970a866",
+    "session.json": "6ebc90ab86a4359af66003a2418d2e094ce0422550c3ab7016e11eaa5f7b2d60",
+    "termination.json": "14242f2b1f39db53d0be828470733772a6964e33e4ebb23b3504ed823e8489f0"
+  }
+}

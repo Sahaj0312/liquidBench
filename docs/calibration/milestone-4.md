@@ -1,5 +1,9 @@
 # Milestone 4: Qwen 7B development pilot preparation
 
+Historical preparation record. The subsequently approved October 23 pilot is
+complete; see the [results, costs and cleanup evidence](milestone-4-results.md).
+The original preparation manifest remains unchanged for provenance.
+
 **Status: prepared, not run. Actual spending: $0.** Checked October 22, 2026
 (Toronto; October 23 UTC). The user confirmed that no GPU host or endpoint is
 available and requested preparation and a cost estimate only. No compute was
