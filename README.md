@@ -2,7 +2,7 @@
 
 A Python harness for controlled experiments on offline Liquid coding tasks. The research design is in [brief.txt](brief.txt).
 
-LiquidBench implements five **development** tasks, a modular grader, and an agent protocol with explicit context accounting. The runner gives an agent isolated tools, submits its final files to a separate grader, and saves the grade, trace, patch, token usage, latency, and estimated inference cost. No held-out benchmark or research results are claimed yet. The [7B pilot](docs/calibration/milestone-4-results.md) passed 2/5 tasks; Milestone 5 adds pinned optional skills, but its [approved GPU session stopped at preflight](docs/calibration/milestone-5-preflight.md) before the paired experiment.
+LiquidBench implements five **development** tasks, a modular grader, and an agent protocol with explicit context accounting. The runner gives an agent isolated tools, submits its final files to a separate grader, and saves the grade, trace, patch, token usage, latency, and estimated inference cost. No held-out benchmark or research results are claimed yet. The [7B pilot](docs/calibration/milestone-4-results.md) passed 2/5 tasks; Milestone 5 adds pinned optional skills, but its [approved GPU session stopped at preflight](docs/calibration/milestone-5-preflight.md) before the paired experiment. The [revised preflight and deployment plan](docs/calibration/preflight-v2.md) separates serving checks from representative-length model diagnostics; a new GPU session still needs approval.
 
 | Task | Required repair | Grading evidence |
 | --- | --- | --- |
@@ -58,7 +58,7 @@ uv run liquidbench run-suite --config configs/local-smoke.json
 
 This small quantized model is a development smoke test, **not the planned 7B research baseline**. The model download is approximately 1 GB. Stop the server with Ctrl-C when finished. Stop the dedicated VM with `colima stop --profile liquidbench` when it is no longer needed.
 
-For an approved Qwen 7B deployment, follow the [pinned pilot runbook](docs/calibration/qwen-7b-pilot.md), including host evidence and the synthetic endpoint preflight, before `run-suite`. The completed [Milestone 4 pilot](docs/calibration/milestone-4-results.md) verified the pinned BF16/vLLM deployment on an A40 and passed **2/5 development tasks**, with exact token-count agreement and no protocol or infrastructure errors. The GPU was terminated after evidence export. The [preparation report](docs/calibration/milestone-4.md) remains a historical planning record. This repository does not automatically provision or purchase GPU instances.
+For the next approved Qwen 7B deployment, follow the [Milestone 5 preflight/runbook](docs/calibration/preflight-v2.md), including host evidence, before the paired run. The [8K pilot runbook](docs/calibration/qwen-7b-pilot.md) is historical; current preflight v2 requires room for its fixed 17K generation probe plus output reservation. The completed [Milestone 4 pilot](docs/calibration/milestone-4-results.md) verified the pinned BF16/vLLM deployment on an A40 and passed **2/5 development tasks**, with exact token-count agreement and no protocol or infrastructure errors. The GPU was terminated after evidence export. The [preparation report](docs/calibration/milestone-4.md) remains a historical planning record. This repository does not automatically provision or purchase GPU instances.
 
 CLI exit codes: `0` passed, `1` model/task failure or failed grader validation, `2` infrastructure/configuration error. A real model failure is a valid captured attempt.
 

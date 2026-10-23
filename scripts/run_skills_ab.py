@@ -4,10 +4,10 @@ No compute provisioning, automatic task reruns, or hidden-case prompt constructi
 """
 
 import argparse
-from datetime import datetime, timezone
 import json
 from pathlib import Path
 
+from liquidbench.preflight import validate_report
 from liquidbench.provider import ChatProvider
 from liquidbench.runner import SYSTEM, load_config, run
 from liquidbench.sandbox import image_id
@@ -129,15 +129,7 @@ def main():
     if args.preflight is None:
         raise ValueError("--execute requires --preflight report.json")
     preflight = json.loads(args.preflight.read_text())
-    age = (
-        datetime.now(timezone.utc) - datetime.fromisoformat(preflight["started_utc"])
-    ).total_seconds()
-    if (
-        preflight.get("passed") is not True
-        or preflight["config"] != data["configs"]["base"]
-        or not 0 <= age < 3600
-    ):
-        raise ValueError("Require a successful matching endpoint preflight from the last hour")
+    validate_report(preflight, data["configs"]["base"])
     feasibility = json.loads(Path("docs/calibration/skills-feasibility.json").read_text())
     data["endpoint_count_checks"] = verify_counts(
         data, tasks, feasibility, ChatProvider(data["configs"]["base"])

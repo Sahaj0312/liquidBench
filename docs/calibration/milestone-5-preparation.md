@@ -3,7 +3,9 @@
 Historical preparation record. The user subsequently approved the shared budgets
 and one 90-minute/$2 session. That session was terminated after the near-window
 preflight failed; see the [preflight report and cleanup evidence](milestone-5-preflight.md).
-The ten task attempts have not run.
+The ten task attempts have not run. The [v2 preflight/runbook](preflight-v2.md)
+supersedes the endpoint gate and deployment commands below for the next session;
+the experiment configurations and paired design are unchanged.
 
 Preparation is complete; **no paired model attempts or paid deployment have been
 launched**. The full upstream entry instructions cannot fit the old 8K context.
