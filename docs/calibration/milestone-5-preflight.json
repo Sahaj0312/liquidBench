@@ -1,0 +1,402 @@
+{
+  "status": "aborted_at_preflight",
+  "development_only": true,
+  "research_result": false,
+  "paired_task_attempts": 0,
+  "planned_task_attempts": 10,
+  "baseline_success_rate": null,
+  "skills_success_rate": null,
+  "serving": {
+    "pod_id": "vl71qkgjewldr9",
+    "image": "vllm/vllm-openai@sha256:6ee133356d49ed24cee03dd0cda3d3980279a11c107ce3e752c89e76540f41c9",
+    "model": {
+      "revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+      "snapshot": "/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-Coder-7B-Instruct/snapshots/c03e6d358207e414f1eca0bb1891e29f1db0e242",
+      "files": {
+        ".gitattributes": {
+          "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+          "bytes": 1519
+        },
+        "LICENSE": {
+          "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+          "bytes": 11343
+        },
+        "README.md": {
+          "sha256": "3c090be37f829adc1e4cdb78733667437732541470430ab2cd785d7f0d460077",
+          "bytes": 6392
+        },
+        "config.json": {
+          "sha256": "c0242402ad6a13b331ea320feea8c7e3776ffb7a4eff0757b9cd667e116d9a28",
+          "bytes": 663
+        },
+        "generation_config.json": {
+          "sha256": "1a628a5775bc69cde01c6749a531150ca4d3189652c618a174f7077923acf3b1",
+          "bytes": 242
+        },
+        "merges.txt": {
+          "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+          "bytes": 1671839
+        },
+        "model-00001-of-00004.safetensors": {
+          "sha256": "0b6f069918b07c064cbba8ae4f00f529aa9bbf84b7cdfcb7fc2694a40f6aa8ef",
+          "bytes": 4877660776
+        },
+        "model-00002-of-00004.safetensors": {
+          "sha256": "c3d46733e7aa054ea7b063fbccd0a5a08446e7bd1814bef26936c5aa1331da62",
+          "bytes": 4932751008
+        },
+        "model-00003-of-00004.safetensors": {
+          "sha256": "9fe45dacee087385b3d2d6dd27a7413a8a56d95f145772facc148fa86fc73446",
+          "bytes": 4330865200
+        },
+        "model-00004-of-00004.safetensors": {
+          "sha256": "5aa6e5cbe642377fd441fb4e60e83cca96b2bcd9820e245b9ea06d94653f17f2",
+          "bytes": 1089994880
+        },
+        "model.safetensors.index.json": {
+          "sha256": "998a078123ffc97763690de7f2a677eb89168af5eaf8a5e12e6bc24d18e25bdb",
+          "bytes": 27752
+        },
+        "tokenizer.json": {
+          "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+          "bytes": 7031645
+        },
+        "tokenizer_config.json": {
+          "sha256": "959e7f1d9a1b7641a6d6ce05ca97b75c7894fcb66cbe5a040406458fb1128ee4",
+          "bytes": 7305
+        },
+        "vocab.json": {
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+          "bytes": 2776833
+        }
+      },
+      "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+      "config": {
+        "architectures": [
+          "Qwen2ForCausalLM"
+        ],
+        "attention_dropout": 0.0,
+        "bos_token_id": 151643,
+        "eos_token_id": 151645,
+        "hidden_act": "silu",
+        "hidden_size": 3584,
+        "initializer_range": 0.02,
+        "intermediate_size": 18944,
+        "max_position_embeddings": 32768,
+        "max_window_layers": 28,
+        "model_type": "qwen2",
+        "num_attention_heads": 28,
+        "num_hidden_layers": 28,
+        "num_key_value_heads": 4,
+        "rms_norm_eps": 1e-06,
+        "rope_theta": 1000000.0,
+        "sliding_window": 131072,
+        "tie_word_embeddings": false,
+        "torch_dtype": "bfloat16",
+        "transformers_version": "4.44.0",
+        "use_cache": true,
+        "use_sliding_window": false,
+        "vocab_size": 152064
+      }
+    },
+    "software": {
+      "python": "3.12.3",
+      "packages": {
+        "vllm": "0.32.0",
+        "torch": "2.13.0+cu130",
+        "transformers": "5.19.0",
+        "tokenizers": "0.23.3",
+        "xgrammar": "0.2.8"
+      },
+      "torch_cuda": "13.0",
+      "gpu": "NVIDIA A40",
+      "compute_capability": [
+        8,
+        6
+      ],
+      "bf16_supported": true,
+      "gpu_memory_bytes": 47699722240
+    },
+    "command": [
+      "vllm",
+      "serve",
+      "Qwen/Qwen2.5-Coder-7B-Instruct",
+      "--revision",
+      "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+      "--tokenizer-revision",
+      "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+      "--dtype",
+      "bfloat16",
+      "--kv-cache-dtype",
+      "auto",
+      "--max-model-len",
+      "32768",
+      "--max-num-seqs",
+      "1",
+      "--tensor-parallel-size",
+      "1",
+      "--gpu-memory-utilization",
+      "0.9",
+      "--generation-config",
+      "vllm",
+      "--structured-outputs-config",
+      "{\"backend\":\"xgrammar\"}",
+      "--seed",
+      "42",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000"
+    ],
+    "all_pinned_model_files_verified": true,
+    "source": {
+      "git_commit": "1299f740ec941904ee81f5cc63f0b64078d2a028",
+      "git_status": "",
+      "python_source_digest": "337557c2f89bd078c24bbae752f9f6028024eba6c265fdd5a6f390e18ea1300b",
+      "python_version": "3.12.7 (main, Oct  1 2024, 02:05:46) [Clang 15.0.0 (clang-1500.3.9.4)]"
+    },
+    "host_fingerprint": "SHA256:bsnVChO1SosMfAJe7MqzfLcbn33roe4PdBwjp8lMHx8",
+    "context": 32768,
+    "dtype": "bfloat16",
+    "quantization": null,
+    "runtime_image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638"
+  },
+  "preflight_report": {
+    "kind": "synthetic_endpoint_preflight",
+    "research_result": false,
+    "started_utc": "2026-10-23T18:35:22.289806+00:00",
+    "config": {
+      "purpose": "Milestone 5 paired development experiment; proposed budget adjustment requires approval before inference",
+      "endpoint": "http://127.0.0.1:8000/v1",
+      "model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+      "model_revision": "Qwen/Qwen2.5-Coder-7B-Instruct@c03e6d358207e414f1eca0bb1891e29f1db0e242; planned BF16 vLLM; serving build must be pinned before use",
+      "image": "liquidbench-runtime:0.1",
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "seed": 42,
+      "max_turns": 12,
+      "max_total_tokens": 393216,
+      "max_output_tokens": 1024,
+      "max_seconds": 300,
+      "request_timeout": 90,
+      "provider_retries": 2,
+      "input_usd_per_million": null,
+      "output_usd_per_million": null,
+      "max_context_tokens": 32768,
+      "token_counting": "vllm",
+      "response_format": "json_object",
+      "skills": null
+    },
+    "checks": [
+      {
+        "name": "short_action",
+        "prompt_count": 522,
+        "count_delta": 0,
+        "count_agrees": true,
+        "normal_stop": true,
+        "served_model_agrees": true,
+        "within_output_limit": true,
+        "json_object": true,
+        "expected_action": true,
+        "passed": true
+      },
+      {
+        "name": "tool_feedback_roles",
+        "prompt_count": 613,
+        "count_delta": 0,
+        "count_agrees": true,
+        "normal_stop": true,
+        "served_model_agrees": true,
+        "within_output_limit": true,
+        "json_object": true,
+        "expected_action": true,
+        "passed": true
+      },
+      {
+        "name": "json_enforcement",
+        "prompt_count": 42,
+        "count_delta": 0,
+        "count_agrees": true,
+        "normal_stop": true,
+        "served_model_agrees": true,
+        "within_output_limit": true,
+        "json_object": true,
+        "passed": true
+      },
+      {
+        "name": "near_window",
+        "prompt_count": 31712,
+        "count_delta": 0,
+        "count_agrees": true,
+        "normal_stop": false,
+        "served_model_agrees": true,
+        "within_output_limit": true,
+        "json_object": false,
+        "expected_action": false,
+        "passed": false
+      }
+    ],
+    "passed": false,
+    "gpu_precision_revision_verified": false,
+    "note": "Host evidence and actual sandbox tool execution require separate verification.",
+    "error": "Failed near_window; inspect trace before running development tasks"
+  },
+  "preflight_responses": [
+    {
+      "name": "short_action",
+      "line": 4,
+      "input_tokens": 522,
+      "output_tokens": 18,
+      "elapsed_seconds": 1.1764325420372188,
+      "finish_reason": "stop",
+      "response_sha256": "2c91f49b6d00192020451ce7a3f7e4b93714d202006e3253bec67a04f5399f01"
+    },
+    {
+      "name": "tool_feedback_roles",
+      "line": 8,
+      "input_tokens": 613,
+      "output_tokens": 10,
+      "elapsed_seconds": 0.37197133293375373,
+      "finish_reason": "stop",
+      "response_sha256": "6af5f316d8138447f76328525ed0e6422f2fc6a65e28c645466341df756dcf34"
+    },
+    {
+      "name": "json_enforcement",
+      "line": 12,
+      "input_tokens": 42,
+      "output_tokens": 9,
+      "elapsed_seconds": 0.3459525420330465,
+      "finish_reason": "stop",
+      "response_sha256": "e1cae441056b41631e069f1c6cd2d974a7249e4ca9973576200a8cffdd8c4991"
+    },
+    {
+      "name": "near_window",
+      "line": 48,
+      "input_tokens": 31712,
+      "output_tokens": 1024,
+      "elapsed_seconds": 38.44875420886092,
+      "finish_reason": "length",
+      "response_sha256": "d1edb746aa99834f1e9f862e966ad9615b443d532cab0d20bde9fa39213a1c42"
+    }
+  ],
+  "preflight_input_tokens": 32889,
+  "preflight_output_tokens": 1061,
+  "initial_prompt_counts": [
+    {
+      "task": "announcement-subtitle",
+      "condition": "base",
+      "local": 712,
+      "endpoint": 712
+    },
+    {
+      "task": "announcement-subtitle",
+      "condition": "skills",
+      "local": 10532,
+      "endpoint": 10532
+    },
+    {
+      "task": "asset-references",
+      "condition": "base",
+      "local": 646,
+      "endpoint": 646
+    },
+    {
+      "task": "asset-references",
+      "condition": "skills",
+      "local": 10466,
+      "endpoint": 10466
+    },
+    {
+      "task": "product-card",
+      "condition": "base",
+      "local": 673,
+      "endpoint": 673
+    },
+    {
+      "task": "product-card",
+      "condition": "skills",
+      "local": 10493,
+      "endpoint": 10493
+    },
+    {
+      "task": "section-schema",
+      "condition": "base",
+      "local": 681,
+      "endpoint": 681
+    },
+    {
+      "task": "section-schema",
+      "condition": "skills",
+      "local": 10501,
+      "endpoint": 10501
+    },
+    {
+      "task": "shipping-message",
+      "condition": "base",
+      "local": 696,
+      "endpoint": 696
+    },
+    {
+      "task": "shipping-message",
+      "condition": "skills",
+      "local": 10516,
+      "endpoint": 10516
+    }
+  ],
+  "cost": {
+    "currency": "USD",
+    "gpu_hourly_rate": 0.59,
+    "ephemeral_disk_gb": 100,
+    "storage_usd_per_gb_month": 0.1,
+    "month_hours_assumed": 720,
+    "created_utc": "2026-10-23T18:33:41.854000+00:00",
+    "deletion_requested_utc": "2026-10-23T18:37:15+00:00",
+    "seconds_to_deletion_request": 213.146,
+    "estimated_gpu_usd": 0.034932261111111106,
+    "estimated_storage_usd": 0.0008223225308641974,
+    "estimated_total_usd": 0.0357545836419753,
+    "settled_invoice_usd": null,
+    "billing_status": "No pod billing records posted at post-deletion check; this is not free usage.",
+    "approved_all_in_usd": 2,
+    "approved_minutes": 90,
+    "cleanup_verified": true
+  },
+  "evidence_paths": [
+    "runs/skills-ab-session",
+    "runs/m5-endpoint-preflight"
+  ],
+  "archive": {
+    "path": "runs/liquidbench-skills-ab-preflight-20261023.tar.gz",
+    "sha256": "867575b9f9320b237ae109e7837dee1212e3b4a417e5b77898de3aed39034f4d",
+    "evidence_files": 26,
+    "verified": true
+  },
+  "evidence_sha256": {
+    "runs/m5-endpoint-preflight/report.json": "3a714f3d1cb622e35c4d96f335872cd6bf489b71bec22e77a770d19cc4441c18",
+    "runs/m5-endpoint-preflight/trace.jsonl": "629d522fe7325fc084e7648b7c059746cfc7857bcf278faeced489933e59db12",
+    "runs/skills-ab-session/approval.json": "be94751b4d7635555de8e3c9b3395dca2de870749265b3ed18afd5e3d10e5d21",
+    "runs/skills-ab-session/boot-log.json": "c6c8dbb2fc407bdf09479becedd6d37b6d7c5f1535cb0e81259bde1a2b8fcbdd",
+    "runs/skills-ab-session/boot.sh": "24e6690e1fc82f3fe797d45b456207366e50c4599c01a9944b1b6085845c1f92",
+    "runs/skills-ab-session/cleanup.json": "6b1cc71c5ff11fee737dfa4cec1080c7f1344793c2baa54651c6ce5c87a687ed",
+    "runs/skills-ab-session/cost.json": "d35ef3cd2060437caeff61d7a618ac02f22e9c3dfc1c3d3216ef1abe5a362595",
+    "runs/skills-ab-session/create-pod.json": "d16ba04dd4799fd512444a43db4a953e59b41ba8f26ee4ee3c4ca5c953d0c376",
+    "runs/skills-ab-session/create-result.json": "074e2c7027d509dce11825cd927f57f260646f02551f1e36995025a353011162",
+    "runs/skills-ab-session/host-evidence/command.json": "3fcdd46ca32f2c7c976a97c4bdf20a0bef087d4970dbd0b5b450e7dad453bc3d",
+    "runs/skills-ab-session/host-evidence/disk.txt": "0b498bff1e8b4ad75b411b86e03bc57a8c3278b337ca6b84e38d0b4020140eee",
+    "runs/skills-ab-session/host-evidence/memory.txt": "a2a3c33b8aa703097d9719c8799bb2f5fa8483c9d8f6b7070bff3f0ce7a51097",
+    "runs/skills-ab-session/host-evidence/model-files.json": "e722d0131a4e7d8341d0df17cc767af49f03a257acd4d8d653f6b9bc8ecbc6f6",
+    "runs/skills-ab-session/host-evidence/nvidia-smi-final.txt": "4b9a4e4a6430f186887b7cb3819e4f327fe08103294b47f692ea74672f44948b",
+    "runs/skills-ab-session/host-evidence/nvidia-smi.txt": "845902efceba35468b2302776c4b0db6a0778cc7a0fe59ba9fc8e407343101fb",
+    "runs/skills-ab-session/host-evidence/processes.txt": "bad2e34044ee601a24b975f0725066c41bd5a57ed836bfb296c8945f67e069d6",
+    "runs/skills-ab-session/host-evidence/server.log": "cb6f0931913aba5f080cb3e1ea74e16f27e014dc9262316f0fe74ebd6d5df673",
+    "runs/skills-ab-session/host-evidence/software.json": "e2349e4c91c4d804af1cba76c376c3b6d17b0fe58f0ebf388a1a206803d32e7f",
+    "runs/skills-ab-session/initial-count-checks.json": "d5d6a05f328a4f23622eb0c467f963e14071d131c8580ed38244ec9bccfdc622",
+    "runs/skills-ab-session/known_hosts": "b464feb4ad3a15db487268cb822400edfe03a7e15ec4c9753bec153fb981cd54",
+    "runs/skills-ab-session/observed-serving.json": "b9ab5e7dccda44eff06fcaab1b69feb4aed577a8f87cc03ef8a74f27e806ff85",
+    "runs/skills-ab-session/pod-before-delete.json": "0e18a75e6615c1eae2e7d3e77d8d991beb3f37ace3a29283683a0cafd5986a53",
+    "runs/skills-ab-session/pod-readback.json": "12a8760b79fef5bda4ff6fa6ab37489b723af9a883bddfe01fae7b8e5fd1db8f",
+    "runs/skills-ab-session/quote.json": "7314bb15ab5903dd6a68c746f3cf1c6406b42d88c4b0483d1015c17aa91c1ba1",
+    "runs/skills-ab-session/ssh_config": "77de14537f404df6ff9d32e8579e4ff30c3a840ba7f1ed31dc2dd71d4aa7495c",
+    "runs/skills-ab-session/termination.json": "90a54222761fe2a627180f65747838f50eaf3c2b84459bbe2a8c1af59d9cf061"
+  }
+}

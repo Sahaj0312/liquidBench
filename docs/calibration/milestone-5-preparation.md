@@ -1,5 +1,10 @@
 # Milestone 5: skills A/B preparation
 
+Historical preparation record. The user subsequently approved the shared budgets
+and one 90-minute/$2 session. That session was terminated after the near-window
+preflight failed; see the [preflight report and cleanup evidence](milestone-5-preflight.md).
+The ten task attempts have not run.
+
 Preparation is complete; **no paired model attempts or paid deployment have been
 launched**. The full upstream entry instructions cannot fit the old 8K context.
 The proposed experiment therefore requires approval of a shared budget adjustment
