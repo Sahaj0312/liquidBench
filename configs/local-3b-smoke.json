@@ -1,0 +1,20 @@
+{
+  "purpose": "development calibration diagnostic with larger local model; not a research baseline",
+  "endpoint": "http://127.0.0.1:8087/v1",
+  "model": "liquidbench-3b",
+  "model_revision": "Qwen/Qwen2.5-Coder-3B-Instruct-GGUF@f74adce6aa16316c625447af059dbebe4983757c; Q4_K_M sha256:724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+  "image": "liquidbench-runtime:0.1",
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "seed": 42,
+  "max_turns": 12,
+  "max_total_tokens": 24000,
+  "max_output_tokens": 1024,
+  "max_seconds": 300,
+  "request_timeout": 90,
+  "provider_retries": 2,
+  "input_usd_per_million": 0.0,
+  "output_usd_per_million": 0.0,
+  "max_context_tokens": 8192,
+  "token_counting": "llama_cpp"
+}

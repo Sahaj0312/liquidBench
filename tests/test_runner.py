@@ -34,6 +34,9 @@ class ScriptedProvider:
         self.replies = iter(replies)
         self.contexts = []
 
+    def count_prompt(self, messages, timeout):
+        return 100
+
     def complete(self, messages, max_tokens, timeout):
         self.contexts.append(json.dumps(messages))
         reply = next(self.replies)

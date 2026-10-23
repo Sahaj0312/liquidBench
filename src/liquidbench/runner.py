@@ -18,20 +18,42 @@ from .task import fingerprint, safe_name
 SYSTEM = """You are a coding agent operating on an isolated Liquid task workspace.
 Reply with exactly one JSON object per turn. No markdown or prose outside JSON.
 Format: {"tool":"TOOL_NAME","args":{...}}
+Your job is to EDIT the workspace files to satisfy the user request.
+Read the file before editing. Use write_file to save the COMPLETE updated file,
+including unchanged markup and schema wrappers. Rendering does not change files.
+Then check your work using the public tools and finish to submit the saved files.
+On an error, read the diagnostic and change your action; repeating it will not fix it.
 Available tools:
 list_files: args {}
 read_file: args {"path":"relative/path"}
 write_file: args {"path":"relative/path","content":"complete file content"}
 search: args {"text":"literal substring"}
 render: args {"path":"relative/path.liquid","variables":{...},"strip_schema":false}
-  For section bodies, set strip_schema:true to remove one top-level schema block.
+  Use strip_schema:false (or omit it) for snippets without a schema block.
+  Only use strip_schema:true on a section containing one top-level schema block.
+  variables is test data, not code. Supply every required key at its declared nesting.
+  This is core Liquid only; asset_url, stylesheet_tag and t/translate are unsupported.
 analyze: args {"path":"relative/path.liquid"} (static AST and schema extraction)
+  Analysis is diagnostic data, not replacement file content. Use read_file for source.
 check: args {} (runs Shopify Theme Check)
 finish: args {} (submit final files)
 Paths must remain within the workspace. No network or package installation.
 Only the task's declared files may change. Hidden grading is unavailable.
-Tool errors consume the same budget as successful calls. Finish explicitly when done."""
+Tool errors consume the same budget as successful calls. Finish explicitly when done.
+Example of a read action: {"tool":"read_file","args":{"path":"snippets/example.liquid"}}
+Example of saving a whole file: {"tool":"write_file","args":{"path":"snippets/example.liquid","content":"<p>Example</p>"}}
+These are protocol examples, not files or solutions for your task."""
 TOOLS = {"list_files", "read_file", "write_file", "search", "render", "analyze", "check", "finish"}
+ARGUMENTS = {
+    "list_files": {},
+    "read_file": {"path": str},
+    "write_file": {"path": str, "content": str},
+    "search": {"text": str},
+    "render": {"path": str, "variables": dict},
+    "analyze": {"path": str},
+    "check": {},
+    "finish": {},
+}
 
 
 def parse_action(content):
@@ -43,10 +65,21 @@ def parse_action(content):
     if (
         not isinstance(action, dict)
         or set(action) != {"tool", "args"}
+        or not isinstance(action["tool"], str)
         or action["tool"] not in TOOLS
         or not isinstance(action["args"], dict)
     ):
         raise ValueError('Expected exactly {"tool": an available tool, "args": an object}')
+    required = ARGUMENTS[action["tool"]]
+    args = action["args"]
+    optional = {"strip_schema": bool} if action["tool"] == "render" else {}
+    if required.keys() - args.keys() or args.keys() - (required.keys() | optional.keys()):
+        raise ValueError(
+            f"{action['tool']} requires arguments {list(required)}; optional: {list(optional)}"
+        )
+    for key, kind in {**required, **optional}.items():
+        if key in args and type(args[key]) is not kind:
+            raise ValueError(f"{action['tool']}.{key} must be {kind.__name__}")
     return action
 
 
@@ -63,6 +96,8 @@ def load_config(path):
         "max_turns",
         "max_total_tokens",
         "max_output_tokens",
+        "max_context_tokens",
+        "token_counting",
         "max_seconds",
         "request_timeout",
         "provider_retries",
@@ -74,9 +109,13 @@ def load_config(path):
         raise ValueError(f"Missing config fields: {sorted(required - config.keys())}")
     if set(config) - (required | {"api_key_env"}):
         raise ValueError("Unknown config fields; credentials belong in environment variables")
-    for key in ("max_turns", "max_total_tokens", "max_output_tokens"):
+    for key in ("max_turns", "max_total_tokens", "max_output_tokens", "max_context_tokens"):
         if type(config[key]) is not int or config[key] <= 0:
             raise ValueError(f"{key} must be a positive integer")
+    if config["token_counting"] not in {"llama_cpp", "vllm", "conservative_bytes"}:
+        raise ValueError("Unsupported token_counting mode")
+    if config["max_output_tokens"] + 32 >= config["max_context_tokens"]:
+        raise ValueError("Context must fit both the prompt and reserved output")
     if (
         type(config["provider_retries"]) is not int
         or config["provider_retries"] < 0
@@ -147,7 +186,8 @@ def run(
     destination = Path(output_root).resolve() / run_id
     destination.mkdir(parents=True, exist_ok=False)
     result = {
-        "schema_version": 1,
+        "schema_version": 2,
+        "protocol_version": "json-actions-v2",
         "run_id": run_id,
         "task_id": task.manifest["id"],
         "task_version": task.manifest["version"],
@@ -162,6 +202,9 @@ def run(
         "output_tokens": 0,
         "model_calls": 0,
         "tool_calls": 0,
+        "protocol_errors": 0,
+        "tool_errors": 0,
+        "output_truncations": 0,
         "provider_errors": [],
         "usage_incomplete": False,
         "estimated_cost_usd": None,
@@ -194,19 +237,38 @@ def run(
                 snapshot_failure = None
                 try:
                     reason = "turn_budget"
+                    previous_failure = None
                     for turn in range(config["max_turns"]):
                         remaining_time = config["max_seconds"] - (time.monotonic() - start)
                         if remaining_time <= 0:
                             reason = "time_budget"
                             break
                         used = result["input_tokens"] + result["output_tokens"]
-                        reserved_input = prompt_reservation(messages)
+                        if config["token_counting"] == "conservative_bytes":
+                            counted_input = None
+                            reserved_input = prompt_reservation(messages)
+                        else:
+                            counted_input = provider.count_prompt(
+                                messages, min(config["request_timeout"], remaining_time / 2)
+                            )
+                            # Small explicit margin for server/template boundary differences.
+                            reserved_input = counted_input + 32
                         allowance = min(
                             config["max_output_tokens"],
                             config["max_total_tokens"] - used - reserved_input,
                         )
                         if allowance <= 0:
                             reason = "token_budget"
+                            break
+                        # Never silently truncate history or shrink output to squeeze into context.
+                        if reserved_input + allowance > config["max_context_tokens"]:
+                            reason = "context_budget"
+                            event(
+                                "context_budget",
+                                input_reservation=reserved_input,
+                                reserved_output=allowance,
+                                limit=config["max_context_tokens"],
+                            )
                             break
                         for retry in range(config["provider_retries"] + 1):
                             timeout = min(
@@ -223,6 +285,10 @@ def run(
                                 retry=retry,
                                 max_tokens=allowance,
                                 input_reservation=reserved_input,
+                                prompt_token_count=counted_input,
+                                token_counting=config["token_counting"],
+                                context_limit=config["max_context_tokens"],
+                                messages_digest=fingerprint(messages),
                             )
                             result["model_calls"] += 1
                             try:
@@ -253,17 +319,51 @@ def run(
                         if time.monotonic() - start >= config["max_seconds"]:
                             reason = "time_budget"
                             break
+                        if reply.input_tokens > reserved_input or (
+                            reply.input_tokens + reply.output_tokens > config["max_context_tokens"]
+                        ):
+                            raise InfrastructureError(
+                                "Prompt/context accounting mismatch; action not executed"
+                            )
                         result["tool_calls"] += 1
+                        action = None
                         try:
+                            if reply.metadata.get("finish_reason") == "length":
+                                result["output_truncations"] += 1
+                                raise ValueError(
+                                    "Response reached its output limit; no action executed. Return one complete JSON action."
+                                )
                             action = parse_action(reply.content)
+                            event("action", tool=action["tool"])
                             if action["tool"] == "finish":
                                 reason = "finished"
                                 event("finish")
                                 break
                             response = sandbox.call(action["tool"], action["args"])
-                            tool_result = {"ok": True, "result": response}
+                            if response.get("ok") is False:
+                                raise ToolError(response.get("error", "Tool operation failed"))
+                            tool_result = {"ok": True, "tool": action["tool"], "result": response}
                         except (ValueError, KeyError, TypeError, ToolError) as exc:
-                            tool_result = {"ok": False, "error": str(exc)[:1000]}
+                            category = "protocol_errors" if action is None else "tool_errors"
+                            result[category] += 1
+                            tool_result = {
+                                "ok": False,
+                                "tool": action["tool"] if action else None,
+                                "error_type": category,
+                                "error": str(exc)[:1000],
+                            }
+                            failure = fingerprint([action, str(exc)])
+                            if failure == previous_failure:
+                                tool_result["hint"] = (
+                                    "This same action already failed. Read the source or revise the arguments before retrying."
+                                )
+                            if "Expected exactly one top-level schema block" in str(exc):
+                                tool_result["hint"] = (
+                                    "strip_schema:true requires a section schema. For a snippet without schema, omit strip_schema or set it to false."
+                                )
+                            previous_failure = failure
+                        else:
+                            previous_failure = None
                         # Bound context growth without losing the full result in the trace.
                         event("tool_result", **tool_result)
                         text = json.dumps(tool_result, ensure_ascii=False)

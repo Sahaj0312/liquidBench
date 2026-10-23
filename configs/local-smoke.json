@@ -14,5 +14,7 @@
   "request_timeout": 90,
   "provider_retries": 2,
   "input_usd_per_million": 0.0,
-  "output_usd_per_million": 0.0
+  "output_usd_per_million": 0.0,
+  "max_context_tokens": 8192,
+  "token_counting": "llama_cpp"
 }
