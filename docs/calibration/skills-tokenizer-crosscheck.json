@@ -1,0 +1,79 @@
+{
+  "trace_sha256": "ddf23e875ed7a770a0674cfcefd260cacd54b48c3c16348303b7a366a71a5efb",
+  "checks": [
+    {
+      "local": 462,
+      "pilot_vllm": 462
+    },
+    {
+      "local": 553,
+      "pilot_vllm": 553
+    },
+    {
+      "local": 42,
+      "pilot_vllm": 42
+    },
+    {
+      "local": 8645,
+      "pilot_vllm": 8645
+    },
+    {
+      "local": 4548,
+      "pilot_vllm": 4548
+    },
+    {
+      "local": 6596,
+      "pilot_vllm": 6596
+    },
+    {
+      "local": 7620,
+      "pilot_vllm": 7620
+    },
+    {
+      "local": 7108,
+      "pilot_vllm": 7108
+    },
+    {
+      "local": 7364,
+      "pilot_vllm": 7364
+    },
+    {
+      "local": 7236,
+      "pilot_vllm": 7236
+    },
+    {
+      "local": 7172,
+      "pilot_vllm": 7172
+    },
+    {
+      "local": 7140,
+      "pilot_vllm": 7140
+    },
+    {
+      "local": 7124,
+      "pilot_vllm": 7124
+    },
+    {
+      "local": 7132,
+      "pilot_vllm": 7132
+    },
+    {
+      "local": 7136,
+      "pilot_vllm": 7136
+    },
+    {
+      "local": 7138,
+      "pilot_vllm": 7138
+    },
+    {
+      "local": 7137,
+      "pilot_vllm": 7137
+    },
+    {
+      "local": 7136,
+      "pilot_vllm": 7136
+    }
+  ],
+  "all_agree": true,
+  "note": "Cross-check against saved Milestone 4 server counts; new 32K endpoint still requires live preflight."
+}

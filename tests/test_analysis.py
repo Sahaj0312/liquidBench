@@ -51,3 +51,27 @@ def test_analysis_counts_legacy_nested_errors_and_revised_protocol_errors(tmp_pa
     assert report["changed_files"] == []
     assert report["count_deltas"] == [0]
     assert report["errors"][0]["line"] == 3
+
+
+def test_analysis_keeps_skill_verification_infrastructure_failure(tmp_path):
+    from liquidbench.runner import load_config, run
+    from liquidbench.task import Task
+    from test_runner import ScriptedProvider
+
+    config = load_config(ROOT / "configs/qwen-ab-base.json")
+    config["skills"] = {
+        "manifest": str(tmp_path / "missing.json"),
+        "checkout": str(tmp_path),
+        "revision": "a" * 40,
+    }
+    directory, result = run(
+        Task.load(ROOT / "tasks/dev/product-card"),
+        config,
+        tmp_path / "runs",
+        provider=ScriptedProvider([]),
+    )
+    assert result["status"] == "infrastructure_error"
+    report = summarize(directory)
+    assert report["status"] == "infrastructure_error"
+    assert report["sha256"]["patch"] is None and report["image_id"] is None
+    assert report["changed_files"] == [] and report["model_calls"] == 0

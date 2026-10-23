@@ -165,3 +165,54 @@ def test_schema_extraction_does_not_enable_shopify_filters(image):
         )
         assert not result["ok"]
         assert "UndefinedFilter" in result["error"]
+
+
+def test_skills_never_enter_agent_or_evaluator_container(image, skill_spec, tmp_path):
+    import json
+    from liquidbench.runner import load_config, run
+    from test_runner import ScriptedProvider
+
+    task = Task.load(ROOT / "tasks/dev/product-card")
+    config = load_config(ROOT / "configs/qwen-ab-skills.json")
+    config.update(skills=skill_spec, image=image)
+    reference_path = "skills/language/references/long.md"
+    provider = ScriptedProvider(
+        [
+            json.dumps({"tool": "read_file", "args": {"path": reference_path}}),
+            json.dumps(
+                {
+                    "tool": "write_file",
+                    "args": {
+                        "path": "snippets/product-card.liquid",
+                        "content": task.reference,
+                    },
+                }
+            ),
+            '{"tool":"check","args":{}}',
+            '{"tool":"finish","args":{}}',
+        ]
+    )
+
+    class InspectedSandbox(Sandbox):
+        def __enter__(self):
+            super().__enter__()
+            assert self.snapshot() == task.initial
+            with pytest.raises(ToolError):
+                self.call("read_file", {"path": reference_path})
+            return self
+
+    def inspected_grade(task, files, image):
+        assert set(files) == set(task.initial)
+        return grade(task, files, image)
+
+    _, result = run(
+        task,
+        config,
+        tmp_path,
+        provider=provider,
+        sandbox_factory=InspectedSandbox,
+        grader=inspected_grade,
+    )
+    assert result["status"] == "passed"
+    assert "END_MARKER" in provider.contexts[1]
+    assert result["tool_errors"] == 0

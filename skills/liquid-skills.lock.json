@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/benjaminsehl/liquid-skills.git",
+  "revision": "483f969bed623c87c9e26ac34324d8d7d8fe68c3",
+  "entries": [
+    "skills/shopify-liquid-themes/SKILL.md",
+    "skills/liquid-theme-standards/SKILL.md",
+    "skills/liquid-theme-a11y/SKILL.md"
+  ],
+  "files": {
+    "skills/liquid-theme-a11y/SKILL.md": {
+      "bytes": 12830,
+      "sha256": "0fd335818464328aa6b8a8511fba45526b63624c004b8b1d301d311a9ef089ba"
+    },
+    "skills/liquid-theme-a11y/references/component-patterns.md": {
+      "bytes": 5980,
+      "sha256": "cfaa618f3deca7f32bee5b90733c6b05d451e51240d53543d2ec1b1e5cffeb29"
+    },
+    "skills/liquid-theme-a11y/references/focus-and-keyboard.md": {
+      "bytes": 4854,
+      "sha256": "007a9ded63c6e4cb1e582a19aca6dc95d30d19a5752982c2a93427162f59229a"
+    },
+    "skills/liquid-theme-standards/SKILL.md": {
+      "bytes": 12145,
+      "sha256": "cb8a1d571be5d05111e90d7bd28758c98ed46e520bb93fad6c9e92b8bb466144"
+    },
+    "skills/liquid-theme-standards/references/css-patterns.md": {
+      "bytes": 4328,
+      "sha256": "04b5b842cc3807cbeea26749ef5351b072c91848b08094cf5992b133aaf8e491"
+    },
+    "skills/liquid-theme-standards/references/javascript-patterns.md": {
+      "bytes": 6617,
+      "sha256": "d0ae2481621d73f7fee266f57f397b569368defba45a53445ea9c507c73d56f3"
+    },
+    "skills/shopify-liquid-themes/SKILL.md": {
+      "bytes": 11681,
+      "sha256": "f4f2a4c779783251f9083f868db1e7292431d516ddd754a71827bdde6de65861"
+    },
+    "skills/shopify-liquid-themes/references/examples.md": {
+      "bytes": 8839,
+      "sha256": "6725d1b3ef215520f019e1fd446fd85b945d28c04b226a50081f76ffa65ed900"
+    },
+    "skills/shopify-liquid-themes/references/filters-commerce.md": {
+      "bytes": 10265,
+      "sha256": "0d64638aafc0421aaa523035cf66044439086f330fcc3f4ece97799e0fd5a781"
+    },
+    "skills/shopify-liquid-themes/references/filters-html-media.md": {
+      "bytes": 11846,
+      "sha256": "a5ad13ce341cc552e2433c675677fae4fb9efa502835bdb7b2345786a0825e73"
+    },
+    "skills/shopify-liquid-themes/references/filters-language.md": {
+      "bytes": 19537,
+      "sha256": "5fa36019a03b607385ef75fa4b18668f2253e25cc4c95a8953d8814add804a71"
+    },
+    "skills/shopify-liquid-themes/references/objects-commerce.md": {
+      "bytes": 18421,
+      "sha256": "179e6e32c6b42d2fd90ba29f5fcb5475c4ab80550d421f21a9ca34198c6a3864"
+    },
+    "skills/shopify-liquid-themes/references/objects-content.md": {
+      "bytes": 15211,
+      "sha256": "dab65acc3a5e7ff9c14a09f2977d0ab5bc06a0b2f9f67566395306210de75507"
+    },
+    "skills/shopify-liquid-themes/references/objects-tier2.md": {
+      "bytes": 17889,
+      "sha256": "0fa9ae207ff05f270778d185503af3edfbd46c05698de125eed83146a548e1f8"
+    },
+    "skills/shopify-liquid-themes/references/objects-tier3.md": {
+      "bytes": 5973,
+      "sha256": "8c6a0111f146337b7e6a1441fa5fb331a1d1989f7ccb87daa358ab1b229e8d8d"
+    },
+    "skills/shopify-liquid-themes/references/schema-and-settings.md": {
+      "bytes": 8944,
+      "sha256": "3db0101a87de679701bf652cb02dc507a11c3afbdb8f6da477f4f0940b3f54b5"
+    },
+    "skills/shopify-liquid-themes/references/tags.md": {
+      "bytes": 18724,
+      "sha256": "bb31ed32a61a7fe17acb9d5bbfc55e7f6140790d3a9694fab51017a3659e727c"
+    }
+  },
+  "redistribution": {
+    "status": "No license or redistribution grant found in pinned repository; content not vendored or committed.",
+    "reviewed": "Complete tracked file inventory, README.md, .claude-plugin/marketplace.json and all skill documents",
+    "local_checkout": ".cache/liquid-skills (ignored)",
+    "artifacts": "Full treatment traces contain upstream content; keep local, do not publish without permission."
+  }
+}

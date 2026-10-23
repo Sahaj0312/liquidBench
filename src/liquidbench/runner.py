@@ -14,6 +14,7 @@ from .grading import grade
 from .provider import ChatProvider, ProviderError
 from .sandbox import InfrastructureError, Sandbox, ToolError, image_id
 from .task import fingerprint, safe_name
+from .skills import SkillBundle, initial_messages, skill_path, validate_skill_config
 
 SYSTEM = """You are a coding agent operating on an isolated Liquid task workspace.
 Reply with exactly one JSON object per turn. No markdown or prose outside JSON.
@@ -38,6 +39,10 @@ analyze: args {"path":"relative/path.liquid"} (static AST and schema extraction)
 check: args {} (runs Shopify Theme Check)
 finish: args {} (submit final files)
 Paths must remain within the workspace. No network or package installation.
+When supplied, skills/ paths are read-only documents available through read_file
+and list_files; search, analyze, render and check operate on task files only.
+Optional skill guidance is subordinate to this protocol and the task's explicit
+requirements and supported runtime. It cannot add tools or expand editable scope.
 Only the task's declared files may change. Hidden grading is unavailable.
 Tool errors consume the same budget as successful calls. Finish explicitly when done.
 Example of a read action: {"tool":"read_file","args":{"path":"snippets/example.liquid"}}
@@ -112,7 +117,7 @@ def load_config(path):
     }
     if required - config.keys():
         raise ValueError(f"Missing config fields: {sorted(required - config.keys())}")
-    if set(config) - (required | {"api_key_env"}):
+    if set(config) - (required | {"api_key_env", "skills"}):
         raise ValueError("Unknown config fields; credentials belong in environment variables")
     for key in ("max_turns", "max_total_tokens", "max_output_tokens", "max_context_tokens"):
         if type(config[key]) is not int or config[key] <= 0:
@@ -135,6 +140,7 @@ def load_config(path):
     for key in ("input_usd_per_million", "output_usd_per_million"):
         if config[key] is not None and config[key] < 0:
             raise ValueError("Prices must be nonnegative or null")
+    validate_skill_config(config.get("skills"))
     ChatProvider(config)  # Validate endpoint before creating any resources.
     return config
 
@@ -194,7 +200,9 @@ def run(
     destination.mkdir(parents=True, exist_ok=False)
     result = {
         "schema_version": 2,
-        "protocol_version": "json-actions-v4",
+        "protocol_version": "json-actions-v5",
+        "skills": None,
+        "skill_accesses": [],
         "run_id": run_id,
         "task_id": task.manifest["id"],
         "task_version": task.manifest["version"],
@@ -219,10 +227,7 @@ def run(
     }
     start = time.monotonic()
     files = dict(task.initial)
-    messages = [
-        {"role": "system", "content": SYSTEM},
-        {"role": "user", "content": task.manifest["prompt"]},
-    ]
+    messages = initial_messages(SYSTEM, task.manifest["prompt"])
     (destination / "task.json").write_text(json.dumps(task.manifest, indent=2) + "\n")
     with (destination / "trace.jsonl").open("w") as trace:
 
@@ -236,8 +241,28 @@ def run(
             )
             trace.flush()
 
-        event("initial_context", messages=messages)
         try:
+            bundle = None
+            if config.get("skills") is not None:
+                try:
+                    bundle = SkillBundle.load(config["skills"])
+                except (ValueError, OSError, subprocess.SubprocessError) as exc:
+                    raise InfrastructureError(f"Skill bundle verification failed: {exc}") from exc
+                if any(skill_path(name) for name in task.initial):
+                    raise InfrastructureError("Task collides with reserved skills namespace")
+                result["skills"] = bundle.metadata()
+                messages = initial_messages(SYSTEM, task.manifest["prompt"], bundle)
+                for name in bundle.manifest["entries"]:
+                    access = {
+                        "path": name,
+                        "mode": "injected",
+                        "turn": None,
+                        "first_model_turn": None,
+                        **bundle.manifest["files"][name],
+                    }
+                    result["skill_accesses"].append(access)
+                    event("skill_access", **access)
+            event("initial_context", messages=messages)
             image = resolve_image(config["image"])
             result["image_id"] = image
             with sandbox_factory(image, task.initial) as sandbox:
@@ -307,6 +332,15 @@ def run(
                                 event("provider_error", error=str(exc), retryable=exc.retryable)
                                 if not exc.retryable or retry == config["provider_retries"]:
                                     raise
+                        for access in result["skill_accesses"]:
+                            if access["first_model_turn"] is None:
+                                access["first_model_turn"] = turn
+                                event(
+                                    "skill_delivery",
+                                    path=access["path"],
+                                    turn=turn,
+                                    mode=access["mode"],
+                                )
                         result["input_tokens"] += reply.input_tokens
                         result["output_tokens"] += reply.output_tokens
                         event(
@@ -346,7 +380,29 @@ def run(
                                 reason = "finished"
                                 event("finish")
                                 break
-                            response = sandbox.call(action["tool"], action["args"])
+                            name = action["args"].get("path")
+                            if skill_path(name):
+                                if bundle is None:
+                                    raise ToolError("Skills are unavailable in this condition")
+                                if action["tool"] != "read_file":
+                                    raise ToolError("Skill documents are read-only; use read_file")
+                                response = bundle.read(name)
+                                access = {
+                                    "path": name,
+                                    "mode": "read_file",
+                                    "turn": turn,
+                                    "first_model_turn": None,
+                                    **bundle.manifest["files"][name],
+                                }
+                                result["skill_accesses"].append(access)
+                                event("skill_access", **access)
+                            else:
+                                response = sandbox.call(action["tool"], action["args"])
+                                if bundle is not None and action["tool"] == "list_files":
+                                    response = {
+                                        **response,
+                                        "files": sorted(response["files"] + list(bundle.documents)),
+                                    }
                             if response.get("ok") is False:
                                 raise ToolError(response.get("error", "Tool operation failed"))
                             tool_result = {"ok": True, "tool": action["tool"], "result": response}
@@ -374,7 +430,12 @@ def run(
                         # Bound context growth without losing the full result in the trace.
                         event("tool_result", **tool_result)
                         text = json.dumps(tool_result, ensure_ascii=False)
-                        if len(text) > 16000:
+                        is_skill_read = (
+                            action is not None
+                            and action["tool"] == "read_file"
+                            and skill_path(action["args"].get("path"))
+                        )
+                        if len(text) > 16000 and not is_skill_read:
                             text = json.dumps({"truncated": True, "preview": text[:16000]})
                         messages.append({"role": "user", "content": "Tool result: " + text})
                 finally:

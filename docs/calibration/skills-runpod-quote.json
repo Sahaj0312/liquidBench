@@ -1,0 +1,32 @@
+{
+  "checked_utc": "2026-10-23 18:18:56 UTC",
+  "request": {
+    "id": "NVIDIA A40",
+    "cloud": "SECURE",
+    "count": 1,
+    "include": [
+      "AVAILABILITY"
+    ],
+    "product": [
+      "POD"
+    ],
+    "minCudaVersion": "13.0"
+  },
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"availability\": \"NONE\",\n  \"community\": false,\n  \"cudaVersions\": [\n    {\n      \"available\": false,\n      \"version\": \"13.2\"\n    }\n  ],\n  \"id\": \"NVIDIA A40\",\n  \"manufacturer\": \"NVIDIA\",\n  \"maxCount\": {\n    \"community\": 1,\n    \"secure\": 10\n  },\n  \"memory\": 48,\n  \"name\": \"A40\",\n  \"pool\": \"AMPERE_48\",\n  \"price\": {\n    \"community\": 0.35,\n    \"secure\": 0.59,\n    \"serverless\": 1.22\n  },\n  \"secure\": true\n}"
+      }
+    ],
+    "isError": false
+  },
+  "storage": {
+    "source": "https://docs.runpod.io/pods/pricing",
+    "container_usd_per_gb_month": 0.1,
+    "gb": 100,
+    "month_hours_assumed": 720
+  },
+  "spending_approved": false,
+  "resources_created": 0
+}

@@ -2,7 +2,7 @@
 
 A Python harness for controlled experiments on offline Liquid coding tasks. The research design is in [brief.txt](brief.txt).
 
-LiquidBench implements five **development** tasks, a modular grader, and an agent protocol with explicit context accounting. The runner gives an agent isolated tools, submits its final files to a separate grader, and saves the grade, trace, patch, token usage, latency, and estimated inference cost. No held-out benchmark or research results are claimed yet. See the [Milestone 3 failure analysis](docs/calibration/milestone-3.md) and [7B preparation notes](docs/calibration/qwen-7b.md).
+LiquidBench implements five **development** tasks, a modular grader, and an agent protocol with explicit context accounting. The runner gives an agent isolated tools, submits its final files to a separate grader, and saves the grade, trace, patch, token usage, latency, and estimated inference cost. No held-out benchmark or research results are claimed yet. The [7B pilot](docs/calibration/milestone-4-results.md) passed 2/5 tasks; [Milestone 5 preparation](docs/calibration/milestone-5-preparation.md) adds pinned, optional skills and a paired experiment plan awaiting budget/compute approval.
 
 | Task | Required repair | Grading evidence |
 | --- | --- | --- |
@@ -130,6 +130,20 @@ Each attempt creates an ignored `runs/<timestamp-id>/` directory containing:
 Unknown pricing yields `null`, not a fabricated zero. Local smoke configuration explicitly uses zero API cost; that excludes electricity and hardware. Do not automatically publish traces: review them for credentials or restricted material first. Run artifacts are ignored by Git.
 
 `run-suite` runs tasks sequentially against one immutable runtime image ID. Its `runs/suite-<timestamp-id>/summary.json` links individual attempts and counts passes, model failures, and infrastructure errors separately. It is marked `development` and `research_result: false`; this is pipeline bookkeeping, not a leaderboard.
+
+## Optional skills and paired development experiment
+
+The optional `skills` config field names a pinned manifest, local checkout and full Git revision; null or absent disables access. Ben Sehl's complete three entry instructions are injected unchanged, and fourteen references are available through existing `read_file` calls. The baseline cannot load or read them. Documents remain outside agent/evaluator containers and final task snapshots. `list_files` includes document paths in the treatment; search and development tools retain their task-file scope. Protocol v5 explains this identically to both conditions; task prompts and graders are unchanged.
+
+There is no license/redistribution grant in the pinned upstream snapshot, so content is fetched into an ignored local checkout, not vendored. Full treatment traces also remain local. The loader verifies Git revision, inventory, file hashes and pinned Git object contents. `skill_accesses` records injected entries, explicit reads and the first completed model call that received each document. Reference text is never silently shortened; it counts against context and cumulative usage on every request.
+
+```sh
+uv run python scripts/prepare_skills.py
+uv run --with transformers==5.19.0 --with tokenizers==0.23.3 --with jinja2==3.1.6 python scripts/measure_skills.py
+uv run python scripts/run_skills_ab.py  # dry plan only
+```
+
+All three entries require **9,457 raw tokens**, exceeding the pilot's 8K context. The proposed matched configs use 32K context and a 393,216-token cumulative ceiling, retaining 12 turns and all other execution/decoding limits. These changes and a new paid session require approval; **no A/B model runs have occurred**. See the [measurements, run order, cost and approval plan](docs/calibration/milestone-5-preparation.md). No fine-tuning, new tasks, training data or leaderboard are implemented.
 
 ## Development
 

@@ -64,11 +64,17 @@ def summarize(directory):
         "task_id": result["task_id"],
         "run_id": result["run_id"],
         "artifacts": str(directory),
-        "sha256": {"trace": sha(trace_path), "result": sha(result_path), "patch": sha(patch_path)},
+        "sha256": {
+            "trace": sha(trace_path),
+            "result": sha(result_path),
+            "patch": sha(patch_path) if patch_path.exists() else None,
+        },
         "task_digest": result["task_digest"],
-        "image_id": result["image_id"],
+        "image_id": result.get("image_id"),
         "source": result["source"],
         "config": result["config"],
+        "skills": result.get("skills"),
+        "skill_accesses": result.get("skill_accesses", []),
         "status": result["status"],
         "termination": result["termination"],
         "input_tokens": result["input_tokens"],
@@ -87,7 +93,9 @@ def summarize(directory):
         "provider_errors": result["provider_errors"],
         "action_counts": dict(Counter(a["tool"] for a in actions)),
         "changed_files": [
-            line[6:] for line in patch_path.read_text().splitlines() if line.startswith("+++ b/")
+            line[6:]
+            for line in (patch_path.read_text().splitlines() if patch_path.exists() else [])
+            if line.startswith("+++ b/")
         ],
         "actions": actions,
         "errors": errors,
@@ -112,6 +120,7 @@ def suite(path):
                     "protocol_errors",
                     "tool_errors",
                     "length_stops",
+                    "elapsed_seconds",
                 ]
             },
         },
