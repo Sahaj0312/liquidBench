@@ -4,7 +4,7 @@ A Python harness for controlled experiments on offline Liquid coding tasks. The 
 
 LiquidBench implements 20 **development** tasks, a modular grader, and an agent protocol with explicit context accounting. The runner gives an agent isolated tools, submits its final files to a separate grader, and saves the grade, trace, patch, token usage, latency, and estimated inference cost. No held-out benchmark or research results are claimed yet. The [7B pilot](docs/calibration/milestone-4-results.md) passed 2/5 tasks. The completed [Milestone 5 paired experiment](docs/calibration/milestone-5-results.md) scored **2/5 baseline versus 0/5 with full pinned skills**, using 9.07× as many treatment tokens. All ten attempts and cleanup evidence are preserved; post-training has not begun.
 
-The original five tasks are below; the [Milestone 6 catalog and frozen loading study](docs/calibration/milestone-6-plan.md) lists all 20, exact token feasibility, repetitions and compute scenarios. Milestone 6 is preparation only; paid execution requires fresh approval.
+The original five tasks are below; the [Milestone 6 catalog and frozen loading study](docs/calibration/milestone-6-plan.md) lists all 20, exact token feasibility, repetitions and compute scenarios. Milestone 6 Block 0 is complete; further paid execution requires fresh approval.
 
 | Task | Required repair | Grading evidence |
 | --- | --- | --- |
@@ -151,7 +151,7 @@ All three entries require **9,457 raw tokens**, exceeding the pilot's 8K context
 
 `configs/m6-{base,full,on_demand,neutral}.json` share all model and execution settings. Full loading preserves the original bundle; on-demand exposes an 85-token index and charges complete document reads to normal budgets. Neutral context is a hash-pinned, unrelated 9,815-token message, exactly matching full-bundle initial overhead. Baseline and neutral cannot access skills. The upstream documents remain unchanged and unvendored.
 
-The [predeclared study](docs/calibration/milestone-6-plan.md) schedules 20 tasks × four conditions × three fixed-seed repetitions. These are deterministic reproducibility checks, not independent research samples. `scripts/run_loading_study.py` prints a dry plan by default; future execution requires fresh approval, verified serving evidence, matching preflight v2, count agreement and the frozen plan. `scripts/analyze_loading_study.py` preserves task-level pairs, missing/infra outcomes, correctness, reads, token usage and validation-tool counts. No paid inference has been run for this milestone.
+The [predeclared study](docs/calibration/milestone-6-plan.md) schedules 20 tasks × four conditions × three fixed-seed repetitions. These are deterministic reproducibility checks, not independent research samples. `scripts/run_loading_study.py` prints a dry plan by default; future execution requires fresh approval, verified serving evidence, matching preflight v2, count agreement and the frozen plan. `scripts/analyze_loading_study.py` preserves task-level pairs, missing/infra outcomes, correctness, reads, token usage and validation-tool counts. The approved [Block 0 operational check](docs/calibration/milestone-6-block-0-results.md) completed all 16 attempts: baseline 2/4, full 0/4, on-demand 2/4, neutral 1/4. The on-demand arm read no skill documents. Cleanup is verified; the other 14 blocks require fresh approval.
 
 ## Development
 

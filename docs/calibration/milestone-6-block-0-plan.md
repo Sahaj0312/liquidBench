@@ -1,6 +1,8 @@
 # Block 0 operational check — part of the frozen Milestone 6 study
 
-Prepared 2026-10-23. **Approval pending; no paid resource created.** This is block
+Prepared 2026-10-23. **Subsequently approved and completed; the Pod was deleted.**
+See the [results and cleanup evidence](milestone-6-block-0-results.md). The quote
+and approval request below are retained as the pre-deployment record. This is block
 0 of [the existing plan](../../experiments/m6-plan.json), repetition 1 / seed 42,
 not an extra pilot or a replacement experiment. The other 14 blocks remain
 unattempted. Scores will not select which attempts run or whether this block stops.
