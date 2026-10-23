@@ -1,6 +1,8 @@
 # Milestone 6 continuation: blocks 1–14
 
-Prepared 2026-10-23. **Proposal only; no new rental is authorized or provisioned.**
+Prepared 2026-10-23. **Approved: one A40 session, at most eight hours and $6 all-in.**
+The user approved this envelope and requested a practical per-block reserve before
+execution. No additional session, substitution, top-up or extension is authorized.
 Block 0 remains part of the study. This note changes operational session grouping,
 not the experiment, its attempt order, or any per-attempt limit.
 
@@ -78,7 +80,29 @@ attempt. Prefix caching stays enabled across blocks on the same server. Record
 session, host, block, sequence and timestamps to expose cache/time confounding in
 latency comparisons. Never reset the server/cache to improve a condition's score.
 
-## Admission, freshness and deadlines
+## Approved admission adjustment
+
+Before provisioning, the user explicitly requested replacing the 340-minute
+admission requirement below with a conservative execution/cleanup reserve.
+The session will use **120 minutes remaining before each block**: 80 minutes for
+16 unchanged 300-second agent limits, 20 minutes for final grading/in-flight tools,
+5 minutes for the initial count gate, and 15 minutes for export/deletion/verification.
+This is operational headroom, not a sum of every HTTP and grader timeout and not
+an unconditional guarantee through infrastructure stalls. No per-attempt limit
+or freshness rule changes. The original proposal is retained below for provenance;
+its 340-minute admission threshold and 20-minute cleanup threshold are superseded
+by 120 and 15 minutes respectively.
+
+Admission also reserves the corresponding cost. The controller stops launching
+blocks when fewer than 120 minutes remain, stops any still-running process by the
+session's final 15-minute cleanup reserve, and saves partial evidence/missingness.
+An unexpectedly slow count gate or grader is preserved as an operational problem,
+not repaired by changing the harness or selectively retrying. Preflight refresh
+remains at 50 minutes between blocks; the frozen validation rule remains <1 hour.
+Do not use scores in admission or stopping decisions. All remaining blocks may
+share the session if these conditions continue to hold.
+
+## Original admission proposal (superseded as stated above)
 
 Before every block require **at least 340 minutes (5h40m) of remaining approved
 session time**, and sufficient reserved spend for that interval. This deliberately
