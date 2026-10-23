@@ -1,0 +1,385 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/notice-link.liquid",
+    "tags": [
+      "section",
+      "h2",
+      "p",
+      "a"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_link\",\n      \"label\": \"Show link\",\n      \"default\": true\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"url\",\n      \"label\": \"URL\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"label\",\n      \"label\": \"Label\",\n      \"default\": \"Details\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "id": "s<&",
+        "settings": {
+          "heading": "H<&",
+          "url": "/x",
+          "show_link": false,
+          "label": "Go"
+        }
+      },
+      "body": "Body & text"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s<&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "H<&",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "text": "Body & text",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "id": "s<&",
+        "settings": {
+          "heading": "H<&",
+          "url": null,
+          "show_link": true,
+          "label": "Go"
+        }
+      },
+      "body": "Body & text"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s<&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "H<&",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "text": "Body & text",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "id": "s<&",
+        "settings": {
+          "heading": "H<&",
+          "url": "",
+          "show_link": true,
+          "label": "Go"
+        }
+      },
+      "body": "Body & text"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s<&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "H<&",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "text": "Body & text",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "id": "s<&",
+        "settings": {
+          "heading": "H<&",
+          "url": " \t ",
+          "show_link": true,
+          "label": "Go"
+        }
+      },
+      "body": "Body & text"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s<&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "H<&",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "text": "Body & text",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "id": "s<&",
+        "settings": {
+          "heading": "H<&",
+          "url": " /p?q=\"x\"&a=1 ",
+          "show_link": true,
+          "label": "<Go>"
+        }
+      },
+      "body": "Body & text"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s<&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "H<&",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "text": "Body & text",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "/p?q=\"x\"&a=1"
+              ]
+            ],
+            "text": "<Go>",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "id": "s<&",
+        "settings": {
+          "heading": "H<&",
+          "url": "/new",
+          "show_link": true,
+          "label": null
+        }
+      },
+      "body": "Body & text"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s<&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "H<&",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "text": "Body & text",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "/new"
+              ]
+            ],
+            "text": "Details",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "id": "s<&",
+        "settings": {
+          "heading": "H<&",
+          "url": "/last",
+          "show_link": true,
+          "label": ""
+        }
+      },
+      "body": "Body & text"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s<&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "H<&",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "text": "Body & text",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "/last"
+              ]
+            ],
+            "text": "Details",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "id": "s<&",
+        "settings": {
+          "heading": "H<&",
+          "url": "/東京",
+          "show_link": true,
+          "label": " More "
+        }
+      },
+      "body": "Body & text"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s<&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "H<&",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "text": "Body & text",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "/東京"
+              ]
+            ],
+            "text": " More ",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

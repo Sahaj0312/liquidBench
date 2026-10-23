@@ -1,0 +1,1 @@
+{% assign first = customer.first | default: "" | strip %}{% assign last = customer.last | default: "" | strip %}<p class="name">{% if first != empty %}{{ first | escape }}{% if last != empty %} {{ last | escape }}{% endif %}{% elsif last != empty %}{{ last | escape }}{% else %}Guest{% endif %}</p>

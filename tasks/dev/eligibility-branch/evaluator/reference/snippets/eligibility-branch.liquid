@@ -1,0 +1,1 @@
+{% if item.enabled %}{% if item.stock == 0 %}<p>Unavailable</p>{% elsif item.vip %}{% if item.price >= 100 or item.clearance %}<p>Special</p>{% else %}<p>Standard</p>{% endif %}{% else %}<p>Standard</p>{% endif %}{% endif %}

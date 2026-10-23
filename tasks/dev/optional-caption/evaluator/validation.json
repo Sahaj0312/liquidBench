@@ -1,0 +1,65 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "sections/optional-caption.liquid": "<section data-id=\"{{ section.id | escape }}\">\n<h2>{{ section.settings.heading | escape }}</h2>{% if section.settings.show_caption %}{% assign caption = section.settings.caption | default: \"\" | strip %}{% if caption != empty %}<p class=\"caption\">{{ caption | escape }}</p>{% endif %}{% endif %}<p class=\"footer\">{{ footer | escape }}</p>\n</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_caption\",\n      \"label\": \"Caption enabled\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"caption\",\n      \"label\": \"Caption\",\n      \"default\": \"Caption\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "ignores-toggle",
+    "expected_pass": false,
+    "changes": {
+      "sections/optional-caption.liquid": "<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% if true %}{% assign caption = section.settings.caption | default: \"\" | strip %}{% if caption != empty %}<p class=\"caption\">{{ caption | escape }}</p>{% endif %}{% endif %}<p class=\"footer\">{{ footer | escape }}</p></section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_caption\",\n      \"label\": \"Caption enabled\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"caption\",\n      \"label\": \"Caption\",\n      \"default\": \"Caption\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "untrimmed",
+    "expected_pass": false,
+    "changes": {
+      "sections/optional-caption.liquid": "<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% if section.settings.show_caption %}{% assign caption = section.settings.caption | default: \"\" %}{% if caption != empty %}<p class=\"caption\">{{ caption | escape }}</p>{% endif %}{% endif %}<p class=\"footer\">{{ footer | escape }}</p></section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_caption\",\n      \"label\": \"Caption enabled\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"caption\",\n      \"label\": \"Caption\",\n      \"default\": \"Caption\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "lost-footer",
+    "expected_pass": false,
+    "changes": {
+      "sections/optional-caption.liquid": "<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% if section.settings.show_caption %}{% assign caption = section.settings.caption | default: \"\" | strip %}{% if caption != empty %}<p class=\"caption\">{{ caption | escape }}</p>{% endif %}{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_caption\",\n      \"label\": \"Caption enabled\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"caption\",\n      \"label\": \"Caption\",\n      \"default\": \"Caption\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "sections/optional-caption.liquid": "<section data-id=\"s&quot;&amp;\"><h2>&lt;Title&gt;</h2><p class=\"footer\">Footer &amp; ©</p></section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_caption\",\n      \"label\": \"Caption enabled\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"caption\",\n      \"label\": \"Caption\",\n      \"default\": \"Caption\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "changed-schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/optional-caption.liquid": "<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% if section.settings.show_caption %}{% assign caption = section.settings.caption | default: \"\" | strip %}{% if caption != empty %}<p class=\"caption\">{{ caption | escape }}</p>{% endif %}{% endif %}<p class=\"footer\">{{ footer | escape }}</p></section>\n{% schema %}\n{\n  \"name\": \"Other\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Other\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_caption\",\n      \"label\": \"Caption enabled\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"caption\",\n      \"label\": \"Caption\",\n      \"default\": \"Caption\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Other\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/optional-caption.liquid": "{% # theme-check-disable %}\n<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% if section.settings.show_caption %}{% assign caption = section.settings.caption | default: \"\" | strip %}{% if caption != empty %}<p class=\"caption\">{{ caption | escape }}</p>{% endif %}{% endif %}<p class=\"footer\">{{ footer | escape }}</p></section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_caption\",\n      \"label\": \"Caption enabled\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"caption\",\n      \"label\": \"Caption\",\n      \"default\": \"Caption\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/optional-caption.liquid": null
+    }
+  }
+]

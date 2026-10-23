@@ -1,0 +1,15 @@
+{
+  "id": "visible-list-limit",
+  "version": 1,
+  "split": "development",
+  "category": "theme-modification",
+  "difficulty": "hard",
+  "family": "visible-list-limit",
+  "provenance": "Original synthetic LiquidBench Milestone 6 development fixture; not training or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/visible-list-limit.liquid"
+  ],
+  "prompt": "Modify sections/visible-list-limit.liquid. Preserve section data-id and h2 heading for every input. rows is an ordered array with show boolean and label string. section.id/heading are strings, limit an integer 1..3. List only the first limit visible rows in original order, duplicates retained: ul with li text label. When none are visible, replace the ul with p class=empty and text No entries. Hidden rows must not consume the limit. No other elements/attributes. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/visible-list-limit.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

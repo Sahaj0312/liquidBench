@@ -1,0 +1,72 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/icon-reference.liquid": "<img width=\"16\" height=\"16\" src=\"{{ \"badge.svg\" | asset_url }}\" alt=\"Badge\">"
+    }
+  },
+  {
+    "name": "path-prefix",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-reference.liquid": "<img width=\"16\" height=\"16\" src=\"{{ 'assets/badge.svg' | asset_url }}\" alt=\"Badge\">"
+    }
+  },
+  {
+    "name": "hardcoded-url",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-reference.liquid": "<img width=\"16\" height=\"16\" src=\"/badge.svg\" alt=\"Badge\">"
+    }
+  },
+  {
+    "name": "removed-alt",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-reference.liquid": "<img width=\"16\" height=\"16\" src=\"{{ 'badge.svg' | asset_url }}\">"
+    }
+  },
+  {
+    "name": "dead-code",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-reference.liquid": "{% if false %}<img width=\"16\" height=\"16\" src=\"{{ 'badge.svg' | asset_url }}\" alt=\"Badge\">{% endif %}"
+    }
+  },
+  {
+    "name": "commented",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-reference.liquid": "{% comment %}<img width=\"16\" height=\"16\" src=\"{{ 'badge.svg' | asset_url }}\" alt=\"Badge\">{% endcomment %}"
+    }
+  },
+  {
+    "name": "extra-markup",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-reference.liquid": "<img width=\"16\" height=\"16\" src=\"{{ 'badge.svg' | asset_url }}\" alt=\"Badge\"><p>extra</p>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-reference.liquid": "{% # theme-check-disable %}\n<img width=\"16\" height=\"16\" src=\"{{ 'badge.svg' | asset_url }}\" alt=\"Badge\">"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-reference.liquid": null
+    }
+  }
+]

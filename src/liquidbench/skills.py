@@ -25,6 +25,41 @@ def validate_skill_config(spec):
         raise ValueError("Skill revision must be a full Git commit SHA")
 
 
+def validate_loading(config):
+    mode = config.get("skill_loading", "full")
+    if mode not in {"full", "on_demand"}:
+        raise ValueError("skill_loading must be full or on_demand")
+    if mode == "on_demand" and config.get("skills") is None:
+        raise ValueError("on_demand requires a skill bundle")
+    spec = config.get("neutral_context")
+    if spec is not None:
+        if config.get("skills") is not None:
+            raise ValueError("Neutral context cannot expose skills")
+        if (
+            not isinstance(spec, dict)
+            or set(spec) != {"path", "sha256"}
+            or not isinstance(spec["path"], str)
+            or not spec["path"]
+            or not isinstance(spec["sha256"], str)
+            or not re.fullmatch(r"[0-9a-f]{64}", spec["sha256"])
+        ):
+            raise ValueError("neutral_context requires a path and SHA-256")
+
+
+def load_neutral(config):
+    validate_loading(config)
+    spec = config.get("neutral_context")
+    if spec is None:
+        return None
+    path = Path(spec["path"])
+    if path.is_symlink() or not path.is_file() or path.stat().st_size > 1_000_000:
+        raise ValueError("Invalid neutral context file")
+    data = path.read_bytes()
+    if sha256(data) != spec["sha256"]:
+        raise ValueError("Neutral context hash mismatch")
+    return data.decode("utf-8")
+
+
 class SkillBundle:
     def __init__(self, manifest, documents, manifest_sha256):
         self.manifest = manifest
@@ -116,11 +151,30 @@ class SkillBundle:
             raise ToolError("Unknown skill document; use an exact listed skills/ path")
         return {"content": self.documents[name]}
 
+    def index_message(self):
+        # Fixed for every task: paths only, no solution-based selection or hints.
+        return (
+            "Optional skill entry documents are available on demand through read_file:\n"
+            + "\n".join(self.manifest["entries"])
+            + "\nUse exact skills/ paths. Relative links resolve from the document's directory. "
+            "list_files also lists the reference documents. Reading documents uses the same "
+            "turn and token budgets as other tools."
+        )
 
-def initial_messages(system, task_prompt, bundle=None):
+
+def initial_messages(system, task_prompt, bundle=None, *, loading="full", neutral=None):
     messages = [{"role": "system", "content": system}]
     if bundle is not None:
-        messages.append({"role": "user", "content": bundle.entry_message()})
+        messages.append(
+            {
+                "role": "user",
+                "content": (
+                    bundle.entry_message() if loading == "full" else bundle.index_message()
+                ),
+            }
+        )
+    elif neutral is not None:
+        messages.append({"role": "user", "content": neutral})
     messages.append({"role": "user", "content": task_prompt})
     return messages
 

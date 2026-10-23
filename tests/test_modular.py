@@ -80,16 +80,16 @@ def test_integrity_gates_run_before_evaluator(task, monkeypatch):
         assert grade(task, files, "fake-image")["passed"] is False
 
 
-def test_five_development_tasks_have_independent_contracts():
+def test_twenty_development_tasks_have_independent_contracts():
     tasks = discover_tasks(ROOT / "tasks/dev")
-    assert {t.manifest["id"] for t in tasks} == {
+    assert {t.manifest["id"] for t in tasks} >= {
         "product-card",
         "shipping-message",
         "section-schema",
         "asset-references",
         "announcement-subtitle",
     }
-    assert len({t.manifest["family"] for t in tasks}) == 5
+    assert len(tasks) == len({t.manifest["family"] for t in tasks}) == 20
     for task in tasks:
         assert task.manifest["split"] == "development"
         candidates = validation_candidates(task)

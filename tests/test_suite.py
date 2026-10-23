@@ -45,7 +45,10 @@ def test_runner_never_exposes_hidden_evaluation_assets(task, tmp_path):
 
 
 def test_suite_retains_model_failures_and_missing_infrastructure(tmp_path, monkeypatch):
-    statuses = iter(["failed", "infrastructure_error", "passed", "passed", "failed"])
+    statuses = iter(
+        ["failed", "infrastructure_error", "passed", "passed", "failed"]
+        + ["failed"] * (len(TASKS) - 5)
+    )
     seen = []
     monkeypatch.setattr(cli, "image_id", lambda _: "sha256:fixed")
 
@@ -59,6 +62,10 @@ def test_suite_retains_model_failures_and_missing_infrastructure(tmp_path, monke
     summary = json.loads(next(tmp_path.glob("suite-*/summary.json")).read_text())
     assert code == 2
     assert seen == [t.manifest["id"] for t in TASKS]
-    assert summary["status_counts"] == {"passed": 2, "failed": 2, "infrastructure_error": 1}
+    assert summary["status_counts"] == {
+        "passed": 2,
+        "failed": len(TASKS) - 3,
+        "infrastructure_error": 1,
+    }
     assert summary["split"] == "development"
     assert summary["research_result"] is False

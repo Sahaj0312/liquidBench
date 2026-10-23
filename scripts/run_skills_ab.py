@@ -15,6 +15,15 @@ from liquidbench.skills import SkillBundle, initial_messages, sha256
 from liquidbench.task import discover_tasks
 
 
+M5_TASK_IDS = {
+    "announcement-subtitle",
+    "asset-references",
+    "product-card",
+    "section-schema",
+    "shipping-message",
+}
+
+
 def plan(base, treatment, tasks):
     if base.get("skills") is not None or treatment.get("skills") is None:
         raise ValueError("Expected a baseline without skills and a treatment with skills")
@@ -117,7 +126,7 @@ def main():
     parser.add_argument("--preflight", type=Path)
     parser.add_argument("--output", type=Path, default=Path("runs/skills-ab-01"))
     args = parser.parse_args()
-    tasks = discover_tasks(Path("tasks/dev"))
+    tasks = [t for t in discover_tasks(Path("tasks/dev")) if t.manifest["id"] in M5_TASK_IDS]
     data = plan(
         load_config("configs/qwen-ab-base.json"), load_config("configs/qwen-ab-skills.json"), tasks
     )

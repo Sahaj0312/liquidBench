@@ -1,0 +1,58 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/cart-arithmetic.liquid": "{% assign total = 0 %}{% for line in lines %}{% assign subtotal = line.price | times: line.quantity %}{% assign total = total | plus: subtotal %}{% endfor %}{% assign total = total | minus: discount %}{% if total < 0 %}{% assign total = 0 %}{% endif %}<p class=\"total\">{{ total }}</p>"
+    }
+  },
+  {
+    "name": "no-quantity",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-arithmetic.liquid": "{% assign total = 0 %}{% for line in lines %}{% assign subtotal = line.price %}{% assign total = total | plus: subtotal %}{% endfor %}{% assign total = total | minus: discount %}{% if total < 0 %}{% assign total = 0 %}{% endif %}<p class=\"total\">{{ total }}</p>"
+    }
+  },
+  {
+    "name": "no-discount",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-arithmetic.liquid": "{% assign total = 0 %}{% for line in lines %}{% assign subtotal = line.price | times: line.quantity %}{% assign total = total | plus: subtotal %}{% endfor %}{% assign total = total %}{% if total < 0 %}{% assign total = 0 %}{% endif %}<p class=\"total\">{{ total }}</p>"
+    }
+  },
+  {
+    "name": "no-clamp",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-arithmetic.liquid": "{% assign total = 0 %}{% for line in lines %}{% assign subtotal = line.price | times: line.quantity %}{% assign total = total | plus: subtotal %}{% endfor %}{% assign total = total | minus: discount %}<p class=\"total\">{{ total }}</p>"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-arithmetic.liquid": "<p class=\"total\">0</p>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-arithmetic.liquid": "{% # theme-check-disable %}\n{% assign total = 0 %}{% for line in lines %}{% assign subtotal = line.price | times: line.quantity %}{% assign total = total | plus: subtotal %}{% endfor %}{% assign total = total | minus: discount %}{% if total < 0 %}{% assign total = 0 %}{% endif %}<p class=\"total\">{{ total }}</p>"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-arithmetic.liquid": null
+    }
+  }
+]

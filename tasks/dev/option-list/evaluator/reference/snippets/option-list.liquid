@@ -1,0 +1,1 @@
+<ul class="options">{% for option in options %}{% unless option.disabled %}<li data-value="{{ option.value | escape }}" class="{% if option.selected %}selected{% else %}option{% endif %}">{{ option.label | default: "Unnamed" | escape }}</li>{% endunless %}{% endfor %}</ul>

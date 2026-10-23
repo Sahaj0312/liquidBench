@@ -1,0 +1,15 @@
+{
+  "id": "icon-reference",
+  "version": 1,
+  "split": "development",
+  "category": "theme-references",
+  "difficulty": "easy",
+  "family": "icon-reference",
+  "provenance": "Original synthetic LiquidBench Milestone 6 development fixture; not training or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/icon-reference.liquid"
+  ],
+  "prompt": "Repair the literal references in snippets/icon-reference.liquid. Preserve all live markup, filters and output positions. Only literal operands may change; quote style and inter-element whitespace may vary. Use the existing assets/badge.svg through asset_url; retain alt Badge and width/height 16. These are static reference checks; do not use the core renderer for Shopify filters. Change only snippets/icon-reference.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "sections/range-schema.liquid": "<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\"name\": \"Spacing\", \"presets\": [{\"name\": \"Spacing\", \"settings\": {\"gap\": 2}}], \"settings\": [{\"default\": 1.5, \"id\": \"gap\", \"label\": \"Gap\", \"max\": 3, \"min\": 0.5, \"step\": 0.5, \"type\": \"range\", \"unit\": \"em\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "bad-step",
+    "expected_pass": false,
+    "changes": {
+      "sections/range-schema.liquid": "<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\": \"Spacing\",\n  \"settings\": [\n    {\n      \"type\": \"range\",\n      \"id\": \"gap\",\n      \"label\": \"Gap\",\n      \"min\": 0.5,\n      \"max\": 3,\n      \"step\": 2,\n      \"unit\": \"em\",\n      \"default\": 1.5\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Spacing\",\n      \"settings\": {\n        \"gap\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "boolean-number",
+    "expected_pass": false,
+    "changes": {
+      "sections/range-schema.liquid": "<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\": \"Spacing\",\n  \"settings\": [\n    {\n      \"type\": \"range\",\n      \"id\": \"gap\",\n      \"label\": \"Gap\",\n      \"min\": 0.5,\n      \"max\": 3,\n      \"step\": 0.5,\n      \"unit\": \"em\",\n      \"default\": 1.5\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Spacing\",\n      \"settings\": {\n        \"gap\": true\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-default",
+    "expected_pass": false,
+    "changes": {
+      "sections/range-schema.liquid": "<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\": \"Spacing\",\n  \"settings\": [\n    {\n      \"type\": \"range\",\n      \"id\": \"gap\",\n      \"label\": \"Gap\",\n      \"min\": 0.5,\n      \"max\": 3,\n      \"step\": 0.5,\n      \"unit\": \"em\",\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Spacing\",\n      \"settings\": {\n        \"gap\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "duplicate-key",
+    "expected_pass": false,
+    "changes": {
+      "sections/range-schema.liquid": "<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\":\"spoof\",\"name\": \"Spacing\",\n  \"settings\": [\n    {\n      \"type\": \"range\",\n      \"id\": \"gap\",\n      \"label\": \"Gap\",\n      \"min\": 0.5,\n      \"max\": 3,\n      \"step\": 0.5,\n      \"unit\": \"em\",\n      \"default\": 1.5\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Spacing\",\n      \"settings\": {\n        \"gap\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "dead-schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/range-schema.liquid": "{% comment %}<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\": \"Spacing\",\n  \"settings\": [\n    {\n      \"type\": \"range\",\n      \"id\": \"gap\",\n      \"label\": \"Gap\",\n      \"min\": 0.5,\n      \"max\": 3,\n      \"step\": 0.5,\n      \"unit\": \"em\",\n      \"default\": 1.5\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Spacing\",\n      \"settings\": {\n        \"gap\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n{% endcomment %}"
+    }
+  },
+  {
+    "name": "changed-markup",
+    "expected_pass": false,
+    "changes": {
+      "sections/range-schema.liquid": "<section class=\"panel\"><h2>Changed</h2></section>\n{% schema %}\n{\n  \"name\": \"Spacing\",\n  \"settings\": [\n    {\n      \"type\": \"range\",\n      \"id\": \"gap\",\n      \"label\": \"Gap\",\n      \"min\": 0.5,\n      \"max\": 3,\n      \"step\": 0.5,\n      \"unit\": \"em\",\n      \"default\": 1.5\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Spacing\",\n      \"settings\": {\n        \"gap\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/range-schema.liquid": "{% # theme-check-disable %}\n<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\": \"Spacing\",\n  \"settings\": [\n    {\n      \"type\": \"range\",\n      \"id\": \"gap\",\n      \"label\": \"Gap\",\n      \"min\": 0.5,\n      \"max\": 3,\n      \"step\": 0.5,\n      \"unit\": \"em\",\n      \"default\": 1.5\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Spacing\",\n      \"settings\": {\n        \"gap\": 2\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/range-schema.liquid": null
+    }
+  }
+]

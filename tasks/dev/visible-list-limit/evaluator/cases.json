@@ -1,0 +1,511 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/visible-list-limit.liquid",
+    "tags": [
+      "section",
+      "h2",
+      "ul",
+      "li",
+      "p"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"limit\",\n      \"label\": \"Limit\",\n      \"min\": 1,\n      \"max\": 3,\n      \"step\": 1,\n      \"default\": 2\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "id": "id\"&",
+        "settings": {
+          "heading": "Title &",
+          "limit": 1
+        }
+      },
+      "rows": [
+        {
+          "show": false,
+          "label": "Hidden"
+        },
+        {
+          "show": true,
+          "label": "A & B"
+        },
+        {
+          "show": false,
+          "label": "Skip"
+        },
+        {
+          "show": true,
+          "label": "<C>"
+        },
+        {
+          "show": true,
+          "label": "東京"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "id\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Title &",
+            "children": []
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "text": "",
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "A & B",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "id": "id\"&",
+        "settings": {
+          "heading": "Title &",
+          "limit": 2
+        }
+      },
+      "rows": [
+        {
+          "show": false,
+          "label": "Hidden"
+        },
+        {
+          "show": true,
+          "label": "A & B"
+        },
+        {
+          "show": false,
+          "label": "Skip"
+        },
+        {
+          "show": true,
+          "label": "<C>"
+        },
+        {
+          "show": true,
+          "label": "東京"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "id\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Title &",
+            "children": []
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "text": "",
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "A & B",
+                "children": []
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "<C>",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "id": "id\"&",
+        "settings": {
+          "heading": "Title &",
+          "limit": 3
+        }
+      },
+      "rows": [
+        {
+          "show": false,
+          "label": "Hidden"
+        },
+        {
+          "show": true,
+          "label": "A & B"
+        },
+        {
+          "show": false,
+          "label": "Skip"
+        },
+        {
+          "show": true,
+          "label": "<C>"
+        },
+        {
+          "show": true,
+          "label": "東京"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "id\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Title &",
+            "children": []
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "text": "",
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "A & B",
+                "children": []
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "<C>",
+                "children": []
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "東京",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "id": "id\"&",
+        "settings": {
+          "heading": "Title &",
+          "limit": 2
+        }
+      },
+      "rows": []
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "id\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Title &",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "empty"
+              ]
+            ],
+            "text": "No entries",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "id": "id\"&",
+        "settings": {
+          "heading": "Title &",
+          "limit": 1
+        }
+      },
+      "rows": [
+        {
+          "show": false,
+          "label": "Hidden"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "id\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Title &",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "empty"
+              ]
+            ],
+            "text": "No entries",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "id": "id\"&",
+        "settings": {
+          "heading": "Title &",
+          "limit": 3
+        }
+      },
+      "rows": [
+        {
+          "show": true,
+          "label": "A & B"
+        },
+        {
+          "show": true,
+          "label": "A & B"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "id\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Title &",
+            "children": []
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "text": "",
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "A & B",
+                "children": []
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "A & B",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "id": "id\"&",
+        "settings": {
+          "heading": "Title &",
+          "limit": 2
+        }
+      },
+      "rows": [
+        {
+          "show": true,
+          "label": "東京"
+        },
+        {
+          "show": true,
+          "label": "<C>"
+        },
+        {
+          "show": false,
+          "label": "Skip"
+        },
+        {
+          "show": true,
+          "label": "A & B"
+        },
+        {
+          "show": false,
+          "label": "Hidden"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "id\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Title &",
+            "children": []
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "text": "",
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "東京",
+                "children": []
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "<C>",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "id": "id\"&",
+        "settings": {
+          "heading": "Title &",
+          "limit": 1
+        }
+      },
+      "rows": [
+        {
+          "show": true,
+          "label": "Larch-27"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "id\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Title &",
+            "children": []
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "text": "",
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "Larch-27",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

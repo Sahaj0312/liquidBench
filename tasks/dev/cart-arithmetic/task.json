@@ -1,0 +1,15 @@
+{
+  "id": "cart-arithmetic",
+  "version": 1,
+  "split": "development",
+  "category": "rendering",
+  "difficulty": "medium",
+  "family": "cart-arithmetic",
+  "provenance": "Original synthetic LiquidBench Milestone 6 development fixture; not training or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/cart-arithmetic.liquid"
+  ],
+  "prompt": "Repair snippets/cart-arithmetic.liquid. lines is an array of price/quantity nonnegative integers; discount is a nonnegative integer. Output p class=total containing the base-10 integer max(0, sum(price times quantity) minus discount), with no currency symbols or separators. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/cart-arithmetic.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

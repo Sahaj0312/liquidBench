@@ -1,0 +1,1 @@
+{% assign total = 0 %}{% for line in lines %}{% assign subtotal = line.price | times: line.quantity %}{% assign total = total | plus: subtotal %}{% endfor %}{% assign total = total | minus: discount %}{% if total < 0 %}{% assign total = 0 %}{% endif %}<p class="total">{{ total }}</p>

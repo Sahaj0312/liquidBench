@@ -1,0 +1,285 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/status-priority.liquid",
+    "tags": [
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "item": {
+        "archived": false,
+        "stock": 0,
+        "sale": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "status"
+          ]
+        ],
+        "text": "Sold out",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "item": {
+        "archived": false,
+        "stock": 0,
+        "sale": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "status"
+          ]
+        ],
+        "text": "Sold out",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "item": {
+        "archived": false,
+        "stock": 1,
+        "sale": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "status"
+          ]
+        ],
+        "text": "Regular",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "item": {
+        "archived": false,
+        "stock": 1,
+        "sale": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "status"
+          ]
+        ],
+        "text": "Sale",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "item": {
+        "archived": false,
+        "stock": 19,
+        "sale": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "status"
+          ]
+        ],
+        "text": "Regular",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "item": {
+        "archived": false,
+        "stock": 19,
+        "sale": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "status"
+          ]
+        ],
+        "text": "Sale",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "item": {
+        "archived": true,
+        "stock": 0,
+        "sale": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "status"
+          ]
+        ],
+        "text": "Archived",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "item": {
+        "archived": true,
+        "stock": 0,
+        "sale": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "status"
+          ]
+        ],
+        "text": "Archived",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "item": {
+        "archived": true,
+        "stock": 1,
+        "sale": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "status"
+          ]
+        ],
+        "text": "Archived",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "item": {
+        "archived": true,
+        "stock": 1,
+        "sale": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "status"
+          ]
+        ],
+        "text": "Archived",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "item": {
+        "archived": true,
+        "stock": 19,
+        "sale": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "status"
+          ]
+        ],
+        "text": "Archived",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "item": {
+        "archived": true,
+        "stock": 19,
+        "sale": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "status"
+          ]
+        ],
+        "text": "Archived",
+        "children": []
+      }
+    ]
+  }
+]

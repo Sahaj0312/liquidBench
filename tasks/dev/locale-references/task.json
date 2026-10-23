@@ -1,0 +1,15 @@
+{
+  "id": "locale-references",
+  "version": 1,
+  "split": "development",
+  "category": "theme-references",
+  "difficulty": "medium",
+  "family": "locale-references",
+  "provenance": "Original synthetic LiquidBench Milestone 6 development fixture; not training or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/locale-references.liquid"
+  ],
+  "prompt": "Repair the literal references in snippets/locale-references.liquid. Preserve all live markup, filters and output positions. Only literal operands may change; quote style and inter-element whitespace may vary. Button uses labels.open and span uses labels.close, both through t (translate accepted); both locales must resolve the keys. These are static reference checks; do not use the core renderer for Shopify filters. Change only snippets/locale-references.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

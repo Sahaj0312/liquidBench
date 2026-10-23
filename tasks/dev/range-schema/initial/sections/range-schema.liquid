@@ -1,0 +1,26 @@
+<section class="panel"><h2>Panel</h2></section>
+{% schema %}
+{
+  "name": "Spacing",
+  "settings": [
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap",
+      "min": 0.5,
+      "max": 3,
+      "step": 2,
+      "unit": "em",
+      "default": 1.5
+    }
+  ],
+  "presets": [
+    {
+      "name": "Spacing",
+      "settings": {
+        "gap": 2
+      }
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/locale-references.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "button"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "type"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "button"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "LiquidVariableOutput",
+              "markup": {
+                "type": "LiquidVariable",
+                "expression": {
+                  "type": "String",
+                  "single": true,
+                  "value": "labels.open"
+                },
+                "filters": [
+                  {
+                    "type": "LiquidFilter",
+                    "name": "t",
+                    "args": []
+                  }
+                ]
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            }
+          ]
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "span"
+            }
+          ],
+          "attributes": [],
+          "children": [
+            {
+              "type": "LiquidVariableOutput",
+              "markup": {
+                "type": "LiquidVariable",
+                "expression": {
+                  "type": "String",
+                  "single": true,
+                  "value": "labels.close"
+                },
+                "filters": [
+                  {
+                    "type": "LiquidFilter",
+                    "name": "t",
+                    "args": []
+                  }
+                ]
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

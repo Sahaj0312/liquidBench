@@ -1,0 +1,40 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/select-schema.liquid",
+    "body": "<section class=\"panel\"><h2>Panel</h2></section>\n\n",
+    "expected": {
+      "name": "Alignment",
+      "settings": [
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        }
+      ],
+      "presets": [
+        {
+          "name": "Alignment",
+          "settings": {
+            "alignment": "left"
+          }
+        }
+      ]
+    }
+  }
+]

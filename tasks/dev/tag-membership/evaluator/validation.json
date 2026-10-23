@@ -1,0 +1,58 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/tag-membership.liquid": "{% if item.tags contains 'archived' %}<p class=\"tag-state\">Hidden</p>{% elsif item.tags contains 'featured' %}<p class=\"tag-state\">Featured</p>{% else %}<p class=\"tag-state\">Standard</p>{% endif %}"
+    }
+  },
+  {
+    "name": "substring-match",
+    "expected_pass": false,
+    "changes": {
+      "snippets/tag-membership.liquid": "{% assign joined = item.tags | join: \",\" %}{% if joined contains 'archived' %}<p class=\"tag-state\">Hidden</p>{% elsif joined contains 'featured' %}<p class=\"tag-state\">Featured</p>{% else %}<p class=\"tag-state\">Standard</p>{% endif %}"
+    }
+  },
+  {
+    "name": "wrong-case",
+    "expected_pass": false,
+    "changes": {
+      "snippets/tag-membership.liquid": "{% if item.tags contains 'archived' %}<p class=\"tag-state\">Hidden</p>{% elsif item.tags contains 'FEATURED' %}<p class=\"tag-state\">Featured</p>{% else %}<p class=\"tag-state\">Standard</p>{% endif %}"
+    }
+  },
+  {
+    "name": "no-priority",
+    "expected_pass": false,
+    "changes": {
+      "snippets/tag-membership.liquid": "{% if item.tags contains 'never' %}<p class=\"tag-state\">Hidden</p>{% elsif item.tags contains 'featured' %}<p class=\"tag-state\">Featured</p>{% else %}<p class=\"tag-state\">Standard</p>{% endif %}"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "snippets/tag-membership.liquid": "<p class=\"tag-state\">Standard</p>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/tag-membership.liquid": "{% # theme-check-disable %}\n{% if item.tags contains 'archived' %}<p class=\"tag-state\">Hidden</p>{% elsif item.tags contains 'featured' %}<p class=\"tag-state\">Featured</p>{% else %}<p class=\"tag-state\">Standard</p>{% endif %}"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/tag-membership.liquid": null
+    }
+  }
+]

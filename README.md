@@ -2,7 +2,9 @@
 
 A Python harness for controlled experiments on offline Liquid coding tasks. The research design is in [brief.txt](brief.txt).
 
-LiquidBench implements five **development** tasks, a modular grader, and an agent protocol with explicit context accounting. The runner gives an agent isolated tools, submits its final files to a separate grader, and saves the grade, trace, patch, token usage, latency, and estimated inference cost. No held-out benchmark or research results are claimed yet. The [7B pilot](docs/calibration/milestone-4-results.md) passed 2/5 tasks. The completed [Milestone 5 paired experiment](docs/calibration/milestone-5-results.md) scored **2/5 baseline versus 0/5 with full pinned skills**, using 9.07× as many treatment tokens. All ten attempts and cleanup evidence are preserved; post-training has not begun.
+LiquidBench implements 20 **development** tasks, a modular grader, and an agent protocol with explicit context accounting. The runner gives an agent isolated tools, submits its final files to a separate grader, and saves the grade, trace, patch, token usage, latency, and estimated inference cost. No held-out benchmark or research results are claimed yet. The [7B pilot](docs/calibration/milestone-4-results.md) passed 2/5 tasks. The completed [Milestone 5 paired experiment](docs/calibration/milestone-5-results.md) scored **2/5 baseline versus 0/5 with full pinned skills**, using 9.07× as many treatment tokens. All ten attempts and cleanup evidence are preserved; post-training has not begun.
+
+The original five tasks are below; the [Milestone 6 catalog and frozen loading study](docs/calibration/milestone-6-plan.md) lists all 20, exact token feasibility, repetitions and compute scenarios. Milestone 6 is preparation only; paid execution requires fresh approval.
 
 | Task | Required repair | Grading evidence |
 | --- | --- | --- |
@@ -31,7 +33,7 @@ brew install colima docker
 colima start --profile liquidbench --cpu 2 --memory 2 --disk 10 --vm-type vz
 ```
 
-`validate-task` defaults to product-card; select another fixture with `--task tasks/dev/shipping-message`. `validate-suite` checks every task under `tasks/dev` and writes `runs/validation-suite.json`. The suite contains 71 candidate submissions: five failing starters, five passing references, four alternative valid implementations, and 57 deliberately incorrect solutions. All 71 verdicts must match their expectations. Expected failures are successful grader validation, not benchmark scores.
+`validate-task` defaults to product-card; select another fixture with `--task tasks/dev/shipping-message`. `validate-suite` checks every task under `tasks/dev` and writes `runs/validation-suite.json`. The expanded suite contains 236 candidate submissions: 20 failing starters, 20 passing references, 19 alternative valid implementations, and 177 deliberately incorrect solutions. All 236 verdicts must match their expectations; the original 71 remain unchanged. Expected failures are successful grader validation, not benchmark scores.
 
 ## Run a real model
 
@@ -143,7 +145,13 @@ uv run --with transformers==5.19.0 --with tokenizers==0.23.3 --with jinja2==3.1.
 uv run python scripts/run_skills_ab.py  # dry plan only
 ```
 
-All three entries require **9,457 raw tokens**, exceeding the pilot's 8K context. Both paired conditions used the approved 32K context and 393,216-token cumulative ceiling, retaining 12 turns and all other execution/decoding limits. After an [aborted original preflight](docs/calibration/milestone-5-preflight.md), a separately approved session passed [preflight v2](docs/calibration/preflight-v2.md) and completed all ten attempts. See the [full comparison and evidence](docs/calibration/milestone-5-results.md): baseline 2/5, skills 0/5, no on-demand reference reads. The GPU was deleted. Further paid runs require approval; no fine-tuning, new tasks, training data or leaderboard are implemented.
+All three entries require **9,457 raw tokens**, exceeding the pilot's 8K context. Both paired conditions used the approved 32K context and 393,216-token cumulative ceiling, retaining 12 turns and all other execution/decoding limits. After an [aborted original preflight](docs/calibration/milestone-5-preflight.md), a separately approved session passed [preflight v2](docs/calibration/preflight-v2.md) and completed all ten attempts. See the [full comparison and evidence](docs/calibration/milestone-5-results.md): baseline 2/5, skills 0/5, no on-demand reference reads. The GPU was deleted. Further paid runs require approval. Milestone 6 adds 15 development tasks and two loading controls; no fine-tuning, training data or leaderboard is implemented.
+
+## Milestone 6 loading study preparation
+
+`configs/m6-{base,full,on_demand,neutral}.json` share all model and execution settings. Full loading preserves the original bundle; on-demand exposes an 85-token index and charges complete document reads to normal budgets. Neutral context is a hash-pinned, unrelated 9,815-token message, exactly matching full-bundle initial overhead. Baseline and neutral cannot access skills. The upstream documents remain unchanged and unvendored.
+
+The [predeclared study](docs/calibration/milestone-6-plan.md) schedules 20 tasks × four conditions × three fixed-seed repetitions. These are deterministic reproducibility checks, not independent research samples. `scripts/run_loading_study.py` prints a dry plan by default; future execution requires fresh approval, verified serving evidence, matching preflight v2, count agreement and the frozen plan. `scripts/analyze_loading_study.py` preserves task-level pairs, missing/infra outcomes, correctness, reads, token usage and validation-tool counts. No paid inference has been run for this milestone.
 
 ## Development
 

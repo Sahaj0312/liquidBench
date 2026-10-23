@@ -1,0 +1,58 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/customer-name.liquid": "{% assign first = customer.first | default: \"\" | strip %}{% assign last = customer.last | default: \"\" | strip %}<p class=\"name\">{% if first != empty %}{{ first | escape }}{% if last != empty %} {{ last | escape }}{% endif %}{% elsif last != empty %}{{ last | escape }}{% else %}Guest{% endif %}</p>"
+    }
+  },
+  {
+    "name": "no-trim",
+    "expected_pass": false,
+    "changes": {
+      "snippets/customer-name.liquid": "{% assign first = customer.first | default: \"\" %}{% assign last = customer.last | default: \"\" %}<p class=\"name\">{% if first != empty %}{{ first | escape }}{% if last != empty %} {{ last | escape }}{% endif %}{% elsif last != empty %}{{ last | escape }}{% else %}Guest{% endif %}</p>"
+    }
+  },
+  {
+    "name": "unescaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/customer-name.liquid": "{% assign first = customer.first | default: \"\" | strip %}{% assign last = customer.last | default: \"\" | strip %}<p class=\"name\">{% if first != empty %}{{ first }}{% if last != empty %} {{ last }}{% endif %}{% elsif last != empty %}{{ last }}{% else %}Guest{% endif %}</p>"
+    }
+  },
+  {
+    "name": "wrong-fallback",
+    "expected_pass": false,
+    "changes": {
+      "snippets/customer-name.liquid": "{% assign first = customer.first | default: \"\" | strip %}{% assign last = customer.last | default: \"\" | strip %}<p class=\"name\">{% if first != empty %}{{ first | escape }}{% if last != empty %} {{ last | escape }}{% endif %}{% elsif last != empty %}{{ last | escape }}{% else %}Customer{% endif %}</p>"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "snippets/customer-name.liquid": "<p class=\"name\">Ada Lovelace</p>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/customer-name.liquid": "{% # theme-check-disable %}\n{% assign first = customer.first | default: \"\" | strip %}{% assign last = customer.last | default: \"\" | strip %}<p class=\"name\">{% if first != empty %}{{ first | escape }}{% if last != empty %} {{ last | escape }}{% endif %}{% elsif last != empty %}{{ last | escape }}{% else %}Guest{% endif %}</p>"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/customer-name.liquid": null
+    }
+  }
+]

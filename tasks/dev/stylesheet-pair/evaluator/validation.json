@@ -1,0 +1,72 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/stylesheet-pair.liquid": "{{ \"base.css\" | asset_url | stylesheet_tag }}{{ \"contrast.css\" | asset_url | stylesheet_tag }}<h2>{{ \"panel.title\" | translate }}</h2>"
+    }
+  },
+  {
+    "name": "swapped-styles",
+    "expected_pass": false,
+    "changes": {
+      "snippets/stylesheet-pair.liquid": "{{ 'contrast.css' | asset_url | stylesheet_tag }}{{ 'base.css' | asset_url | stylesheet_tag }}<h2>{{ 'panel.title' | t }}</h2>"
+    }
+  },
+  {
+    "name": "removed-style",
+    "expected_pass": false,
+    "changes": {
+      "snippets/stylesheet-pair.liquid": "{{ 'contrast.css' | asset_url | stylesheet_tag }}<h2>{{ 'panel.title' | t }}</h2>"
+    }
+  },
+  {
+    "name": "wrong-filter-order",
+    "expected_pass": false,
+    "changes": {
+      "snippets/stylesheet-pair.liquid": "{{ 'base.css' | stylesheet_tag | asset_url }}{{ 'contrast.css' | stylesheet_tag | asset_url }}<h2>{{ 'panel.title' | t }}</h2>"
+    }
+  },
+  {
+    "name": "dead-code",
+    "expected_pass": false,
+    "changes": {
+      "snippets/stylesheet-pair.liquid": "{% if false %}{{ 'base.css' | asset_url | stylesheet_tag }}{{ 'contrast.css' | asset_url | stylesheet_tag }}<h2>{{ 'panel.title' | t }}</h2>{% endif %}"
+    }
+  },
+  {
+    "name": "commented",
+    "expected_pass": false,
+    "changes": {
+      "snippets/stylesheet-pair.liquid": "{% comment %}{{ 'base.css' | asset_url | stylesheet_tag }}{{ 'contrast.css' | asset_url | stylesheet_tag }}<h2>{{ 'panel.title' | t }}</h2>{% endcomment %}"
+    }
+  },
+  {
+    "name": "extra-markup",
+    "expected_pass": false,
+    "changes": {
+      "snippets/stylesheet-pair.liquid": "{{ 'base.css' | asset_url | stylesheet_tag }}{{ 'contrast.css' | asset_url | stylesheet_tag }}<h2>{{ 'panel.title' | t }}</h2><p>extra</p>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/stylesheet-pair.liquid": "{% # theme-check-disable %}\n{{ 'base.css' | asset_url | stylesheet_tag }}{{ 'contrast.css' | asset_url | stylesheet_tag }}<h2>{{ 'panel.title' | t }}</h2>"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/stylesheet-pair.liquid": null
+    }
+  }
+]

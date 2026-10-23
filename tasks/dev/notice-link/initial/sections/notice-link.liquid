@@ -1,0 +1,36 @@
+<section data-id="{{ section.id | escape }}"><h2>{{ section.settings.heading | escape }}</h2><p>{{ body | escape }}</p></section>
+{% schema %}
+{
+  "name": "Panel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Panel"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_link",
+      "label": "Show link",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "URL"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Details"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Panel"
+    }
+  ]
+}
+{% endschema %}

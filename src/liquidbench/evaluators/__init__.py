@@ -6,6 +6,7 @@ from .shipping_message import evaluate as shipping_message
 from .section_schema import evaluate as section_schema
 from .asset_references import evaluate as asset_references
 from .announcement_subtitle import evaluate as announcement_subtitle
+from .contracts import render_contract, schema_contract, reference_contract
 
 EVALUATORS = {
     "product-card-v1": product_card,
@@ -13,6 +14,9 @@ EVALUATORS = {
     "section-schema-v1": section_schema,
     "asset-references-v1": asset_references,
     "announcement-subtitle-v1": announcement_subtitle,
+    "render-contract-v1": render_contract,
+    "schema-contract-v1": schema_contract,
+    "reference-contract-v1": reference_contract,
 }
 
 

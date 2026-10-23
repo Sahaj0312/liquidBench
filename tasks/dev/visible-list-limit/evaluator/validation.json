@@ -1,0 +1,65 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "sections/visible-list-limit.liquid": "{% assign count = 0 %}{% capture entries %}{% for row in rows %}{% if row.show %}{% if count >= section.settings.limit %}{% break %}{% endif %}<li>{{ row.label | escape }}</li>{% assign count = count | plus: 1 %}{% endif %}{% endfor %}{% endcapture %}<section data-id=\"{{ section.id | escape }}\">\n<h2>{{ section.settings.heading | escape }}</h2>{% if count == 0 %}<p class=\"empty\">No entries</p>{% else %}<ul>{{ entries }}</ul>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"limit\",\n      \"label\": \"Limit\",\n      \"min\": 1,\n      \"max\": 3,\n      \"step\": 1,\n      \"default\": 2\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "limit-before-filter",
+    "expected_pass": false,
+    "changes": {
+      "sections/visible-list-limit.liquid": "{% assign count = 0 %}{% capture entries %}{% for row in rows limit: section.settings.limit %}{% if row.show %}{% if count >= section.settings.limit %}{% break %}{% endif %}<li>{{ row.label | escape }}</li>{% assign count = count | plus: 1 %}{% endif %}{% endfor %}{% endcapture %}<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% if count == 0 %}<p class=\"empty\">No entries</p>{% else %}<ul>{{ entries }}</ul>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"limit\",\n      \"label\": \"Limit\",\n      \"min\": 1,\n      \"max\": 3,\n      \"step\": 1,\n      \"default\": 2\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "off-by-one",
+    "expected_pass": false,
+    "changes": {
+      "sections/visible-list-limit.liquid": "{% assign count = 0 %}{% capture entries %}{% for row in rows %}{% if row.show %}{% if count > section.settings.limit %}{% break %}{% endif %}<li>{{ row.label | escape }}</li>{% assign count = count | plus: 1 %}{% endif %}{% endfor %}{% endcapture %}<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% if count == 0 %}<p class=\"empty\">No entries</p>{% else %}<ul>{{ entries }}</ul>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"limit\",\n      \"label\": \"Limit\",\n      \"min\": 1,\n      \"max\": 3,\n      \"step\": 1,\n      \"default\": 2\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "unescaped",
+    "expected_pass": false,
+    "changes": {
+      "sections/visible-list-limit.liquid": "{% assign count = 0 %}{% capture entries %}{% for row in rows %}{% if row.show %}{% if count >= section.settings.limit %}{% break %}{% endif %}<li>{{ row.label }}</li>{% assign count = count | plus: 1 %}{% endif %}{% endfor %}{% endcapture %}<section data-id=\"{{ section.id }}\"><h2>{{ section.settings.heading }}</h2>{% if count == 0 %}<p class=\"empty\">No entries</p>{% else %}<ul>{{ entries }}</ul>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"limit\",\n      \"label\": \"Limit\",\n      \"min\": 1,\n      \"max\": 3,\n      \"step\": 1,\n      \"default\": 2\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "sections/visible-list-limit.liquid": "<section data-id=\"id&quot;&amp;\"><h2>Title &amp;</h2><ul><li>A &amp; B</li></ul></section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"limit\",\n      \"label\": \"Limit\",\n      \"min\": 1,\n      \"max\": 3,\n      \"step\": 1,\n      \"default\": 2\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "changed-schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/visible-list-limit.liquid": "{% assign count = 0 %}{% capture entries %}{% for row in rows %}{% if row.show %}{% if count >= section.settings.limit %}{% break %}{% endif %}<li>{{ row.label | escape }}</li>{% assign count = count | plus: 1 %}{% endif %}{% endfor %}{% endcapture %}<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% if count == 0 %}<p class=\"empty\">No entries</p>{% else %}<ul>{{ entries }}</ul>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Other\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Other\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"limit\",\n      \"label\": \"Limit\",\n      \"min\": 1,\n      \"max\": 3,\n      \"step\": 1,\n      \"default\": 2\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Other\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/visible-list-limit.liquid": "{% # theme-check-disable %}\n{% assign count = 0 %}{% capture entries %}{% for row in rows %}{% if row.show %}{% if count >= section.settings.limit %}{% break %}{% endif %}<li>{{ row.label | escape }}</li>{% assign count = count | plus: 1 %}{% endif %}{% endfor %}{% endcapture %}<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% if count == 0 %}<p class=\"empty\">No entries</p>{% else %}<ul>{{ entries }}</ul>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"limit\",\n      \"label\": \"Limit\",\n      \"min\": 1,\n      \"max\": 3,\n      \"step\": 1,\n      \"default\": 2\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/visible-list-limit.liquid": null
+    }
+  }
+]

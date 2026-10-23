@@ -1,0 +1,15 @@
+{
+  "id": "range-schema",
+  "version": 1,
+  "split": "development",
+  "category": "section-schema",
+  "difficulty": "easy",
+  "family": "range-schema",
+  "provenance": "Original synthetic LiquidBench Milestone 6 development fixture; not training or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/range-schema.liquid"
+  ],
+  "prompt": "Repair only the JSON schema in sections/range-schema.liquid. Keep every byte outside its one top-level schema block unchanged. Strict JSON only. Exactly the following fields, array order and values are required; object key order/JSON whitespace may vary. Root name Spacing; settings contains one range: id gap, label Gap, min 0.5, max 3, step 0.5, unit em, default 1.5. presets contains one named Spacing with settings gap=2. Numbers must be JSON numbers, never booleans or strings. Change only sections/range-schema.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

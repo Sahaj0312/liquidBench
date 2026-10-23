@@ -1,0 +1,367 @@
+{
+  "kind": "local_development_validation",
+  "inference_performed": false,
+  "paid_compute_provisioned": false,
+  "plan_sha256": "3c90c299bb16aae1d3a95fe9798ed34ce026ed2781c40463677aefbb21cd7197",
+  "python_source_digest": "63be28169db8365064dc6dc8e7228a1ed3178dc2975828221dd7122ec5991828",
+  "runtime_image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+  "unique_tests": {
+    "unit": 184,
+    "integration": 282,
+    "total": 466
+  },
+  "expected_grader_verdicts": 236,
+  "all_expected_verdicts_correct": true,
+  "logs": {
+    "unit": {
+      "sha256": "e0a3bcc099680b1c4b19a029045036d3a9e9c42ebab1f51458778c55cbd8d8ad",
+      "tail": "184 passed, 282 deselected in 13.47s"
+    },
+    "full_integration": {
+      "sha256": "3efcbaeec5f3aa46d5ce75e64a2935f54b9eacefeb4c8cf67f94b0fc93297c96",
+      "tail": "281 passed, 159 deselected in 397.26s (0:06:37)"
+    },
+    "loading_integration": {
+      "sha256": "fe0c97c0135302b669dcd52eb01b0d7cd64610d51465924017d857c95d0671fe",
+      "tail": "2 passed, 280 deselected in 9.10s"
+    }
+  },
+  "tasks": {
+    "announcement-subtitle": {
+      "digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "enabled_regression": false,
+        "body_regression": false,
+        "unescaped_subtitle": false,
+        "untrimmed_subtitle": false,
+        "always_subtitle": false,
+        "heading_regression": false,
+        "identity_regression": false,
+        "schema_regression": false,
+        "subtitle_wrong_order": false,
+        "alternative_unless": true,
+        "suppressed": false,
+        "grader_config": false,
+        "deleted_submission": false
+      }
+    },
+    "asset-references": {
+      "digest": "6acd37b41699971e1010f0717f1e449e4418a7ace7bccf8ea5efd764d9c5ae97",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "missing_asset": false,
+        "missing_translation": false,
+        "wrong_existing_key": false,
+        "removed_output": false,
+        "comment_decoy": false,
+        "dead_branch": false,
+        "raw_decoy": false,
+        "hardcoded_translation": false,
+        "url_bypass": false,
+        "quote_and_filter_alias": true,
+        "suppressed": false,
+        "grader_config": false,
+        "deleted_submission": false,
+        "protected_file_edit": false
+      }
+    },
+    "blocks-schema": {
+      "digest": "ed8b98adb90b1148f631b5d18bdeb99c34f963a29f1ab078b483278426026089",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "alternative-valid": true,
+        "unknown-block": false,
+        "wrong-limit": false,
+        "wrong-block-setting": false,
+        "duplicate-key": false,
+        "dead-schema": false,
+        "changed-markup": false,
+        "suppressed": false,
+        "extra-file": false,
+        "deleted-target": false
+      }
+    },
+    "cart-arithmetic": {
+      "digest": "4432338c2c79b25c4fae245b9498ecbc84d3f16003dac95c7671841d4fd01664",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "alternative-valid": true,
+        "no-quantity": false,
+        "no-discount": false,
+        "no-clamp": false,
+        "hardcoded-first-case": false,
+        "suppressed": false,
+        "extra-file": false,
+        "deleted-target": false
+      }
+    },
+    "customer-name": {
+      "digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "alternative-valid": true,
+        "no-trim": false,
+        "unescaped": false,
+        "wrong-fallback": false,
+        "hardcoded-first-case": false,
+        "suppressed": false,
+        "extra-file": false,
+        "deleted-target": false
+      }
+    },
+    "eligibility-branch": {
+      "digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "alternative-valid": true,
+        "boundary": false,
+        "ignored-vip": false,
+        "ignored-disable": false,
+        "hardcoded-first-case": false,
+        "suppressed": false,
+        "extra-file": false,
+        "deleted-target": false
+      }
+    },
+    "icon-reference": {
+      "digest": "840c0c05e44bb9ac05f4de5e7188062b03438ba555d396d883b63a7c022e43f3",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "alternative-valid": true,
+        "path-prefix": false,
+        "hardcoded-url": false,
+        "removed-alt": false,
+        "dead-code": false,
+        "commented": false,
+        "extra-markup": false,
+        "suppressed": false,
+        "extra-file": false,
+        "deleted-target": false
+      }
+    },
+    "locale-references": {
+      "digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "alternative-valid": true,
+        "swapped": false,
+        "literal-copy": false,
+        "wrong-filter": false,
+        "dead-code": false,
+        "commented": false,
+        "extra-markup": false,
+        "suppressed": false,
+        "extra-file": false,
+        "deleted-target": false
+      }
+    },
+    "notice-link": {
+      "digest": "c2a676d850796f61e76e43ef7d8b231953d5ca7a6c77f1d968dbef6bd332dc84",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "alternative-valid": true,
+        "ignored-toggle": false,
+        "unescaped": false,
+        "wrong-label-fallback": false,
+        "hardcoded-first-case": false,
+        "changed-schema": false,
+        "suppressed": false,
+        "extra-file": false,
+        "deleted-target": false
+      }
+    },
+    "option-list": {
+      "digest": "0b579ee7aae9746270700d9d0ffed623c29fe506138f783181c3d9e4ea30f767",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "alternative-valid": true,
+        "includes-disabled": false,
+        "wrong-selection": false,
+        "unescaped": false,
+        "hardcoded-first-case": false,
+        "suppressed": false,
+        "extra-file": false,
+        "deleted-target": false
+      }
+    },
+    "optional-caption": {
+      "digest": "45c3522e6c16dc613e45d06124094f819e25cac17550e6e5ab17f401daaad20d",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "alternative-valid": true,
+        "ignores-toggle": false,
+        "untrimmed": false,
+        "lost-footer": false,
+        "hardcoded-first-case": false,
+        "changed-schema": false,
+        "suppressed": false,
+        "extra-file": false,
+        "deleted-target": false
+      }
+    },
+    "product-card": {
+      "digest": "35d1c090716cf27a197156ee92bfed3302456ef2c84fd4e17b1347a929e69140",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "unescaped": false,
+        "always_in_stock": false,
+        "missing_fallback": false,
+        "hardcoded": false,
+        "suppressed": false,
+        "grader_config": false
+      }
+    },
+    "range-schema": {
+      "digest": "fd2d117a95ee60317b9acaa339529ed4d7624b0045faf3f2a7c9f6e9eac55ba7",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "alternative-valid": true,
+        "bad-step": false,
+        "boolean-number": false,
+        "wrong-default": false,
+        "duplicate-key": false,
+        "dead-schema": false,
+        "changed-markup": false,
+        "suppressed": false,
+        "extra-file": false,
+        "deleted-target": false
+      }
+    },
+    "section-schema": {
+      "digest": "cbb16e3776caacd65d7b43ef9e4a437dd9a1b16ecfdd32a0766b54c7d3089606",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "duplicate_id": false,
+        "checkbox_string": false,
+        "numeric_boolean": false,
+        "out_of_range_default": false,
+        "unknown_preset_setting": false,
+        "missing_preset": false,
+        "wrong_preset_value": false,
+        "duplicate_json_key": false,
+        "schema_in_comment": false,
+        "nested_schema": false,
+        "two_schemas": false,
+        "modified_markup": false,
+        "malformed_json": false,
+        "reordered_settings": true,
+        "suppressed": false,
+        "grader_config": false,
+        "deleted_submission": false
+      }
+    },
+    "select-schema": {
+      "digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "alternative-valid": true,
+        "invalid-default": false,
+        "missing-option": false,
+        "wrong-preset": false,
+        "duplicate-key": false,
+        "dead-schema": false,
+        "changed-markup": false,
+        "suppressed": false,
+        "extra-file": false,
+        "deleted-target": false
+      }
+    },
+    "shipping-message": {
+      "digest": "e144fc10bf1225dc5c9c32fa226419906ce439e9459e8738eab7e76ea4841e6b",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "strict_threshold": false,
+        "false_default": false,
+        "wrong_priority": false,
+        "unescaped": false,
+        "untrimmed": false,
+        "fixed_threshold": false,
+        "hardcoded": false,
+        "alternative_case_branch": true,
+        "suppressed": false,
+        "grader_config": false,
+        "deleted_submission": false
+      }
+    },
+    "status-priority": {
+      "digest": "17e9bd33137cb3dfe1573b2896781a1084d93d941a42d16557b96047992e589b",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "alternative-valid": true,
+        "wrong-priority": false,
+        "zero-only": false,
+        "ignored-archive": false,
+        "hardcoded-first-case": false,
+        "suppressed": false,
+        "extra-file": false,
+        "deleted-target": false
+      }
+    },
+    "stylesheet-pair": {
+      "digest": "ad563a67d7d89c685eda28ff0690b4983050a87de561a772b60b0fa3fe92343a",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "alternative-valid": true,
+        "swapped-styles": false,
+        "removed-style": false,
+        "wrong-filter-order": false,
+        "dead-code": false,
+        "commented": false,
+        "extra-markup": false,
+        "suppressed": false,
+        "extra-file": false,
+        "deleted-target": false
+      }
+    },
+    "tag-membership": {
+      "digest": "11924f1d896c098608e598ad33249ff1c25d7ed4b24fc463023d05e9324a5e55",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "alternative-valid": true,
+        "substring-match": false,
+        "wrong-case": false,
+        "no-priority": false,
+        "hardcoded-first-case": false,
+        "suppressed": false,
+        "extra-file": false,
+        "deleted-target": false
+      }
+    },
+    "visible-list-limit": {
+      "digest": "052fc08d5067803bc4c53ff98d8d07b27778b9dff34882074273fdd2545845bd",
+      "candidate_expectations": {
+        "starter": false,
+        "reference": true,
+        "alternative-valid": true,
+        "limit-before-filter": false,
+        "off-by-one": false,
+        "unescaped": false,
+        "hardcoded-first-case": false,
+        "changed-schema": false,
+        "suppressed": false,
+        "extra-file": false,
+        "deleted-target": false
+      }
+    }
+  }
+}

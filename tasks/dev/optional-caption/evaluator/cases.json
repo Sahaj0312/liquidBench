@@ -1,0 +1,484 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/optional-caption.liquid",
+    "tags": [
+      "section",
+      "h2",
+      "p"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_caption\",\n      \"label\": \"Caption enabled\",\n      \"default\": false\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"caption\",\n      \"label\": \"Caption\",\n      \"default\": \"Caption\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "heading": "<Title>",
+          "show_caption": false,
+          "caption": null
+        }
+      },
+      "footer": "Footer & ©"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "<Title>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "footer"
+              ]
+            ],
+            "text": "Footer & ©",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "heading": "<Title>",
+          "show_caption": false,
+          "caption": ""
+        }
+      },
+      "footer": "Footer & ©"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "<Title>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "footer"
+              ]
+            ],
+            "text": "Footer & ©",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "heading": "<Title>",
+          "show_caption": false,
+          "caption": " \t "
+        }
+      },
+      "footer": "Footer & ©"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "<Title>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "footer"
+              ]
+            ],
+            "text": "Footer & ©",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "heading": "<Title>",
+          "show_caption": false,
+          "caption": " Caption "
+        }
+      },
+      "footer": "Footer & ©"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "<Title>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "footer"
+              ]
+            ],
+            "text": "Footer & ©",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "heading": "<Title>",
+          "show_caption": false,
+          "caption": "<b>&"
+        }
+      },
+      "footer": "Footer & ©"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "<Title>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "footer"
+              ]
+            ],
+            "text": "Footer & ©",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "heading": "<Title>",
+          "show_caption": true,
+          "caption": null
+        }
+      },
+      "footer": "Footer & ©"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "<Title>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "footer"
+              ]
+            ],
+            "text": "Footer & ©",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "heading": "<Title>",
+          "show_caption": true,
+          "caption": ""
+        }
+      },
+      "footer": "Footer & ©"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "<Title>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "footer"
+              ]
+            ],
+            "text": "Footer & ©",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "heading": "<Title>",
+          "show_caption": true,
+          "caption": " \t "
+        }
+      },
+      "footer": "Footer & ©"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "<Title>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "footer"
+              ]
+            ],
+            "text": "Footer & ©",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "heading": "<Title>",
+          "show_caption": true,
+          "caption": " Caption "
+        }
+      },
+      "footer": "Footer & ©"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "<Title>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "caption"
+              ]
+            ],
+            "text": "Caption",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "footer"
+              ]
+            ],
+            "text": "Footer & ©",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "heading": "<Title>",
+          "show_caption": true,
+          "caption": "<b>&"
+        }
+      },
+      "footer": "Footer & ©"
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "<Title>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "caption"
+              ]
+            ],
+            "text": "<b>&",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "footer"
+              ]
+            ],
+            "text": "Footer & ©",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

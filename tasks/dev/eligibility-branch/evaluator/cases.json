@@ -1,0 +1,195 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/eligibility-branch.liquid",
+    "tags": [
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "item": {
+        "enabled": true,
+        "stock": 1,
+        "vip": true,
+        "price": 99,
+        "clearance": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [],
+        "text": "Standard",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "item": {
+        "enabled": true,
+        "stock": 1,
+        "vip": true,
+        "price": 100,
+        "clearance": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [],
+        "text": "Special",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "item": {
+        "enabled": true,
+        "stock": 1,
+        "vip": true,
+        "price": 101,
+        "clearance": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [],
+        "text": "Special",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "item": {
+        "enabled": true,
+        "stock": 1,
+        "vip": true,
+        "price": 0,
+        "clearance": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [],
+        "text": "Special",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "item": {
+        "enabled": true,
+        "stock": 1,
+        "vip": false,
+        "price": 200,
+        "clearance": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [],
+        "text": "Standard",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "item": {
+        "enabled": true,
+        "stock": 0,
+        "vip": true,
+        "price": 200,
+        "clearance": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [],
+        "text": "Unavailable",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "item": {
+        "enabled": false,
+        "stock": 1,
+        "vip": true,
+        "price": 200,
+        "clearance": true
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "item": {
+        "enabled": true,
+        "stock": 7,
+        "vip": false,
+        "price": 0,
+        "clearance": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [],
+        "text": "Standard",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "item": {
+        "enabled": true,
+        "stock": 9,
+        "vip": true,
+        "price": 63,
+        "clearance": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [],
+        "text": "Standard",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "item": {
+        "enabled": false,
+        "stock": 0,
+        "vip": false,
+        "price": 0,
+        "clearance": false
+      }
+    },
+    "expected": []
+  }
+]

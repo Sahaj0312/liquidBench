@@ -1,0 +1,65 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "sections/notice-link.liquid": "<section data-id=\"{{ section.id | escape }}\">\n<h2>{{ section.settings.heading | escape }}</h2>\n<p>{{ body | escape }}</p>{% assign url = section.settings.url | default: \"\" | strip %}{% if section.settings.show_link and url != empty %}<a href=\"{{ url | escape }}\">{{ section.settings.label | default: \"Details\" | escape }}</a>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_link\",\n      \"label\": \"Show link\",\n      \"default\": true\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"url\",\n      \"label\": \"URL\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"label\",\n      \"label\": \"Label\",\n      \"default\": \"Details\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "ignored-toggle",
+    "expected_pass": false,
+    "changes": {
+      "sections/notice-link.liquid": "<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2><p>{{ body | escape }}</p>{% assign url = section.settings.url | default: \"\" | strip %}{% if true and url != empty %}<a href=\"{{ url | escape }}\">{{ section.settings.label | default: \"Details\" | escape }}</a>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_link\",\n      \"label\": \"Show link\",\n      \"default\": true\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"url\",\n      \"label\": \"URL\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"label\",\n      \"label\": \"Label\",\n      \"default\": \"Details\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "unescaped",
+    "expected_pass": false,
+    "changes": {
+      "sections/notice-link.liquid": "<section data-id=\"{{ section.id }}\"><h2>{{ section.settings.heading }}</h2><p>{{ body }}</p>{% assign url = section.settings.url | default: \"\" | strip %}{% if section.settings.show_link and url != empty %}<a href=\"{{ url }}\">{{ section.settings.label | default: \"Details\" }}</a>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_link\",\n      \"label\": \"Show link\",\n      \"default\": true\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"url\",\n      \"label\": \"URL\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"label\",\n      \"label\": \"Label\",\n      \"default\": \"Details\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "wrong-label-fallback",
+    "expected_pass": false,
+    "changes": {
+      "sections/notice-link.liquid": "<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2><p>{{ body | escape }}</p>{% assign url = section.settings.url | default: \"\" | strip %}{% if section.settings.show_link and url != empty %}<a href=\"{{ url | escape }}\">{{ section.settings.label | default: \"Link\" | escape }}</a>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_link\",\n      \"label\": \"Show link\",\n      \"default\": true\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"url\",\n      \"label\": \"URL\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"label\",\n      \"label\": \"Label\",\n      \"default\": \"Details\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "sections/notice-link.liquid": "<section data-id=\"s&lt;&amp;\"><h2>H&lt;&amp;</h2><p>Body &amp; text</p></section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_link\",\n      \"label\": \"Show link\",\n      \"default\": true\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"url\",\n      \"label\": \"URL\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"label\",\n      \"label\": \"Label\",\n      \"default\": \"Details\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "changed-schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/notice-link.liquid": "<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2><p>{{ body | escape }}</p>{% assign url = section.settings.url | default: \"\" | strip %}{% if section.settings.show_link and url != empty %}<a href=\"{{ url | escape }}\">{{ section.settings.label | default: \"Details\" | escape }}</a>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Other\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Other\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_link\",\n      \"label\": \"Show link\",\n      \"default\": true\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"url\",\n      \"label\": \"URL\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"label\",\n      \"label\": \"Label\",\n      \"default\": \"Details\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Other\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/notice-link.liquid": "{% # theme-check-disable %}\n<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2><p>{{ body | escape }}</p>{% assign url = section.settings.url | default: \"\" | strip %}{% if section.settings.show_link and url != empty %}<a href=\"{{ url | escape }}\">{{ section.settings.label | default: \"Details\" | escape }}</a>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Panel\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_link\",\n      \"label\": \"Show link\",\n      \"default\": true\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"url\",\n      \"label\": \"URL\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"label\",\n      \"label\": \"Label\",\n      \"default\": \"Details\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/notice-link.liquid": null
+    }
+  }
+]

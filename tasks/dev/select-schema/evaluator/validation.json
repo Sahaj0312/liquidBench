@@ -1,0 +1,72 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "sections/select-schema.liquid": "<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\"name\": \"Alignment\", \"presets\": [{\"name\": \"Alignment\", \"settings\": {\"alignment\": \"left\"}}], \"settings\": [{\"default\": \"center\", \"id\": \"alignment\", \"label\": \"Alignment\", \"options\": [{\"label\": \"Left\", \"value\": \"left\"}, {\"label\": \"Center\", \"value\": \"center\"}, {\"label\": \"Right\", \"value\": \"right\"}], \"type\": \"select\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "invalid-default",
+    "expected_pass": false,
+    "changes": {
+      "sections/select-schema.liquid": "<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\": \"Alignment\",\n  \"settings\": [\n    {\n      \"type\": \"select\",\n      \"id\": \"alignment\",\n      \"label\": \"Alignment\",\n      \"options\": [\n        {\n          \"value\": \"left\",\n          \"label\": \"Left\"\n        },\n        {\n          \"value\": \"center\",\n          \"label\": \"Center\"\n        },\n        {\n          \"value\": \"right\",\n          \"label\": \"Right\"\n        }\n      ],\n      \"default\": \"middle\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Alignment\",\n      \"settings\": {\n        \"alignment\": \"left\"\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "missing-option",
+    "expected_pass": false,
+    "changes": {
+      "sections/select-schema.liquid": "<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\": \"Alignment\",\n  \"settings\": [\n    {\n      \"type\": \"select\",\n      \"id\": \"alignment\",\n      \"label\": \"Alignment\",\n      \"options\": [\n        {\n          \"value\": \"left\",\n          \"label\": \"Left\"\n        },\n        {\n          \"value\": \"center\",\n          \"label\": \"Center\"\n        }\n      ],\n      \"default\": \"center\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Alignment\",\n      \"settings\": {\n        \"alignment\": \"left\"\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-preset",
+    "expected_pass": false,
+    "changes": {
+      "sections/select-schema.liquid": "<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\": \"Alignment\",\n  \"settings\": [\n    {\n      \"type\": \"select\",\n      \"id\": \"alignment\",\n      \"label\": \"Alignment\",\n      \"options\": [\n        {\n          \"value\": \"left\",\n          \"label\": \"Left\"\n        },\n        {\n          \"value\": \"center\",\n          \"label\": \"Center\"\n        },\n        {\n          \"value\": \"right\",\n          \"label\": \"Right\"\n        }\n      ],\n      \"default\": \"center\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Alignment\",\n      \"settings\": {\n        \"alignment\": \"right\"\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "duplicate-key",
+    "expected_pass": false,
+    "changes": {
+      "sections/select-schema.liquid": "<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\":\"spoof\",\"name\": \"Alignment\",\n  \"settings\": [\n    {\n      \"type\": \"select\",\n      \"id\": \"alignment\",\n      \"label\": \"Alignment\",\n      \"options\": [\n        {\n          \"value\": \"left\",\n          \"label\": \"Left\"\n        },\n        {\n          \"value\": \"center\",\n          \"label\": \"Center\"\n        },\n        {\n          \"value\": \"right\",\n          \"label\": \"Right\"\n        }\n      ],\n      \"default\": \"center\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Alignment\",\n      \"settings\": {\n        \"alignment\": \"left\"\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "dead-schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/select-schema.liquid": "{% comment %}<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\": \"Alignment\",\n  \"settings\": [\n    {\n      \"type\": \"select\",\n      \"id\": \"alignment\",\n      \"label\": \"Alignment\",\n      \"options\": [\n        {\n          \"value\": \"left\",\n          \"label\": \"Left\"\n        },\n        {\n          \"value\": \"center\",\n          \"label\": \"Center\"\n        },\n        {\n          \"value\": \"right\",\n          \"label\": \"Right\"\n        }\n      ],\n      \"default\": \"center\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Alignment\",\n      \"settings\": {\n        \"alignment\": \"left\"\n      }\n    }\n  ]\n}\n{% endschema %}\n{% endcomment %}"
+    }
+  },
+  {
+    "name": "changed-markup",
+    "expected_pass": false,
+    "changes": {
+      "sections/select-schema.liquid": "<section class=\"panel\"><h2>Changed</h2></section>\n{% schema %}\n{\n  \"name\": \"Alignment\",\n  \"settings\": [\n    {\n      \"type\": \"select\",\n      \"id\": \"alignment\",\n      \"label\": \"Alignment\",\n      \"options\": [\n        {\n          \"value\": \"left\",\n          \"label\": \"Left\"\n        },\n        {\n          \"value\": \"center\",\n          \"label\": \"Center\"\n        },\n        {\n          \"value\": \"right\",\n          \"label\": \"Right\"\n        }\n      ],\n      \"default\": \"center\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Alignment\",\n      \"settings\": {\n        \"alignment\": \"left\"\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/select-schema.liquid": "{% # theme-check-disable %}\n<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\": \"Alignment\",\n  \"settings\": [\n    {\n      \"type\": \"select\",\n      \"id\": \"alignment\",\n      \"label\": \"Alignment\",\n      \"options\": [\n        {\n          \"value\": \"left\",\n          \"label\": \"Left\"\n        },\n        {\n          \"value\": \"center\",\n          \"label\": \"Center\"\n        },\n        {\n          \"value\": \"right\",\n          \"label\": \"Right\"\n        }\n      ],\n      \"default\": \"center\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Alignment\",\n      \"settings\": {\n        \"alignment\": \"left\"\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/select-schema.liquid": null
+    }
+  }
+]

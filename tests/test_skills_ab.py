@@ -14,7 +14,9 @@ SCRIPT = runpy.run_path(str(ROOT / "scripts/run_skills_ab.py"))
 def paired(skill_spec):
     base = load_config(ROOT / "configs/qwen-ab-base.json")
     treatment = {**base, "skills": skill_spec}
-    tasks = discover_tasks(ROOT / "tasks/dev")
+    tasks = [
+        t for t in discover_tasks(ROOT / "tasks/dev") if t.manifest["id"] in SCRIPT["M5_TASK_IDS"]
+    ]
     return SCRIPT["plan"](base, treatment, tasks), tasks
 
 

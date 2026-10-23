@@ -1,0 +1,1 @@
+{% if item.archived %}<p class="status">Archived</p>{% elsif item.stock == 0 %}<p class="status">Sold out</p>{% elsif item.sale %}<p class="status">Sale</p>{% else %}<p class="status">Regular</p>{% endif %}

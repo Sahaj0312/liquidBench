@@ -1,0 +1,229 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/customer-name.liquid",
+    "tags": [
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "customer": {
+        "first": " Ada ",
+        "last": " Lovelace "
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "name"
+          ]
+        ],
+        "text": "Ada Lovelace",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "customer": {
+        "first": null,
+        "last": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "name"
+          ]
+        ],
+        "text": "Guest",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "customer": {
+        "first": "",
+        "last": "  "
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "name"
+          ]
+        ],
+        "text": "Guest",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "customer": {
+        "first": "Jean",
+        "last": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "name"
+          ]
+        ],
+        "text": "Jean",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "customer": {
+        "first": null,
+        "last": " Ng "
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "name"
+          ]
+        ],
+        "text": "Ng",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "customer": {
+        "first": "<x>",
+        "last": "& \"y\""
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "name"
+          ]
+        ],
+        "text": "<x> & \"y\"",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "customer": {
+        "first": "É",
+        "last": "東京"
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "name"
+          ]
+        ],
+        "text": "É 東京",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "customer": {
+        "first": " \t",
+        "last": "Larch-81"
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "name"
+          ]
+        ],
+        "text": "Larch-81",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "customer": {
+        "first": "A",
+        "last": ""
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "name"
+          ]
+        ],
+        "text": "A",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "customer": {
+        "first": " &lt; ",
+        "last": " X "
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "name"
+          ]
+        ],
+        "text": "&lt; X",
+        "children": []
+      }
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "id": "status-priority",
+  "version": 1,
+  "split": "development",
+  "category": "liquid-syntax",
+  "difficulty": "easy",
+  "family": "status-priority",
+  "provenance": "Original synthetic LiquidBench Milestone 6 development fixture; not training or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/status-priority.liquid"
+  ],
+  "prompt": "Repair snippets/status-priority.liquid. item.archived and item.sale are booleans, stock a nonnegative integer. Return one p class=status: Archived first if archived, otherwise Sold out if stock is zero, otherwise Sale if sale, otherwise Regular. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/status-priority.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

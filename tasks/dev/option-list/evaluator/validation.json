@@ -1,0 +1,58 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/option-list.liquid": "<ul class=\"options\">{% for option in options %}{% unless option.disabled %}<li data-value=\"{{ option.value | escape }}\" class=\"{% if option.selected %}selected{% else %}option{% endif %}\">{{ option.label | default: \"Unnamed\" | escape }}</li>{% endunless %}{% endfor %}</ul>"
+    }
+  },
+  {
+    "name": "includes-disabled",
+    "expected_pass": false,
+    "changes": {
+      "snippets/option-list.liquid": "<ul class=\"options\">{% for option in options %}{% unless false %}<li data-value=\"{{ option.value | escape }}\" class=\"{% if option.selected %}selected{% else %}option{% endif %}\">{{ option.label | default: \"Unnamed\" | escape }}</li>{% endunless %}{% endfor %}</ul>"
+    }
+  },
+  {
+    "name": "wrong-selection",
+    "expected_pass": false,
+    "changes": {
+      "snippets/option-list.liquid": "<ul class=\"options\">{% for option in options %}{% unless option.disabled %}<li data-value=\"{{ option.value | escape }}\" class=\"{% if false %}selected{% else %}option{% endif %}\">{{ option.label | default: \"Unnamed\" | escape }}</li>{% endunless %}{% endfor %}</ul>"
+    }
+  },
+  {
+    "name": "unescaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/option-list.liquid": "<ul class=\"options\">{% for option in options %}{% unless option.disabled %}<li data-value=\"{{ option.value }}\" class=\"{% if option.selected %}selected{% else %}option{% endif %}\">{{ option.label | default: \"Unnamed\" }}</li>{% endunless %}{% endfor %}</ul>"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "snippets/option-list.liquid": "<ul class=\"options\"></ul>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/option-list.liquid": "{% # theme-check-disable %}\n<ul class=\"options\">{% for option in options %}{% unless option.disabled %}<li data-value=\"{{ option.value | escape }}\" class=\"{% if option.selected %}selected{% else %}option{% endif %}\">{{ option.label | default: \"Unnamed\" | escape }}</li>{% endunless %}{% endfor %}</ul>"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/option-list.liquid": null
+    }
+  }
+]

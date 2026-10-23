@@ -1,0 +1,42 @@
+<section class="panel"><h2>Panel</h2></section>
+{% schema %}
+{
+  "name": "Notes",
+  "settings": [],
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "note",
+      "name": "Note",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Note"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Notes",
+      "blocks": [
+        {
+          "type": "unknown",
+          "settings": {
+            "text": "First"
+          }
+        },
+        {
+          "type": "note",
+          "settings": {
+            "text": "Second"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

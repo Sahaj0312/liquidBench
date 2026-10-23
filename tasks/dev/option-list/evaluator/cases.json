@@ -1,0 +1,472 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/option-list.liquid",
+    "tags": [
+      "ul",
+      "li"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "options": []
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "options"
+          ]
+        ],
+        "text": "",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "options": [
+        {
+          "value": "a",
+          "label": "Alpha",
+          "disabled": false,
+          "selected": false
+        },
+        {
+          "value": "b",
+          "label": "Beta",
+          "disabled": true,
+          "selected": true
+        },
+        {
+          "value": "c",
+          "label": null,
+          "disabled": false,
+          "selected": true
+        },
+        {
+          "value": "x\"&",
+          "label": "<b>&",
+          "disabled": false,
+          "selected": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "options"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "option"
+              ],
+              [
+                "data-value",
+                "a"
+              ]
+            ],
+            "text": "Alpha",
+            "children": []
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "selected"
+              ],
+              [
+                "data-value",
+                "c"
+              ]
+            ],
+            "text": "Unnamed",
+            "children": []
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "option"
+              ],
+              [
+                "data-value",
+                "x\"&"
+              ]
+            ],
+            "text": "<b>&",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "options": [
+        {
+          "value": "x\"&",
+          "label": "<b>&",
+          "disabled": false,
+          "selected": false
+        },
+        {
+          "value": "c",
+          "label": null,
+          "disabled": false,
+          "selected": true
+        },
+        {
+          "value": "b",
+          "label": "Beta",
+          "disabled": true,
+          "selected": true
+        },
+        {
+          "value": "a",
+          "label": "Alpha",
+          "disabled": false,
+          "selected": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "options"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "option"
+              ],
+              [
+                "data-value",
+                "x\"&"
+              ]
+            ],
+            "text": "<b>&",
+            "children": []
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "selected"
+              ],
+              [
+                "data-value",
+                "c"
+              ]
+            ],
+            "text": "Unnamed",
+            "children": []
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "option"
+              ],
+              [
+                "data-value",
+                "a"
+              ]
+            ],
+            "text": "Alpha",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "options": [
+        {
+          "value": "b",
+          "label": "Beta",
+          "disabled": true,
+          "selected": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "options"
+          ]
+        ],
+        "text": "",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "options": [
+        {
+          "value": "c",
+          "label": null,
+          "disabled": false,
+          "selected": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "options"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "selected"
+              ],
+              [
+                "data-value",
+                "c"
+              ]
+            ],
+            "text": "Unnamed",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "options": [
+        {
+          "value": "a",
+          "label": "Alpha",
+          "disabled": false,
+          "selected": false
+        },
+        {
+          "value": "b",
+          "label": "Beta",
+          "disabled": true,
+          "selected": true
+        },
+        {
+          "value": "c",
+          "label": null,
+          "disabled": false,
+          "selected": true
+        },
+        {
+          "value": "x\"&",
+          "label": "<b>&",
+          "disabled": false,
+          "selected": false
+        },
+        {
+          "value": "a",
+          "label": "Alpha",
+          "disabled": false,
+          "selected": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "options"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "option"
+              ],
+              [
+                "data-value",
+                "a"
+              ]
+            ],
+            "text": "Alpha",
+            "children": []
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "selected"
+              ],
+              [
+                "data-value",
+                "c"
+              ]
+            ],
+            "text": "Unnamed",
+            "children": []
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "option"
+              ],
+              [
+                "data-value",
+                "x\"&"
+              ]
+            ],
+            "text": "<b>&",
+            "children": []
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "option"
+              ],
+              [
+                "data-value",
+                "a"
+              ]
+            ],
+            "text": "Alpha",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "options": [
+        {
+          "value": "東京",
+          "label": " Pine-72 ",
+          "disabled": false,
+          "selected": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "options"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "selected"
+              ],
+              [
+                "data-value",
+                "東京"
+              ]
+            ],
+            "text": " Pine-72 ",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "options": [
+        {
+          "value": "empty",
+          "label": "",
+          "disabled": false,
+          "selected": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "options"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "option"
+              ],
+              [
+                "data-value",
+                "empty"
+              ]
+            ],
+            "text": "Unnamed",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

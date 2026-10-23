@@ -14,7 +14,15 @@ from .grading import grade
 from .provider import ChatProvider, ProviderError
 from .sandbox import InfrastructureError, Sandbox, ToolError, image_id
 from .task import fingerprint, safe_name
-from .skills import SkillBundle, initial_messages, skill_path, validate_skill_config
+from .skills import (
+    SkillBundle,
+    initial_messages,
+    skill_path,
+    validate_skill_config,
+    validate_loading,
+    load_neutral,
+    sha256,
+)
 
 SYSTEM = """You are a coding agent operating on an isolated Liquid task workspace.
 Reply with exactly one JSON object per turn. No markdown or prose outside JSON.
@@ -117,7 +125,7 @@ def load_config(path):
     }
     if required - config.keys():
         raise ValueError(f"Missing config fields: {sorted(required - config.keys())}")
-    if set(config) - (required | {"api_key_env", "skills"}):
+    if set(config) - (required | {"api_key_env", "skills", "skill_loading", "neutral_context"}):
         raise ValueError("Unknown config fields; credentials belong in environment variables")
     for key in ("max_turns", "max_total_tokens", "max_output_tokens", "max_context_tokens"):
         if type(config[key]) is not int or config[key] <= 0:
@@ -141,6 +149,7 @@ def load_config(path):
         if config[key] is not None and config[key] < 0:
             raise ValueError("Prices must be nonnegative or null")
     validate_skill_config(config.get("skills"))
+    validate_loading(config)
     ChatProvider(config)  # Validate endpoint before creating any resources.
     return config
 
@@ -203,6 +212,7 @@ def run(
         "protocol_version": "json-actions-v5",
         "skills": None,
         "skill_accesses": [],
+        "context_exposures": [],
         "run_id": run_id,
         "task_id": task.manifest["id"],
         "task_version": task.manifest["version"],
@@ -231,10 +241,10 @@ def run(
     (destination / "task.json").write_text(json.dumps(task.manifest, indent=2) + "\n")
     with (destination / "trace.jsonl").open("w") as trace:
 
-        def event(kind, **fields):
+        def event(event_type, **fields):
             trace.write(
                 json.dumps(
-                    {"event": kind, "elapsed_seconds": time.monotonic() - start, **fields},
+                    {"event": event_type, "elapsed_seconds": time.monotonic() - start, **fields},
                     ensure_ascii=False,
                 )
                 + "\n"
@@ -243,6 +253,11 @@ def run(
 
         try:
             bundle = None
+            try:
+                neutral = load_neutral(config)
+            except (ValueError, OSError) as exc:
+                raise InfrastructureError(f"Context verification failed: {exc}") from exc
+            loading = config.get("skill_loading", "full")
             if config.get("skills") is not None:
                 try:
                     bundle = SkillBundle.load(config["skills"])
@@ -251,8 +266,8 @@ def run(
                 if any(skill_path(name) for name in task.initial):
                     raise InfrastructureError("Task collides with reserved skills namespace")
                 result["skills"] = bundle.metadata()
-                messages = initial_messages(SYSTEM, task.manifest["prompt"], bundle)
-                for name in bundle.manifest["entries"]:
+                result["skills"]["loading"] = loading
+                for name in bundle.manifest["entries"] if loading == "full" else []:
                     access = {
                         "path": name,
                         "mode": "injected",
@@ -262,6 +277,19 @@ def run(
                     }
                     result["skill_accesses"].append(access)
                     event("skill_access", **access)
+            messages = initial_messages(
+                SYSTEM, task.manifest["prompt"], bundle, loading=loading, neutral=neutral
+            )
+            if neutral is not None or (bundle is not None and loading == "on_demand"):
+                content = messages[1]["content"].encode()
+                exposure = {
+                    "kind": "neutral" if neutral is not None else "skill_index",
+                    "bytes": len(content),
+                    "sha256": sha256(content),
+                    "first_model_turn": None,
+                }
+                result["context_exposures"].append(exposure)
+                event("context_exposure", **exposure)
             event("initial_context", messages=messages)
             image = resolve_image(config["image"])
             result["image_id"] = image
@@ -332,14 +360,13 @@ def run(
                                 event("provider_error", error=str(exc), retryable=exc.retryable)
                                 if not exc.retryable or retry == config["provider_retries"]:
                                     raise
-                        for access in result["skill_accesses"]:
+                        for access in result["skill_accesses"] + result["context_exposures"]:
                             if access["first_model_turn"] is None:
                                 access["first_model_turn"] = turn
                                 event(
-                                    "skill_delivery",
-                                    path=access["path"],
+                                    "skill_delivery" if "path" in access else "context_delivery",
                                     turn=turn,
-                                    mode=access["mode"],
+                                    **{k: v for k, v in access.items() if k != "turn"},
                                 )
                         result["input_tokens"] += reply.input_tokens
                         result["output_tokens"] += reply.output_tokens

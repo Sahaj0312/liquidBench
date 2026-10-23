@@ -1,0 +1,72 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "sections/blocks-schema.liquid": "<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\"blocks\": [{\"limit\": 3, \"name\": \"Note\", \"settings\": [{\"default\": \"Note\", \"id\": \"text\", \"label\": \"Text\", \"type\": \"text\"}], \"type\": \"note\"}], \"max_blocks\": 3, \"name\": \"Notes\", \"presets\": [{\"blocks\": [{\"settings\": {\"text\": \"First\"}, \"type\": \"note\"}, {\"settings\": {\"text\": \"Second\"}, \"type\": \"note\"}], \"name\": \"Notes\"}], \"settings\": []}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "unknown-block",
+    "expected_pass": false,
+    "changes": {
+      "sections/blocks-schema.liquid": "<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\": \"Notes\",\n  \"settings\": [],\n  \"max_blocks\": 3,\n  \"blocks\": [\n    {\n      \"type\": \"note\",\n      \"name\": \"Note\",\n      \"limit\": 3,\n      \"settings\": [\n        {\n          \"type\": \"text\",\n          \"id\": \"text\",\n          \"label\": \"Text\",\n          \"default\": \"Note\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Notes\",\n      \"blocks\": [\n        {\n          \"type\": \"unknown\",\n          \"settings\": {\n            \"text\": \"First\"\n          }\n        },\n        {\n          \"type\": \"note\",\n          \"settings\": {\n            \"text\": \"Second\"\n          }\n        }\n      ]\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-limit",
+    "expected_pass": false,
+    "changes": {
+      "sections/blocks-schema.liquid": "<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\": \"Notes\",\n  \"settings\": [],\n  \"max_blocks\": 2,\n  \"blocks\": [\n    {\n      \"type\": \"note\",\n      \"name\": \"Note\",\n      \"limit\": 3,\n      \"settings\": [\n        {\n          \"type\": \"text\",\n          \"id\": \"text\",\n          \"label\": \"Text\",\n          \"default\": \"Note\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Notes\",\n      \"blocks\": [\n        {\n          \"type\": \"note\",\n          \"settings\": {\n            \"text\": \"First\"\n          }\n        },\n        {\n          \"type\": \"note\",\n          \"settings\": {\n            \"text\": \"Second\"\n          }\n        }\n      ]\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-block-setting",
+    "expected_pass": false,
+    "changes": {
+      "sections/blocks-schema.liquid": "<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\": \"Notes\",\n  \"settings\": [],\n  \"max_blocks\": 3,\n  \"blocks\": [\n    {\n      \"type\": \"note\",\n      \"name\": \"Note\",\n      \"limit\": 3,\n      \"settings\": [\n        {\n          \"type\": \"text\",\n          \"id\": \"body\",\n          \"label\": \"Text\",\n          \"default\": \"Note\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Notes\",\n      \"blocks\": [\n        {\n          \"type\": \"note\",\n          \"settings\": {\n            \"text\": \"First\"\n          }\n        },\n        {\n          \"type\": \"note\",\n          \"settings\": {\n            \"text\": \"Second\"\n          }\n        }\n      ]\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "duplicate-key",
+    "expected_pass": false,
+    "changes": {
+      "sections/blocks-schema.liquid": "<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\":\"spoof\",\"name\": \"Notes\",\n  \"settings\": [],\n  \"max_blocks\": 3,\n  \"blocks\": [\n    {\n      \"type\": \"note\",\n      \"name\": \"Note\",\n      \"limit\": 3,\n      \"settings\": [\n        {\n          \"type\": \"text\",\n          \"id\": \"text\",\n          \"label\": \"Text\",\n          \"default\": \"Note\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Notes\",\n      \"blocks\": [\n        {\n          \"type\": \"note\",\n          \"settings\": {\n            \"text\": \"First\"\n          }\n        },\n        {\n          \"type\": \"note\",\n          \"settings\": {\n            \"text\": \"Second\"\n          }\n        }\n      ]\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "dead-schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/blocks-schema.liquid": "{% comment %}<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\": \"Notes\",\n  \"settings\": [],\n  \"max_blocks\": 3,\n  \"blocks\": [\n    {\n      \"type\": \"note\",\n      \"name\": \"Note\",\n      \"limit\": 3,\n      \"settings\": [\n        {\n          \"type\": \"text\",\n          \"id\": \"text\",\n          \"label\": \"Text\",\n          \"default\": \"Note\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Notes\",\n      \"blocks\": [\n        {\n          \"type\": \"note\",\n          \"settings\": {\n            \"text\": \"First\"\n          }\n        },\n        {\n          \"type\": \"note\",\n          \"settings\": {\n            \"text\": \"Second\"\n          }\n        }\n      ]\n    }\n  ]\n}\n{% endschema %}\n{% endcomment %}"
+    }
+  },
+  {
+    "name": "changed-markup",
+    "expected_pass": false,
+    "changes": {
+      "sections/blocks-schema.liquid": "<section class=\"panel\"><h2>Changed</h2></section>\n{% schema %}\n{\n  \"name\": \"Notes\",\n  \"settings\": [],\n  \"max_blocks\": 3,\n  \"blocks\": [\n    {\n      \"type\": \"note\",\n      \"name\": \"Note\",\n      \"limit\": 3,\n      \"settings\": [\n        {\n          \"type\": \"text\",\n          \"id\": \"text\",\n          \"label\": \"Text\",\n          \"default\": \"Note\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Notes\",\n      \"blocks\": [\n        {\n          \"type\": \"note\",\n          \"settings\": {\n            \"text\": \"First\"\n          }\n        },\n        {\n          \"type\": \"note\",\n          \"settings\": {\n            \"text\": \"Second\"\n          }\n        }\n      ]\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/blocks-schema.liquid": "{% # theme-check-disable %}\n<section class=\"panel\"><h2>Panel</h2></section>\n{% schema %}\n{\n  \"name\": \"Notes\",\n  \"settings\": [],\n  \"max_blocks\": 3,\n  \"blocks\": [\n    {\n      \"type\": \"note\",\n      \"name\": \"Note\",\n      \"limit\": 3,\n      \"settings\": [\n        {\n          \"type\": \"text\",\n          \"id\": \"text\",\n          \"label\": \"Text\",\n          \"default\": \"Note\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Notes\",\n      \"blocks\": [\n        {\n          \"type\": \"note\",\n          \"settings\": {\n            \"text\": \"First\"\n          }\n        },\n        {\n          \"type\": \"note\",\n          \"settings\": {\n            \"text\": \"Second\"\n          }\n        }\n      ]\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/blocks-schema.liquid": null
+    }
+  }
+]

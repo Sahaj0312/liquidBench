@@ -1,0 +1,72 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/locale-references.liquid": "<button type=\"button\">{{ \"labels.open\" | translate }}</button><span>{{ \"labels.close\" | translate }}</span>"
+    }
+  },
+  {
+    "name": "swapped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/locale-references.liquid": "<button type=\"button\">{{ 'labels.close' | t }}</button><span>{{ 'labels.open' | t }}</span>"
+    }
+  },
+  {
+    "name": "literal-copy",
+    "expected_pass": false,
+    "changes": {
+      "snippets/locale-references.liquid": "<button type=\"button\">Open</button><span>Close</span>"
+    }
+  },
+  {
+    "name": "wrong-filter",
+    "expected_pass": false,
+    "changes": {
+      "snippets/locale-references.liquid": "<button type=\"button\">{{ 'labels.open' | escape }}</button><span>{{ 'labels.close' | escape }}</span>"
+    }
+  },
+  {
+    "name": "dead-code",
+    "expected_pass": false,
+    "changes": {
+      "snippets/locale-references.liquid": "{% if false %}<button type=\"button\">{{ 'labels.open' | t }}</button><span>{{ 'labels.close' | t }}</span>{% endif %}"
+    }
+  },
+  {
+    "name": "commented",
+    "expected_pass": false,
+    "changes": {
+      "snippets/locale-references.liquid": "{% comment %}<button type=\"button\">{{ 'labels.open' | t }}</button><span>{{ 'labels.close' | t }}</span>{% endcomment %}"
+    }
+  },
+  {
+    "name": "extra-markup",
+    "expected_pass": false,
+    "changes": {
+      "snippets/locale-references.liquid": "<button type=\"button\">{{ 'labels.open' | t }}</button><span>{{ 'labels.close' | t }}</span><p>extra</p>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/locale-references.liquid": "{% # theme-check-disable %}\n<button type=\"button\">{{ 'labels.open' | t }}</button><span>{{ 'labels.close' | t }}</span>"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/locale-references.liquid": null
+    }
+  }
+]

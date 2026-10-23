@@ -167,14 +167,15 @@ def test_schema_extraction_does_not_enable_shopify_filters(image):
         assert "UndefinedFilter" in result["error"]
 
 
-def test_skills_never_enter_agent_or_evaluator_container(image, skill_spec, tmp_path):
+@pytest.mark.parametrize("loading", ["full", "on_demand"])
+def test_skills_never_enter_agent_or_evaluator_container(image, skill_spec, tmp_path, loading):
     import json
     from liquidbench.runner import load_config, run
     from test_runner import ScriptedProvider
 
     task = Task.load(ROOT / "tasks/dev/product-card")
     config = load_config(ROOT / "configs/qwen-ab-skills.json")
-    config.update(skills=skill_spec, image=image)
+    config.update(skills=skill_spec, image=image, skill_loading=loading)
     reference_path = "skills/language/references/long.md"
     provider = ScriptedProvider(
         [

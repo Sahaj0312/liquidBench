@@ -1,0 +1,240 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/tag-membership.liquid",
+    "tags": [
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "item": {
+        "tags": []
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tag-state"
+          ]
+        ],
+        "text": "Standard",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "item": {
+        "tags": [
+          "featured"
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tag-state"
+          ]
+        ],
+        "text": "Featured",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "item": {
+        "tags": [
+          "archived"
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tag-state"
+          ]
+        ],
+        "text": "Hidden",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "item": {
+        "tags": [
+          "featured",
+          "archived"
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tag-state"
+          ]
+        ],
+        "text": "Hidden",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "item": {
+        "tags": [
+          "unfeatured"
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tag-state"
+          ]
+        ],
+        "text": "Standard",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "item": {
+        "tags": [
+          "archived-extra"
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tag-state"
+          ]
+        ],
+        "text": "Standard",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "item": {
+        "tags": [
+          "FEATURED"
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tag-state"
+          ]
+        ],
+        "text": "Standard",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "item": {
+        "tags": [
+          "new",
+          "featured"
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tag-state"
+          ]
+        ],
+        "text": "Featured",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "item": {
+        "tags": [
+          "featured",
+          "featured"
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tag-state"
+          ]
+        ],
+        "text": "Featured",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "item": {
+        "tags": [
+          "special-76"
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tag-state"
+          ]
+        ],
+        "text": "Standard",
+        "children": []
+      }
+    ]
+  }
+]

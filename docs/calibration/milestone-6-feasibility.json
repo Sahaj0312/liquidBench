@@ -1,0 +1,1102 @@
+{
+  "plan_sha256": "3c90c299bb16aae1d3a95fe9798ed34ce026ed2781c40463677aefbb21cd7197",
+  "inference_performed": false,
+  "tasks": {
+    "announcement-subtitle": {
+      "base": {
+        "initial_tokens": 712,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10532,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14378,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12492,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11990,
+          "skills/liquid-theme-standards/SKILL.md": 14074,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11930,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12463,
+          "skills/shopify-liquid-themes/SKILL.md": 13986,
+          "skills/shopify-liquid-themes/references/examples.md": 13372,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13539,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14375,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16821,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15501,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14866,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15394,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 12079,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13165,
+          "skills/shopify-liquid-themes/references/tags.md": 15957
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 802,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4648,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2762,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2260,
+          "skills/liquid-theme-standards/SKILL.md": 4344,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2200,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2733,
+          "skills/shopify-liquid-themes/SKILL.md": 4256,
+          "skills/shopify-liquid-themes/references/examples.md": 3642,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3809,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4645,
+          "skills/shopify-liquid-themes/references/filters-language.md": 7091,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5771,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5136,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5664,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2349,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3435,
+          "skills/shopify-liquid-themes/references/tags.md": 6227
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10532,
+        "after_single_read": {}
+      }
+    },
+    "asset-references": {
+      "base": {
+        "initial_tokens": 646,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10466,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14312,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12426,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11924,
+          "skills/liquid-theme-standards/SKILL.md": 14008,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11864,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12397,
+          "skills/shopify-liquid-themes/SKILL.md": 13920,
+          "skills/shopify-liquid-themes/references/examples.md": 13306,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13473,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14309,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16755,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15435,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14800,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15328,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 12013,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13099,
+          "skills/shopify-liquid-themes/references/tags.md": 15891
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 736,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4582,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2696,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2194,
+          "skills/liquid-theme-standards/SKILL.md": 4278,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2134,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2667,
+          "skills/shopify-liquid-themes/SKILL.md": 4190,
+          "skills/shopify-liquid-themes/references/examples.md": 3576,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3743,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4579,
+          "skills/shopify-liquid-themes/references/filters-language.md": 7025,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5705,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5070,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5598,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2283,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3369,
+          "skills/shopify-liquid-themes/references/tags.md": 6161
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10466,
+        "after_single_read": {}
+      }
+    },
+    "blocks-schema": {
+      "base": {
+        "initial_tokens": 639,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10459,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14305,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12419,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11917,
+          "skills/liquid-theme-standards/SKILL.md": 14001,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11857,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12390,
+          "skills/shopify-liquid-themes/SKILL.md": 13913,
+          "skills/shopify-liquid-themes/references/examples.md": 13299,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13466,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14302,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16748,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15428,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14793,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15321,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 12006,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13092,
+          "skills/shopify-liquid-themes/references/tags.md": 15884
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 729,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4575,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2689,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2187,
+          "skills/liquid-theme-standards/SKILL.md": 4271,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2127,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2660,
+          "skills/shopify-liquid-themes/SKILL.md": 4183,
+          "skills/shopify-liquid-themes/references/examples.md": 3569,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3736,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4572,
+          "skills/shopify-liquid-themes/references/filters-language.md": 7018,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5698,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5063,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5591,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2276,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3362,
+          "skills/shopify-liquid-themes/references/tags.md": 6154
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10459,
+        "after_single_read": {}
+      }
+    },
+    "cart-arithmetic": {
+      "base": {
+        "initial_tokens": 599,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10419,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14265,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12379,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11877,
+          "skills/liquid-theme-standards/SKILL.md": 13961,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11817,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12350,
+          "skills/shopify-liquid-themes/SKILL.md": 13873,
+          "skills/shopify-liquid-themes/references/examples.md": 13259,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13426,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14262,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16708,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15388,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14753,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15281,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 11966,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13052,
+          "skills/shopify-liquid-themes/references/tags.md": 15844
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 689,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4535,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2649,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2147,
+          "skills/liquid-theme-standards/SKILL.md": 4231,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2087,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2620,
+          "skills/shopify-liquid-themes/SKILL.md": 4143,
+          "skills/shopify-liquid-themes/references/examples.md": 3529,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3696,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4532,
+          "skills/shopify-liquid-themes/references/filters-language.md": 6978,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5658,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5023,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5551,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2236,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3322,
+          "skills/shopify-liquid-themes/references/tags.md": 6114
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10419,
+        "after_single_read": {}
+      }
+    },
+    "customer-name": {
+      "base": {
+        "initial_tokens": 584,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10404,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14250,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12364,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11862,
+          "skills/liquid-theme-standards/SKILL.md": 13946,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11802,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12335,
+          "skills/shopify-liquid-themes/SKILL.md": 13858,
+          "skills/shopify-liquid-themes/references/examples.md": 13244,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13411,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14247,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16693,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15373,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14738,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15266,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 11951,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13037,
+          "skills/shopify-liquid-themes/references/tags.md": 15829
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 674,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4520,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2634,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2132,
+          "skills/liquid-theme-standards/SKILL.md": 4216,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2072,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2605,
+          "skills/shopify-liquid-themes/SKILL.md": 4128,
+          "skills/shopify-liquid-themes/references/examples.md": 3514,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3681,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4517,
+          "skills/shopify-liquid-themes/references/filters-language.md": 6963,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5643,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5008,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5536,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2221,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3307,
+          "skills/shopify-liquid-themes/references/tags.md": 6099
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10404,
+        "after_single_read": {}
+      }
+    },
+    "eligibility-branch": {
+      "base": {
+        "initial_tokens": 611,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10431,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14277,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12391,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11889,
+          "skills/liquid-theme-standards/SKILL.md": 13973,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11829,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12362,
+          "skills/shopify-liquid-themes/SKILL.md": 13885,
+          "skills/shopify-liquid-themes/references/examples.md": 13271,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13438,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14274,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16720,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15400,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14765,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15293,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 11978,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13064,
+          "skills/shopify-liquid-themes/references/tags.md": 15856
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 701,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4547,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2661,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2159,
+          "skills/liquid-theme-standards/SKILL.md": 4243,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2099,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2632,
+          "skills/shopify-liquid-themes/SKILL.md": 4155,
+          "skills/shopify-liquid-themes/references/examples.md": 3541,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3708,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4544,
+          "skills/shopify-liquid-themes/references/filters-language.md": 6990,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5670,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5035,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5563,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2248,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3334,
+          "skills/shopify-liquid-themes/references/tags.md": 6126
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10431,
+        "after_single_read": {}
+      }
+    },
+    "icon-reference": {
+      "base": {
+        "initial_tokens": 584,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10404,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14250,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12364,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11862,
+          "skills/liquid-theme-standards/SKILL.md": 13946,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11802,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12335,
+          "skills/shopify-liquid-themes/SKILL.md": 13858,
+          "skills/shopify-liquid-themes/references/examples.md": 13244,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13411,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14247,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16693,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15373,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14738,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15266,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 11951,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13037,
+          "skills/shopify-liquid-themes/references/tags.md": 15829
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 674,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4520,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2634,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2132,
+          "skills/liquid-theme-standards/SKILL.md": 4216,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2072,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2605,
+          "skills/shopify-liquid-themes/SKILL.md": 4128,
+          "skills/shopify-liquid-themes/references/examples.md": 3514,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3681,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4517,
+          "skills/shopify-liquid-themes/references/filters-language.md": 6963,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5643,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5008,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5536,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2221,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3307,
+          "skills/shopify-liquid-themes/references/tags.md": 6099
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10404,
+        "after_single_read": {}
+      }
+    },
+    "locale-references": {
+      "base": {
+        "initial_tokens": 588,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10408,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14254,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12368,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11866,
+          "skills/liquid-theme-standards/SKILL.md": 13950,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11806,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12339,
+          "skills/shopify-liquid-themes/SKILL.md": 13862,
+          "skills/shopify-liquid-themes/references/examples.md": 13248,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13415,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14251,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16697,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15377,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14742,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15270,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 11955,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13041,
+          "skills/shopify-liquid-themes/references/tags.md": 15833
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 678,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4524,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2638,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2136,
+          "skills/liquid-theme-standards/SKILL.md": 4220,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2076,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2609,
+          "skills/shopify-liquid-themes/SKILL.md": 4132,
+          "skills/shopify-liquid-themes/references/examples.md": 3518,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3685,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4521,
+          "skills/shopify-liquid-themes/references/filters-language.md": 6967,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5647,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5012,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5540,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2225,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3311,
+          "skills/shopify-liquid-themes/references/tags.md": 6103
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10408,
+        "after_single_read": {}
+      }
+    },
+    "notice-link": {
+      "base": {
+        "initial_tokens": 646,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10466,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14312,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12426,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11924,
+          "skills/liquid-theme-standards/SKILL.md": 14008,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11864,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12397,
+          "skills/shopify-liquid-themes/SKILL.md": 13920,
+          "skills/shopify-liquid-themes/references/examples.md": 13306,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13473,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14309,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16755,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15435,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14800,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15328,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 12013,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13099,
+          "skills/shopify-liquid-themes/references/tags.md": 15891
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 736,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4582,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2696,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2194,
+          "skills/liquid-theme-standards/SKILL.md": 4278,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2134,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2667,
+          "skills/shopify-liquid-themes/SKILL.md": 4190,
+          "skills/shopify-liquid-themes/references/examples.md": 3576,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3743,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4579,
+          "skills/shopify-liquid-themes/references/filters-language.md": 7025,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5705,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5070,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5598,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2283,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3369,
+          "skills/shopify-liquid-themes/references/tags.md": 6161
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10466,
+        "after_single_read": {}
+      }
+    },
+    "option-list": {
+      "base": {
+        "initial_tokens": 627,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10447,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14293,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12407,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11905,
+          "skills/liquid-theme-standards/SKILL.md": 13989,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11845,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12378,
+          "skills/shopify-liquid-themes/SKILL.md": 13901,
+          "skills/shopify-liquid-themes/references/examples.md": 13287,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13454,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14290,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16736,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15416,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14781,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15309,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 11994,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13080,
+          "skills/shopify-liquid-themes/references/tags.md": 15872
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 717,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4563,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2677,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2175,
+          "skills/liquid-theme-standards/SKILL.md": 4259,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2115,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2648,
+          "skills/shopify-liquid-themes/SKILL.md": 4171,
+          "skills/shopify-liquid-themes/references/examples.md": 3557,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3724,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4560,
+          "skills/shopify-liquid-themes/references/filters-language.md": 7006,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5686,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5051,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5579,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2264,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3350,
+          "skills/shopify-liquid-themes/references/tags.md": 6142
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10447,
+        "after_single_read": {}
+      }
+    },
+    "optional-caption": {
+      "base": {
+        "initial_tokens": 622,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10442,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14288,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12402,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11900,
+          "skills/liquid-theme-standards/SKILL.md": 13984,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11840,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12373,
+          "skills/shopify-liquid-themes/SKILL.md": 13896,
+          "skills/shopify-liquid-themes/references/examples.md": 13282,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13449,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14285,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16731,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15411,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14776,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15304,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 11989,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13075,
+          "skills/shopify-liquid-themes/references/tags.md": 15867
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 712,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4558,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2672,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2170,
+          "skills/liquid-theme-standards/SKILL.md": 4254,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2110,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2643,
+          "skills/shopify-liquid-themes/SKILL.md": 4166,
+          "skills/shopify-liquid-themes/references/examples.md": 3552,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3719,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4555,
+          "skills/shopify-liquid-themes/references/filters-language.md": 7001,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5681,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5046,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5574,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2259,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3345,
+          "skills/shopify-liquid-themes/references/tags.md": 6137
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10442,
+        "after_single_read": {}
+      }
+    },
+    "product-card": {
+      "base": {
+        "initial_tokens": 673,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10493,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14339,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12453,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11951,
+          "skills/liquid-theme-standards/SKILL.md": 14035,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11891,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12424,
+          "skills/shopify-liquid-themes/SKILL.md": 13947,
+          "skills/shopify-liquid-themes/references/examples.md": 13333,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13500,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14336,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16782,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15462,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14827,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15355,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 12040,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13126,
+          "skills/shopify-liquid-themes/references/tags.md": 15918
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 763,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4609,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2723,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2221,
+          "skills/liquid-theme-standards/SKILL.md": 4305,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2161,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2694,
+          "skills/shopify-liquid-themes/SKILL.md": 4217,
+          "skills/shopify-liquid-themes/references/examples.md": 3603,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3770,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4606,
+          "skills/shopify-liquid-themes/references/filters-language.md": 7052,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5732,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5097,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5625,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2310,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3396,
+          "skills/shopify-liquid-themes/references/tags.md": 6188
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10493,
+        "after_single_read": {}
+      }
+    },
+    "range-schema": {
+      "base": {
+        "initial_tokens": 626,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10446,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14292,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12406,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11904,
+          "skills/liquid-theme-standards/SKILL.md": 13988,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11844,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12377,
+          "skills/shopify-liquid-themes/SKILL.md": 13900,
+          "skills/shopify-liquid-themes/references/examples.md": 13286,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13453,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14289,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16735,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15415,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14780,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15308,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 11993,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13079,
+          "skills/shopify-liquid-themes/references/tags.md": 15871
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 716,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4562,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2676,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2174,
+          "skills/liquid-theme-standards/SKILL.md": 4258,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2114,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2647,
+          "skills/shopify-liquid-themes/SKILL.md": 4170,
+          "skills/shopify-liquid-themes/references/examples.md": 3556,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3723,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4559,
+          "skills/shopify-liquid-themes/references/filters-language.md": 7005,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5685,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5050,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5578,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2263,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3349,
+          "skills/shopify-liquid-themes/references/tags.md": 6141
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10446,
+        "after_single_read": {}
+      }
+    },
+    "section-schema": {
+      "base": {
+        "initial_tokens": 681,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10501,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14347,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12461,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11959,
+          "skills/liquid-theme-standards/SKILL.md": 14043,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11899,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12432,
+          "skills/shopify-liquid-themes/SKILL.md": 13955,
+          "skills/shopify-liquid-themes/references/examples.md": 13341,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13508,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14344,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16790,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15470,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14835,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15363,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 12048,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13134,
+          "skills/shopify-liquid-themes/references/tags.md": 15926
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 771,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4617,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2731,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2229,
+          "skills/liquid-theme-standards/SKILL.md": 4313,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2169,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2702,
+          "skills/shopify-liquid-themes/SKILL.md": 4225,
+          "skills/shopify-liquid-themes/references/examples.md": 3611,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3778,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4614,
+          "skills/shopify-liquid-themes/references/filters-language.md": 7060,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5740,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5105,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5633,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2318,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3404,
+          "skills/shopify-liquid-themes/references/tags.md": 6196
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10501,
+        "after_single_read": {}
+      }
+    },
+    "select-schema": {
+      "base": {
+        "initial_tokens": 604,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10424,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14270,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12384,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11882,
+          "skills/liquid-theme-standards/SKILL.md": 13966,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11822,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12355,
+          "skills/shopify-liquid-themes/SKILL.md": 13878,
+          "skills/shopify-liquid-themes/references/examples.md": 13264,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13431,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14267,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16713,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15393,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14758,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15286,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 11971,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13057,
+          "skills/shopify-liquid-themes/references/tags.md": 15849
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 694,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4540,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2654,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2152,
+          "skills/liquid-theme-standards/SKILL.md": 4236,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2092,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2625,
+          "skills/shopify-liquid-themes/SKILL.md": 4148,
+          "skills/shopify-liquid-themes/references/examples.md": 3534,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3701,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4537,
+          "skills/shopify-liquid-themes/references/filters-language.md": 6983,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5663,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5028,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5556,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2241,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3327,
+          "skills/shopify-liquid-themes/references/tags.md": 6119
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10424,
+        "after_single_read": {}
+      }
+    },
+    "shipping-message": {
+      "base": {
+        "initial_tokens": 696,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10516,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14362,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12476,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11974,
+          "skills/liquid-theme-standards/SKILL.md": 14058,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11914,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12447,
+          "skills/shopify-liquid-themes/SKILL.md": 13970,
+          "skills/shopify-liquid-themes/references/examples.md": 13356,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13523,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14359,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16805,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15485,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14850,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15378,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 12063,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13149,
+          "skills/shopify-liquid-themes/references/tags.md": 15941
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 786,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4632,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2746,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2244,
+          "skills/liquid-theme-standards/SKILL.md": 4328,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2184,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2717,
+          "skills/shopify-liquid-themes/SKILL.md": 4240,
+          "skills/shopify-liquid-themes/references/examples.md": 3626,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3793,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4629,
+          "skills/shopify-liquid-themes/references/filters-language.md": 7075,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5755,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5120,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5648,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2333,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3419,
+          "skills/shopify-liquid-themes/references/tags.md": 6211
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10516,
+        "after_single_read": {}
+      }
+    },
+    "status-priority": {
+      "base": {
+        "initial_tokens": 592,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10412,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14258,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12372,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11870,
+          "skills/liquid-theme-standards/SKILL.md": 13954,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11810,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12343,
+          "skills/shopify-liquid-themes/SKILL.md": 13866,
+          "skills/shopify-liquid-themes/references/examples.md": 13252,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13419,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14255,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16701,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15381,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14746,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15274,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 11959,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13045,
+          "skills/shopify-liquid-themes/references/tags.md": 15837
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 682,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4528,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2642,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2140,
+          "skills/liquid-theme-standards/SKILL.md": 4224,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2080,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2613,
+          "skills/shopify-liquid-themes/SKILL.md": 4136,
+          "skills/shopify-liquid-themes/references/examples.md": 3522,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3689,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4525,
+          "skills/shopify-liquid-themes/references/filters-language.md": 6971,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5651,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5016,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5544,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2229,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3315,
+          "skills/shopify-liquid-themes/references/tags.md": 6107
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10412,
+        "after_single_read": {}
+      }
+    },
+    "stylesheet-pair": {
+      "base": {
+        "initial_tokens": 598,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10418,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14264,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12378,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11876,
+          "skills/liquid-theme-standards/SKILL.md": 13960,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11816,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12349,
+          "skills/shopify-liquid-themes/SKILL.md": 13872,
+          "skills/shopify-liquid-themes/references/examples.md": 13258,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13425,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14261,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16707,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15387,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14752,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15280,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 11965,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13051,
+          "skills/shopify-liquid-themes/references/tags.md": 15843
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 688,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4534,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2648,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2146,
+          "skills/liquid-theme-standards/SKILL.md": 4230,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2086,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2619,
+          "skills/shopify-liquid-themes/SKILL.md": 4142,
+          "skills/shopify-liquid-themes/references/examples.md": 3528,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3695,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4531,
+          "skills/shopify-liquid-themes/references/filters-language.md": 6977,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5657,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5022,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5550,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2235,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3321,
+          "skills/shopify-liquid-themes/references/tags.md": 6113
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10418,
+        "after_single_read": {}
+      }
+    },
+    "tag-membership": {
+      "base": {
+        "initial_tokens": 596,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10416,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14262,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12376,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11874,
+          "skills/liquid-theme-standards/SKILL.md": 13958,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11814,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12347,
+          "skills/shopify-liquid-themes/SKILL.md": 13870,
+          "skills/shopify-liquid-themes/references/examples.md": 13256,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13423,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14259,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16705,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15385,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14750,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15278,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 11963,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13049,
+          "skills/shopify-liquid-themes/references/tags.md": 15841
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 686,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4532,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2646,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2144,
+          "skills/liquid-theme-standards/SKILL.md": 4228,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2084,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2617,
+          "skills/shopify-liquid-themes/SKILL.md": 4140,
+          "skills/shopify-liquid-themes/references/examples.md": 3526,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3693,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4529,
+          "skills/shopify-liquid-themes/references/filters-language.md": 6975,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5655,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5020,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5548,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2233,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3319,
+          "skills/shopify-liquid-themes/references/tags.md": 6111
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10416,
+        "after_single_read": {}
+      }
+    },
+    "visible-list-limit": {
+      "base": {
+        "initial_tokens": 651,
+        "after_single_read": {}
+      },
+      "full": {
+        "initial_tokens": 10471,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 14317,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 12431,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 11929,
+          "skills/liquid-theme-standards/SKILL.md": 14013,
+          "skills/liquid-theme-standards/references/css-patterns.md": 11869,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 12402,
+          "skills/shopify-liquid-themes/SKILL.md": 13925,
+          "skills/shopify-liquid-themes/references/examples.md": 13311,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 13478,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 14314,
+          "skills/shopify-liquid-themes/references/filters-language.md": 16760,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 15440,
+          "skills/shopify-liquid-themes/references/objects-content.md": 14805,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 15333,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 12018,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 13104,
+          "skills/shopify-liquid-themes/references/tags.md": 15896
+        }
+      },
+      "on_demand": {
+        "initial_tokens": 741,
+        "after_single_read": {
+          "skills/liquid-theme-a11y/SKILL.md": 4587,
+          "skills/liquid-theme-a11y/references/component-patterns.md": 2701,
+          "skills/liquid-theme-a11y/references/focus-and-keyboard.md": 2199,
+          "skills/liquid-theme-standards/SKILL.md": 4283,
+          "skills/liquid-theme-standards/references/css-patterns.md": 2139,
+          "skills/liquid-theme-standards/references/javascript-patterns.md": 2672,
+          "skills/shopify-liquid-themes/SKILL.md": 4195,
+          "skills/shopify-liquid-themes/references/examples.md": 3581,
+          "skills/shopify-liquid-themes/references/filters-commerce.md": 3748,
+          "skills/shopify-liquid-themes/references/filters-html-media.md": 4584,
+          "skills/shopify-liquid-themes/references/filters-language.md": 7030,
+          "skills/shopify-liquid-themes/references/objects-commerce.md": 5710,
+          "skills/shopify-liquid-themes/references/objects-content.md": 5075,
+          "skills/shopify-liquid-themes/references/objects-tier2.md": 5603,
+          "skills/shopify-liquid-themes/references/objects-tier3.md": 2288,
+          "skills/shopify-liquid-themes/references/schema-and-settings.md": 3374,
+          "skills/shopify-liquid-themes/references/tags.md": 6166
+        }
+      },
+      "neutral": {
+        "initial_tokens": 10471,
+        "after_single_read": {}
+      }
+    }
+  },
+  "packages": {
+    "transformers": "5.19.0",
+    "tokenizers": "0.23.3",
+    "jinja2": "3.1.6"
+  },
+  "tokenizer_files_sha256": {
+    "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "tokenizer_config.json": "959e7f1d9a1b7641a6d6ce05ca97b75c7894fcb66cbe5a040406458fb1128ee4",
+    "config.json": "c0242402ad6a13b331ea320feea8c7e3776ffb7a4eff0757b9cd667e116d9a28"
+  },
+  "tokenizer_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+  "neutral_corpus_sha256": "61c7db7aa0d1d01a29e4a89a87e5f3da4dd1322472222f906186603d4f94e8d8",
+  "neutral_sha256": "ad2d9b168e220246a25af903467c9f17da829279f3defcaf66866c5f84f01de5",
+  "full_message_tokens": 9815,
+  "neutral_message_tokens": 9815,
+  "index_message_tokens": 85
+}
