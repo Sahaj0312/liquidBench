@@ -1,0 +1,22 @@
+{
+  "purpose": "LoRA v1 development-split check (20 dev tasks, same budgets as Milestone 6 baseline); held-out untouched",
+  "endpoint": "http://127.0.0.1:8000/v1",
+  "model": "liquidbench-lora-v1",
+  "model_revision": "Qwen/Qwen2.5-Coder-7B-Instruct@c03e6d358207e414f1eca0bb1891e29f1db0e242 + LoRA v1 (r16, merged BF16; docs/training/sft-manifest.json); vLLM 0.32.0 pinned image",
+  "image": "liquidbench-runtime:0.1",
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "seed": 42,
+  "max_turns": 12,
+  "max_total_tokens": 393216,
+  "max_output_tokens": 1024,
+  "max_seconds": 300,
+  "request_timeout": 90,
+  "provider_retries": 2,
+  "input_usd_per_million": null,
+  "output_usd_per_million": null,
+  "max_context_tokens": 32768,
+  "token_counting": "vllm",
+  "response_format": "json_object",
+  "skills": null
+}
