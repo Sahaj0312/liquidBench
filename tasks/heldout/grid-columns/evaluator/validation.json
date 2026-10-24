@@ -1,0 +1,72 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "sections/grid-columns.liquid": "{% assign columns = section.settings.columns %}{% if columns < 1 %}{% assign columns = 1 %}{% endif %}{% if columns > 4 %}{% assign columns = 4 %}{% endif %}<section data-id=\"{{ section.id | escape }}\">{% if items.size == 0 %}<p class=\"empty\">Nothing here</p>{% else %}<ul class=\"grid\" data-columns=\"{{ columns }}\">{% for item in items %}<li>{{ item | escape }}</li>{% endfor %}</ul>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Grid\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "no-low-clamp",
+    "expected_pass": false,
+    "changes": {
+      "sections/grid-columns.liquid": "{% assign columns = section.settings.columns %}{% if columns > 4 %}{% assign columns = 4 %}{% endif %}<section data-id=\"{{ section.id | escape }}\">{% if items.size == 0 %}<p class=\"empty\">Nothing here</p>{% else %}<ul class=\"grid\" data-columns=\"{{ columns }}\">{% for item in items %}<li>{{ item | escape }}</li>{% endfor %}</ul>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Grid\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "no-high-clamp",
+    "expected_pass": false,
+    "changes": {
+      "sections/grid-columns.liquid": "{% assign columns = section.settings.columns %}{% if columns < 1 %}{% assign columns = 1 %}{% endif %}<section data-id=\"{{ section.id | escape }}\">{% if items.size == 0 %}<p class=\"empty\">Nothing here</p>{% else %}<ul class=\"grid\" data-columns=\"{{ columns }}\">{% for item in items %}<li>{{ item | escape }}</li>{% endfor %}</ul>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Grid\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "empty-ul",
+    "expected_pass": false,
+    "changes": {
+      "sections/grid-columns.liquid": "{% assign columns = section.settings.columns %}{% if columns < 1 %}{% assign columns = 1 %}{% endif %}{% if columns > 4 %}{% assign columns = 4 %}{% endif %}<section data-id=\"{{ section.id | escape }}\">{% if false %}<p class=\"empty\">Nothing here</p>{% else %}<ul class=\"grid\" data-columns=\"{{ columns }}\">{% for item in items %}<li>{{ item | escape }}</li>{% endfor %}</ul>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Grid\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "attribute-on-section",
+    "expected_pass": false,
+    "changes": {
+      "sections/grid-columns.liquid": "{% assign columns = section.settings.columns %}{% if columns < 1 %}{% assign columns = 1 %}{% endif %}{% if columns > 4 %}{% assign columns = 4 %}{% endif %}<section data-id=\"{{ section.id | escape }}\" data-columns=\"{{ columns }}\">{% if items.size == 0 %}<p class=\"empty\">Nothing here</p>{% else %}<ul class=\"grid\">{% for item in items %}<li>{{ item | escape }}</li>{% endfor %}</ul>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Grid\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "sections/grid-columns.liquid": "<section data-id=\"g&quot;&lt;\"><ul class=\"grid\" data-columns=\"3\"><li>A</li><li>B</li></ul></section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Grid\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "changed-schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/grid-columns.liquid": "{% assign columns = section.settings.columns %}{% if columns < 1 %}{% assign columns = 1 %}{% endif %}{% if columns > 4 %}{% assign columns = 4 %}{% endif %}<section data-id=\"{{ section.id | escape }}\">{% if items.size == 0 %}<p class=\"empty\">Nothing here</p>{% else %}<ul class=\"grid\" data-columns=\"{{ columns }}\">{% for item in items %}<li>{{ item | escape }}</li>{% endfor %}</ul>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Other\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Grid\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/grid-columns.liquid": "{% # theme-check-disable %}\n{% assign columns = section.settings.columns %}{% if columns < 1 %}{% assign columns = 1 %}{% endif %}{% if columns > 4 %}{% assign columns = 4 %}{% endif %}<section data-id=\"{{ section.id | escape }}\">{% if items.size == 0 %}<p class=\"empty\">Nothing here</p>{% else %}<ul class=\"grid\" data-columns=\"{{ columns }}\">{% for item in items %}<li>{{ item | escape }}</li>{% endfor %}</ul>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Grid\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"columns\",\n      \"label\": \"Columns\",\n      \"min\": 1,\n      \"max\": 4,\n      \"step\": 1,\n      \"default\": 3\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/grid-columns.liquid": null
+    }
+  }
+]

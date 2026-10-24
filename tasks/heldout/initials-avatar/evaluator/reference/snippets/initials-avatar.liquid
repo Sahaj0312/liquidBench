@@ -1,0 +1,1 @@
+{% assign words = customer.name | default: "" | split: " " %}<span class="avatar">{% if words.size == 0 %}?{% else %}{{ words[0] | slice: 0 | upcase | escape }}{% if words.size > 1 %}{{ words[1] | slice: 0 | upcase | escape }}{% endif %}{% endif %}</span>

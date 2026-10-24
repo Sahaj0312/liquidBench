@@ -1,0 +1,15 @@
+{
+  "id": "pagination-window",
+  "version": 1,
+  "split": "heldout",
+  "category": "rendering",
+  "difficulty": "hard",
+  "family": "pagination-window",
+  "provenance": "Original synthetic LiquidBench held-out evaluation fixture, authored 2026-10-24 before any training data. Final-model evaluation only; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/pagination-window.liquid"
+  ],
+  "prompt": "Repair snippets/pagination-window.liquid. paginate.current and paginate.pages are integers with 1 <= current <= pages. When pages is 1 output nothing. Otherwise output one nav class=pagination containing, in order: an a class=prev with href ?page=P and text Previous when current > 1 (P is current - 1); then each page n from max(1, current - 2) to min(pages, current + 2), where the current page is a span class=current with text n and every other page an a with href ?page=n and text n; then an a class=next with href ?page=N and text Next when current < pages (N is current + 1). Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/pagination-window.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

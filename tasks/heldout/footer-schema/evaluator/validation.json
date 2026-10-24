@@ -1,0 +1,72 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "sections/footer-schema.liquid": "<section class=\"footer-schema\"><h2>Footer</h2></section>\n{% schema %}\n{\"name\": \"Footer\", \"settings\": [{\"default\": \"footer\", \"id\": \"menu\", \"label\": \"Menu\", \"type\": \"link_list\"}, {\"default\": true, \"id\": \"show_payment\", \"label\": \"Show payment icons\", \"type\": \"checkbox\"}, {\"id\": \"copyright\", \"label\": \"Copyright\", \"type\": \"text\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "string-boolean",
+    "expected_pass": false,
+    "changes": {
+      "sections/footer-schema.liquid": "<section class=\"footer-schema\"><h2>Footer</h2></section>\n{% schema %}\n{\n  \"name\": \"Footer\",\n  \"settings\": [\n    {\n      \"type\": \"link_list\",\n      \"id\": \"menu\",\n      \"label\": \"Menu\",\n      \"default\": \"footer\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_payment\",\n      \"label\": \"Show payment icons\",\n      \"default\": \"true\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"copyright\",\n      \"label\": \"Copyright\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "missing-menu-default",
+    "expected_pass": false,
+    "changes": {
+      "sections/footer-schema.liquid": "<section class=\"footer-schema\"><h2>Footer</h2></section>\n{% schema %}\n{\n  \"name\": \"Footer\",\n  \"settings\": [\n    {\n      \"type\": \"link_list\",\n      \"id\": \"menu\",\n      \"label\": \"Menu\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_payment\",\n      \"label\": \"Show payment icons\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"copyright\",\n      \"label\": \"Copyright\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "extra-presets",
+    "expected_pass": false,
+    "changes": {
+      "sections/footer-schema.liquid": "<section class=\"footer-schema\"><h2>Footer</h2></section>\n{% schema %}\n{\n  \"name\": \"Footer\",\n  \"settings\": [\n    {\n      \"type\": \"link_list\",\n      \"id\": \"menu\",\n      \"label\": \"Menu\",\n      \"default\": \"footer\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_payment\",\n      \"label\": \"Show payment icons\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"copyright\",\n      \"label\": \"Copyright\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Footer\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "duplicate-key",
+    "expected_pass": false,
+    "changes": {
+      "sections/footer-schema.liquid": "<section class=\"footer-schema\"><h2>Footer</h2></section>\n{% schema %}\n{\n  \"name\":\"spoof\",\"name\": \"Footer\",\n  \"settings\": [\n    {\n      \"type\": \"link_list\",\n      \"id\": \"menu\",\n      \"label\": \"Menu\",\n      \"default\": \"footer\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_payment\",\n      \"label\": \"Show payment icons\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"copyright\",\n      \"label\": \"Copyright\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "dead-schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/footer-schema.liquid": "{% comment %}<section class=\"footer-schema\"><h2>Footer</h2></section>\n{% schema %}\n{\n  \"name\": \"Footer\",\n  \"settings\": [\n    {\n      \"type\": \"link_list\",\n      \"id\": \"menu\",\n      \"label\": \"Menu\",\n      \"default\": \"footer\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_payment\",\n      \"label\": \"Show payment icons\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"copyright\",\n      \"label\": \"Copyright\"\n    }\n  ]\n}\n{% endschema %}\n{% endcomment %}"
+    }
+  },
+  {
+    "name": "changed-markup",
+    "expected_pass": false,
+    "changes": {
+      "sections/footer-schema.liquid": "<section class=\"footer-schema\"><h2>Changed</h2></section>\n{% schema %}\n{\n  \"name\": \"Footer\",\n  \"settings\": [\n    {\n      \"type\": \"link_list\",\n      \"id\": \"menu\",\n      \"label\": \"Menu\",\n      \"default\": \"footer\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_payment\",\n      \"label\": \"Show payment icons\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"copyright\",\n      \"label\": \"Copyright\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/footer-schema.liquid": "{% # theme-check-disable %}\n<section class=\"footer-schema\"><h2>Footer</h2></section>\n{% schema %}\n{\n  \"name\": \"Footer\",\n  \"settings\": [\n    {\n      \"type\": \"link_list\",\n      \"id\": \"menu\",\n      \"label\": \"Menu\",\n      \"default\": \"footer\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_payment\",\n      \"label\": \"Show payment icons\",\n      \"default\": true\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"copyright\",\n      \"label\": \"Copyright\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/footer-schema.liquid": null
+    }
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "id": "cart-assets",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-references",
+  "difficulty": "medium",
+  "family": "cart-assets",
+  "provenance": "Original synthetic LiquidBench held-out evaluation fixture, authored 2026-10-24 before any training data. Final-model evaluation only; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/cart-assets.liquid"
+  ],
+  "prompt": "Repair the literal references in snippets/cart-assets.liquid. Preserve all live markup, filters, tags and output positions. Only literal operands may change; quote style and inter-element whitespace may vary. script src uses the existing assets/cart.js through asset_url and keeps defer; the following output uses the existing assets/cart.css through asset_url then stylesheet_tag. These are static reference checks; do not use the core renderer for Shopify filters or tags. Change only snippets/cart-assets.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

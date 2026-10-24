@@ -110,7 +110,7 @@ def copied_task(tmp_path):
     "field,value,match",
     [
         ("evaluator", "os.system", "Unknown evaluator"),
-        ("split", "held-out", "development"),
+        ("split", "held-out", "Unknown task split"),
         ("editable_files", ["../secret"], "Invalid editable"),
         ("editable_files", ["missing.liquid"], "must exist"),
     ],

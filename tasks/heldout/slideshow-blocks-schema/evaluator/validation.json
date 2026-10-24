@@ -1,0 +1,79 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "sections/slideshow-blocks-schema.liquid": "<section class=\"slideshow-blocks-schema\"><h2>Slideshow</h2></section>\n{% schema %}\n{\"blocks\": [{\"name\": \"Slide\", \"settings\": [{\"id\": \"image\", \"label\": \"Image\", \"type\": \"image_picker\"}, {\"default\": \"Slide\", \"id\": \"heading\", \"label\": \"Heading\", \"type\": \"text\"}, {\"id\": \"link\", \"label\": \"Link\", \"type\": \"url\"}], \"type\": \"slide\"}], \"max_blocks\": 5, \"name\": \"Slideshow\", \"presets\": [{\"blocks\": [{\"settings\": {\"heading\": \"First\"}, \"type\": \"slide\"}, {\"settings\": {\"heading\": \"Second\"}, \"type\": \"slide\"}], \"name\": \"Slideshow\"}], \"settings\": [{\"default\": false, \"id\": \"autoplay\", \"label\": \"Autoplay\", \"type\": \"checkbox\"}, {\"default\": 5, \"id\": \"speed\", \"label\": \"Change every\", \"max\": 9, \"min\": 3, \"step\": 1, \"type\": \"range\", \"unit\": \"s\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "default-out-of-range",
+    "expected_pass": false,
+    "changes": {
+      "sections/slideshow-blocks-schema.liquid": "<section class=\"slideshow-blocks-schema\"><h2>Slideshow</h2></section>\n{% schema %}\n{\n  \"name\": \"Slideshow\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"autoplay\",\n      \"label\": \"Autoplay\",\n      \"default\": false\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"speed\",\n      \"label\": \"Change every\",\n      \"min\": 3,\n      \"max\": 9,\n      \"step\": 1,\n      \"unit\": \"s\",\n      \"default\": 10\n    }\n  ],\n  \"max_blocks\": 5,\n  \"blocks\": [\n    {\n      \"type\": \"slide\",\n      \"name\": \"Slide\",\n      \"settings\": [\n        {\n          \"type\": \"image_picker\",\n          \"id\": \"image\",\n          \"label\": \"Image\"\n        },\n        {\n          \"type\": \"text\",\n          \"id\": \"heading\",\n          \"label\": \"Heading\",\n          \"default\": \"Slide\"\n        },\n        {\n          \"type\": \"url\",\n          \"id\": \"link\",\n          \"label\": \"Link\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Slideshow\",\n      \"blocks\": [\n        {\n          \"type\": \"slide\",\n          \"settings\": {\n            \"heading\": \"First\"\n          }\n        },\n        {\n          \"type\": \"slide\",\n          \"settings\": {\n            \"heading\": \"Second\"\n          }\n        }\n      ]\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "missing-max-blocks",
+    "expected_pass": false,
+    "changes": {
+      "sections/slideshow-blocks-schema.liquid": "<section class=\"slideshow-blocks-schema\"><h2>Slideshow</h2></section>\n{% schema %}\n{\n  \"name\": \"Slideshow\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"autoplay\",\n      \"label\": \"Autoplay\",\n      \"default\": false\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"speed\",\n      \"label\": \"Change every\",\n      \"min\": 3,\n      \"max\": 9,\n      \"step\": 1,\n      \"unit\": \"s\",\n      \"default\": 5\n    }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"slide\",\n      \"name\": \"Slide\",\n      \"settings\": [\n        {\n          \"type\": \"image_picker\",\n          \"id\": \"image\",\n          \"label\": \"Image\"\n        },\n        {\n          \"type\": \"text\",\n          \"id\": \"heading\",\n          \"label\": \"Heading\",\n          \"default\": \"Slide\"\n        },\n        {\n          \"type\": \"url\",\n          \"id\": \"link\",\n          \"label\": \"Link\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Slideshow\",\n      \"blocks\": [\n        {\n          \"type\": \"slide\",\n          \"settings\": {\n            \"heading\": \"First\"\n          }\n        },\n        {\n          \"type\": \"slide\",\n          \"settings\": {\n            \"heading\": \"Second\"\n          }\n        }\n      ]\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "unknown-preset-block",
+    "expected_pass": false,
+    "changes": {
+      "sections/slideshow-blocks-schema.liquid": "<section class=\"slideshow-blocks-schema\"><h2>Slideshow</h2></section>\n{% schema %}\n{\n  \"name\": \"Slideshow\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"autoplay\",\n      \"label\": \"Autoplay\",\n      \"default\": false\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"speed\",\n      \"label\": \"Change every\",\n      \"min\": 3,\n      \"max\": 9,\n      \"step\": 1,\n      \"unit\": \"s\",\n      \"default\": 5\n    }\n  ],\n  \"max_blocks\": 5,\n  \"blocks\": [\n    {\n      \"type\": \"slide\",\n      \"name\": \"Slide\",\n      \"settings\": [\n        {\n          \"type\": \"image_picker\",\n          \"id\": \"image\",\n          \"label\": \"Image\"\n        },\n        {\n          \"type\": \"text\",\n          \"id\": \"heading\",\n          \"label\": \"Heading\",\n          \"default\": \"Slide\"\n        },\n        {\n          \"type\": \"url\",\n          \"id\": \"link\",\n          \"label\": \"Link\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Slideshow\",\n      \"blocks\": [\n        {\n          \"type\": \"slide\",\n          \"settings\": {\n            \"heading\": \"First\"\n          }\n        },\n        {\n          \"type\": \"banner\",\n          \"settings\": {\n            \"heading\": \"Second\"\n          }\n        }\n      ]\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-block-setting",
+    "expected_pass": false,
+    "changes": {
+      "sections/slideshow-blocks-schema.liquid": "<section class=\"slideshow-blocks-schema\"><h2>Slideshow</h2></section>\n{% schema %}\n{\n  \"name\": \"Slideshow\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"autoplay\",\n      \"label\": \"Autoplay\",\n      \"default\": false\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"speed\",\n      \"label\": \"Change every\",\n      \"min\": 3,\n      \"max\": 9,\n      \"step\": 1,\n      \"unit\": \"s\",\n      \"default\": 5\n    }\n  ],\n  \"max_blocks\": 5,\n  \"blocks\": [\n    {\n      \"type\": \"slide\",\n      \"name\": \"Slide\",\n      \"settings\": [\n        {\n          \"type\": \"image_picker\",\n          \"id\": \"image\",\n          \"label\": \"Image\"\n        },\n        {\n          \"type\": \"text\",\n          \"id\": \"heading\",\n          \"label\": \"Heading\",\n          \"default\": \"Slide\"\n        },\n        {\n          \"type\": \"url\",\n          \"id\": \"url\",\n          \"label\": \"Link\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Slideshow\",\n      \"blocks\": [\n        {\n          \"type\": \"slide\",\n          \"settings\": {\n            \"heading\": \"First\"\n          }\n        },\n        {\n          \"type\": \"slide\",\n          \"settings\": {\n            \"heading\": \"Second\"\n          }\n        }\n      ]\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "duplicate-key",
+    "expected_pass": false,
+    "changes": {
+      "sections/slideshow-blocks-schema.liquid": "<section class=\"slideshow-blocks-schema\"><h2>Slideshow</h2></section>\n{% schema %}\n{\n  \"name\":\"spoof\",\"name\": \"Slideshow\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"autoplay\",\n      \"label\": \"Autoplay\",\n      \"default\": false\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"speed\",\n      \"label\": \"Change every\",\n      \"min\": 3,\n      \"max\": 9,\n      \"step\": 1,\n      \"unit\": \"s\",\n      \"default\": 5\n    }\n  ],\n  \"max_blocks\": 5,\n  \"blocks\": [\n    {\n      \"type\": \"slide\",\n      \"name\": \"Slide\",\n      \"settings\": [\n        {\n          \"type\": \"image_picker\",\n          \"id\": \"image\",\n          \"label\": \"Image\"\n        },\n        {\n          \"type\": \"text\",\n          \"id\": \"heading\",\n          \"label\": \"Heading\",\n          \"default\": \"Slide\"\n        },\n        {\n          \"type\": \"url\",\n          \"id\": \"link\",\n          \"label\": \"Link\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Slideshow\",\n      \"blocks\": [\n        {\n          \"type\": \"slide\",\n          \"settings\": {\n            \"heading\": \"First\"\n          }\n        },\n        {\n          \"type\": \"slide\",\n          \"settings\": {\n            \"heading\": \"Second\"\n          }\n        }\n      ]\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "dead-schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/slideshow-blocks-schema.liquid": "{% comment %}<section class=\"slideshow-blocks-schema\"><h2>Slideshow</h2></section>\n{% schema %}\n{\n  \"name\": \"Slideshow\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"autoplay\",\n      \"label\": \"Autoplay\",\n      \"default\": false\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"speed\",\n      \"label\": \"Change every\",\n      \"min\": 3,\n      \"max\": 9,\n      \"step\": 1,\n      \"unit\": \"s\",\n      \"default\": 5\n    }\n  ],\n  \"max_blocks\": 5,\n  \"blocks\": [\n    {\n      \"type\": \"slide\",\n      \"name\": \"Slide\",\n      \"settings\": [\n        {\n          \"type\": \"image_picker\",\n          \"id\": \"image\",\n          \"label\": \"Image\"\n        },\n        {\n          \"type\": \"text\",\n          \"id\": \"heading\",\n          \"label\": \"Heading\",\n          \"default\": \"Slide\"\n        },\n        {\n          \"type\": \"url\",\n          \"id\": \"link\",\n          \"label\": \"Link\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Slideshow\",\n      \"blocks\": [\n        {\n          \"type\": \"slide\",\n          \"settings\": {\n            \"heading\": \"First\"\n          }\n        },\n        {\n          \"type\": \"slide\",\n          \"settings\": {\n            \"heading\": \"Second\"\n          }\n        }\n      ]\n    }\n  ]\n}\n{% endschema %}\n{% endcomment %}"
+    }
+  },
+  {
+    "name": "changed-markup",
+    "expected_pass": false,
+    "changes": {
+      "sections/slideshow-blocks-schema.liquid": "<section class=\"slideshow-blocks-schema\"><h2>Changed</h2></section>\n{% schema %}\n{\n  \"name\": \"Slideshow\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"autoplay\",\n      \"label\": \"Autoplay\",\n      \"default\": false\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"speed\",\n      \"label\": \"Change every\",\n      \"min\": 3,\n      \"max\": 9,\n      \"step\": 1,\n      \"unit\": \"s\",\n      \"default\": 5\n    }\n  ],\n  \"max_blocks\": 5,\n  \"blocks\": [\n    {\n      \"type\": \"slide\",\n      \"name\": \"Slide\",\n      \"settings\": [\n        {\n          \"type\": \"image_picker\",\n          \"id\": \"image\",\n          \"label\": \"Image\"\n        },\n        {\n          \"type\": \"text\",\n          \"id\": \"heading\",\n          \"label\": \"Heading\",\n          \"default\": \"Slide\"\n        },\n        {\n          \"type\": \"url\",\n          \"id\": \"link\",\n          \"label\": \"Link\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Slideshow\",\n      \"blocks\": [\n        {\n          \"type\": \"slide\",\n          \"settings\": {\n            \"heading\": \"First\"\n          }\n        },\n        {\n          \"type\": \"slide\",\n          \"settings\": {\n            \"heading\": \"Second\"\n          }\n        }\n      ]\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/slideshow-blocks-schema.liquid": "{% # theme-check-disable %}\n<section class=\"slideshow-blocks-schema\"><h2>Slideshow</h2></section>\n{% schema %}\n{\n  \"name\": \"Slideshow\",\n  \"settings\": [\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"autoplay\",\n      \"label\": \"Autoplay\",\n      \"default\": false\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"speed\",\n      \"label\": \"Change every\",\n      \"min\": 3,\n      \"max\": 9,\n      \"step\": 1,\n      \"unit\": \"s\",\n      \"default\": 5\n    }\n  ],\n  \"max_blocks\": 5,\n  \"blocks\": [\n    {\n      \"type\": \"slide\",\n      \"name\": \"Slide\",\n      \"settings\": [\n        {\n          \"type\": \"image_picker\",\n          \"id\": \"image\",\n          \"label\": \"Image\"\n        },\n        {\n          \"type\": \"text\",\n          \"id\": \"heading\",\n          \"label\": \"Heading\",\n          \"default\": \"Slide\"\n        },\n        {\n          \"type\": \"url\",\n          \"id\": \"link\",\n          \"label\": \"Link\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Slideshow\",\n      \"blocks\": [\n        {\n          \"type\": \"slide\",\n          \"settings\": {\n            \"heading\": \"First\"\n          }\n        },\n        {\n          \"type\": \"slide\",\n          \"settings\": {\n            \"heading\": \"Second\"\n          }\n        }\n      ]\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/slideshow-blocks-schema.liquid": null
+    }
+  }
+]

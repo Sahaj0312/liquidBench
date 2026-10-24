@@ -1,0 +1,58 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/gift-wrap-eligibility.liquid": "{% assign included = false %}{% if order.country == \"CA\" and order.subtotal >= 5000 %}{% assign included = true %}{% endif %}{% if customer.member and order.subtotal >= 2500 %}{% assign included = true %}{% endif %}{% if included %}<p class=\"gift-wrap\">Gift wrap included</p>{% elsif order.country == \"CA\" %}<p class=\"gift-wrap\">Gift wrap $5</p>{% else %}<p class=\"gift-wrap\">Gift wrap unavailable</p>{% endif %}"
+    }
+  },
+  {
+    "name": "precedence",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-wrap-eligibility.liquid": "{% if order.country == \"CA\" and order.subtotal >= 5000 or customer.member and order.subtotal >= 2500 %}<p class=\"gift-wrap\">Gift wrap included</p>{% elsif order.country == \"CA\" %}<p class=\"gift-wrap\">Gift wrap $5</p>{% else %}<p class=\"gift-wrap\">Gift wrap unavailable</p>{% endif %}"
+    }
+  },
+  {
+    "name": "boundary",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-wrap-eligibility.liquid": "{% assign included = false %}{% if order.country == \"CA\" and order.subtotal > 5000 %}{% assign included = true %}{% endif %}{% if customer.member and order.subtotal >= 2500 %}{% assign included = true %}{% endif %}{% if included %}<p class=\"gift-wrap\">Gift wrap included</p>{% elsif order.country == \"CA\" %}<p class=\"gift-wrap\">Gift wrap $5</p>{% else %}<p class=\"gift-wrap\">Gift wrap unavailable</p>{% endif %}"
+    }
+  },
+  {
+    "name": "member-any-subtotal",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-wrap-eligibility.liquid": "{% assign included = false %}{% if order.country == \"CA\" and order.subtotal >= 5000 %}{% assign included = true %}{% endif %}{% if customer.member %}{% assign included = true %}{% endif %}{% if included %}<p class=\"gift-wrap\">Gift wrap included</p>{% elsif order.country == \"CA\" %}<p class=\"gift-wrap\">Gift wrap $5</p>{% else %}<p class=\"gift-wrap\">Gift wrap unavailable</p>{% endif %}"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-wrap-eligibility.liquid": "<p class=\"gift-wrap\">Gift wrap $5</p>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-wrap-eligibility.liquid": "{% # theme-check-disable %}\n{% assign included = false %}{% if order.country == \"CA\" and order.subtotal >= 5000 %}{% assign included = true %}{% endif %}{% if customer.member and order.subtotal >= 2500 %}{% assign included = true %}{% endif %}{% if included %}<p class=\"gift-wrap\">Gift wrap included</p>{% elsif order.country == \"CA\" %}<p class=\"gift-wrap\">Gift wrap $5</p>{% else %}<p class=\"gift-wrap\">Gift wrap unavailable</p>{% endif %}"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-wrap-eligibility.liquid": null
+    }
+  }
+]

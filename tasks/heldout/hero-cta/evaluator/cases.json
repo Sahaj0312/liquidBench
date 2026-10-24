@@ -1,0 +1,634 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/hero-cta.liquid",
+    "tags": [
+      "section",
+      "h2",
+      "a"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Hero\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"cta_label\",\n      \"label\": \"Button label\"\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"cta_url\",\n      \"label\": \"Button link\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "id": "h\"&",
+        "settings": {
+          "heading": "Big <Sale>",
+          "cta_label": null,
+          "cta_url": null
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "hero"
+          ],
+          [
+            "data-id",
+            "h\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Big <Sale>",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "id": "h\"&",
+        "settings": {
+          "heading": "Big <Sale>",
+          "cta_label": null,
+          "cta_url": ""
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "hero"
+          ],
+          [
+            "data-id",
+            "h\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Big <Sale>",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "id": "h\"&",
+        "settings": {
+          "heading": "Big <Sale>",
+          "cta_label": null,
+          "cta_url": " /collections/all "
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "hero"
+          ],
+          [
+            "data-id",
+            "h\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Big <Sale>",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "id": "h\"&",
+        "settings": {
+          "heading": "Big <Sale>",
+          "cta_label": null,
+          "cta_url": "/sale?x=\"1\"&y=2"
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "hero"
+          ],
+          [
+            "data-id",
+            "h\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Big <Sale>",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "id": "h\"&",
+        "settings": {
+          "heading": "Big <Sale>",
+          "cta_label": "",
+          "cta_url": null
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "hero"
+          ],
+          [
+            "data-id",
+            "h\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Big <Sale>",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "id": "h\"&",
+        "settings": {
+          "heading": "Big <Sale>",
+          "cta_label": "",
+          "cta_url": ""
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "hero"
+          ],
+          [
+            "data-id",
+            "h\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Big <Sale>",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "id": "h\"&",
+        "settings": {
+          "heading": "Big <Sale>",
+          "cta_label": "",
+          "cta_url": " /collections/all "
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "hero"
+          ],
+          [
+            "data-id",
+            "h\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Big <Sale>",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "id": "h\"&",
+        "settings": {
+          "heading": "Big <Sale>",
+          "cta_label": "",
+          "cta_url": "/sale?x=\"1\"&y=2"
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "hero"
+          ],
+          [
+            "data-id",
+            "h\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Big <Sale>",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "section": {
+        "id": "h\"&",
+        "settings": {
+          "heading": "Big <Sale>",
+          "cta_label": " \t",
+          "cta_url": null
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "hero"
+          ],
+          [
+            "data-id",
+            "h\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Big <Sale>",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "section": {
+        "id": "h\"&",
+        "settings": {
+          "heading": "Big <Sale>",
+          "cta_label": " \t",
+          "cta_url": ""
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "hero"
+          ],
+          [
+            "data-id",
+            "h\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Big <Sale>",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "section": {
+        "id": "h\"&",
+        "settings": {
+          "heading": "Big <Sale>",
+          "cta_label": " \t",
+          "cta_url": " /collections/all "
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "hero"
+          ],
+          [
+            "data-id",
+            "h\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Big <Sale>",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "section": {
+        "id": "h\"&",
+        "settings": {
+          "heading": "Big <Sale>",
+          "cta_label": " \t",
+          "cta_url": "/sale?x=\"1\"&y=2"
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "hero"
+          ],
+          [
+            "data-id",
+            "h\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Big <Sale>",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-12",
+    "variables": {
+      "section": {
+        "id": "h\"&",
+        "settings": {
+          "heading": "Big <Sale>",
+          "cta_label": " Shop now ",
+          "cta_url": null
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "hero"
+          ],
+          [
+            "data-id",
+            "h\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Big <Sale>",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-13",
+    "variables": {
+      "section": {
+        "id": "h\"&",
+        "settings": {
+          "heading": "Big <Sale>",
+          "cta_label": " Shop now ",
+          "cta_url": ""
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "hero"
+          ],
+          [
+            "data-id",
+            "h\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Big <Sale>",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-14",
+    "variables": {
+      "section": {
+        "id": "h\"&",
+        "settings": {
+          "heading": "Big <Sale>",
+          "cta_label": " Shop now ",
+          "cta_url": " /collections/all "
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "hero"
+          ],
+          [
+            "data-id",
+            "h\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Big <Sale>",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "button"
+              ],
+              [
+                "href",
+                "/collections/all"
+              ]
+            ],
+            "text": "Shop now",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-15",
+    "variables": {
+      "section": {
+        "id": "h\"&",
+        "settings": {
+          "heading": "Big <Sale>",
+          "cta_label": " Shop now ",
+          "cta_url": "/sale?x=\"1\"&y=2"
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "hero"
+          ],
+          [
+            "data-id",
+            "h\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "Big <Sale>",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "button"
+              ],
+              [
+                "href",
+                "/sale?x=\"1\"&y=2"
+              ]
+            ],
+            "text": "Shop now",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

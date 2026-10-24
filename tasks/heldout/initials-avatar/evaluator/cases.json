@@ -1,0 +1,240 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/initials-avatar.liquid",
+    "tags": [
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "customer": {
+        "name": "ada lovelace"
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "avatar"
+          ]
+        ],
+        "text": "AL",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "customer": {
+        "name": "Grace"
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "avatar"
+          ]
+        ],
+        "text": "G",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "customer": {
+        "name": "  jean  paul  sartre "
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "avatar"
+          ]
+        ],
+        "text": "JP",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "customer": {
+        "name": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "avatar"
+          ]
+        ],
+        "text": "?",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "customer": {
+        "name": ""
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "avatar"
+          ]
+        ],
+        "text": "?",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "customer": {
+        "name": "   "
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "avatar"
+          ]
+        ],
+        "text": "?",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "customer": {
+        "name": "<b> &c"
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "avatar"
+          ]
+        ],
+        "text": "<&",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "customer": {
+        "name": "x\ty"
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "avatar"
+          ]
+        ],
+        "text": "XY",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "customer": {
+        "name": "o'neil smith"
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "avatar"
+          ]
+        ],
+        "text": "OS",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "customer": {
+        "name": "ALAN TURING"
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "avatar"
+          ]
+        ],
+        "text": "AT",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "customer": {
+        "name": "<b quinn"
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "avatar"
+          ]
+        ],
+        "text": "<Q",
+        "children": []
+      }
+    ]
+  }
+]

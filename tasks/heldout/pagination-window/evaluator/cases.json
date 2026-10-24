@@ -1,0 +1,779 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/pagination-window.liquid",
+    "tags": [
+      "nav",
+      "a",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "paginate": {
+        "current": 1,
+        "pages": 1
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "paginate": {
+        "current": 1,
+        "pages": 2
+      }
+    },
+    "expected": [
+      {
+        "tag": "nav",
+        "attrs": [
+          [
+            "class",
+            "pagination"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "current"
+              ]
+            ],
+            "text": "1",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=2"
+              ]
+            ],
+            "text": "2",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "next"
+              ],
+              [
+                "href",
+                "?page=2"
+              ]
+            ],
+            "text": "Next",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "paginate": {
+        "current": 2,
+        "pages": 2
+      }
+    },
+    "expected": [
+      {
+        "tag": "nav",
+        "attrs": [
+          [
+            "class",
+            "pagination"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "prev"
+              ],
+              [
+                "href",
+                "?page=1"
+              ]
+            ],
+            "text": "Previous",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=1"
+              ]
+            ],
+            "text": "1",
+            "children": []
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "current"
+              ]
+            ],
+            "text": "2",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "paginate": {
+        "current": 1,
+        "pages": 10
+      }
+    },
+    "expected": [
+      {
+        "tag": "nav",
+        "attrs": [
+          [
+            "class",
+            "pagination"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "current"
+              ]
+            ],
+            "text": "1",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=2"
+              ]
+            ],
+            "text": "2",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=3"
+              ]
+            ],
+            "text": "3",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "next"
+              ],
+              [
+                "href",
+                "?page=2"
+              ]
+            ],
+            "text": "Next",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "paginate": {
+        "current": 3,
+        "pages": 10
+      }
+    },
+    "expected": [
+      {
+        "tag": "nav",
+        "attrs": [
+          [
+            "class",
+            "pagination"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "prev"
+              ],
+              [
+                "href",
+                "?page=2"
+              ]
+            ],
+            "text": "Previous",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=1"
+              ]
+            ],
+            "text": "1",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=2"
+              ]
+            ],
+            "text": "2",
+            "children": []
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "current"
+              ]
+            ],
+            "text": "3",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=4"
+              ]
+            ],
+            "text": "4",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=5"
+              ]
+            ],
+            "text": "5",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "next"
+              ],
+              [
+                "href",
+                "?page=4"
+              ]
+            ],
+            "text": "Next",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "paginate": {
+        "current": 5,
+        "pages": 10
+      }
+    },
+    "expected": [
+      {
+        "tag": "nav",
+        "attrs": [
+          [
+            "class",
+            "pagination"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "prev"
+              ],
+              [
+                "href",
+                "?page=4"
+              ]
+            ],
+            "text": "Previous",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=3"
+              ]
+            ],
+            "text": "3",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=4"
+              ]
+            ],
+            "text": "4",
+            "children": []
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "current"
+              ]
+            ],
+            "text": "5",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=6"
+              ]
+            ],
+            "text": "6",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=7"
+              ]
+            ],
+            "text": "7",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "next"
+              ],
+              [
+                "href",
+                "?page=6"
+              ]
+            ],
+            "text": "Next",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "paginate": {
+        "current": 9,
+        "pages": 10
+      }
+    },
+    "expected": [
+      {
+        "tag": "nav",
+        "attrs": [
+          [
+            "class",
+            "pagination"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "prev"
+              ],
+              [
+                "href",
+                "?page=8"
+              ]
+            ],
+            "text": "Previous",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=7"
+              ]
+            ],
+            "text": "7",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=8"
+              ]
+            ],
+            "text": "8",
+            "children": []
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "current"
+              ]
+            ],
+            "text": "9",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=10"
+              ]
+            ],
+            "text": "10",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "next"
+              ],
+              [
+                "href",
+                "?page=10"
+              ]
+            ],
+            "text": "Next",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "paginate": {
+        "current": 10,
+        "pages": 10
+      }
+    },
+    "expected": [
+      {
+        "tag": "nav",
+        "attrs": [
+          [
+            "class",
+            "pagination"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "prev"
+              ],
+              [
+                "href",
+                "?page=9"
+              ]
+            ],
+            "text": "Previous",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=8"
+              ]
+            ],
+            "text": "8",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=9"
+              ]
+            ],
+            "text": "9",
+            "children": []
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "current"
+              ]
+            ],
+            "text": "10",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "paginate": {
+        "current": 2,
+        "pages": 3
+      }
+    },
+    "expected": [
+      {
+        "tag": "nav",
+        "attrs": [
+          [
+            "class",
+            "pagination"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "prev"
+              ],
+              [
+                "href",
+                "?page=1"
+              ]
+            ],
+            "text": "Previous",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=1"
+              ]
+            ],
+            "text": "1",
+            "children": []
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "current"
+              ]
+            ],
+            "text": "2",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=3"
+              ]
+            ],
+            "text": "3",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "next"
+              ],
+              [
+                "href",
+                "?page=3"
+              ]
+            ],
+            "text": "Next",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "paginate": {
+        "current": 4,
+        "pages": 5
+      }
+    },
+    "expected": [
+      {
+        "tag": "nav",
+        "attrs": [
+          [
+            "class",
+            "pagination"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "prev"
+              ],
+              [
+                "href",
+                "?page=3"
+              ]
+            ],
+            "text": "Previous",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=2"
+              ]
+            ],
+            "text": "2",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=3"
+              ]
+            ],
+            "text": "3",
+            "children": []
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "current"
+              ]
+            ],
+            "text": "4",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "?page=5"
+              ]
+            ],
+            "text": "5",
+            "children": []
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "next"
+              ],
+              [
+                "href",
+                "?page=5"
+              ]
+            ],
+            "text": "Next",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

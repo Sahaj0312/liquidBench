@@ -1,0 +1,1 @@
+{% assign dollars = product.price | divided_by: 100 %}{% assign cents = product.price | modulo: 100 %}<span class="price">${{ dollars }}.{% if cents < 10 %}0{% endif %}{{ cents }}</span>

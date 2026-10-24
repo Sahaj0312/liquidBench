@@ -1,0 +1,89 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/cart-assets.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "HtmlRawNode",
+          "name": "script",
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "src"
+                }
+              ],
+              "value": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "cart.js"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "asset_url",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "AttrEmpty",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "defer"
+                }
+              ]
+            }
+          ],
+          "body": {
+            "type": "RawMarkup",
+            "kind": "javascript",
+            "value": "",
+            "nodes": []
+          }
+        },
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "cart.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

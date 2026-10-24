@@ -1,0 +1,219 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/price-format.liquid",
+    "tags": [
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "product": {
+        "price": 0
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "price"
+          ]
+        ],
+        "text": "$0.00",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "product": {
+        "price": 5
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "price"
+          ]
+        ],
+        "text": "$0.05",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "product": {
+        "price": 10
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "price"
+          ]
+        ],
+        "text": "$0.10",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "product": {
+        "price": 99
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "price"
+          ]
+        ],
+        "text": "$0.99",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "product": {
+        "price": 100
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "price"
+          ]
+        ],
+        "text": "$1.00",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "product": {
+        "price": 1234
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "price"
+          ]
+        ],
+        "text": "$12.34",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "product": {
+        "price": 1230
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "price"
+          ]
+        ],
+        "text": "$12.30",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "product": {
+        "price": 1200
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "price"
+          ]
+        ],
+        "text": "$12.00",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "product": {
+        "price": 100000
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "price"
+          ]
+        ],
+        "text": "$1000.00",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "product": {
+        "price": 7
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "price"
+          ]
+        ],
+        "text": "$0.07",
+        "children": []
+      }
+    ]
+  }
+]

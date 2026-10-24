@@ -1,0 +1,42 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/testimonials-schema.liquid",
+    "body": "<section class=\"testimonials-schema\"><h2>Testimonials</h2></section>\n\n",
+    "expected": {
+      "name": "Testimonials",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "What customers say"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "quote",
+          "name": "Quote",
+          "limit": 6,
+          "settings": [
+            {
+              "type": "textarea",
+              "id": "body",
+              "label": "Quote"
+            },
+            {
+              "type": "text",
+              "id": "author",
+              "label": "Author"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Testimonials"
+        }
+      ]
+    }
+  }
+]

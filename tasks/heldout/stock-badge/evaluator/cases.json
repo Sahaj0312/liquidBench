@@ -1,0 +1,273 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/stock-badge.liquid",
+    "tags": [
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "product": {
+        "inventory": 0,
+        "backorder": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "stock"
+          ]
+        ],
+        "text": "Sold out",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "product": {
+        "inventory": 0,
+        "backorder": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "stock"
+          ]
+        ],
+        "text": "Backorder",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "product": {
+        "inventory": 1,
+        "backorder": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "stock"
+          ]
+        ],
+        "text": "Only 1 left",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "product": {
+        "inventory": 1,
+        "backorder": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "stock"
+          ]
+        ],
+        "text": "Only 1 left",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "product": {
+        "inventory": 4,
+        "backorder": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "stock"
+          ]
+        ],
+        "text": "Only 4 left",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "product": {
+        "inventory": 4,
+        "backorder": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "stock"
+          ]
+        ],
+        "text": "Only 4 left",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "product": {
+        "inventory": 5,
+        "backorder": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "stock"
+          ]
+        ],
+        "text": "Only 5 left",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "product": {
+        "inventory": 5,
+        "backorder": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "stock"
+          ]
+        ],
+        "text": "Only 5 left",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "product": {
+        "inventory": 6,
+        "backorder": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "stock"
+          ]
+        ],
+        "text": "In stock",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "product": {
+        "inventory": 6,
+        "backorder": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "stock"
+          ]
+        ],
+        "text": "In stock",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "product": {
+        "inventory": 30,
+        "backorder": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "stock"
+          ]
+        ],
+        "text": "In stock",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "product": {
+        "inventory": 30,
+        "backorder": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "stock"
+          ]
+        ],
+        "text": "In stock",
+        "children": []
+      }
+    ]
+  }
+]

@@ -1,0 +1,28 @@
+<section data-id="{{ section.id | escape }}"><ul class="grid">{% for item in items %}<li>{{ item | escape }}</li>{% endfor %}</ul></section>
+{% schema %}
+{
+  "name": "Panel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Grid"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    }
+  ],
+  "presets": [
+    {
+      "name": "Panel"
+    }
+  ]
+}
+{% endschema %}

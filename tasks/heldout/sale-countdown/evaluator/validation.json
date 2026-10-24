@@ -1,0 +1,65 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "sections/sale-countdown.liquid": "<section data-id=\"{{ section.id | escape }}\">{% if section.settings.ends_at > now %}<p class=\"message\">{{ section.settings.message | escape }}</p>{% assign remaining = section.settings.ends_at | minus: now %}{% assign hours = remaining | divided_by: 3600 %}{% assign minutes = remaining | modulo: 3600 | divided_by: 60 %}<p class=\"countdown\">Ends in {{ hours }}h {{ minutes }}m</p>{% else %}<p class=\"message\">Sale ended</p>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Countdown\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"message\",\n      \"label\": \"Message\"\n    },\n    {\n      \"type\": \"number\",\n      \"id\": \"ends_at\",\n      \"label\": \"Ends at (Unix seconds)\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "inclusive-end",
+    "expected_pass": false,
+    "changes": {
+      "sections/sale-countdown.liquid": "<section data-id=\"{{ section.id | escape }}\">{% if section.settings.ends_at >= now %}<p class=\"message\">{{ section.settings.message | escape }}</p>{% assign remaining = section.settings.ends_at | minus: now %}{% assign hours = remaining | divided_by: 3600 %}{% assign minutes = remaining | modulo: 3600 | divided_by: 60 %}<p class=\"countdown\">Ends in {{ hours }}h {{ minutes }}m</p>{% else %}<p class=\"message\">Sale ended</p>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Countdown\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"message\",\n      \"label\": \"Message\"\n    },\n    {\n      \"type\": \"number\",\n      \"id\": \"ends_at\",\n      \"label\": \"Ends at (Unix seconds)\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "total-minutes",
+    "expected_pass": false,
+    "changes": {
+      "sections/sale-countdown.liquid": "<section data-id=\"{{ section.id | escape }}\">{% if section.settings.ends_at > now %}<p class=\"message\">{{ section.settings.message | escape }}</p>{% assign remaining = section.settings.ends_at | minus: now %}{% assign hours = remaining | divided_by: 3600 %}{% assign minutes = remaining | divided_by: 60 %}<p class=\"countdown\">Ends in {{ hours }}h {{ minutes }}m</p>{% else %}<p class=\"message\">Sale ended</p>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Countdown\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"message\",\n      \"label\": \"Message\"\n    },\n    {\n      \"type\": \"number\",\n      \"id\": \"ends_at\",\n      \"label\": \"Ends at (Unix seconds)\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "ended-keeps-message",
+    "expected_pass": false,
+    "changes": {
+      "sections/sale-countdown.liquid": "<section data-id=\"{{ section.id | escape }}\">{% if section.settings.ends_at > now %}<p class=\"message\">{{ section.settings.message | escape }}</p>{% assign remaining = section.settings.ends_at | minus: now %}{% assign hours = remaining | divided_by: 3600 %}{% assign minutes = remaining | modulo: 3600 | divided_by: 60 %}<p class=\"countdown\">Ends in {{ hours }}h {{ minutes }}m</p>{% else %}<p class=\"message\">{{ section.settings.message | escape }}</p>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Countdown\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"message\",\n      \"label\": \"Message\"\n    },\n    {\n      \"type\": \"number\",\n      \"id\": \"ends_at\",\n      \"label\": \"Ends at (Unix seconds)\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "sections/sale-countdown.liquid": "<section data-id=\"s&quot;&amp;\"><p class=\"message\">Sale ended</p></section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Countdown\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"message\",\n      \"label\": \"Message\"\n    },\n    {\n      \"type\": \"number\",\n      \"id\": \"ends_at\",\n      \"label\": \"Ends at (Unix seconds)\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "changed-schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/sale-countdown.liquid": "<section data-id=\"{{ section.id | escape }}\">{% if section.settings.ends_at > now %}<p class=\"message\">{{ section.settings.message | escape }}</p>{% assign remaining = section.settings.ends_at | minus: now %}{% assign hours = remaining | divided_by: 3600 %}{% assign minutes = remaining | modulo: 3600 | divided_by: 60 %}<p class=\"countdown\">Ends in {{ hours }}h {{ minutes }}m</p>{% else %}<p class=\"message\">Sale ended</p>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Other\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Countdown\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"message\",\n      \"label\": \"Message\"\n    },\n    {\n      \"type\": \"number\",\n      \"id\": \"ends_at\",\n      \"label\": \"Ends at (Unix seconds)\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/sale-countdown.liquid": "{% # theme-check-disable %}\n<section data-id=\"{{ section.id | escape }}\">{% if section.settings.ends_at > now %}<p class=\"message\">{{ section.settings.message | escape }}</p>{% assign remaining = section.settings.ends_at | minus: now %}{% assign hours = remaining | divided_by: 3600 %}{% assign minutes = remaining | modulo: 3600 | divided_by: 60 %}<p class=\"countdown\">Ends in {{ hours }}h {{ minutes }}m</p>{% else %}<p class=\"message\">Sale ended</p>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Countdown\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"message\",\n      \"label\": \"Message\"\n    },\n    {\n      \"type\": \"number\",\n      \"id\": \"ends_at\",\n      \"label\": \"Ends at (Unix seconds)\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/sale-countdown.liquid": null
+    }
+  }
+]

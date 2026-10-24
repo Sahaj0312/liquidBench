@@ -1,0 +1,72 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "sections/collection-grid-schema.liquid": "<section class=\"collection-grid-schema\"><h2>Collection grid</h2></section>\n{% schema %}\n{\"name\": \"Collection grid\", \"presets\": [{\"name\": \"Collection grid\", \"settings\": {\"layout\": \"list\", \"products_to_show\": 8}}], \"settings\": [{\"id\": \"collection\", \"label\": \"Collection\", \"type\": \"collection\"}, {\"default\": 4, \"id\": \"products_to_show\", \"label\": \"Products to show\", \"max\": 12, \"min\": 2, \"step\": 2, \"type\": \"range\"}, {\"default\": \"grid\", \"id\": \"layout\", \"label\": \"Layout\", \"options\": [{\"label\": \"Grid\", \"value\": \"grid\"}, {\"label\": \"List\", \"value\": \"list\"}], \"type\": \"select\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "bad-step",
+    "expected_pass": false,
+    "changes": {
+      "sections/collection-grid-schema.liquid": "<section class=\"collection-grid-schema\"><h2>Collection grid</h2></section>\n{% schema %}\n{\n  \"name\": \"Collection grid\",\n  \"settings\": [\n    {\n      \"type\": \"collection\",\n      \"id\": \"collection\",\n      \"label\": \"Collection\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"products_to_show\",\n      \"label\": \"Products to show\",\n      \"min\": 2,\n      \"max\": 12,\n      \"step\": 3,\n      \"default\": 4\n    },\n    {\n      \"type\": \"select\",\n      \"id\": \"layout\",\n      \"label\": \"Layout\",\n      \"options\": [\n        {\n          \"value\": \"grid\",\n          \"label\": \"Grid\"\n        },\n        {\n          \"value\": \"list\",\n          \"label\": \"List\"\n        }\n      ],\n      \"default\": \"grid\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Collection grid\",\n      \"settings\": {\n        \"products_to_show\": 8,\n        \"layout\": \"list\"\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "missing-collection",
+    "expected_pass": false,
+    "changes": {
+      "sections/collection-grid-schema.liquid": "<section class=\"collection-grid-schema\"><h2>Collection grid</h2></section>\n{% schema %}\n{\n  \"name\": \"Collection grid\",\n  \"settings\": [\n    {\n      \"type\": \"range\",\n      \"id\": \"products_to_show\",\n      \"label\": \"Products to show\",\n      \"min\": 2,\n      \"max\": 12,\n      \"step\": 2,\n      \"default\": 4\n    },\n    {\n      \"type\": \"select\",\n      \"id\": \"layout\",\n      \"label\": \"Layout\",\n      \"options\": [\n        {\n          \"value\": \"grid\",\n          \"label\": \"Grid\"\n        },\n        {\n          \"value\": \"list\",\n          \"label\": \"List\"\n        }\n      ],\n      \"default\": \"grid\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Collection grid\",\n      \"settings\": {\n        \"products_to_show\": 8,\n        \"layout\": \"list\"\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-preset",
+    "expected_pass": false,
+    "changes": {
+      "sections/collection-grid-schema.liquid": "<section class=\"collection-grid-schema\"><h2>Collection grid</h2></section>\n{% schema %}\n{\n  \"name\": \"Collection grid\",\n  \"settings\": [\n    {\n      \"type\": \"collection\",\n      \"id\": \"collection\",\n      \"label\": \"Collection\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"products_to_show\",\n      \"label\": \"Products to show\",\n      \"min\": 2,\n      \"max\": 12,\n      \"step\": 2,\n      \"default\": 4\n    },\n    {\n      \"type\": \"select\",\n      \"id\": \"layout\",\n      \"label\": \"Layout\",\n      \"options\": [\n        {\n          \"value\": \"grid\",\n          \"label\": \"Grid\"\n        },\n        {\n          \"value\": \"list\",\n          \"label\": \"List\"\n        }\n      ],\n      \"default\": \"grid\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Collection grid\",\n      \"settings\": {\n        \"products_to_show\": 8,\n        \"layout\": \"grid\"\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "duplicate-key",
+    "expected_pass": false,
+    "changes": {
+      "sections/collection-grid-schema.liquid": "<section class=\"collection-grid-schema\"><h2>Collection grid</h2></section>\n{% schema %}\n{\n  \"name\":\"spoof\",\"name\": \"Collection grid\",\n  \"settings\": [\n    {\n      \"type\": \"collection\",\n      \"id\": \"collection\",\n      \"label\": \"Collection\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"products_to_show\",\n      \"label\": \"Products to show\",\n      \"min\": 2,\n      \"max\": 12,\n      \"step\": 2,\n      \"default\": 4\n    },\n    {\n      \"type\": \"select\",\n      \"id\": \"layout\",\n      \"label\": \"Layout\",\n      \"options\": [\n        {\n          \"value\": \"grid\",\n          \"label\": \"Grid\"\n        },\n        {\n          \"value\": \"list\",\n          \"label\": \"List\"\n        }\n      ],\n      \"default\": \"grid\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Collection grid\",\n      \"settings\": {\n        \"products_to_show\": 8,\n        \"layout\": \"list\"\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "dead-schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/collection-grid-schema.liquid": "{% comment %}<section class=\"collection-grid-schema\"><h2>Collection grid</h2></section>\n{% schema %}\n{\n  \"name\": \"Collection grid\",\n  \"settings\": [\n    {\n      \"type\": \"collection\",\n      \"id\": \"collection\",\n      \"label\": \"Collection\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"products_to_show\",\n      \"label\": \"Products to show\",\n      \"min\": 2,\n      \"max\": 12,\n      \"step\": 2,\n      \"default\": 4\n    },\n    {\n      \"type\": \"select\",\n      \"id\": \"layout\",\n      \"label\": \"Layout\",\n      \"options\": [\n        {\n          \"value\": \"grid\",\n          \"label\": \"Grid\"\n        },\n        {\n          \"value\": \"list\",\n          \"label\": \"List\"\n        }\n      ],\n      \"default\": \"grid\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Collection grid\",\n      \"settings\": {\n        \"products_to_show\": 8,\n        \"layout\": \"list\"\n      }\n    }\n  ]\n}\n{% endschema %}\n{% endcomment %}"
+    }
+  },
+  {
+    "name": "changed-markup",
+    "expected_pass": false,
+    "changes": {
+      "sections/collection-grid-schema.liquid": "<section class=\"collection-grid-schema\"><h2>Changed</h2></section>\n{% schema %}\n{\n  \"name\": \"Collection grid\",\n  \"settings\": [\n    {\n      \"type\": \"collection\",\n      \"id\": \"collection\",\n      \"label\": \"Collection\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"products_to_show\",\n      \"label\": \"Products to show\",\n      \"min\": 2,\n      \"max\": 12,\n      \"step\": 2,\n      \"default\": 4\n    },\n    {\n      \"type\": \"select\",\n      \"id\": \"layout\",\n      \"label\": \"Layout\",\n      \"options\": [\n        {\n          \"value\": \"grid\",\n          \"label\": \"Grid\"\n        },\n        {\n          \"value\": \"list\",\n          \"label\": \"List\"\n        }\n      ],\n      \"default\": \"grid\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Collection grid\",\n      \"settings\": {\n        \"products_to_show\": 8,\n        \"layout\": \"list\"\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/collection-grid-schema.liquid": "{% # theme-check-disable %}\n<section class=\"collection-grid-schema\"><h2>Collection grid</h2></section>\n{% schema %}\n{\n  \"name\": \"Collection grid\",\n  \"settings\": [\n    {\n      \"type\": \"collection\",\n      \"id\": \"collection\",\n      \"label\": \"Collection\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"products_to_show\",\n      \"label\": \"Products to show\",\n      \"min\": 2,\n      \"max\": 12,\n      \"step\": 2,\n      \"default\": 4\n    },\n    {\n      \"type\": \"select\",\n      \"id\": \"layout\",\n      \"label\": \"Layout\",\n      \"options\": [\n        {\n          \"value\": \"grid\",\n          \"label\": \"Grid\"\n        },\n        {\n          \"value\": \"list\",\n          \"label\": \"List\"\n        }\n      ],\n      \"default\": \"grid\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Collection grid\",\n      \"settings\": {\n        \"products_to_show\": 8,\n        \"layout\": \"list\"\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/collection-grid-schema.liquid": null
+    }
+  }
+]

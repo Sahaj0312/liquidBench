@@ -1,0 +1,65 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/pagination-window.liquid": "{% if paginate.pages > 1 %}{% assign win_start = paginate.current | minus: 2 %}{% if win_start < 1 %}{% assign win_start = 1 %}{% endif %}{% assign win_end = paginate.current | plus: 2 %}{% if win_end > paginate.pages %}{% assign win_end = paginate.pages %}{% endif %}<nav class=\"pagination\">{% if paginate.current > 1 %}<a class=\"prev\" href=\"?page={{ paginate.current | minus: 1 }}\">Previous</a>{% endif %}{% for n in (win_start..win_end) %}{% if n == paginate.current %}<span class=\"current\">{{ n }}</span>{% else %}<a href=\"?page={{ n }}\">{{ n }}</a>{% endif %}{% endfor %}{% if paginate.current < paginate.pages %}<a class=\"next\" href=\"?page={{ paginate.current | plus: 1 }}\">Next</a>{% endif %}</nav>{% endif %}"
+    }
+  },
+  {
+    "name": "no-clamp-start",
+    "expected_pass": false,
+    "changes": {
+      "snippets/pagination-window.liquid": "{% if paginate.pages > 1 %}{% assign win_start = paginate.current | minus: 2 %}{% assign win_end = paginate.current | plus: 2 %}{% if win_end > paginate.pages %}{% assign win_end = paginate.pages %}{% endif %}<nav class=\"pagination\">{% if paginate.current > 1 %}<a class=\"prev\" href=\"?page={{ paginate.current | minus: 1 }}\">Previous</a>{% endif %}{% for n in (win_start..win_end) %}{% if n == paginate.current %}<span class=\"current\">{{ n }}</span>{% else %}<a href=\"?page={{ n }}\">{{ n }}</a>{% endif %}{% endfor %}{% if paginate.current < paginate.pages %}<a class=\"next\" href=\"?page={{ paginate.current | plus: 1 }}\">Next</a>{% endif %}</nav>{% endif %}"
+    }
+  },
+  {
+    "name": "all-pages",
+    "expected_pass": false,
+    "changes": {
+      "snippets/pagination-window.liquid": "{% if paginate.pages > 1 %}{% assign win_start = paginate.current | minus: 2 %}{% if win_start < 1 %}{% assign win_start = 1 %}{% endif %}{% assign win_end = paginate.current | plus: 2 %}{% if win_end > paginate.pages %}{% assign win_end = paginate.pages %}{% endif %}<nav class=\"pagination\">{% if paginate.current > 1 %}<a class=\"prev\" href=\"?page={{ paginate.current | minus: 1 }}\">Previous</a>{% endif %}{% for n in (1..paginate.pages) %}{% if n == paginate.current %}<span class=\"current\">{{ n }}</span>{% else %}<a href=\"?page={{ n }}\">{{ n }}</a>{% endif %}{% endfor %}{% if paginate.current < paginate.pages %}<a class=\"next\" href=\"?page={{ paginate.current | plus: 1 }}\">Next</a>{% endif %}</nav>{% endif %}"
+    }
+  },
+  {
+    "name": "current-linked",
+    "expected_pass": false,
+    "changes": {
+      "snippets/pagination-window.liquid": "{% if paginate.pages > 1 %}{% assign win_start = paginate.current | minus: 2 %}{% if win_start < 1 %}{% assign win_start = 1 %}{% endif %}{% assign win_end = paginate.current | plus: 2 %}{% if win_end > paginate.pages %}{% assign win_end = paginate.pages %}{% endif %}<nav class=\"pagination\">{% if paginate.current > 1 %}<a class=\"prev\" href=\"?page={{ paginate.current | minus: 1 }}\">Previous</a>{% endif %}{% for n in (win_start..win_end) %}{% if false %}<span class=\"current\">{{ n }}</span>{% else %}<a href=\"?page={{ n }}\">{{ n }}</a>{% endif %}{% endfor %}{% if paginate.current < paginate.pages %}<a class=\"next\" href=\"?page={{ paginate.current | plus: 1 }}\">Next</a>{% endif %}</nav>{% endif %}"
+    }
+  },
+  {
+    "name": "single-page-nav",
+    "expected_pass": false,
+    "changes": {
+      "snippets/pagination-window.liquid": "{% if true %}{% assign win_start = paginate.current | minus: 2 %}{% if win_start < 1 %}{% assign win_start = 1 %}{% endif %}{% assign win_end = paginate.current | plus: 2 %}{% if win_end > paginate.pages %}{% assign win_end = paginate.pages %}{% endif %}<nav class=\"pagination\">{% if paginate.current > 1 %}<a class=\"prev\" href=\"?page={{ paginate.current | minus: 1 }}\">Previous</a>{% endif %}{% for n in (win_start..win_end) %}{% if n == paginate.current %}<span class=\"current\">{{ n }}</span>{% else %}<a href=\"?page={{ n }}\">{{ n }}</a>{% endif %}{% endfor %}{% if paginate.current < paginate.pages %}<a class=\"next\" href=\"?page={{ paginate.current | plus: 1 }}\">Next</a>{% endif %}</nav>{% endif %}"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "snippets/pagination-window.liquid": "<nav class=\"pagination\"><span class=\"current\">1</span><a href=\"?page=2\">2</a><a class=\"next\" href=\"?page=2\">Next</a></nav>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/pagination-window.liquid": "{% # theme-check-disable %}\n{% if paginate.pages > 1 %}{% assign win_start = paginate.current | minus: 2 %}{% if win_start < 1 %}{% assign win_start = 1 %}{% endif %}{% assign win_end = paginate.current | plus: 2 %}{% if win_end > paginate.pages %}{% assign win_end = paginate.pages %}{% endif %}<nav class=\"pagination\">{% if paginate.current > 1 %}<a class=\"prev\" href=\"?page={{ paginate.current | minus: 1 }}\">Previous</a>{% endif %}{% for n in (win_start..win_end) %}{% if n == paginate.current %}<span class=\"current\">{{ n }}</span>{% else %}<a href=\"?page={{ n }}\">{{ n }}</a>{% endif %}{% endfor %}{% if paginate.current < paginate.pages %}<a class=\"next\" href=\"?page={{ paginate.current | plus: 1 }}\">Next</a>{% endif %}</nav>{% endif %}"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/pagination-window.liquid": null
+    }
+  }
+]

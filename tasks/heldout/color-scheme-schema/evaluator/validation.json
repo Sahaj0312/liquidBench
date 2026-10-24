@@ -1,0 +1,72 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "sections/color-scheme-schema.liquid": "<section class=\"color-scheme-schema\"><h2>Colors</h2></section>\n{% schema %}\n{\"name\": \"Colors\", \"presets\": [{\"name\": \"Colors\"}], \"settings\": [{\"default\": \"#ffffff\", \"id\": \"background\", \"label\": \"Background\", \"type\": \"color\"}, {\"default\": \"#111111\", \"id\": \"text\", \"label\": \"Text\", \"type\": \"color\"}, {\"default\": false, \"id\": \"gradient\", \"label\": \"Use gradient\", \"type\": \"checkbox\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "string-boolean",
+    "expected_pass": false,
+    "changes": {
+      "sections/color-scheme-schema.liquid": "<section class=\"color-scheme-schema\"><h2>Colors</h2></section>\n{% schema %}\n{\n  \"name\": \"Colors\",\n  \"settings\": [\n    {\n      \"type\": \"color\",\n      \"id\": \"background\",\n      \"label\": \"Background\",\n      \"default\": \"#ffffff\"\n    },\n    {\n      \"type\": \"color\",\n      \"id\": \"text\",\n      \"label\": \"Text\",\n      \"default\": \"#111111\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"gradient\",\n      \"label\": \"Use gradient\",\n      \"default\": \"false\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Colors\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-type",
+    "expected_pass": false,
+    "changes": {
+      "sections/color-scheme-schema.liquid": "<section class=\"color-scheme-schema\"><h2>Colors</h2></section>\n{% schema %}\n{\n  \"name\": \"Colors\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"background\",\n      \"label\": \"Background\",\n      \"default\": \"#ffffff\"\n    },\n    {\n      \"type\": \"color\",\n      \"id\": \"text\",\n      \"label\": \"Text\",\n      \"default\": \"#111111\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"gradient\",\n      \"label\": \"Use gradient\",\n      \"default\": false\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Colors\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-default",
+    "expected_pass": false,
+    "changes": {
+      "sections/color-scheme-schema.liquid": "<section class=\"color-scheme-schema\"><h2>Colors</h2></section>\n{% schema %}\n{\n  \"name\": \"Colors\",\n  \"settings\": [\n    {\n      \"type\": \"color\",\n      \"id\": \"background\",\n      \"label\": \"Background\",\n      \"default\": \"#ffffff\"\n    },\n    {\n      \"type\": \"color\",\n      \"id\": \"text\",\n      \"label\": \"Text\",\n      \"default\": \"#000000\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"gradient\",\n      \"label\": \"Use gradient\",\n      \"default\": false\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Colors\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "duplicate-key",
+    "expected_pass": false,
+    "changes": {
+      "sections/color-scheme-schema.liquid": "<section class=\"color-scheme-schema\"><h2>Colors</h2></section>\n{% schema %}\n{\n  \"name\":\"spoof\",\"name\": \"Colors\",\n  \"settings\": [\n    {\n      \"type\": \"color\",\n      \"id\": \"background\",\n      \"label\": \"Background\",\n      \"default\": \"#ffffff\"\n    },\n    {\n      \"type\": \"color\",\n      \"id\": \"text\",\n      \"label\": \"Text\",\n      \"default\": \"#111111\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"gradient\",\n      \"label\": \"Use gradient\",\n      \"default\": false\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Colors\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "dead-schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/color-scheme-schema.liquid": "{% comment %}<section class=\"color-scheme-schema\"><h2>Colors</h2></section>\n{% schema %}\n{\n  \"name\": \"Colors\",\n  \"settings\": [\n    {\n      \"type\": \"color\",\n      \"id\": \"background\",\n      \"label\": \"Background\",\n      \"default\": \"#ffffff\"\n    },\n    {\n      \"type\": \"color\",\n      \"id\": \"text\",\n      \"label\": \"Text\",\n      \"default\": \"#111111\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"gradient\",\n      \"label\": \"Use gradient\",\n      \"default\": false\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Colors\"\n    }\n  ]\n}\n{% endschema %}\n{% endcomment %}"
+    }
+  },
+  {
+    "name": "changed-markup",
+    "expected_pass": false,
+    "changes": {
+      "sections/color-scheme-schema.liquid": "<section class=\"color-scheme-schema\"><h2>Changed</h2></section>\n{% schema %}\n{\n  \"name\": \"Colors\",\n  \"settings\": [\n    {\n      \"type\": \"color\",\n      \"id\": \"background\",\n      \"label\": \"Background\",\n      \"default\": \"#ffffff\"\n    },\n    {\n      \"type\": \"color\",\n      \"id\": \"text\",\n      \"label\": \"Text\",\n      \"default\": \"#111111\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"gradient\",\n      \"label\": \"Use gradient\",\n      \"default\": false\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Colors\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/color-scheme-schema.liquid": "{% # theme-check-disable %}\n<section class=\"color-scheme-schema\"><h2>Colors</h2></section>\n{% schema %}\n{\n  \"name\": \"Colors\",\n  \"settings\": [\n    {\n      \"type\": \"color\",\n      \"id\": \"background\",\n      \"label\": \"Background\",\n      \"default\": \"#ffffff\"\n    },\n    {\n      \"type\": \"color\",\n      \"id\": \"text\",\n      \"label\": \"Text\",\n      \"default\": \"#111111\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"gradient\",\n      \"label\": \"Use gradient\",\n      \"default\": false\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Colors\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/color-scheme-schema.liquid": null
+    }
+  }
+]

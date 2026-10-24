@@ -1,4 +1,4 @@
-"""Versioned development fixtures and host-only evaluation assets."""
+"""Versioned task fixtures and host-only evaluation assets."""
 
 from dataclasses import dataclass
 import hashlib
@@ -6,6 +6,10 @@ import json
 from pathlib import Path, PurePosixPath
 
 from .evaluators import get_evaluator
+
+
+# Held-out tasks evaluate final models only; never use them to author training data.
+SPLITS = {"development", "heldout"}
 
 
 def safe_name(name: str) -> bool:
@@ -59,8 +63,8 @@ class Task:
         }
         if required - manifest.keys():
             raise ValueError(f"Missing task fields: {sorted(required - manifest.keys())}")
-        if manifest["split"] != "development":
-            raise ValueError("This MVP accepts development tasks only")
+        if manifest["split"] not in SPLITS:
+            raise ValueError(f"Unknown task split: {manifest['split']!r}")
         get_evaluator(manifest["evaluator"])
         editable = manifest["editable_files"]
         if (
@@ -123,7 +127,7 @@ class Task:
 def discover_tasks(root: Path):
     tasks = [Task.load(p.parent) for p in sorted(root.glob("*/task.json"))]
     if not tasks:
-        raise ValueError(f"No development tasks found under {root}")
+        raise ValueError(f"No tasks found under {root}")
     if len({t.manifest["id"] for t in tasks}) != len(tasks):
         raise ValueError("Duplicate task IDs in suite")
     return tasks

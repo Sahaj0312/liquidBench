@@ -1,0 +1,1 @@
+{% assign open = false %}{% if now.weekday >= 1 and now.weekday <= 5 %}{% if now.hour >= 9 and now.hour < 17 %}{% assign open = true %}{% endif %}{% elsif now.weekday == 6 %}{% if now.hour >= 10 and now.hour < 14 %}{% assign open = true %}{% endif %}{% endif %}<p class="hours">{% if open %}Open now{% else %}Closed{% endif %}</p>

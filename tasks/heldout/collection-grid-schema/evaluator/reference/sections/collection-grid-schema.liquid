@@ -1,0 +1,47 @@
+<section class="collection-grid-schema"><h2>Collection grid</h2></section>
+{% schema %}
+{
+  "name": "Collection grid",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 2,
+      "max": 12,
+      "step": 2,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "Grid"
+        },
+        {
+          "value": "list",
+          "label": "List"
+        }
+      ],
+      "default": "grid"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection grid",
+      "settings": {
+        "products_to_show": 8,
+        "layout": "list"
+      }
+    }
+  ]
+}
+{% endschema %}

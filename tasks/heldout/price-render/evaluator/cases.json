@@ -1,0 +1,112 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/price-render.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidTag",
+          "name": "render",
+          "markup": {
+            "type": "RenderMarkup",
+            "snippet": {
+              "type": "String",
+              "single": true,
+              "value": "price-tag"
+            },
+            "variable": null,
+            "alias": null,
+            "args": [
+              {
+                "type": "NamedArgument",
+                "name": "price",
+                "value": {
+                  "type": "VariableLookup",
+                  "name": "product",
+                  "lookups": [
+                    {
+                      "type": "String",
+                      "value": "price"
+                    }
+                  ],
+                  "lookupModes": [
+                    "bareword"
+                  ]
+                }
+              },
+              {
+                "type": "NamedArgument",
+                "name": "compare",
+                "value": {
+                  "type": "VariableLookup",
+                  "name": "product",
+                  "lookups": [
+                    {
+                      "type": "String",
+                      "value": "compare_at_price"
+                    }
+                  ],
+                  "lookupModes": [
+                    "bareword"
+                  ]
+                }
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "span"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "label"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "LiquidVariableOutput",
+              "markup": {
+                "type": "LiquidVariable",
+                "expression": {
+                  "type": "String",
+                  "single": true,
+                  "value": "products.sale"
+                },
+                "filters": [
+                  {
+                    "type": "LiquidFilter",
+                    "name": "t",
+                    "args": []
+                  }
+                ]
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

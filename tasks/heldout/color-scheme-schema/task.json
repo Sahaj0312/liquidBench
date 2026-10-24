@@ -1,0 +1,15 @@
+{
+  "id": "color-scheme-schema",
+  "version": 1,
+  "split": "heldout",
+  "category": "section-schema",
+  "difficulty": "easy",
+  "family": "color-scheme-schema",
+  "provenance": "Original synthetic LiquidBench held-out evaluation fixture, authored 2026-10-24 before any training data. Final-model evaluation only; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/color-scheme-schema.liquid"
+  ],
+  "prompt": "Repair only the JSON schema in sections/color-scheme-schema.liquid. Keep every byte outside its one top-level schema block unchanged. Strict JSON only. Exactly the following fields, array order and values are required; object key order/JSON whitespace may vary. Root name Colors. settings, in order: color id background, label Background, default #ffffff; color id text, label Text, default #111111; checkbox id gradient, label Use gradient, default false (a JSON boolean). presets contains one entry named Colors. Change only sections/color-scheme-schema.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

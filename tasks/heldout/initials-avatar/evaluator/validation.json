@@ -1,0 +1,65 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/initials-avatar.liquid": "{% assign words = customer.name | default: \"\" | split: \" \" %}<span class=\"avatar\">{% if words.size == 0 %}?{% else %}{{ words[0] | slice: 0 | upcase | escape }}{% if words.size > 1 %}{{ words[1] | slice: 0 | upcase | escape }}{% endif %}{% endif %}</span>"
+    }
+  },
+  {
+    "name": "one-initial",
+    "expected_pass": false,
+    "changes": {
+      "snippets/initials-avatar.liquid": "{% assign words = customer.name | default: \"\" | split: \" \" %}<span class=\"avatar\">{% if words.size == 0 %}?{% else %}{{ words[0] | slice: 0 | upcase | escape }}{% endif %}</span>"
+    }
+  },
+  {
+    "name": "no-upcase",
+    "expected_pass": false,
+    "changes": {
+      "snippets/initials-avatar.liquid": "{% assign words = customer.name | default: \"\" | split: \" \" %}<span class=\"avatar\">{% if words.size == 0 %}?{% else %}{{ words[0] | slice: 0 | escape }}{% if words.size > 1 %}{{ words[1] | slice: 0 | escape }}{% endif %}{% endif %}</span>"
+    }
+  },
+  {
+    "name": "wrong-fallback",
+    "expected_pass": false,
+    "changes": {
+      "snippets/initials-avatar.liquid": "{% assign words = customer.name | default: \"\" | split: \" \" %}<span class=\"avatar\">{% if words.size == 0 %}-{% else %}{{ words[0] | slice: 0 | upcase | escape }}{% if words.size > 1 %}{{ words[1] | slice: 0 | upcase | escape }}{% endif %}{% endif %}</span>"
+    }
+  },
+  {
+    "name": "unescaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/initials-avatar.liquid": "{% assign words = customer.name | default: \"\" | split: \" \" %}<span class=\"avatar\">{% if words.size == 0 %}?{% else %}{{ words[0] | slice: 0 | upcase }}{% if words.size > 1 %}{{ words[1] | slice: 0 | upcase }}{% endif %}{% endif %}</span>"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "snippets/initials-avatar.liquid": "<span class=\"avatar\">AL</span>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/initials-avatar.liquid": "{% # theme-check-disable %}\n{% assign words = customer.name | default: \"\" | split: \" \" %}<span class=\"avatar\">{% if words.size == 0 %}?{% else %}{{ words[0] | slice: 0 | upcase | escape }}{% if words.size > 1 %}{{ words[1] | slice: 0 | upcase | escape }}{% endif %}{% endif %}</span>"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/initials-avatar.liquid": null
+    }
+  }
+]

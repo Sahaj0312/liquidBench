@@ -1,0 +1,15 @@
+{
+  "id": "stock-badge",
+  "version": 1,
+  "split": "heldout",
+  "category": "liquid-syntax",
+  "difficulty": "easy",
+  "family": "stock-badge",
+  "provenance": "Original synthetic LiquidBench held-out evaluation fixture, authored 2026-10-24 before any training data. Final-model evaluation only; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/stock-badge.liquid"
+  ],
+  "prompt": "Repair snippets/stock-badge.liquid. product.inventory is a nonnegative integer and product.backorder a boolean. Output one p class=stock: In stock when inventory is more than 5; Only N left when inventory is 1 to 5, where N is the inventory; Backorder when inventory is 0 and backorder is true; otherwise Sold out. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/stock-badge.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

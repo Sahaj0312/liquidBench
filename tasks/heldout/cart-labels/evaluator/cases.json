@@ -1,0 +1,140 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/cart-labels.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "h2"
+            }
+          ],
+          "attributes": [],
+          "children": [
+            {
+              "type": "LiquidVariableOutput",
+              "markup": {
+                "type": "LiquidVariable",
+                "expression": {
+                  "type": "String",
+                  "single": true,
+                  "value": "cart.title"
+                },
+                "filters": [
+                  {
+                    "type": "LiquidFilter",
+                    "name": "t",
+                    "args": []
+                  }
+                ]
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            }
+          ]
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "p"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "empty"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "LiquidVariableOutput",
+              "markup": {
+                "type": "LiquidVariable",
+                "expression": {
+                  "type": "String",
+                  "single": true,
+                  "value": "cart.empty"
+                },
+                "filters": [
+                  {
+                    "type": "LiquidFilter",
+                    "name": "t",
+                    "args": []
+                  }
+                ]
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            }
+          ]
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "button"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "type"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "submit"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "LiquidVariableOutput",
+              "markup": {
+                "type": "LiquidVariable",
+                "expression": {
+                  "type": "String",
+                  "single": true,
+                  "value": "cart.checkout"
+                },
+                "filters": [
+                  {
+                    "type": "LiquidFilter",
+                    "name": "t",
+                    "args": []
+                  }
+                ]
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

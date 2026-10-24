@@ -43,6 +43,13 @@ def save_json(path, value):
     path.write_text(json.dumps(value, indent=2) + "\n")
 
 
+def suite_split(tasks):
+    splits = {task.manifest["split"] for task in tasks}
+    if len(splits) != 1:
+        raise ValueError("A suite must not mix task splits")
+    return splits.pop()
+
+
 def run_suite(tasks, config, output):
     """One development attempt per task; retains failures and missing infrastructure runs."""
     name = "suite-" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ-") + uuid.uuid4().hex[:8]
@@ -51,7 +58,7 @@ def run_suite(tasks, config, output):
     # All attempts in this suite use the same immutable runtime image.
     config = {**config, "image": image_id(config["image"])}
     summary = {
-        "split": "development",
+        "split": suite_split(tasks),
         "research_result": False,
         "runs": [],
         "status_counts": {"passed": 0, "failed": 0, "infrastructure_error": 0},
@@ -136,7 +143,7 @@ def main():
             reports = [validate(task, image) for task in tasks]
             valid = all(report["valid"] for report in reports)
             report = (
-                {"split": "development", "valid": valid, "tasks": reports}
+                {"split": suite_split(tasks), "valid": valid, "tasks": reports}
                 if args.command.endswith("suite")
                 else reports[0]
             )

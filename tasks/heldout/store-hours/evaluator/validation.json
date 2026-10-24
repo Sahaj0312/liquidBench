@@ -1,0 +1,58 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/store-hours.liquid": "{% assign open = false %}{% if now.weekday >= 1 and now.weekday <= 5 %}{% if now.hour >= 9 and now.hour < 17 %}{% assign open = true %}{% endif %}{% elsif now.weekday == 6 %}{% if now.hour >= 10 and now.hour < 14 %}{% assign open = true %}{% endif %}{% endif %}<p class=\"hours\">{% if open %}Open now{% else %}Closed{% endif %}</p>"
+    }
+  },
+  {
+    "name": "inclusive-close",
+    "expected_pass": false,
+    "changes": {
+      "snippets/store-hours.liquid": "{% assign open = false %}{% if now.weekday >= 1 and now.weekday <= 5 %}{% if now.hour >= 9 and now.hour <= 17 %}{% assign open = true %}{% endif %}{% elsif now.weekday == 6 %}{% if now.hour >= 10 and now.hour < 14 %}{% assign open = true %}{% endif %}{% endif %}<p class=\"hours\">{% if open %}Open now{% else %}Closed{% endif %}</p>"
+    }
+  },
+  {
+    "name": "saturday-as-weekday",
+    "expected_pass": false,
+    "changes": {
+      "snippets/store-hours.liquid": "{% assign open = false %}{% if now.weekday >= 1 and now.weekday <= 6 %}{% if now.hour >= 9 and now.hour < 17 %}{% assign open = true %}{% endif %}{% elsif now.weekday == 6 %}{% if now.hour >= 10 and now.hour < 14 %}{% assign open = true %}{% endif %}{% endif %}<p class=\"hours\">{% if open %}Open now{% else %}Closed{% endif %}</p>"
+    }
+  },
+  {
+    "name": "sunday-open",
+    "expected_pass": false,
+    "changes": {
+      "snippets/store-hours.liquid": "{% assign open = false %}{% if now.weekday >= 0 and now.weekday <= 5 %}{% if now.hour >= 9 and now.hour < 17 %}{% assign open = true %}{% endif %}{% elsif now.weekday == 6 %}{% if now.hour >= 10 and now.hour < 14 %}{% assign open = true %}{% endif %}{% endif %}<p class=\"hours\">{% if open %}Open now{% else %}Closed{% endif %}</p>"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "snippets/store-hours.liquid": "<p class=\"hours\">Closed</p>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/store-hours.liquid": "{% # theme-check-disable %}\n{% assign open = false %}{% if now.weekday >= 1 and now.weekday <= 5 %}{% if now.hour >= 9 and now.hour < 17 %}{% assign open = true %}{% endif %}{% elsif now.weekday == 6 %}{% if now.hour >= 10 and now.hour < 14 %}{% assign open = true %}{% endif %}{% endif %}<p class=\"hours\">{% if open %}Open now{% else %}Closed{% endif %}</p>"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/store-hours.liquid": null
+    }
+  }
+]

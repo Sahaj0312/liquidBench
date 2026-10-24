@@ -1,0 +1,15 @@
+{
+  "id": "price-render",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-references",
+  "difficulty": "hard",
+  "family": "price-render",
+  "provenance": "Original synthetic LiquidBench held-out evaluation fixture, authored 2026-10-24 before any training data. Final-model evaluation only; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/price-render.liquid"
+  ],
+  "prompt": "Repair the literal references in snippets/price-render.liquid. Preserve all live markup, filters, tags and output positions. Only literal operands may change; quote style and inter-element whitespace may vary. The render tag uses the existing snippets/price-tag.liquid and keeps both named arguments price and compare with their values; the span uses products.sale through t (translate accepted); both locales must resolve the key. These are static reference checks; do not use the core renderer for Shopify filters or tags. Change only snippets/price-render.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

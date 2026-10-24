@@ -1,0 +1,1 @@
+<div class="rating" aria-label="{{ product.rating }} out of 5 stars"><span class="stars">{% for i in (1..5) %}{% if i <= product.rating %}★{% else %}☆{% endif %}{% endfor %}</span>{% if product.review_count == 1 %}<span class="count">(1 review)</span>{% elsif product.review_count > 1 %}<span class="count">({{ product.review_count }} reviews)</span>{% endif %}</div>

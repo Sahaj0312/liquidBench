@@ -1,0 +1,15 @@
+{
+  "id": "hero-cta",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-modification",
+  "difficulty": "easy",
+  "family": "hero-cta",
+  "provenance": "Original synthetic LiquidBench held-out evaluation fixture, authored 2026-10-24 before any training data. Final-model evaluation only; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/hero-cta.liquid"
+  ],
+  "prompt": "Modify sections/hero-cta.liquid to add an optional call-to-action link after the h2, inside the existing section. Inputs: section.id and section.settings.heading are strings; section.settings.cta_label and section.settings.cta_url are null or strings. Emit one a class=button only when both the ASCII-trimmed label and the ASCII-trimmed url are nonempty; its href is the trimmed url and its text the trimmed label. Preserve the existing section class, data-id and heading with their escaping. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/hero-cta.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "grid-columns",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-modification",
+  "difficulty": "medium",
+  "family": "grid-columns",
+  "provenance": "Original synthetic LiquidBench held-out evaluation fixture, authored 2026-10-24 before any training data. Final-model evaluation only; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/grid-columns.liquid"
+  ],
+  "prompt": "Modify sections/grid-columns.liquid. Inputs: section.id is a string; section.settings.columns is an integer that may be outside 1 to 4; items is a top-level ordered array of strings. Keep the existing section data-id. When items is nonempty, keep the ul class=grid with one li per item in order, and add the attribute data-columns equal to columns clamped to the range 1 to 4. When items is empty, replace the ul with one p class=empty with text Nothing here. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/grid-columns.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

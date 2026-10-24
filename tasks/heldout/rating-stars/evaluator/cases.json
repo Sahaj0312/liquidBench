@@ -1,0 +1,380 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/rating-stars.liquid",
+    "tags": [
+      "div",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "product": {
+        "rating": 0,
+        "review_count": 0
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "0 out of 5 stars"
+          ],
+          [
+            "class",
+            "rating"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "stars"
+              ]
+            ],
+            "text": "☆☆☆☆☆",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "product": {
+        "rating": 1,
+        "review_count": 1
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "1 out of 5 stars"
+          ],
+          [
+            "class",
+            "rating"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "stars"
+              ]
+            ],
+            "text": "★☆☆☆☆",
+            "children": []
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "count"
+              ]
+            ],
+            "text": "(1 review)",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "product": {
+        "rating": 3,
+        "review_count": 2
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "3 out of 5 stars"
+          ],
+          [
+            "class",
+            "rating"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "stars"
+              ]
+            ],
+            "text": "★★★☆☆",
+            "children": []
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "count"
+              ]
+            ],
+            "text": "(2 reviews)",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "product": {
+        "rating": 5,
+        "review_count": 0
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "5 out of 5 stars"
+          ],
+          [
+            "class",
+            "rating"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "stars"
+              ]
+            ],
+            "text": "★★★★★",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "product": {
+        "rating": 4,
+        "review_count": 128
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "4 out of 5 stars"
+          ],
+          [
+            "class",
+            "rating"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "stars"
+              ]
+            ],
+            "text": "★★★★☆",
+            "children": []
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "count"
+              ]
+            ],
+            "text": "(128 reviews)",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "product": {
+        "rating": 2,
+        "review_count": 1
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "2 out of 5 stars"
+          ],
+          [
+            "class",
+            "rating"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "stars"
+              ]
+            ],
+            "text": "★★☆☆☆",
+            "children": []
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "count"
+              ]
+            ],
+            "text": "(1 review)",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "product": {
+        "rating": 5,
+        "review_count": 1000
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "5 out of 5 stars"
+          ],
+          [
+            "class",
+            "rating"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "stars"
+              ]
+            ],
+            "text": "★★★★★",
+            "children": []
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "count"
+              ]
+            ],
+            "text": "(1000 reviews)",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "product": {
+        "rating": 0,
+        "review_count": 7
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "0 out of 5 stars"
+          ],
+          [
+            "class",
+            "rating"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "stars"
+              ]
+            ],
+            "text": "☆☆☆☆☆",
+            "children": []
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "count"
+              ]
+            ],
+            "text": "(7 reviews)",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/breadcrumb-trail.liquid": "{% if crumbs.size > 0 %}<nav aria-label=\"Breadcrumb\">\n<ol>{% for crumb in crumbs %}<li>{% if forloop.last %}<span aria-current=\"page\">{{ crumb.title | escape }}</span>{% else %}<a href=\"{{ crumb.url | escape }}\">{{ crumb.title | escape }}</a>{% endif %}</li>{% endfor %}</ol>\n</nav>{% endif %}"
+    }
+  },
+  {
+    "name": "last-linked",
+    "expected_pass": false,
+    "changes": {
+      "snippets/breadcrumb-trail.liquid": "{% if crumbs.size > 0 %}<nav aria-label=\"Breadcrumb\"><ol>{% for crumb in crumbs %}<li>{% if false %}<span aria-current=\"page\">{{ crumb.title | escape }}</span>{% else %}<a href=\"{{ crumb.url | escape }}\">{{ crumb.title | escape }}</a>{% endif %}</li>{% endfor %}</ol></nav>{% endif %}"
+    }
+  },
+  {
+    "name": "empty-nav",
+    "expected_pass": false,
+    "changes": {
+      "snippets/breadcrumb-trail.liquid": "{% if true %}<nav aria-label=\"Breadcrumb\"><ol>{% for crumb in crumbs %}<li>{% if forloop.last %}<span aria-current=\"page\">{{ crumb.title | escape }}</span>{% else %}<a href=\"{{ crumb.url | escape }}\">{{ crumb.title | escape }}</a>{% endif %}</li>{% endfor %}</ol></nav>{% endif %}"
+    }
+  },
+  {
+    "name": "first-current",
+    "expected_pass": false,
+    "changes": {
+      "snippets/breadcrumb-trail.liquid": "{% if crumbs.size > 0 %}<nav aria-label=\"Breadcrumb\"><ol>{% for crumb in crumbs %}<li>{% if forloop.first %}<span aria-current=\"page\">{{ crumb.title | escape }}</span>{% else %}<a href=\"{{ crumb.url | escape }}\">{{ crumb.title | escape }}</a>{% endif %}</li>{% endfor %}</ol></nav>{% endif %}"
+    }
+  },
+  {
+    "name": "unescaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/breadcrumb-trail.liquid": "{% if crumbs.size > 0 %}<nav aria-label=\"Breadcrumb\"><ol>{% for crumb in crumbs %}<li>{% if forloop.last %}<span aria-current=\"page\">{{ crumb.title }}</span>{% else %}<a href=\"{{ crumb.url }}\">{{ crumb.title }}</a>{% endif %}</li>{% endfor %}</ol></nav>{% endif %}"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "snippets/breadcrumb-trail.liquid": "<nav aria-label=\"Breadcrumb\"><ol><li><span aria-current=\"page\">Home</span></li></ol></nav>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/breadcrumb-trail.liquid": "{% # theme-check-disable %}\n{% if crumbs.size > 0 %}<nav aria-label=\"Breadcrumb\"><ol>{% for crumb in crumbs %}<li>{% if forloop.last %}<span aria-current=\"page\">{{ crumb.title | escape }}</span>{% else %}<a href=\"{{ crumb.url | escape }}\">{{ crumb.title | escape }}</a>{% endif %}</li>{% endfor %}</ol></nav>{% endif %}"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/breadcrumb-trail.liquid": null
+    }
+  }
+]

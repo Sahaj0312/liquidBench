@@ -1,0 +1,15 @@
+{
+  "id": "footer-schema",
+  "version": 1,
+  "split": "heldout",
+  "category": "section-schema",
+  "difficulty": "easy",
+  "family": "footer-schema",
+  "provenance": "Original synthetic LiquidBench held-out evaluation fixture, authored 2026-10-24 before any training data. Final-model evaluation only; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/footer-schema.liquid"
+  ],
+  "prompt": "Repair only the JSON schema in sections/footer-schema.liquid. Keep every byte outside its one top-level schema block unchanged. Strict JSON only. Exactly the following fields, array order and values are required; object key order/JSON whitespace may vary. Root fields exactly: name Footer and settings; no presets. settings, in order: link_list id menu, label Menu, default footer; checkbox id show_payment, label Show payment icons, default true (a JSON boolean); text id copyright, label Copyright, no default. Change only sections/footer-schema.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

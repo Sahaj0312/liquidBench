@@ -1,0 +1,15 @@
+{
+  "id": "price-format",
+  "version": 1,
+  "split": "heldout",
+  "category": "rendering",
+  "difficulty": "medium",
+  "family": "price-format",
+  "provenance": "Original synthetic LiquidBench held-out evaluation fixture, authored 2026-10-24 before any training data. Final-model evaluation only; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/price-format.liquid"
+  ],
+  "prompt": "Repair snippets/price-format.liquid. product.price is a nonnegative integer number of cents. Output one span class=price with text $D.CC: D is the whole-dollar amount as a base-10 integer with no separators, and CC is exactly two digits of remaining cents. Do not use Shopify money filters. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/price-format.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

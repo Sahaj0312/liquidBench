@@ -1,0 +1,65 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/rating-stars.liquid": "<div class=\"rating\" aria-label=\"{{ product.rating }} out of 5 stars\">\n<span class=\"stars\">{% for i in (1..5) %}{% if i <= product.rating %}★{% else %}☆{% endif %}{% endfor %}</span>{% if product.review_count == 1 %}<span class=\"count\">(1 review)</span>{% elsif product.review_count > 1 %}<span class=\"count\">({{ product.review_count }} reviews)</span>{% endif %}</div>"
+    }
+  },
+  {
+    "name": "always-plural",
+    "expected_pass": false,
+    "changes": {
+      "snippets/rating-stars.liquid": "<div class=\"rating\" aria-label=\"{{ product.rating }} out of 5 stars\"><span class=\"stars\">{% for i in (1..5) %}{% if i <= product.rating %}★{% else %}☆{% endif %}{% endfor %}</span>{% if product.review_count > 1 %}<span class=\"count\">({{ product.review_count }} reviews)</span>{% endif %}</div>"
+    }
+  },
+  {
+    "name": "off-by-one",
+    "expected_pass": false,
+    "changes": {
+      "snippets/rating-stars.liquid": "<div class=\"rating\" aria-label=\"{{ product.rating }} out of 5 stars\"><span class=\"stars\">{% for i in (1..5) %}{% if i < product.rating %}★{% else %}☆{% endif %}{% endfor %}</span>{% if product.review_count == 1 %}<span class=\"count\">(1 review)</span>{% elsif product.review_count > 1 %}<span class=\"count\">({{ product.review_count }} reviews)</span>{% endif %}</div>"
+    }
+  },
+  {
+    "name": "missing-aria",
+    "expected_pass": false,
+    "changes": {
+      "snippets/rating-stars.liquid": "<div class=\"rating\"><span class=\"stars\">{% for i in (1..5) %}{% if i <= product.rating %}★{% else %}☆{% endif %}{% endfor %}</span>{% if product.review_count == 1 %}<span class=\"count\">(1 review)</span>{% elsif product.review_count > 1 %}<span class=\"count\">({{ product.review_count }} reviews)</span>{% endif %}</div>"
+    }
+  },
+  {
+    "name": "count-at-zero",
+    "expected_pass": false,
+    "changes": {
+      "snippets/rating-stars.liquid": "<div class=\"rating\" aria-label=\"{{ product.rating }} out of 5 stars\"><span class=\"stars\">{% for i in (1..5) %}{% if i <= product.rating %}★{% else %}☆{% endif %}{% endfor %}</span>{% if product.review_count == 1 %}<span class=\"count\">(1 review)</span>{% elsif product.review_count != 1 %}<span class=\"count\">({{ product.review_count }} reviews)</span>{% endif %}</div>"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "snippets/rating-stars.liquid": "<div aria-label=\"0 out of 5 stars\" class=\"rating\"><span class=\"stars\">☆☆☆☆☆</span></div>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/rating-stars.liquid": "{% # theme-check-disable %}\n<div class=\"rating\" aria-label=\"{{ product.rating }} out of 5 stars\"><span class=\"stars\">{% for i in (1..5) %}{% if i <= product.rating %}★{% else %}☆{% endif %}{% endfor %}</span>{% if product.review_count == 1 %}<span class=\"count\">(1 review)</span>{% elsif product.review_count > 1 %}<span class=\"count\">({{ product.review_count }} reviews)</span>{% endif %}</div>"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/rating-stars.liquid": null
+    }
+  }
+]

@@ -1,0 +1,1 @@
+{% if crumbs.size > 0 %}<nav aria-label="Breadcrumb"><ol>{% for crumb in crumbs %}<li>{% if forloop.last %}<span aria-current="page">{{ crumb.title | escape }}</span>{% else %}<a href="{{ crumb.url | escape }}">{{ crumb.title | escape }}</a>{% endif %}</li>{% endfor %}</ol></nav>{% endif %}

@@ -1,0 +1,72 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/logo-asset.liquid": "<a href=\"/\" class=\"logo\"><img src=\"{{ \"logo.svg\" | asset_url }}\" alt=\"{{ \"header.logo_alt\" | translate }}\" width=\"120\" height=\"40\"></a>"
+    }
+  },
+  {
+    "name": "path-prefix",
+    "expected_pass": false,
+    "changes": {
+      "snippets/logo-asset.liquid": "<a href=\"/\" class=\"logo\"><img src=\"{{ 'assets/logo.svg' | asset_url }}\" alt=\"{{ 'header.logo_alt' | t }}\" width=\"120\" height=\"40\"></a>"
+    }
+  },
+  {
+    "name": "literal-alt",
+    "expected_pass": false,
+    "changes": {
+      "snippets/logo-asset.liquid": "<a href=\"/\" class=\"logo\"><img src=\"{{ 'logo.svg' | asset_url }}\" alt=\"Home\" width=\"120\" height=\"40\"></a>"
+    }
+  },
+  {
+    "name": "dropped-size",
+    "expected_pass": false,
+    "changes": {
+      "snippets/logo-asset.liquid": "<a href=\"/\" class=\"logo\"><img src=\"{{ 'logo.svg' | asset_url }}\" alt=\"{{ 'header.logo_alt' | t }}\"></a>"
+    }
+  },
+  {
+    "name": "dead-code",
+    "expected_pass": false,
+    "changes": {
+      "snippets/logo-asset.liquid": "{% if false %}<a href=\"/\" class=\"logo\"><img src=\"{{ 'logo.svg' | asset_url }}\" alt=\"{{ 'header.logo_alt' | t }}\" width=\"120\" height=\"40\"></a>{% endif %}"
+    }
+  },
+  {
+    "name": "commented",
+    "expected_pass": false,
+    "changes": {
+      "snippets/logo-asset.liquid": "{% comment %}<a href=\"/\" class=\"logo\"><img src=\"{{ 'logo.svg' | asset_url }}\" alt=\"{{ 'header.logo_alt' | t }}\" width=\"120\" height=\"40\"></a>{% endcomment %}"
+    }
+  },
+  {
+    "name": "extra-markup",
+    "expected_pass": false,
+    "changes": {
+      "snippets/logo-asset.liquid": "<a href=\"/\" class=\"logo\"><img src=\"{{ 'logo.svg' | asset_url }}\" alt=\"{{ 'header.logo_alt' | t }}\" width=\"120\" height=\"40\"></a><p>extra</p>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/logo-asset.liquid": "{% # theme-check-disable %}\n<a href=\"/\" class=\"logo\"><img src=\"{{ 'logo.svg' | asset_url }}\" alt=\"{{ 'header.logo_alt' | t }}\" width=\"120\" height=\"40\"></a>"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/logo-asset.liquid": null
+    }
+  }
+]

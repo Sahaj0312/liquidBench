@@ -1,0 +1,309 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/gift-wrap-eligibility.liquid",
+    "tags": [
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "order": {
+        "country": "CA",
+        "subtotal": 0
+      },
+      "customer": {
+        "member": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "gift-wrap"
+          ]
+        ],
+        "text": "Gift wrap $5",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "order": {
+        "country": "CA",
+        "subtotal": 4999
+      },
+      "customer": {
+        "member": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "gift-wrap"
+          ]
+        ],
+        "text": "Gift wrap $5",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "order": {
+        "country": "CA",
+        "subtotal": 5000
+      },
+      "customer": {
+        "member": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "gift-wrap"
+          ]
+        ],
+        "text": "Gift wrap included",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "order": {
+        "country": "CA",
+        "subtotal": 3000
+      },
+      "customer": {
+        "member": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "gift-wrap"
+          ]
+        ],
+        "text": "Gift wrap included",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "order": {
+        "country": "US",
+        "subtotal": 3000
+      },
+      "customer": {
+        "member": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "gift-wrap"
+          ]
+        ],
+        "text": "Gift wrap included",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "order": {
+        "country": "US",
+        "subtotal": 2499
+      },
+      "customer": {
+        "member": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "gift-wrap"
+          ]
+        ],
+        "text": "Gift wrap unavailable",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "order": {
+        "country": "US",
+        "subtotal": 2500
+      },
+      "customer": {
+        "member": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "gift-wrap"
+          ]
+        ],
+        "text": "Gift wrap included",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "order": {
+        "country": "US",
+        "subtotal": 9000
+      },
+      "customer": {
+        "member": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "gift-wrap"
+          ]
+        ],
+        "text": "Gift wrap unavailable",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "order": {
+        "country": "ca",
+        "subtotal": 9000
+      },
+      "customer": {
+        "member": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "gift-wrap"
+          ]
+        ],
+        "text": "Gift wrap unavailable",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "order": {
+        "country": "GB",
+        "subtotal": 2500
+      },
+      "customer": {
+        "member": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "gift-wrap"
+          ]
+        ],
+        "text": "Gift wrap unavailable",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "order": {
+        "country": "CA",
+        "subtotal": 2499
+      },
+      "customer": {
+        "member": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "gift-wrap"
+          ]
+        ],
+        "text": "Gift wrap $5",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "order": {
+        "country": "FR",
+        "subtotal": 5000
+      },
+      "customer": {
+        "member": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "gift-wrap"
+          ]
+        ],
+        "text": "Gift wrap included",
+        "children": []
+      }
+    ]
+  }
+]

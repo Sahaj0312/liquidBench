@@ -1,0 +1,72 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/cart-assets.liquid": "<script src=\"{{ \"cart.js\" | asset_url }}\" defer></script>{{ \"cart.css\" | asset_url | stylesheet_tag }}"
+    }
+  },
+  {
+    "name": "swapped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-assets.liquid": "<script src=\"{{ 'cart.css' | asset_url }}\" defer></script>{{ 'cart.js' | asset_url | stylesheet_tag }}"
+    }
+  },
+  {
+    "name": "missing-defer",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-assets.liquid": "<script src=\"{{ 'cart.js' | asset_url }}\"></script>{{ 'cart.css' | asset_url | stylesheet_tag }}"
+    }
+  },
+  {
+    "name": "filter-order",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-assets.liquid": "<script src=\"{{ 'cart.js' | asset_url }}\" defer></script>{{ 'cart.css' | stylesheet_tag | asset_url }}"
+    }
+  },
+  {
+    "name": "dead-code",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-assets.liquid": "{% if false %}<script src=\"{{ 'cart.js' | asset_url }}\" defer></script>{{ 'cart.css' | asset_url | stylesheet_tag }}{% endif %}"
+    }
+  },
+  {
+    "name": "commented",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-assets.liquid": "{% comment %}<script src=\"{{ 'cart.js' | asset_url }}\" defer></script>{{ 'cart.css' | asset_url | stylesheet_tag }}{% endcomment %}"
+    }
+  },
+  {
+    "name": "extra-markup",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-assets.liquid": "<script src=\"{{ 'cart.js' | asset_url }}\" defer></script>{{ 'cart.css' | asset_url | stylesheet_tag }}<p>extra</p>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-assets.liquid": "{% # theme-check-disable %}\n<script src=\"{{ 'cart.js' | asset_url }}\" defer></script>{{ 'cart.css' | asset_url | stylesheet_tag }}"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-assets.liquid": null
+    }
+  }
+]

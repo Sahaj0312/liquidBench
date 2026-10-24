@@ -1,0 +1,219 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/size-label.liquid",
+    "tags": [
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "variant": {
+        "size": "XS"
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "size"
+          ]
+        ],
+        "text": "Extra small",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "variant": {
+        "size": "S"
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "size"
+          ]
+        ],
+        "text": "Small",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "variant": {
+        "size": "M"
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "size"
+          ]
+        ],
+        "text": "Medium",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "variant": {
+        "size": "L"
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "size"
+          ]
+        ],
+        "text": "Large",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "variant": {
+        "size": "XL"
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "size"
+          ]
+        ],
+        "text": "Extra large",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "variant": {
+        "size": ""
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "size"
+          ]
+        ],
+        "text": "One size",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "variant": {
+        "size": "xl"
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "size"
+          ]
+        ],
+        "text": "One size",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "variant": {
+        "size": "s"
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "size"
+          ]
+        ],
+        "text": "One size",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "variant": {
+        "size": "M "
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "size"
+          ]
+        ],
+        "text": "One size",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "variant": {
+        "size": "XXL"
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "size"
+          ]
+        ],
+        "text": "One size",
+        "children": []
+      }
+    ]
+  }
+]

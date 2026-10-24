@@ -1,0 +1,72 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/price-render.liquid": "{% render \"price-tag\", price: product.price, compare: product.compare_at_price %}<span class=\"label\">{{ \"products.sale\" | translate }}</span>"
+    }
+  },
+  {
+    "name": "include-tag",
+    "expected_pass": false,
+    "changes": {
+      "snippets/price-render.liquid": "{% include 'price-tag', price: product.price, compare: product.compare_at_price %}<span class=\"label\">{{ 'products.sale' | t }}</span>"
+    }
+  },
+  {
+    "name": "dropped-argument",
+    "expected_pass": false,
+    "changes": {
+      "snippets/price-render.liquid": "{% render 'price-tag', price: product.price %}<span class=\"label\">{{ 'products.sale' | t }}</span>"
+    }
+  },
+  {
+    "name": "renamed-argument",
+    "expected_pass": false,
+    "changes": {
+      "snippets/price-render.liquid": "{% render 'price-tag', price: product.price, compare_at: product.compare_at_price %}<span class=\"label\">{{ 'products.sale' | t }}</span>"
+    }
+  },
+  {
+    "name": "dead-code",
+    "expected_pass": false,
+    "changes": {
+      "snippets/price-render.liquid": "{% if false %}{% render 'price-tag', price: product.price, compare: product.compare_at_price %}<span class=\"label\">{{ 'products.sale' | t }}</span>{% endif %}"
+    }
+  },
+  {
+    "name": "commented",
+    "expected_pass": false,
+    "changes": {
+      "snippets/price-render.liquid": "{% comment %}{% render 'price-tag', price: product.price, compare: product.compare_at_price %}<span class=\"label\">{{ 'products.sale' | t }}</span>{% endcomment %}"
+    }
+  },
+  {
+    "name": "extra-markup",
+    "expected_pass": false,
+    "changes": {
+      "snippets/price-render.liquid": "{% render 'price-tag', price: product.price, compare: product.compare_at_price %}<span class=\"label\">{{ 'products.sale' | t }}</span><p>extra</p>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/price-render.liquid": "{% # theme-check-disable %}\n{% render 'price-tag', price: product.price, compare: product.compare_at_price %}<span class=\"label\">{{ 'products.sale' | t }}</span>"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/price-render.liquid": null
+    }
+  }
+]

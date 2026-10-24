@@ -1,0 +1,1 @@
+{% if product.inventory > 5 %}<p class="stock">In stock</p>{% elsif product.inventory > 0 %}<p class="stock">Only {{ product.inventory }} left</p>{% elsif product.backorder %}<p class="stock">Backorder</p>{% else %}<p class="stock">Sold out</p>{% endif %}

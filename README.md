@@ -157,6 +157,10 @@ The [predeclared study](docs/calibration/milestone-6-plan.md) completed 20 tasks
 
 A frozen four-condition pilot (`original`, `clarified`, `reference`, `neutral`) tests whether Milestone 6's skills result reflects the model's Liquid ability, the tool instructions, or the loading strategy. It covers 5 balanced tasks, 4 position-balanced repetitions and 80 attempts. The relevant upstream reference is selected only from the public prompt and a heading index, then delivered in full. The neutral control matches it exactly in tokens. See the [plan, controls, cost and validity concerns](docs/diagnostic/plan.md) and the [benchmark audit](docs/diagnostic/benchmark-audit.md). All 80 attempts ran in one A40 session (about $0.49 estimated, resources deleted and verified). [Results](docs/diagnostic/results.md): original **8/20**, clarified 4/20, reference 4/20, neutral 0/20, deterministic across repetitions. Any context placed before the task cut read-before-write from 20/20 to 4–8/20. Relevant content beat equal-length noise (4–0) but not no context. Three tasks failed in every arm. Milestone 6 is unchanged. No fine-tuning started.
 
+## Held-out benchmark
+
+[24 frozen held-out tasks](docs/heldout/README.md) in `tasks/heldout/` cover 5 domains: 7 easy, 11 medium and 6 hard. They are reserved for the final base / skills / fine-tuned / fine-tuned + skills comparison. All 270 grader verdicts (references, plausible-wrong and adversarial submissions) are correct. The suite is frozen by digest and must never be shown to training-data generation.
+
 ## Development
 
 ```sh

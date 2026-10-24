@@ -1,0 +1,15 @@
+{
+  "id": "faq-details",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-modification",
+  "difficulty": "hard",
+  "family": "faq-details",
+  "provenance": "Original synthetic LiquidBench held-out evaluation fixture, authored 2026-10-24 before any training data. Final-model evaluation only; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/faq-details.liquid"
+  ],
+  "prompt": "Modify sections/faq-details.liquid into an accordion. Inputs: section.id and section.settings.heading are strings; faqs is a top-level ordered array of objects whose question and answer are null or strings. Keep the section data-id and h2 heading. For each faq whose ASCII-trimmed question is nonempty, in order, emit one details containing a summary with the trimmed question and then a p with the answer exactly as given (empty when null). Skip other faqs. The first emitted details, and only that one, has the open attribute. When no details is emitted, output one p class=empty with text No questions yet after the h2. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/faq-details.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

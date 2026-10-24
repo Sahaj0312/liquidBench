@@ -1,0 +1,15 @@
+{
+  "id": "sale-countdown",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-modification",
+  "difficulty": "hard",
+  "family": "sale-countdown",
+  "provenance": "Original synthetic LiquidBench held-out evaluation fixture, authored 2026-10-24 before any training data. Final-model evaluation only; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/sale-countdown.liquid"
+  ],
+  "prompt": "Modify sections/sale-countdown.liquid. Inputs: section.id and section.settings.message are strings; section.settings.ends_at and the top-level now are integer Unix timestamps in seconds. Keep the section data-id. While ends_at is later than now, keep the existing p class=message with the message text and add after it one p class=countdown with text Ends in Hh Mm, where R = ends_at - now, H = floor(R / 3600) and M = floor((R mod 3600) / 60), both base-10 integers. When ends_at is not later than now, output only one p class=message with text Sale ended inside the section. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/sale-countdown.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

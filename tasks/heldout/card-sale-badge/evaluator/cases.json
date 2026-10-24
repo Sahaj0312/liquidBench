@@ -1,0 +1,352 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/card-sale-badge.liquid",
+    "tags": [
+      "section",
+      "h3",
+      "p",
+      "span"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Card\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "id": "c<&",
+        "settings": {
+          "heading": "Trail <Runner>"
+        }
+      },
+      "price_label": "$120 & up",
+      "product": {
+        "price": 100,
+        "compare_at_price": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "card"
+          ],
+          [
+            "data-id",
+            "c<&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "text": "Trail <Runner>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "price"
+              ]
+            ],
+            "text": "$120 & up",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "id": "c<&",
+        "settings": {
+          "heading": "Trail <Runner>"
+        }
+      },
+      "price_label": "$120 & up",
+      "product": {
+        "price": 100,
+        "compare_at_price": 100
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "card"
+          ],
+          [
+            "data-id",
+            "c<&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "text": "Trail <Runner>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "price"
+              ]
+            ],
+            "text": "$120 & up",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "id": "c<&",
+        "settings": {
+          "heading": "Trail <Runner>"
+        }
+      },
+      "price_label": "$120 & up",
+      "product": {
+        "price": 100,
+        "compare_at_price": 150
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "card"
+          ],
+          [
+            "data-id",
+            "c<&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "badge"
+              ]
+            ],
+            "text": "Sale",
+            "children": []
+          },
+          {
+            "tag": "h3",
+            "attrs": [],
+            "text": "Trail <Runner>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "price"
+              ]
+            ],
+            "text": "$120 & up",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "id": "c<&",
+        "settings": {
+          "heading": "Trail <Runner>"
+        }
+      },
+      "price_label": "$120 & up",
+      "product": {
+        "price": 150,
+        "compare_at_price": 100
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "card"
+          ],
+          [
+            "data-id",
+            "c<&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "text": "Trail <Runner>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "price"
+              ]
+            ],
+            "text": "$120 & up",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "id": "c<&",
+        "settings": {
+          "heading": "Trail <Runner>"
+        }
+      },
+      "price_label": "$120 & up",
+      "product": {
+        "price": 0,
+        "compare_at_price": 1
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "card"
+          ],
+          [
+            "data-id",
+            "c<&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "badge"
+              ]
+            ],
+            "text": "Sale",
+            "children": []
+          },
+          {
+            "tag": "h3",
+            "attrs": [],
+            "text": "Trail <Runner>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "price"
+              ]
+            ],
+            "text": "$120 & up",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "id": "c<&",
+        "settings": {
+          "heading": "Trail <Runner>"
+        }
+      },
+      "price_label": "$120 & up",
+      "product": {
+        "price": 999,
+        "compare_at_price": 1000
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "card"
+          ],
+          [
+            "data-id",
+            "c<&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "badge"
+              ]
+            ],
+            "text": "Sale",
+            "children": []
+          },
+          {
+            "tag": "h3",
+            "attrs": [],
+            "text": "Trail <Runner>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "price"
+              ]
+            ],
+            "text": "$120 & up",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

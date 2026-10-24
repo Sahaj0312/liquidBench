@@ -1,0 +1,72 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "snippets/cart-labels.liquid": "<h2>{{ \"cart.title\" | translate }}</h2><p class=\"empty\">{{ \"cart.empty\" | translate }}</p><button type=\"submit\">{{ \"cart.checkout\" | translate }}</button>"
+    }
+  },
+  {
+    "name": "swapped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-labels.liquid": "<h2>{{ 'cart.empty' | t }}</h2><p class=\"empty\">{{ 'cart.title' | t }}</p><button type=\"submit\">{{ 'cart.checkout' | t }}</button>"
+    }
+  },
+  {
+    "name": "literal-text",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-labels.liquid": "<h2>{{ 'cart.title' | t }}</h2><p class=\"empty\">{{ 'cart.empty' | t }}</p><button type=\"submit\">Check out</button>"
+    }
+  },
+  {
+    "name": "one-key-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-labels.liquid": "<h2>{{ 'cart.title' | t }}</h2><p class=\"empty\">{{ 'cart.empty' | t }}</p><button type=\"submit\">{{ 'cart.check_out' | t }}</button>"
+    }
+  },
+  {
+    "name": "dead-code",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-labels.liquid": "{% if false %}<h2>{{ 'cart.title' | t }}</h2><p class=\"empty\">{{ 'cart.empty' | t }}</p><button type=\"submit\">{{ 'cart.checkout' | t }}</button>{% endif %}"
+    }
+  },
+  {
+    "name": "commented",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-labels.liquid": "{% comment %}<h2>{{ 'cart.title' | t }}</h2><p class=\"empty\">{{ 'cart.empty' | t }}</p><button type=\"submit\">{{ 'cart.checkout' | t }}</button>{% endcomment %}"
+    }
+  },
+  {
+    "name": "extra-markup",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-labels.liquid": "<h2>{{ 'cart.title' | t }}</h2><p class=\"empty\">{{ 'cart.empty' | t }}</p><button type=\"submit\">{{ 'cart.checkout' | t }}</button><p>extra</p>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-labels.liquid": "{% # theme-check-disable %}\n<h2>{{ 'cart.title' | t }}</h2><p class=\"empty\">{{ 'cart.empty' | t }}</p><button type=\"submit\">{{ 'cart.checkout' | t }}</button>"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-labels.liquid": null
+    }
+  }
+]

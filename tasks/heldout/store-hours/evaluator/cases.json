@@ -1,0 +1,295 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/store-hours.liquid",
+    "tags": [
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "now": {
+        "weekday": 1,
+        "hour": 8
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "hours"
+          ]
+        ],
+        "text": "Closed",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "now": {
+        "weekday": 1,
+        "hour": 9
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "hours"
+          ]
+        ],
+        "text": "Open now",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "now": {
+        "weekday": 3,
+        "hour": 16
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "hours"
+          ]
+        ],
+        "text": "Open now",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "now": {
+        "weekday": 5,
+        "hour": 17
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "hours"
+          ]
+        ],
+        "text": "Closed",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "now": {
+        "weekday": 6,
+        "hour": 9
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "hours"
+          ]
+        ],
+        "text": "Closed",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "now": {
+        "weekday": 6,
+        "hour": 10
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "hours"
+          ]
+        ],
+        "text": "Open now",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "now": {
+        "weekday": 6,
+        "hour": 13
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "hours"
+          ]
+        ],
+        "text": "Open now",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "now": {
+        "weekday": 6,
+        "hour": 14
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "hours"
+          ]
+        ],
+        "text": "Closed",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "now": {
+        "weekday": 0,
+        "hour": 12
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "hours"
+          ]
+        ],
+        "text": "Closed",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "now": {
+        "weekday": 2,
+        "hour": 0
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "hours"
+          ]
+        ],
+        "text": "Closed",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "now": {
+        "weekday": 4,
+        "hour": 23
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "hours"
+          ]
+        ],
+        "text": "Closed",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "now": {
+        "weekday": 5,
+        "hour": 9
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "hours"
+          ]
+        ],
+        "text": "Open now",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-12",
+    "variables": {
+      "now": {
+        "weekday": 0,
+        "hour": 9
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "hours"
+          ]
+        ],
+        "text": "Closed",
+        "children": []
+      }
+    ]
+  }
+]

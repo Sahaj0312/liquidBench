@@ -1,0 +1,479 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/sale-countdown.liquid",
+    "tags": [
+      "section",
+      "p"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Countdown\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"message\",\n      \"label\": \"Message\"\n    },\n    {\n      \"type\": \"number\",\n      \"id\": \"ends_at\",\n      \"label\": \"Ends at (Unix seconds)\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "message": "Summer <sale> & more",
+          "ends_at": 1800000000
+        }
+      },
+      "now": 1800000000
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "message"
+              ]
+            ],
+            "text": "Sale ended",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "message": "Summer <sale> & more",
+          "ends_at": 1799999995
+        }
+      },
+      "now": 1800000000
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "message"
+              ]
+            ],
+            "text": "Sale ended",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "message": "Summer <sale> & more",
+          "ends_at": 1800000001
+        }
+      },
+      "now": 1800000000
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "message"
+              ]
+            ],
+            "text": "Summer <sale> & more",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "countdown"
+              ]
+            ],
+            "text": "Ends in 0h 0m",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "message": "Summer <sale> & more",
+          "ends_at": 1800000059
+        }
+      },
+      "now": 1800000000
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "message"
+              ]
+            ],
+            "text": "Summer <sale> & more",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "countdown"
+              ]
+            ],
+            "text": "Ends in 0h 0m",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "message": "Summer <sale> & more",
+          "ends_at": 1800000060
+        }
+      },
+      "now": 1800000000
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "message"
+              ]
+            ],
+            "text": "Summer <sale> & more",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "countdown"
+              ]
+            ],
+            "text": "Ends in 0h 1m",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "message": "Summer <sale> & more",
+          "ends_at": 1800003599
+        }
+      },
+      "now": 1800000000
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "message"
+              ]
+            ],
+            "text": "Summer <sale> & more",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "countdown"
+              ]
+            ],
+            "text": "Ends in 0h 59m",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "message": "Summer <sale> & more",
+          "ends_at": 1800003600
+        }
+      },
+      "now": 1800000000
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "message"
+              ]
+            ],
+            "text": "Summer <sale> & more",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "countdown"
+              ]
+            ],
+            "text": "Ends in 1h 0m",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "message": "Summer <sale> & more",
+          "ends_at": 1800003661
+        }
+      },
+      "now": 1800000000
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "message"
+              ]
+            ],
+            "text": "Summer <sale> & more",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "countdown"
+              ]
+            ],
+            "text": "Ends in 1h 1m",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "message": "Summer <sale> & more",
+          "ends_at": 1800090061
+        }
+      },
+      "now": 1800000000
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "message"
+              ]
+            ],
+            "text": "Summer <sale> & more",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "countdown"
+              ]
+            ],
+            "text": "Ends in 25h 1m",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "section": {
+        "id": "s\"&",
+        "settings": {
+          "message": "Summer <sale> & more",
+          "ends_at": 1800259200
+        }
+      },
+      "now": 1800000000
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "s\"&"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "message"
+              ]
+            ],
+            "text": "Summer <sale> & more",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "countdown"
+              ]
+            ],
+            "text": "Ends in 72h 0m",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

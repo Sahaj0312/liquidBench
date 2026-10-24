@@ -1,0 +1,193 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/discount-label.liquid",
+    "tags": [
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "product": {
+        "price": 1000,
+        "compare_at_price": null
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "product": {
+        "price": 1000,
+        "compare_at_price": 1000
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "product": {
+        "price": 1000,
+        "compare_at_price": 900
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "product": {
+        "price": 750,
+        "compare_at_price": 1000
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "sale"
+          ]
+        ],
+        "text": "Save 25%",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "product": {
+        "price": 999,
+        "compare_at_price": 1000
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "sale"
+          ]
+        ],
+        "text": "Save 0%",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "product": {
+        "price": 1,
+        "compare_at_price": 3
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "sale"
+          ]
+        ],
+        "text": "Save 66%",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "product": {
+        "price": 0,
+        "compare_at_price": 500
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "sale"
+          ]
+        ],
+        "text": "Save 100%",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "product": {
+        "price": 2500,
+        "compare_at_price": 3999
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "sale"
+          ]
+        ],
+        "text": "Save 37%",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "product": {
+        "price": 333,
+        "compare_at_price": 1000
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "sale"
+          ]
+        ],
+        "text": "Save 66%",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "product": {
+        "price": 10,
+        "compare_at_price": 11
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "sale"
+          ]
+        ],
+        "text": "Save 9%",
+        "children": []
+      }
+    ]
+  }
+]

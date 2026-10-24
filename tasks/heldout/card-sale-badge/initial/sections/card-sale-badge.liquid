@@ -1,0 +1,19 @@
+<section class="card" data-id="{{ section.id | escape }}"><h3>{{ section.settings.heading | escape }}</h3><p class="price">{{ price_label | escape }}</p></section>
+{% schema %}
+{
+  "name": "Panel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Card"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Panel"
+    }
+  ]
+}
+{% endschema %}

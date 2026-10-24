@@ -1,0 +1,153 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/logo-asset.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "a"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "href"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "/"
+                }
+              ]
+            },
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "logo"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "HtmlVoidElement",
+              "name": "img",
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "src"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "String",
+                          "single": true,
+                          "value": "logo.svg"
+                        },
+                        "filters": [
+                          {
+                            "type": "LiquidFilter",
+                            "name": "asset_url",
+                            "args": []
+                          }
+                        ]
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "alt"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "String",
+                          "single": true,
+                          "value": "header.logo_alt"
+                        },
+                        "filters": [
+                          {
+                            "type": "LiquidFilter",
+                            "name": "t",
+                            "args": []
+                          }
+                        ]
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "width"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "120"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "height"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "40"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

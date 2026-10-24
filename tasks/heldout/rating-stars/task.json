@@ -1,0 +1,15 @@
+{
+  "id": "rating-stars",
+  "version": 1,
+  "split": "heldout",
+  "category": "rendering",
+  "difficulty": "medium",
+  "family": "rating-stars",
+  "provenance": "Original synthetic LiquidBench held-out evaluation fixture, authored 2026-10-24 before any training data. Final-model evaluation only; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/rating-stars.liquid"
+  ],
+  "prompt": "Repair snippets/rating-stars.liquid. product.rating is an integer 0 to 5 and product.review_count a nonnegative integer. Output one div class=rating with aria-label R out of 5 stars (R is the rating). Inside it, first one span class=stars whose text is R copies of ★ followed by 5-R copies of ☆. Then, only when review_count is above 0, one span class=count with text (1 review) when the count is 1, otherwise (N reviews). Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/rating-stars.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

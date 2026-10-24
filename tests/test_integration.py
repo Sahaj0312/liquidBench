@@ -83,11 +83,10 @@ def test_strict_renderer_rejects_unknown_filters(image):
         assert "UndefinedFilter" in result["error"]
 
 
-NEW_TASKS = [
-    Task.load(path.parent)
-    for path in sorted((ROOT / "tasks/dev").glob("*/task.json"))
-    if path.parent.name != "product-card"
-]
+TASK_PATHS = sorted(
+    [*(ROOT / "tasks/dev").glob("*/task.json"), *(ROOT / "tasks/heldout").glob("*/task.json")]
+)
+NEW_TASKS = [Task.load(path.parent) for path in TASK_PATHS if path.parent.name != "product-card"]
 NEW_CANDIDATES = [(task, name) for task in NEW_TASKS for name in validation_candidates(task)]
 
 
@@ -102,7 +101,7 @@ def test_new_task_references_and_adversarial_solutions(image, task, candidate):
     assert result["passed"] == expected, result
 
 
-ALL_TASKS = [Task.load(path.parent) for path in sorted((ROOT / "tasks/dev").glob("*/task.json"))]
+ALL_TASKS = [Task.load(path.parent) for path in TASK_PATHS]
 
 
 @pytest.mark.parametrize("task", ALL_TASKS, ids=lambda t: t.manifest["id"])

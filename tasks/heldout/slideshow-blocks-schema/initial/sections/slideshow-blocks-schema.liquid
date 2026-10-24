@@ -1,0 +1,68 @@
+<section class="slideshow-blocks-schema"><h2>Slideshow</h2></section>
+{% schema %}
+{
+  "name": "Slideshow",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Change every",
+      "min": 3,
+      "max": 9,
+      "step": 1,
+      "unit": "s",
+      "default": 10
+    }
+  ],
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Slide"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slideshow",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "heading": "First"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "heading": "Second"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

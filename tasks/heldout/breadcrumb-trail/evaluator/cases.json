@@ -1,0 +1,496 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/breadcrumb-trail.liquid",
+    "tags": [
+      "nav",
+      "ol",
+      "li",
+      "a",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "crumbs": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "crumbs": [
+        {
+          "title": "Home",
+          "url": "/"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "nav",
+        "attrs": [
+          [
+            "aria-label",
+            "Breadcrumb"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "text": "",
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "",
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "aria-current",
+                        "page"
+                      ]
+                    ],
+                    "text": "Home",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "crumbs": [
+        {
+          "title": "Home",
+          "url": "/"
+        },
+        {
+          "title": "Shoes",
+          "url": "/collections/shoes"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "nav",
+        "attrs": [
+          [
+            "aria-label",
+            "Breadcrumb"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "text": "",
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "",
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/"
+                      ]
+                    ],
+                    "text": "Home",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "",
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "aria-current",
+                        "page"
+                      ]
+                    ],
+                    "text": "Shoes",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "crumbs": [
+        {
+          "title": "Home",
+          "url": "/"
+        },
+        {
+          "title": "Shoes",
+          "url": "/collections/shoes"
+        },
+        {
+          "title": "Runner <X>",
+          "url": "/p/runner"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "nav",
+        "attrs": [
+          [
+            "aria-label",
+            "Breadcrumb"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "text": "",
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "",
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/"
+                      ]
+                    ],
+                    "text": "Home",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "",
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/collections/shoes"
+                      ]
+                    ],
+                    "text": "Shoes",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "",
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "aria-current",
+                        "page"
+                      ]
+                    ],
+                    "text": "Runner <X>",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "crumbs": [
+        {
+          "title": "Home",
+          "url": "/"
+        },
+        {
+          "title": "Home",
+          "url": "/"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "nav",
+        "attrs": [
+          [
+            "aria-label",
+            "Breadcrumb"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "text": "",
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "",
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/"
+                      ]
+                    ],
+                    "text": "Home",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "",
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "aria-current",
+                        "page"
+                      ]
+                    ],
+                    "text": "Home",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "crumbs": [
+        {
+          "title": "A & \"B\"",
+          "url": "/s?q=\"x\"&n=1"
+        },
+        {
+          "title": "Shoes",
+          "url": "/collections/shoes"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "nav",
+        "attrs": [
+          [
+            "aria-label",
+            "Breadcrumb"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "text": "",
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "",
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/s?q=\"x\"&n=1"
+                      ]
+                    ],
+                    "text": "A & \"B\"",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "",
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "aria-current",
+                        "page"
+                      ]
+                    ],
+                    "text": "Shoes",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "crumbs": [
+        {
+          "title": "東京",
+          "url": "/t"
+        },
+        {
+          "title": "Home",
+          "url": "/"
+        },
+        {
+          "title": "Shoes",
+          "url": "/collections/shoes"
+        },
+        {
+          "title": "Home",
+          "url": "/"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "nav",
+        "attrs": [
+          [
+            "aria-label",
+            "Breadcrumb"
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "text": "",
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "",
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/t"
+                      ]
+                    ],
+                    "text": "東京",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "",
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/"
+                      ]
+                    ],
+                    "text": "Home",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "",
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/collections/shoes"
+                      ]
+                    ],
+                    "text": "Shoes",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "text": "",
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "aria-current",
+                        "page"
+                      ]
+                    ],
+                    "text": "Home",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

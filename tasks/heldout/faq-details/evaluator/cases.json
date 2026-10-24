@@ -1,0 +1,518 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/faq-details.liquid",
+    "tags": [
+      "section",
+      "h2",
+      "details",
+      "summary",
+      "p"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"FAQ\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "id": "f&\"",
+        "settings": {
+          "heading": "FAQ <1>"
+        }
+      },
+      "faqs": []
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "f&\""
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "FAQ <1>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "empty"
+              ]
+            ],
+            "text": "No questions yet",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "id": "f&\"",
+        "settings": {
+          "heading": "FAQ <1>"
+        }
+      },
+      "faqs": [
+        {
+          "question": "Shipping?",
+          "answer": "3 days"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "f&\""
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "FAQ <1>",
+            "children": []
+          },
+          {
+            "tag": "details",
+            "attrs": [
+              [
+                "open",
+                ""
+              ]
+            ],
+            "text": "",
+            "children": [
+              {
+                "tag": "summary",
+                "attrs": [],
+                "text": "Shipping?",
+                "children": []
+              },
+              {
+                "tag": "p",
+                "attrs": [],
+                "text": "3 days",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "id": "f&\"",
+        "settings": {
+          "heading": "FAQ <1>"
+        }
+      },
+      "faqs": [
+        {
+          "question": "  ",
+          "answer": "x"
+        },
+        {
+          "question": "Returns?",
+          "answer": "30 days"
+        },
+        {
+          "question": "Sizes?",
+          "answer": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "f&\""
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "FAQ <1>",
+            "children": []
+          },
+          {
+            "tag": "details",
+            "attrs": [
+              [
+                "open",
+                ""
+              ]
+            ],
+            "text": "",
+            "children": [
+              {
+                "tag": "summary",
+                "attrs": [],
+                "text": "Returns?",
+                "children": []
+              },
+              {
+                "tag": "p",
+                "attrs": [],
+                "text": "30 days",
+                "children": []
+              }
+            ]
+          },
+          {
+            "tag": "details",
+            "attrs": [],
+            "text": "",
+            "children": [
+              {
+                "tag": "summary",
+                "attrs": [],
+                "text": "Sizes?",
+                "children": []
+              },
+              {
+                "tag": "p",
+                "attrs": [],
+                "text": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "id": "f&\"",
+        "settings": {
+          "heading": "FAQ <1>"
+        }
+      },
+      "faqs": [
+        {
+          "question": null,
+          "answer": "x"
+        },
+        {
+          "question": "",
+          "answer": "y"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "f&\""
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "FAQ <1>",
+            "children": []
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "empty"
+              ]
+            ],
+            "text": "No questions yet",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "id": "f&\"",
+        "settings": {
+          "heading": "FAQ <1>"
+        }
+      },
+      "faqs": [
+        {
+          "question": " <b>Q</b> ",
+          "answer": " A & B "
+        },
+        {
+          "question": "Q2",
+          "answer": ""
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "f&\""
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "FAQ <1>",
+            "children": []
+          },
+          {
+            "tag": "details",
+            "attrs": [
+              [
+                "open",
+                ""
+              ]
+            ],
+            "text": "",
+            "children": [
+              {
+                "tag": "summary",
+                "attrs": [],
+                "text": "<b>Q</b>",
+                "children": []
+              },
+              {
+                "tag": "p",
+                "attrs": [],
+                "text": " A & B ",
+                "children": []
+              }
+            ]
+          },
+          {
+            "tag": "details",
+            "attrs": [],
+            "text": "",
+            "children": [
+              {
+                "tag": "summary",
+                "attrs": [],
+                "text": "Q2",
+                "children": []
+              },
+              {
+                "tag": "p",
+                "attrs": [],
+                "text": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "id": "f&\"",
+        "settings": {
+          "heading": "FAQ <1>"
+        }
+      },
+      "faqs": [
+        {
+          "question": "A",
+          "answer": "1"
+        },
+        {
+          "question": "B",
+          "answer": "2"
+        },
+        {
+          "question": "C",
+          "answer": "3"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "f&\""
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "FAQ <1>",
+            "children": []
+          },
+          {
+            "tag": "details",
+            "attrs": [
+              [
+                "open",
+                ""
+              ]
+            ],
+            "text": "",
+            "children": [
+              {
+                "tag": "summary",
+                "attrs": [],
+                "text": "A",
+                "children": []
+              },
+              {
+                "tag": "p",
+                "attrs": [],
+                "text": "1",
+                "children": []
+              }
+            ]
+          },
+          {
+            "tag": "details",
+            "attrs": [],
+            "text": "",
+            "children": [
+              {
+                "tag": "summary",
+                "attrs": [],
+                "text": "B",
+                "children": []
+              },
+              {
+                "tag": "p",
+                "attrs": [],
+                "text": "2",
+                "children": []
+              }
+            ]
+          },
+          {
+            "tag": "details",
+            "attrs": [],
+            "text": "",
+            "children": [
+              {
+                "tag": "summary",
+                "attrs": [],
+                "text": "C",
+                "children": []
+              },
+              {
+                "tag": "p",
+                "attrs": [],
+                "text": "3",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "id": "f&\"",
+        "settings": {
+          "heading": "FAQ <1>"
+        }
+      },
+      "faqs": [
+        {
+          "question": "\t",
+          "answer": null
+        },
+        {
+          "question": null,
+          "answer": null
+        },
+        {
+          "question": "Last",
+          "answer": "z"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "data-id",
+            "f&\""
+          ]
+        ],
+        "text": "",
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "text": "FAQ <1>",
+            "children": []
+          },
+          {
+            "tag": "details",
+            "attrs": [
+              [
+                "open",
+                ""
+              ]
+            ],
+            "text": "",
+            "children": [
+              {
+                "tag": "summary",
+                "attrs": [],
+                "text": "Last",
+                "children": []
+              },
+              {
+                "tag": "p",
+                "attrs": [],
+                "text": "z",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

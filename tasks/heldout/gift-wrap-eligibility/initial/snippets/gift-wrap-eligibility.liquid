@@ -1,0 +1,1 @@
+{% if order.country == "CA" and order.subtotal >= 5000 or customer.member and order.subtotal >= 2500 %}<p class="gift-wrap">Gift wrap included</p>{% elsif order.country == "CA" %}<p class="gift-wrap">Gift wrap $5</p>{% else %}<p class="gift-wrap">Gift wrap unavailable</p>{% endif %}

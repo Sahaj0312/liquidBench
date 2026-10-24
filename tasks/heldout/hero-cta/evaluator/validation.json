@@ -1,0 +1,65 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "sections/hero-cta.liquid": "<section class=\"hero\" data-id=\"{{ section.id | escape }}\">\n<h2>{{ section.settings.heading | escape }}</h2>{% assign label = section.settings.cta_label | default: \"\" | strip %}{% assign url = section.settings.cta_url | default: \"\" | strip %}{% if label != empty and url != empty %}<a class=\"button\" href=\"{{ url | escape }}\">{{ label | escape }}</a>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Hero\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"cta_label\",\n      \"label\": \"Button label\"\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"cta_url\",\n      \"label\": \"Button link\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "label-only-guard",
+    "expected_pass": false,
+    "changes": {
+      "sections/hero-cta.liquid": "<section class=\"hero\" data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% assign label = section.settings.cta_label | default: \"\" | strip %}{% assign url = section.settings.cta_url | default: \"\" | strip %}{% if label != empty %}<a class=\"button\" href=\"{{ url | escape }}\">{{ label | escape }}</a>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Hero\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"cta_label\",\n      \"label\": \"Button label\"\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"cta_url\",\n      \"label\": \"Button link\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "untrimmed",
+    "expected_pass": false,
+    "changes": {
+      "sections/hero-cta.liquid": "<section class=\"hero\" data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% assign label = section.settings.cta_label | default: \"\" %}{% assign url = section.settings.cta_url | default: \"\" %}{% if label != empty and url != empty %}<a class=\"button\" href=\"{{ url | escape }}\">{{ label | escape }}</a>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Hero\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"cta_label\",\n      \"label\": \"Button label\"\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"cta_url\",\n      \"label\": \"Button link\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "outside-section",
+    "expected_pass": false,
+    "changes": {
+      "sections/hero-cta.liquid": "<section class=\"hero\" data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2></section>{% assign label = section.settings.cta_label | default: \"\" | strip %}{% assign url = section.settings.cta_url | default: \"\" | strip %}{% if label != empty and url != empty %}<a class=\"button\" href=\"{{ url | escape }}\">{{ label | escape }}</a>{% endif %}\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Hero\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"cta_label\",\n      \"label\": \"Button label\"\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"cta_url\",\n      \"label\": \"Button link\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "sections/hero-cta.liquid": "<section class=\"hero\" data-id=\"h&quot;&amp;\"><h2>Big &lt;Sale&gt;</h2></section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Hero\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"cta_label\",\n      \"label\": \"Button label\"\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"cta_url\",\n      \"label\": \"Button link\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "changed-schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/hero-cta.liquid": "<section class=\"hero\" data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% assign label = section.settings.cta_label | default: \"\" | strip %}{% assign url = section.settings.cta_url | default: \"\" | strip %}{% if label != empty and url != empty %}<a class=\"button\" href=\"{{ url | escape }}\">{{ label | escape }}</a>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Other\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Hero\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"cta_label\",\n      \"label\": \"Button label\"\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"cta_url\",\n      \"label\": \"Button link\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/hero-cta.liquid": "{% # theme-check-disable %}\n<section class=\"hero\" data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% assign label = section.settings.cta_label | default: \"\" | strip %}{% assign url = section.settings.cta_url | default: \"\" | strip %}{% if label != empty and url != empty %}<a class=\"button\" href=\"{{ url | escape }}\">{{ label | escape }}</a>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Hero\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"cta_label\",\n      \"label\": \"Button label\"\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"cta_url\",\n      \"label\": \"Button link\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/hero-cta.liquid": null
+    }
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "sections/faq-details.liquid": "<section data-id=\"{{ section.id | escape }}\">\n<h2>{{ section.settings.heading | escape }}</h2>{% assign shown = 0 %}{% for faq in faqs %}{% assign question = faq.question | default: \"\" | strip %}{% if question != empty %}<details{% if shown == 0 %} open{% endif %}>\n<summary>{{ question | escape }}</summary>\n<p>{{ faq.answer | escape }}</p>\n</details>{% assign shown = shown | plus: 1 %}{% endif %}{% endfor %}{% if shown == 0 %}<p class=\"empty\">No questions yet</p>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"FAQ\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "forloop-first-open",
+    "expected_pass": false,
+    "changes": {
+      "sections/faq-details.liquid": "<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% assign shown = 0 %}{% for faq in faqs %}{% assign question = faq.question | default: \"\" | strip %}{% if question != empty %}<details{% if forloop.first %} open{% endif %}><summary>{{ question | escape }}</summary><p>{{ faq.answer | escape }}</p></details>{% assign shown = shown | plus: 1 %}{% endif %}{% endfor %}{% if shown == 0 %}<p class=\"empty\">No questions yet</p>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"FAQ\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "unescaped",
+    "expected_pass": false,
+    "changes": {
+      "sections/faq-details.liquid": "<section data-id=\"{{ section.id }}\"><h2>{{ section.settings.heading }}</h2>{% assign shown = 0 %}{% for faq in faqs %}{% assign question = faq.question | default: \"\" | strip %}{% if question != empty %}<details{% if shown == 0 %} open{% endif %}><summary>{{ question }}</summary><p>{{ faq.answer }}</p></details>{% assign shown = shown | plus: 1 %}{% endif %}{% endfor %}{% if shown == 0 %}<p class=\"empty\">No questions yet</p>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"FAQ\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "untrimmed",
+    "expected_pass": false,
+    "changes": {
+      "sections/faq-details.liquid": "<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% assign shown = 0 %}{% for faq in faqs %}{% assign question = faq.question | default: \"\" %}{% if question != empty %}<details{% if shown == 0 %} open{% endif %}><summary>{{ question | escape }}</summary><p>{{ faq.answer | escape }}</p></details>{% assign shown = shown | plus: 1 %}{% endif %}{% endfor %}{% if shown == 0 %}<p class=\"empty\">No questions yet</p>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"FAQ\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "all-open",
+    "expected_pass": false,
+    "changes": {
+      "sections/faq-details.liquid": "<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% assign shown = 0 %}{% for faq in faqs %}{% assign question = faq.question | default: \"\" | strip %}{% if question != empty %}<details open><summary>{{ question | escape }}</summary><p>{{ faq.answer | escape }}</p></details>{% assign shown = shown | plus: 1 %}{% endif %}{% endfor %}{% if shown == 0 %}<p class=\"empty\">No questions yet</p>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"FAQ\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "sections/faq-details.liquid": "<section data-id=\"f&amp;&quot;\"><h2>FAQ &lt;1&gt;</h2><p class=\"empty\">No questions yet</p></section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"FAQ\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "changed-schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/faq-details.liquid": "<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% assign shown = 0 %}{% for faq in faqs %}{% assign question = faq.question | default: \"\" | strip %}{% if question != empty %}<details{% if shown == 0 %} open{% endif %}><summary>{{ question | escape }}</summary><p>{{ faq.answer | escape }}</p></details>{% assign shown = shown | plus: 1 %}{% endif %}{% endfor %}{% if shown == 0 %}<p class=\"empty\">No questions yet</p>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Other\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"FAQ\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/faq-details.liquid": "{% # theme-check-disable %}\n<section data-id=\"{{ section.id | escape }}\"><h2>{{ section.settings.heading | escape }}</h2>{% assign shown = 0 %}{% for faq in faqs %}{% assign question = faq.question | default: \"\" | strip %}{% if question != empty %}<details{% if shown == 0 %} open{% endif %}><summary>{{ question | escape }}</summary><p>{{ faq.answer | escape }}</p></details>{% assign shown = shown | plus: 1 %}{% endif %}{% endfor %}{% if shown == 0 %}<p class=\"empty\">No questions yet</p>{% endif %}</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"FAQ\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/faq-details.liquid": null
+    }
+  }
+]

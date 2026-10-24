@@ -1,0 +1,72 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "sections/testimonials-schema.liquid": "<section class=\"testimonials-schema\"><h2>Testimonials</h2></section>\n{% schema %}\n{\"blocks\": [{\"limit\": 6, \"name\": \"Quote\", \"settings\": [{\"id\": \"body\", \"label\": \"Quote\", \"type\": \"textarea\"}, {\"id\": \"author\", \"label\": \"Author\", \"type\": \"text\"}], \"type\": \"quote\"}], \"name\": \"Testimonials\", \"presets\": [{\"name\": \"Testimonials\"}], \"settings\": [{\"default\": \"What customers say\", \"id\": \"title\", \"label\": \"Title\", \"type\": \"text\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "string-limit",
+    "expected_pass": false,
+    "changes": {
+      "sections/testimonials-schema.liquid": "<section class=\"testimonials-schema\"><h2>Testimonials</h2></section>\n{% schema %}\n{\n  \"name\": \"Testimonials\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"title\",\n      \"label\": \"Title\",\n      \"default\": \"What customers say\"\n    }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"quote\",\n      \"name\": \"Quote\",\n      \"limit\": \"6\",\n      \"settings\": [\n        {\n          \"type\": \"textarea\",\n          \"id\": \"body\",\n          \"label\": \"Quote\"\n        },\n        {\n          \"type\": \"text\",\n          \"id\": \"author\",\n          \"label\": \"Author\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Testimonials\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "missing-author",
+    "expected_pass": false,
+    "changes": {
+      "sections/testimonials-schema.liquid": "<section class=\"testimonials-schema\"><h2>Testimonials</h2></section>\n{% schema %}\n{\n  \"name\": \"Testimonials\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"title\",\n      \"label\": \"Title\",\n      \"default\": \"What customers say\"\n    }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"quote\",\n      \"name\": \"Quote\",\n      \"limit\": 6,\n      \"settings\": [\n        {\n          \"type\": \"textarea\",\n          \"id\": \"body\",\n          \"label\": \"Quote\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Testimonials\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "richtext-body",
+    "expected_pass": false,
+    "changes": {
+      "sections/testimonials-schema.liquid": "<section class=\"testimonials-schema\"><h2>Testimonials</h2></section>\n{% schema %}\n{\n  \"name\": \"Testimonials\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"title\",\n      \"label\": \"Title\",\n      \"default\": \"What customers say\"\n    }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"quote\",\n      \"name\": \"Quote\",\n      \"limit\": 6,\n      \"settings\": [\n        {\n          \"type\": \"richtext\",\n          \"id\": \"body\",\n          \"label\": \"Quote\"\n        },\n        {\n          \"type\": \"text\",\n          \"id\": \"author\",\n          \"label\": \"Author\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Testimonials\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "duplicate-key",
+    "expected_pass": false,
+    "changes": {
+      "sections/testimonials-schema.liquid": "<section class=\"testimonials-schema\"><h2>Testimonials</h2></section>\n{% schema %}\n{\n  \"name\":\"spoof\",\"name\": \"Testimonials\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"title\",\n      \"label\": \"Title\",\n      \"default\": \"What customers say\"\n    }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"quote\",\n      \"name\": \"Quote\",\n      \"limit\": 6,\n      \"settings\": [\n        {\n          \"type\": \"textarea\",\n          \"id\": \"body\",\n          \"label\": \"Quote\"\n        },\n        {\n          \"type\": \"text\",\n          \"id\": \"author\",\n          \"label\": \"Author\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Testimonials\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "dead-schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/testimonials-schema.liquid": "{% comment %}<section class=\"testimonials-schema\"><h2>Testimonials</h2></section>\n{% schema %}\n{\n  \"name\": \"Testimonials\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"title\",\n      \"label\": \"Title\",\n      \"default\": \"What customers say\"\n    }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"quote\",\n      \"name\": \"Quote\",\n      \"limit\": 6,\n      \"settings\": [\n        {\n          \"type\": \"textarea\",\n          \"id\": \"body\",\n          \"label\": \"Quote\"\n        },\n        {\n          \"type\": \"text\",\n          \"id\": \"author\",\n          \"label\": \"Author\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Testimonials\"\n    }\n  ]\n}\n{% endschema %}\n{% endcomment %}"
+    }
+  },
+  {
+    "name": "changed-markup",
+    "expected_pass": false,
+    "changes": {
+      "sections/testimonials-schema.liquid": "<section class=\"testimonials-schema\"><h2>Changed</h2></section>\n{% schema %}\n{\n  \"name\": \"Testimonials\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"title\",\n      \"label\": \"Title\",\n      \"default\": \"What customers say\"\n    }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"quote\",\n      \"name\": \"Quote\",\n      \"limit\": 6,\n      \"settings\": [\n        {\n          \"type\": \"textarea\",\n          \"id\": \"body\",\n          \"label\": \"Quote\"\n        },\n        {\n          \"type\": \"text\",\n          \"id\": \"author\",\n          \"label\": \"Author\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Testimonials\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/testimonials-schema.liquid": "{% # theme-check-disable %}\n<section class=\"testimonials-schema\"><h2>Testimonials</h2></section>\n{% schema %}\n{\n  \"name\": \"Testimonials\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"title\",\n      \"label\": \"Title\",\n      \"default\": \"What customers say\"\n    }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"quote\",\n      \"name\": \"Quote\",\n      \"limit\": 6,\n      \"settings\": [\n        {\n          \"type\": \"textarea\",\n          \"id\": \"body\",\n          \"label\": \"Quote\"\n        },\n        {\n          \"type\": \"text\",\n          \"id\": \"author\",\n          \"label\": \"Author\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Testimonials\"\n    }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/testimonials-schema.liquid": null
+    }
+  }
+]

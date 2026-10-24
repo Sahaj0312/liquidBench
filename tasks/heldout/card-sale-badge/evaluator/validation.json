@@ -1,0 +1,65 @@
+[
+  {
+    "name": "alternative-valid",
+    "expected_pass": true,
+    "changes": {
+      "sections/card-sale-badge.liquid": "<section class=\"card\" data-id=\"{{ section.id | escape }}\">{% if product.compare_at_price %}{% if product.compare_at_price > product.price %}<span class=\"badge\">Sale</span>{% endif %}{% endif %}<h3>{{ section.settings.heading | escape }}</h3>\n<p class=\"price\">{{ price_label | escape }}</p>\n</section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Card\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "shows-equal",
+    "expected_pass": false,
+    "changes": {
+      "sections/card-sale-badge.liquid": "<section class=\"card\" data-id=\"{{ section.id | escape }}\">{% if product.compare_at_price %}{% if product.compare_at_price >= product.price %}<span class=\"badge\">Sale</span>{% endif %}{% endif %}<h3>{{ section.settings.heading | escape }}</h3><p class=\"price\">{{ price_label | escape }}</p></section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Card\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "after-heading",
+    "expected_pass": false,
+    "changes": {
+      "sections/card-sale-badge.liquid": "<section class=\"card\" data-id=\"{{ section.id | escape }}\"><h3>{{ section.settings.heading | escape }}</h3>{% if product.compare_at_price %}{% if product.compare_at_price > product.price %}<span class=\"badge\">Sale</span>{% endif %}{% endif %}<p class=\"price\">{{ price_label | escape }}</p></section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Card\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "lost-price",
+    "expected_pass": false,
+    "changes": {
+      "sections/card-sale-badge.liquid": "<section class=\"card\" data-id=\"{{ section.id | escape }}\">{% if product.compare_at_price %}{% if product.compare_at_price > product.price %}<span class=\"badge\">Sale</span>{% endif %}{% endif %}<h3>{{ section.settings.heading | escape }}</h3></section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Card\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "hardcoded-first-case",
+    "expected_pass": false,
+    "changes": {
+      "sections/card-sale-badge.liquid": "<section class=\"card\" data-id=\"c&lt;&amp;\"><h3>Trail &lt;Runner&gt;</h3><p class=\"price\">$120 &amp; up</p></section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Card\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "changed-schema",
+    "expected_pass": false,
+    "changes": {
+      "sections/card-sale-badge.liquid": "<section class=\"card\" data-id=\"{{ section.id | escape }}\">{% if product.compare_at_price %}{% if product.compare_at_price > product.price %}<span class=\"badge\">Sale</span>{% endif %}{% endif %}<h3>{{ section.settings.heading | escape }}</h3><p class=\"price\">{{ price_label | escape }}</p></section>\n{% schema %}\n{\n  \"name\": \"Other\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Card\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/card-sale-badge.liquid": "{% # theme-check-disable %}\n<section class=\"card\" data-id=\"{{ section.id | escape }}\">{% if product.compare_at_price %}{% if product.compare_at_price > product.price %}<span class=\"badge\">Sale</span>{% endif %}{% endif %}<h3>{{ section.settings.heading | escape }}</h3><p class=\"price\">{{ price_label | escape }}</p></section>\n{% schema %}\n{\n  \"name\": \"Panel\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Card\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Panel\"\n    }\n  ]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "extra-file",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unauthorized.liquid": "bypass"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/card-sale-badge.liquid": null
+    }
+  }
+]

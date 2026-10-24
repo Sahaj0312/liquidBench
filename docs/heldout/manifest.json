@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "split": "heldout",
+  "frozen_utc": "2026-10-24",
+  "purpose": "Final-model evaluation only. Never shown to training-data generation, prompt development or model selection.",
+  "tasks": {
+    "breadcrumb-trail": {
+      "family": "breadcrumb-trail",
+      "category": "rendering",
+      "difficulty": "medium",
+      "digest": "c4690c20fbcefbf209a4ae55d94ebf9c75fedfe3bc5b62a948b606f311b94f55"
+    },
+    "card-sale-badge": {
+      "family": "card-sale-badge",
+      "category": "theme-modification",
+      "difficulty": "medium",
+      "digest": "7f33d23f9d352c073e79a65f6b7c68eddcce0b8c4a5aebf3eb9c76cc8c23793e"
+    },
+    "cart-assets": {
+      "family": "cart-assets",
+      "category": "theme-references",
+      "difficulty": "medium",
+      "digest": "d04ffe350f68eb130942f2d2020fa9b4215ebed6c9490909910a60a5b30ddae4"
+    },
+    "cart-labels": {
+      "family": "cart-labels",
+      "category": "theme-references",
+      "difficulty": "medium",
+      "digest": "46e757e70dbddc76b3d706d7d4b7786fc0711a754ee4ee3430ccf7af78918260"
+    },
+    "collection-grid-schema": {
+      "family": "collection-grid-schema",
+      "category": "section-schema",
+      "difficulty": "medium",
+      "digest": "0a9a6fc5dab6f57ac83fffa82cfc573a19048414c139e22140dde020a211821b"
+    },
+    "color-scheme-schema": {
+      "family": "color-scheme-schema",
+      "category": "section-schema",
+      "difficulty": "easy",
+      "digest": "33e4e5b854ff8d456bd3905a8a03fe31f14cd356733809b0678e8eeae4e48965"
+    },
+    "discount-label": {
+      "family": "discount-label",
+      "category": "liquid-syntax",
+      "difficulty": "medium",
+      "digest": "151dced0e8af529976c704e297c120a51855b762d52931d4cfa6e225684e6e5b"
+    },
+    "faq-details": {
+      "family": "faq-details",
+      "category": "theme-modification",
+      "difficulty": "hard",
+      "digest": "fff7d562fe4959afe4df01db51ed45c5c6c830984f05d9c3e48a87dbfe944051"
+    },
+    "footer-schema": {
+      "family": "footer-schema",
+      "category": "section-schema",
+      "difficulty": "easy",
+      "digest": "107aa190c7eaa2f1996b0a1c3cc5f3f98c65487a9bb230c121b8013e3e881eba"
+    },
+    "gift-wrap-eligibility": {
+      "family": "gift-wrap-eligibility",
+      "category": "liquid-syntax",
+      "difficulty": "hard",
+      "digest": "d80a857a1d7343c5e159ec4375a57f95f7b3666a23dc7f42ab39a00c428c361e"
+    },
+    "grid-columns": {
+      "family": "grid-columns",
+      "category": "theme-modification",
+      "difficulty": "medium",
+      "digest": "b771e42f181755a5f6c679c23b1a5490aacc22c5e0963c78dfdb059bd96430ab"
+    },
+    "hero-cta": {
+      "family": "hero-cta",
+      "category": "theme-modification",
+      "difficulty": "easy",
+      "digest": "72a3934b862ab6a576e863ba5e50915ab1dfaec9a3a65e0627d81a094a734baa"
+    },
+    "initials-avatar": {
+      "family": "initials-avatar",
+      "category": "rendering",
+      "difficulty": "easy",
+      "digest": "ea76664f3ec851670160355ac8caddeeec0fd094fd484930e4a08b4b53b5d230"
+    },
+    "logo-asset": {
+      "family": "logo-asset",
+      "category": "theme-references",
+      "difficulty": "easy",
+      "digest": "0eaa801beebb3194b1fd90242070bd4da97a50f77b8b7891d8eeaa221111aff6"
+    },
+    "pagination-window": {
+      "family": "pagination-window",
+      "category": "rendering",
+      "difficulty": "hard",
+      "digest": "c8318205de0be273a8dad89c612bd7872995bf600eb6f4c8fa38da25b9adf7f3"
+    },
+    "price-format": {
+      "family": "price-format",
+      "category": "rendering",
+      "difficulty": "medium",
+      "digest": "6fe1528fdea4a8dc6c2f85e492445fa5b9f0c4f2ce2189545a20e3e47ea6095f"
+    },
+    "price-render": {
+      "family": "price-render",
+      "category": "theme-references",
+      "difficulty": "hard",
+      "digest": "047beb98bf1b2bd8ac9db8deb09f7750575720ffa80d7953018e7899e2b86e89"
+    },
+    "rating-stars": {
+      "family": "rating-stars",
+      "category": "rendering",
+      "difficulty": "medium",
+      "digest": "7ff11b7e017de5bdc321f9a4d84fb82cfd5f0fb8c6a66301dfb5926c6e457bd6"
+    },
+    "sale-countdown": {
+      "family": "sale-countdown",
+      "category": "theme-modification",
+      "difficulty": "hard",
+      "digest": "6c273fd0398232e9677b068d4e674185f9cad7ba371b5766164e31ef66e4dc9d"
+    },
+    "size-label": {
+      "family": "size-label",
+      "category": "liquid-syntax",
+      "difficulty": "easy",
+      "digest": "14ef254c355b2aaef6ddf6d10a4abf578d89445bf28898a64389d826e4e9b5d5"
+    },
+    "slideshow-blocks-schema": {
+      "family": "slideshow-blocks-schema",
+      "category": "section-schema",
+      "difficulty": "hard",
+      "digest": "c660ca88a11d77873c8fe7d16b4c01c2c536f247197e30feba162bbdb68526eb"
+    },
+    "stock-badge": {
+      "family": "stock-badge",
+      "category": "liquid-syntax",
+      "difficulty": "easy",
+      "digest": "97a962fa7927a6fa61472f554feb21a13cd1931e16d8b35d5300d25fa13beefa"
+    },
+    "store-hours": {
+      "family": "store-hours",
+      "category": "liquid-syntax",
+      "difficulty": "medium",
+      "digest": "98c1381ca5ac4a134688c929888b8b8b26a47e2ac67573a7b006f1d6f3a2a1ee"
+    },
+    "testimonials-schema": {
+      "family": "testimonials-schema",
+      "category": "section-schema",
+      "difficulty": "medium",
+      "digest": "c2c069d0182bbfaffa503caf393c8107c964f7a4e36d567ded99f4e3dc9b3523"
+    }
+  },
+  "suite_digest": "00d89c7dd96b0d26ab5813f7ada301cc03280bb72476daca13400380d6f15a4a"
+}
