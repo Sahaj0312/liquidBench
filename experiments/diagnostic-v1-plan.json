@@ -1,0 +1,1157 @@
+{
+  "schema_version": 1,
+  "study": "diagnostic-v1",
+  "development_only": true,
+  "research_result": false,
+  "inference_performed": false,
+  "repetition_policy": "4 seed-42 repeats; position-balanced reproducibility checks, not independent samples",
+  "selection_policy": "minimum SHA256 diagnostic-v1:sorted-ids; one/domain; 2 easy, 2 medium, 1 hard; audited exclusions",
+  "excluded_tasks": {
+    "optional-caption": "Undefined 'enabled' and unclear input nesting",
+    "notice-link": "Input nesting not fully specified in public description",
+    "visible-list-limit": "Input nesting not fully specified in public description"
+  },
+  "selected_tasks": [
+    "announcement-subtitle",
+    "customer-name",
+    "eligibility-branch",
+    "locale-references",
+    "select-schema"
+  ],
+  "public_selection_inputs": [
+    {
+      "id": "announcement-subtitle",
+      "category": "section-modification",
+      "difficulty": "easy",
+      "prompt": "Add optional subtitle output to sections/announcement.liquid while preserving existing behavior. All input keys are supplied: section.id is a string; section.settings.enabled and show_body are booleans; heading and body are strings; subtitle is null or a string. If enabled is false output no elements or non-whitespace text. Otherwise keep exactly one section with class announcement and escaped data-section-id matching section.id; its children, in order, must be: h2 with escaped heading unchanged; p with class announcement__subtitle only when subtitle trimmed of surrounding ASCII whitespace is nonempty, containing that trimmed escaped text; p with class announcement__body only if show_body is true, containing escaped body unchanged. No extra elements or attributes. Preserve the entire existing schema block byte-for-byte; its subtitle setting already exists. Change only this section file. Do not hardcode values or disable checks. Use core Liquid empty comparison instead of Shopify blank. For a visible body render, pass strip_schema:true to render; this extracts metadata and supplies hashes, it does not emulate Shopify section objects or default settings. Whitespace between elements and quote style are unrestricted."
+    },
+    {
+      "id": "asset-references",
+      "category": "theme-references",
+      "difficulty": "easy",
+      "prompt": "Fix the three broken string-literal references in snippets/promo-assets.liquid. Use the existing assets/promo-banner.css stylesheet through asset_url then stylesheet_tag, the existing promo.heading key in the h2, and promo.cta in the p through t (translate is also accepted). Both locale files must resolve these keys to strings. Only edit the three literal operands; preserve the surrounding markup, live outputs, filter order, and absence of conditional wrappers. Quote style and whitespace between elements/around Liquid delimiters may vary. Do not hardcode URLs or translated copy, remove outputs, move code into comments/raw/dead branches, change protected asset/locale files, add files, or suppress checks. The check/analyze tools provide static feedback; these Shopify filters are not supported by the offline render tool."
+    },
+    {
+      "id": "blocks-schema",
+      "category": "section-schema",
+      "difficulty": "hard",
+      "prompt": "Repair only the JSON schema in sections/blocks-schema.liquid. Keep every byte outside its one top-level schema block unchanged. Strict JSON only. Exactly the following fields, array order and values are required; object key order/JSON whitespace may vary. Root fields: name Notes, settings empty array, max_blocks=3, blocks, presets. blocks contains exactly one definition: type note, name Note, limit=3, settings one text field id=text,label=Text,default=Note. presets contains exactly one named Notes, with blocks: first type note/settings text=First; then type note/settings text=Second. No other fields. Change only sections/blocks-schema.liquid. Do not suppress checks or hardcode case values. All input keys are present."
+    },
+    {
+      "id": "cart-arithmetic",
+      "category": "rendering",
+      "difficulty": "medium",
+      "prompt": "Repair snippets/cart-arithmetic.liquid. lines is an array of price/quantity nonnegative integers; discount is a nonnegative integer. Output p class=total containing the base-10 integer max(0, sum(price times quantity) minus discount), with no currency symbols or separators. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/cart-arithmetic.liquid. Do not suppress checks or hardcode case values. All input keys are present."
+    },
+    {
+      "id": "customer-name",
+      "category": "rendering",
+      "difficulty": "easy",
+      "prompt": "Repair snippets/customer-name.liquid. customer.first and customer.last are null or strings. Trim surrounding ASCII whitespace separately; join nonempty parts with one space, or use Guest if neither remains. Return one p class=name. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/customer-name.liquid. Do not suppress checks or hardcode case values. All input keys are present."
+    },
+    {
+      "id": "eligibility-branch",
+      "category": "liquid-syntax",
+      "difficulty": "hard",
+      "prompt": "Repair snippets/eligibility-branch.liquid. item.enabled/vip/clearance are booleans, stock and price nonnegative integers. Disabled emits nothing. Otherwise one p: Unavailable if stock is zero; else Special exactly when vip is true AND (price is at least 100 OR clearance is true); else Standard. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/eligibility-branch.liquid. Do not suppress checks or hardcode case values. All input keys are present."
+    },
+    {
+      "id": "icon-reference",
+      "category": "theme-references",
+      "difficulty": "easy",
+      "prompt": "Repair the literal references in snippets/icon-reference.liquid. Preserve all live markup, filters and output positions. Only literal operands may change; quote style and inter-element whitespace may vary. Use the existing assets/badge.svg through asset_url; retain alt Badge and width/height 16. These are static reference checks; do not use the core renderer for Shopify filters. Change only snippets/icon-reference.liquid. Do not suppress checks or hardcode case values. All input keys are present."
+    },
+    {
+      "id": "locale-references",
+      "category": "theme-references",
+      "difficulty": "medium",
+      "prompt": "Repair the literal references in snippets/locale-references.liquid. Preserve all live markup, filters and output positions. Only literal operands may change; quote style and inter-element whitespace may vary. Button uses labels.open and span uses labels.close, both through t (translate accepted); both locales must resolve the keys. These are static reference checks; do not use the core renderer for Shopify filters. Change only snippets/locale-references.liquid. Do not suppress checks or hardcode case values. All input keys are present."
+    },
+    {
+      "id": "notice-link",
+      "category": "theme-modification",
+      "difficulty": "hard",
+      "prompt": "Modify sections/notice-link.liquid to append an optional a after the existing p. section.id,heading,body are strings; show_link boolean; url null or a relative-path string; label null/string. Emit the a only when show_link is true and ASCII-trimmed url nonempty. Its only attribute is href equal to trimmed url; text is label (no trimming), default Details if null/empty. Preserve the existing section/h2/p structure, text and escaping. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/notice-link.liquid. Do not suppress checks or hardcode case values. All input keys are present."
+    },
+    {
+      "id": "option-list",
+      "category": "rendering",
+      "difficulty": "medium",
+      "prompt": "Repair snippets/option-list.liquid. options is an ordered array: value string, label null/string, disabled/selected booleans. Output ul class=options containing one li per non-disabled option in order, duplicates retained. li has only data-value equal to value and class selected if selected else option. Text is label, default Unnamed for null or empty string (do not trim). Emit an empty ul when no options qualify. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/option-list.liquid. Do not suppress checks or hardcode case values. All input keys are present."
+    },
+    {
+      "id": "optional-caption",
+      "category": "theme-modification",
+      "difficulty": "medium",
+      "prompt": "Modify sections/optional-caption.liquid to add optional p class=caption between h2 and the existing footer. Inputs: section.id, heading, footer strings; show_caption boolean; caption null/string. Show caption only if enabled and its ASCII-trimmed text is nonempty. Preserve the section data-id, heading, footer and their escaping for all inputs. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/optional-caption.liquid. Do not suppress checks or hardcode case values. All input keys are present."
+    },
+    {
+      "id": "product-card",
+      "category": "liquid-rendering",
+      "difficulty": "easy",
+      "prompt": "Fix snippets/product-card.liquid. The input product hash always has title (string or null), vendor (string or null), and available (boolean). Render one article with class product-card. It must contain, in order: one h2 showing the title, or Untitled product when title is null or empty; a p with class vendor only when the vendor is nonempty after trimming surrounding whitespace, showing that trimmed vendor; and one span with class availability showing In stock if available is true, otherwise Sold out. Escape title and vendor as HTML text. Preserve the article structure and class names. Do not add other elements or attributes, hardcode particular fixture values, disable checks, or modify other files. Whitespace between elements and HTML quote style are unrestricted. Only core Liquid is supported. You may use read_file, write_file, list_files, search, render with your own fixture variables, and check. Finish explicitly when done."
+    },
+    {
+      "id": "range-schema",
+      "category": "section-schema",
+      "difficulty": "easy",
+      "prompt": "Repair only the JSON schema in sections/range-schema.liquid. Keep every byte outside its one top-level schema block unchanged. Strict JSON only. Exactly the following fields, array order and values are required; object key order/JSON whitespace may vary. Root name Spacing; settings contains one range: id gap, label Gap, min 0.5, max 3, step 0.5, unit em, default 1.5. presets contains one named Spacing with settings gap=2. Numbers must be JSON numbers, never booleans or strings. Change only sections/range-schema.liquid. Do not suppress checks or hardcode case values. All input keys are present."
+    },
+    {
+      "id": "section-schema",
+      "category": "section-schema",
+      "difficulty": "easy",
+      "prompt": "Repair only the JSON schema in sections/feature-panel.liquid. Keep every byte outside the schema block unchanged. Include exactly one top-level schema block with strict JSON (no comments, duplicate JSON keys, or non-finite numbers). Its root fields must be exactly name, settings, presets; name must remain Feature panel. Declare exactly three unique settings, in any order, each with a nonempty label: heading (text, default Highlights), show_summary (checkbox, boolean default true), and columns (range, min 1, max 4, step 1, numeric default 3). Each setting may contain only the listed fields plus id/type/label. Include exactly one preset named Feature panel, with exactly these settings: heading = Featured picks, show_summary = false, columns = 2. No other preset fields, unknown setting IDs, or changes to markup. Do not disable checks. This task validates schema structure and declared values offline, not theme-editor behavior."
+    },
+    {
+      "id": "select-schema",
+      "category": "section-schema",
+      "difficulty": "medium",
+      "prompt": "Repair only the JSON schema in sections/select-schema.liquid. Keep every byte outside its one top-level schema block unchanged. Strict JSON only. Exactly the following fields, array order and values are required; object key order/JSON whitespace may vary. Root name Alignment; settings contains one select: id alignment, label Alignment, options left/Left, center/Center, right/Right in that order, default center. presets contains one named Alignment with settings alignment=left. Change only sections/select-schema.liquid. Do not suppress checks or hardcode case values. All input keys are present."
+    },
+    {
+      "id": "shipping-message",
+      "category": "conditional-logic",
+      "difficulty": "easy",
+      "prompt": "Repair snippets/shipping-message.liquid. Inputs are supplied hashes: settings.enabled is a boolean, settings.threshold is null or a positive integer (cents), settings.message is null or a string; cart.item_count and cart.total are nonnegative integers. All keys are present. When enabled is false output no elements or non-whitespace text. Otherwise output exactly one p with class shipping-message, no other attributes/elements. Its text is: Your cart is empty when item_count is 0 (this takes priority over total); Free shipping unlocked when total is at least the threshold (use 5000 if threshold is null); otherwise the message trimmed of surrounding ASCII whitespace, falling back to Keep shopping if null/empty/whitespace-only. Escape custom message text as HTML. Respect false, the exact threshold boundary, and custom thresholds. Change only this snippet, do not hardcode fixture-specific values or disable checks. Use core Liquid only; empty-string comparison uses empty, not Shopify blank. Whitespace outside the p and quote style are unrestricted."
+    },
+    {
+      "id": "status-priority",
+      "category": "liquid-syntax",
+      "difficulty": "easy",
+      "prompt": "Repair snippets/status-priority.liquid. item.archived and item.sale are booleans, stock a nonnegative integer. Return one p class=status: Archived first if archived, otherwise Sold out if stock is zero, otherwise Sale if sale, otherwise Regular. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/status-priority.liquid. Do not suppress checks or hardcode case values. All input keys are present."
+    },
+    {
+      "id": "stylesheet-pair",
+      "category": "theme-references",
+      "difficulty": "hard",
+      "prompt": "Repair the literal references in snippets/stylesheet-pair.liquid. Preserve all live markup, filters and output positions. Only literal operands may change; quote style and inter-element whitespace may vary. First output uses existing assets/base.css then second assets/contrast.css, each asset_url then stylesheet_tag; h2 uses panel.title through t (translate accepted). These are static reference checks; do not use the core renderer for Shopify filters. Change only snippets/stylesheet-pair.liquid. Do not suppress checks or hardcode case values. All input keys are present."
+    },
+    {
+      "id": "tag-membership",
+      "category": "liquid-syntax",
+      "difficulty": "medium",
+      "prompt": "Repair snippets/tag-membership.liquid. item.tags is an array of strings. Output p class=tag-state: Hidden if the exact case-sensitive archived element occurs; else Featured if the exact featured element occurs; else Standard. Archived has priority; substrings do not match. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/tag-membership.liquid. Do not suppress checks or hardcode case values. All input keys are present."
+    },
+    {
+      "id": "visible-list-limit",
+      "category": "theme-modification",
+      "difficulty": "hard",
+      "prompt": "Modify sections/visible-list-limit.liquid. Preserve section data-id and h2 heading for every input. rows is an ordered array with show boolean and label string. section.id/heading are strings, limit an integer 1..3. List only the first limit visible rows in original order, duplicates retained: ul with li text label. When none are visible, replace the ul with p class=empty and text No entries. Hidden rows must not consume the limit. No other elements/attributes. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/visible-list-limit.liquid. Do not suppress checks or hardcode case values. All input keys are present."
+    }
+  ],
+  "system_sha256": "130d38c607cce4a0497237760c4bc3c874f85360aa4ee8e78381de9cbe2c2387",
+  "clarification_sha256": "efae0340b471e5ce4a54b29b6ac8dbe58a3e7ced7b36e28b822b35b146b6f725",
+  "python_source_digest": "2ffe52e933298721a0d47f15a57f9cd4da974052593d3e7e7df8cd65eb21f185",
+  "runtime_image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+  "config": {
+    "purpose": "Diagnostic v1 four-condition pilot; preparation only; paid execution requires new approval",
+    "endpoint": "http://127.0.0.1:8000/v1",
+    "model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+    "model_revision": "Qwen/Qwen2.5-Coder-7B-Instruct@c03e6d358207e414f1eca0bb1891e29f1db0e242; planned BF16 vLLM; serving build must be pinned before use",
+    "image": "liquidbench-runtime:0.1",
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "seed": 42,
+    "max_turns": 12,
+    "max_total_tokens": 393216,
+    "max_output_tokens": 1024,
+    "max_seconds": 300,
+    "request_timeout": 90,
+    "provider_retries": 2,
+    "input_usd_per_million": null,
+    "output_usd_per_million": null,
+    "max_context_tokens": 32768,
+    "token_counting": "vllm",
+    "response_format": "json_object",
+    "skills": null
+  },
+  "skills": {
+    "revision": "483f969bed623c87c9e26ac34324d8d7d8fe68c3",
+    "repository": "https://github.com/benjaminsehl/liquid-skills.git",
+    "manifest_sha256": "5fa41f7cb6ad2deab5b6bde868c9c42c854bb55cb738f36cb950cebdc86040b8",
+    "files": {
+      "skills/liquid-theme-a11y/SKILL.md": {
+        "bytes": 12830,
+        "sha256": "0fd335818464328aa6b8a8511fba45526b63624c004b8b1d301d311a9ef089ba"
+      },
+      "skills/liquid-theme-a11y/references/component-patterns.md": {
+        "bytes": 5980,
+        "sha256": "cfaa618f3deca7f32bee5b90733c6b05d451e51240d53543d2ec1b1e5cffeb29"
+      },
+      "skills/liquid-theme-a11y/references/focus-and-keyboard.md": {
+        "bytes": 4854,
+        "sha256": "007a9ded63c6e4cb1e582a19aca6dc95d30d19a5752982c2a93427162f59229a"
+      },
+      "skills/liquid-theme-standards/SKILL.md": {
+        "bytes": 12145,
+        "sha256": "cb8a1d571be5d05111e90d7bd28758c98ed46e520bb93fad6c9e92b8bb466144"
+      },
+      "skills/liquid-theme-standards/references/css-patterns.md": {
+        "bytes": 4328,
+        "sha256": "04b5b842cc3807cbeea26749ef5351b072c91848b08094cf5992b133aaf8e491"
+      },
+      "skills/liquid-theme-standards/references/javascript-patterns.md": {
+        "bytes": 6617,
+        "sha256": "d0ae2481621d73f7fee266f57f397b569368defba45a53445ea9c507c73d56f3"
+      },
+      "skills/shopify-liquid-themes/SKILL.md": {
+        "bytes": 11681,
+        "sha256": "f4f2a4c779783251f9083f868db1e7292431d516ddd754a71827bdde6de65861"
+      },
+      "skills/shopify-liquid-themes/references/examples.md": {
+        "bytes": 8839,
+        "sha256": "6725d1b3ef215520f019e1fd446fd85b945d28c04b226a50081f76ffa65ed900"
+      },
+      "skills/shopify-liquid-themes/references/filters-commerce.md": {
+        "bytes": 10265,
+        "sha256": "0d64638aafc0421aaa523035cf66044439086f330fcc3f4ece97799e0fd5a781"
+      },
+      "skills/shopify-liquid-themes/references/filters-html-media.md": {
+        "bytes": 11846,
+        "sha256": "a5ad13ce341cc552e2433c675677fae4fb9efa502835bdb7b2345786a0825e73"
+      },
+      "skills/shopify-liquid-themes/references/filters-language.md": {
+        "bytes": 19537,
+        "sha256": "5fa36019a03b607385ef75fa4b18668f2253e25cc4c95a8953d8814add804a71"
+      },
+      "skills/shopify-liquid-themes/references/objects-commerce.md": {
+        "bytes": 18421,
+        "sha256": "179e6e32c6b42d2fd90ba29f5fcb5475c4ab80550d421f21a9ca34198c6a3864"
+      },
+      "skills/shopify-liquid-themes/references/objects-content.md": {
+        "bytes": 15211,
+        "sha256": "dab65acc3a5e7ff9c14a09f2977d0ab5bc06a0b2f9f67566395306210de75507"
+      },
+      "skills/shopify-liquid-themes/references/objects-tier2.md": {
+        "bytes": 17889,
+        "sha256": "0fa9ae207ff05f270778d185503af3edfbd46c05698de125eed83146a548e1f8"
+      },
+      "skills/shopify-liquid-themes/references/objects-tier3.md": {
+        "bytes": 5973,
+        "sha256": "8c6a0111f146337b7e6a1441fa5fb331a1d1989f7ccb87daa358ab1b229e8d8d"
+      },
+      "skills/shopify-liquid-themes/references/schema-and-settings.md": {
+        "bytes": 8944,
+        "sha256": "3db0101a87de679701bf652cb02dc507a11c3afbdb8f6da477f4f0940b3f54b5"
+      },
+      "skills/shopify-liquid-themes/references/tags.md": {
+        "bytes": 18724,
+        "sha256": "bb31ed32a61a7fe17acb9d5bbfc55e7f6140790d3a9694fab51017a3659e727c"
+      }
+    },
+    "entries": [
+      "skills/shopify-liquid-themes/SKILL.md",
+      "skills/liquid-theme-standards/SKILL.md",
+      "skills/liquid-theme-a11y/SKILL.md"
+    ]
+  },
+  "reference_index_sha256": "f13ccdc46a06edff5cf3be2491bb2a5733a5c8b8a692c3ad876166f880789efc",
+  "reference_policy": "Ordered public-intent routes: schema/preset in first sentence, literal references (translation before asset), string processing, conditional control; unique indexed heading; full file; no fallback or per-task override",
+  "references": {
+    "announcement-subtitle": {
+      "path": "skills/shopify-liquid-themes/references/filters-language.md",
+      "rule": "string-processing",
+      "index_heading": "String",
+      "public_prompt_sha256": "b075fdcadcc0b6d27f09989d45a6d0f65b416d1adf98313519456f51e950b632",
+      "bytes": 19537,
+      "sha256": "5fa36019a03b607385ef75fa4b18668f2253e25cc4c95a8953d8814add804a71",
+      "body_tokens": 5284,
+      "message_tokens": 5298
+    },
+    "customer-name": {
+      "path": "skills/shopify-liquid-themes/references/filters-language.md",
+      "rule": "string-processing",
+      "index_heading": "String",
+      "public_prompt_sha256": "550f761b85d7533a0af3cc96e4a58b2f5a6781e53b90a20b6772793dfa9b801b",
+      "bytes": 19537,
+      "sha256": "5fa36019a03b607385ef75fa4b18668f2253e25cc4c95a8953d8814add804a71",
+      "body_tokens": 5284,
+      "message_tokens": 5298
+    },
+    "eligibility-branch": {
+      "path": "skills/shopify-liquid-themes/references/tags.md",
+      "rule": "conditional-control",
+      "index_heading": "Conditional",
+      "public_prompt_sha256": "abe3ee92464be67008061fa05de5515f2581c8c3c26e7fcbf2186cc9e8301c48",
+      "bytes": 18724,
+      "sha256": "bb31ed32a61a7fe17acb9d5bbfc55e7f6140790d3a9694fab51017a3659e727c",
+      "body_tokens": 4555,
+      "message_tokens": 4569
+    },
+    "locale-references": {
+      "path": "skills/shopify-liquid-themes/references/filters-commerce.md",
+      "rule": "translation-reference",
+      "index_heading": "Localization",
+      "public_prompt_sha256": "643be7e38b6eb7bdfdd505250168eeb9d730ebe8d18609a854eb3318cc23037f",
+      "bytes": 10265,
+      "sha256": "0d64638aafc0421aaa523035cf66044439086f330fcc3f4ece97799e0fd5a781",
+      "body_tokens": 2535,
+      "message_tokens": 2549
+    },
+    "select-schema": {
+      "path": "skills/shopify-liquid-themes/references/schema-and-settings.md",
+      "rule": "schema-repair",
+      "index_heading": "Schema & Settings Reference",
+      "public_prompt_sha256": "732110cf48084717590daf73923592a224127ec547be63efaacfceb7b01aa414",
+      "bytes": 8944,
+      "sha256": "3db0101a87de679701bf652cb02dc507a11c3afbdb8f6da477f4f0940b3f54b5",
+      "body_tokens": 2339,
+      "message_tokens": 2353
+    }
+  },
+  "measurements": {
+    "announcement-subtitle": {
+      "original": {
+        "initial_tokens": 712,
+        "messages_sha256": "4df9cfefcb14a59b30cc570732368ad79e23b8b6f4b2f81bd9de6e9e650cfb87"
+      },
+      "clarified": {
+        "initial_tokens": 1000,
+        "messages_sha256": "f4b7842acc95c4b1c8cbcd44771c44d48e038c6a00cf70d79bc6246f25b421c7"
+      },
+      "reference": {
+        "initial_tokens": 6303,
+        "messages_sha256": "ce632bee8d56e97ab6dc53d6788c1f1ee056d93611a789b4a2b0a848d16ce263"
+      },
+      "neutral": {
+        "initial_tokens": 6303,
+        "messages_sha256": "477f6e7f026e5d925405215d0096e5720a8748cf9fc1dd5e02db79d2d8811bf8"
+      }
+    },
+    "customer-name": {
+      "original": {
+        "initial_tokens": 584,
+        "messages_sha256": "57faa6c8ff9fc1cbec15bbcba76e35c35e58b3d0b8f506e9d7a33f1b571d33e7"
+      },
+      "clarified": {
+        "initial_tokens": 872,
+        "messages_sha256": "0409f0965ca7c99ae34ac592c8616006f94445b7fbc19ef15ab9d19e6eddf165"
+      },
+      "reference": {
+        "initial_tokens": 6175,
+        "messages_sha256": "574997c6321baefa23c41b34b2c391f199aee46a092c96d89ceee9ca8f8f694b"
+      },
+      "neutral": {
+        "initial_tokens": 6175,
+        "messages_sha256": "4100ca1c41ef6484c7db8396bc8b4a4f73e129c8dd192d0ba1baaba3c6558f3f"
+      }
+    },
+    "eligibility-branch": {
+      "original": {
+        "initial_tokens": 611,
+        "messages_sha256": "318e28d35ff95eeadfe3a933fd4f862a527160bcae143a9710180fd4e273e53c"
+      },
+      "clarified": {
+        "initial_tokens": 899,
+        "messages_sha256": "f82df566c7db0d6e4353948f5d5e6a7107145d7f743e4d43351d065b2cb20a2b"
+      },
+      "reference": {
+        "initial_tokens": 5473,
+        "messages_sha256": "9749a4e38d8d0adc95e2753e02e036250ced31f307aa9ec926081b39ffb84c0d"
+      },
+      "neutral": {
+        "initial_tokens": 5473,
+        "messages_sha256": "28abb0eabe67addefa665fc373112e83b6092bc3dcc94dd1748e89843bc49853"
+      }
+    },
+    "locale-references": {
+      "original": {
+        "initial_tokens": 588,
+        "messages_sha256": "2799e5642e65eb74f2d0bc219b02678e040ad41971e1d6faea9b3dc521bea416"
+      },
+      "clarified": {
+        "initial_tokens": 876,
+        "messages_sha256": "aadeea95e24c61fec4babb60364cad62486d91e3bd4b12ac51fb59c218f3161e"
+      },
+      "reference": {
+        "initial_tokens": 3430,
+        "messages_sha256": "c174da4e1768532eaa080b349dd908a264c7b0016dbcc45ea4f2973ec0756615"
+      },
+      "neutral": {
+        "initial_tokens": 3430,
+        "messages_sha256": "24b70a01bafa8c34ddeb3a1465a8959213734aac417082ef6995d9926be67aa2"
+      }
+    },
+    "select-schema": {
+      "original": {
+        "initial_tokens": 604,
+        "messages_sha256": "595ee261ba0e211bee162e7bc85af3156a8ce142e1b94752e36b1923825a2f9b"
+      },
+      "clarified": {
+        "initial_tokens": 892,
+        "messages_sha256": "d1ad9136d81d27d5e8ef8fe6c474cf95681134f546d0874252d71de8e5595146"
+      },
+      "reference": {
+        "initial_tokens": 3250,
+        "messages_sha256": "9fbd41a4ba0232873a740e466799ec195b82d6dfe3ec33b451d855cb36f2b118"
+      },
+      "neutral": {
+        "initial_tokens": 3250,
+        "messages_sha256": "fdfde0a8032c66e5bb6c97491ff0296ab283dcbef3eaf6debd757d798e173ba1"
+      }
+    }
+  },
+  "controls": {
+    "announcement-subtitle": {
+      "path": "controls/diagnostic-v1/announcement-subtitle.txt",
+      "sha256": "0220461dc55dae69711ee863bde24bbd89666ebb74219d8c754500c039ded583",
+      "message_tokens": 5298
+    },
+    "customer-name": {
+      "path": "controls/diagnostic-v1/customer-name.txt",
+      "sha256": "0220461dc55dae69711ee863bde24bbd89666ebb74219d8c754500c039ded583",
+      "message_tokens": 5298
+    },
+    "eligibility-branch": {
+      "path": "controls/diagnostic-v1/eligibility-branch.txt",
+      "sha256": "00adb5f39f5cb68050bc95c72f52a72824d533eba4022f9a422bc070c623759c",
+      "message_tokens": 4569
+    },
+    "locale-references": {
+      "path": "controls/diagnostic-v1/locale-references.txt",
+      "sha256": "a6ead8a23b712eeb357a270984d71058c419425a75c7e92553aad73eae9f51f7",
+      "message_tokens": 2549
+    },
+    "select-schema": {
+      "path": "controls/diagnostic-v1/select-schema.txt",
+      "sha256": "840abf4ad4352adb355645277f618ef40767d88309be8b0372783caa8a4179ea",
+      "message_tokens": 2353
+    }
+  },
+  "order": [
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 0,
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "condition": "original",
+      "position": 0
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 0,
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "condition": "clarified",
+      "position": 1
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 0,
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "condition": "reference",
+      "position": 2
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 0,
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "condition": "neutral",
+      "position": 3
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 1,
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "condition": "clarified",
+      "position": 0
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 1,
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "condition": "reference",
+      "position": 1
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 1,
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "condition": "neutral",
+      "position": 2
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 1,
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "condition": "original",
+      "position": 3
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 2,
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "condition": "reference",
+      "position": 0
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 2,
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "condition": "neutral",
+      "position": 1
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 2,
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "condition": "original",
+      "position": 2
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 2,
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "condition": "clarified",
+      "position": 3
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 3,
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "condition": "neutral",
+      "position": 0
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 3,
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "condition": "original",
+      "position": 1
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 3,
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "condition": "clarified",
+      "position": 2
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 3,
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "condition": "reference",
+      "position": 3
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 4,
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "condition": "original",
+      "position": 0
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 4,
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "condition": "clarified",
+      "position": 1
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 4,
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "condition": "reference",
+      "position": 2
+    },
+    {
+      "repetition": 1,
+      "seed": 42,
+      "block": 4,
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "condition": "neutral",
+      "position": 3
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 5,
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "condition": "reference",
+      "position": 0
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 5,
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "condition": "neutral",
+      "position": 1
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 5,
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "condition": "original",
+      "position": 2
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 5,
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "condition": "clarified",
+      "position": 3
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 6,
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "condition": "neutral",
+      "position": 0
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 6,
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "condition": "original",
+      "position": 1
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 6,
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "condition": "clarified",
+      "position": 2
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 6,
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "condition": "reference",
+      "position": 3
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 7,
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "condition": "original",
+      "position": 0
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 7,
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "condition": "clarified",
+      "position": 1
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 7,
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "condition": "reference",
+      "position": 2
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 7,
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "condition": "neutral",
+      "position": 3
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 8,
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "condition": "clarified",
+      "position": 0
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 8,
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "condition": "reference",
+      "position": 1
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 8,
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "condition": "neutral",
+      "position": 2
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 8,
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "condition": "original",
+      "position": 3
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 9,
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "condition": "clarified",
+      "position": 0
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 9,
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "condition": "reference",
+      "position": 1
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 9,
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "condition": "neutral",
+      "position": 2
+    },
+    {
+      "repetition": 2,
+      "seed": 42,
+      "block": 9,
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "condition": "original",
+      "position": 3
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 10,
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "condition": "original",
+      "position": 0
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 10,
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "condition": "clarified",
+      "position": 1
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 10,
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "condition": "reference",
+      "position": 2
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 10,
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "condition": "neutral",
+      "position": 3
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 11,
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "condition": "clarified",
+      "position": 0
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 11,
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "condition": "reference",
+      "position": 1
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 11,
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "condition": "neutral",
+      "position": 2
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 11,
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "condition": "original",
+      "position": 3
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 12,
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "condition": "reference",
+      "position": 0
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 12,
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "condition": "neutral",
+      "position": 1
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 12,
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "condition": "original",
+      "position": 2
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 12,
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "condition": "clarified",
+      "position": 3
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 13,
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "condition": "reference",
+      "position": 0
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 13,
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "condition": "neutral",
+      "position": 1
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 13,
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "condition": "original",
+      "position": 2
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 13,
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "condition": "clarified",
+      "position": 3
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 14,
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "condition": "neutral",
+      "position": 0
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 14,
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "condition": "original",
+      "position": 1
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 14,
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "condition": "clarified",
+      "position": 2
+    },
+    {
+      "repetition": 3,
+      "seed": 42,
+      "block": 14,
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "condition": "reference",
+      "position": 3
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 15,
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "condition": "reference",
+      "position": 0
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 15,
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "condition": "neutral",
+      "position": 1
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 15,
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "condition": "original",
+      "position": 2
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 15,
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "condition": "clarified",
+      "position": 3
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 16,
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "condition": "neutral",
+      "position": 0
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 16,
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "condition": "original",
+      "position": 1
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 16,
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "condition": "clarified",
+      "position": 2
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 16,
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "condition": "reference",
+      "position": 3
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 17,
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "condition": "neutral",
+      "position": 0
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 17,
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "condition": "original",
+      "position": 1
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 17,
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "condition": "clarified",
+      "position": 2
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 17,
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "condition": "reference",
+      "position": 3
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 18,
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "condition": "original",
+      "position": 0
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 18,
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "condition": "clarified",
+      "position": 1
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 18,
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "condition": "reference",
+      "position": 2
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 18,
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "condition": "neutral",
+      "position": 3
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 19,
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "condition": "clarified",
+      "position": 0
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 19,
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "condition": "reference",
+      "position": 1
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 19,
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "condition": "neutral",
+      "position": 2
+    },
+    {
+      "repetition": 4,
+      "seed": 42,
+      "block": 19,
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "condition": "original",
+      "position": 3
+    }
+  ],
+  "neutral_corpus_sha256": "624cf793a24b39a7bcef087b2d3f302615c32a1b430f199b795097cd74ee43bc",
+  "tokenizer": {
+    "packages": {
+      "transformers": "5.19.0",
+      "tokenizers": "0.23.3",
+      "jinja2": "3.1.6"
+    },
+    "files_sha256": {
+      "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+      "tokenizer_config.json": "959e7f1d9a1b7641a6d6ce05ca97b75c7894fcb66cbe5a040406458fb1128ee4",
+      "config.json": "c0242402ad6a13b331ea320feea8c7e3776ffb7a4eff0757b9cd667e116d9a28"
+    }
+  }
+}

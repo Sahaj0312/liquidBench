@@ -153,6 +153,10 @@ All three entries require **9,457 raw tokens**, exceeding the pilot's 8K context
 
 The [predeclared study](docs/calibration/milestone-6-plan.md) completed 20 tasks × four conditions × three fixed-seed repetitions, preserving Block 0 and all later attempts. The [complete comparison](docs/calibration/milestone-6-results.md) reports baseline **24/60**, full **5/60**, on-demand **23/60**, neutral **6/60**, with paired counts by category/difficulty and complete token/behavior metadata. Full used 4.59× baseline tokens; on-demand made no skill-document reads. Repetitions are reproducibility checks, not independent research samples. All billable resources were deleted; no fine-tuning was started. `scripts/run_loading_study.py` still prints a dry plan by default; any future paid execution requires fresh approval. `scripts/analyze_loading_study.py` reproduces the core paired comparisons from private evidence.
 
+## Diagnostic v1 (prepared, not run)
+
+A frozen four-condition pilot (`original`, `clarified`, `reference`, `neutral`) tests whether Milestone 6's skills result reflects the model's Liquid ability, the tool instructions, or the loading strategy. It covers 5 balanced tasks, 4 position-balanced repetitions and 80 attempts. The relevant upstream reference is selected only from the public prompt and a heading index, then delivered in full. The neutral control matches it exactly in tokens. See the [plan, controls, cost and validity concerns](docs/diagnostic/plan.md) and the [benchmark audit](docs/diagnostic/benchmark-audit.md). Milestone 6 is unchanged. `scripts/run_diagnostic.py` is dry by default. Paid execution requires approval.
+
 ## Development
 
 ```sh

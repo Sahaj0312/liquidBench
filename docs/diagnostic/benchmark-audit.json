@@ -1,0 +1,916 @@
+{
+  "runtime_image_id": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638",
+  "tasks": [
+    {
+      "task_id": "announcement-subtitle",
+      "task_digest": "252ffaa17527d928ff9ff5a6a6c4dc301717287ecdf8dc2a88d53d02ab131286",
+      "starter": {
+        "offenses": []
+      },
+      "reference": {
+        "offenses": []
+      }
+    },
+    {
+      "task_id": "asset-references",
+      "task_digest": "6acd37b41699971e1010f0717f1e449e4418a7ace7bccf8ea5efd764d9c5ae97",
+      "starter": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/promo-assets.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          },
+          {
+            "type": "LiquidHtml",
+            "check": "MissingAsset",
+            "message": "'assets/promo-missing.css' does not exist",
+            "uri": "file:///workspace/snippets/promo-assets.liquid",
+            "severity": 0,
+            "start": {
+              "index": 3,
+              "line": 0,
+              "character": 3
+            },
+            "end": {
+              "index": 22,
+              "line": 0,
+              "character": 22
+            }
+          },
+          {
+            "type": "LiquidHtml",
+            "check": "TranslationKeyExists",
+            "message": "'promo.headline' does not have a matching entry in 'locales/en.default.json'",
+            "uri": "file:///workspace/snippets/promo-assets.liquid",
+            "severity": 0,
+            "start": {
+              "index": 91,
+              "line": 2,
+              "character": 9
+            },
+            "end": {
+              "index": 107,
+              "line": 2,
+              "character": 25
+            }
+          },
+          {
+            "type": "LiquidHtml",
+            "check": "TranslationKeyExists",
+            "message": "'promo.cta_missing' does not have a matching entry in 'locales/en.default.json'",
+            "uri": "file:///workspace/snippets/promo-assets.liquid",
+            "severity": 0,
+            "start": {
+              "index": 128,
+              "line": 3,
+              "character": 8
+            },
+            "end": {
+              "index": 147,
+              "line": 3,
+              "character": 27
+            }
+          }
+        ]
+      },
+      "reference": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/promo-assets.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "blocks-schema",
+      "task_digest": "ed8b98adb90b1148f631b5d18bdeb99c34f963a29f1ab078b483278426026089",
+      "starter": {
+        "offenses": []
+      },
+      "reference": {
+        "offenses": []
+      }
+    },
+    {
+      "task_id": "cart-arithmetic",
+      "task_digest": "4432338c2c79b25c4fae245b9498ecbc84d3f16003dac95c7671841d4fd01664",
+      "starter": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/cart-arithmetic.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      },
+      "reference": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/cart-arithmetic.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "customer-name",
+      "task_digest": "40bed0d02f02014afe83bb7ace6fa394942f7a49582c8fea176f581fcf002270",
+      "starter": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/customer-name.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      },
+      "reference": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/customer-name.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "eligibility-branch",
+      "task_digest": "b507b307db60b0282a9fd27d7396ae868c4b86f82bfd3497a65c1801f3a03109",
+      "starter": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/eligibility-branch.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      },
+      "reference": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/eligibility-branch.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "icon-reference",
+      "task_digest": "840c0c05e44bb9ac05f4de5e7188062b03438ba555d396d883b63a7c022e43f3",
+      "starter": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/icon-reference.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          },
+          {
+            "type": "LiquidHtml",
+            "check": "MissingAsset",
+            "message": "'assets/missing.svg' does not exist",
+            "uri": "file:///workspace/snippets/icon-reference.liquid",
+            "severity": 0,
+            "start": {
+              "index": 36,
+              "line": 0,
+              "character": 36
+            },
+            "end": {
+              "index": 49,
+              "line": 0,
+              "character": 49
+            }
+          }
+        ]
+      },
+      "reference": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/icon-reference.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "locale-references",
+      "task_digest": "77395d8e89db4b6842515cc5e8649c46c621dfdbdde1b8e81b77d65c2f957005",
+      "starter": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/locale-references.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          },
+          {
+            "type": "LiquidHtml",
+            "check": "TranslationKeyExists",
+            "message": "'label.open' does not have a matching entry in 'locales/en.default.json'",
+            "uri": "file:///workspace/snippets/locale-references.liquid",
+            "severity": 0,
+            "start": {
+              "index": 25,
+              "line": 0,
+              "character": 25
+            },
+            "end": {
+              "index": 37,
+              "line": 0,
+              "character": 37
+            }
+          },
+          {
+            "type": "LiquidHtml",
+            "check": "TranslationKeyExists",
+            "message": "'labels.closed' does not have a matching entry in 'locales/en.default.json'",
+            "uri": "file:///workspace/snippets/locale-references.liquid",
+            "severity": 0,
+            "start": {
+              "index": 62,
+              "line": 0,
+              "character": 62
+            },
+            "end": {
+              "index": 77,
+              "line": 0,
+              "character": 77
+            }
+          }
+        ]
+      },
+      "reference": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/locale-references.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "notice-link",
+      "task_digest": "c2a676d850796f61e76e43ef7d8b231953d5ca7a6c77f1d968dbef6bd332dc84",
+      "starter": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "UndefinedObject",
+            "message": "Unknown object 'body' used.",
+            "uri": "file:///workspace/sections/notice-link.liquid",
+            "severity": 1,
+            "start": {
+              "index": 99,
+              "line": 0,
+              "character": 99
+            },
+            "end": {
+              "index": 103,
+              "line": 0,
+              "character": 103
+            }
+          }
+        ]
+      },
+      "reference": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "UndefinedObject",
+            "message": "Unknown object 'body' used.",
+            "uri": "file:///workspace/sections/notice-link.liquid",
+            "severity": 1,
+            "start": {
+              "index": 99,
+              "line": 0,
+              "character": 99
+            },
+            "end": {
+              "index": 103,
+              "line": 0,
+              "character": 103
+            }
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "option-list",
+      "task_digest": "0b579ee7aae9746270700d9d0ffed623c29fe506138f783181c3d9e4ea30f767",
+      "starter": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/option-list.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      },
+      "reference": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/option-list.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "optional-caption",
+      "task_digest": "45c3522e6c16dc613e45d06124094f819e25cac17550e6e5ab17f401daaad20d",
+      "starter": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "UndefinedObject",
+            "message": "Unknown object 'footer' used.",
+            "uri": "file:///workspace/sections/optional-caption.liquid",
+            "severity": 1,
+            "start": {
+              "index": 114,
+              "line": 0,
+              "character": 114
+            },
+            "end": {
+              "index": 120,
+              "line": 0,
+              "character": 120
+            }
+          }
+        ]
+      },
+      "reference": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "UndefinedObject",
+            "message": "Unknown object 'footer' used.",
+            "uri": "file:///workspace/sections/optional-caption.liquid",
+            "severity": 1,
+            "start": {
+              "index": 313,
+              "line": 0,
+              "character": 313
+            },
+            "end": {
+              "index": 319,
+              "line": 0,
+              "character": 319
+            }
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "product-card",
+      "task_digest": "35d1c090716cf27a197156ee92bfed3302456ef2c84fd4e17b1347a929e69140",
+      "starter": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/product-card.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      },
+      "reference": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/product-card.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "range-schema",
+      "task_digest": "fd2d117a95ee60317b9acaa339529ed4d7624b0045faf3f2a7c9f6e9eac55ba7",
+      "starter": {
+        "offenses": []
+      },
+      "reference": {
+        "offenses": []
+      }
+    },
+    {
+      "task_id": "section-schema",
+      "task_digest": "cbb16e3776caacd65d7b43ef9e4a437dd9a1b16ecfdd32a0766b54c7d3089606",
+      "starter": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "ValidSchema",
+            "message": "Incorrect type. Expected \"boolean\".",
+            "uri": "file:///workspace/sections/feature-panel.liquid",
+            "severity": 0,
+            "start": {
+              "index": 440,
+              "line": 18,
+              "character": 17
+            },
+            "end": {
+              "index": 445,
+              "line": 18,
+              "character": 22
+            }
+          }
+        ]
+      },
+      "reference": {
+        "offenses": []
+      }
+    },
+    {
+      "task_id": "select-schema",
+      "task_digest": "7b51b5ee5abe61a4335c9abb52ed1ac23eac128dd4773f55617a180f5d359b0d",
+      "starter": {
+        "offenses": []
+      },
+      "reference": {
+        "offenses": []
+      }
+    },
+    {
+      "task_id": "shipping-message",
+      "task_digest": "e144fc10bf1225dc5c9c32fa226419906ce439e9459e8738eab7e76ea4841e6b",
+      "starter": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/shipping-message.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      },
+      "reference": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/shipping-message.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "status-priority",
+      "task_digest": "17e9bd33137cb3dfe1573b2896781a1084d93d941a42d16557b96047992e589b",
+      "starter": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/status-priority.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      },
+      "reference": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/status-priority.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "stylesheet-pair",
+      "task_digest": "ad563a67d7d89c685eda28ff0690b4983050a87de561a772b60b0fa3fe92343a",
+      "starter": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/stylesheet-pair.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          },
+          {
+            "type": "LiquidHtml",
+            "check": "MissingAsset",
+            "message": "'assets/old.css' does not exist",
+            "uri": "file:///workspace/snippets/stylesheet-pair.liquid",
+            "severity": 0,
+            "start": {
+              "index": 3,
+              "line": 0,
+              "character": 3
+            },
+            "end": {
+              "index": 12,
+              "line": 0,
+              "character": 12
+            }
+          },
+          {
+            "type": "LiquidHtml",
+            "check": "MissingAsset",
+            "message": "'assets/old-dark.css' does not exist",
+            "uri": "file:///workspace/snippets/stylesheet-pair.liquid",
+            "severity": 0,
+            "start": {
+              "index": 47,
+              "line": 0,
+              "character": 47
+            },
+            "end": {
+              "index": 61,
+              "line": 0,
+              "character": 61
+            }
+          },
+          {
+            "type": "LiquidHtml",
+            "check": "TranslationKeyExists",
+            "message": "'panels.title' does not have a matching entry in 'locales/en.default.json'",
+            "uri": "file:///workspace/snippets/stylesheet-pair.liquid",
+            "severity": 0,
+            "start": {
+              "index": 100,
+              "line": 0,
+              "character": 100
+            },
+            "end": {
+              "index": 114,
+              "line": 0,
+              "character": 114
+            }
+          }
+        ]
+      },
+      "reference": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/stylesheet-pair.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "tag-membership",
+      "task_digest": "11924f1d896c098608e598ad33249ff1c25d7ed4b24fc463023d05e9324a5e55",
+      "starter": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/tag-membership.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      },
+      "reference": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "OrphanedSnippet",
+            "message": "This snippet is not referenced by any other files",
+            "uri": "file:///workspace/snippets/tag-membership.liquid",
+            "severity": 1,
+            "start": {
+              "index": 0,
+              "line": 0,
+              "character": 0
+            },
+            "end": {
+              "index": 1,
+              "line": 0,
+              "character": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "visible-list-limit",
+      "task_digest": "052fc08d5067803bc4c53ff98d8d07b27778b9dff34882074273fdd2545845bd",
+      "starter": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "UndefinedObject",
+            "message": "Unknown object 'rows' used.",
+            "uri": "file:///workspace/sections/visible-list-limit.liquid",
+            "severity": 1,
+            "start": {
+              "index": 111,
+              "line": 0,
+              "character": 111
+            },
+            "end": {
+              "index": 115,
+              "line": 0,
+              "character": 115
+            }
+          }
+        ]
+      },
+      "reference": {
+        "offenses": [
+          {
+            "type": "LiquidHtml",
+            "check": "UndefinedObject",
+            "message": "Unknown object 'rows' used.",
+            "uri": "file:///workspace/sections/visible-list-limit.liquid",
+            "severity": 1,
+            "start": {
+              "index": 57,
+              "line": 0,
+              "character": 57
+            },
+            "end": {
+              "index": 61,
+              "line": 0,
+              "character": 61
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

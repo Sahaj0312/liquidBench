@@ -202,6 +202,8 @@ def run(
     sandbox_factory=Sandbox,
     grader=grade,
     resolve_image=image_id,
+    system_appendix="",
+    injected_context=None,
 ):
     provider = provider or ChatProvider(config)
     run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ-") + uuid.uuid4().hex[:8]
@@ -252,6 +254,13 @@ def run(
             trace.flush()
 
         try:
+            if not isinstance(system_appendix, str):
+                raise InfrastructureError("System appendix must be text")
+            if (system_appendix or injected_context is not None) and (
+                config.get("skills") is not None or config.get("neutral_context") is not None
+            ):
+                raise InfrastructureError("Diagnostic context cannot mix with legacy loading")
+            system = SYSTEM + system_appendix
             bundle = None
             try:
                 neutral = load_neutral(config)
@@ -278,8 +287,33 @@ def run(
                     result["skill_accesses"].append(access)
                     event("skill_access", **access)
             messages = initial_messages(
-                SYSTEM, task.manifest["prompt"], bundle, loading=loading, neutral=neutral
+                system, task.manifest["prompt"], bundle, loading=loading, neutral=neutral
             )
+            if injected_context is not None:
+                if (
+                    not isinstance(injected_context, dict)
+                    or set(injected_context) != {"content", "metadata"}
+                    or not isinstance(injected_context["content"], str)
+                    or not isinstance(injected_context["metadata"], dict)
+                    or injected_context["metadata"].get("kind")
+                    not in {"skill_reference", "matched_neutral"}
+                ):
+                    raise InfrastructureError("Invalid diagnostic context")
+                content = injected_context["content"]
+                messages.insert(1, {"role": "user", "content": content})
+                exposure = {
+                    **injected_context["metadata"],
+                    "message_sha256": sha256(content.encode()),
+                    "message_bytes": len(content.encode()),
+                    "turn": None,
+                    "first_model_turn": None,
+                }
+                if exposure["kind"] == "skill_reference":
+                    result["skill_accesses"].append(exposure)
+                    event("skill_access", **exposure)
+                else:
+                    result["context_exposures"].append(exposure)
+                    event("context_exposure", **exposure)
             if neutral is not None or (bundle is not None and loading == "on_demand"):
                 content = messages[1]["content"].encode()
                 exposure = {
@@ -290,6 +324,8 @@ def run(
                 }
                 result["context_exposures"].append(exposure)
                 event("context_exposure", **exposure)
+            result["system_sha256"] = sha256(system.encode())
+            result["initial_context_sha256"] = fingerprint(messages)
             event("initial_context", messages=messages)
             image = resolve_image(config["image"])
             result["image_id"] = image

@@ -1,0 +1,41 @@
+Supplementary reference material follows. The task and tool protocol take priority.
+Record 0000: orchard / copper. The morning inventory was recorded beside the north entrance. Quantity 0; distance 0 metres. {"index": 0, "label": "sample-00000", "checked": true}
+Record 0001: harbor / copper. A blue label marks the shelf reserved for the next inspection. Quantity 37; distance 13 metres. {"index": 1, "label": "sample-00019", "checked": false}
+Record 0002: museum / copper. Visitors followed the eastern path after the afternoon rain. Quantity 74; distance 26 metres. {"index": 2, "label": "sample-00038", "checked": false}
+Record 0003: garden / copper. The archive lists a date, a location, and a short observation. Quantity 111; distance 39 metres. {"index": 3, "label": "sample-00057", "checked": true}
+Record 0004: station / copper. Each sample was measured twice before being placed in its box. Quantity 148; distance 52 metres. {"index": 4, "label": "sample-00076", "checked": false}
+Record 0005: library / copper. The morning inventory was recorded beside the north entrance. Quantity 185; distance 65 metres. {"index": 5, "label": "sample-00095", "checked": false}
+Record 0006: trail / copper. A blue label marks the shelf reserved for the next inspection. Quantity 222; distance 78 metres. {"index": 6, "label": "sample-00114", "checked": true}
+Record 0007: orchard / linen. Visitors followed the eastern path after the afternoon rain. Quantity 259; distance 91 metres. {"index": 7, "label": "sample-00133", "checked": false}
+Record 0008: harbor / linen. The archive lists a date, a location, and a short observation. Quantity 296; distance 104 metres. {"index": 8, "label": "sample-00152", "checked": false}
+Record 0009: museum / linen. Each sample was measured twice before being placed in its box. Quantity 333; distance 117 metres. {"index": 9, "label": "sample-00171", "checked": true}
+Record 0010: garden / linen. The morning inventory was recorded beside the north entrance. Quantity 370; distance 130 metres. {"index": 10, "label": "sample-00190", "checked": false}
+Record 0011: station / linen. A blue label marks the shelf reserved for the next inspection. Quantity 407; distance 143 metres. {"index": 11, "label": "sample-00209", "checked": false}
+Record 0012: library / linen. Visitors followed the eastern path after the afternoon rain. Quantity 444; distance 156 metres. {"index": 12, "label": "sample-00228", "checked": true}
+Record 0013: trail / linen. The archive lists a date, a location, and a short observation. Quantity 481; distance 169 metres. {"index": 13, "label": "sample-00247", "checked": false}
+Record 0014: orchard / birch. Each sample was measured twice before being placed in its box. Quantity 518; distance 182 metres. {"index": 14, "label": "sample-00266", "checked": false}
+Record 0015: harbor / birch. The morning inventory was recorded beside the north entrance. Quantity 555; distance 195 metres. {"index": 15, "label": "sample-00285", "checked": true}
+Record 0016: museum / birch. A blue label marks the shelf reserved for the next inspection. Quantity 592; distance 208 metres. {"index": 16, "label": "sample-00304", "checked": false}
+Record 0017: garden / birch. Visitors followed the eastern path after the afternoon rain. Quantity 629; distance 221 metres. {"index": 17, "label": "sample-00323", "checked": false}
+Record 0018: station / birch. The archive lists a date, a location, and a short observation. Quantity 666; distance 234 metres. {"index": 18, "label": "sample-00342", "checked": true}
+Record 0019: library / birch. Each sample was measured twice before being placed in its box. Quantity 703; distance 247 metres. {"index": 19, "label": "sample-00361", "checked": false}
+Record 0020: trail / birch. The morning inventory was recorded beside the north entrance. Quantity 740; distance 260 metres. {"index": 20, "label": "sample-00380", "checked": false}
+Record 0021: orchard / glass. A blue label marks the shelf reserved for the next inspection. Quantity 777; distance 273 metres. {"index": 21, "label": "sample-00399", "checked": true}
+Record 0022: harbor / glass. Visitors followed the eastern path after the afternoon rain. Quantity 814; distance 286 metres. {"index": 22, "label": "sample-00418", "checked": false}
+Record 0023: museum / glass. The archive lists a date, a location, and a short observation. Quantity 851; distance 299 metres. {"index": 23, "label": "sample-00437", "checked": false}
+Record 0024: garden / glass. Each sample was measured twice before being placed in its box. Quantity 888; distance 312 metres. {"index": 24, "label": "sample-00456", "checked": true}
+Record 0025: station / glass. The morning inventory was recorded beside the north entrance. Quantity 925; distance 325 metres. {"index": 25, "label": "sample-00475", "checked": false}
+Record 0026: library / glass. A blue label marks the shelf reserved for the next inspection. Quantity 962; distance 338 metres. {"index": 26, "label": "sample-00494", "checked": false}
+Record 0027: trail / glass. Visitors followed the eastern path after the afternoon rain. Quantity 2; distance 351 metres. {"index": 27, "label": "sample-00513", "checked": true}
+Record 0028: orchard / stone. The archive lists a date, a location, and a short observation. Quantity 39; distance 364 metres. {"index": 28, "label": "sample-00532", "checked": false}
+Record 0029: harbor / stone. Each sample was measured twice before being placed in its box. Quantity 76; distance 377 metres. {"index": 29, "label": "sample-00551", "checked": false}
+Record 0030: museum / stone. The morning inventory was recorded beside the north entrance. Quantity 113; distance 390 metres. {"index": 30, "label": "sample-00570", "checked": true}
+Record 0031: garden / stone. A blue label marks the shelf reserved for the next inspection. Quantity 150; distance 403 metres. {"index": 31, "label": "sample-00589", "checked": false}
+Record 0032: station / stone. Visitors followed the eastern path after the afternoon rain. Quantity 187; distance 416 metres. {"index": 32, "label": "sample-00608", "checked": false}
+Record 0033: library / stone. The archive lists a date, a location, and a short observation. Quantity 224; distance 429 metres. {"index": 33, "label": "sample-00627", "checked": true}
+Record 0034: trail / stone. Each sample was measured twice before being placed in its box. Quantity 261; distance 11 metres. {"index": 34, "label": "sample-00646", "checked": false}
+Record 0035: orchard / paper. The morning inventory was recorded beside the north entrance. Quantity 298; distance 24 metres. {"index": 35, "label": "sample-00665", "checked": false}
+Record 0036: harbor / paper. A blue label marks the shelf reserved for the next inspection. Quantity 335; distance 37 metres. {"index": 36, "label": "sample-00684", "checked": true}
+Record 0037: museum / paper. Visitors followed the eastern path after the afternoon rain. Quantity 372; distance 50 metres. {"index": 37, "label": "sample-00703", "checked": false}
+Record 0038: garden / paper. The archive lists a date, a location, and a short observation. Quantity 409; distance 63 metres. {"index": 38, "label": "sample-00722", "checked": false}
+Record 0039: station / paper. Each sample was measured twice before being placed in its box. Quantity 446; distance 76 metres

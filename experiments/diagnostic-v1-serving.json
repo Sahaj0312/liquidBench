@@ -1,0 +1,143 @@
+{
+  "image": "vllm/vllm-openai@sha256:6ee133356d49ed24cee03dd0cda3d3980279a11c107ce3e752c89e76540f41c9",
+  "model": {
+    "revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+    "snapshot": "/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-Coder-7B-Instruct/snapshots/c03e6d358207e414f1eca0bb1891e29f1db0e242",
+    "files": {
+      ".gitattributes": {
+        "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+        "bytes": 1519
+      },
+      "LICENSE": {
+        "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+        "bytes": 11343
+      },
+      "README.md": {
+        "sha256": "3c090be37f829adc1e4cdb78733667437732541470430ab2cd785d7f0d460077",
+        "bytes": 6392
+      },
+      "config.json": {
+        "sha256": "c0242402ad6a13b331ea320feea8c7e3776ffb7a4eff0757b9cd667e116d9a28",
+        "bytes": 663
+      },
+      "generation_config.json": {
+        "sha256": "1a628a5775bc69cde01c6749a531150ca4d3189652c618a174f7077923acf3b1",
+        "bytes": 242
+      },
+      "merges.txt": {
+        "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+        "bytes": 1671839
+      },
+      "model-00001-of-00004.safetensors": {
+        "sha256": "0b6f069918b07c064cbba8ae4f00f529aa9bbf84b7cdfcb7fc2694a40f6aa8ef",
+        "bytes": 4877660776
+      },
+      "model-00002-of-00004.safetensors": {
+        "sha256": "c3d46733e7aa054ea7b063fbccd0a5a08446e7bd1814bef26936c5aa1331da62",
+        "bytes": 4932751008
+      },
+      "model-00003-of-00004.safetensors": {
+        "sha256": "9fe45dacee087385b3d2d6dd27a7413a8a56d95f145772facc148fa86fc73446",
+        "bytes": 4330865200
+      },
+      "model-00004-of-00004.safetensors": {
+        "sha256": "5aa6e5cbe642377fd441fb4e60e83cca96b2bcd9820e245b9ea06d94653f17f2",
+        "bytes": 1089994880
+      },
+      "model.safetensors.index.json": {
+        "sha256": "998a078123ffc97763690de7f2a677eb89168af5eaf8a5e12e6bc24d18e25bdb",
+        "bytes": 27752
+      },
+      "tokenizer.json": {
+        "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+        "bytes": 7031645
+      },
+      "tokenizer_config.json": {
+        "sha256": "959e7f1d9a1b7641a6d6ce05ca97b75c7894fcb66cbe5a040406458fb1128ee4",
+        "bytes": 7305
+      },
+      "vocab.json": {
+        "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "bytes": 2776833
+      }
+    },
+    "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+    "config": {
+      "architectures": [
+        "Qwen2ForCausalLM"
+      ],
+      "attention_dropout": 0.0,
+      "bos_token_id": 151643,
+      "eos_token_id": 151645,
+      "hidden_act": "silu",
+      "hidden_size": 3584,
+      "initializer_range": 0.02,
+      "intermediate_size": 18944,
+      "max_position_embeddings": 32768,
+      "max_window_layers": 28,
+      "model_type": "qwen2",
+      "num_attention_heads": 28,
+      "num_hidden_layers": 28,
+      "num_key_value_heads": 4,
+      "rms_norm_eps": 1e-06,
+      "rope_theta": 1000000.0,
+      "sliding_window": 131072,
+      "tie_word_embeddings": false,
+      "torch_dtype": "bfloat16",
+      "transformers_version": "4.44.0",
+      "use_cache": true,
+      "use_sliding_window": false,
+      "vocab_size": 152064
+    }
+  },
+  "software": {
+    "python": "3.12.3",
+    "packages": {
+      "vllm": "0.32.0",
+      "torch": "2.13.0+cu130",
+      "transformers": "5.19.0",
+      "tokenizers": "0.23.3",
+      "xgrammar": "0.2.8"
+    },
+    "torch_cuda": "13.0",
+    "gpu": "NVIDIA A40",
+    "compute_capability": [
+      8,
+      6
+    ],
+    "bf16_supported": true,
+    "gpu_memory_bytes": 47699722240
+  },
+  "command": [
+    "vllm",
+    "serve",
+    "Qwen/Qwen2.5-Coder-7B-Instruct",
+    "--revision",
+    "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+    "--tokenizer-revision",
+    "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+    "--dtype",
+    "bfloat16",
+    "--kv-cache-dtype",
+    "auto",
+    "--max-model-len",
+    "32768",
+    "--max-num-seqs",
+    "1",
+    "--tensor-parallel-size",
+    "1",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--generation-config",
+    "vllm",
+    "--structured-outputs-config",
+    "{\"backend\":\"xgrammar\"}",
+    "--seed",
+    "42",
+    "--host",
+    "0.0.0.0",
+    "--port",
+    "8000"
+  ],
+  "runtime_image": "sha256:ffd88aa28203d5582a880a59727f5e4700f1bf225387a381b60cb60bbadc9638"
+}
