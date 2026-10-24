@@ -154,7 +154,7 @@ def author(client, ledger, model, category, difficulty, themes, effort):
     ledger.require(0.60)
     with client.beta.messages.stream(
         model=model,
-        max_tokens=48000,
+        max_tokens=64000,
         betas=[FALLBACK_BETA],
         fallbacks="default",
         output_config={"effort": effort, "format": {"type": "json_schema", "schema": SPEC_SCHEMA}},
@@ -173,7 +173,9 @@ def author(client, ledger, model, category, difficulty, themes, effort):
         response = stream.get_final_message()
     usd = ledger.record("task-authoring", model, response.usage.model_dump(exclude_none=True))
     if response.stop_reason != "end_turn":
-        raise RuntimeError(f"Authoring stopped: {response.stop_reason}")
+        # A truncated structured response cannot be parsed; it is paid for and recorded.
+        print(f"authoring call unusable: stop_reason={response.stop_reason}", flush=True)
+        return [], usd
     text = "".join(b.text for b in response.content if b.type == "text")
     return json.loads(text)["tasks"], usd
 

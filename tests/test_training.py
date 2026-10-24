@@ -244,3 +244,45 @@ def test_schema_and_reference_specs_verify(tmp_path):
         ],
     }
     assert build_spec(tmp_path, spec).name == "search-label-test"
+
+
+def test_structured_reply_becomes_exact_student_action():
+    from liquidbench.claude_provider import canonical_action
+
+    reply = json.dumps(
+        {
+            "action": {
+                "tool": "render",
+                "args": {
+                    "path": "snippets/a.liquid",
+                    "variables_json": '{"x": {"y": null}}',
+                    "strip_schema": False,
+                },
+            }
+        }
+    )
+    assert json.loads(canonical_action(reply)) == {
+        "tool": "render",
+        "args": {
+            "path": "snippets/a.liquid",
+            "variables": {"x": {"y": None}},
+            "strip_schema": False,
+        },
+    }
+    assert canonical_action(json.dumps({"action": {"tool": "finish", "args": {}}})) == (
+        '{"tool": "finish", "args": {}}'
+    )
+    assert canonical_action('<invoke name="read_file">') is None
+    assert (
+        canonical_action(
+            json.dumps(
+                {
+                    "action": {
+                        "tool": "render",
+                        "args": {"path": "a", "variables_json": "[1]", "strip_schema": False},
+                    }
+                }
+            )
+        )
+        is None
+    )

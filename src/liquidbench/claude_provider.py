@@ -32,6 +32,64 @@ def usage_cost(model, usage, *, batch=False):
     return cost / 2 if batch else cost
 
 
+def _action(tool, **props):
+    args = {
+        "type": "object",
+        "properties": props,
+        "required": sorted(props),
+        "additionalProperties": False,
+    }
+    return {
+        "type": "object",
+        "additionalProperties": False,
+        "required": ["tool", "args"],
+        "properties": {"tool": {"type": "string", "const": tool}, "args": args},
+    }
+
+
+STRING, BOOLEAN = {"type": "string"}, {"type": "boolean"}
+# One action per reply. render variables travel as a JSON string (structured outputs
+# cannot express a free-form object) and are converted to the student's object form.
+ACTION_SCHEMA = {
+    "type": "object",
+    "additionalProperties": False,
+    "required": ["action"],
+    "properties": {
+        "action": {
+            "anyOf": [
+                _action("list_files"),
+                _action("check"),
+                _action("finish"),
+                _action("read_file", path=STRING),
+                _action("analyze", path=STRING),
+                _action("search", text=STRING),
+                _action("write_file", path=STRING, content=STRING),
+                _action("render", path=STRING, variables_json=STRING, strip_schema=BOOLEAN),
+            ]
+        }
+    },
+}
+
+
+def canonical_action(text):
+    """Structured reply -> exact student envelope; None if it cannot be converted."""
+    try:
+        action = json.loads(text)["action"]
+        args = dict(action["args"])
+        if action["tool"] == "render":
+            variables = json.loads(args.pop("variables_json"))
+            if not isinstance(variables, dict):
+                return None
+            args = {
+                "path": args["path"],
+                "variables": variables,
+                "strip_schema": args["strip_schema"],
+            }
+        return json.dumps({"tool": action["tool"], "args": args}, ensure_ascii=False)
+    except (ValueError, KeyError, TypeError):
+        return None
+
+
 class Ledger:
     """Append-only spend record; every paid call checks the cap first."""
 
@@ -126,7 +184,10 @@ class ClaudeProvider:
                 ],
                 messages=[{"role": m["role"], "content": m["content"]} for m in messages[1:]],
                 cache_control={"type": "ephemeral"},
-                output_config={"effort": self.effort},
+                output_config={
+                    "effort": self.effort,
+                    "format": {"type": "json_schema", "schema": ACTION_SCHEMA},
+                },
                 betas=[FALLBACK_BETA],
                 fallbacks="default",
                 timeout=max(timeout, 60),
@@ -145,7 +206,8 @@ class ClaudeProvider:
         usd = self.ledger.record("trajectory", self.model, usage)
         if response.stop_reason == "refusal":
             raise ProviderError("Claude declined the request")
-        text = "".join(b.text for b in response.content if b.type == "text")
+        raw = "".join(b.text for b in response.content if b.type == "text")
+        text = canonical_action(raw) or raw
         # The exact student-format conversation: what was sent plus this reply.
         self.transcript = [*messages, {"role": "assistant", "content": text}]
         visible = len(self.tokenizer.encode(text, add_special_tokens=False))
