@@ -142,6 +142,7 @@ class ClaudeProvider:
         reserve_usd=0.10,
         client=None,
         tokenizer=None,
+        teacher_note="",
     ):
         if model not in PRICES:
             raise ValueError(f"No pinned price for {model}")
@@ -153,6 +154,8 @@ class ClaudeProvider:
         self.thinking_tokens, self.reserve = thinking_tokens, reserve_usd
         self.client = client
         self.transcript = None
+        # Guidance only the teacher sees; it is never part of the student transcript.
+        self.teacher_note = teacher_note
         self.tokenizer = tokenizer or qwen_tokenizer()
 
     def qwen_prompt_tokens(self, messages):
@@ -180,7 +183,8 @@ class ClaudeProvider:
                         "type": "text",
                         "text": messages[0]["content"],
                         "cache_control": {"type": "ephemeral"},
-                    }
+                    },
+                    *([{"type": "text", "text": self.teacher_note}] if self.teacher_note else []),
                 ],
                 messages=[{"role": m["role"], "content": m["content"]} for m in messages[1:]],
                 cache_control={"type": "ephemeral"},

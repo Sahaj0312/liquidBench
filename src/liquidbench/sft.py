@@ -21,32 +21,50 @@ def family_root(task_id):
     return re.sub(r"-\d+$", "", task_id)
 
 
-def load_examples(trajectories, train_tasks):
-    """One trajectory per training task, preferring teachers in TEACHER_ORDER."""
+def load_examples(trajectories, train_tasks, keep=lambda example: True):
+    """One trajectory per training task.
+
+    `trajectories` is a directory or a list of directories in priority order; within
+    each, teachers are tried in TEACHER_ORDER. Examples failing `keep` are skipped.
+    """
+    dirs = [trajectories] if isinstance(trajectories, (str, Path)) else trajectories
     chosen = {}
-    for teacher in TEACHER_ORDER:
-        path = Path(trajectories) / teacher / "sft.jsonl"
-        if not path.exists():
-            continue
-        for line in path.read_text().splitlines():
-            example = json.loads(line)
-            if example["task"] in train_tasks and example["task"] not in chosen:
-                assert_not_heldout(json.dumps(example["messages"]))
-                chosen[example["task"]] = example
+    for root in dirs:
+        for teacher in TEACHER_ORDER:
+            path = Path(root) / teacher / "sft.jsonl"
+            if not path.exists():
+                continue
+            for line in path.read_text().splitlines():
+                example = json.loads(line)
+                task = example["task"]
+                if task in train_tasks and task not in chosen and keep(example):
+                    assert_not_heldout(json.dumps(example["messages"]))
+                    chosen[task] = example
     return [chosen[t] for t in sorted(chosen)]
 
 
-def split(examples, val_fraction=0.1, seed=42):
-    roots = sorted({family_root(e["task"]) for e in examples})
-    random.Random(seed).shuffle(roots)
-    target = max(1, round(len(examples) * val_fraction))
-    val_roots = set()
-    count = 0
-    for root in roots:
-        if count >= target:
-            break
-        val_roots.add(root)
-        count += sum(family_root(e["task"]) == root for e in examples)
+def final_render(messages):
+    """Whether the trajectory renders after its last write_file."""
+    tools = [json.loads(m["content"])["tool"] for m in messages if m["role"] == "assistant"]
+    last_write = max((i for i, t in enumerate(tools) if t == "write_file"), default=-1)
+    return "render" in tools[last_write + 1 :]
+
+
+def split(examples, val_fraction=0.1, seed=42, val_tasks=None):
+    """Family-grouped split; `val_tasks` (e.g. a previous manifest's) freezes validation."""
+    if val_tasks is not None:
+        val_roots = {family_root(t) for t in val_tasks}
+    else:
+        roots = sorted({family_root(e["task"]) for e in examples})
+        random.Random(seed).shuffle(roots)
+        target = max(1, round(len(examples) * val_fraction))
+        val_roots = set()
+        count = 0
+        for root in roots:
+            if count >= target:
+                break
+            val_roots.add(root)
+            count += sum(family_root(e["task"]) == root for e in examples)
     train = [e for e in examples if family_root(e["task"]) not in val_roots]
     val = [e for e in examples if family_root(e["task"]) in val_roots]
     return train, val

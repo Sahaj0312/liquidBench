@@ -298,3 +298,18 @@ def test_reused_family_is_renamed_with_its_path():
     assert renamed["path"] == "snippets/loyalty-tier-label-3.liquid"
     assert "snippets/loyalty-tier-label.liquid" not in json.dumps(renamed)
     assert renamed["cases"] == RENDER["cases"]
+
+
+def test_teacher_note_reaches_claude_but_not_the_student_transcript(tmp_path):
+    client = FakeClient('{"tool":"finish","args":{}}')
+    p = ClaudeProvider(
+        "claude-sonnet-5-5",
+        Ledger(tmp_path / "ledger.jsonl", 1.0),
+        client=client,
+        tokenizer=FakeTokenizer(),
+        teacher_note="render edge cases",
+    )
+    messages = [{"role": "system", "content": "sys"}, {"role": "user", "content": "task"}]
+    p.complete(messages, 1024, 30)
+    assert [b["text"] for b in client.calls[0]["system"]] == ["sys", "render edge cases"]
+    assert "render edge cases" not in json.dumps(p.transcript)

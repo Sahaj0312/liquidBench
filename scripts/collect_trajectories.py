@@ -26,9 +26,11 @@ def habits(transcript):
             except (ValueError, KeyError, TypeError):
                 actions.append("?")
     first_write = actions.index("write_file") if "write_file" in actions else len(actions)
+    last_write = max((i for i, a in enumerate(actions) if a == "write_file"), default=-1)
     return {
         "actions": actions,
         "read_before_write": "read_file" in actions[:first_write],
+        "final_render": "render" in actions[last_write + 1 :],
         "validated": any(a in {"check", "render", "analyze"} for a in actions),
     }
 
@@ -42,6 +44,16 @@ def main():
     parser.add_argument("--ledger", default="runs/training/ledger.jsonl")
     parser.add_argument("--out", default="runs/training/trajectories")
     parser.add_argument(
+        "--teacher-note",
+        type=Path,
+        help="file of guidance sent to the teacher only; never part of the kept transcript",
+    )
+    parser.add_argument(
+        "--require-final-render",
+        action="store_true",
+        help="for rendered tasks, keep only runs that render after their last write",
+    )
+    parser.add_argument(
         "--only-missing",
         action="store_true",
         help="skip tasks that already have a kept trajectory from any teacher",
@@ -49,7 +61,8 @@ def main():
     args = parser.parse_args()
     ledger = Ledger(args.ledger, args.cap)
     config = load_config("configs/train-collect.json")
-    provider = ClaudeProvider(args.model, ledger, effort=args.effort)
+    note = args.teacher_note.read_text().strip() if args.teacher_note else ""
+    provider = ClaudeProvider(args.model, ledger, effort=args.effort, teacher_note=note)
     tasks = discover_tasks(Path("tasks/train"))
     if args.tasks:
         tasks = [t for t in tasks if t.manifest["id"] in set(args.tasks)]
@@ -90,6 +103,11 @@ def main():
             and info["protocol_errors"] == 0
             and info["truncations"] == 0
             and info["read_before_write"]
+            and (
+                info["final_render"]
+                or not args.require_final_render
+                or task.manifest["evaluator"] != "render-contract-v1"
+            )
             and prompt_tokens + config["max_output_tokens"] <= config["max_context_tokens"]
         )
         if keep:
@@ -100,6 +118,7 @@ def main():
                         {
                             "task": task.manifest["id"],
                             "teacher": args.model,
+                            "teacher_note": bool(note),
                             "messages": transcript,
                         },
                         ensure_ascii=False,

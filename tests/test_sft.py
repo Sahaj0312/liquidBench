@@ -67,3 +67,23 @@ def test_loss_covers_exactly_each_action_and_its_end_token():
     ids, labels = tokenize(messages, tokenizer)
     trained = tokenizer.decode([i for i, label in zip(ids, labels) if label != IGNORE])
     assert trained == "".join(a + "<|im_end|>" for a in actions)
+
+
+def test_final_render_must_follow_the_last_write():
+    from liquidbench.sft import final_render
+
+    def actions(*tools):
+        return [
+            {"role": "assistant", "content": json.dumps({"tool": t, "args": {}})} for t in tools
+        ]
+
+    assert final_render(actions("read_file", "write_file", "check", "render", "finish"))
+    assert not final_render(actions("read_file", "render", "write_file", "check", "finish"))
+    assert not final_render(actions("read_file", "write_file", "check", "finish"))
+
+
+def test_frozen_validation_tasks_keep_their_families_out_of_train():
+    examples = [example(t) for t in ("a", "a-2", "b", "c")]
+    train, val = split(examples, val_tasks=["a"])
+    assert [e["task"] for e in val] == ["a", "a-2"]
+    assert [e["task"] for e in train] == ["b", "c"]

@@ -1,0 +1,8 @@
+Teacher guidance (the student model never sees this text): when the task is graded on rendered
+output, do not finish right after write_file and check. After your final write_file, call render
+on the edited file with variables chosen to exercise the specification's edge cases: boundary
+values, null or empty inputs, text containing < > & " characters, and inputs where rules
+conflict (for example two matching conditions where one has priority, or the priority item
+appearing later in a list). Use one render call per distinct case that could go wrong, usually
+one or two. Compare the output with the specification; if anything differs, fix the file, render
+again, and only then finish. For schema or reference tasks, check is sufficient.
