@@ -14,7 +14,7 @@ from pathlib import Path
 import random
 import time
 
-from generate_training_tasks import INSTRUCTIONS, THEMES
+from generate_training_tasks import BATCHES, INSTRUCTIONS, THEMES, pending_reservations
 from liquidbench.claude_provider import PRICES, Ledger
 from liquidbench.heldout import verify_frozen
 from liquidbench.sandbox import Sandbox, image_id
@@ -36,7 +36,6 @@ ANGLES = [
     "state carried across loop iterations",
     "optional wrapper elements",
 ]
-BATCHES = Path("runs/training/batches")
 MAX_TOKENS = 48000
 
 
@@ -120,13 +119,6 @@ def submit(args):
             {"batch_id": batch.id, "requests": len(plan), "worst_case_usd": round(reserve, 2)}
         )
     )
-
-
-def pending_reservations():
-    for path in BATCHES.glob("*.json"):
-        record = json.loads(path.read_text())
-        if not record["collected"]:
-            yield record["worst_case_usd"]
 
 
 def collect(args):

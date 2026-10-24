@@ -101,6 +101,17 @@ THEMES = {
     ],
 }
 
+BATCHES = Path("runs/training/batches")
+
+
+def pending_reservations():
+    """Worst-case cost still reserved by submitted, uncollected batches."""
+    for path in BATCHES.glob("*.json"):
+        record = json.loads(path.read_text())
+        if not record["collected"]:
+            yield record["worst_case_usd"]
+
+
 INSTRUCTIONS = """You write training tasks for a coding agent that edits Shopify Liquid theme
 files with these tools only: read_file, write_file, render (strict core Ruby Liquid 5.8 with
 strict_variables and strict_filters, only supplied variables, NO Shopify objects, filters or
@@ -151,7 +162,8 @@ coordinated edits."""
 
 
 def author(client, ledger, model, category, difficulty, themes, effort):
-    ledger.require(0.60)
+    # Live calls must leave room for every pending batch's worst case.
+    ledger.require(0.60 + sum(pending_reservations()))
     with client.beta.messages.stream(
         model=model,
         max_tokens=64000,
