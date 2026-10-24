@@ -16,7 +16,7 @@ import random
 from liquidbench.claude_provider import FALLBACK_BETA, Ledger
 from liquidbench.heldout import verify_frozen
 from liquidbench.sandbox import Sandbox, image_id
-from liquidbench.training_tasks import SPEC_SCHEMA, Rejected, build, known_families
+from liquidbench.training_tasks import SPEC_SCHEMA, Rejected, build, known_families, unique_family
 
 THEMES = {
     "liquid-syntax": [
@@ -219,6 +219,7 @@ def main():
         themes = rng.sample(THEMES[category], args.per_call)
         specs, usd = author(client, ledger, args.model, category, difficulty, themes, args.effort)
         for spec in specs:
+            spec = unique_family(spec, known_families())
             provenance = (
                 f"Claude-authored training task ({args.model}, {stamp}); kept only after "
                 "container verification. Not development or held-out data."

@@ -18,7 +18,7 @@ from generate_training_tasks import BATCHES, INSTRUCTIONS, THEMES, pending_reser
 from liquidbench.claude_provider import PRICES, Ledger
 from liquidbench.heldout import verify_frozen
 from liquidbench.sandbox import Sandbox, image_id
-from liquidbench.training_tasks import SPEC_SCHEMA, Rejected, build, known_families
+from liquidbench.training_tasks import SPEC_SCHEMA, Rejected, build, known_families, unique_family
 
 ANGLES = [
     "null and empty-string inputs",
@@ -167,6 +167,7 @@ def collect(args):
             print(f"{result.custom_id}: unusable ({exc})", flush=True)
             continue
         for spec in specs:
+            spec = unique_family(spec, known_families())
             try:
                 root = build(
                     spec,

@@ -286,3 +286,15 @@ def test_structured_reply_becomes_exact_student_action():
         )
         is None
     )
+
+
+def test_reused_family_is_renamed_with_its_path():
+    from liquidbench.training_tasks import unique_family
+
+    spec = {**RENDER, "prompt": "Repair snippets/loyalty-tier-label.liquid. " + RENDER["prompt"]}
+    assert unique_family(spec, set()) is spec
+    renamed = unique_family(spec, {"loyalty-tier-label", "loyalty-tier-label-2"})
+    assert renamed["family"] == "loyalty-tier-label-3"
+    assert renamed["path"] == "snippets/loyalty-tier-label-3.liquid"
+    assert "snippets/loyalty-tier-label.liquid" not in json.dumps(renamed)
+    assert renamed["cases"] == RENDER["cases"]

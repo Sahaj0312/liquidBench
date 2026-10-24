@@ -134,6 +134,20 @@ def schema_block(sandbox, path):
     return schemas[0]["block"] if len(schemas) == 1 and schemas[0]["top_level"] else None
 
 
+def unique_family(spec, known_families):
+    """Rename a reused family (and its path everywhere it is quoted) instead of discarding it."""
+    family = spec.get("family", "")
+    if family not in known_families:
+        return spec
+    n = 2
+    while f"{family}-{n}" in known_families:
+        n += 1
+    old = spec.get("path", "")
+    new = old.replace(f"{family}.liquid", f"{family}-{n}.liquid")
+    renamed = json.loads(json.dumps(spec).replace(old, new)) if old else dict(spec)
+    return {**renamed, "family": f"{family}-{n}", "path": new}
+
+
 def build(spec, out_root, *, sandbox_factory, image, heldout_tasks, known_families, provenance):
     """Write a candidate task directory and return it, or raise Rejected (nothing kept)."""
     family = spec["family"]
