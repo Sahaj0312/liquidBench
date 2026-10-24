@@ -1,0 +1,15 @@
+{
+  "id": "author-byline-3",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "medium",
+  "family": "author-byline-3",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/author-byline-3.liquid"
+  ],
+  "prompt": "Rewrite snippets/author-byline-3.liquid so it renders an article author byline exactly as specified.\n\nInputs (all top-level variables, always supplied):\n- author: object or null. When it is an object it always has the keys name (string or null), url (string or null) and role (string or null).\n- date: string or null.\n- wrapper: boolean or null.\n\nRules:\n1. If author is null, or author.name is null or empty after stripping leading and trailing whitespace, output nothing at all (empty string), even when wrapper is true.\n2. NAME is author.name stripped and HTML-escaped. The name element is <span class=\"byline-name\">NAME</span>.\n3. If author.url is non-null and non-empty after stripping, wrap the name element in <a class=\"byline-link\" href=\"URL\">...</a>, where URL is the stripped url, HTML-escaped. Otherwise there is no <a> element.\n4. If author.role is non-null and non-empty after stripping, append a single space followed by <span class=\"byline-role\">ROLE</span> (ROLE = stripped, HTML-escaped) right after the name element (after the closing </a> when there is a link).\n5. If date is non-null and non-empty after stripping, append a single space followed by <time>DATE</time> (DATE = stripped, HTML-escaped) after the role part (or after the name part when there is no role).\n6. The byline line is <p class=\"byline\">By NAMEPART[ ROLEPART][ TIMEPART]</p> (literal text \"By \" with one trailing space before the name part).\n7. If wrapper is true, output <div class=\"byline-wrap\"> + the byline line + </div>. If wrapper is false or null, output only the byline line.\n\nOutput must contain no other whitespace, newlines or text outside of what is described. Use HTML escaping that converts & < > and \" to entities. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/author-byline-3.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

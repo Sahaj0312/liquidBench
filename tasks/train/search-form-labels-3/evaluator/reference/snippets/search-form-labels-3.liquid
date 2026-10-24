@@ -1,0 +1,12 @@
+{{ 'component-search.css' | asset_url | stylesheet_tag }}
+<form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
+  {%- if label != blank -%}
+    {%- assign search_label = label -%}
+  {%- else -%}
+    {%- assign search_label = 'general.search.label' | t -%}
+  {%- endif -%}
+  <label for="SearchInput">{{ search_label | escape }}</label>
+  <input id="SearchInput" type="search" name="q" placeholder="{{ 'general.search.placeholder' | t }}">
+  <button type="submit">{{ 'general.search.submit' | t }}</button>
+  {% render 'icon-search' %}
+</form>

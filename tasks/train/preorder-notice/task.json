@@ -1,0 +1,15 @@
+{
+  "id": "preorder-notice",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "preorder-notice",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/preorder-notice.liquid"
+  ],
+  "prompt": "The snippet snippets/preorder-notice.liquid does not parse and is incomplete. Rewrite it so it parses under strict Liquid and renders a pre-order notice.\n\nInputs (top-level, always supplied):\n- `product`: object, never null, with keys:\n  - `product.title`: string, never null\n  - `product.preorder_message`: string or null\n  - `product.variants`: array (possibly empty) of objects, each with keys:\n    - `title`: string, never null\n    - `inventory`: integer (can be zero or negative)\n    - `preorder`: boolean\n    - `ship_date`: string or null\n\nA variant QUALIFIES when `preorder` is true AND `inventory` is less than or equal to 0.\n\nRules:\n1. If no variant qualifies (including an empty array), output nothing (empty string).\n2. Otherwise output exactly, with no whitespace between or around tags and no leading or trailing whitespace:\n   `<div class=\"preorder\"><h3>Pre-order: TITLE</h3><ul>ITEMS</ul>MESSAGE</div>`\n   - TITLE is product.title HTML-escaped with the escape filter.\n   - ITEMS: one `<li>` per qualifying variant, in array order, but at most the first 3 qualifying variants (non-qualifying variants do not count toward the limit). Each item is `<li>VTITLE - ships DATE</li>` where VTITLE is the escaped variant title and DATE is the ship_date with surrounding whitespace stripped, then escaped. If ship_date is null or empty after stripping, the item is `<li>VTITLE - ship date to be announced</li>`. The separator is space, hyphen, space.\n   - If more than 3 variants qualify, append one final item `<li class=\"preorder__more\">and K more</li>` where K is the number of qualifying variants minus 3.\n   - MESSAGE: if preorder_message, after stripping surrounding whitespace, is non-empty, output `<p>MSG</p>` with the stripped message escaped; otherwise nothing. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/preorder-notice.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

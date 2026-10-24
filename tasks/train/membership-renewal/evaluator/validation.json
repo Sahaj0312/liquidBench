@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-excludes-day-30",
+    "expected_pass": false,
+    "changes": {
+      "snippets/membership-renewal.liquid": "{%- if member -%}\n  {%- if member.days_left != nil -%}\n    {%- if member.days_left < 30 -%}\n      {%- assign d = member.days_left -%}\n      {%- if d < 0 -%}\n        {%- assign state = 'expired' -%}\n        {%- assign n = d | times: -1 -%}\n      {%- elsif d == 0 -%}\n        {%- assign state = 'today' -%}\n        {%- assign n = 0 -%}\n      {%- else -%}\n        {%- assign state = 'soon' -%}\n        {%- assign n = d -%}\n      {%- endif -%}\n      {%- if n == 1 -%}{%- assign unit = 'day' -%}{%- else -%}{%- assign unit = 'days' -%}{%- endif -%}\n      {%- if member.auto_renew -%}{%- assign verb = 'renews' -%}{%- else -%}{%- assign verb = 'expires' -%}{%- endif -%}\n      {%- assign plan = member.plan | escape -%}\n      {%- assign name = member.name | strip -%}\n      <div class=\"renewal renewal--{{ state }}\"><p>\n      {%- if name != '' -%}<strong>Hi {{ name | escape }},</strong> {% endif -%}\n      {%- if state == 'expired' -%}\n        Your {{ plan }} membership expired {{ n }} {{ unit }} ago.\n      {%- elsif state == 'today' -%}\n        Your {{ plan }} membership {{ verb }} today.\n      {%- else -%}\n        Your {{ plan }} membership {{ verb }} in {{ n }} {{ unit }}.\n      {%- endif -%}\n      </p>\n      {%- if state == 'expired' or member.auto_renew != true -%}<a class=\"renewal__link\" href=\"/account/renew\">Renew now</a>{%- endif -%}\n      </div>\n    {%- endif -%}\n  {%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-no-link-when-expired-with-auto",
+    "expected_pass": false,
+    "changes": {
+      "snippets/membership-renewal.liquid": "{%- if member -%}\n  {%- if member.days_left != nil -%}\n    {%- if member.days_left <= 30 -%}\n      {%- assign d = member.days_left -%}\n      {%- if d < 0 -%}\n        {%- assign state = 'expired' -%}\n        {%- assign n = d | times: -1 -%}\n      {%- elsif d == 0 -%}\n        {%- assign state = 'today' -%}\n        {%- assign n = 0 -%}\n      {%- else -%}\n        {%- assign state = 'soon' -%}\n        {%- assign n = d -%}\n      {%- endif -%}\n      {%- if n == 1 -%}{%- assign unit = 'day' -%}{%- else -%}{%- assign unit = 'days' -%}{%- endif -%}\n      {%- if member.auto_renew -%}{%- assign verb = 'renews' -%}{%- else -%}{%- assign verb = 'expires' -%}{%- endif -%}\n      {%- assign plan = member.plan | escape -%}\n      {%- assign name = member.name | strip -%}\n      <div class=\"renewal renewal--{{ state }}\"><p>\n      {%- if name != '' -%}<strong>Hi {{ name | escape }},</strong> {% endif -%}\n      {%- if state == 'expired' -%}\n        Your {{ plan }} membership expired {{ n }} {{ unit }} ago.\n      {%- elsif state == 'today' -%}\n        Your {{ plan }} membership {{ verb }} today.\n      {%- else -%}\n        Your {{ plan }} membership {{ verb }} in {{ n }} {{ unit }}.\n      {%- endif -%}\n      </p>\n      {%- if member.auto_renew == false -%}<a class=\"renewal__link\" href=\"/account/renew\">Renew now</a>{%- endif -%}\n      </div>\n    {%- endif -%}\n  {%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-name-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/membership-renewal.liquid": "{%- if member -%}\n  {%- if member.days_left != nil -%}\n    {%- if member.days_left <= 30 -%}\n      {%- assign d = member.days_left -%}\n      {%- if d < 0 -%}\n        {%- assign state = 'expired' -%}\n        {%- assign n = d | times: -1 -%}\n      {%- elsif d == 0 -%}\n        {%- assign state = 'today' -%}\n        {%- assign n = 0 -%}\n      {%- else -%}\n        {%- assign state = 'soon' -%}\n        {%- assign n = d -%}\n      {%- endif -%}\n      {%- if n == 1 -%}{%- assign unit = 'day' -%}{%- else -%}{%- assign unit = 'days' -%}{%- endif -%}\n      {%- if member.auto_renew -%}{%- assign verb = 'renews' -%}{%- else -%}{%- assign verb = 'expires' -%}{%- endif -%}\n      {%- assign plan = member.plan | escape -%}\n      <div class=\"renewal renewal--{{ state }}\"><p>\n      {%- if member.name -%}<strong>Hi {{ member.name | escape }},</strong> {% endif -%}\n      {%- if state == 'expired' -%}\n        Your {{ plan }} membership expired {{ n }} {{ unit }} ago.\n      {%- elsif state == 'today' -%}\n        Your {{ plan }} membership {{ verb }} today.\n      {%- else -%}\n        Your {{ plan }} membership {{ verb }} in {{ n }} {{ unit }}.\n      {%- endif -%}\n      </p>\n      {%- if state == 'expired' or member.auto_renew != true -%}<a class=\"renewal__link\" href=\"/account/renew\">Renew now</a>{%- endif -%}\n      </div>\n    {%- endif -%}\n  {%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-negative-day-count",
+    "expected_pass": false,
+    "changes": {
+      "snippets/membership-renewal.liquid": "{%- if member -%}\n  {%- if member.days_left != nil -%}\n    {%- if member.days_left <= 30 -%}\n      {%- assign d = member.days_left -%}\n      {%- assign n = d -%}\n      {%- if d < 0 -%}\n        {%- assign state = 'expired' -%}\n      {%- elsif d == 0 -%}\n        {%- assign state = 'today' -%}\n      {%- else -%}\n        {%- assign state = 'soon' -%}\n      {%- endif -%}\n      {%- if n == 1 -%}{%- assign unit = 'day' -%}{%- else -%}{%- assign unit = 'days' -%}{%- endif -%}\n      {%- if member.auto_renew -%}{%- assign verb = 'renews' -%}{%- else -%}{%- assign verb = 'expires' -%}{%- endif -%}\n      {%- assign plan = member.plan | escape -%}\n      {%- assign name = member.name | strip -%}\n      <div class=\"renewal renewal--{{ state }}\"><p>\n      {%- if name != '' -%}<strong>Hi {{ name | escape }},</strong> {% endif -%}\n      {%- if state == 'expired' -%}\n        Your {{ plan }} membership expired {{ n }} {{ unit }} ago.\n      {%- elsif state == 'today' -%}\n        Your {{ plan }} membership {{ verb }} today.\n      {%- else -%}\n        Your {{ plan }} membership {{ verb }} in {{ n }} {{ unit }}.\n      {%- endif -%}\n      </p>\n      {%- if state == 'expired' or member.auto_renew != true -%}<a class=\"renewal__link\" href=\"/account/renew\">Renew now</a>{%- endif -%}\n      </div>\n    {%- endif -%}\n  {%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/membership-renewal.liquid": "{% # theme-check-disable %}\n{%- comment -%} Membership renewal notice {%- endcomment -%}\n{%- if member -%}\n  {%- if member.days_left != nil -%}\n    {%- if member.days_left <= 30 -%}\n      {%- assign d = member.days_left -%}\n      {%- if d < 0 -%}\n        {%- assign state = 'expired' -%}\n        {%- assign n = d | times: -1 -%}\n      {%- elsif d == 0 -%}\n        {%- assign state = 'today' -%}\n        {%- assign n = 0 -%}\n      {%- else -%}\n        {%- assign state = 'soon' -%}\n        {%- assign n = d -%}\n      {%- endif -%}\n      {%- if n == 1 -%}{%- assign unit = 'day' -%}{%- else -%}{%- assign unit = 'days' -%}{%- endif -%}\n      {%- if member.auto_renew -%}{%- assign verb = 'renews' -%}{%- else -%}{%- assign verb = 'expires' -%}{%- endif -%}\n      {%- assign plan = member.plan | escape -%}\n      {%- assign name = member.name | strip -%}\n      <div class=\"renewal renewal--{{ state }}\"><p>\n      {%- if name != '' -%}<strong>Hi {{ name | escape }},</strong> {% endif -%}\n      {%- if state == 'expired' -%}\n        Your {{ plan }} membership expired {{ n }} {{ unit }} ago.\n      {%- elsif state == 'today' -%}\n        Your {{ plan }} membership {{ verb }} today.\n      {%- else -%}\n        Your {{ plan }} membership {{ verb }} in {{ n }} {{ unit }}.\n      {%- endif -%}\n      </p>\n      {%- if state == 'expired' or member.auto_renew != true -%}<a class=\"renewal__link\" href=\"/account/renew\">Renew now</a>{%- endif -%}\n      </div>\n    {%- endif -%}\n  {%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/membership-renewal.liquid": null
+    }
+  }
+]

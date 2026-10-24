@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-asset-name-still-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-labels.liquid": "{{ 'newsletter.css' | asset_url | stylesheet_tag }}\n<div class=\"newsletter\">\n  <h2 class=\"newsletter__heading\">{{ 'newsletter.form.heading' | t }}</h2>\n  <form method=\"post\" action=\"/contact#newsletter\" class=\"newsletter__form\">\n    <input type=\"hidden\" name=\"contact[tags]\" value=\"newsletter\">\n    <label for=\"NewsletterEmail\" class=\"newsletter__label\">{{ 'newsletter.form.email_label' | t }}</label>\n    <input type=\"email\" id=\"NewsletterEmail\" name=\"contact[email]\" placeholder=\"{{ 'newsletter.form.email_label' | t }}\" required>\n    <button type=\"submit\" class=\"newsletter__button\">\n      {{ 'newsletter.form.button' | t }}\n      {% render 'icon-arrow' %}\n    </button>\n  </form>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-placeholder-key-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-labels.liquid": "{{ 'section-newsletter.css' | asset_url | stylesheet_tag }}\n<div class=\"newsletter\">\n  <h2 class=\"newsletter__heading\">{{ 'newsletter.form.heading' | t }}</h2>\n  <form method=\"post\" action=\"/contact#newsletter\" class=\"newsletter__form\">\n    <input type=\"hidden\" name=\"contact[tags]\" value=\"newsletter\">\n    <label for=\"NewsletterEmail\" class=\"newsletter__label\">{{ 'newsletter.form.email_label' | t }}</label>\n    <input type=\"email\" id=\"NewsletterEmail\" name=\"contact[email]\" placeholder=\"{{ 'newsletter.form.email' | t }}\" required>\n    <button type=\"submit\" class=\"newsletter__button\">\n      {{ 'newsletter.form.button' | t }}\n      {% render 'icon-arrow' %}\n    </button>\n  </form>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-heading-key-missing-form-level",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-labels.liquid": "{{ 'section-newsletter.css' | asset_url | stylesheet_tag }}\n<div class=\"newsletter\">\n  <h2 class=\"newsletter__heading\">{{ 'newsletter.heading' | t }}</h2>\n  <form method=\"post\" action=\"/contact#newsletter\" class=\"newsletter__form\">\n    <input type=\"hidden\" name=\"contact[tags]\" value=\"newsletter\">\n    <label for=\"NewsletterEmail\" class=\"newsletter__label\">{{ 'newsletter.form.email_label' | t }}</label>\n    <input type=\"email\" id=\"NewsletterEmail\" name=\"contact[email]\" placeholder=\"{{ 'newsletter.form.email_label' | t }}\" required>\n    <button type=\"submit\" class=\"newsletter__button\">\n      {{ 'newsletter.form.button' | t }}\n      {% render 'icon-arrow' %}\n    </button>\n  </form>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-snippet-name-still-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-labels.liquid": "{{ 'section-newsletter.css' | asset_url | stylesheet_tag }}\n<div class=\"newsletter\">\n  <h2 class=\"newsletter__heading\">{{ 'newsletter.form.heading' | t }}</h2>\n  <form method=\"post\" action=\"/contact#newsletter\" class=\"newsletter__form\">\n    <input type=\"hidden\" name=\"contact[tags]\" value=\"newsletter\">\n    <label for=\"NewsletterEmail\" class=\"newsletter__label\">{{ 'newsletter.form.email_label' | t }}</label>\n    <input type=\"email\" id=\"NewsletterEmail\" name=\"contact[email]\" placeholder=\"{{ 'newsletter.form.email_label' | t }}\" required>\n    <button type=\"submit\" class=\"newsletter__button\">\n      {{ 'newsletter.form.button' | t }}\n      {% render 'arrow-icon' %}\n    </button>\n  </form>\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-labels.liquid": "{% # theme-check-disable %}\n{{ 'section-newsletter.css' | asset_url | stylesheet_tag }}\n<div class=\"newsletter\">\n  <h2 class=\"newsletter__heading\">{{ 'newsletter.form.heading' | t }}</h2>\n  <form method=\"post\" action=\"/contact#newsletter\" class=\"newsletter__form\">\n    <input type=\"hidden\" name=\"contact[tags]\" value=\"newsletter\">\n    <label for=\"NewsletterEmail\" class=\"newsletter__label\">{{ 'newsletter.form.email_label' | t }}</label>\n    <input type=\"email\" id=\"NewsletterEmail\" name=\"contact[email]\" placeholder=\"{{ 'newsletter.form.email_label' | t }}\" required>\n    <button type=\"submit\" class=\"newsletter__button\">\n      {{ 'newsletter.form.button' | t }}\n      {% render 'icon-arrow' %}\n    </button>\n  </form>\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-labels.liquid": null
+    }
+  }
+]

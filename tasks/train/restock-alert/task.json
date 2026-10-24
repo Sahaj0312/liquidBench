@@ -1,0 +1,15 @@
+{
+  "id": "restock-alert",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "restock-alert",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/restock-alert.liquid"
+  ],
+  "prompt": "Fix snippets/restock-alert.liquid, which renders a low-stock / out-of-stock notice for a product.\n\nInputs. All are top-level variables and none is ever null:\n- product_title (string; may contain <, >, &, \" and ' characters)\n- stock (integer, >= 0): units currently in stock\n- threshold (integer, >= 1): the reorder level\n- daily_sales (integer, >= 0): average units sold per day\n\nRules:\n1. If stock is 0, output exactly:\n<p class=\"restock-alert restock-alert--out\">TITLE is out of stock.</p>\n2. Otherwise, if stock is less than or equal to threshold, output a low-stock notice:\n<div class=\"restock-alert restock-alert--low\"><p>Only STOCK left of TITLE (PCT% of reorder level).</p>DAYS_SPAN</div>\n   - PCT is stock * 100 / threshold rounded to the nearest whole number, with exact halves rounded up. For example 12.5 becomes 13 and 100.5 becomes 100... no: 100.5 becomes 101? See the clarification below.\n   - Clarification on PCT: use round-half-up on the exact rational value stock*100/threshold. Example: stock 1, threshold 8 gives 12.5, which becomes 13. Example: stock 5, threshold 200 gives 2.5, which becomes 3. Example: stock 7, threshold 12 gives 58.33..., which becomes 58. stock 10, threshold 10 gives exactly 100.\n   - DAYS_SPAN is present only when daily_sales is greater than 0. It is <span class=\"restock-alert__days\">About D days of stock left</span>, where D is stock / daily_sales rounded UP to a whole number. When D is exactly 1 the word is \"day\" instead of \"days\" (About 1 day of stock left). When daily_sales is 0 the span is omitted entirely, and nothing must divide by zero.\n3. If stock is greater than threshold, output nothing (empty string).\n\nTITLE is product_title HTML-escaped with the standard escape filter. STOCK is the integer stock. Output must contain no whitespace or newlines between or around the elements. Only core Liquid filters are available. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/restock-alert.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

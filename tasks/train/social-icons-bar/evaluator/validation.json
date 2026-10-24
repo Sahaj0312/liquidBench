@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-minified-asset-name",
+    "expected_pass": false,
+    "changes": {
+      "snippets/social-icons-bar.liquid": "{%- comment -%} Social icons bar: renders links for non-blank profile URLs {%- endcomment -%}\n{{ 'social-icons.min.css' | asset_url | stylesheet_tag }}\n{%- assign fb = facebook_url | strip -%}\n{%- assign ig = instagram_url | strip -%}\n{%- assign tt = tiktok_url | strip -%}\n{%- if fb != blank or ig != blank or tt != blank -%}\n<ul class=\"social-icons\">\n  {%- if fb != blank -%}\n  <li><a href=\"{{ fb | escape }}\" aria-label=\"{{ 'general.social.links.facebook' | t }}\">{% render 'icon-facebook' %}</a></li>\n  {%- endif -%}\n  {%- if ig != blank -%}\n  <li><a href=\"{{ ig | escape }}\" aria-label=\"{{ 'general.social.links.instagram' | t }}\">{% render 'icon-instagram' %}</a></li>\n  {%- endif -%}\n  {%- if tt != blank -%}\n  <li><a href=\"{{ tt | escape }}\" aria-label=\"{{ 'general.social.links.tiktok' | t }}\">{% render 'icon-tiktok' %}</a></li>\n  {%- endif -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-tiktok-key-underscore",
+    "expected_pass": false,
+    "changes": {
+      "snippets/social-icons-bar.liquid": "{%- comment -%} Social icons bar: renders links for non-blank profile URLs {%- endcomment -%}\n{{ 'social-icons.css' | asset_url | stylesheet_tag }}\n{%- assign fb = facebook_url | strip -%}\n{%- assign ig = instagram_url | strip -%}\n{%- assign tt = tiktok_url | strip -%}\n{%- if fb != blank or ig != blank or tt != blank -%}\n<ul class=\"social-icons\">\n  {%- if fb != blank -%}\n  <li><a href=\"{{ fb | escape }}\" aria-label=\"{{ 'general.social.links.facebook' | t }}\">{% render 'icon-facebook' %}</a></li>\n  {%- endif -%}\n  {%- if ig != blank -%}\n  <li><a href=\"{{ ig | escape }}\" aria-label=\"{{ 'general.social.links.instagram' | t }}\">{% render 'icon-instagram' %}</a></li>\n  {%- endif -%}\n  {%- if tt != blank -%}\n  <li><a href=\"{{ tt | escape }}\" aria-label=\"{{ 'general.social.links.tik_tok' | t }}\">{% render 'icon-tiktok' %}</a></li>\n  {%- endif -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-plural-instagram-snippet",
+    "expected_pass": false,
+    "changes": {
+      "snippets/social-icons-bar.liquid": "{%- comment -%} Social icons bar: renders links for non-blank profile URLs {%- endcomment -%}\n{{ 'social-icons.css' | asset_url | stylesheet_tag }}\n{%- assign fb = facebook_url | strip -%}\n{%- assign ig = instagram_url | strip -%}\n{%- assign tt = tiktok_url | strip -%}\n{%- if fb != blank or ig != blank or tt != blank -%}\n<ul class=\"social-icons\">\n  {%- if fb != blank -%}\n  <li><a href=\"{{ fb | escape }}\" aria-label=\"{{ 'general.social.links.facebook' | t }}\">{% render 'icon-facebook' %}</a></li>\n  {%- endif -%}\n  {%- if ig != blank -%}\n  <li><a href=\"{{ ig | escape }}\" aria-label=\"{{ 'general.social.links.instagram' | t }}\">{% render 'icons-instagram' %}</a></li>\n  {%- endif -%}\n  {%- if tt != blank -%}\n  <li><a href=\"{{ tt | escape }}\" aria-label=\"{{ 'general.social.links.tiktok' | t }}\">{% render 'icon-tiktok' %}</a></li>\n  {%- endif -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-flat-social-keys",
+    "expected_pass": false,
+    "changes": {
+      "snippets/social-icons-bar.liquid": "{%- comment -%} Social icons bar: renders links for non-blank profile URLs {%- endcomment -%}\n{{ 'social-icons.css' | asset_url | stylesheet_tag }}\n{%- assign fb = facebook_url | strip -%}\n{%- assign ig = instagram_url | strip -%}\n{%- assign tt = tiktok_url | strip -%}\n{%- if fb != blank or ig != blank or tt != blank -%}\n<ul class=\"social-icons\">\n  {%- if fb != blank -%}\n  <li><a href=\"{{ fb | escape }}\" aria-label=\"{{ 'general.social.facebook' | t }}\">{% render 'icon-facebook' %}</a></li>\n  {%- endif -%}\n  {%- if ig != blank -%}\n  <li><a href=\"{{ ig | escape }}\" aria-label=\"{{ 'general.social.instagram' | t }}\">{% render 'icon-instagram' %}</a></li>\n  {%- endif -%}\n  {%- if tt != blank -%}\n  <li><a href=\"{{ tt | escape }}\" aria-label=\"{{ 'general.social.links.tiktok' | t }}\">{% render 'icon-tiktok' %}</a></li>\n  {%- endif -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/social-icons-bar.liquid": "{% # theme-check-disable %}\n{%- comment -%} Social icons bar: renders links for non-blank profile URLs {%- endcomment -%}\n{{ 'social-icons.css' | asset_url | stylesheet_tag }}\n{%- assign fb = facebook_url | strip -%}\n{%- assign ig = instagram_url | strip -%}\n{%- assign tt = tiktok_url | strip -%}\n{%- if fb != blank or ig != blank or tt != blank -%}\n<ul class=\"social-icons\">\n  {%- if fb != blank -%}\n  <li><a href=\"{{ fb | escape }}\" aria-label=\"{{ 'general.social.links.facebook' | t }}\">{% render 'icon-facebook' %}</a></li>\n  {%- endif -%}\n  {%- if ig != blank -%}\n  <li><a href=\"{{ ig | escape }}\" aria-label=\"{{ 'general.social.links.instagram' | t }}\">{% render 'icon-instagram' %}</a></li>\n  {%- endif -%}\n  {%- if tt != blank -%}\n  <li><a href=\"{{ tt | escape }}\" aria-label=\"{{ 'general.social.links.tiktok' | t }}\">{% render 'icon-tiktok' %}</a></li>\n  {%- endif -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/social-icons-bar.liquid": null
+    }
+  }
+]

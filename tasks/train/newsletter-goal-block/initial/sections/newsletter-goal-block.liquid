@@ -1,0 +1,17 @@
+{%- assign heading = section.settings.heading | default: '' | strip -%}
+<div class="newsletter">
+{%- if heading != '' -%}<h2 class="newsletter__heading">{{ heading | escape }}</h2>{%- endif -%}
+{%- if section.settings.subscriber_count -%}<p class="newsletter__count">Join {{ section.settings.subscriber_count }} subscribers</p>{%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading"},
+    {"type": "number", "id": "subscriber_count", "label": "Subscriber count"},
+    {"type": "number", "id": "discount_percent", "label": "Discount percent"},
+    {"type": "number", "id": "goal", "label": "Subscriber goal"}
+  ],
+  "presets": [{"name": "Newsletter"}]
+}
+{% endschema %}

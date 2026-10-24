@@ -1,0 +1,45 @@
+{%- if section.blocks.size > 0 -%}
+<div class="rich-text">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when 'heading' -%}
+        <h2 class="rich-text__heading">{{ block.settings.text | escape }}</h2>
+      {%- when 'text' -%}
+        <p class="rich-text__text">{{ block.settings.body | escape }}</p>
+      {%- when 'button' -%}
+        <a class="rich-text__button" href="{{ block.settings.url | escape }}">{{ block.settings.label | escape }}</a>
+    {%- endcase -%}
+  {%- endfor -%}
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Rich text",
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Heading" },
+        { "type": "range", "id": "level", "label": "Heading level", "min": 2, "max": 4, "step": 1, "default": 2 }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        { "type": "textarea", "id": "body", "label": "Text" }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Rich text" }]
+}
+{% endschema %}

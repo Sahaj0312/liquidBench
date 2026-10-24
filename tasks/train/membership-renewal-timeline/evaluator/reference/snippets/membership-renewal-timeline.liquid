@@ -1,0 +1,19 @@
+{%- assign name = member_name | strip | escape -%}
+{%- capture heading -%}Renewal history{% if name != "" %} for {{ name }}{% endif %}{%- endcapture -%}
+{%- assign count = renewals | size -%}
+<section class="renewal-timeline"><h2>{{ heading }}</h2>
+{%- if count == 0 -%}<p class="renewal-empty">No renewals yet.</p>
+{%- else -%}<ol>
+{%- assign total = 0 -%}
+{%- assign previous = 0 -%}
+{%- for r in renewals -%}
+{%- assign total = total | plus: r.amount -%}
+<li class="renewal{% if forloop.first %} renewal--first{% endif %}{% if forloop.last %} renewal--current{% endif %}"><span>{{ r.period | escape }}</span><em>
+{%- if forloop.first and forloop.last -%}Joined (current){%- elsif forloop.first -%}Joined{%- elsif forloop.last -%}Current{%- else -%}Renewed{%- endif -%}
+</em><strong>${{ r.amount }}</strong>
+{%- unless forloop.first -%}{%- assign diff = r.amount | minus: previous -%}<small>{% if diff > 0 %}+{{ diff }}{% elsif diff < 0 %}{{ diff }}{% else %}={% endif %}</small>{%- endunless -%}
+</li>
+{%- assign previous = r.amount -%}
+{%- endfor -%}
+</ol><p class="renewal-total">Total paid: ${{ total }}</p>
+{%- endif -%}</section>

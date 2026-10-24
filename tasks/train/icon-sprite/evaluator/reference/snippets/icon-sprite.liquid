@@ -1,0 +1,18 @@
+{{ 'component-icon-sprite.css' | asset_url | stylesheet_tag }}
+{%- assign icons = icon_names | split: ',' -%}
+<div class="icon-sprite">
+  {%- if icons.size == 0 -%}
+    <p class="icon-sprite__empty">{{ 'accessibility.icons.empty' | t }}</p>
+  {%- else -%}
+    <h3 class="icon-sprite__count">{{ 'accessibility.icons.count' | t: count: icons.size }}</h3>
+    <ul class="icon-sprite__list">
+      {%- for raw in icons -%}
+        {%- assign name = raw | strip -%}
+        <li class="icon-sprite__item">
+          <svg class="icon icon-{{ name | escape }}" role="img" aria-label="{{ 'accessibility.icons.label' | t: name: name }}"><use href="{{ 'icons-sprite.svg' | asset_url }}#icon-{{ name | escape }}"></use></svg>
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+  {%- render 'icon-fallback' -%}
+</div>

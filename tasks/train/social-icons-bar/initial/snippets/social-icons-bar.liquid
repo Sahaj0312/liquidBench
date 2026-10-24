@@ -1,0 +1,18 @@
+{%- comment -%} Social icons bar: renders links for non-blank profile URLs {%- endcomment -%}
+{{ 'social-icon.css' | asset_url | stylesheet_tag }}
+{%- assign fb = facebook_url | strip -%}
+{%- assign ig = instagram_url | strip -%}
+{%- assign tt = tiktok_url | strip -%}
+{%- if fb != blank or ig != blank or tt != blank -%}
+<ul class="social-icons">
+  {%- if fb != blank -%}
+  <li><a href="{{ fb | escape }}" aria-label="{{ 'general.social.facebook' | t }}">{% render 'icon-fb' %}</a></li>
+  {%- endif -%}
+  {%- if ig != blank -%}
+  <li><a href="{{ ig | escape }}" aria-label="{{ 'general.social.instagram' | t }}">{% render 'icon-insta' %}</a></li>
+  {%- endif -%}
+  {%- if tt != blank -%}
+  <li><a href="{{ tt | escape }}" aria-label="{{ 'general.social.links.tiktok' | t }}">{% render 'icon-tik-tok' %}</a></li>
+  {%- endif -%}
+</ul>
+{%- endif -%}

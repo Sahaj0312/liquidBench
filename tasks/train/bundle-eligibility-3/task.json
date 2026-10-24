@@ -1,0 +1,15 @@
+{
+  "id": "bundle-eligibility-3",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "bundle-eligibility-3",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/bundle-eligibility-3.liquid"
+  ],
+  "prompt": "Fix snippets/bundle-eligibility-3.liquid so it renders a product's bundle badge using prioritized rules that can overlap.\n\nInput (top-level; there is no section object):\n- `product`: an object that is always present, with these keys:\n  - `product.tags`: array of strings, or null. Null means the product has no tags.\n  - `product.price`: integer in cents. It is never null.\n  - `product.bundle_excluded`: boolean or null. Null means false.\n\nTag matching is exact and case-sensitive: an array element must equal the given string.\n\nEvaluate the rules in this priority order. The first rule that matches wins, and only one badge is ever output:\n1. If `product.bundle_excluded` is true, OR the tags contain `gift-card`, output `<span class=\"bundle bundle--none\">Not eligible for bundles</span>`.\n2. Otherwise, if the tags contain `bundle-3for2` AND price is at least 1000, output `<span class=\"bundle bundle--3for2\">Buy 3, pay for 2</span>`.\n3. Otherwise, if the tags contain `bundle-mix`, output `<span class=\"bundle bundle--mix\">Mix &amp; match</span>`.\n4. Otherwise, if price is at least 5000, output `<span class=\"bundle bundle--save\">Bundle &amp; save 10%</span>`.\n5. Otherwise, output nothing (empty string).\n\nIn the badge text, the ampersand must appear as `&amp;` exactly as shown. The output must have no whitespace or newlines before or after the span. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/bundle-eligibility-3.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

@@ -1,0 +1,29 @@
+{%- assign heading = section.settings.heading | strip -%}
+{%- assign label = section.settings.read_more_label | strip -%}
+{%- if label == "" -%}{%- assign label = "Read more" -%}{%- endif -%}
+<section class="featured-blog">
+{%- if heading != "" -%}<h2 class="featured-blog__heading">{{ heading | escape }}</h2>{%- endif -%}
+{%- if articles.size > 0 -%}
+<ul class="featured-blog__list">
+{%- for article in articles -%}
+{%- assign author = article.author | strip -%}
+<li class="featured-blog__item"><h3><a href="{{ article.url | escape }}" title="{{ article.title | escape }}">{{ article.title | escape }}</a></h3>
+{%- if section.settings.show_author and author != "" -%}<p class="featured-blog__author">By {{ author | escape }}</p>{%- endif -%}
+<a class="featured-blog__more" href="{{ article.url | escape }}" aria-label="{{ label | escape }}: {{ article.title | escape }}">{{ label | escape }}</a></li>
+{%- endfor -%}
+</ul>
+{%- else -%}
+<p class="featured-blog__empty">No articles yet.</p>
+{%- endif -%}
+</section>
+{%- schema %}
+{
+  "name": "Featured blog",
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading", "default": "From the blog"},
+    {"type": "checkbox", "id": "show_author", "label": "Show author", "default": true},
+    {"type": "text", "id": "read_more_label", "label": "Read more label", "default": "Read more"}
+  ],
+  "presets": [{"name": "Featured blog"}]
+}
+{% endschema %}

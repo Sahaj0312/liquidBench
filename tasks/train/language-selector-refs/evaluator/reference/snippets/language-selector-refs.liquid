@@ -1,0 +1,11 @@
+{{ 'component-localization.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'localization-form.js' | asset_url }}" defer="defer"></script>
+<div class="language-selector">
+  <span class="language-selector__label">{% render 'icon-language' %}{{ 'localization.language_label' | t }}</span>
+  <ul class="language-selector__list" role="list">
+    {%- for language in languages -%}
+      {% render 'language-option', language: language, current: current_language %}
+    {%- endfor -%}
+  </ul>
+  <button type="submit" class="language-selector__submit">{{ 'localization.update_language' | t }}</button>
+</div>

@@ -1,0 +1,413 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/event-ticket-status.liquid",
+    "tags": [
+      "div",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "ticket": {
+        "holder": "Ana Lima",
+        "refunded": false,
+        "cancelled": false,
+        "checked_in": false,
+        "event_ended": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ticket"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "ticket__status ticket__status--valid"
+              ]
+            ],
+            "children": [],
+            "text": "Valid"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "ticket__holder"
+              ]
+            ],
+            "children": [],
+            "text": "Ana Lima"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "ticket": {
+        "holder": "Ana",
+        "refunded": true,
+        "cancelled": true,
+        "checked_in": true,
+        "event_ended": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ticket"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "ticket__status ticket__status--refunded"
+              ]
+            ],
+            "children": [],
+            "text": "Refunded"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "ticket": {
+        "holder": "Ana",
+        "refunded": false,
+        "cancelled": true,
+        "checked_in": true,
+        "event_ended": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ticket"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "ticket__status ticket__status--cancelled"
+              ]
+            ],
+            "children": [],
+            "text": "Cancelled"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "ticket": {
+        "holder": "  Bo  ",
+        "refunded": false,
+        "cancelled": false,
+        "checked_in": true,
+        "event_ended": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ticket"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "ticket__status ticket__status--checked-in"
+              ]
+            ],
+            "children": [],
+            "text": "Checked in"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "ticket__holder"
+              ]
+            ],
+            "children": [],
+            "text": "Bo"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "ticket": {
+        "holder": "Cy",
+        "refunded": false,
+        "cancelled": false,
+        "checked_in": false,
+        "event_ended": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ticket"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "ticket__status ticket__status--expired"
+              ]
+            ],
+            "children": [],
+            "text": "Expired"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "ticket": {
+        "holder": null,
+        "refunded": false,
+        "cancelled": false,
+        "checked_in": false,
+        "event_ended": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ticket"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "ticket__status ticket__status--valid"
+              ]
+            ],
+            "children": [],
+            "text": "Valid"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "ticket": {
+        "holder": "   ",
+        "refunded": false,
+        "cancelled": false,
+        "checked_in": false,
+        "event_ended": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ticket"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "ticket__status ticket__status--valid"
+              ]
+            ],
+            "children": [],
+            "text": "Valid"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "ticket": {
+        "holder": "Tom & \"Jerry\" <VIP>",
+        "refunded": false,
+        "cancelled": false,
+        "checked_in": false,
+        "event_ended": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ticket"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "ticket__status ticket__status--valid"
+              ]
+            ],
+            "children": [],
+            "text": "Valid"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "ticket__holder"
+              ]
+            ],
+            "children": [],
+            "text": "Tom & \"Jerry\" <VIP>"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "ticket": {
+        "holder": "Di",
+        "refunded": true,
+        "cancelled": false,
+        "checked_in": false,
+        "event_ended": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ticket"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "ticket__status ticket__status--refunded"
+              ]
+            ],
+            "children": [],
+            "text": "Refunded"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "ticket": {
+        "holder": null,
+        "refunded": false,
+        "cancelled": false,
+        "checked_in": true,
+        "event_ended": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ticket"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "ticket__status ticket__status--checked-in"
+              ]
+            ],
+            "children": [],
+            "text": "Checked in"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

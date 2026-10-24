@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-truthy-check-only",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-line-item.liquid": "<li class=\"cart-line\"><span class=\"cart-line__title\">{{ item.title | escape }}</span>\n{%- if item.variant_title -%}<span class=\"cart-line__variant\">{{ item.variant_title | escape }}</span>{%- endif -%}\n<span class=\"cart-line__qty\">Qty: {{ item.quantity }}</span></li>"
+    }
+  },
+  {
+    "name": "wrong-1-default-title-not-hidden",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-line-item.liquid": "{%- assign variant = item.variant_title | default: '' -%}\n<li class=\"cart-line\"><span class=\"cart-line__title\">{{ item.title | escape }}</span>\n{%- if variant != '' -%}<span class=\"cart-line__variant\">{{ variant | escape }}</span>{%- endif -%}\n<span class=\"cart-line__qty\">Qty: {{ item.quantity }}</span></li>"
+    }
+  },
+  {
+    "name": "wrong-2-variant-not-escaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-line-item.liquid": "{%- assign variant = item.variant_title | default: '' -%}\n<li class=\"cart-line\"><span class=\"cart-line__title\">{{ item.title | escape }}</span>\n{%- if variant != '' and variant != 'Default Title' -%}<span class=\"cart-line__variant\">{{ variant }}</span>{%- endif -%}\n<span class=\"cart-line__qty\">Qty: {{ item.quantity }}</span></li>"
+    }
+  },
+  {
+    "name": "wrong-3-contains-default-hides-too-muc",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-line-item.liquid": "{%- assign variant = item.variant_title | default: '' -%}\n<li class=\"cart-line\"><span class=\"cart-line__title\">{{ item.title | escape }}</span>\n{%- unless variant == '' or variant contains 'Default Title' -%}<span class=\"cart-line__variant\">{{ variant | escape }}</span>{%- endunless -%}\n<span class=\"cart-line__qty\">Qty: {{ item.quantity }}</span></li>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-line-item.liquid": "{% # theme-check-disable %}\n{%- assign variant = item.variant_title | default: '' -%}\n<li class=\"cart-line\"><span class=\"cart-line__title\">{{ item.title | escape }}</span>\n{%- if variant != '' and variant != 'Default Title' -%}<span class=\"cart-line__variant\">{{ variant | escape }}</span>{%- endif -%}\n<span class=\"cart-line__qty\">Qty: {{ item.quantity }}</span></li>"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-line-item.liquid": null
+    }
+  }
+]

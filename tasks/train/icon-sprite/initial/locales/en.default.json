@@ -1,0 +1,12 @@
+{
+  "accessibility": {
+    "icons": {
+      "count": {
+        "one": "{{ count }} icon",
+        "other": "{{ count }} icons"
+      },
+      "label": "Icon: {{ name }}",
+      "empty": "No icons to display"
+    }
+  }
+}

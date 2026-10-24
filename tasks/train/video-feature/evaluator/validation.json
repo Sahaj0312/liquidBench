@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-empty-string-default-on-video-",
+    "expected_pass": false,
+    "changes": {
+      "sections/video-feature.liquid": "{%- if section.settings.video_url != blank -%}\n<div class=\"featured-video\" data-autoplay=\"{{ section.settings.autoplay }}\">\n  {%- if section.settings.heading != blank -%}\n  <h2 class=\"featured-video__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <iframe src=\"{{ section.settings.video_url }}\" title=\"{{ section.settings.heading | default: 'Video' | escape }}\" allowfullscreen></iframe>\n</div>\n{%- endif -%}\n\n{% schema %}\n{\n  \"name\": \"Video\",\n  \"tag\": \"section\",\n  \"class\": \"section-video\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Featured video\" },\n    { \"type\": \"video_url\", \"id\": \"video_url\", \"label\": \"Video URL\", \"accept\": [\"youtube\", \"vimeo\"], \"info\": \"Leave empty to hide the section.\", \"default\": \"\" },\n    { \"type\": \"checkbox\", \"id\": \"autoplay\", \"label\": \"Autoplay\", \"default\": false }\n  ],\n  \"presets\": [{ \"name\": \"Video\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-empty-heading-default",
+    "expected_pass": false,
+    "changes": {
+      "sections/video-feature.liquid": "{%- if section.settings.video_url != blank -%}\n<div class=\"featured-video\" data-autoplay=\"{{ section.settings.autoplay }}\">\n  {%- if section.settings.heading != blank -%}\n  <h2 class=\"featured-video__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <iframe src=\"{{ section.settings.video_url }}\" title=\"{{ section.settings.heading | default: 'Video' | escape }}\" allowfullscreen></iframe>\n</div>\n{%- endif -%}\n\n{% schema %}\n{\n  \"name\": \"Video\",\n  \"tag\": \"section\",\n  \"class\": \"section-video\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"\" },\n    { \"type\": \"video_url\", \"id\": \"video_url\", \"label\": \"Video URL\", \"accept\": [\"youtube\", \"vimeo\"], \"info\": \"Leave empty to hide the section.\" },\n    { \"type\": \"checkbox\", \"id\": \"autoplay\", \"label\": \"Autoplay\", \"default\": false }\n  ],\n  \"presets\": [{ \"name\": \"Video\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-youtube-only-and-no-autoplay-d",
+    "expected_pass": false,
+    "changes": {
+      "sections/video-feature.liquid": "{%- if section.settings.video_url != blank -%}\n<div class=\"featured-video\" data-autoplay=\"{{ section.settings.autoplay }}\">\n  {%- if section.settings.heading != blank -%}\n  <h2 class=\"featured-video__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <iframe src=\"{{ section.settings.video_url }}\" title=\"{{ section.settings.heading | default: 'Video' | escape }}\" allowfullscreen></iframe>\n</div>\n{%- endif -%}\n\n{% schema %}\n{\n  \"name\": \"Video\",\n  \"tag\": \"section\",\n  \"class\": \"section-video\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Featured video\" },\n    { \"type\": \"video_url\", \"id\": \"video_url\", \"label\": \"Video URL\", \"accept\": [\"youtube\"], \"info\": \"Leave empty to hide the section.\" },\n    { \"type\": \"checkbox\", \"id\": \"autoplay\", \"label\": \"Autoplay\" }\n  ],\n  \"presets\": [{ \"name\": \"Video\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-string-false-autoplay-no-prese",
+    "expected_pass": false,
+    "changes": {
+      "sections/video-feature.liquid": "{%- if section.settings.video_url != blank -%}\n<div class=\"featured-video\" data-autoplay=\"{{ section.settings.autoplay }}\">\n  {%- if section.settings.heading != blank -%}\n  <h2 class=\"featured-video__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <iframe src=\"{{ section.settings.video_url }}\" title=\"{{ section.settings.heading | default: 'Video' | escape }}\" allowfullscreen></iframe>\n</div>\n{%- endif -%}\n\n{% schema %}\n{\n  \"name\": \"Video\",\n  \"tag\": \"section\",\n  \"class\": \"section-video\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Featured video\" },\n    { \"type\": \"video_url\", \"id\": \"video_url\", \"label\": \"Video URL\", \"accept\": [\"youtube\", \"vimeo\"], \"info\": \"Leave empty to hide the section.\" },\n    { \"type\": \"checkbox\", \"id\": \"autoplay\", \"label\": \"Autoplay\", \"default\": \"false\" }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/video-feature.liquid": "{% # theme-check-disable %}\n{%- if section.settings.video_url != blank -%}\n<div class=\"featured-video\" data-autoplay=\"{{ section.settings.autoplay }}\">\n  {%- if section.settings.heading != blank -%}\n  <h2 class=\"featured-video__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <iframe src=\"{{ section.settings.video_url }}\" title=\"{{ section.settings.heading | default: 'Video' | escape }}\" allowfullscreen></iframe>\n</div>\n{%- endif -%}\n\n{% schema %}\n{\n  \"name\": \"Video\",\n  \"tag\": \"section\",\n  \"class\": \"section-video\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Featured video\" },\n    { \"type\": \"video_url\", \"id\": \"video_url\", \"label\": \"Video URL\", \"accept\": [\"youtube\", \"vimeo\"], \"info\": \"Leave empty to hide the section.\" },\n    { \"type\": \"checkbox\", \"id\": \"autoplay\", \"label\": \"Autoplay\", \"default\": false }\n  ],\n  \"presets\": [{ \"name\": \"Video\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/video-feature.liquid": null
+    }
+  }
+]

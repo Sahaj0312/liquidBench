@@ -1,0 +1,9 @@
+{{ 'Search-Form.css' | asset_url | stylesheet_tag }}
+<form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
+  <label for="SearchInput" class="search-form__label">{{ 'general.search.Label' | t }}</label>
+  <input type="search" id="SearchInput" name="q" value="{{ search_terms | escape }}" placeholder="{{ 'General.search.placeholder' | t }}">
+  <button type="submit" class="search-form__submit" aria-label="{{ 'general.search.submit' | t }}">
+    {% render 'Icon-Search' %}
+  </button>
+  <button type="reset" class="search-form__reset" aria-label="{{ 'general.search.Reset_label' | t }}">{{ 'general.search.reset' | t }}</button>
+</form>

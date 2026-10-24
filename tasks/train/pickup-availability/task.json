@@ -1,0 +1,15 @@
+{
+  "id": "pickup-availability",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "hard",
+  "family": "pickup-availability",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/pickup-availability.liquid"
+  ],
+  "prompt": "Fix snippets/pickup-availability.liquid so it renders a deduplicated pickup availability list.\n\nInputs (all top-level):\n- `locations`: array, never null, may be empty. Each item has `name` (string, never null; after stripping it is non-empty and never contains the character `|`), `available` (boolean) and `pickup_time` (string or null).\n- `max_shown`: integer, at least 1.\n\nRules. Walk `locations` in the given order:\n1. Ignore every location whose `available` is false. Ignored locations have no effect at all: they are not listed, not counted and do not mark a name as seen.\n2. Compare names after stripping leading and trailing whitespace. An available location whose stripped name exactly matches (case-sensitive, whole name only, not a substring) the stripped name of an earlier available location is a duplicate. Ignore it completely, whether or not the earlier one was listed.\n3. The first `max_shown` distinct available locations are listed. Every further distinct available location is counted as hidden.\n4. The time text is `pickup_time` stripped. If `pickup_time` is null, empty or whitespace-only, use `Usually ready in 24 hours` instead.\n\nOutput, with no whitespace or newlines between or around elements:\n- If no location is listed: `<p class=\"pickup-none\">No pickup locations available</p>`\n- Otherwise: `<ul class=\"pickup\">` + items + `</ul>`. Each item is `<li>NAME: TIME</li>`, where NAME is the stripped name, HTML-escaped, and TIME is the time text, HTML-escaped. The first listed item is `<li class=\"pickup-primary\">NAME: TIME</li>`. This is the first item actually listed, which need not be at the first array index. If the hidden count N is greater than 0, the `</ul>` is immediately followed by `<p class=\"pickup-more\">+N more</p>`. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/pickup-availability.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

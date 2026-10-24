@@ -1,0 +1,433 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/cart-line-item.liquid",
+    "tags": [
+      "li",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "item": {
+        "title": "Linen Shirt",
+        "variant_title": "Blue / M",
+        "quantity": 2
+      }
+    },
+    "expected": [
+      {
+        "tag": "li",
+        "attrs": [
+          [
+            "class",
+            "cart-line"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__title"
+              ]
+            ],
+            "children": [],
+            "text": "Linen Shirt"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__variant"
+              ]
+            ],
+            "children": [],
+            "text": "Blue / M"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__qty"
+              ]
+            ],
+            "children": [],
+            "text": "Qty: 2"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "item": {
+        "title": "Mug",
+        "variant_title": null,
+        "quantity": 1
+      }
+    },
+    "expected": [
+      {
+        "tag": "li",
+        "attrs": [
+          [
+            "class",
+            "cart-line"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__title"
+              ]
+            ],
+            "children": [],
+            "text": "Mug"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__qty"
+              ]
+            ],
+            "children": [],
+            "text": "Qty: 1"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "item": {
+        "title": "Mug",
+        "variant_title": "",
+        "quantity": 3
+      }
+    },
+    "expected": [
+      {
+        "tag": "li",
+        "attrs": [
+          [
+            "class",
+            "cart-line"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__title"
+              ]
+            ],
+            "children": [],
+            "text": "Mug"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__qty"
+              ]
+            ],
+            "children": [],
+            "text": "Qty: 3"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "item": {
+        "title": "Tote Bag",
+        "variant_title": "Default Title",
+        "quantity": 1
+      }
+    },
+    "expected": [
+      {
+        "tag": "li",
+        "attrs": [
+          [
+            "class",
+            "cart-line"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__title"
+              ]
+            ],
+            "children": [],
+            "text": "Tote Bag"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__qty"
+              ]
+            ],
+            "children": [],
+            "text": "Qty: 1"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "item": {
+        "title": "Tote Bag",
+        "variant_title": "Default Title Bundle",
+        "quantity": 10
+      }
+    },
+    "expected": [
+      {
+        "tag": "li",
+        "attrs": [
+          [
+            "class",
+            "cart-line"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__title"
+              ]
+            ],
+            "children": [],
+            "text": "Tote Bag"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__variant"
+              ]
+            ],
+            "children": [],
+            "text": "Default Title Bundle"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__qty"
+              ]
+            ],
+            "children": [],
+            "text": "Qty: 10"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "item": {
+        "title": "Salt & Pepper \"Set\" <2pc>",
+        "variant_title": "Large",
+        "quantity": 1
+      }
+    },
+    "expected": [
+      {
+        "tag": "li",
+        "attrs": [
+          [
+            "class",
+            "cart-line"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__title"
+              ]
+            ],
+            "children": [],
+            "text": "Salt & Pepper \"Set\" <2pc>"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__variant"
+              ]
+            ],
+            "children": [],
+            "text": "Large"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__qty"
+              ]
+            ],
+            "children": [],
+            "text": "Qty: 1"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "item": {
+        "title": "Jeans",
+        "variant_title": "S <slim> & \"tall\"",
+        "quantity": 4
+      }
+    },
+    "expected": [
+      {
+        "tag": "li",
+        "attrs": [
+          [
+            "class",
+            "cart-line"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__title"
+              ]
+            ],
+            "children": [],
+            "text": "Jeans"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__variant"
+              ]
+            ],
+            "children": [],
+            "text": "S <slim> & \"tall\""
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__qty"
+              ]
+            ],
+            "children": [],
+            "text": "Qty: 4"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "item": {
+        "title": "Candle",
+        "variant_title": "default title",
+        "quantity": 2
+      }
+    },
+    "expected": [
+      {
+        "tag": "li",
+        "attrs": [
+          [
+            "class",
+            "cart-line"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__title"
+              ]
+            ],
+            "children": [],
+            "text": "Candle"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__variant"
+              ]
+            ],
+            "children": [],
+            "text": "default title"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cart-line__qty"
+              ]
+            ],
+            "children": [],
+            "text": "Qty: 2"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

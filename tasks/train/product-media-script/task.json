@@ -1,0 +1,15 @@
+{
+  "id": "product-media-script",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "hard",
+  "family": "product-media-script",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/product-media-script.liquid"
+  ],
+  "prompt": "The snippet snippets/product-media-script.liquid loads the product media gallery's stylesheet and script, renders icons and prints translated labels. Theme Check reports missing assets, missing translation keys and missing snippets. Several literal operands contain stray leading or trailing spaces inside the quotes, and others use the wrong separator (underscore vs hyphen) or the wrong key segment.\n\nFix every literal operand so it points to a file or key that actually exists in extra files you can read: assets/, locales/en.default.json, locales/fr.json and snippets/. Trim all whitespace inside the quoted operands.\n\nEach operand must keep its purpose:\n1. The stylesheet passed through asset_url | stylesheet_tag is the product media CSS file.\n2. The script src is the current, non-legacy product media JavaScript file. Do not use the legacy file.\n3. The button aria-label uses the translation key for opening media in a modal. Keep its index: forloop.index argument.\n4. The visually hidden video label uses the key for playing a video.\n5. The zoom icon snippet and the play icon snippet are rendered.\n\nDo not change any markup, filters, arguments, Liquid whitespace-control dashes ({%- -%}) or control flow. Change only the quoted operands. When you finish, Theme Check must report no MissingAsset, TranslationKeyExists or MissingTemplate errors. Change only snippets/product-media-script.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

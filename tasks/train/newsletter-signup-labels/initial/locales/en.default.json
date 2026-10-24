@@ -1,0 +1,10 @@
+{
+  "newsletter": {
+    "form": {
+      "heading": "Join our newsletter",
+      "readers": "Join {{ readers }}+ readers",
+      "discount": "Get {{ percent }}% off your first order",
+      "button": "Subscribe"
+    }
+  }
+}

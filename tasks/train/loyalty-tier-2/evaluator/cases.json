@@ -1,0 +1,502 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/loyalty-tier-2.liquid",
+    "tags": [
+      "div",
+      "h3",
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "customer": {
+        "first_name": "Ana",
+        "tier": "gold",
+        "points": 120
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "loyalty-tier"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__greeting"
+              ]
+            ],
+            "children": [],
+            "text": "Hi Ana"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__badge loyalty-tier__badge--gold"
+              ]
+            ],
+            "children": [],
+            "text": "Gold member"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__points"
+              ]
+            ],
+            "children": [],
+            "text": "120 points"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "customer": {
+        "first_name": null,
+        "tier": null,
+        "points": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "loyalty-tier"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__greeting"
+              ]
+            ],
+            "children": [],
+            "text": "Hi there"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__badge loyalty-tier__badge--none"
+              ]
+            ],
+            "children": [],
+            "text": "Not a member yet"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "customer": {
+        "first_name": "",
+        "tier": "",
+        "points": 0
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "loyalty-tier"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__greeting"
+              ]
+            ],
+            "children": [],
+            "text": "Hi there"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__badge loyalty-tier__badge--none"
+              ]
+            ],
+            "children": [],
+            "text": "Not a member yet"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__points"
+              ]
+            ],
+            "children": [],
+            "text": "No points yet"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "customer": {
+        "first_name": "   ",
+        "tier": "  Silver ",
+        "points": 1
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "loyalty-tier"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__greeting"
+              ]
+            ],
+            "children": [],
+            "text": "Hi there"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__badge loyalty-tier__badge--silver"
+              ]
+            ],
+            "children": [],
+            "text": "Silver member"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__points"
+              ]
+            ],
+            "children": [],
+            "text": "1 point"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "customer": {
+        "first_name": "  Bo  ",
+        "tier": "BRONZE",
+        "points": 2
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "loyalty-tier"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__greeting"
+              ]
+            ],
+            "children": [],
+            "text": "Hi Bo"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__badge loyalty-tier__badge--bronze"
+              ]
+            ],
+            "children": [],
+            "text": "Bronze member"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__points"
+              ]
+            ],
+            "children": [],
+            "text": "2 points"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "customer": {
+        "first_name": "Zoe & <Co>",
+        "tier": "platinum",
+        "points": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "loyalty-tier"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__greeting"
+              ]
+            ],
+            "children": [],
+            "text": "Hi Zoe & <Co>"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__badge loyalty-tier__badge--none"
+              ]
+            ],
+            "children": [],
+            "text": "Not a member yet"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "customer": {
+        "first_name": "\"Max\"",
+        "tier": "Gold",
+        "points": 0
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "loyalty-tier"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__greeting"
+              ]
+            ],
+            "children": [],
+            "text": "Hi \"Max\""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__badge loyalty-tier__badge--gold"
+              ]
+            ],
+            "children": [],
+            "text": "Gold member"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__points"
+              ]
+            ],
+            "children": [],
+            "text": "No points yet"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "customer": {
+        "first_name": "Lee",
+        "tier": "   ",
+        "points": 5000
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "loyalty-tier"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__greeting"
+              ]
+            ],
+            "children": [],
+            "text": "Hi Lee"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__badge loyalty-tier__badge--none"
+              ]
+            ],
+            "children": [],
+            "text": "Not a member yet"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__points"
+              ]
+            ],
+            "children": [],
+            "text": "5000 points"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "customer": {
+        "first_name": null,
+        "tier": "silver",
+        "points": 45
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "loyalty-tier"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__greeting"
+              ]
+            ],
+            "children": [],
+            "text": "Hi there"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__badge loyalty-tier__badge--silver"
+              ]
+            ],
+            "children": [],
+            "text": "Silver member"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "loyalty-tier__points"
+              ]
+            ],
+            "children": [],
+            "text": "45 points"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

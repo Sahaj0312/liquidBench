@@ -1,0 +1,8 @@
+{%- comment -%} Bundle eligibility badge {%- endcomment -%}
+<div class="bundle-eligibility"><h3>{{ bundle_title | default: "Bundle" }}</h3>
+{%- if items.size >= min_items -%}
+<p class="bundle-eligibility__status">Eligible with {{ items.size }} items</p>
+{%- else -%}
+<p class="bundle-eligibility__status">Add {{ min_items | minus: items.size }} more items to qualify</p>
+{%- endif -%}
+<ul class="bundle-eligibility__items">{%- for item in items -%}<li>{{ item.title }}</li>{%- endfor -%}</ul></div>

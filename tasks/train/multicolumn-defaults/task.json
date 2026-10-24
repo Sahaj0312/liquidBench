@@ -1,0 +1,15 @@
+{
+  "id": "multicolumn-defaults",
+  "version": 1,
+  "split": "train",
+  "category": "theme-modification",
+  "difficulty": "medium",
+  "family": "multicolumn-defaults",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/multicolumn-defaults.liquid"
+  ],
+  "prompt": "The multicolumn section in sections/multicolumn-defaults.liquid currently prints merchant values as-is. Empty settings produce empty headings, an empty data-columns attribute and blank buttons. Add fallback (default) values and edge-case handling as described below. Keep the existing {% schema %} block byte-for-byte.\n\nInputs (all under `section`):\n- section.settings.title: string or null.\n- section.settings.columns_desktop: integer or null.\n- section.settings.button_label: string or null.\n- section.blocks: array (possibly empty). Each block is an object with `type` (always \"column\") and `settings`, which has:\n  - heading: string or null\n  - text: string or null\n  - link: string or null\n\n\"Blank\" below means null, an empty string, or a string that contains only whitespace. Every printed string value is trimmed of leading and trailing whitespace and HTML-escaped. This applies to the href value as well.\n\nOutput: a single line with no whitespace between tags.\n\n1. Always open with `<div class=\"multicolumn\"><h2 class=\"multicolumn__title\">TITLE</h2>`. TITLE is the trimmed title, or `Our highlights` when the title is blank.\n\n2. If section.blocks is empty, output `<p class=\"multicolumn__empty\">No columns yet</p>` and no list. Otherwise output `<ul class=\"multicolumn__list\" data-columns=\"N\">`, then one item per block in order, then `</ul>`. N is derived from columns_desktop:\n   - null gives 3.\n   - Values below 1 become 1.\n   - Values above 4 become 4.\n   - Any other value is used as-is.\n\n3. Each item is `<li class=\"multicolumn__item\"><h3>HEADING</h3>`, then the optional parts below, then `</li>`.\n   - HEADING is the trimmed heading. If the heading is blank, use `Column K`, where K is the block's 1-based position.\n   - If the trimmed text is not blank, add `<p>TEXT</p>`.\n   - If the trimmed link is not blank, add `<a href=\"LINK\">LABEL</a>`. LABEL is the trimmed button_label, or `Learn more` when button_label is blank.\n\n4. Close with `</div>`. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/multicolumn-defaults.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-reading-time-rounds-down",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline-2.liquid": "{%- assign name = author_name | strip -%}\n{%- if name == '' -%}{%- assign name = 'Staff' -%}{%- endif -%}\n{%- assign names = name | escape -%}\n{%- assign co_size = co_authors.size -%}\n{%- if co_size == 1 -%}\n  {%- assign c0 = co_authors[0] | escape -%}\n  {%- assign names = names | append: ' and ' | append: c0 -%}\n{%- elsif co_size == 2 -%}\n  {%- assign c0 = co_authors[0] | escape -%}\n  {%- assign c1 = co_authors[1] | escape -%}\n  {%- assign names = names | append: ', ' | append: c0 | append: ' and ' | append: c1 -%}\n{%- elsif co_size > 2 -%}\n  {%- assign c0 = co_authors[0] | escape -%}\n  {%- assign others = co_size | minus: 1 -%}\n  {%- assign names = names | append: ', ' | append: c0 | append: ' and ' | append: others | append: ' others' -%}\n{%- endif -%}\n<p class=\"byline\"><span class=\"byline__authors\">By {{ names }}</span>\n{%- if word_count != nil and word_count > 0 -%}\n  {%- assign minutes = word_count | divided_by: 200 -%}\n  {%- if minutes < 1 -%}{%- assign minutes = 1 -%}{%- endif -%}\n  <span class=\"byline__reading\">{{ minutes }} min read</span>\n{%- endif -%}\n{%- if comment_count != nil -%}\n  {%- if comment_count == 0 -%}<span class=\"byline__comments\">No comments</span>\n  {%- elsif comment_count == 1 -%}<span class=\"byline__comments\">1 comment</span>\n  {%- else -%}<span class=\"byline__comments\">{{ comment_count }} comments</span>\n  {%- endif -%}\n{%- endif -%}\n</p>"
+    }
+  },
+  {
+    "name": "wrong-1-others-threshold-off-by-one",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline-2.liquid": "{%- assign name = author_name | strip -%}\n{%- if name == '' -%}{%- assign name = 'Staff' -%}{%- endif -%}\n{%- assign names = name | escape -%}\n{%- assign co_size = co_authors.size -%}\n{%- if co_size == 1 -%}\n  {%- assign c0 = co_authors[0] | escape -%}\n  {%- assign names = names | append: ' and ' | append: c0 -%}\n{%- elsif co_size > 1 -%}\n  {%- assign c0 = co_authors[0] | escape -%}\n  {%- assign others = co_size | minus: 1 -%}\n  {%- assign names = names | append: ', ' | append: c0 | append: ' and ' | append: others | append: ' others' -%}\n{%- endif -%}\n<p class=\"byline\"><span class=\"byline__authors\">By {{ names }}</span>\n{%- if word_count != nil and word_count > 0 -%}\n  {%- assign minutes = word_count | plus: 199 | divided_by: 200 -%}\n  <span class=\"byline__reading\">{{ minutes }} min read</span>\n{%- endif -%}\n{%- if comment_count != nil -%}\n  {%- if comment_count == 0 -%}<span class=\"byline__comments\">No comments</span>\n  {%- elsif comment_count == 1 -%}<span class=\"byline__comments\">1 comment</span>\n  {%- else -%}<span class=\"byline__comments\">{{ comment_count }} comments</span>\n  {%- endif -%}\n{%- endif -%}\n</p>"
+    }
+  },
+  {
+    "name": "wrong-2-zero-comments-omitted",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline-2.liquid": "{%- assign name = author_name | strip -%}\n{%- if name == '' -%}{%- assign name = 'Staff' -%}{%- endif -%}\n{%- assign names = name | escape -%}\n{%- assign co_size = co_authors.size -%}\n{%- if co_size == 1 -%}\n  {%- assign c0 = co_authors[0] | escape -%}\n  {%- assign names = names | append: ' and ' | append: c0 -%}\n{%- elsif co_size == 2 -%}\n  {%- assign c0 = co_authors[0] | escape -%}\n  {%- assign c1 = co_authors[1] | escape -%}\n  {%- assign names = names | append: ', ' | append: c0 | append: ' and ' | append: c1 -%}\n{%- elsif co_size > 2 -%}\n  {%- assign c0 = co_authors[0] | escape -%}\n  {%- assign others = co_size | minus: 1 -%}\n  {%- assign names = names | append: ', ' | append: c0 | append: ' and ' | append: others | append: ' others' -%}\n{%- endif -%}\n<p class=\"byline\"><span class=\"byline__authors\">By {{ names }}</span>\n{%- if word_count != nil and word_count > 0 -%}\n  {%- assign minutes = word_count | plus: 199 | divided_by: 200 -%}\n  <span class=\"byline__reading\">{{ minutes }} min read</span>\n{%- endif -%}\n{%- if comment_count != nil and comment_count > 0 -%}\n  {%- if comment_count == 1 -%}<span class=\"byline__comments\">1 comment</span>\n  {%- else -%}<span class=\"byline__comments\">{{ comment_count }} comments</span>\n  {%- endif -%}\n{%- endif -%}\n</p>"
+    }
+  },
+  {
+    "name": "wrong-3-default-instead-of-strip",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline-2.liquid": "{%- assign name = author_name | default: 'Staff' -%}\n{%- assign names = name | escape -%}\n{%- assign co_size = co_authors.size -%}\n{%- if co_size == 1 -%}\n  {%- assign c0 = co_authors[0] | escape -%}\n  {%- assign names = names | append: ' and ' | append: c0 -%}\n{%- elsif co_size == 2 -%}\n  {%- assign c0 = co_authors[0] | escape -%}\n  {%- assign c1 = co_authors[1] | escape -%}\n  {%- assign names = names | append: ', ' | append: c0 | append: ' and ' | append: c1 -%}\n{%- elsif co_size > 2 -%}\n  {%- assign c0 = co_authors[0] | escape -%}\n  {%- assign others = co_size | minus: 1 -%}\n  {%- assign names = names | append: ', ' | append: c0 | append: ' and ' | append: others | append: ' others' -%}\n{%- endif -%}\n<p class=\"byline\"><span class=\"byline__authors\">By {{ names }}</span>\n{%- if word_count != nil and word_count > 0 -%}\n  {%- assign minutes = word_count | plus: 199 | divided_by: 200 -%}\n  <span class=\"byline__reading\">{{ minutes }} min read</span>\n{%- endif -%}\n{%- if comment_count != nil -%}\n  {%- if comment_count == 0 -%}<span class=\"byline__comments\">No comments</span>\n  {%- elsif comment_count == 1 -%}<span class=\"byline__comments\">1 comment</span>\n  {%- else -%}<span class=\"byline__comments\">{{ comment_count }} comments</span>\n  {%- endif -%}\n{%- endif -%}\n</p>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline-2.liquid": "{% # theme-check-disable %}\n{%- assign name = author_name | strip -%}\n{%- if name == '' -%}{%- assign name = 'Staff' -%}{%- endif -%}\n{%- assign names = name | escape -%}\n{%- assign co_size = co_authors.size -%}\n{%- if co_size == 1 -%}\n  {%- assign c0 = co_authors[0] | escape -%}\n  {%- assign names = names | append: ' and ' | append: c0 -%}\n{%- elsif co_size == 2 -%}\n  {%- assign c0 = co_authors[0] | escape -%}\n  {%- assign c1 = co_authors[1] | escape -%}\n  {%- assign names = names | append: ', ' | append: c0 | append: ' and ' | append: c1 -%}\n{%- elsif co_size > 2 -%}\n  {%- assign c0 = co_authors[0] | escape -%}\n  {%- assign others = co_size | minus: 1 -%}\n  {%- assign names = names | append: ', ' | append: c0 | append: ' and ' | append: others | append: ' others' -%}\n{%- endif -%}\n<p class=\"byline\"><span class=\"byline__authors\">By {{ names }}</span>\n{%- if word_count != nil and word_count > 0 -%}\n  {%- assign minutes = word_count | plus: 199 | divided_by: 200 -%}\n  <span class=\"byline__reading\">{{ minutes }} min read</span>\n{%- endif -%}\n{%- if comment_count != nil -%}\n  {%- if comment_count == 0 -%}<span class=\"byline__comments\">No comments</span>\n  {%- elsif comment_count == 1 -%}<span class=\"byline__comments\">1 comment</span>\n  {%- else -%}<span class=\"byline__comments\">{{ comment_count }} comments</span>\n  {%- endif -%}\n{%- endif -%}\n</p>"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline-2.liquid": null
+    }
+  }
+]

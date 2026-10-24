@@ -1,0 +1,9 @@
+<div class="ingredients">
+  <h3>{{ title }}</h3>
+  <ul>
+  {%- for ing in ingredients %}
+    <li>{{ ing.quantity }} {{ ing.unit }} {{ ing.name }}</li>
+  {%- endfor %}
+  </ul>
+  <p class="count">{{ ingredients.size }} ingredients</p>
+</div>

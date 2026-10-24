@@ -1,0 +1,13 @@
+{{ 'section-newsletter.css' | asset_url | stylesheet_tag }}
+<div class="newsletter">
+  <h2 class="newsletter__heading">{{ 'newsletter.form.heading' | t }}</h2>
+  <form method="post" action="/contact#newsletter" class="newsletter__form">
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <label for="NewsletterEmail" class="newsletter__label">{{ 'newsletter.form.email_label' | t }}</label>
+    <input type="email" id="NewsletterEmail" name="contact[email]" placeholder="{{ 'newsletter.form.email_label' | t }}" required>
+    <button type="submit" class="newsletter__button">
+      {{ 'newsletter.form.button' | t }}
+      {% render 'icon-arrow' %}
+    </button>
+  </form>
+</div>

@@ -1,0 +1,25 @@
+{%- if items -%}
+  {%- if items.size > 0 -%}
+    {%- assign units = 0 -%}
+    {%- assign list = '' -%}
+    {%- for item in items -%}
+      {%- if item.bundle_eligible == true and item.quantity > 0 -%}
+        {%- assign units = units | plus: item.quantity -%}
+        {%- capture li -%}<li>{{ item.title | escape }} x{{ item.quantity }}</li>{%- endcapture -%}
+        {%- assign list = list | append: li -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- assign label = discount_label | strip -%}
+    {%- if label == '' -%}{%- assign label = 'Bundle discount' -%}{%- endif -%}
+    <div class="bundle">
+    {%- if list != '' -%}<ul>{{ list }}</ul>{%- endif -%}
+    <p class="bundle__status">
+    {%- if units >= min_items -%}
+      Bundle unlocked: {{ label | escape }}
+    {%- else -%}
+      {%- assign needed = min_items | minus: units -%}
+      Add {{ needed }} more eligible {% if needed == 1 %}item{% else %}items{% endif %} to unlock the bundle
+    {%- endif -%}
+    </p></div>
+  {%- endif -%}
+{%- endif -%}

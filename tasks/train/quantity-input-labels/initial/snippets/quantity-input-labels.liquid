@@ -1,0 +1,25 @@
+{{ 'quantity.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'quantity_input.js' | asset_url }}" defer="defer"></script>
+<div class="quantity-wrapper">
+  <label class="quantity__label" for="Quantity-{{ input_id }}">{{ 'products.quantity.label' | t }}</label>
+  <quantity-input class="quantity">
+    <button class="quantity__button" name="minus" type="button" aria-label="{{ 'products.product.quantity.decrement' | t: product: product_title | escape }}">
+      {% render 'icon-subtract' %}
+    </button>
+    <input class="quantity__input" type="number" name="quantity" id="Quantity-{{ input_id }}" min="{{ min }}" step="{{ step }}" value="{{ min }}" data-max="{{ max }}" aria-label="{{ 'products.product.quantity.input' | t: product: product_title | escape }}">
+    <button class="quantity__button" name="plus" type="button" aria-label="{{ 'products.product.quantity.increase_label' | t: product: product_title | escape }}">
+      {% render 'icon-add' %}
+    </button>
+  </quantity-input>
+  <div class="quantity__rules">
+    {%- if step > 1 -%}
+      <span class="quantity__rule">{{ 'products.product.quantity.increments' | t: quantity: step }}</span>
+    {%- endif -%}
+    {%- if min > 1 -%}
+      <span class="quantity__rule">{{ 'products.product.quantity.minimum_of' | t: quantity: min }}</span>
+    {%- endif -%}
+    {%- if max -%}
+      <span class="quantity__rule">{{ 'products.product.quantity.max' | t: quantity: max }}</span>
+    {%- endif -%}
+  </div>
+</div>

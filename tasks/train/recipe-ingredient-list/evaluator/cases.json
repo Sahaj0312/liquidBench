@@ -1,0 +1,538 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/recipe-ingredient-list.liquid",
+    "tags": [
+      "div",
+      "h3",
+      "li",
+      "p",
+      "span",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "title": "Pancakes",
+      "ingredients": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "title": "Pancakes",
+      "ingredients": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "title": "Soup",
+      "ingredients": [
+        {
+          "name": null,
+          "quantity": "1",
+          "unit": "l"
+        },
+        {
+          "name": "",
+          "quantity": "2",
+          "unit": null
+        }
+      ]
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "title": "Pancakes",
+      "ingredients": [
+        {
+          "name": "flour",
+          "quantity": "2",
+          "unit": "cups"
+        },
+        {
+          "name": "eggs",
+          "quantity": "3",
+          "unit": null
+        },
+        {
+          "name": "salt",
+          "quantity": null,
+          "unit": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ingredients"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Pancakes"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "qty"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "2"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "unit"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "cups"
+                  }
+                ],
+                "text": "  flour"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "qty"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "3"
+                  }
+                ],
+                "text": " eggs"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "salt"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "count"
+              ]
+            ],
+            "children": [],
+            "text": "3 ingredients"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "title": null,
+      "ingredients": [
+        {
+          "name": "lemon",
+          "quantity": "1",
+          "unit": ""
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ingredients"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "qty"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "1"
+                  }
+                ],
+                "text": " lemon"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "count"
+              ]
+            ],
+            "children": [],
+            "text": "1 ingredient"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "title": "",
+      "ingredients": [
+        {
+          "name": "pepper",
+          "quantity": "",
+          "unit": "pinch"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ingredients"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "pepper"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "count"
+              ]
+            ],
+            "children": [],
+            "text": "1 ingredient"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "title": "Cake",
+      "ingredients": [
+        {
+          "name": "",
+          "quantity": "2",
+          "unit": "cups"
+        },
+        {
+          "name": "sugar",
+          "quantity": "100",
+          "unit": "g"
+        },
+        {
+          "name": null,
+          "quantity": null,
+          "unit": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ingredients"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Cake"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "qty"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "100"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "unit"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "g"
+                  }
+                ],
+                "text": "  sugar"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "count"
+              ]
+            ],
+            "children": [],
+            "text": "1 ingredient"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "title": "Mac & Cheese <Classic>",
+      "ingredients": [
+        {
+          "name": "cheddar \"aged\" & sharp",
+          "quantity": "<1",
+          "unit": "cup>"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ingredients"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Mac & Cheese <Classic>"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "qty"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "<1"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "unit"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "cup>"
+                  }
+                ],
+                "text": "  cheddar \"aged\" & sharp"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "count"
+              ]
+            ],
+            "children": [],
+            "text": "1 ingredient"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "title": "Pesto",
+      "ingredients": [
+        {
+          "name": "basil",
+          "quantity": null,
+          "unit": "g"
+        },
+        {
+          "name": "pine nuts",
+          "quantity": "30",
+          "unit": "g"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ingredients"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Pesto"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "basil"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "qty"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "30"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "unit"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "g"
+                  }
+                ],
+                "text": "  pine nuts"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "count"
+              ]
+            ],
+            "children": [],
+            "text": "2 ingredients"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

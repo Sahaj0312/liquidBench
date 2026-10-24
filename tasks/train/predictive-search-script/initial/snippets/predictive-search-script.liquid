@@ -1,0 +1,13 @@
+<script src="{{ 'predictive_search.js' | asset_url }}" defer="defer"></script>
+<predictive-search class="predictive-search" data-results-count="{{ results_count }}">
+  <p class="predictive-search__status" role="status">
+    {%- if results_count > 0 -%}
+      {{ 'search.results_count' | t: count: results_count }}
+    {%- else -%}
+      {{ 'templates.search.empty' | t }}
+    {%- endif -%}
+  </p>
+  <div class="predictive-search__loading" hidden>
+    {%- render 'spinner' -%}
+  </div>
+</predictive-search>

@@ -1,0 +1,10 @@
+{
+  "customer": {
+    "account": {
+      "nav_label": "Account navigation",
+      "greeting": "Welcome back, {{ name }}",
+      "orders": "Order history",
+      "log_out": "Log out"
+    }
+  }
+}

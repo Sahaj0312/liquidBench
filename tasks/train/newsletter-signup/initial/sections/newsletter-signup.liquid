@@ -1,0 +1,26 @@
+<div class="newsletter">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when "heading" -%}
+        <h2 class="newsletter__heading">{{ block.settings.text | escape }}</h2>
+      {%- when "paragraph" -%}
+        <p class="newsletter__text">{{ block.settings.text | escape }}</p>
+    {%- endcase -%}
+  {%- endfor -%}
+  <form class="newsletter__form" method="post" action="/contact#newsletter"><button type="submit" class="newsletter__button">{{ section.settings.button_label | escape }}</button></form>
+</div>
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Subscribe" },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "Thanks for subscribing!" },
+    { "type": "text", "id": "error_message", "label": "Error message" }
+  ],
+  "blocks": [
+    { "type": "heading", "name": "Heading", "settings": [{ "type": "text", "id": "text", "label": "Text" }] },
+    { "type": "paragraph", "name": "Paragraph", "settings": [{ "type": "textarea", "id": "text", "label": "Text" }] }
+  ],
+  "presets": [{ "name": "Newsletter" }]
+}
+{% endschema %}

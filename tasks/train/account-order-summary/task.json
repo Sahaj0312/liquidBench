@@ -1,0 +1,15 @@
+{
+  "id": "account-order-summary",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "medium",
+  "family": "account-order-summary",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/account-order-summary.liquid"
+  ],
+  "prompt": "The snippet snippets/account-order-summary.liquid renders the customer account overview. It reads customer.orders and customer.addresses_count.\n\nIt shows one order-count message chosen by boundary:\n- 0 orders: the 'none' message\n- exactly 1 order: the 'single' message\n- 2 or more orders: the 'many' message, interpolated with count: order_count\n\nWhen there is at least one order, it renders a table of up to 10 order rows. After that come a link to view addresses, interpolated with count: customer.addresses_count, and a logout link. The branching, the limit and the markup are already correct and must remain unchanged.\n\nThe file currently produces Theme Check errors because its literal references are wrong. Fix them so that they point to what the theme actually contains.\n\n1. Stylesheet: the theme ships only assets/account.css. Load it with asset_url | stylesheet_tag.\n2. Row snippet: the theme ships only snippets/account-order-row.liquid. Render it with order: order.\n3. Translations: locales/en.default.json and locales/es.json define these keys.\n- Under customer.account:\n  - title: h1 text\n  - view_addresses: addresses link text, takes count\n  - logout: logout link text\n- Under customer.orders:\n  - title: h2 text\n  - none: 0 orders\n  - single: exactly 1 order\n  - many: 2+ orders, takes count\n\nUse each key in its matching place, and use no other translation keys. Do not modify any asset, locale or snippet files. The fixed file must produce no Theme Check errors. Change only snippets/account-order-summary.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

@@ -1,0 +1,15 @@
+{{ 'search-form.css' | asset_url | stylesheet_tag }}
+{%- assign query = search_terms | default: '' | strip -%}
+{%- assign placeholder_text = placeholder | default: '' | strip -%}
+{%- if placeholder_text == '' -%}
+  {%- assign placeholder_text = 'search.form.placeholder' | t -%}
+{%- endif -%}
+{%- assign reset_label = 'search.form.reset' | t -%}
+<form action="/search" method="get" role="search" class="search-form">
+  <label for="SearchInput-{{ form_id }}">{{ 'search.form.label' | t }}</label>
+  <input id="SearchInput-{{ form_id }}" type="search" name="q" value="{{ query | escape }}" placeholder="{{ placeholder_text | escape }}">
+  <button type="submit" aria-label="{{ 'search.form.submit' | t }}">{% render 'icon-search' %}</button>
+  {%- if query != '' -%}
+    {% render 'search-reset-button', label: reset_label %}
+  {%- endif -%}
+</form>

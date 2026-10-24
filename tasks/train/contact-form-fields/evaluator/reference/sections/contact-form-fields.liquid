@@ -1,0 +1,37 @@
+{%- assign field_index = 0 -%}
+{%- assign email_rendered = false -%}
+{%- assign required_count = 0 -%}
+<div class="contact-form page-width">
+  {%- if section.settings.heading != blank -%}<h2 class="contact-form__heading">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+  <form method="post" action="/contact#ContactForm-{{ section.id }}" id="ContactForm-{{ section.id }}" class="contact-form__form">
+    <input type="hidden" name="form_type" value="contact">
+    {%- for block in section.blocks -%}
+      {%- assign field_index = field_index | plus: 1 -%}
+      {%- assign field_id = 'ContactForm-' | append: section.id | append: '-' | append: field_index -%}
+      {%- assign field_name = block.settings.label | downcase | strip | replace: ' ', '_' -%}
+      {%- if block.settings.required -%}{%- assign required_count = required_count | plus: 1 -%}{%- endif -%}
+      <div class="field field--{{ block.settings.width }}" {{ block.shopify_attributes }}>
+        <label for="{{ field_id }}">{{ block.settings.label | escape }}{% if block.settings.required %} *{% endif %}</label>
+        {%- case block.type -%}
+          {%- when 'email' -%}
+            {%- if email_rendered -%}{%- assign email_name = 'contact[' | append: field_name | append: ']' -%}{%- else -%}{%- assign email_name = 'contact[email]' -%}{%- assign email_rendered = true -%}{%- endif -%}
+            <input type="email" id="{{ field_id }}" name="{{ email_name }}"{% if block.settings.required %} required{% endif %}>
+          {%- when 'phone' -%}
+            <input type="tel" id="{{ field_id }}" name="contact[phone]"{% if block.settings.required %} required{% endif %}>
+          {%- when 'textarea' -%}
+            <textarea id="{{ field_id }}" name="contact[{{ field_name }}]" rows="{{ block.settings.rows }}"{% if block.settings.required %} required{% endif %}></textarea>
+          {%- when 'checkbox' -%}
+            <input type="checkbox" id="{{ field_id }}" name="contact[{{ field_name }}]" value="yes"{% if block.settings.required %} required{% endif %}>
+          {%- else -%}
+            <input type="text" id="{{ field_id }}" name="contact[{{ field_name }}]"{% if block.settings.required %} required{% endif %}>
+        {%- endcase -%}
+      </div>
+    {%- endfor -%}
+    {%- if section.settings.show_required_note and required_count > 0 -%}<p class="contact-form__note">{{ section.settings.required_note | escape }}</p>{%- endif -%}
+    <button type="submit" class="button">{{ section.settings.submit_label | default: 'Send' | escape }}</button>
+  </form>
+</div>
+
+{% schema %}
+{"name":"Contact form","tag":"section","class":"section-contact-form","settings":[{"type":"text","id":"heading","label":"Heading","default":"Contact us"},{"type":"text","id":"submit_label","label":"Submit button label","default":"Send"},{"type":"checkbox","id":"show_required_note","label":"Show required fields note","default":true},{"type":"text","id":"required_note","label":"Required fields note","default":"* Required fields"}],"blocks":[{"type":"text","name":"Text field","settings":[{"type":"text","id":"label","label":"Label","default":"Name"},{"type":"checkbox","id":"required","label":"Required","default":false},{"type":"select","id":"width","label":"Field width","options":[{"value":"full","label":"Full"},{"value":"half","label":"Half"}],"default":"full"}]},{"type":"email","name":"Email field","limit":2,"settings":[{"type":"text","id":"label","label":"Label","default":"Email"},{"type":"checkbox","id":"required","label":"Required","default":true},{"type":"select","id":"width","label":"Field width","options":[{"value":"full","label":"Full"},{"value":"half","label":"Half"}],"default":"full"}]},{"type":"phone","name":"Phone field","limit":1,"settings":[{"type":"text","id":"label","label":"Label","default":"Phone number"},{"type":"checkbox","id":"required","label":"Required","default":false},{"type":"select","id":"width","label":"Field width","options":[{"value":"full","label":"Full"},{"value":"half","label":"Half"}],"default":"full"}]},{"type":"textarea","name":"Message field","limit":1,"settings":[{"type":"text","id":"label","label":"Label","default":"Message"},{"type":"checkbox","id":"required","label":"Required","default":false},{"type":"select","id":"width","label":"Field width","options":[{"value":"full","label":"Full"},{"value":"half","label":"Half"}],"default":"full"},{"type":"range","id":"rows","label":"Rows","min":3,"max":10,"step":1,"default":5}]},{"type":"checkbox","name":"Checkbox","settings":[{"type":"text","id":"label","label":"Label","default":"I agree to receive marketing emails"},{"type":"checkbox","id":"required","label":"Required","default":false},{"type":"select","id":"width","label":"Field width","options":[{"value":"full","label":"Full"},{"value":"half","label":"Half"}],"default":"full"}]}],"max_blocks":12,"presets":[{"name":"Contact form","blocks":[{"type":"text"},{"type":"email"},{"type":"textarea"}]}]}
+{% endschema %}

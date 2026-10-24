@@ -1,0 +1,349 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/membership-renewal-2.liquid",
+    "tags": [
+      "li",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "renewals": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "renewals": [
+        {
+          "plan": "Gold",
+          "status": "paid"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "renewals"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "Term 1: Gold"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "renewals": [
+        {
+          "plan": "Gold",
+          "status": "paid"
+        },
+        {
+          "plan": "Silver",
+          "status": "lapsed"
+        },
+        {
+          "plan": "Gold",
+          "status": "paid"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "renewals"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "Term 1: Gold"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "lapsed"
+              ]
+            ],
+            "children": [],
+            "text": "Lapsed: Silver"
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "Term 2: Gold"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "renewals": [
+        {
+          "plan": "Basic",
+          "status": "lapsed"
+        },
+        {
+          "plan": "Pro",
+          "status": "paid"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "renewals"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "lapsed"
+              ]
+            ],
+            "children": [],
+            "text": "Lapsed: Basic"
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "Term 1: Pro"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "renewals": [
+        {
+          "plan": "Basic",
+          "status": "lapsed"
+        },
+        {
+          "plan": "Basic",
+          "status": "lapsed"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "renewals"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "lapsed"
+              ]
+            ],
+            "children": [],
+            "text": "Lapsed: Basic"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "lapsed"
+              ]
+            ],
+            "children": [],
+            "text": "Lapsed: Basic"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "renewals": [
+        {
+          "plan": "Gold & \"Plus\" <VIP>",
+          "status": "paid"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "renewals"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "Term 1: Gold & \"Plus\" <VIP>"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "renewals": [
+        {
+          "plan": "A<B",
+          "status": "lapsed"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "renewals"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "lapsed"
+              ]
+            ],
+            "children": [],
+            "text": "Lapsed: A<B"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "renewals": [
+        {
+          "plan": "A",
+          "status": "paid"
+        },
+        {
+          "plan": "B",
+          "status": "paid"
+        },
+        {
+          "plan": "C",
+          "status": "lapsed"
+        },
+        {
+          "plan": "D",
+          "status": "lapsed"
+        },
+        {
+          "plan": "E",
+          "status": "paid"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "renewals"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "Term 1: A"
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "Term 2: B"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "lapsed"
+              ]
+            ],
+            "children": [],
+            "text": "Lapsed: C"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "lapsed"
+              ]
+            ],
+            "children": [],
+            "text": "Lapsed: D"
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "Term 3: E"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

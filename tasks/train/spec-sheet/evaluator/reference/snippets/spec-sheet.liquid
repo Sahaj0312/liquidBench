@@ -1,0 +1,27 @@
+{%- assign visible = 0 -%}
+{%- for spec in specs -%}
+{%- assign v = spec.value | default: '' | strip -%}
+{%- if v != '' -%}{%- assign visible = visible | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
+{%- if visible > 0 -%}
+{%- assign limit = visible -%}
+{%- assign max = max_rows | default: 0 -%}
+{%- if max > 0 and max < visible -%}{%- assign limit = max -%}{%- endif -%}
+<div class="spec-sheet">
+{%- assign title = heading | default: '' | strip -%}
+{%- if title != '' -%}<h3 class="spec-sheet__title">{{ title | escape }}</h3>{%- endif -%}
+<dl class="spec-sheet__list">
+{%- assign shown = 0 -%}
+{%- for spec in specs -%}
+{%- assign v = spec.value | default: '' | strip -%}
+{%- if v != '' and shown < limit -%}
+{%- assign shown = shown | plus: 1 -%}
+{%- assign u = spec.unit | default: '' | strip -%}
+<div class="spec-sheet__row"><dt>{{ spec.label | strip | escape }}</dt><dd>{{ v | escape }}{% if u != '' %} {{ u | escape }}{% endif %}</dd></div>
+{%- endif -%}
+{%- endfor -%}
+</dl>
+{%- assign hidden = visible | minus: limit -%}
+{%- if hidden > 0 -%}<p class="spec-sheet__more">+{{ hidden }} more</p>{%- endif -%}
+</div>
+{%- endif -%}

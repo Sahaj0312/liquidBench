@@ -1,0 +1,15 @@
+{
+  "id": "quantity-input-labels-2",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "easy",
+  "family": "quantity-input-labels-2",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/quantity-input-labels-2.liquid"
+  ],
+  "prompt": "The snippet snippets/quantity-input-labels-2.liquid renders a product quantity selector: a label, a minus button, a number input, a plus button, a stylesheet and a deferred script. Some of its literal references point to files or translation keys that do not exist, so Theme Check reports errors. Fix every broken reference so it points to the real theme files supplied (assets/, snippets/, locales/en.default.json and locales/fr.json). Do not create or edit any other file.\n\nRequired references in the fixed snippet:\n- The stylesheet must be loaded from the existing asset quantity-input.css through asset_url | stylesheet_tag.\n- The script must keep loading the existing asset quantity-input.js with defer.\n- The visible label text must use the translation key products.product.quantity.label.\n- The minus button aria-label must use the translation key products.product.quantity.decrease, passing product: product_title.\n- The plus button aria-label must use the translation key products.product.quantity.increase, passing product: product_title.\n- The minus button must render the existing snippet icon-minus; the plus button must render the existing snippet icon-plus.\n\nKeep the existing markup, the whitespace-trimming tags ({%- -%}, {{- -}}) and the | strip applied to the translated strings. Inputs (passed to the snippet, both top-level, never inside section.settings): section_id (string) and product_title (string), plus quantity (number, may be null; defaults to 1). The fixed file must produce no Theme Check errors. Change only snippets/quantity-input-labels-2.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

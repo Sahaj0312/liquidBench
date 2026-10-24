@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-only-assets-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-sprite-kit.liquid": "{{ 'icon-sprite.css' | asset_url | stylesheet_tag }}\n<div class=\"icon-sprite\">\n  <img src=\"{{ 'icon-sprite.svg' | asset_url }}\" alt=\"{{ 'icons.sprites.alt' | t }}\" width=\"24\" height=\"24\" loading=\"lazy\">\n  <p>{{ 'icons.sprite.caption_text' | t: count: 3 }}</p>\n  {% render 'icon-symbols', name: 'cart' %}\n  {% render 'icon-badges', count: 3 %}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-wrong-css-name",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-sprite-kit.liquid": "{{ 'icon-sprites.css' | asset_url | stylesheet_tag }}\n<div class=\"icon-sprite\">\n  <img src=\"{{ 'icon-sprite.svg' | asset_url }}\" alt=\"{{ 'icons.sprite.alt' | t }}\" width=\"24\" height=\"24\" loading=\"lazy\">\n  <p>{{ 'icons.sprite.caption' | t: count: 3 }}</p>\n  {% render 'icon-symbol', name: 'cart' %}\n  {% render 'icon-badge', count: 3 %}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-badge-snippet-still-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-sprite-kit.liquid": "{{ 'icon-sprite.css' | asset_url | stylesheet_tag }}\n<div class=\"icon-sprite\">\n  <img src=\"{{ 'icon-sprite.svg' | asset_url }}\" alt=\"{{ 'icons.sprite.alt' | t }}\" width=\"24\" height=\"24\" loading=\"lazy\">\n  <p>{{ 'icons.sprite.caption' | t: count: 3 }}</p>\n  {% render 'icon-symbol', name: 'cart' %}\n  {% render 'icon-badges', count: 3 %}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-caption-key-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-sprite-kit.liquid": "{{ 'icon-sprite.css' | asset_url | stylesheet_tag }}\n<div class=\"icon-sprite\">\n  <img src=\"{{ 'icon-sprite.svg' | asset_url }}\" alt=\"{{ 'icons.sprite.alt' | t }}\" width=\"24\" height=\"24\" loading=\"lazy\">\n  <p>{{ 'icons.sprite.caption_text' | t: count: 3 }}</p>\n  {% render 'icon-symbol', name: 'cart' %}\n  {% render 'icon-badge', count: 3 %}\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-sprite-kit.liquid": "{% # theme-check-disable %}\n{{ 'icon-sprite.css' | asset_url | stylesheet_tag }}\n<div class=\"icon-sprite\">\n  <img src=\"{{ 'icon-sprite.svg' | asset_url }}\" alt=\"{{ 'icons.sprite.alt' | t }}\" width=\"24\" height=\"24\" loading=\"lazy\">\n  <p>{{ 'icons.sprite.caption' | t: count: 3 }}</p>\n  {% render 'icon-symbol', name: 'cart' %}\n  {% render 'icon-badge', count: 3 %}\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-sprite-kit.liquid": null
+    }
+  }
+]

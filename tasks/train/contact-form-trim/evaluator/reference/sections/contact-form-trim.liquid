@@ -1,0 +1,25 @@
+{%- assign heading = section.settings.heading | strip -%}
+{%- assign intro = section.settings.intro | strip -%}
+{%- assign submit_label = section.settings.submit_label | strip | default: 'Send' -%}
+<div class="contact-form">
+  {%- if heading != blank -%}<h2 class="contact-form__heading">{{ heading | escape }}</h2>{%- endif -%}
+  {%- if intro != blank -%}<p class="contact-form__intro">{{ intro | escape }}</p>{%- endif -%}
+  <form method="post" action="/contact#contact-form" id="contact-form">
+    <label for="ContactName">Name</label>
+    <input type="text" id="ContactName" name="contact[name]">
+    <label for="ContactEmail">Email</label>
+    <input type="email" id="ContactEmail" name="contact[email]" required>
+    {%- if section.settings.show_phone -%}
+    <label for="ContactPhone">Phone</label>
+    <input type="tel" id="ContactPhone" name="contact[phone]">
+    {%- endif -%}
+    <label for="ContactBody">Message</label>
+    <textarea id="ContactBody" name="contact[body]"></textarea>
+    <button type="submit">{{ submit_label | escape }}</button>
+  </form>
+  <p class="contact-form__success" hidden>{{ section.settings.success_message | strip | escape }}</p>
+</div>
+
+{% schema %}
+{"name":"Contact form","tag":"section","class":"contact-form-section","settings":[{"type":"text","id":"heading","label":"Heading","default":"Contact us"},{"type":"textarea","id":"intro","label":"Introduction","default":"We usually reply within one business day."},{"type":"checkbox","id":"show_phone","label":"Show phone field","default":false},{"type":"text","id":"submit_label","label":"Submit button label","default":"Send message"},{"type":"text","id":"success_message","label":"Success message","default":"Thanks for contacting us!"}],"presets":[{"name":"Contact form"}]}
+{% endschema %}

@@ -1,0 +1,15 @@
+{
+  "id": "author-byline-2",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "medium",
+  "family": "author-byline-2",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/author-byline-2.liquid"
+  ],
+  "prompt": "Rewrite snippets/author-byline-2.liquid so it renders an article byline.\n\nInputs (all top-level variables; nothing is under section.settings):\n- author_name: string or null. May contain < > & \" characters and leading/trailing whitespace.\n- co_authors: array of non-empty strings, never null, may be empty. Entries are used as-is (not stripped) and may contain < > & \" characters.\n- word_count: integer or null (may be zero or negative).\n- comment_count: non-negative integer or null.\n\nOutput is always exactly one element: <p class=\"byline\"> containing, in this order and with nothing between them:\n\n1. Always: <span class=\"byline__authors\">By NAMES</span>. Let A be author_name with leading/trailing whitespace stripped; if author_name is null, empty or whitespace-only, A is the literal text Staff. Every name is HTML-escaped with the escape filter. NAMES depends on the number of co-authors:\n   - 0: A\n   - 1: A and C1\n   - 2: A, C1 and C2\n   - 3 or more: A, C1 and K others, where C1 is the first co-author and K is the number of co-authors minus 1 (e.g. 3 co-authors gives \"and 2 others\").\n2. Only when word_count is not null and is greater than 0: <span class=\"byline__reading\">M min read</span>, where M is word_count divided by 200 rounded UP to a whole number (1..200 words = 1, 201 = 2, 400 = 2, 401 = 3).\n3. Only when comment_count is not null: <span class=\"byline__comments\">TEXT</span> where TEXT is \"No comments\" for 0, \"1 comment\" for 1, and \"N comments\" for any larger N.\n\nThe output must contain no whitespace or newlines between tags and no leading/trailing whitespace. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/author-byline-2.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

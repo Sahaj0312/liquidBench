@@ -1,0 +1,25 @@
+{%- liquid
+  assign key = 'valid'
+  assign label = 'Valid'
+  if ticket.refunded
+    assign key = 'refunded'
+    assign label = 'Refunded'
+  elsif ticket.cancelled
+    assign key = 'cancelled'
+    assign label = 'Cancelled'
+  elsif ticket.checked_in
+    assign key = 'checked-in'
+    assign label = 'Checked in'
+  elsif ticket.event_ended
+    assign key = 'expired'
+    assign label = 'Expired'
+  endif
+  assign holder = ticket.holder | default: '' | strip
+-%}
+<div class="ticket"><span class="ticket__status ticket__status--{{ key }}">{{ label }}</span>
+{%- if holder != '' -%}
+  {%- if key == 'valid' or key == 'checked-in' -%}
+    <span class="ticket__holder">{{ holder | escape }}</span>
+  {%- endif -%}
+{%- endif -%}
+</div>

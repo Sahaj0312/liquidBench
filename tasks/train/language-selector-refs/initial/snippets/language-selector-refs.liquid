@@ -1,0 +1,11 @@
+{{ 'language-selector.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'language-select.js' | asset_url }}" defer="defer"></script>
+<div class="language-selector">
+  <span class="language-selector__label">{% render 'icon-globe' %}{{ 'general.language.label' | t }}</span>
+  <ul class="language-selector__list" role="list">
+    {%- for language in languages -%}
+      {% render 'language-item', language: language, current: current_language %}
+    {%- endfor -%}
+  </ul>
+  <button type="submit" class="language-selector__submit">{{ 'localization.submit' | t }}</button>
+</div>

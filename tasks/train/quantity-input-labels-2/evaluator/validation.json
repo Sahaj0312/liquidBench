@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-icon-snippet-still-missing",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels-2.liquid": "{{- 'quantity-input.css' | asset_url | stylesheet_tag -}}\n<div class=\"quantity\">\n  <label class=\"quantity__label\" for=\"Quantity-{{ section_id }}\">\n    {{- 'products.product.quantity.label' | t | strip -}}\n  </label>\n  <button type=\"button\" class=\"quantity__button\" name=\"minus\" aria-label=\"{{ 'products.product.quantity.decrease' | t: product: product_title | strip }}\">\n    {%- render 'icon-subtract' -%}\n  </button>\n  <input class=\"quantity__input\" type=\"number\" id=\"Quantity-{{ section_id }}\" name=\"quantity\" min=\"1\" value=\"{{ quantity | default: 1 }}\">\n  <button type=\"button\" class=\"quantity__button\" name=\"plus\" aria-label=\"{{ 'products.product.quantity.increase' | t: product: product_title | strip }}\">\n    {%- render 'icon-plus' -%}\n  </button>\n</div>\n<script src=\"{{ 'quantity-input.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "wrong-1-minified-stylesheet-kept",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels-2.liquid": "{{- 'quantity-input.min.css' | asset_url | stylesheet_tag -}}\n<div class=\"quantity\">\n  <label class=\"quantity__label\" for=\"Quantity-{{ section_id }}\">\n    {{- 'products.product.quantity.label' | t | strip -}}\n  </label>\n  <button type=\"button\" class=\"quantity__button\" name=\"minus\" aria-label=\"{{ 'products.product.quantity.decrease' | t: product: product_title | strip }}\">\n    {%- render 'icon-minus' -%}\n  </button>\n  <input class=\"quantity__input\" type=\"number\" id=\"Quantity-{{ section_id }}\" name=\"quantity\" min=\"1\" value=\"{{ quantity | default: 1 }}\">\n  <button type=\"button\" class=\"quantity__button\" name=\"plus\" aria-label=\"{{ 'products.product.quantity.increase' | t: product: product_title | strip }}\">\n    {%- render 'icon-plus' -%}\n  </button>\n</div>\n<script src=\"{{ 'quantity-input.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "wrong-2-decrease-label-key-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels-2.liquid": "{{- 'quantity-input.css' | asset_url | stylesheet_tag -}}\n<div class=\"quantity\">\n  <label class=\"quantity__label\" for=\"Quantity-{{ section_id }}\">\n    {{- 'products.product.quantity.label' | t | strip -}}\n  </label>\n  <button type=\"button\" class=\"quantity__button\" name=\"minus\" aria-label=\"{{ 'products.product.quantity.decrease_label' | t: product: product_title | strip }}\">\n    {%- render 'icon-minus' -%}\n  </button>\n  <input class=\"quantity__input\" type=\"number\" id=\"Quantity-{{ section_id }}\" name=\"quantity\" min=\"1\" value=\"{{ quantity | default: 1 }}\">\n  <button type=\"button\" class=\"quantity__button\" name=\"plus\" aria-label=\"{{ 'products.product.quantity.increase' | t: product: product_title | strip }}\">\n    {%- render 'icon-plus' -%}\n  </button>\n</div>\n<script src=\"{{ 'quantity-input.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "wrong-3-flat-label-key-kept",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels-2.liquid": "{{- 'quantity-input.css' | asset_url | stylesheet_tag -}}\n<div class=\"quantity\">\n  <label class=\"quantity__label\" for=\"Quantity-{{ section_id }}\">\n    {{- 'products.product.quantity_label' | t | strip -}}\n  </label>\n  <button type=\"button\" class=\"quantity__button\" name=\"minus\" aria-label=\"{{ 'products.product.quantity.decrease' | t: product: product_title | strip }}\">\n    {%- render 'icon-minus' -%}\n  </button>\n  <input class=\"quantity__input\" type=\"number\" id=\"Quantity-{{ section_id }}\" name=\"quantity\" min=\"1\" value=\"{{ quantity | default: 1 }}\">\n  <button type=\"button\" class=\"quantity__button\" name=\"plus\" aria-label=\"{{ 'products.product.quantity.increase' | t: product: product_title | strip }}\">\n    {%- render 'icon-plus' -%}\n  </button>\n</div>\n<script src=\"{{ 'quantity-input.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels-2.liquid": "{% # theme-check-disable %}\n{{- 'quantity-input.css' | asset_url | stylesheet_tag -}}\n<div class=\"quantity\">\n  <label class=\"quantity__label\" for=\"Quantity-{{ section_id }}\">\n    {{- 'products.product.quantity.label' | t | strip -}}\n  </label>\n  <button type=\"button\" class=\"quantity__button\" name=\"minus\" aria-label=\"{{ 'products.product.quantity.decrease' | t: product: product_title | strip }}\">\n    {%- render 'icon-minus' -%}\n  </button>\n  <input class=\"quantity__input\" type=\"number\" id=\"Quantity-{{ section_id }}\" name=\"quantity\" min=\"1\" value=\"{{ quantity | default: 1 }}\">\n  <button type=\"button\" class=\"quantity__button\" name=\"plus\" aria-label=\"{{ 'products.product.quantity.increase' | t: product: product_title | strip }}\">\n    {%- render 'icon-plus' -%}\n  </button>\n</div>\n<script src=\"{{ 'quantity-input.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels-2.liquid": null
+    }
+  }
+]

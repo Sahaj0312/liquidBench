@@ -1,0 +1,8 @@
+{%- comment -%} Unit price label {%- endcomment -%}
+{%- if price and price != "" and count and count >= 1 -%}
+  {%- if count == 1 -%}
+    <span class="unit-price">{{ price | escape }} per {{ unit | escape }}</span>
+  {%- else -%}
+    <span class="unit-price">{{ price | escape }} per {{ count }} {{ unit | escape }}s</span>
+  {%- endif -%}
+{%- endif -%}

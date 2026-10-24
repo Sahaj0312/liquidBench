@@ -1,0 +1,44 @@
+{%- if section.settings.image_position == "right" -%}
+  {%- assign image_position = "right" -%}
+{%- else -%}
+  {%- assign image_position = "left" -%}
+{%- endif -%}
+<div class="collage collage--image-{{ image_position }}">
+  {%- assign heading = section.settings.heading | strip -%}
+  {%- if heading != "" -%}
+    <h2 class="collage__heading">{{ heading | escape }}</h2>
+  {%- endif -%}
+  <div class="collage__grid">
+    {%- for block in section.blocks -%}
+      <div class="collage__item"><h3>{{ block.settings.title | escape }}</h3></div>
+    {%- endfor -%}
+  </div></div>
+
+{% schema %}
+{
+  "name": "Collage",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Collage" },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Large image position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Collage item",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Collage" }]
+}
+{% endschema %}

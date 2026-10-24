@@ -1,0 +1,8 @@
+{{ 'account.css' | asset_url | stylesheet_tag }}
+{%- assign safe_name = customer_name | default: '' | escape -%}
+<nav class="account-nav" aria-label="{{ 'customer.account.nav_label' | t | escape }}">
+  {% render 'avatar', name: safe_name %}
+  <h1>{{ 'customer.account.title' | t: name: safe_name }}</h1>
+  <a href="{{ account_url | escape }}" title="{{ 'customer.account.orders' | t | escape }}">{{ 'customer.account.orders' | t }}</a>
+  <a href="{{ logout_url | escape }}">{{ 'customers.account.log_out' | t }}</a>
+</nav>

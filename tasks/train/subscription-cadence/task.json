@@ -1,0 +1,15 @@
+{
+  "id": "subscription-cadence",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "subscription-cadence",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/subscription-cadence.liquid"
+  ],
+  "prompt": "The snippet snippets/subscription-cadence.liquid currently fails to parse and mishandles several cases. Rewrite it to render a subscription plan's delivery cadence exactly as specified.\n\nInput. A single top-level variable is always supplied:\n- plan: an object, or null.\n\nWhen plan is an object, it always has all four of these keys:\n- plan.name: string or null.\n- plan.interval: string or null.\n- plan.interval_count: integer or null. It may be zero or negative.\n- plan.price_cents: non-negative integer or null.\n\nRules:\n1. If plan is null, output nothing.\n2. Let UNIT be plan.interval stripped of surrounding whitespace and lowercased. A null value counts as an empty string. If UNIT is not exactly \"day\", \"week\", \"month\" or \"year\", output nothing.\n3. Let COUNT be plan.interval_count. If it is null, or less than 1, use 1.\n4. Set LABEL as follows:\n   - When COUNT is 1, LABEL depends on UNIT: day gives Daily, week gives Weekly, month gives Monthly, year gives Yearly.\n   - Otherwise LABEL is \"Every COUNT UNITs\", for example Every 2 weeks or Every 3 days.\n5. Let NAME be plan.name stripped of surrounding whitespace. A null value counts as an empty string.\n6. Output, in this order:\n   - <p class=\"cadence\">\n   - Only if NAME is non-empty: <span class=\"cadence__name\">NAME</span>, where NAME is HTML-escaped.\n   - <span class=\"cadence__label\">LABEL</span>\n   - Only if plan.price_cents is not null, a price span:\n     - If price_cents is 0, output <span class=\"cadence__price\">Free</span>.\n     - Otherwise output <span class=\"cadence__price\">$D.CC / delivery</span>. D is the integer number of whole dollars (price_cents divided by 100, no thousands separators). CC is the remaining cents, always two digits with zero padding. For example, 1005 becomes $10.05 and 5 becomes $0.05.\n   - </p>\n7. The output must contain no whitespace or newlines between tags and no leading or trailing whitespace. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/subscription-cadence.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

@@ -1,0 +1,538 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/promo-strip-stock.liquid",
+    "tags": [
+      "div",
+      "p"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Promo strip\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"message\", \"label\": \"Message\"},\n    {\"type\": \"number\", \"id\": \"item_count\", \"label\": \"Items left\"},\n    {\"type\": \"number\", \"id\": \"days_left\", \"label\": \"Days left\"}\n  ],\n  \"presets\": [{\"name\": \"Promo strip\"}]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "Spring sale",
+          "item_count": 25,
+          "days_left": 5
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Spring sale"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__count"
+              ]
+            ],
+            "children": [],
+            "text": "25 items left"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__timer"
+              ]
+            ],
+            "children": [],
+            "text": "Ends in 5 days"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "Hurry",
+          "item_count": 1,
+          "days_left": null
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip promo-strip--urgent"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Hurry"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__count"
+              ]
+            ],
+            "children": [],
+            "text": "Only 1 item left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": null,
+          "item_count": 9,
+          "days_left": 3
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip promo-strip--urgent"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__count"
+              ]
+            ],
+            "children": [],
+            "text": "Only 9 items left"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__timer"
+              ]
+            ],
+            "children": [],
+            "text": "Ends in 3 days"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "Last call",
+          "item_count": 10,
+          "days_left": 1
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip promo-strip--urgent"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Last call"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__count"
+              ]
+            ],
+            "children": [],
+            "text": "10 items left"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__timer"
+              ]
+            ],
+            "children": [],
+            "text": "Ends tomorrow"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "Sold",
+          "item_count": 0,
+          "days_left": 0
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Sold"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__count promo-strip__count--soldout"
+              ]
+            ],
+            "children": [],
+            "text": "Sold out"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "   ",
+          "item_count": -3,
+          "days_left": 2
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__count promo-strip__count--soldout"
+              ]
+            ],
+            "children": [],
+            "text": "Sold out"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "Tom & Jerry's <deal> \"now\"",
+          "item_count": null,
+          "days_left": 0
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip promo-strip--urgent"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Tom & Jerry's <deal> \"now\""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__timer"
+              ]
+            ],
+            "children": [],
+            "text": "Ends today"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": null,
+          "item_count": null,
+          "days_left": null
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "Deal",
+          "item_count": 2,
+          "days_left": -1
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip promo-strip--urgent"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Deal"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__count"
+              ]
+            ],
+            "children": [],
+            "text": "Only 2 items left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "Big",
+          "item_count": 100,
+          "days_left": 2
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Big"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__count"
+              ]
+            ],
+            "children": [],
+            "text": "100 items left"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__timer"
+              ]
+            ],
+            "children": [],
+            "text": "Ends in 2 days"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": " Padded ",
+          "item_count": 11,
+          "days_left": null
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Padded"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__count"
+              ]
+            ],
+            "children": [],
+            "text": "11 items left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

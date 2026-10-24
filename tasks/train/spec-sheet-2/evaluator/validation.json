@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-label-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/spec-sheet-2.liquid": "{%- liquid\n  assign title_text = title | strip\n  assign row_count = 0\n  for spec in specs\n    assign spec_label = spec.label | default: \"\"\n    if spec_label != \"\"\n      assign row_count = row_count | plus: 1\n    endif\n  endfor\n-%}\n{%- if row_count > 0 -%}\n<div class=\"spec-sheet\">\n{%- if title_text != \"\" -%}<h3 class=\"spec-sheet__title\">{{ title_text | escape }}</h3>{%- endif -%}\n<dl class=\"spec-sheet__list\">\n{%- for spec in specs -%}\n{%- assign spec_label = spec.label | default: \"\" -%}\n{%- if spec_label != \"\" -%}\n{%- assign spec_value = spec.value | strip -%}\n{%- assign spec_unit = spec.unit | strip -%}\n<div class=\"spec-sheet__row\"><dt>{{ spec_label | escape }}</dt>\n{%- if spec_value == \"\" -%}<dd class=\"spec-sheet__empty\">N/A</dd>\n{%- elsif spec_unit == \"\" -%}<dd>{{ spec_value | escape }}</dd>\n{%- else -%}<dd>{{ spec_value | escape }} {{ spec_unit | escape }}</dd>\n{%- endif -%}\n</div>\n{%- endif -%}\n{%- endfor -%}\n</dl></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-wrapper-when-no-valid-rows",
+    "expected_pass": false,
+    "changes": {
+      "snippets/spec-sheet-2.liquid": "{%- liquid\n  assign title_text = title | strip\n-%}\n{%- if specs.size > 0 -%}\n<div class=\"spec-sheet\">\n{%- if title_text != \"\" -%}<h3 class=\"spec-sheet__title\">{{ title_text | escape }}</h3>{%- endif -%}\n<dl class=\"spec-sheet__list\">\n{%- for spec in specs -%}\n{%- assign spec_label = spec.label | strip -%}\n{%- if spec_label != \"\" -%}\n{%- assign spec_value = spec.value | strip -%}\n{%- assign spec_unit = spec.unit | strip -%}\n<div class=\"spec-sheet__row\"><dt>{{ spec_label | escape }}</dt>\n{%- if spec_value == \"\" -%}<dd class=\"spec-sheet__empty\">N/A</dd>\n{%- elsif spec_unit == \"\" -%}<dd>{{ spec_value | escape }}</dd>\n{%- else -%}<dd>{{ spec_value | escape }} {{ spec_unit | escape }}</dd>\n{%- endif -%}\n</div>\n{%- endif -%}\n{%- endfor -%}\n</dl></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-unit-on-empty-value",
+    "expected_pass": false,
+    "changes": {
+      "snippets/spec-sheet-2.liquid": "{%- liquid\n  assign title_text = title | strip\n  assign row_count = 0\n  for spec in specs\n    assign spec_label = spec.label | strip\n    if spec_label != \"\"\n      assign row_count = row_count | plus: 1\n    endif\n  endfor\n-%}\n{%- if row_count > 0 -%}\n<div class=\"spec-sheet\">\n{%- if title_text != \"\" -%}<h3 class=\"spec-sheet__title\">{{ title_text | escape }}</h3>{%- endif -%}\n<dl class=\"spec-sheet__list\">\n{%- for spec in specs -%}\n{%- assign spec_label = spec.label | strip -%}\n{%- if spec_label != \"\" -%}\n{%- assign spec_value = spec.value | strip -%}\n{%- assign spec_unit = spec.unit | strip -%}\n<div class=\"spec-sheet__row\"><dt>{{ spec_label | escape }}</dt>\n{%- if spec_value == \"\" -%}<dd class=\"spec-sheet__empty\">N/A{% if spec_unit != \"\" %} {{ spec_unit | escape }}{% endif %}</dd>\n{%- elsif spec_unit == \"\" -%}<dd>{{ spec_value | escape }}</dd>\n{%- else -%}<dd>{{ spec_value | escape }} {{ spec_unit | escape }}</dd>\n{%- endif -%}\n</div>\n{%- endif -%}\n{%- endfor -%}\n</dl></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-title-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/spec-sheet-2.liquid": "{%- liquid\n  assign title_text = title | default: \"\"\n  assign row_count = 0\n  for spec in specs\n    assign spec_label = spec.label | strip\n    if spec_label != \"\"\n      assign row_count = row_count | plus: 1\n    endif\n  endfor\n-%}\n{%- if row_count > 0 -%}\n<div class=\"spec-sheet\">\n{%- if title_text != \"\" -%}<h3 class=\"spec-sheet__title\">{{ title_text | escape }}</h3>{%- endif -%}\n<dl class=\"spec-sheet__list\">\n{%- for spec in specs -%}\n{%- assign spec_label = spec.label | strip -%}\n{%- if spec_label != \"\" -%}\n{%- assign spec_value = spec.value | strip -%}\n{%- assign spec_unit = spec.unit | strip -%}\n<div class=\"spec-sheet__row\"><dt>{{ spec_label | escape }}</dt>\n{%- if spec_value == \"\" -%}<dd class=\"spec-sheet__empty\">N/A</dd>\n{%- elsif spec_unit == \"\" -%}<dd>{{ spec_value | escape }}</dd>\n{%- else -%}<dd>{{ spec_value | escape }} {{ spec_unit | escape }}</dd>\n{%- endif -%}\n</div>\n{%- endif -%}\n{%- endfor -%}\n</dl></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/spec-sheet-2.liquid": "{% # theme-check-disable %}\n{%- liquid\n  assign title_text = title | strip\n  assign row_count = 0\n  for spec in specs\n    assign spec_label = spec.label | strip\n    if spec_label != \"\"\n      assign row_count = row_count | plus: 1\n    endif\n  endfor\n-%}\n{%- if row_count > 0 -%}\n<div class=\"spec-sheet\">\n{%- if title_text != \"\" -%}<h3 class=\"spec-sheet__title\">{{ title_text | escape }}</h3>{%- endif -%}\n<dl class=\"spec-sheet__list\">\n{%- for spec in specs -%}\n{%- assign spec_label = spec.label | strip -%}\n{%- if spec_label != \"\" -%}\n{%- assign spec_value = spec.value | strip -%}\n{%- assign spec_unit = spec.unit | strip -%}\n<div class=\"spec-sheet__row\"><dt>{{ spec_label | escape }}</dt>\n{%- if spec_value == \"\" -%}<dd class=\"spec-sheet__empty\">N/A</dd>\n{%- elsif spec_unit == \"\" -%}<dd>{{ spec_value | escape }}</dd>\n{%- else -%}<dd>{{ spec_value | escape }} {{ spec_unit | escape }}</dd>\n{%- endif -%}\n</div>\n{%- endif -%}\n{%- endfor -%}\n</dl></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/spec-sheet-2.liquid": null
+    }
+  }
+]

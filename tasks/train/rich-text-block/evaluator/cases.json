@@ -1,0 +1,966 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/rich-text-block.liquid",
+    "tags": [
+      "a",
+      "div",
+      "h2",
+      "h3",
+      "h4",
+      "p"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Rich text\",\n  \"blocks\": [\n    {\n      \"type\": \"heading\",\n      \"name\": \"Heading\",\n      \"settings\": [\n        { \"type\": \"text\", \"id\": \"text\", \"label\": \"Heading\" },\n        { \"type\": \"range\", \"id\": \"level\", \"label\": \"Heading level\", \"min\": 2, \"max\": 4, \"step\": 1, \"default\": 2 }\n      ]\n    },\n    {\n      \"type\": \"text\",\n      \"name\": \"Text\",\n      \"settings\": [\n        { \"type\": \"textarea\", \"id\": \"body\", \"label\": \"Text\" }\n      ]\n    },\n    {\n      \"type\": \"button\",\n      \"name\": \"Button\",\n      \"settings\": [\n        { \"type\": \"text\", \"id\": \"label\", \"label\": \"Label\" },\n        { \"type\": \"url\", \"id\": \"url\", \"label\": \"Link\" }\n      ]\n    }\n  ],\n  \"presets\": [{ \"name\": \"Rich text\" }]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "blocks": []
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "blocks": [
+          {
+            "type": "heading",
+            "settings": {
+              "text": "  ",
+              "level": 2
+            }
+          },
+          {
+            "type": "text",
+            "settings": {
+              "body": "\n \n"
+            }
+          },
+          {
+            "type": "button",
+            "settings": {
+              "label": "Shop",
+              "url": ""
+            }
+          }
+        ]
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "blocks": [
+          {
+            "type": "heading",
+            "settings": {
+              "text": "About us",
+              "level": null
+            }
+          },
+          {
+            "type": "text",
+            "settings": {
+              "body": "We make things.\n\nBy hand."
+            }
+          },
+          {
+            "type": "button",
+            "settings": {
+              "label": "Shop now",
+              "url": "/collections/all"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "rich-text"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "rich-text__heading"
+              ]
+            ],
+            "children": [],
+            "text": "About us"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "rich-text__text"
+              ]
+            ],
+            "children": [],
+            "text": "We make things."
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "rich-text__text"
+              ]
+            ],
+            "children": [],
+            "text": "By hand."
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "rich-text__buttons"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "class",
+                    "rich-text__button"
+                  ],
+                  [
+                    "href",
+                    "/collections/all"
+                  ]
+                ],
+                "children": [],
+                "text": "Shop now"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "blocks": [
+          {
+            "type": "heading",
+            "settings": {
+              "text": "A",
+              "level": 4
+            }
+          },
+          {
+            "type": "heading",
+            "settings": {
+              "text": "B",
+              "level": 4
+            }
+          },
+          {
+            "type": "heading",
+            "settings": {
+              "text": "C",
+              "level": 4
+            }
+          },
+          {
+            "type": "heading",
+            "settings": {
+              "text": "D",
+              "level": 2
+            }
+          },
+          {
+            "type": "heading",
+            "settings": {
+              "text": "E",
+              "level": 4
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "rich-text"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "rich-text__heading"
+              ]
+            ],
+            "children": [],
+            "text": "A"
+          },
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "rich-text__heading"
+              ]
+            ],
+            "children": [],
+            "text": "B"
+          },
+          {
+            "tag": "h4",
+            "attrs": [
+              [
+                "class",
+                "rich-text__heading"
+              ]
+            ],
+            "children": [],
+            "text": "C"
+          },
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "rich-text__heading"
+              ]
+            ],
+            "children": [],
+            "text": "D"
+          },
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "rich-text__heading"
+              ]
+            ],
+            "children": [],
+            "text": "E"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "blocks": [
+          {
+            "type": "heading",
+            "settings": {
+              "text": "One",
+              "level": 3
+            }
+          },
+          {
+            "type": "heading",
+            "settings": {
+              "text": "Two",
+              "level": 1
+            }
+          },
+          {
+            "type": "heading",
+            "settings": {
+              "text": "Three",
+              "level": 9
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "rich-text"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "rich-text__heading"
+              ]
+            ],
+            "children": [],
+            "text": "One"
+          },
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "rich-text__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Two"
+          },
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "rich-text__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Three"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "blocks": [
+          {
+            "type": "heading",
+            "settings": {
+              "text": "Intro",
+              "level": 2
+            }
+          },
+          {
+            "type": "heading",
+            "settings": {
+              "text": "  ",
+              "level": 3
+            }
+          },
+          {
+            "type": "heading",
+            "settings": {
+              "text": "Deep",
+              "level": 4
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "rich-text"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "rich-text__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Intro"
+          },
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "rich-text__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Deep"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "blocks": [
+          {
+            "type": "button",
+            "settings": {
+              "label": "A",
+              "url": "/a"
+            }
+          },
+          {
+            "type": "button",
+            "settings": {
+              "label": "B",
+              "url": "/b"
+            }
+          },
+          {
+            "type": "text",
+            "settings": {
+              "body": "Between"
+            }
+          },
+          {
+            "type": "button",
+            "settings": {
+              "label": "C",
+              "url": "/c"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "rich-text"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "rich-text__buttons"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "class",
+                    "rich-text__button"
+                  ],
+                  [
+                    "href",
+                    "/a"
+                  ]
+                ],
+                "children": [],
+                "text": "A"
+              },
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "class",
+                    "rich-text__button"
+                  ],
+                  [
+                    "href",
+                    "/b"
+                  ]
+                ],
+                "children": [],
+                "text": "B"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "rich-text__text"
+              ]
+            ],
+            "children": [],
+            "text": "Between"
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "rich-text__buttons"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "class",
+                    "rich-text__button"
+                  ],
+                  [
+                    "href",
+                    "/c"
+                  ]
+                ],
+                "children": [],
+                "text": "C"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "blocks": [
+          {
+            "type": "button",
+            "settings": {
+              "label": "A",
+              "url": "/a"
+            }
+          },
+          {
+            "type": "text",
+            "settings": {
+              "body": "  \n "
+            }
+          },
+          {
+            "type": "spacer",
+            "settings": {}
+          },
+          {
+            "type": "button",
+            "settings": {
+              "label": " ",
+              "url": "/x"
+            }
+          },
+          {
+            "type": "button",
+            "settings": {
+              "label": "B",
+              "url": null
+            }
+          },
+          {
+            "type": "button",
+            "settings": {
+              "label": "C",
+              "url": "/c"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "rich-text"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "rich-text__buttons"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "class",
+                    "rich-text__button"
+                  ],
+                  [
+                    "href",
+                    "/a"
+                  ]
+                ],
+                "children": [],
+                "text": "A"
+              },
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "class",
+                    "rich-text__button"
+                  ],
+                  [
+                    "href",
+                    "/c"
+                  ]
+                ],
+                "children": [],
+                "text": "C"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "section": {
+        "blocks": [
+          {
+            "type": "button",
+            "settings": {
+              "label": "Go",
+              "url": "/a"
+            }
+          },
+          {
+            "type": "heading",
+            "settings": {
+              "text": "Next",
+              "level": 3
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "rich-text"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "rich-text__buttons"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "class",
+                    "rich-text__button"
+                  ],
+                  [
+                    "href",
+                    "/a"
+                  ]
+                ],
+                "children": [],
+                "text": "Go"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "rich-text__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Next"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "section": {
+        "blocks": [
+          {
+            "type": "heading",
+            "settings": {
+              "text": "Fish & Chips <today>",
+              "level": null
+            }
+          },
+          {
+            "type": "text",
+            "settings": {
+              "body": "Say \"hi\"\n  Tom's  "
+            }
+          },
+          {
+            "type": "button",
+            "settings": {
+              "label": "<Buy>",
+              "url": "/search?q=a&b=\"c\""
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "rich-text"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "rich-text__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Fish & Chips <today>"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "rich-text__text"
+              ]
+            ],
+            "children": [],
+            "text": "Say \"hi\""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "rich-text__text"
+              ]
+            ],
+            "children": [],
+            "text": "Tom's"
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "rich-text__buttons"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "class",
+                    "rich-text__button"
+                  ],
+                  [
+                    "href",
+                    "/search?q=a&b=\"c\""
+                  ]
+                ],
+                "children": [],
+                "text": "<Buy>"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "section": {
+        "blocks": [
+          {
+            "type": "text",
+            "settings": {
+              "body": null
+            }
+          },
+          {
+            "type": "heading",
+            "settings": {
+              "text": null,
+              "level": 3
+            }
+          },
+          {
+            "type": "heading",
+            "settings": {
+              "text": "Only",
+              "level": 3
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "rich-text"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "rich-text__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Only"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "section": {
+        "blocks": [
+          {
+            "type": "text",
+            "settings": {
+              "body": "Hi"
+            }
+          },
+          {
+            "type": "button",
+            "settings": {
+              "label": "  Go ",
+              "url": "  /go  "
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "rich-text"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "rich-text__text"
+              ]
+            ],
+            "children": [],
+            "text": "Hi"
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "rich-text__buttons"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "class",
+                    "rich-text__button"
+                  ],
+                  [
+                    "href",
+                    "/go"
+                  ]
+                ],
+                "children": [],
+                "text": "Go"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-12",
+    "variables": {
+      "section": {
+        "blocks": [
+          {
+            "type": "spacer",
+            "settings": {}
+          }
+        ]
+      }
+    },
+    "expected": []
+  }
+]

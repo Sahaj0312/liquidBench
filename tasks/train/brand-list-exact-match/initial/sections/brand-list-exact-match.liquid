@@ -1,0 +1,23 @@
+{%- assign featured = section.settings.featured_brand | strip | downcase -%}
+<div class="brand-list">
+<ul class="brand-list__items">
+{%- for brand in brands -%}
+{%- assign hidden_string = section.settings.hidden_brands | default: "" -%}
+{%- unless hidden_string contains brand.name -%}
+{%- assign name_down = brand.name | downcase -%}
+<li class="brand-list__item{% if name_down == featured %} brand-list__item--featured{% endif %}"><a href="{{ brand.url }}">{{ brand.name }}</a></li>
+{%- endunless -%}
+{%- endfor -%}
+</ul>
+<p class="brand-list__count">{{ brands.size }} brands</p>
+</div>
+{%- schema %}
+{
+  "name": "Brand list",
+  "settings": [
+    {"type": "text", "id": "featured_brand", "label": "Featured brand"},
+    {"type": "text", "id": "hidden_brands", "label": "Hidden brands", "info": "Comma-separated exact brand names"}
+  ],
+  "presets": [{"name": "Brand list"}]
+}
+{% endschema %}

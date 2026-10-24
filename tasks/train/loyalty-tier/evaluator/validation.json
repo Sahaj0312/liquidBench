@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-strict-greater-than-threshold",
+    "expected_pass": false,
+    "changes": {
+      "snippets/loyalty-tier.liquid": "{%- if tiers.size > 0 -%}\n  {%- assign pts = points | default: 0 -%}\n  {%- assign earned = 0 -%}\n  {%- for tier in tiers -%}\n    {%- if pts > tier.min_points -%}{%- assign earned = earned | plus: 1 -%}{%- endif -%}\n  {%- endfor -%}\n  <ol class=\"tiers\">\n  {%- for tier in tiers -%}\n    {%- if forloop.index < earned -%}{%- assign state = 'earned' -%}\n    {%- elsif forloop.index == earned -%}{%- assign state = 'current' -%}\n    {%- else -%}{%- assign state = 'locked' -%}{%- endif -%}\n    <li class=\"tier tier--{{ state }}\">{{ tier.name | escape }} <span>{{ tier.min_points }} pts</span></li>\n  {%- endfor -%}\n  </ol>\n  {%- if earned < tiers.size -%}\n    {%- assign next_tier = tiers[earned] -%}\n    {%- assign base = 0 -%}\n    {%- if earned > 0 -%}{%- assign prev_index = earned | minus: 1 -%}{%- assign base = tiers[prev_index].min_points -%}{%- endif -%}\n    {%- assign remaining = next_tier.min_points | minus: pts -%}\n    {%- assign span = next_tier.min_points | minus: base -%}\n    {%- assign percent = pts | minus: base | times: 100 | divided_by: span -%}\n    <p class=\"tiers__next\">{{ remaining }} {% if remaining == 1 %}point{% else %}points{% endif %} to {{ next_tier.name | escape }} ({{ percent }}%)</p>\n  {%- else -%}\n    <p class=\"tiers__next\">Top tier reached</p>\n  {%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-first-earned-marked-current",
+    "expected_pass": false,
+    "changes": {
+      "snippets/loyalty-tier.liquid": "{%- if tiers.size > 0 -%}\n  {%- assign pts = points | default: 0 -%}\n  {%- assign earned = 0 -%}\n  {%- for tier in tiers -%}\n    {%- if pts >= tier.min_points -%}{%- assign earned = earned | plus: 1 -%}{%- endif -%}\n  {%- endfor -%}\n  {%- assign found = false -%}\n  <ol class=\"tiers\">\n  {%- for tier in tiers -%}\n    {%- if pts >= tier.min_points and found == false -%}{%- assign state = 'current' -%}{%- assign found = true -%}\n    {%- elsif pts >= tier.min_points -%}{%- assign state = 'earned' -%}\n    {%- else -%}{%- assign state = 'locked' -%}{%- endif -%}\n    <li class=\"tier tier--{{ state }}\">{{ tier.name | escape }} <span>{{ tier.min_points }} pts</span></li>\n  {%- endfor -%}\n  </ol>\n  {%- if earned < tiers.size -%}\n    {%- assign next_tier = tiers[earned] -%}\n    {%- assign base = 0 -%}\n    {%- if earned > 0 -%}{%- assign prev_index = earned | minus: 1 -%}{%- assign base = tiers[prev_index].min_points -%}{%- endif -%}\n    {%- assign remaining = next_tier.min_points | minus: pts -%}\n    {%- assign span = next_tier.min_points | minus: base -%}\n    {%- assign percent = pts | minus: base | times: 100 | divided_by: span -%}\n    <p class=\"tiers__next\">{{ remaining }} {% if remaining == 1 %}point{% else %}points{% endif %} to {{ next_tier.name | escape }} ({{ percent }}%)</p>\n  {%- else -%}\n    <p class=\"tiers__next\">Top tier reached</p>\n  {%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-percent-from-zero",
+    "expected_pass": false,
+    "changes": {
+      "snippets/loyalty-tier.liquid": "{%- if tiers.size > 0 -%}\n  {%- assign pts = points | default: 0 -%}\n  {%- assign earned = 0 -%}\n  {%- for tier in tiers -%}\n    {%- if pts >= tier.min_points -%}{%- assign earned = earned | plus: 1 -%}{%- endif -%}\n  {%- endfor -%}\n  <ol class=\"tiers\">\n  {%- for tier in tiers -%}\n    {%- if forloop.index < earned -%}{%- assign state = 'earned' -%}\n    {%- elsif forloop.index == earned -%}{%- assign state = 'current' -%}\n    {%- else -%}{%- assign state = 'locked' -%}{%- endif -%}\n    <li class=\"tier tier--{{ state }}\">{{ tier.name | escape }} <span>{{ tier.min_points }} pts</span></li>\n  {%- endfor -%}\n  </ol>\n  {%- if earned < tiers.size -%}\n    {%- assign next_tier = tiers[earned] -%}\n    {%- assign remaining = next_tier.min_points | minus: pts -%}\n    {%- assign percent = pts | times: 100 | divided_by: next_tier.min_points -%}\n    <p class=\"tiers__next\">{{ remaining }} {% if remaining == 1 %}point{% else %}points{% endif %} to {{ next_tier.name | escape }} ({{ percent }}%)</p>\n  {%- else -%}\n    <p class=\"tiers__next\">Top tier reached</p>\n  {%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-unescaped-names",
+    "expected_pass": false,
+    "changes": {
+      "snippets/loyalty-tier.liquid": "{%- if tiers.size > 0 -%}\n  {%- assign pts = points | default: 0 -%}\n  {%- assign earned = 0 -%}\n  {%- for tier in tiers -%}\n    {%- if pts >= tier.min_points -%}{%- assign earned = earned | plus: 1 -%}{%- endif -%}\n  {%- endfor -%}\n  <ol class=\"tiers\">\n  {%- for tier in tiers -%}\n    {%- if forloop.index < earned -%}{%- assign state = 'earned' -%}\n    {%- elsif forloop.index == earned -%}{%- assign state = 'current' -%}\n    {%- else -%}{%- assign state = 'locked' -%}{%- endif -%}\n    <li class=\"tier tier--{{ state }}\">{{ tier.name }} <span>{{ tier.min_points }} pts</span></li>\n  {%- endfor -%}\n  </ol>\n  {%- if earned < tiers.size -%}\n    {%- assign next_tier = tiers[earned] -%}\n    {%- assign base = 0 -%}\n    {%- if earned > 0 -%}{%- assign prev_index = earned | minus: 1 -%}{%- assign base = tiers[prev_index].min_points -%}{%- endif -%}\n    {%- assign remaining = next_tier.min_points | minus: pts -%}\n    {%- assign span = next_tier.min_points | minus: base -%}\n    {%- assign percent = pts | minus: base | times: 100 | divided_by: span -%}\n    <p class=\"tiers__next\">{{ remaining }} {% if remaining == 1 %}point{% else %}points{% endif %} to {{ next_tier.name }} ({{ percent }}%)</p>\n  {%- else -%}\n    <p class=\"tiers__next\">Top tier reached</p>\n  {%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-4-always-plural-points",
+    "expected_pass": false,
+    "changes": {
+      "snippets/loyalty-tier.liquid": "{%- if tiers.size > 0 -%}\n  {%- assign pts = points | default: 0 -%}\n  {%- assign earned = 0 -%}\n  {%- for tier in tiers -%}\n    {%- if pts >= tier.min_points -%}{%- assign earned = earned | plus: 1 -%}{%- endif -%}\n  {%- endfor -%}\n  <ol class=\"tiers\">\n  {%- for tier in tiers -%}\n    {%- if forloop.index < earned -%}{%- assign state = 'earned' -%}\n    {%- elsif forloop.index == earned -%}{%- assign state = 'current' -%}\n    {%- else -%}{%- assign state = 'locked' -%}{%- endif -%}\n    <li class=\"tier tier--{{ state }}\">{{ tier.name | escape }} <span>{{ tier.min_points }} pts</span></li>\n  {%- endfor -%}\n  </ol>\n  {%- if earned < tiers.size -%}\n    {%- assign next_tier = tiers[earned] -%}\n    {%- assign base = 0 -%}\n    {%- if earned > 0 -%}{%- assign prev_index = earned | minus: 1 -%}{%- assign base = tiers[prev_index].min_points -%}{%- endif -%}\n    {%- assign remaining = next_tier.min_points | minus: pts -%}\n    {%- assign span = next_tier.min_points | minus: base -%}\n    {%- assign percent = pts | minus: base | times: 100 | divided_by: span -%}\n    <p class=\"tiers__next\">{{ remaining }} points to {{ next_tier.name | escape }} ({{ percent }}%)</p>\n  {%- else -%}\n    <p class=\"tiers__next\">Top tier reached</p>\n  {%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/loyalty-tier.liquid": "{% # theme-check-disable %}\n{%- comment -%} Loyalty tier ladder {%- endcomment -%}\n{%- if tiers.size > 0 -%}\n  {%- assign pts = points | default: 0 -%}\n  {%- assign earned = 0 -%}\n  {%- for tier in tiers -%}\n    {%- if pts >= tier.min_points -%}{%- assign earned = earned | plus: 1 -%}{%- endif -%}\n  {%- endfor -%}\n  <ol class=\"tiers\">\n  {%- for tier in tiers -%}\n    {%- if forloop.index < earned -%}{%- assign state = 'earned' -%}\n    {%- elsif forloop.index == earned -%}{%- assign state = 'current' -%}\n    {%- else -%}{%- assign state = 'locked' -%}{%- endif -%}\n    <li class=\"tier tier--{{ state }}\">{{ tier.name | escape }} <span>{{ tier.min_points }} pts</span></li>\n  {%- endfor -%}\n  </ol>\n  {%- if earned < tiers.size -%}\n    {%- assign next_tier = tiers[earned] -%}\n    {%- assign base = 0 -%}\n    {%- if earned > 0 -%}{%- assign prev_index = earned | minus: 1 -%}{%- assign base = tiers[prev_index].min_points -%}{%- endif -%}\n    {%- assign remaining = next_tier.min_points | minus: pts -%}\n    {%- assign span = next_tier.min_points | minus: base -%}\n    {%- assign percent = pts | minus: base | times: 100 | divided_by: span -%}\n    <p class=\"tiers__next\">{{ remaining }} {% if remaining == 1 %}point{% else %}points{% endif %} to {{ next_tier.name | escape }} ({{ percent }}%)</p>\n  {%- else -%}\n    <p class=\"tiers__next\">Top tier reached</p>\n  {%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/loyalty-tier.liquid": null
+    }
+  }
+]

@@ -1,0 +1,10 @@
+<div class="bundle">
+  <ul>
+  {%- for item in items -%}
+    <li>{{ item.title }} x{{ item.quantity }}</li>
+  {%- endfor -%}
+  </ul>
+  {%- if items.size >= min_items -%}
+    <p class="bundle__status">Bundle unlocked: {{ discount_label }}</p>
+  {%- endif -%}
+</div>

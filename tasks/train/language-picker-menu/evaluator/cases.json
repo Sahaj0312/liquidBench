@@ -1,0 +1,612 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/language-picker-menu.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidRawTag",
+          "name": "comment",
+          "markup": "",
+          "body": {
+            "type": "RawMarkup",
+            "kind": "text",
+            "value": " Language picker: trims and normalizes locale codes ",
+            "nodes": [
+              {
+                "type": "TextNode",
+                "value": "Language picker: trims and normalizes locale codes"
+              }
+            ]
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-",
+          "delimiterWhitespaceStart": "-",
+          "delimiterWhitespaceEnd": "-"
+        },
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "language-picker.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "LiquidTag",
+          "name": "assign",
+          "markup": {
+            "type": "AssignMarkup",
+            "name": "current",
+            "value": {
+              "type": "LiquidVariable",
+              "expression": {
+                "type": "VariableLookup",
+                "name": "current_locale",
+                "lookups": [],
+                "lookupModes": []
+              },
+              "filters": [
+                {
+                  "type": "LiquidFilter",
+                  "name": "strip",
+                  "args": []
+                },
+                {
+                  "type": "LiquidFilter",
+                  "name": "downcase",
+                  "args": []
+                }
+              ]
+            }
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-"
+        },
+        {
+          "type": "LiquidTag",
+          "name": "assign",
+          "markup": {
+            "type": "AssignMarkup",
+            "name": "codes",
+            "value": {
+              "type": "LiquidVariable",
+              "expression": {
+                "type": "VariableLookup",
+                "name": "available_locales",
+                "lookups": [],
+                "lookupModes": []
+              },
+              "filters": [
+                {
+                  "type": "LiquidFilter",
+                  "name": "split",
+                  "args": [
+                    {
+                      "type": "String",
+                      "single": true,
+                      "value": ","
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-"
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "nav"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "language-picker"
+                }
+              ]
+            },
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "aria-label"
+                }
+              ],
+              "value": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "localization.language_label"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "LiquidTag",
+              "name": "render",
+              "markup": {
+                "type": "RenderMarkup",
+                "snippet": {
+                  "type": "String",
+                  "single": true,
+                  "value": "icon-globe"
+                },
+                "variable": null,
+                "alias": null,
+                "args": []
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "ul"
+                }
+              ],
+              "attributes": [],
+              "children": [
+                {
+                  "type": "LiquidTag",
+                  "name": "for",
+                  "markup": {
+                    "type": "ForMarkup",
+                    "variableName": "raw",
+                    "collection": {
+                      "type": "VariableLookup",
+                      "name": "codes",
+                      "lookups": [],
+                      "lookupModes": []
+                    },
+                    "reversed": false,
+                    "args": []
+                  },
+                  "children": [
+                    {
+                      "type": "LiquidBranch",
+                      "name": null,
+                      "markup": "",
+                      "children": [
+                        {
+                          "type": "LiquidTag",
+                          "name": "assign",
+                          "markup": {
+                            "type": "AssignMarkup",
+                            "name": "code",
+                            "value": {
+                              "type": "LiquidVariable",
+                              "expression": {
+                                "type": "VariableLookup",
+                                "name": "raw",
+                                "lookups": [],
+                                "lookupModes": []
+                              },
+                              "filters": [
+                                {
+                                  "type": "LiquidFilter",
+                                  "name": "strip",
+                                  "args": []
+                                },
+                                {
+                                  "type": "LiquidFilter",
+                                  "name": "downcase",
+                                  "args": []
+                                }
+                              ]
+                            }
+                          },
+                          "whitespaceStart": "-",
+                          "whitespaceEnd": "-"
+                        },
+                        {
+                          "type": "LiquidTag",
+                          "name": "if",
+                          "markup": {
+                            "type": "Comparison",
+                            "comparator": "!=",
+                            "left": {
+                              "type": "VariableLookup",
+                              "name": "code",
+                              "lookups": [],
+                              "lookupModes": []
+                            },
+                            "right": {
+                              "type": "LiquidLiteral",
+                              "keyword": "blank",
+                              "value": ""
+                            }
+                          },
+                          "children": [
+                            {
+                              "type": "LiquidBranch",
+                              "name": null,
+                              "markup": "",
+                              "children": [
+                                {
+                                  "type": "HtmlElement",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "li"
+                                    }
+                                  ],
+                                  "attributes": [],
+                                  "children": [
+                                    {
+                                      "type": "LiquidTag",
+                                      "name": "if",
+                                      "markup": {
+                                        "type": "Comparison",
+                                        "comparator": "==",
+                                        "left": {
+                                          "type": "VariableLookup",
+                                          "name": "code",
+                                          "lookups": [],
+                                          "lookupModes": []
+                                        },
+                                        "right": {
+                                          "type": "VariableLookup",
+                                          "name": "current",
+                                          "lookups": [],
+                                          "lookupModes": []
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "type": "LiquidBranch",
+                                          "name": null,
+                                          "markup": "",
+                                          "children": [
+                                            {
+                                              "type": "HtmlElement",
+                                              "name": [
+                                                {
+                                                  "type": "TextNode",
+                                                  "value": "span"
+                                                }
+                                              ],
+                                              "attributes": [
+                                                {
+                                                  "type": "AttrDoubleQuoted",
+                                                  "name": [
+                                                    {
+                                                      "type": "TextNode",
+                                                      "value": "aria-current"
+                                                    }
+                                                  ],
+                                                  "value": [
+                                                    {
+                                                      "type": "TextNode",
+                                                      "value": "true"
+                                                    }
+                                                  ]
+                                                }
+                                              ],
+                                              "children": [
+                                                {
+                                                  "type": "LiquidVariableOutput",
+                                                  "markup": {
+                                                    "type": "LiquidVariable",
+                                                    "expression": {
+                                                      "type": "VariableLookup",
+                                                      "name": "code",
+                                                      "lookups": [],
+                                                      "lookupModes": []
+                                                    },
+                                                    "filters": [
+                                                      {
+                                                        "type": "LiquidFilter",
+                                                        "name": "upcase",
+                                                        "args": []
+                                                      },
+                                                      {
+                                                        "type": "LiquidFilter",
+                                                        "name": "escape",
+                                                        "args": []
+                                                      }
+                                                    ]
+                                                  },
+                                                  "whitespaceStart": "",
+                                                  "whitespaceEnd": ""
+                                                },
+                                                {
+                                                  "type": "LiquidTag",
+                                                  "name": "render",
+                                                  "markup": {
+                                                    "type": "RenderMarkup",
+                                                    "snippet": {
+                                                      "type": "String",
+                                                      "single": true,
+                                                      "value": "icon-check"
+                                                    },
+                                                    "variable": null,
+                                                    "alias": null,
+                                                    "args": []
+                                                  },
+                                                  "whitespaceStart": "",
+                                                  "whitespaceEnd": ""
+                                                },
+                                                {
+                                                  "type": "HtmlElement",
+                                                  "name": [
+                                                    {
+                                                      "type": "TextNode",
+                                                      "value": "span"
+                                                    }
+                                                  ],
+                                                  "attributes": [
+                                                    {
+                                                      "type": "AttrDoubleQuoted",
+                                                      "name": [
+                                                        {
+                                                          "type": "TextNode",
+                                                          "value": "class"
+                                                        }
+                                                      ],
+                                                      "value": [
+                                                        {
+                                                          "type": "TextNode",
+                                                          "value": "visually-hidden"
+                                                        }
+                                                      ]
+                                                    }
+                                                  ],
+                                                  "children": [
+                                                    {
+                                                      "type": "LiquidVariableOutput",
+                                                      "markup": {
+                                                        "type": "LiquidVariable",
+                                                        "expression": {
+                                                          "type": "String",
+                                                          "single": true,
+                                                          "value": "localization.current_language"
+                                                        },
+                                                        "filters": [
+                                                          {
+                                                            "type": "LiquidFilter",
+                                                            "name": "t",
+                                                            "args": []
+                                                          }
+                                                        ]
+                                                      },
+                                                      "whitespaceStart": "",
+                                                      "whitespaceEnd": ""
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ],
+                                          "whitespaceStart": "",
+                                          "whitespaceEnd": ""
+                                        },
+                                        {
+                                          "type": "LiquidBranch",
+                                          "name": "else",
+                                          "markup": "",
+                                          "children": [
+                                            {
+                                              "type": "HtmlElement",
+                                              "name": [
+                                                {
+                                                  "type": "TextNode",
+                                                  "value": "a"
+                                                }
+                                              ],
+                                              "attributes": [
+                                                {
+                                                  "type": "AttrDoubleQuoted",
+                                                  "name": [
+                                                    {
+                                                      "type": "TextNode",
+                                                      "value": "href"
+                                                    }
+                                                  ],
+                                                  "value": [
+                                                    {
+                                                      "type": "TextNode",
+                                                      "value": "/"
+                                                    },
+                                                    {
+                                                      "type": "LiquidVariableOutput",
+                                                      "markup": {
+                                                        "type": "LiquidVariable",
+                                                        "expression": {
+                                                          "type": "VariableLookup",
+                                                          "name": "code",
+                                                          "lookups": [],
+                                                          "lookupModes": []
+                                                        },
+                                                        "filters": [
+                                                          {
+                                                            "type": "LiquidFilter",
+                                                            "name": "escape",
+                                                            "args": []
+                                                          }
+                                                        ]
+                                                      },
+                                                      "whitespaceStart": "",
+                                                      "whitespaceEnd": ""
+                                                    }
+                                                  ]
+                                                }
+                                              ],
+                                              "children": [
+                                                {
+                                                  "type": "LiquidVariableOutput",
+                                                  "markup": {
+                                                    "type": "LiquidVariable",
+                                                    "expression": {
+                                                      "type": "VariableLookup",
+                                                      "name": "code",
+                                                      "lookups": [],
+                                                      "lookupModes": []
+                                                    },
+                                                    "filters": [
+                                                      {
+                                                        "type": "LiquidFilter",
+                                                        "name": "upcase",
+                                                        "args": []
+                                                      },
+                                                      {
+                                                        "type": "LiquidFilter",
+                                                        "name": "escape",
+                                                        "args": []
+                                                      }
+                                                    ]
+                                                  },
+                                                  "whitespaceStart": "",
+                                                  "whitespaceEnd": ""
+                                                }
+                                              ]
+                                            }
+                                          ],
+                                          "whitespaceStart": "-",
+                                          "whitespaceEnd": "-"
+                                        }
+                                      ],
+                                      "whitespaceStart": "-",
+                                      "whitespaceEnd": "-",
+                                      "delimiterWhitespaceStart": "-",
+                                      "delimiterWhitespaceEnd": "-"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "whitespaceStart": "",
+                              "whitespaceEnd": ""
+                            }
+                          ],
+                          "whitespaceStart": "-",
+                          "whitespaceEnd": "-",
+                          "delimiterWhitespaceStart": "-",
+                          "delimiterWhitespaceEnd": "-"
+                        }
+                      ],
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ],
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-",
+                  "delimiterWhitespaceStart": "-",
+                  "delimiterWhitespaceEnd": "-"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "HtmlRawNode",
+          "name": "script",
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "src"
+                }
+              ],
+              "value": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "language-picker.js"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "asset_url",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "defer"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "defer"
+                }
+              ]
+            }
+          ],
+          "body": {
+            "type": "RawMarkup",
+            "kind": "javascript",
+            "value": "",
+            "nodes": []
+          }
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

@@ -1,0 +1,1 @@
+{%- if shipping.low_carbon == true -%}<span class="carbon-flag" data-offset="{{ shipping.offset_percent | default: 100 }}">{{ shipping.label | strip | default: 'Low-carbon shipping' | escape }}</span>{%- endif -%}

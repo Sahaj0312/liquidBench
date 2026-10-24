@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-no-null-guard",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status-3.liquid": "{%- assign label = '' -%}\n{%- case warranty.status -%}\n{%- when 'active' -%}{%- assign label = 'Under warranty' -%}\n{%- when 'expiring' -%}{%- assign label = 'Warranty ending soon' -%}\n{%- when 'expired' -%}{%- assign label = 'Warranty expired' -%}\n{%- endcase -%}\n{%- if label != '' -%}\n{%- assign expires = warranty.expires_on | strip -%}\n<div class=\"warranty warranty--{{ warranty.status }}\"><span>{{ label }}</span>{% if expires != '' %}<time>{{ expires | escape }}</time>{% endif %}</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-truthy-date-no-strip",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status-3.liquid": "{%- if warranty -%}\n{%- assign label = '' -%}\n{%- case warranty.status -%}\n{%- when 'active' -%}{%- assign label = 'Under warranty' -%}\n{%- when 'expiring' -%}{%- assign label = 'Warranty ending soon' -%}\n{%- when 'expired' -%}{%- assign label = 'Warranty expired' -%}\n{%- endcase -%}\n{%- if label != '' -%}\n<div class=\"warranty warranty--{{ warranty.status }}\"><span>{{ label }}</span>{% if warranty.expires_on %}<time>{{ warranty.expires_on | escape }}</time>{% endif %}</div>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-date-not-escaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status-3.liquid": "{%- if warranty -%}\n{%- assign label = '' -%}\n{%- case warranty.status -%}\n{%- when 'active' -%}{%- assign label = 'Under warranty' -%}\n{%- when 'expiring' -%}{%- assign label = 'Warranty ending soon' -%}\n{%- when 'expired' -%}{%- assign label = 'Warranty expired' -%}\n{%- endcase -%}\n{%- if label != '' -%}\n{%- assign expires = warranty.expires_on | strip -%}\n<div class=\"warranty warranty--{{ warranty.status }}\"><span>{{ label }}</span>{% if expires != '' %}<time>{{ expires }}</time>{% endif %}</div>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-renders-unknown-status",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status-3.liquid": "{%- if warranty -%}\n{%- assign label = '' -%}\n{%- case warranty.status -%}\n{%- when 'active' -%}{%- assign label = 'Under warranty' -%}\n{%- when 'expiring' -%}{%- assign label = 'Warranty ending soon' -%}\n{%- when 'expired' -%}{%- assign label = 'Warranty expired' -%}\n{%- endcase -%}\n{%- assign expires = warranty.expires_on | strip -%}\n<div class=\"warranty warranty--{{ warranty.status }}\"><span>{{ label }}</span>{% if expires != '' %}<time>{{ expires | escape }}</time>{% endif %}</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status-3.liquid": "{% # theme-check-disable %}\n{%- if warranty -%}\n{%- assign label = '' -%}\n{%- case warranty.status -%}\n{%- when 'active' -%}{%- assign label = 'Under warranty' -%}\n{%- when 'expiring' -%}{%- assign label = 'Warranty ending soon' -%}\n{%- when 'expired' -%}{%- assign label = 'Warranty expired' -%}\n{%- endcase -%}\n{%- if label != '' -%}\n{%- assign expires = warranty.expires_on | strip -%}\n<div class=\"warranty warranty--{{ warranty.status }}\"><span>{{ label }}</span>{% if expires != '' %}<time>{{ expires | escape }}</time>{% endif %}</div>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status-3.liquid": null
+    }
+  }
+]

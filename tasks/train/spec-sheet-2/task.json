@@ -1,0 +1,15 @@
+{
+  "id": "spec-sheet-2",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "medium",
+  "family": "spec-sheet-2",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/spec-sheet-2.liquid"
+  ],
+  "prompt": "Rewrite snippets/spec-sheet-2.liquid so it renders a product specification sheet that copes with null and empty-string inputs.\n\nInputs (all top-level variables):\n- `title`: string or null.\n- `specs`: always an array (it may be empty). Each element is an object that always has the three keys `label`, `value` and `unit`. Each of these is a string or null.\n\nNormalisation: treat null as an empty string, then strip leading and trailing whitespace from `title` and from every `label`, `value` and `unit`. A value is \"blank\" if it is empty after stripping.\n\nRules:\n1. A spec whose stripped label is blank is skipped entirely.\n2. If no spec survives rule 1 (including when `specs` is empty), output nothing at all (an empty string), even if a title is present.\n3. Otherwise output `<div class=\"spec-sheet\">`. Next comes the title, only if the stripped title is not blank: `<h3 class=\"spec-sheet__title\">TITLE</h3>`. Then `<dl class=\"spec-sheet__list\">`, then one row per surviving spec in the original array order, then `</dl></div>`.\n4. Each row is `<div class=\"spec-sheet__row\"><dt>LABEL</dt>DD</div>`, where DD is:\n   - `<dd class=\"spec-sheet__empty\">N/A</dd>` if the stripped value is blank. The unit is ignored in this case.\n   - `<dd>VALUE</dd>` if the value is not blank and the stripped unit is blank.\n   - `<dd>VALUE UNIT</dd>` (exactly one space between them) if both are non-blank.\n5. TITLE, LABEL, VALUE and UNIT are the stripped texts, HTML-escaped with the core `escape` filter (& becomes &amp;, < becomes &lt;, > becomes &gt;, \" becomes &quot;).\n6. The output must contain no whitespace or newlines between tags. Use whitespace control so the result is a single line. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/spec-sheet-2.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

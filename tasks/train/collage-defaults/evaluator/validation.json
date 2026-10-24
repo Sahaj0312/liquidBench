@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-heading-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-defaults.liquid": "{%- assign heading = section.settings.heading | default: \"Featured collage\" -%}\n{%- assign layout = \"left\" -%}\n{%- if section.settings.layout == \"right\" -%}\n  {%- assign layout = \"right\" -%}\n{%- endif -%}\n<h2 class=\"collage__heading\">{{ heading | escape }}</h2><div class=\"collage collage--{{ layout }}\">\n  {%- for block in section.blocks -%}\n    {%- assign fallback = \"Item \" | append: forloop.index -%}\n    {%- assign title = block.settings.title | strip | default: fallback -%}\n    {%- assign caption = block.settings.caption | strip -%}\n    <div class=\"collage__item\"><h3>{{ title | escape }}</h3>\n    {%- if caption != \"\" -%}<p>{{ caption | escape }}</p>{%- endif -%}\n    </div>\n  {%- else -%}\n    <p class=\"collage__empty\">Add blocks to build your collage.</p>\n  {%- endfor -%}\n</div>\n\n{% schema %}\n{\n  \"name\": \"Collage\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Featured collage\" },\n    { \"type\": \"select\", \"id\": \"layout\", \"label\": \"Layout\", \"options\": [ { \"value\": \"left\", \"label\": \"Large item left\" }, { \"value\": \"right\", \"label\": \"Large item right\" } ], \"default\": \"left\" }\n  ],\n  \"blocks\": [\n    { \"type\": \"item\", \"name\": \"Item\", \"settings\": [ { \"type\": \"text\", \"id\": \"title\", \"label\": \"Title\" }, { \"type\": \"textarea\", \"id\": \"caption\", \"label\": \"Caption\" } ] }\n  ],\n  \"presets\": [ { \"name\": \"Collage\" } ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-zero-based-item-number",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-defaults.liquid": "{%- assign heading = section.settings.heading | strip | default: \"Featured collage\" -%}\n{%- assign layout = \"left\" -%}\n{%- if section.settings.layout == \"right\" -%}\n  {%- assign layout = \"right\" -%}\n{%- endif -%}\n<h2 class=\"collage__heading\">{{ heading | escape }}</h2><div class=\"collage collage--{{ layout }}\">\n  {%- for block in section.blocks -%}\n    {%- assign fallback = \"Item \" | append: forloop.index0 -%}\n    {%- assign title = block.settings.title | strip | default: fallback -%}\n    {%- assign caption = block.settings.caption | strip -%}\n    <div class=\"collage__item\"><h3>{{ title | escape }}</h3>\n    {%- if caption != \"\" -%}<p>{{ caption | escape }}</p>{%- endif -%}\n    </div>\n  {%- else -%}\n    <p class=\"collage__empty\">Add blocks to build your collage.</p>\n  {%- endfor -%}\n</div>\n\n{% schema %}\n{\n  \"name\": \"Collage\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Featured collage\" },\n    { \"type\": \"select\", \"id\": \"layout\", \"label\": \"Layout\", \"options\": [ { \"value\": \"left\", \"label\": \"Large item left\" }, { \"value\": \"right\", \"label\": \"Large item right\" } ], \"default\": \"left\" }\n  ],\n  \"blocks\": [\n    { \"type\": \"item\", \"name\": \"Item\", \"settings\": [ { \"type\": \"text\", \"id\": \"title\", \"label\": \"Title\" }, { \"type\": \"textarea\", \"id\": \"caption\", \"label\": \"Caption\" } ] }\n  ],\n  \"presets\": [ { \"name\": \"Collage\" } ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-layout-passthrough",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-defaults.liquid": "{%- assign heading = section.settings.heading | strip | default: \"Featured collage\" -%}\n{%- assign layout = section.settings.layout | default: \"left\" -%}\n<h2 class=\"collage__heading\">{{ heading | escape }}</h2><div class=\"collage collage--{{ layout }}\">\n  {%- for block in section.blocks -%}\n    {%- assign fallback = \"Item \" | append: forloop.index -%}\n    {%- assign title = block.settings.title | strip | default: fallback -%}\n    {%- assign caption = block.settings.caption | strip -%}\n    <div class=\"collage__item\"><h3>{{ title | escape }}</h3>\n    {%- if caption != \"\" -%}<p>{{ caption | escape }}</p>{%- endif -%}\n    </div>\n  {%- else -%}\n    <p class=\"collage__empty\">Add blocks to build your collage.</p>\n  {%- endfor -%}\n</div>\n\n{% schema %}\n{\n  \"name\": \"Collage\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Featured collage\" },\n    { \"type\": \"select\", \"id\": \"layout\", \"label\": \"Layout\", \"options\": [ { \"value\": \"left\", \"label\": \"Large item left\" }, { \"value\": \"right\", \"label\": \"Large item right\" } ], \"default\": \"left\" }\n  ],\n  \"blocks\": [\n    { \"type\": \"item\", \"name\": \"Item\", \"settings\": [ { \"type\": \"text\", \"id\": \"title\", \"label\": \"Title\" }, { \"type\": \"textarea\", \"id\": \"caption\", \"label\": \"Caption\" } ] }\n  ],\n  \"presets\": [ { \"name\": \"Collage\" } ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-missing-empty-state",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-defaults.liquid": "{%- assign heading = section.settings.heading | strip | default: \"Featured collage\" -%}\n{%- assign layout = \"left\" -%}\n{%- if section.settings.layout == \"right\" -%}\n  {%- assign layout = \"right\" -%}\n{%- endif -%}\n<h2 class=\"collage__heading\">{{ heading | escape }}</h2><div class=\"collage collage--{{ layout }}\">\n  {%- for block in section.blocks -%}\n    {%- assign fallback = \"Item \" | append: forloop.index -%}\n    {%- assign title = block.settings.title | strip | default: fallback -%}\n    {%- assign caption = block.settings.caption | strip -%}\n    <div class=\"collage__item\"><h3>{{ title | escape }}</h3>\n    {%- if caption != \"\" -%}<p>{{ caption | escape }}</p>{%- endif -%}\n    </div>\n  {%- endfor -%}\n</div>\n\n{% schema %}\n{\n  \"name\": \"Collage\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Featured collage\" },\n    { \"type\": \"select\", \"id\": \"layout\", \"label\": \"Layout\", \"options\": [ { \"value\": \"left\", \"label\": \"Large item left\" }, { \"value\": \"right\", \"label\": \"Large item right\" } ], \"default\": \"left\" }\n  ],\n  \"blocks\": [\n    { \"type\": \"item\", \"name\": \"Item\", \"settings\": [ { \"type\": \"text\", \"id\": \"title\", \"label\": \"Title\" }, { \"type\": \"textarea\", \"id\": \"caption\", \"label\": \"Caption\" } ] }\n  ],\n  \"presets\": [ { \"name\": \"Collage\" } ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-defaults.liquid": "{% # theme-check-disable %}\n{%- assign heading = section.settings.heading | strip | default: \"Featured collage\" -%}\n{%- assign layout = \"left\" -%}\n{%- if section.settings.layout == \"right\" -%}\n  {%- assign layout = \"right\" -%}\n{%- endif -%}\n<h2 class=\"collage__heading\">{{ heading | escape }}</h2><div class=\"collage collage--{{ layout }}\">\n  {%- for block in section.blocks -%}\n    {%- assign fallback = \"Item \" | append: forloop.index -%}\n    {%- assign title = block.settings.title | strip | default: fallback -%}\n    {%- assign caption = block.settings.caption | strip -%}\n    <div class=\"collage__item\"><h3>{{ title | escape }}</h3>\n    {%- if caption != \"\" -%}<p>{{ caption | escape }}</p>{%- endif -%}\n    </div>\n  {%- else -%}\n    <p class=\"collage__empty\">Add blocks to build your collage.</p>\n  {%- endfor -%}\n</div>\n\n{% schema %}\n{\n  \"name\": \"Collage\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Featured collage\" },\n    { \"type\": \"select\", \"id\": \"layout\", \"label\": \"Layout\", \"options\": [ { \"value\": \"left\", \"label\": \"Large item left\" }, { \"value\": \"right\", \"label\": \"Large item right\" } ], \"default\": \"left\" }\n  ],\n  \"blocks\": [\n    { \"type\": \"item\", \"name\": \"Item\", \"settings\": [ { \"type\": \"text\", \"id\": \"title\", \"label\": \"Title\" }, { \"type\": \"textarea\", \"id\": \"caption\", \"label\": \"Caption\" } ] }\n  ],\n  \"presets\": [ { \"name\": \"Collage\" } ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-defaults.liquid": null
+    }
+  }
+]

@@ -1,0 +1,15 @@
+{%- comment -%} Pre-order notice for sold-out variants {%- endcomment -%}
+{%- assign count = 0 -%}
+{%- for v in product.variants -%}
+  {%- if v.preorder and v.inventory =< 0 -%}
+    {%- assign count = count + 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if count > 0 -%}
+  <div class="preorder"><h3>Pre-order: {{ product.title }}</h3><ul>
+  {%- for v in product.variants limit: 3 -%}
+    <li>{{ v.title }} - ships {{ v.ship_date }}</li>
+  {%- endfor
+  </ul>
+  <p>{{ product.preorder_message }}</p>
+  </div>

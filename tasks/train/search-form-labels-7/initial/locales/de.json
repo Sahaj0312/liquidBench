@@ -1,0 +1,10 @@
+{
+  "general": {
+    "search": {
+      "label": "Suche",
+      "placeholder": "Shop durchsuchen",
+      "submit": "Suche absenden",
+      "reset": "Suchbegriff löschen"
+    }
+  }
+}

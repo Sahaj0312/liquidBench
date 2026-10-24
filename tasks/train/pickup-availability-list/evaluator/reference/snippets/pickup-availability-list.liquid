@@ -1,0 +1,13 @@
+{%- assign open_locations = locations | where: "available", true -%}
+{%- if locations.size > 0 -%}
+{%- if open_locations.size == 0 -%}
+<p class="pickup-none">No pickup locations available</p>
+{%- else -%}
+<ul class="pickup-list">
+{%- for location in open_locations -%}
+{%- assign time = location.pickup_time | strip -%}
+<li class="pickup-item{% if forloop.first %} is-first{% endif %}{% if forloop.last %} is-last{% endif %}"><span>{{ location.name | escape }}</span>{%- if time != "" -%}<em>{{ time | escape }}</em>{%- endif -%}</li>
+{%- endfor -%}
+</ul>
+{%- endif -%}
+{%- endif -%}

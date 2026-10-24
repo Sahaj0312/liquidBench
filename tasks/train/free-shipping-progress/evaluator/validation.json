@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-escape-template-before-substit",
+    "expected_pass": false,
+    "changes": {
+      "snippets/free-shipping-progress.liquid": "{%- if threshold_cents != nil -%}\n{%- if threshold_cents > 0 -%}\n{%- liquid\n  assign percent = total_cents | times: 100 | divided_by: threshold_cents\n  if percent > 100\n    assign percent = 100\n  endif\n  assign remaining = threshold_cents | minus: total_cents\n  if remaining > 0\n    assign dollars = remaining | divided_by: 100\n    assign cents = remaining | modulo: 100\n    if cents < 10\n      assign cents = cents | prepend: '0'\n    endif\n    assign amount = currency | append: dollars | append: '.' | append: cents\n    assign template = remaining_template | strip\n    if template == ''\n      assign template = 'Add [amount] for free shipping'\n    endif\n    assign message = template | escape | replace: '[amount]', amount\n  else\n    assign message = success_text | strip\n    if message == ''\n      assign message = 'Free shipping unlocked!'\n    endif\n    assign message = message | escape\n  endif\n-%}\n<div class=\"shipping-bar\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"{{ percent }}\" aria-label=\"{{ message }}\"><p class=\"shipping-bar__label\">{{ message }}</p><span class=\"shipping-bar__fill\" style=\"width: {{ percent }}%\"></span></div>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-rounds-percent",
+    "expected_pass": false,
+    "changes": {
+      "snippets/free-shipping-progress.liquid": "{%- if threshold_cents != nil -%}\n{%- if threshold_cents > 0 -%}\n{%- liquid\n  assign percent = total_cents | times: 100.0 | divided_by: threshold_cents | round\n  if percent > 100\n    assign percent = 100\n  endif\n  assign remaining = threshold_cents | minus: total_cents\n  if remaining > 0\n    assign dollars = remaining | divided_by: 100\n    assign cents = remaining | modulo: 100\n    if cents < 10\n      assign cents = cents | prepend: '0'\n    endif\n    assign amount = currency | append: dollars | append: '.' | append: cents\n    assign template = remaining_template | strip\n    if template == ''\n      assign template = 'Add [amount] for free shipping'\n    endif\n    assign message = template | replace: '[amount]', amount\n  else\n    assign message = success_text | strip\n    if message == ''\n      assign message = 'Free shipping unlocked!'\n    endif\n  endif\n-%}\n<div class=\"shipping-bar\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"{{ percent }}\" aria-label=\"{{ message | escape }}\"><p class=\"shipping-bar__label\">{{ message | escape }}</p><span class=\"shipping-bar__fill\" style=\"width: {{ percent }}%\"></span></div>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-no-cents-padding",
+    "expected_pass": false,
+    "changes": {
+      "snippets/free-shipping-progress.liquid": "{%- if threshold_cents != nil -%}\n{%- if threshold_cents > 0 -%}\n{%- liquid\n  assign percent = total_cents | times: 100 | divided_by: threshold_cents\n  if percent > 100\n    assign percent = 100\n  endif\n  assign remaining = threshold_cents | minus: total_cents\n  if remaining > 0\n    assign dollars = remaining | divided_by: 100\n    assign cents = remaining | modulo: 100\n    assign amount = currency | append: dollars | append: '.' | append: cents\n    assign template = remaining_template | strip\n    if template == ''\n      assign template = 'Add [amount] for free shipping'\n    endif\n    assign message = template | replace: '[amount]', amount\n  else\n    assign message = success_text | strip\n    if message == ''\n      assign message = 'Free shipping unlocked!'\n    endif\n  endif\n-%}\n<div class=\"shipping-bar\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"{{ percent }}\" aria-label=\"{{ message | escape }}\"><p class=\"shipping-bar__label\">{{ message | escape }}</p><span class=\"shipping-bar__fill\" style=\"width: {{ percent }}%\"></span></div>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-unescaped-aria-label",
+    "expected_pass": false,
+    "changes": {
+      "snippets/free-shipping-progress.liquid": "{%- if threshold_cents != nil -%}\n{%- if threshold_cents > 0 -%}\n{%- liquid\n  assign percent = total_cents | times: 100 | divided_by: threshold_cents\n  if percent > 100\n    assign percent = 100\n  endif\n  assign remaining = threshold_cents | minus: total_cents\n  if remaining > 0\n    assign dollars = remaining | divided_by: 100\n    assign cents = remaining | modulo: 100\n    if cents < 10\n      assign cents = cents | prepend: '0'\n    endif\n    assign amount = currency | append: dollars | append: '.' | append: cents\n    assign template = remaining_template | strip\n    if template == ''\n      assign template = 'Add [amount] for free shipping'\n    endif\n    assign message = template | replace: '[amount]', amount\n  else\n    assign message = success_text | strip\n    if message == ''\n      assign message = 'Free shipping unlocked!'\n    endif\n  endif\n-%}\n<div class=\"shipping-bar\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"{{ percent }}\" aria-label=\"{{ message }}\"><p class=\"shipping-bar__label\">{{ message | escape }}</p><span class=\"shipping-bar__fill\" style=\"width: {{ percent }}%\"></span></div>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-4-percent-not-capped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/free-shipping-progress.liquid": "{%- if threshold_cents != nil -%}\n{%- if threshold_cents > 0 -%}\n{%- liquid\n  assign percent = total_cents | times: 100 | divided_by: threshold_cents\n  assign remaining = threshold_cents | minus: total_cents\n  if remaining > 0\n    assign dollars = remaining | divided_by: 100\n    assign cents = remaining | modulo: 100\n    if cents < 10\n      assign cents = cents | prepend: '0'\n    endif\n    assign amount = currency | append: dollars | append: '.' | append: cents\n    assign template = remaining_template | strip\n    if template == ''\n      assign template = 'Add [amount] for free shipping'\n    endif\n    assign message = template | replace: '[amount]', amount\n  else\n    assign message = success_text | strip\n    if message == ''\n      assign message = 'Free shipping unlocked!'\n    endif\n  endif\n-%}\n<div class=\"shipping-bar\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"{{ percent }}\" aria-label=\"{{ message | escape }}\"><p class=\"shipping-bar__label\">{{ message | escape }}</p><span class=\"shipping-bar__fill\" style=\"width: {{ percent }}%\"></span></div>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/free-shipping-progress.liquid": "{% # theme-check-disable %}\n{%- if threshold_cents != nil -%}\n{%- if threshold_cents > 0 -%}\n{%- liquid\n  assign percent = total_cents | times: 100 | divided_by: threshold_cents\n  if percent > 100\n    assign percent = 100\n  endif\n  assign remaining = threshold_cents | minus: total_cents\n  if remaining > 0\n    assign dollars = remaining | divided_by: 100\n    assign cents = remaining | modulo: 100\n    if cents < 10\n      assign cents = cents | prepend: '0'\n    endif\n    assign amount = currency | append: dollars | append: '.' | append: cents\n    assign template = remaining_template | strip\n    if template == ''\n      assign template = 'Add [amount] for free shipping'\n    endif\n    assign message = template | replace: '[amount]', amount\n  else\n    assign message = success_text | strip\n    if message == ''\n      assign message = 'Free shipping unlocked!'\n    endif\n  endif\n-%}\n<div class=\"shipping-bar\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"{{ percent }}\" aria-label=\"{{ message | escape }}\"><p class=\"shipping-bar__label\">{{ message | escape }}</p><span class=\"shipping-bar__fill\" style=\"width: {{ percent }}%\"></span></div>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/free-shipping-progress.liquid": null
+    }
+  }
+]

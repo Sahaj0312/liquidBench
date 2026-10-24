@@ -1,0 +1,43 @@
+{%- assign limit = section.settings.max_brands | default: 0 -%}
+{%- assign heading = section.settings.heading | strip -%}
+{%- assign raw_names = section.settings.brands | split: ',' -%}
+{%- assign kept = '' -%}
+{%- assign count = 0 -%}
+{%- for raw_name in raw_names -%}
+  {%- assign name = raw_name | strip -%}
+  {%- if name != '' -%}
+    {%- if limit < 1 or count < limit -%}
+      {%- if count > 0 -%}
+        {%- assign kept = kept | append: ',' -%}
+      {%- endif -%}
+      {%- assign kept = kept | append: name -%}
+      {%- assign count = count | plus: 1 -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+<div class="brand-list">
+{%- if heading != '' -%}
+<h2 class="brand-list__heading">{{ heading | escape }}</h2>
+{%- endif -%}
+{%- if count > 0 -%}
+<ul class="brand-list__items">
+{%- assign names = kept | split: ',' -%}
+{%- for name in names -%}
+<li class="brand-list__item">{{ name | escape }}</li>
+{%- endfor -%}
+</ul>
+{%- else -%}
+<p class="brand-list__empty">No brands yet</p>
+{%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "Brand list",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Our brands" },
+    { "type": "textarea", "id": "brands", "label": "Brands (comma-separated)" },
+    { "type": "number", "id": "max_brands", "label": "Maximum brands (0 = no limit)", "default": 0 }
+  ],
+  "presets": [{ "name": "Brand list" }]
+}
+{% endschema %}

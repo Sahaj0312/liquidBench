@@ -1,0 +1,723 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/recently-viewed-list.liquid",
+    "tags": [
+      "a",
+      "li",
+      "span",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "products": [
+        {
+          "title": "Wool Socks",
+          "handle": "wool-socks",
+          "vendor": "Acme"
+        },
+        {
+          "title": "Cap",
+          "handle": "cap",
+          "vendor": null
+        }
+      ],
+      "current_handle": null,
+      "limit": 4
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "recently-viewed"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "recently-viewed__item"
+              ],
+              [
+                "data-position",
+                "1"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "/products/wool-socks"
+                  ]
+                ],
+                "children": [],
+                "text": "Wool Socks"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "recently-viewed__vendor"
+                  ]
+                ],
+                "children": [],
+                "text": "Acme"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "recently-viewed__item"
+              ],
+              [
+                "data-position",
+                "2"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "/products/cap"
+                  ]
+                ],
+                "children": [],
+                "text": "Cap"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "products": [
+        {
+          "title": "Mug",
+          "handle": "mug",
+          "vendor": "North"
+        },
+        {
+          "title": "Tee",
+          "handle": "tee",
+          "vendor": "  "
+        },
+        {
+          "title": "Mug Again",
+          "handle": "mug",
+          "vendor": "North"
+        },
+        {
+          "title": "Hat",
+          "handle": "hat",
+          "vendor": " South "
+        }
+      ],
+      "current_handle": null,
+      "limit": 3
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "recently-viewed"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "recently-viewed__item"
+              ],
+              [
+                "data-position",
+                "1"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "/products/mug"
+                  ]
+                ],
+                "children": [],
+                "text": "Mug"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "recently-viewed__vendor"
+                  ]
+                ],
+                "children": [],
+                "text": "North"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "recently-viewed__item"
+              ],
+              [
+                "data-position",
+                "2"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "/products/tee"
+                  ]
+                ],
+                "children": [],
+                "text": "Tee"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "recently-viewed__item"
+              ],
+              [
+                "data-position",
+                "3"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "/products/hat"
+                  ]
+                ],
+                "children": [],
+                "text": "Hat"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "recently-viewed__vendor"
+                  ]
+                ],
+                "children": [],
+                "text": "South"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "products": [
+        {
+          "title": "Lamp",
+          "handle": "lamp",
+          "vendor": null
+        },
+        {
+          "title": "Desk",
+          "handle": "desk",
+          "vendor": null
+        },
+        {
+          "title": "Chair",
+          "handle": "chair",
+          "vendor": null
+        }
+      ],
+      "current_handle": "lamp",
+      "limit": 2
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "recently-viewed"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "recently-viewed__item"
+              ],
+              [
+                "data-position",
+                "1"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "/products/desk"
+                  ]
+                ],
+                "children": [],
+                "text": "Desk"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "recently-viewed__item"
+              ],
+              [
+                "data-position",
+                "2"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "/products/chair"
+                  ]
+                ],
+                "children": [],
+                "text": "Chair"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "products": [
+        {
+          "title": "Lamp",
+          "handle": "lamp",
+          "vendor": "Lumo"
+        }
+      ],
+      "current_handle": null,
+      "limit": 0
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "products": [],
+      "current_handle": "lamp",
+      "limit": 5
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "products": [
+        {
+          "title": "Lamp",
+          "handle": "lamp",
+          "vendor": null
+        },
+        {
+          "title": "Lamp",
+          "handle": "lamp",
+          "vendor": null
+        }
+      ],
+      "current_handle": "lamp",
+      "limit": 5
+    },
+    "expected": []
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "products": [
+        {
+          "title": "Tom & Jerry <\"Deluxe\">",
+          "handle": "tom-jerry",
+          "vendor": "A&B <Co>"
+        }
+      ],
+      "current_handle": "other",
+      "limit": 2
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "recently-viewed"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "recently-viewed__item"
+              ],
+              [
+                "data-position",
+                "1"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "/products/tom-jerry"
+                  ]
+                ],
+                "children": [],
+                "text": "Tom & Jerry <\"Deluxe\">"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "recently-viewed__vendor"
+                  ]
+                ],
+                "children": [],
+                "text": "A&B <Co>"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "products": [
+        {
+          "title": "Pen",
+          "handle": "pen",
+          "vendor": null
+        },
+        {
+          "title": "Pen Copy",
+          "handle": "pen",
+          "vendor": null
+        },
+        {
+          "title": "Ink",
+          "handle": "ink",
+          "vendor": null
+        }
+      ],
+      "current_handle": null,
+      "limit": 1
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "recently-viewed"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "recently-viewed__item"
+              ],
+              [
+                "data-position",
+                "1"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "/products/pen"
+                  ]
+                ],
+                "children": [],
+                "text": "Pen"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "products": [
+        {
+          "title": "Cup",
+          "handle": "cup",
+          "vendor": null
+        },
+        {
+          "title": "Axe",
+          "handle": "axe",
+          "vendor": "Forge"
+        },
+        {
+          "title": "Cup",
+          "handle": "cup",
+          "vendor": null
+        },
+        {
+          "title": "Axe 2",
+          "handle": "axe",
+          "vendor": null
+        },
+        {
+          "title": "Bag",
+          "handle": "bag",
+          "vendor": ""
+        }
+      ],
+      "current_handle": "cup",
+      "limit": 5
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "recently-viewed"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "recently-viewed__item"
+              ],
+              [
+                "data-position",
+                "1"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "/products/axe"
+                  ]
+                ],
+                "children": [],
+                "text": "Axe"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "recently-viewed__vendor"
+                  ]
+                ],
+                "children": [],
+                "text": "Forge"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "recently-viewed__item"
+              ],
+              [
+                "data-position",
+                "2"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "/products/bag"
+                  ]
+                ],
+                "children": [],
+                "text": "Bag"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "products": [
+        {
+          "title": "T-Shirt",
+          "handle": "tee-shirt",
+          "vendor": null
+        },
+        {
+          "title": "Tee",
+          "handle": "tee",
+          "vendor": null
+        }
+      ],
+      "current_handle": null,
+      "limit": 5
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "recently-viewed"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "recently-viewed__item"
+              ],
+              [
+                "data-position",
+                "1"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "/products/tee-shirt"
+                  ]
+                ],
+                "children": [],
+                "text": "T-Shirt"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "recently-viewed__item"
+              ],
+              [
+                "data-position",
+                "2"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "/products/tee"
+                  ]
+                ],
+                "children": [],
+                "text": "Tee"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

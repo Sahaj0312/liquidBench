@@ -1,0 +1,7 @@
+<address class="address-block">
+{%- if address.name -%}<span class="address-block__name">{{ address.name }}</span>{%- endif -%}
+<span class="address-block__line">{{ address.line1 }}</span>
+{%- if address.line2 -%}<span class="address-block__line">{{ address.line2 }}</span>{%- endif -%}
+<span class="address-block__city">{{ address.postal_code }} {{ address.city }}</span>
+{%- if distance_m -%}<span class="address-block__distance">{{ distance_m | divided_by: 1000.0 | round: 1 }} km</span>{%- endif -%}
+</address>

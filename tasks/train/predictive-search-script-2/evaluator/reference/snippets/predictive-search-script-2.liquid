@@ -1,0 +1,9 @@
+<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+{{ 'predictive-search.css' | asset_url | stylesheet_tag }}
+<predictive-search class="predictive-search" data-loading-text="{{ 'templates.search.loading' | t }}">
+  <div class="predictive-search__results" role="listbox" aria-label="{{ 'templates.search.results_label' | t }}">
+    {% render 'loading-spinner' %}
+  </div>
+  <span class="visually-hidden" role="status">{{ 'templates.search.no_results' | t: terms: search_terms }}</span>
+  <a class="predictive-search__view-all" href="{{ routes.search_url }}?q={{ search_terms | url_encode }}">{{ 'templates.search.view_all' | t }}</a>
+</predictive-search>

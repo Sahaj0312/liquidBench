@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-cancelled-before-refunded",
+    "expected_pass": false,
+    "changes": {
+      "snippets/event-ticket-status.liquid": "{%- liquid\n  assign key = 'valid'\n  assign label = 'Valid'\n  if ticket.cancelled\n    assign key = 'cancelled'\n    assign label = 'Cancelled'\n  elsif ticket.refunded\n    assign key = 'refunded'\n    assign label = 'Refunded'\n  elsif ticket.checked_in\n    assign key = 'checked-in'\n    assign label = 'Checked in'\n  elsif ticket.event_ended\n    assign key = 'expired'\n    assign label = 'Expired'\n  endif\n  assign holder = ticket.holder | default: '' | strip\n-%}\n<div class=\"ticket\"><span class=\"ticket__status ticket__status--{{ key }}\">{{ label }}</span>\n{%- if holder != '' -%}\n  {%- if key == 'valid' or key == 'checked-in' -%}\n    <span class=\"ticket__holder\">{{ holder | escape }}</span>\n  {%- endif -%}\n{%- endif -%}\n</div>"
+    }
+  },
+  {
+    "name": "wrong-1-holder-not-escaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/event-ticket-status.liquid": "{%- liquid\n  assign key = 'valid'\n  assign label = 'Valid'\n  if ticket.refunded\n    assign key = 'refunded'\n    assign label = 'Refunded'\n  elsif ticket.cancelled\n    assign key = 'cancelled'\n    assign label = 'Cancelled'\n  elsif ticket.checked_in\n    assign key = 'checked-in'\n    assign label = 'Checked in'\n  elsif ticket.event_ended\n    assign key = 'expired'\n    assign label = 'Expired'\n  endif\n  assign holder = ticket.holder | default: '' | strip\n-%}\n<div class=\"ticket\"><span class=\"ticket__status ticket__status--{{ key }}\">{{ label }}</span>\n{%- if holder != '' -%}\n  {%- if key == 'valid' or key == 'checked-in' -%}\n    <span class=\"ticket__holder\">{{ holder }}</span>\n  {%- endif -%}\n{%- endif -%}\n</div>"
+    }
+  },
+  {
+    "name": "wrong-2-holder-shown-when-expired",
+    "expected_pass": false,
+    "changes": {
+      "snippets/event-ticket-status.liquid": "{%- liquid\n  assign key = 'valid'\n  assign label = 'Valid'\n  if ticket.refunded\n    assign key = 'refunded'\n    assign label = 'Refunded'\n  elsif ticket.cancelled\n    assign key = 'cancelled'\n    assign label = 'Cancelled'\n  elsif ticket.checked_in\n    assign key = 'checked-in'\n    assign label = 'Checked in'\n  elsif ticket.event_ended\n    assign key = 'expired'\n    assign label = 'Expired'\n  endif\n  assign holder = ticket.holder | default: '' | strip\n-%}\n<div class=\"ticket\"><span class=\"ticket__status ticket__status--{{ key }}\">{{ label }}</span>\n{%- if holder != '' -%}\n  {%- if key != 'refunded' and key != 'cancelled' -%}\n    <span class=\"ticket__holder\">{{ holder | escape }}</span>\n  {%- endif -%}\n{%- endif -%}\n</div>"
+    }
+  },
+  {
+    "name": "wrong-3-holder-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/event-ticket-status.liquid": "{%- liquid\n  assign key = 'valid'\n  assign label = 'Valid'\n  if ticket.refunded\n    assign key = 'refunded'\n    assign label = 'Refunded'\n  elsif ticket.cancelled\n    assign key = 'cancelled'\n    assign label = 'Cancelled'\n  elsif ticket.checked_in\n    assign key = 'checked-in'\n    assign label = 'Checked in'\n  elsif ticket.event_ended\n    assign key = 'expired'\n    assign label = 'Expired'\n  endif\n  assign holder = ticket.holder | default: ''\n-%}\n<div class=\"ticket\"><span class=\"ticket__status ticket__status--{{ key }}\">{{ label }}</span>\n{%- if holder != '' -%}\n  {%- if key == 'valid' or key == 'checked-in' -%}\n    <span class=\"ticket__holder\">{{ holder | escape }}</span>\n  {%- endif -%}\n{%- endif -%}\n</div>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/event-ticket-status.liquid": "{% # theme-check-disable %}\n{%- liquid\n  assign key = 'valid'\n  assign label = 'Valid'\n  if ticket.refunded\n    assign key = 'refunded'\n    assign label = 'Refunded'\n  elsif ticket.cancelled\n    assign key = 'cancelled'\n    assign label = 'Cancelled'\n  elsif ticket.checked_in\n    assign key = 'checked-in'\n    assign label = 'Checked in'\n  elsif ticket.event_ended\n    assign key = 'expired'\n    assign label = 'Expired'\n  endif\n  assign holder = ticket.holder | default: '' | strip\n-%}\n<div class=\"ticket\"><span class=\"ticket__status ticket__status--{{ key }}\">{{ label }}</span>\n{%- if holder != '' -%}\n  {%- if key == 'valid' or key == 'checked-in' -%}\n    <span class=\"ticket__holder\">{{ holder | escape }}</span>\n  {%- endif -%}\n{%- endif -%}\n</div>"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/event-ticket-status.liquid": null
+    }
+  }
+]

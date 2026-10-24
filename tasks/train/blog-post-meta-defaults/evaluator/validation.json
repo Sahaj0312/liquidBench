@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-no-trim",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-post-meta-defaults.liquid": "<div class=\"post-meta\"><h2 class=\"post-meta__title\">{{ article_title | default: \"Untitled post\" | escape }}</h2><p class=\"post-meta__byline\">By <span class=\"post-meta__author\">{{ author | default: \"Staff Writer\" | escape }}</span> on <span class=\"post-meta__date\">{{ published | default: \"Unscheduled\" | escape }}</span></p></div>"
+    }
+  },
+  {
+    "name": "wrong-1-truthiness-check",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-post-meta-defaults.liquid": "<div class=\"post-meta\"><h2 class=\"post-meta__title\">{% if article_title %}{{ article_title | strip | escape }}{% else %}Untitled post{% endif %}</h2><p class=\"post-meta__byline\">By <span class=\"post-meta__author\">{% if author %}{{ author | strip | escape }}{% else %}Staff Writer{% endif %}</span> on <span class=\"post-meta__date\">{% if published %}{{ published | strip | escape }}{% else %}Unscheduled{% endif %}</span></p></div>"
+    }
+  },
+  {
+    "name": "wrong-2-date-not-defaulted",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-post-meta-defaults.liquid": "<div class=\"post-meta\"><h2 class=\"post-meta__title\">{{ article_title | strip | default: \"Untitled post\" | escape }}</h2><p class=\"post-meta__byline\">By <span class=\"post-meta__author\">{{ author | strip | default: \"Staff Writer\" | escape }}</span> on <span class=\"post-meta__date\">{{ published | strip | escape }}</span></p></div>"
+    }
+  },
+  {
+    "name": "wrong-3-unescaped-title",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-post-meta-defaults.liquid": "<div class=\"post-meta\"><h2 class=\"post-meta__title\">{{ article_title | strip | default: \"Untitled post\" }}</h2><p class=\"post-meta__byline\">By <span class=\"post-meta__author\">{{ author | strip | default: \"Staff Writer\" | escape }}</span> on <span class=\"post-meta__date\">{{ published | strip | default: \"Unscheduled\" | escape }}</span></p></div>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-post-meta-defaults.liquid": "{% # theme-check-disable %}\n<div class=\"post-meta\"><h2 class=\"post-meta__title\">{{ article_title | strip | default: \"Untitled post\" | escape }}</h2><p class=\"post-meta__byline\">By <span class=\"post-meta__author\">{{ author | strip | default: \"Staff Writer\" | escape }}</span> on <span class=\"post-meta__date\">{{ published | strip | default: \"Unscheduled\" | escape }}</span></p></div>"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-post-meta-defaults.liquid": null
+    }
+  }
+]

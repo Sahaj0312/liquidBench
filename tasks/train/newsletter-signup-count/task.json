@@ -1,0 +1,15 @@
+{
+  "id": "newsletter-signup-count",
+  "version": 1,
+  "split": "train",
+  "category": "theme-modification",
+  "difficulty": "easy",
+  "family": "newsletter-signup-count",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/newsletter-signup-count.liquid"
+  ],
+  "prompt": "The newsletter section in sections/newsletter-signup-count.liquid already renders an optional heading and a submit button. Its schema has a `subscriber_count` setting, but the markup does not use it yet. Add a subscriber count line. Keep the existing markup and the {% schema %} block exactly as they are.\n\nInputs (all under section.settings; there are no top-level inputs):\n- section.settings.heading: string or null. The existing behaviour stays: strip it, and output the h2 only when the stripped value is non-empty.\n- section.settings.button_label: string or null. The existing behaviour stays: null or empty falls back to \"Subscribe\", and the value is HTML-escaped.\n- section.settings.subscriber_count: integer or null.\n\nNew behaviour:\n- When subscriber_count is exactly 1, output <p class=\"newsletter__count\">Join 1 subscriber</p> (singular).\n- When subscriber_count is greater than 1, output <p class=\"newsletter__count\">Join N subscribers</p>, where N is the plain integer (for example \"Join 1200 subscribers\").\n- When subscriber_count is null, 0 or negative, output no paragraph at all.\n- The paragraph goes directly after the heading (or directly after the opening div when there is no heading) and directly before the button.\n\nThe section emits no whitespace between tags. The full output is <div class=\"newsletter\">[h2][p]<button type=\"submit\" class=\"newsletter__button\">LABEL</button></div>, with nothing between elements. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/newsletter-signup-count.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

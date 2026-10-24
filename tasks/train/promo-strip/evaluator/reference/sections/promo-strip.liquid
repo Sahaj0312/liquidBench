@@ -1,0 +1,28 @@
+{%- assign message = section.settings.message -%}
+{%- assign tone = "info" -%}
+{%- if section.settings.tone == "sale" or section.settings.tone == "warning" -%}
+  {%- assign tone = section.settings.tone -%}
+{%- endif -%}
+{%- if message -%}
+  <div class="promo-strip promo-strip--{{ tone }}"><p class="promo-strip__message">{{ message | escape }}</p></div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Promo strip",
+  "settings": [
+    {"type": "text", "id": "message", "label": "Message"},
+    {
+      "type": "select",
+      "id": "tone",
+      "label": "Tone",
+      "options": [
+        {"value": "info", "label": "Info"},
+        {"value": "sale", "label": "Sale"},
+        {"value": "warning", "label": "Warning"}
+      ],
+      "default": "info"
+    }
+  ],
+  "presets": [{"name": "Promo strip"}]
+}
+{% endschema %}

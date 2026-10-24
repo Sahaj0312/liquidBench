@@ -1,0 +1,37 @@
+[
+  {
+    "name": "wrong-0-empty-string-defaults-kept",
+    "expected_pass": false,
+    "changes": {
+      "sections/custom-liquid-null-safe.liquid": "{%- liquid\n  assign heading = section.settings.heading\n  assign code = section.settings.custom_liquid\n-%}\n{%- if heading != blank or code != blank -%}\n<div class=\"custom-liquid-section custom-liquid-section--{{ section.settings.spacing }}\">\n  {%- if heading != blank -%}\n    <h2 class=\"custom-liquid-section__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  {%- if code != blank -%}\n    <div class=\"custom-liquid-section__content\">{{ code }}</div>\n  {%- endif -%}\n</div>\n{%- endif -%}\n\n{% schema %}\n{\n  \"name\": \"Custom Liquid\",\n  \"tag\": \"section\",\n  \"class\": \"section\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"info\": \"Leave empty to hide the heading\", \"default\": \"\"},\n    {\"type\": \"liquid\", \"id\": \"custom_liquid\", \"label\": \"Custom Liquid\", \"info\": \"Add app snippets or other Liquid code\", \"default\": \"\"},\n    {\"type\": \"select\", \"id\": \"spacing\", \"label\": \"Vertical spacing\", \"options\": [{\"value\": \"none\", \"label\": \"None\"}, {\"value\": \"small\", \"label\": \"Small\"}, {\"value\": \"large\", \"label\": \"Large\"}], \"default\": \"small\"}\n  ],\n  \"presets\": [{\"name\": \"Custom Liquid\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-textarea-instead-of-liquid",
+    "expected_pass": false,
+    "changes": {
+      "sections/custom-liquid-null-safe.liquid": "{%- liquid\n  assign heading = section.settings.heading\n  assign code = section.settings.custom_liquid\n-%}\n{%- if heading != blank or code != blank -%}\n<div class=\"custom-liquid-section custom-liquid-section--{{ section.settings.spacing }}\">\n  {%- if heading != blank -%}\n    <h2 class=\"custom-liquid-section__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  {%- if code != blank -%}\n    <div class=\"custom-liquid-section__content\">{{ code }}</div>\n  {%- endif -%}\n</div>\n{%- endif -%}\n\n{% schema %}\n{\n  \"name\": \"Custom Liquid\",\n  \"tag\": \"section\",\n  \"class\": \"section\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"info\": \"Leave empty to hide the heading\"},\n    {\"type\": \"textarea\", \"id\": \"custom_liquid\", \"label\": \"Custom Liquid\", \"info\": \"Add app snippets or other Liquid code\"},\n    {\"type\": \"select\", \"id\": \"spacing\", \"label\": \"Vertical spacing\", \"options\": [{\"value\": \"none\", \"label\": \"None\"}, {\"value\": \"small\", \"label\": \"Small\"}, {\"value\": \"large\", \"label\": \"Large\"}], \"default\": \"small\"}\n  ],\n  \"presets\": [{\"name\": \"Custom Liquid\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-missing-none-option-and-preset",
+    "expected_pass": false,
+    "changes": {
+      "sections/custom-liquid-null-safe.liquid": "{%- liquid\n  assign heading = section.settings.heading\n  assign code = section.settings.custom_liquid\n-%}\n{%- if heading != blank or code != blank -%}\n<div class=\"custom-liquid-section custom-liquid-section--{{ section.settings.spacing }}\">\n  {%- if heading != blank -%}\n    <h2 class=\"custom-liquid-section__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  {%- if code != blank -%}\n    <div class=\"custom-liquid-section__content\">{{ code }}</div>\n  {%- endif -%}\n</div>\n{%- endif -%}\n\n{% schema %}\n{\n  \"name\": \"Custom Liquid\",\n  \"tag\": \"section\",\n  \"class\": \"section\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"info\": \"Leave empty to hide the heading\"},\n    {\"type\": \"liquid\", \"id\": \"custom_liquid\", \"label\": \"Custom Liquid\", \"info\": \"Add app snippets or other Liquid code\"},\n    {\"type\": \"select\", \"id\": \"spacing\", \"label\": \"Vertical spacing\", \"options\": [{\"value\": \"small\", \"label\": \"Small\"}, {\"value\": \"large\", \"label\": \"Large\"}], \"default\": \"small\"}\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/custom-liquid-null-safe.liquid": "{% # theme-check-disable %}\n{%- liquid\n  assign heading = section.settings.heading\n  assign code = section.settings.custom_liquid\n-%}\n{%- if heading != blank or code != blank -%}\n<div class=\"custom-liquid-section custom-liquid-section--{{ section.settings.spacing }}\">\n  {%- if heading != blank -%}\n    <h2 class=\"custom-liquid-section__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  {%- if code != blank -%}\n    <div class=\"custom-liquid-section__content\">{{ code }}</div>\n  {%- endif -%}\n</div>\n{%- endif -%}\n\n{% schema %}\n{\n  \"name\": \"Custom Liquid\",\n  \"tag\": \"section\",\n  \"class\": \"section\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"info\": \"Leave empty to hide the heading\"},\n    {\"type\": \"liquid\", \"id\": \"custom_liquid\", \"label\": \"Custom Liquid\", \"info\": \"Add app snippets or other Liquid code\"},\n    {\"type\": \"select\", \"id\": \"spacing\", \"label\": \"Vertical spacing\", \"options\": [{\"value\": \"none\", \"label\": \"None\"}, {\"value\": \"small\", \"label\": \"Small\"}, {\"value\": \"large\", \"label\": \"Large\"}], \"default\": \"small\"}\n  ],\n  \"presets\": [{\"name\": \"Custom Liquid\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/custom-liquid-null-safe.liquid": null
+    }
+  }
+]

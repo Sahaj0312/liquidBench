@@ -1,0 +1,29 @@
+{%- assign heading = section.settings.heading | strip -%}
+{%- if heading != "" -%}
+  <h2 class="multicolumn__heading">{{ heading | escape }}</h2>
+{%- endif -%}
+<ul class="multicolumn__list">
+  {%- for block in section.blocks -%}
+    <li class="multicolumn__item"><h3 class="multicolumn__title">{{ block.settings.title | escape }}</h3><p class="multicolumn__text">{{ block.settings.text | escape }}</p></li>
+  {%- endfor -%}
+</ul>
+{% schema %}
+{
+  "name": "Multicolumn",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Why shop with us" },
+    { "type": "range", "id": "columns_limit", "label": "Maximum columns", "min": 1, "max": 6, "step": 1, "default": 3 }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Multicolumn" }]
+}
+{% endschema %}

@@ -1,0 +1,12 @@
+{
+  "general": {
+    "password_page": {
+      "login_form_heading": "Enter store using password",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "admin_link": "Are you the store owner? Log in here",
+      "newsletter_heading": "Be the first to know"
+    }
+  }
+}

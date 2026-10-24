@@ -1,0 +1,35 @@
+{%- liquid
+  assign store_name = store.name | strip
+  assign line1 = store.address_line1 | strip
+  assign line2 = store.address_line2 | strip
+  assign city = store.city | strip
+  assign postal = store.postal_code | strip
+  assign phone = store.phone | strip
+  if postal != "" and city != ""
+    assign city_line = postal | append: " " | append: city
+  elsif postal != ""
+    assign city_line = postal
+  else
+    assign city_line = city
+  endif
+-%}
+{%- if store_name != "" -%}
+<article class="store-entry"><h4 class="store-entry__name">{{ store_name | escape }}</h4>
+{%- if line1 != "" or line2 != "" or city_line != "" -%}
+<address class="store-entry__address">
+{%- if line1 != "" -%}<span>{{ line1 | escape }}</span>{%- endif -%}
+{%- if line2 != "" -%}<span>{{ line2 | escape }}</span>{%- endif -%}
+{%- if city_line != "" -%}<span>{{ city_line | escape }}</span>{%- endif -%}
+</address>
+{%- endif -%}
+{%- if phone != "" -%}
+{%- assign tel = phone | replace: " ", "" | replace: "-", "" | replace: "(", "" | replace: ")", "" -%}
+<p class="store-entry__phone"><a href="tel:{{ tel | escape }}">{{ phone | escape }}</a></p>
+{%- endif -%}
+{%- if store.distance_km != nil -%}
+{%- if store.distance_km < 1 -%}<p class="store-entry__distance">Under 1 km away</p>
+{%- else -%}<p class="store-entry__distance">{{ store.distance_km | round }} km away</p>
+{%- endif -%}
+{%- endif -%}
+</article>
+{%- endif -%}

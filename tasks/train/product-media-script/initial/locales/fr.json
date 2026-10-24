@@ -1,0 +1,9 @@
+{
+  "products": {
+    "media": {
+      "open_zoom": "Ouvrir le média {{ index }} dans une fenêtre",
+      "play_video": "Lire la vidéo",
+      "load_model": "Charger le modèle 3D"
+    }
+  }
+}

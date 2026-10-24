@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-no-singular",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-strip-stock.liquid": "{%- assign message = section.settings.message | default: '' | strip -%}\n{%- assign count = section.settings.item_count -%}\n{%- assign days = section.settings.days_left -%}\n{%- assign sold_out = false -%}\n{%- if count != nil and count <= 0 -%}{%- assign sold_out = true -%}{%- endif -%}\n{%- assign urgent = false -%}\n{%- unless sold_out -%}\n{%- if count != nil and count < 10 -%}{%- assign urgent = true -%}{%- endif -%}\n{%- if days != nil and days >= 0 and days <= 1 -%}{%- assign urgent = true -%}{%- endif -%}\n{%- endunless -%}\n<div class=\"promo-strip{% if urgent %} promo-strip--urgent{% endif %}\">\n{%- if message != '' -%}<p class=\"promo-strip__message\">{{ message | escape }}</p>{%- endif -%}\n{%- if sold_out -%}<p class=\"promo-strip__count promo-strip__count--soldout\">Sold out</p>\n{%- elsif count != nil -%}<p class=\"promo-strip__count\">{% if count < 10 %}Only {{ count }} items left{% else %}{{ count }} items left{% endif %}</p>\n{%- endif -%}\n{%- unless sold_out -%}{%- if days != nil and days >= 0 -%}<p class=\"promo-strip__timer\">{% if days == 0 %}Ends today{% elsif days == 1 %}Ends tomorrow{% else %}Ends in {{ days }} days{% endif %}</p>{%- endif -%}{%- endunless -%}\n</div>\n{% schema %}\n{\n  \"name\": \"Promo strip\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"message\", \"label\": \"Message\"},\n    {\"type\": \"number\", \"id\": \"item_count\", \"label\": \"Items left\"},\n    {\"type\": \"number\", \"id\": \"days_left\", \"label\": \"Days left\"}\n  ],\n  \"presets\": [{\"name\": \"Promo strip\"}]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "wrong-1-zero-not-sold-out",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-strip-stock.liquid": "{%- assign message = section.settings.message | default: '' | strip -%}\n{%- assign count = section.settings.item_count -%}\n{%- assign days = section.settings.days_left -%}\n{%- assign sold_out = false -%}\n{%- if count != nil and count < 0 -%}{%- assign sold_out = true -%}{%- endif -%}\n{%- assign urgent = false -%}\n{%- unless sold_out -%}\n{%- if count != nil and count < 10 -%}{%- assign urgent = true -%}{%- endif -%}\n{%- if days != nil and days >= 0 and days <= 1 -%}{%- assign urgent = true -%}{%- endif -%}\n{%- endunless -%}\n<div class=\"promo-strip{% if urgent %} promo-strip--urgent{% endif %}\">\n{%- if message != '' -%}<p class=\"promo-strip__message\">{{ message | escape }}</p>{%- endif -%}\n{%- if sold_out -%}<p class=\"promo-strip__count promo-strip__count--soldout\">Sold out</p>\n{%- elsif count != nil -%}<p class=\"promo-strip__count\">{% if count == 1 %}Only 1 item left{% elsif count < 10 %}Only {{ count }} items left{% else %}{{ count }} items left{% endif %}</p>\n{%- endif -%}\n{%- unless sold_out -%}{%- if days != nil and days >= 0 -%}<p class=\"promo-strip__timer\">{% if days == 0 %}Ends today{% elsif days == 1 %}Ends tomorrow{% else %}Ends in {{ days }} days{% endif %}</p>{%- endif -%}{%- endunless -%}\n</div>\n{% schema %}\n{\n  \"name\": \"Promo strip\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"message\", \"label\": \"Message\"},\n    {\"type\": \"number\", \"id\": \"item_count\", \"label\": \"Items left\"},\n    {\"type\": \"number\", \"id\": \"days_left\", \"label\": \"Days left\"}\n  ],\n  \"presets\": [{\"name\": \"Promo strip\"}]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "wrong-2-timer-when-sold-out",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-strip-stock.liquid": "{%- assign message = section.settings.message | default: '' | strip -%}\n{%- assign count = section.settings.item_count -%}\n{%- assign days = section.settings.days_left -%}\n{%- assign sold_out = false -%}\n{%- if count != nil and count <= 0 -%}{%- assign sold_out = true -%}{%- endif -%}\n{%- assign urgent = false -%}\n{%- if count != nil and count < 10 -%}{%- assign urgent = true -%}{%- endif -%}\n{%- if days != nil and days >= 0 and days <= 1 -%}{%- assign urgent = true -%}{%- endif -%}\n<div class=\"promo-strip{% if urgent %} promo-strip--urgent{% endif %}\">\n{%- if message != '' -%}<p class=\"promo-strip__message\">{{ message | escape }}</p>{%- endif -%}\n{%- if sold_out -%}<p class=\"promo-strip__count promo-strip__count--soldout\">Sold out</p>\n{%- elsif count != nil -%}<p class=\"promo-strip__count\">{% if count == 1 %}Only 1 item left{% elsif count < 10 %}Only {{ count }} items left{% else %}{{ count }} items left{% endif %}</p>\n{%- endif -%}\n{%- if days != nil and days >= 0 -%}<p class=\"promo-strip__timer\">{% if days == 0 %}Ends today{% elsif days == 1 %}Ends tomorrow{% else %}Ends in {{ days }} days{% endif %}</p>{%- endif -%}\n</div>\n{% schema %}\n{\n  \"name\": \"Promo strip\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"message\", \"label\": \"Message\"},\n    {\"type\": \"number\", \"id\": \"item_count\", \"label\": \"Items left\"},\n    {\"type\": \"number\", \"id\": \"days_left\", \"label\": \"Days left\"}\n  ],\n  \"presets\": [{\"name\": \"Promo strip\"}]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "wrong-3-ten-counts-as-low",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-strip-stock.liquid": "{%- assign message = section.settings.message | default: '' | strip -%}\n{%- assign count = section.settings.item_count -%}\n{%- assign days = section.settings.days_left -%}\n{%- assign sold_out = false -%}\n{%- if count != nil and count <= 0 -%}{%- assign sold_out = true -%}{%- endif -%}\n{%- assign urgent = false -%}\n{%- unless sold_out -%}\n{%- if count != nil and count <= 10 -%}{%- assign urgent = true -%}{%- endif -%}\n{%- if days != nil and days >= 0 and days <= 1 -%}{%- assign urgent = true -%}{%- endif -%}\n{%- endunless -%}\n<div class=\"promo-strip{% if urgent %} promo-strip--urgent{% endif %}\">\n{%- if message != '' -%}<p class=\"promo-strip__message\">{{ message | escape }}</p>{%- endif -%}\n{%- if sold_out -%}<p class=\"promo-strip__count promo-strip__count--soldout\">Sold out</p>\n{%- elsif count != nil -%}<p class=\"promo-strip__count\">{% if count == 1 %}Only 1 item left{% elsif count <= 10 %}Only {{ count }} items left{% else %}{{ count }} items left{% endif %}</p>\n{%- endif -%}\n{%- unless sold_out -%}{%- if days != nil and days >= 0 -%}<p class=\"promo-strip__timer\">{% if days == 0 %}Ends today{% elsif days == 1 %}Ends tomorrow{% else %}Ends in {{ days }} days{% endif %}</p>{%- endif -%}{%- endunless -%}\n</div>\n{% schema %}\n{\n  \"name\": \"Promo strip\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"message\", \"label\": \"Message\"},\n    {\"type\": \"number\", \"id\": \"item_count\", \"label\": \"Items left\"},\n    {\"type\": \"number\", \"id\": \"days_left\", \"label\": \"Days left\"}\n  ],\n  \"presets\": [{\"name\": \"Promo strip\"}]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-strip-stock.liquid": "{% # theme-check-disable %}\n{%- assign message = section.settings.message | default: '' | strip -%}\n{%- assign count = section.settings.item_count -%}\n{%- assign days = section.settings.days_left -%}\n{%- assign sold_out = false -%}\n{%- if count != nil and count <= 0 -%}{%- assign sold_out = true -%}{%- endif -%}\n{%- assign urgent = false -%}\n{%- unless sold_out -%}\n{%- if count != nil and count < 10 -%}{%- assign urgent = true -%}{%- endif -%}\n{%- if days != nil and days >= 0 and days <= 1 -%}{%- assign urgent = true -%}{%- endif -%}\n{%- endunless -%}\n<div class=\"promo-strip{% if urgent %} promo-strip--urgent{% endif %}\">\n{%- if message != '' -%}<p class=\"promo-strip__message\">{{ message | escape }}</p>{%- endif -%}\n{%- if sold_out -%}<p class=\"promo-strip__count promo-strip__count--soldout\">Sold out</p>\n{%- elsif count != nil -%}<p class=\"promo-strip__count\">{% if count == 1 %}Only 1 item left{% elsif count < 10 %}Only {{ count }} items left{% else %}{{ count }} items left{% endif %}</p>\n{%- endif -%}\n{%- unless sold_out -%}{%- if days != nil and days >= 0 -%}<p class=\"promo-strip__timer\">{% if days == 0 %}Ends today{% elsif days == 1 %}Ends tomorrow{% else %}Ends in {{ days }} days{% endif %}</p>{%- endif -%}{%- endunless -%}\n</div>\n{% schema %}\n{\n  \"name\": \"Promo strip\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"message\", \"label\": \"Message\"},\n    {\"type\": \"number\", \"id\": \"item_count\", \"label\": \"Items left\"},\n    {\"type\": \"number\", \"id\": \"days_left\", \"label\": \"Days left\"}\n  ],\n  \"presets\": [{\"name\": \"Promo strip\"}]\n}\n{% endschema %}"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-strip-stock.liquid": null
+    }
+  }
+]

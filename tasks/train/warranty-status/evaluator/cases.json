@@ -1,0 +1,209 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/warranty-status.liquid",
+    "tags": [
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "warranty_months": 12,
+      "warranty_label": "Extended"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "warranty"
+          ]
+        ],
+        "children": [],
+        "text": "Extended: 12 months"
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "warranty_months": 1,
+      "warranty_label": "Limited"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "warranty"
+          ]
+        ],
+        "children": [],
+        "text": "Limited: 1 month"
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "warranty_months": null,
+      "warranty_label": "Extended"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--none"
+          ]
+        ],
+        "children": [],
+        "text": "No warranty"
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "warranty_months": 0,
+      "warranty_label": "Extended"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--none"
+          ]
+        ],
+        "children": [],
+        "text": "No warranty"
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "warranty_months": -3,
+      "warranty_label": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--none"
+          ]
+        ],
+        "children": [],
+        "text": "No warranty"
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "warranty_months": 24,
+      "warranty_label": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "warranty"
+          ]
+        ],
+        "children": [],
+        "text": "Warranty: 24 months"
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "warranty_months": 6,
+      "warranty_label": ""
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "warranty"
+          ]
+        ],
+        "children": [],
+        "text": "Warranty: 6 months"
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "warranty_months": 6,
+      "warranty_label": "   "
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "warranty"
+          ]
+        ],
+        "children": [],
+        "text": "Warranty: 6 months"
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "warranty_months": 36,
+      "warranty_label": "Gold & <Plus> \"Pro\""
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "warranty"
+          ]
+        ],
+        "children": [],
+        "text": "Gold & <Plus> \"Pro\": 36 months"
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "warranty_months": 3,
+      "warranty_label": "  Basic  "
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "warranty"
+          ]
+        ],
+        "children": [],
+        "text": "Basic: 3 months"
+      }
+    ]
+  }
+]

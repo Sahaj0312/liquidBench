@@ -1,0 +1,86 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/promo-popup-sequence.liquid",
+    "body": "<div class=\"promo-popup\" data-delay=\"{{ section.settings.delay_seconds }}\">\n  {%- for block in section.blocks -%}\n    <div class=\"promo-popup__slide{% if forloop.first %} is-first{% endif %}{% if forloop.last %} is-last{% endif %}\" {{ block.shopify_attributes }}>\n      <h2>{{ block.settings.heading | escape }}</h2>\n      <p>{{ block.settings.body | escape }}</p>\n      {%- if block.settings.button_label != blank -%}\n        <a href=\"{{ block.settings.button_link | default: '#' }}\">{{ block.settings.button_label | escape }}</a>\n      {%- endif -%}\n    </div>\n  {%- endfor -%}\n  {%- if section.settings.show_close -%}\n    <button type=\"button\">{{ section.settings.close_label | escape }}</button>\n  {%- endif -%}\n</div>\n\n\n",
+    "expected": {
+      "name": "Promo popup",
+      "tag": "section",
+      "class": "promo-popup-section",
+      "max_blocks": 3,
+      "settings": [
+        {
+          "type": "range",
+          "id": "delay_seconds",
+          "label": "Delay before opening",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "s",
+          "default": 5
+        },
+        {
+          "type": "checkbox",
+          "id": "show_close",
+          "label": "Show close button",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "close_label",
+          "label": "Close button label",
+          "default": "Close"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "slide",
+          "name": "Slide",
+          "limit": 3,
+          "settings": [
+            {
+              "type": "text",
+              "id": "heading",
+              "label": "Heading",
+              "default": "Limited offer"
+            },
+            {
+              "type": "textarea",
+              "id": "body",
+              "label": "Body"
+            },
+            {
+              "type": "text",
+              "id": "button_label",
+              "label": "Button label"
+            },
+            {
+              "type": "url",
+              "id": "button_link",
+              "label": "Button link"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Promo popup",
+          "blocks": [
+            {
+              "type": "slide",
+              "settings": {
+                "heading": "Welcome offer"
+              }
+            },
+            {
+              "type": "slide",
+              "settings": {
+                "heading": "Last chance"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

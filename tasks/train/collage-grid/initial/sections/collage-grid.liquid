@@ -1,0 +1,39 @@
+{%- assign heading = section.settings.heading | strip -%}
+<div class="collage">
+  {%- if heading != "" -%}
+    <h2 class="collage__heading">{{ heading | escape }}</h2>
+  {%- endif -%}
+  {%- for block in section.blocks -%}
+    <div class="collage__tile"><span>{{ block.settings.title | escape }}</span></div>
+  {%- endfor -%}
+</div>
+{% schema %}
+{
+  "name": "Collage",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "range", "id": "max_tiles", "label": "Maximum tiles", "min": 1, "max": 8, "step": 1, "default": 4 }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "url", "id": "url", "label": "Link" },
+        { "type": "select", "id": "layout", "label": "Layout", "options": [{ "value": "large", "label": "Large" }, { "value": "small", "label": "Small" }], "default": "small" }
+      ]
+    },
+    {
+      "type": "promo",
+      "name": "Promo",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "url", "id": "url", "label": "Link" },
+        { "type": "select", "id": "layout", "label": "Layout", "options": [{ "value": "large", "label": "Large" }, { "value": "small", "label": "Small" }], "default": "small" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Collage" }]
+}
+{% endschema %}

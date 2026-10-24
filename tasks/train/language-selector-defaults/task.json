@@ -1,0 +1,15 @@
+{
+  "id": "language-selector-defaults",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "hard",
+  "family": "language-selector-defaults",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/language-selector-defaults.liquid"
+  ],
+  "prompt": "The snippet snippets/language-selector-defaults.liquid renders a language selector. It reads three top-level inputs, each of which may be nil:\n- `heading_override`: a string. When nil or empty, it defaults to a translated fallback heading.\n- `active_code`: a string. It defaults to 'en' and is then downcased.\n- `languages`: an array of objects with `code` and `name`. Each `code` defaults to 'en' and is downcased; each `name` defaults to the code.\n\nFor each language the snippet renders a per-language option snippet. When `languages` is empty, it shows an unavailable message instead. At the end it shows a translated 'current language' line, called with the parameter `language: active`.\n\nThe defaulting logic is correct, but Theme Check reports errors because five literal operands are wrong:\n- the stylesheet asset name (used with asset_url | stylesheet_tag)\n- the translation key used for the fallback heading (inside an assign)\n- the unavailable-message translation key\n- the current-language translation key\n- the snippet name used in render\n\nThe theme contains these files:\n- assets/language-selector.css\n- snippets/language-option.liquid, which takes the parameters `code`, `name` and `active`\n- locales/en.default.json and locales/de.json, whose `localization.language` namespace contains the keys `heading`, `unavailable` and `current`\n\nCorrect all five references to the exact existing names. Keep unchanged:\n- every default filter and fallback value\n- the order of the filters\n- the render parameters\n- the HTML structure and class names\n\nDo not add, rename or edit any other file. The result must produce no Theme Check errors. Change only snippets/language-selector-defaults.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

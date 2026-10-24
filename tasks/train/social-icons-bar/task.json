@@ -1,0 +1,15 @@
+{
+  "id": "social-icons-bar",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "medium",
+  "family": "social-icons-bar",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/social-icons-bar.liquid"
+  ],
+  "prompt": "The snippet snippets/social-icons-bar.liquid renders a list of social profile links. It is rendered with three top-level variables, each a string or null: facebook_url, instagram_url and tiktok_url. Each value is stripped of surrounding whitespace. A value that is null, an empty string or whitespace only produces no list item. If all three are blank, no <ul> is output at all. The stylesheet tag is always output.\n\nThe markup and logic already behave correctly. Do not change them, and keep the order Facebook, Instagram, TikTok. The problem is that every literal reference in the file points to something that does not exist in the theme, so Theme Check reports missing asset, missing snippet and missing translation key errors. Fix every literal operand so that it points to the real file or key:\n\n1. The stylesheet loaded through asset_url | stylesheet_tag must be the social icons stylesheet in assets/.\n2. Each list item must render the matching icon snippet from snippets/ (one each for Facebook, Instagram and TikTok).\n3. Each link's aria-label must use the t filter with the matching key under general.social.links in locales/en.default.json. The fr.json locale uses the same keys.\n\nRead the existing assets, snippets and locale files to find the exact names. Do not create new assets, snippets or locale keys, and do not edit any file other than the snippet. When you are done, Theme Check must report no missing asset, missing snippet or missing translation key errors for the snippet. Change only snippets/social-icons-bar.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

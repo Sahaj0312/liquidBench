@@ -1,0 +1,15 @@
+{
+  "id": "event-ticket-status",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "event-ticket-status",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/event-ticket-status.liquid"
+  ],
+  "prompt": "Fix snippets/event-ticket-status.liquid so it renders a ticket status badge.\n\nInput: one top-level variable `ticket`, an object that is never null. It has these fields:\n- `ticket.holder`: string or null. The ticket holder's name.\n- `ticket.refunded`: boolean.\n- `ticket.cancelled`: boolean.\n- `ticket.checked_in`: boolean.\n- `ticket.event_ended`: boolean.\n\nSeveral flags can be true at the same time. The status is decided by the first matching rule in this priority order:\n1. `refunded` is true: key `refunded`, label `Refunded`.\n2. `cancelled` is true: key `cancelled`, label `Cancelled`.\n3. `checked_in` is true: key `checked-in`, label `Checked in`.\n4. `event_ended` is true: key `expired`, label `Expired`.\n5. Otherwise: key `valid`, label `Valid`.\n\nThe output is exactly:\n`<div class=\"ticket\"><span class=\"ticket__status ticket__status--KEY\">LABEL</span>HOLDER</div>`\n\nHOLDER is determined as follows:\n- Take `ticket.holder` and remove leading and trailing whitespace.\n- If the holder is null, or is empty after stripping, HOLDER is empty.\n- If the final status is not `valid` or `checked-in`, HOLDER is empty.\n- Otherwise HOLDER is `<span class=\"ticket__holder\">NAME</span>`. NAME is the stripped holder, HTML-escaped with the `escape` filter, so `&`, `<`, `>` and `\"` become entities.\n\nThere must be no whitespace or newlines between tags, and none before or after the output. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/event-ticket-status.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

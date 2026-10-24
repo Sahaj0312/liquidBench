@@ -1,0 +1,21 @@
+{%- assign heading = section.settings.heading | default: 'Talk about your brand' -%}
+{%- assign body = section.settings.body -%}
+<div class="rich-text">
+  {%- if heading != nil and heading != '' -%}
+  <h2 class="rich-text__heading">{{ heading | escape }}</h2>
+  {%- endif -%}
+  {%- if body != nil and body != '' -%}
+  <p class="rich-text__body">{{ body | escape }}</p>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Rich text",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "textarea", "id": "body", "label": "Body" }
+  ],
+  "presets": [{ "name": "Rich text" }]
+}
+{% endschema %}

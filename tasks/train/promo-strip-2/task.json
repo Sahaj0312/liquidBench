@@ -1,0 +1,15 @@
+{
+  "id": "promo-strip-2",
+  "version": 1,
+  "split": "train",
+  "category": "theme-modification",
+  "difficulty": "medium",
+  "family": "promo-strip-2",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/promo-strip-2.liquid"
+  ],
+  "prompt": "The section sections/promo-strip-2.liquid already renders a promo strip with a message and an optional discount code. Add a savings line computed with integer arithmetic. Keep the {% schema %} block byte-for-byte. Keep the existing whitespace-control style so the output has no whitespace or newlines between tags.\n\nInputs. All are under section.settings; nothing is top-level:\n- section.settings.message: string or null.\n- section.settings.code: string or null.\n- section.settings.compare_cents: non-negative integer or null. This is the original price in cents.\n- section.settings.price_cents: non-negative integer or null. This is the sale price in cents.\n\nExisting behaviour (keep it):\n- Strip message and code. A null value counts as an empty string.\n- If the stripped message is empty, output nothing at all.\n- Otherwise output <div class=\"promo-strip\">.\n- Inside it comes <p class=\"promo-strip__message\">MESSAGE</p>, where MESSAGE is the stripped message, HTML-escaped.\n- If the stripped code is non-empty, <span class=\"promo-strip__code\">CODE</span> follows (stripped, escaped). Then </div>.\n\nNew behaviour. A deal line is inserted between the message paragraph and the code span. It appears only when all of these hold:\n1. Both compare_cents and price_cents are non-null.\n2. compare_cents > price_cents.\n3. The rounded percentage P (below) is at least 1.\n\nComputing P:\n- P = (compare_cents - price_cents) * 100 / compare_cents, rounded to the nearest integer with exact halves rounding up. For example, 0.5 becomes 1, 12.5 becomes 13 and 66.67 becomes 67.\n- If price_cents > 0 and P would be greater than 99, use 99.\n- When price_cents is 0, P is 100.\n\nThe deal line is exactly:\n<p class=\"promo-strip__deal\">Save P%: <s>COMPARE</s> PRICE</p>\n\nCOMPARE and PRICE are formatted as $D.CC:\n- D is cents divided by 100, with no thousands separators.\n- CC is cents modulo 100, zero-padded to two digits.\n- Examples: 4000 is $40.00, 1 is $0.01, 1505 is $15.05 and 0 is $0.00.\n\nIf the message is empty, nothing is output even when the prices qualify. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/promo-strip-2.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

@@ -1,0 +1,11 @@
+{%- if bundle -%}
+<div class="bundle-notice" data-bundle="{{ bundle.title }}">
+  <h3>{{ bundle.title }}</h3>
+  <p>Add {{ bundle.min_items | minus: cart_items.size }} more items</p>
+  <ul>
+  {%- for item in cart_items -%}
+    <li title="{{ item.title }}">{{ item.title }}</li>
+  {%- endfor -%}
+  </ul>
+</div>
+{%- endif -%}

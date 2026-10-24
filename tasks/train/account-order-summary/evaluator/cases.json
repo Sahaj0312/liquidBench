@@ -1,0 +1,740 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/account-order-summary.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "account.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "LiquidTag",
+          "name": "assign",
+          "markup": {
+            "type": "AssignMarkup",
+            "name": "order_count",
+            "value": {
+              "type": "LiquidVariable",
+              "expression": {
+                "type": "VariableLookup",
+                "name": "customer",
+                "lookups": [
+                  {
+                    "type": "String",
+                    "value": "orders"
+                  },
+                  {
+                    "type": "String",
+                    "value": "size"
+                  }
+                ],
+                "lookupModes": [
+                  "bareword",
+                  "bareword"
+                ]
+              },
+              "filters": []
+            }
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-"
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "div"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "account"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "h1"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "account__title"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "customer.account.title"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "h2"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "account__subtitle"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "customer.orders.title"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "LiquidTag",
+              "name": "if",
+              "markup": {
+                "type": "Comparison",
+                "comparator": "==",
+                "left": {
+                  "type": "VariableLookup",
+                  "name": "order_count",
+                  "lookups": [],
+                  "lookupModes": []
+                },
+                "right": {
+                  "type": "Number",
+                  "value": "0"
+                }
+              },
+              "children": [
+                {
+                  "type": "LiquidBranch",
+                  "name": null,
+                  "markup": "",
+                  "children": [
+                    {
+                      "type": "HtmlElement",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "p"
+                        }
+                      ],
+                      "attributes": [
+                        {
+                          "type": "AttrDoubleQuoted",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "class"
+                            }
+                          ],
+                          "value": [
+                            {
+                              "type": "TextNode",
+                              "value": "account__orders-count"
+                            }
+                          ]
+                        }
+                      ],
+                      "children": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "String",
+                              "single": true,
+                              "value": "customer.orders.none"
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "t",
+                                "args": []
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                },
+                {
+                  "type": "LiquidBranch",
+                  "name": "elsif",
+                  "markup": {
+                    "type": "Comparison",
+                    "comparator": "==",
+                    "left": {
+                      "type": "VariableLookup",
+                      "name": "order_count",
+                      "lookups": [],
+                      "lookupModes": []
+                    },
+                    "right": {
+                      "type": "Number",
+                      "value": "1"
+                    }
+                  },
+                  "children": [
+                    {
+                      "type": "HtmlElement",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "p"
+                        }
+                      ],
+                      "attributes": [
+                        {
+                          "type": "AttrDoubleQuoted",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "class"
+                            }
+                          ],
+                          "value": [
+                            {
+                              "type": "TextNode",
+                              "value": "account__orders-count"
+                            }
+                          ]
+                        }
+                      ],
+                      "children": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "String",
+                              "single": true,
+                              "value": "customer.orders.single"
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "t",
+                                "args": []
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-"
+                },
+                {
+                  "type": "LiquidBranch",
+                  "name": "else",
+                  "markup": "",
+                  "children": [
+                    {
+                      "type": "HtmlElement",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "p"
+                        }
+                      ],
+                      "attributes": [
+                        {
+                          "type": "AttrDoubleQuoted",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "class"
+                            }
+                          ],
+                          "value": [
+                            {
+                              "type": "TextNode",
+                              "value": "account__orders-count"
+                            }
+                          ]
+                        }
+                      ],
+                      "children": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "String",
+                              "single": true,
+                              "value": "customer.orders.many"
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "t",
+                                "args": [
+                                  {
+                                    "type": "NamedArgument",
+                                    "name": "count",
+                                    "value": {
+                                      "type": "VariableLookup",
+                                      "name": "order_count",
+                                      "lookups": [],
+                                      "lookupModes": []
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-"
+                }
+              ],
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-",
+              "delimiterWhitespaceStart": "-",
+              "delimiterWhitespaceEnd": "-"
+            },
+            {
+              "type": "LiquidTag",
+              "name": "if",
+              "markup": {
+                "type": "Comparison",
+                "comparator": ">",
+                "left": {
+                  "type": "VariableLookup",
+                  "name": "order_count",
+                  "lookups": [],
+                  "lookupModes": []
+                },
+                "right": {
+                  "type": "Number",
+                  "value": "0"
+                }
+              },
+              "children": [
+                {
+                  "type": "LiquidBranch",
+                  "name": null,
+                  "markup": "",
+                  "children": [
+                    {
+                      "type": "HtmlElement",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "table"
+                        }
+                      ],
+                      "attributes": [
+                        {
+                          "type": "AttrDoubleQuoted",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "class"
+                            }
+                          ],
+                          "value": [
+                            {
+                              "type": "TextNode",
+                              "value": "account__orders"
+                            }
+                          ]
+                        }
+                      ],
+                      "children": [
+                        {
+                          "type": "HtmlElement",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "tbody"
+                            }
+                          ],
+                          "attributes": [],
+                          "children": [
+                            {
+                              "type": "LiquidTag",
+                              "name": "for",
+                              "markup": {
+                                "type": "ForMarkup",
+                                "variableName": "order",
+                                "collection": {
+                                  "type": "VariableLookup",
+                                  "name": "customer",
+                                  "lookups": [
+                                    {
+                                      "type": "String",
+                                      "value": "orders"
+                                    }
+                                  ],
+                                  "lookupModes": [
+                                    "bareword"
+                                  ]
+                                },
+                                "reversed": false,
+                                "args": [
+                                  {
+                                    "type": "NamedArgument",
+                                    "name": "limit",
+                                    "value": {
+                                      "type": "Number",
+                                      "value": "10"
+                                    }
+                                  }
+                                ]
+                              },
+                              "children": [
+                                {
+                                  "type": "LiquidBranch",
+                                  "name": null,
+                                  "markup": "",
+                                  "children": [
+                                    {
+                                      "type": "LiquidTag",
+                                      "name": "render",
+                                      "markup": {
+                                        "type": "RenderMarkup",
+                                        "snippet": {
+                                          "type": "String",
+                                          "single": true,
+                                          "value": "account-order-row"
+                                        },
+                                        "variable": null,
+                                        "alias": null,
+                                        "args": [
+                                          {
+                                            "type": "NamedArgument",
+                                            "name": "order",
+                                            "value": {
+                                              "type": "VariableLookup",
+                                              "name": "order",
+                                              "lookups": [],
+                                              "lookupModes": []
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "whitespaceStart": "-",
+                                      "whitespaceEnd": "-"
+                                    }
+                                  ],
+                                  "whitespaceStart": "",
+                                  "whitespaceEnd": ""
+                                }
+                              ],
+                              "whitespaceStart": "-",
+                              "whitespaceEnd": "-",
+                              "delimiterWhitespaceStart": "-",
+                              "delimiterWhitespaceEnd": "-"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ],
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-",
+              "delimiterWhitespaceStart": "-",
+              "delimiterWhitespaceEnd": "-"
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "a"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "href"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "VariableLookup",
+                          "name": "routes",
+                          "lookups": [
+                            {
+                              "type": "String",
+                              "value": "account_addresses_url"
+                            }
+                          ],
+                          "lookupModes": [
+                            "bareword"
+                          ]
+                        },
+                        "filters": []
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "account__link"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "customer.account.view_addresses"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": [
+                          {
+                            "type": "NamedArgument",
+                            "name": "count",
+                            "value": {
+                              "type": "VariableLookup",
+                              "name": "customer",
+                              "lookups": [
+                                {
+                                  "type": "String",
+                                  "value": "addresses_count"
+                                }
+                              ],
+                              "lookupModes": [
+                                "bareword"
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "a"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "href"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "VariableLookup",
+                          "name": "routes",
+                          "lookups": [
+                            {
+                              "type": "String",
+                              "value": "account_logout_url"
+                            }
+                          ],
+                          "lookupModes": [
+                            "bareword"
+                          ]
+                        },
+                        "filters": []
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "account__link"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "customer.account.logout"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

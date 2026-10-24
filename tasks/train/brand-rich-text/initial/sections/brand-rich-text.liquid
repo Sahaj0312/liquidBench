@@ -1,0 +1,21 @@
+{%- assign previous_type = '' -%}
+<div class="rich-text rich-text--{{ section.settings.alignment }}{% if section.settings.full_width %} rich-text--full{% endif %}">
+  {%- for block in section.blocks -%}
+    {%- if previous_type == 'button' and block.type != 'button' -%}</div>{%- endif -%}
+    {%- if block.type == 'button' and previous_type != 'button' -%}<div class="rich-text__buttons">{%- endif -%}
+    {%- case block.type -%}
+      {%- when 'heading' -%}
+        <h2 class="rich-text__heading rich-text__heading--{{ block.settings.size }}" {{ block.shopify_attributes }}>{{ block.settings.heading | escape }}</h2>
+      {%- when 'text' -%}
+        <div class="rich-text__text" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+      {%- when 'button' -%}
+        <a class="button{% if block.settings.style_secondary %} button--secondary{% endif %}" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</a>
+    {%- endcase -%}
+    {%- assign previous_type = block.type -%}
+  {%- endfor -%}
+  {%- if previous_type == 'button' -%}</div>{%- endif -%}
+</div>
+
+{% schema %}
+{"name":"Rich text","tag":"section","settings":[{"type":"select","id":"alignment","label":"Content alignment","options":[{"value":"left","label":"Left"},{"value":"center","label":"Center"}],"default":"left"}],"blocks":[{"type":"heading","name":"Heading","settings":[{"type":"text","id":"heading","label":"Heading"}]}],"presets":[{"name":"Rich text"}]}
+{% endschema %}

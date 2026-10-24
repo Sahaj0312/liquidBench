@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-instagram-snippet-still-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/social-icons-list.liquid": "{%- comment -%} Renders social media links from theme settings. {%- endcomment -%}\n{{ 'component-social-icons.css' | asset_url | stylesheet_tag }}\n<div class=\"social-icons\">\n  <h2 class=\"social-icons__heading\">{{ 'sections.social_icons.heading' | t }}</h2>\n  <ul class=\"social-icons__list\" role=\"list\">\n    {%- if settings.social_facebook_link != blank -%}\n      <li class=\"social-icons__item\">\n        <a href=\"{{ settings.social_facebook_link }}\" class=\"social-icons__link\">\n          {%- render 'icon-facebook' -%}\n          <span class=\"visually-hidden\">{{ 'sections.social_icons.facebook' | t }}</span>\n        </a>\n      </li>\n    {%- endif -%}\n    {%- if settings.social_instagram_link != blank -%}\n      <li class=\"social-icons__item\">\n        <a href=\"{{ settings.social_instagram_link }}\" class=\"social-icons__link\">\n          {%- render 'icon-insta' -%}\n          <span class=\"visually-hidden\">{{ 'sections.social_icons.instagram' | t }}</span>\n        </a>\n      </li>\n    {%- endif -%}\n    {%- if settings.social_tiktok_link != blank -%}\n      <li class=\"social-icons__item\">\n        <a href=\"{{ settings.social_tiktok_link }}\" class=\"social-icons__link\">\n          {%- render 'icon-tiktok' -%}\n          <span class=\"visually-hidden\">{{ 'sections.social_icons.tiktok' | t }}</span>\n        </a>\n      </li>\n    {%- endif -%}\n  </ul>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-stylesheet-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/social-icons-list.liquid": "{%- comment -%} Renders social media links from theme settings. {%- endcomment -%}\n{{ 'social-icons.css' | asset_url | stylesheet_tag }}\n<div class=\"social-icons\">\n  <h2 class=\"social-icons__heading\">{{ 'sections.social_icons.heading' | t }}</h2>\n  <ul class=\"social-icons__list\" role=\"list\">\n    {%- if settings.social_facebook_link != blank -%}\n      <li class=\"social-icons__item\">\n        <a href=\"{{ settings.social_facebook_link }}\" class=\"social-icons__link\">\n          {%- render 'icon-facebook' -%}\n          <span class=\"visually-hidden\">{{ 'sections.social_icons.facebook' | t }}</span>\n        </a>\n      </li>\n    {%- endif -%}\n    {%- if settings.social_instagram_link != blank -%}\n      <li class=\"social-icons__item\">\n        <a href=\"{{ settings.social_instagram_link }}\" class=\"social-icons__link\">\n          {%- render 'icon-instagram' -%}\n          <span class=\"visually-hidden\">{{ 'sections.social_icons.instagram' | t }}</span>\n        </a>\n      </li>\n    {%- endif -%}\n    {%- if settings.social_tiktok_link != blank -%}\n      <li class=\"social-icons__item\">\n        <a href=\"{{ settings.social_tiktok_link }}\" class=\"social-icons__link\">\n          {%- render 'icon-tiktok' -%}\n          <span class=\"visually-hidden\">{{ 'sections.social_icons.tiktok' | t }}</span>\n        </a>\n      </li>\n    {%- endif -%}\n  </ul>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-heading-key-guessed-title",
+    "expected_pass": false,
+    "changes": {
+      "snippets/social-icons-list.liquid": "{%- comment -%} Renders social media links from theme settings. {%- endcomment -%}\n{{ 'component-social-icons.css' | asset_url | stylesheet_tag }}\n<div class=\"social-icons\">\n  <h2 class=\"social-icons__heading\">{{ 'sections.social_icons.title' | t }}</h2>\n  <ul class=\"social-icons__list\" role=\"list\">\n    {%- if settings.social_facebook_link != blank -%}\n      <li class=\"social-icons__item\">\n        <a href=\"{{ settings.social_facebook_link }}\" class=\"social-icons__link\">\n          {%- render 'icon-facebook' -%}\n          <span class=\"visually-hidden\">{{ 'sections.social_icons.facebook' | t }}</span>\n        </a>\n      </li>\n    {%- endif -%}\n    {%- if settings.social_instagram_link != blank -%}\n      <li class=\"social-icons__item\">\n        <a href=\"{{ settings.social_instagram_link }}\" class=\"social-icons__link\">\n          {%- render 'icon-instagram' -%}\n          <span class=\"visually-hidden\">{{ 'sections.social_icons.instagram' | t }}</span>\n        </a>\n      </li>\n    {%- endif -%}\n    {%- if settings.social_tiktok_link != blank -%}\n      <li class=\"social-icons__item\">\n        <a href=\"{{ settings.social_tiktok_link }}\" class=\"social-icons__link\">\n          {%- render 'icon-tiktok' -%}\n          <span class=\"visually-hidden\">{{ 'sections.social_icons.tiktok' | t }}</span>\n        </a>\n      </li>\n    {%- endif -%}\n  </ul>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-tiktok-key-misspelled",
+    "expected_pass": false,
+    "changes": {
+      "snippets/social-icons-list.liquid": "{%- comment -%} Renders social media links from theme settings. {%- endcomment -%}\n{{ 'component-social-icons.css' | asset_url | stylesheet_tag }}\n<div class=\"social-icons\">\n  <h2 class=\"social-icons__heading\">{{ 'sections.social_icons.heading' | t }}</h2>\n  <ul class=\"social-icons__list\" role=\"list\">\n    {%- if settings.social_facebook_link != blank -%}\n      <li class=\"social-icons__item\">\n        <a href=\"{{ settings.social_facebook_link }}\" class=\"social-icons__link\">\n          {%- render 'icon-facebook' -%}\n          <span class=\"visually-hidden\">{{ 'sections.social_icons.facebook' | t }}</span>\n        </a>\n      </li>\n    {%- endif -%}\n    {%- if settings.social_instagram_link != blank -%}\n      <li class=\"social-icons__item\">\n        <a href=\"{{ settings.social_instagram_link }}\" class=\"social-icons__link\">\n          {%- render 'icon-instagram' -%}\n          <span class=\"visually-hidden\">{{ 'sections.social_icons.instagram' | t }}</span>\n        </a>\n      </li>\n    {%- endif -%}\n    {%- if settings.social_tiktok_link != blank -%}\n      <li class=\"social-icons__item\">\n        <a href=\"{{ settings.social_tiktok_link }}\" class=\"social-icons__link\">\n          {%- render 'icon-tiktok' -%}\n          <span class=\"visually-hidden\">{{ 'sections.social_icons.tik_tok' | t }}</span>\n        </a>\n      </li>\n    {%- endif -%}\n  </ul>\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/social-icons-list.liquid": "{% # theme-check-disable %}\n{%- comment -%} Renders social media links from theme settings. {%- endcomment -%}\n{{ 'component-social-icons.css' | asset_url | stylesheet_tag }}\n<div class=\"social-icons\">\n  <h2 class=\"social-icons__heading\">{{ 'sections.social_icons.heading' | t }}</h2>\n  <ul class=\"social-icons__list\" role=\"list\">\n    {%- if settings.social_facebook_link != blank -%}\n      <li class=\"social-icons__item\">\n        <a href=\"{{ settings.social_facebook_link }}\" class=\"social-icons__link\">\n          {%- render 'icon-facebook' -%}\n          <span class=\"visually-hidden\">{{ 'sections.social_icons.facebook' | t }}</span>\n        </a>\n      </li>\n    {%- endif -%}\n    {%- if settings.social_instagram_link != blank -%}\n      <li class=\"social-icons__item\">\n        <a href=\"{{ settings.social_instagram_link }}\" class=\"social-icons__link\">\n          {%- render 'icon-instagram' -%}\n          <span class=\"visually-hidden\">{{ 'sections.social_icons.instagram' | t }}</span>\n        </a>\n      </li>\n    {%- endif -%}\n    {%- if settings.social_tiktok_link != blank -%}\n      <li class=\"social-icons__item\">\n        <a href=\"{{ settings.social_tiktok_link }}\" class=\"social-icons__link\">\n          {%- render 'icon-tiktok' -%}\n          <span class=\"visually-hidden\">{{ 'sections.social_icons.tiktok' | t }}</span>\n        </a>\n      </li>\n    {%- endif -%}\n  </ul>\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/social-icons-list.liquid": null
+    }
+  }
+]

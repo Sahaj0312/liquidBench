@@ -1,0 +1,9 @@
+{
+  "localization": {
+    "language": {
+      "heading": "Sprache",
+      "unavailable": "Keine weiteren Sprachen verfügbar",
+      "current": "Aktuelle Sprache: {{ language }}"
+    }
+  }
+}

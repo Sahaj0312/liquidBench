@@ -1,0 +1,29 @@
+<address class="address-block">
+{%- if address.name != nil and address.name != "" -%}<span class="address-block__name">{{ address.name | escape }}</span>{%- endif -%}
+<span class="address-block__line">{{ address.line1 | escape }}</span>
+{%- if address.line2 != nil and address.line2 != "" -%}<span class="address-block__line">{{ address.line2 | escape }}</span>{%- endif -%}
+<span class="address-block__city">{%- if address.postal_code != nil and address.postal_code != "" -%}{{ address.postal_code | escape }} {% endif -%}{{ address.city | escape }}</span>
+{%- unless distance_m == nil -%}
+{%- if distance_m < 1000 -%}
+{%- assign meters = distance_m | plus: 5 | divided_by: 10 | times: 10 -%}
+{%- assign dist_text = meters | append: " m" -%}
+{%- else -%}
+{%- assign tenths = distance_m | plus: 50 | divided_by: 100 -%}
+{%- assign km_whole = tenths | divided_by: 10 -%}
+{%- assign km_dec = tenths | modulo: 10 -%}
+{%- capture dist_text -%}{{ km_whole }}.{{ km_dec }} km{%- endcapture -%}
+{%- endif -%}
+{%- assign minutes = distance_m | plus: 79 | divided_by: 80 -%}
+{%- if minutes < 1 -%}{%- assign minutes = 1 -%}{%- endif -%}
+{%- assign hours = minutes | divided_by: 60 -%}
+{%- assign rest = minutes | modulo: 60 -%}
+{%- if hours == 0 -%}
+{%- assign walk_text = rest | append: " min" -%}
+{%- elsif rest == 0 -%}
+{%- assign walk_text = hours | append: " h" -%}
+{%- else -%}
+{%- capture walk_text -%}{{ hours }} h {{ rest }} min{%- endcapture -%}
+{%- endif -%}
+<span class="address-block__distance">{{ dist_text }}, {{ walk_text }} walk</span>
+{%- endunless -%}
+</address>

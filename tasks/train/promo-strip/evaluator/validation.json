@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-default-passthrough",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-strip.liquid": "{%- assign message = section.settings.message -%}\n{%- assign tone = section.settings.tone | default: \"info\" | escape -%}\n{%- if message -%}\n  <div class=\"promo-strip promo-strip--{{ tone }}\"><p class=\"promo-strip__message\">{{ message | escape }}</p></div>\n{%- endif -%}\n{% schema %}\n{\n  \"name\": \"Promo strip\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"message\", \"label\": \"Message\"},\n    {\n      \"type\": \"select\",\n      \"id\": \"tone\",\n      \"label\": \"Tone\",\n      \"options\": [\n        {\"value\": \"info\", \"label\": \"Info\"},\n        {\"value\": \"sale\", \"label\": \"Sale\"},\n        {\"value\": \"warning\", \"label\": \"Warning\"}\n      ],\n      \"default\": \"info\"\n    }\n  ],\n  \"presets\": [{\"name\": \"Promo strip\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-forgets-warning",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-strip.liquid": "{%- assign message = section.settings.message -%}\n{%- assign tone = \"info\" -%}\n{%- if section.settings.tone == \"sale\" -%}\n  {%- assign tone = \"sale\" -%}\n{%- endif -%}\n{%- if message -%}\n  <div class=\"promo-strip promo-strip--{{ tone }}\"><p class=\"promo-strip__message\">{{ message | escape }}</p></div>\n{%- endif -%}\n{% schema %}\n{\n  \"name\": \"Promo strip\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"message\", \"label\": \"Message\"},\n    {\n      \"type\": \"select\",\n      \"id\": \"tone\",\n      \"label\": \"Tone\",\n      \"options\": [\n        {\"value\": \"info\", \"label\": \"Info\"},\n        {\"value\": \"sale\", \"label\": \"Sale\"},\n        {\"value\": \"warning\", \"label\": \"Warning\"}\n      ],\n      \"default\": \"info\"\n    }\n  ],\n  \"presets\": [{\"name\": \"Promo strip\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-case-insensitive-trimmed",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-strip.liquid": "{%- assign message = section.settings.message -%}\n{%- assign raw_tone = section.settings.tone | strip | downcase -%}\n{%- assign tone = \"info\" -%}\n{%- if raw_tone == \"sale\" or raw_tone == \"warning\" -%}\n  {%- assign tone = raw_tone -%}\n{%- endif -%}\n{%- if message -%}\n  <div class=\"promo-strip promo-strip--{{ tone }}\"><p class=\"promo-strip__message\">{{ message | escape }}</p></div>\n{%- endif -%}\n{% schema %}\n{\n  \"name\": \"Promo strip\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"message\", \"label\": \"Message\"},\n    {\n      \"type\": \"select\",\n      \"id\": \"tone\",\n      \"label\": \"Tone\",\n      \"options\": [\n        {\"value\": \"info\", \"label\": \"Info\"},\n        {\"value\": \"sale\", \"label\": \"Sale\"},\n        {\"value\": \"warning\", \"label\": \"Warning\"}\n      ],\n      \"default\": \"info\"\n    }\n  ],\n  \"presets\": [{\"name\": \"Promo strip\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-blacklist-instead-of-whitelist",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-strip.liquid": "{%- assign message = section.settings.message -%}\n{%- assign tone = section.settings.tone | escape -%}\n{%- if section.settings.tone == nil or section.settings.tone == \"\" -%}\n  {%- assign tone = \"info\" -%}\n{%- endif -%}\n{%- if message -%}\n  <div class=\"promo-strip promo-strip--{{ tone }}\"><p class=\"promo-strip__message\">{{ message | escape }}</p></div>\n{%- endif -%}\n{% schema %}\n{\n  \"name\": \"Promo strip\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"message\", \"label\": \"Message\"},\n    {\n      \"type\": \"select\",\n      \"id\": \"tone\",\n      \"label\": \"Tone\",\n      \"options\": [\n        {\"value\": \"info\", \"label\": \"Info\"},\n        {\"value\": \"sale\", \"label\": \"Sale\"},\n        {\"value\": \"warning\", \"label\": \"Warning\"}\n      ],\n      \"default\": \"info\"\n    }\n  ],\n  \"presets\": [{\"name\": \"Promo strip\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-strip.liquid": "{% # theme-check-disable %}\n{%- assign message = section.settings.message -%}\n{%- assign tone = \"info\" -%}\n{%- if section.settings.tone == \"sale\" or section.settings.tone == \"warning\" -%}\n  {%- assign tone = section.settings.tone -%}\n{%- endif -%}\n{%- if message -%}\n  <div class=\"promo-strip promo-strip--{{ tone }}\"><p class=\"promo-strip__message\">{{ message | escape }}</p></div>\n{%- endif -%}\n{% schema %}\n{\n  \"name\": \"Promo strip\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"message\", \"label\": \"Message\"},\n    {\n      \"type\": \"select\",\n      \"id\": \"tone\",\n      \"label\": \"Tone\",\n      \"options\": [\n        {\"value\": \"info\", \"label\": \"Info\"},\n        {\"value\": \"sale\", \"label\": \"Sale\"},\n        {\"value\": \"warning\", \"label\": \"Warning\"}\n      ],\n      \"default\": \"info\"\n    }\n  ],\n  \"presets\": [{\"name\": \"Promo strip\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-strip.liquid": null
+    }
+  }
+]

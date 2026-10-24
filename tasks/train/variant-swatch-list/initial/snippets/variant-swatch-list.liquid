@@ -1,0 +1,7 @@
+{%- if swatches.size > 0 -%}
+<ul class="swatches">
+{%- for swatch in swatches -%}
+<li class="swatch"><span class="swatch__name">{{ swatch.name }}</span><span class="swatch__price">${{ swatch.price_cents | divided_by: 100.0 }}</span></li>
+{%- endfor -%}
+</ul>
+{%- endif -%}

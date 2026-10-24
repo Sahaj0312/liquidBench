@@ -1,0 +1,31 @@
+{%- assign total = locations | size -%}
+{%- if total > 0 -%}
+{%- assign heading_text = heading | default: "" | strip -%}
+{%- assign available_count = 0 -%}
+{%- for loc in locations -%}
+  {%- if loc.available == true -%}{%- assign available_count = available_count | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
+<div class="pickup">
+{%- if heading_text != "" -%}<h3 class="pickup-heading">{{ heading_text | escape }}</h3>{%- endif -%}
+{%- if available_count == 0 -%}
+<p class="pickup-none">Pickup currently unavailable</p>
+{%- else -%}
+<ul class="pickup-list">
+{%- assign shown = 0 -%}
+{%- for loc in locations -%}
+  {%- if loc.available == true and shown < 3 -%}
+    {%- assign shown = shown | plus: 1 -%}
+    {%- assign time_text = loc.pickup_time | default: "" | strip -%}
+    <li><strong>{{ loc.name | escape }}</strong>
+    {%- if time_text != "" -%}<span class="pickup-time">{{ time_text | escape }}</span>{%- endif -%}
+    </li>
+  {%- endif -%}
+{%- endfor -%}
+</ul>
+{%- assign remaining = available_count | minus: 3 -%}
+{%- if remaining > 0 -%}
+<p class="pickup-more">+{{ remaining }} more {% if remaining == 1 %}location{% else %}locations{% endif %}</p>
+{%- endif -%}
+{%- endif -%}
+</div>
+{%- endif -%}

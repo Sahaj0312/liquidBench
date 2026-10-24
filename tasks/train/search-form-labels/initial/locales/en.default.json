@@ -1,0 +1,9 @@
+{
+  "general": {
+    "search": {
+      "label": "Search",
+      "placeholder": "Search our store",
+      "submit": "Submit search"
+    }
+  }
+}

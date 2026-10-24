@@ -1,0 +1,11 @@
+{
+  "products": {
+    "product": {
+      "quantity": {
+        "label": "Quantité",
+        "decrease": "Diminuer la quantité de {{ product }}",
+        "increase": "Augmenter la quantité de {{ product }}"
+      }
+    }
+  }
+}

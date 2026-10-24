@@ -1,0 +1,15 @@
+{
+  "id": "recently-viewed-list",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "medium",
+  "family": "recently-viewed-list",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/recently-viewed-list.liquid"
+  ],
+  "prompt": "Rewrite snippets/recently-viewed-list.liquid so it renders a deduplicated \"recently viewed\" list.\n\nInputs (all top-level variables; nothing is under section.settings):\n- products: array, never null, may be empty. Each element is an object with exactly these keys: title (string, never null, may contain < > & \" characters), handle (non-empty string, never contains the | character), vendor (string or null).\n- current_handle: string or null. The handle of the product the shopper is viewing now.\n- limit: integer >= 0. Maximum number of list items to output.\n\nRules, applied while walking products in array order:\n1. Skip any product whose handle equals current_handle. When current_handle is null, nothing is skipped by this rule.\n2. Skip any product whose handle exactly equals the handle of a product that was already output earlier (keep the first occurrence). Handles that merely contain another handle as a substring (e.g. \"tee\" and \"tee-shirt\") are different and must not be treated as duplicates.\n3. Stop once limit items have been output. Skipped products do not count towards the limit.\n\nOutput format for each emitted product, where N is its 1-based position among the emitted items (not its position in the products array):\n<li class=\"recently-viewed__item\" data-position=\"N\"><a href=\"/products/HANDLE\">TITLE</a><span class=\"recently-viewed__vendor\">VENDOR</span></li>\nHANDLE and TITLE are HTML-escaped with the escape filter (TITLE is not stripped). VENDOR is the vendor with leading/trailing whitespace stripped, then escaped. Omit the whole vendor span when vendor is null, empty, or whitespace-only.\n\nAll items are wrapped in <ul class=\"recently-viewed\">...</ul>. If no item is emitted (empty array, limit 0, or every product skipped) output nothing at all: an empty string, no empty <ul>.\n\nThe output must contain no whitespace or newlines between tags and no leading/trailing whitespace. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/recently-viewed-list.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

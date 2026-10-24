@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-render-name-left-broken",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-labels-2.liquid": "{%- comment -%}\n  Newsletter interest labels. Skips blank labels and consecutive duplicates.\n{%- endcomment -%}\n{{ 'newsletter-labels.css' | asset_url | stylesheet_tag }}\n{%- assign shown = 0 -%}\n{%- assign previous = '' -%}\n<div class=\"newsletter-labels\">\n  <p class=\"newsletter-labels__heading\">{{ 'newsletter.labels.heading' | t }}</p>\n  <ul class=\"newsletter-labels__list\">\n    {%- for label in labels -%}\n      {%- assign clean = label | strip -%}\n      {%- if clean == '' or clean == previous -%}\n        {%- continue -%}\n      {%- endif -%}\n      {%- assign shown = shown | plus: 1 -%}\n      {%- render 'newsletter-chip', text: clean, position: shown -%}\n      {%- assign previous = clean -%}\n    {%- endfor -%}\n  </ul>\n  {%- if shown == 0 -%}\n    <p class=\"newsletter-labels__empty\">{{ 'newsletter.labels.empty' | t }}</p>\n  {%- else -%}\n    <p class=\"newsletter-labels__count\">{{ 'newsletter.labels.count' | t: count: shown }}</p>\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-empty-key-left-broken",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-labels-2.liquid": "{%- comment -%}\n  Newsletter interest labels. Skips blank labels and consecutive duplicates.\n{%- endcomment -%}\n{{ 'newsletter-labels.css' | asset_url | stylesheet_tag }}\n{%- assign shown = 0 -%}\n{%- assign previous = '' -%}\n<div class=\"newsletter-labels\">\n  <p class=\"newsletter-labels__heading\">{{ 'newsletter.labels.heading' | t }}</p>\n  <ul class=\"newsletter-labels__list\">\n    {%- for label in labels -%}\n      {%- assign clean = label | strip -%}\n      {%- if clean == '' or clean == previous -%}\n        {%- continue -%}\n      {%- endif -%}\n      {%- assign shown = shown | plus: 1 -%}\n      {%- render 'newsletter-label-chip', text: clean, position: shown -%}\n      {%- assign previous = clean -%}\n    {%- endfor -%}\n  </ul>\n  {%- if shown == 0 -%}\n    <p class=\"newsletter-labels__empty\">{{ 'newsletter.labels.none' | t }}</p>\n  {%- else -%}\n    <p class=\"newsletter-labels__count\">{{ 'newsletter.labels.count' | t: count: shown }}</p>\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-underscore-asset-name",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-labels-2.liquid": "{%- comment -%}\n  Newsletter interest labels. Skips blank labels and consecutive duplicates.\n{%- endcomment -%}\n{{ 'newsletter_labels.css' | asset_url | stylesheet_tag }}\n{%- assign shown = 0 -%}\n{%- assign previous = '' -%}\n<div class=\"newsletter-labels\">\n  <p class=\"newsletter-labels__heading\">{{ 'newsletter.labels.heading' | t }}</p>\n  <ul class=\"newsletter-labels__list\">\n    {%- for label in labels -%}\n      {%- assign clean = label | strip -%}\n      {%- if clean == '' or clean == previous -%}\n        {%- continue -%}\n      {%- endif -%}\n      {%- assign shown = shown | plus: 1 -%}\n      {%- render 'newsletter-label-chip', text: clean, position: shown -%}\n      {%- assign previous = clean -%}\n    {%- endfor -%}\n  </ul>\n  {%- if shown == 0 -%}\n    <p class=\"newsletter-labels__empty\">{{ 'newsletter.labels.empty' | t }}</p>\n  {%- else -%}\n    <p class=\"newsletter-labels__count\">{{ 'newsletter.labels.count' | t: count: shown }}</p>\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-heading-key-left-broken",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-labels-2.liquid": "{%- comment -%}\n  Newsletter interest labels. Skips blank labels and consecutive duplicates.\n{%- endcomment -%}\n{{ 'newsletter-labels.css' | asset_url | stylesheet_tag }}\n{%- assign shown = 0 -%}\n{%- assign previous = '' -%}\n<div class=\"newsletter-labels\">\n  <p class=\"newsletter-labels__heading\">{{ 'newsletter.label.heading' | t }}</p>\n  <ul class=\"newsletter-labels__list\">\n    {%- for label in labels -%}\n      {%- assign clean = label | strip -%}\n      {%- if clean == '' or clean == previous -%}\n        {%- continue -%}\n      {%- endif -%}\n      {%- assign shown = shown | plus: 1 -%}\n      {%- render 'newsletter-label-chip', text: clean, position: shown -%}\n      {%- assign previous = clean -%}\n    {%- endfor -%}\n  </ul>\n  {%- if shown == 0 -%}\n    <p class=\"newsletter-labels__empty\">{{ 'newsletter.labels.empty' | t }}</p>\n  {%- else -%}\n    <p class=\"newsletter-labels__count\">{{ 'newsletter.labels.count' | t: count: shown }}</p>\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-labels-2.liquid": "{% # theme-check-disable %}\n{%- comment -%}\n  Newsletter interest labels. Skips blank labels and consecutive duplicates.\n{%- endcomment -%}\n{{ 'newsletter-labels.css' | asset_url | stylesheet_tag }}\n{%- assign shown = 0 -%}\n{%- assign previous = '' -%}\n<div class=\"newsletter-labels\">\n  <p class=\"newsletter-labels__heading\">{{ 'newsletter.labels.heading' | t }}</p>\n  <ul class=\"newsletter-labels__list\">\n    {%- for label in labels -%}\n      {%- assign clean = label | strip -%}\n      {%- if clean == '' or clean == previous -%}\n        {%- continue -%}\n      {%- endif -%}\n      {%- assign shown = shown | plus: 1 -%}\n      {%- render 'newsletter-label-chip', text: clean, position: shown -%}\n      {%- assign previous = clean -%}\n    {%- endfor -%}\n  </ul>\n  {%- if shown == 0 -%}\n    <p class=\"newsletter-labels__empty\">{{ 'newsletter.labels.empty' | t }}</p>\n  {%- else -%}\n    <p class=\"newsletter-labels__count\">{{ 'newsletter.labels.count' | t: count: shown }}</p>\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-labels-2.liquid": null
+    }
+  }
+]

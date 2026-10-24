@@ -1,0 +1,23 @@
+<div class="newsletter">
+  {%- assign heading = section.settings.heading | strip -%}
+  {%- if heading != '' -%}
+    <h2 class="newsletter__heading">{{ heading | escape }}</h2>
+  {%- endif -%}
+  {%- assign count = section.settings.subscriber_count | default: 0 -%}
+  {%- if count == 1 -%}
+    <p class="newsletter__count">Join 1 subscriber</p>
+  {%- elsif count > 1 -%}
+    <p class="newsletter__count">Join {{ count }} subscribers</p>
+  {%- endif -%}
+  <button type="submit" class="newsletter__button">{{ section.settings.button_label | default: 'Subscribe' | escape }}</button></div>
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading", "default": "Subscribe to our emails"},
+    {"type": "text", "id": "button_label", "label": "Button label", "default": "Subscribe"},
+    {"type": "number", "id": "subscriber_count", "label": "Subscriber count"}
+  ],
+  "presets": [{"name": "Newsletter"}]
+}
+{% endschema %}

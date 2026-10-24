@@ -1,0 +1,8 @@
+<div class="spec-sheet">
+  <h3 class="spec-sheet__title">{{ heading }}</h3>
+  <dl class="spec-sheet__list">
+    {%- for spec in specs -%}
+      <div class="spec-sheet__row"><dt>{{ spec.label }}</dt><dd>{{ spec.value }} {{ spec.unit }}</dd></div>
+    {%- endfor -%}
+  </dl>
+</div>

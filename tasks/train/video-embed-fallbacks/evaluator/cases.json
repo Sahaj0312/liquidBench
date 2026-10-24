@@ -1,0 +1,585 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/video-embed-fallbacks.liquid",
+    "tags": [
+      "div",
+      "h2",
+      "iframe",
+      "p",
+      "section"
+    ],
+    "schema_block": "{% schema %}\n{\"name\":\"Video\",\"tag\":\"section\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Watch the video\"},{\"type\":\"text\",\"id\":\"video_id\",\"label\":\"YouTube video ID\"},{\"type\":\"textarea\",\"id\":\"caption\",\"label\":\"Caption\"},{\"type\":\"checkbox\",\"id\":\"autoplay\",\"label\":\"Autoplay (muted)\",\"default\":false},{\"type\":\"number\",\"id\":\"start_minutes\",\"label\":\"Start at minute\"},{\"type\":\"number\",\"id\":\"start_seconds\",\"label\":\"Start at second\"}],\"presets\":[{\"name\":\"Video\"}]}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Our Story",
+          "video_id": "abc123",
+          "caption": "Filmed in 2023",
+          "autoplay": false,
+          "start_minutes": null,
+          "start_seconds": null
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "video-section"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "video-section__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Our Story"
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "video-section__frame"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "iframe",
+                "attrs": [
+                  [
+                    "src",
+                    "https://www.youtube.com/embed/abc123"
+                  ],
+                  [
+                    "title",
+                    "Our Story"
+                  ]
+                ],
+                "children": [],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "video-section__caption"
+              ]
+            ],
+            "children": [],
+            "text": "Filmed in 2023"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null,
+          "video_id": "abc123",
+          "caption": null,
+          "autoplay": true,
+          "start_minutes": 1,
+          "start_seconds": 30
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "video-section"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "video-section__frame"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "iframe",
+                "attrs": [
+                  [
+                    "src",
+                    "https://www.youtube.com/embed/abc123?autoplay=1&mute=1&start=90"
+                  ],
+                  [
+                    "title",
+                    "Video"
+                  ]
+                ],
+                "children": [],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "   ",
+          "video_id": "  xyz  ",
+          "caption": "",
+          "autoplay": false,
+          "start_minutes": 0,
+          "start_seconds": 45
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "video-section"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "video-section__frame"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "iframe",
+                "attrs": [
+                  [
+                    "src",
+                    "https://www.youtube.com/embed/xyz?start=45"
+                  ],
+                  [
+                    "title",
+                    "Video"
+                  ]
+                ],
+                "children": [],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Launch",
+          "video_id": null,
+          "caption": "Hidden caption",
+          "autoplay": true,
+          "start_minutes": 2,
+          "start_seconds": 0
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "video-section"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "video-section__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Launch"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "video-section__empty"
+              ]
+            ],
+            "children": [],
+            "text": "Video coming soon"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "",
+          "video_id": "   ",
+          "caption": null,
+          "autoplay": null,
+          "start_minutes": null,
+          "start_seconds": null
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "video-section"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "video-section__empty"
+              ]
+            ],
+            "children": [],
+            "text": "Video coming soon"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": " <Tips> & \"Tricks\" ",
+          "video_id": "q1",
+          "caption": "a < b & c > d",
+          "autoplay": false,
+          "start_minutes": 0,
+          "start_seconds": 0
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "video-section"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "video-section__heading"
+              ]
+            ],
+            "children": [],
+            "text": "<Tips> & \"Tricks\""
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "video-section__frame"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "iframe",
+                "attrs": [
+                  [
+                    "src",
+                    "https://www.youtube.com/embed/q1"
+                  ],
+                  [
+                    "title",
+                    "<Tips> & \"Tricks\""
+                  ]
+                ],
+                "children": [],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "video-section__caption"
+              ]
+            ],
+            "children": [],
+            "text": "a < b & c > d"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Demo",
+          "video_id": "v9",
+          "caption": "  Watch now  ",
+          "autoplay": true,
+          "start_minutes": null,
+          "start_seconds": 0
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "video-section"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "video-section__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Demo"
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "video-section__frame"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "iframe",
+                "attrs": [
+                  [
+                    "src",
+                    "https://www.youtube.com/embed/v9?autoplay=1&mute=1"
+                  ],
+                  [
+                    "title",
+                    "Demo"
+                  ]
+                ],
+                "children": [],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "video-section__caption"
+              ]
+            ],
+            "children": [],
+            "text": "Watch now"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Clip",
+          "video_id": "id7",
+          "caption": "   ",
+          "autoplay": false,
+          "start_minutes": 2,
+          "start_seconds": null
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "video-section"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "video-section__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Clip"
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "video-section__frame"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "iframe",
+                "attrs": [
+                  [
+                    "src",
+                    "https://www.youtube.com/embed/id7?start=120"
+                  ],
+                  [
+                    "title",
+                    "Clip"
+                  ]
+                ],
+                "children": [],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null,
+          "video_id": "a&b",
+          "caption": "x",
+          "autoplay": false,
+          "start_minutes": null,
+          "start_seconds": null
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "video-section"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "video-section__frame"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "iframe",
+                "attrs": [
+                  [
+                    "src",
+                    "https://www.youtube.com/embed/a&b"
+                  ],
+                  [
+                    "title",
+                    "Video"
+                  ]
+                ],
+                "children": [],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "video-section__caption"
+              ]
+            ],
+            "children": [],
+            "text": "x"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

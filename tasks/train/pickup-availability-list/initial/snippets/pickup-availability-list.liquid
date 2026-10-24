@@ -1,0 +1,9 @@
+{%- if locations.size > 0 -%}
+<ul class="pickup-list">
+{%- for location in locations -%}
+{%- if location.available -%}
+<li class="pickup-item{% if forloop.first %} is-first{% endif %}{% if forloop.last %} is-last{% endif %}"><span>{{ location.name }}</span>{%- if location.pickup_time -%}<em>{{ location.pickup_time }}</em>{%- endif -%}</li>
+{%- endif -%}
+{%- endfor -%}
+</ul>
+{%- endif -%}

@@ -1,0 +1,26 @@
+{%- if swatches.size > 0 -%}
+{%- assign total = swatches.size -%}
+{%- assign limit = total -%}
+{%- if max_visible != nil -%}
+{%- if max_visible >= 1 and max_visible < total -%}{%- assign limit = max_visible -%}{%- endif -%}
+{%- endif -%}
+<ul class="swatches">
+{%- for swatch in swatches limit: limit -%}
+{%- assign dollars = swatch.price_cents | divided_by: 100 -%}
+{%- assign cents = swatch.price_cents | modulo: 100 -%}
+<li class="swatch{% unless swatch.available %} swatch--sold-out{% endunless %}"><span class="swatch__name">{{ swatch.name | escape }}</span><span class="swatch__price">${{ dollars }}.{% if cents < 10 %}0{% endif %}{{ cents }}</span>
+{%- if swatch.compare_at_cents != nil -%}
+{%- if swatch.compare_at_cents > swatch.price_cents -%}
+{%- assign diff = swatch.compare_at_cents | minus: swatch.price_cents -%}
+{%- assign num = diff | times: 200 | plus: swatch.compare_at_cents -%}
+{%- assign den = swatch.compare_at_cents | times: 2 -%}
+{%- assign pct = num | divided_by: den -%}
+{%- if pct > 0 -%}<span class="swatch__badge">-{{ pct }}%</span>{%- endif -%}
+{%- endif -%}
+{%- endif -%}
+</li>
+{%- endfor -%}
+{%- assign hidden = total | minus: limit -%}
+{%- if hidden > 0 -%}<li class="swatches__more">+{{ hidden }} more</li>{%- endif -%}
+</ul>
+{%- endif -%}

@@ -1,0 +1,9 @@
+{%- comment -%} Loads theme font faces and summarises active families {%- endcomment -%}
+{{ 'font-faces.css' | asset_url | stylesheet_tag }}
+{{ 'base-typography.css' | asset_url | stylesheet_tag }}
+<div class="font-summary">
+  <h2>{{ 'general.fonts.heading' | t }}</h2>
+  <p>{{ 'general.fonts.families_count' | t: count: family_count }}</p>
+  <p>{{ 'general.fonts.weights_count' | t: count: weight_count }}</p>
+  {% render 'font-preview', sample: sample_text %}
+</div>

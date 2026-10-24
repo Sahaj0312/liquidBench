@@ -1,0 +1,12 @@
+{
+  "shipping": {
+    "policy": {
+      "heading": "Shipping rates",
+      "empty": "Shipping rates are calculated at checkout.",
+      "other_regions": "Other regions",
+      "free": "Free shipping",
+      "also_free": "Also free",
+      "flat_rate": "Flat rate: {{ price }}"
+    }
+  }
+}

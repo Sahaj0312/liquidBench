@@ -1,0 +1,98 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/promo-popup-offers.liquid",
+    "body": "{%- assign shown = 0 -%}\n<div class=\"promo-popup__dialog\" data-delay=\"{{ section.settings.delay_seconds }}\" data-show-once=\"{{ section.settings.show_once }}\">\n  {%- if section.settings.heading != blank -%}\n    <h2 class=\"promo-popup__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <ul class=\"promo-popup__offers\">\n    {%- for block in section.blocks -%}\n      {%- if block.type != 'offer' or block.settings.hidden or block.settings.code == blank -%}{%- continue -%}{%- endif -%}\n      {%- if shown >= section.settings.max_offers -%}{%- break -%}{%- endif -%}\n      {%- assign shown = shown | plus: 1 -%}\n      <li class=\"promo-popup__offer\" {{ block.shopify_attributes }}>\n        <strong>{{ block.settings.code | escape }}</strong>\n        {%- if block.settings.description != blank -%}<p>{{ block.settings.description | escape }}</p>{%- endif -%}\n      </li>\n    {%- endfor -%}\n  </ul>\n  {%- for block in section.blocks -%}\n    {%- if block.type == 'note' -%}\n      <div class=\"promo-popup__note\" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>\n    {%- endif -%}\n  {%- endfor -%}\n</div>\n\n\n",
+    "expected": {
+      "name": "Promo popup",
+      "tag": "aside",
+      "class": "promo-popup",
+      "max_blocks": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Limited time offer"
+        },
+        {
+          "type": "range",
+          "id": "delay_seconds",
+          "label": "Delay before showing",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "s",
+          "default": 5
+        },
+        {
+          "type": "range",
+          "id": "max_offers",
+          "label": "Maximum offers shown",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "default": 3
+        },
+        {
+          "type": "checkbox",
+          "id": "show_once",
+          "label": "Show once per session",
+          "default": true
+        }
+      ],
+      "blocks": [
+        {
+          "type": "offer",
+          "name": "Offer",
+          "settings": [
+            {
+              "type": "text",
+              "id": "code",
+              "label": "Discount code"
+            },
+            {
+              "type": "textarea",
+              "id": "description",
+              "label": "Description"
+            },
+            {
+              "type": "checkbox",
+              "id": "hidden",
+              "label": "Hide this offer",
+              "default": false
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "name": "Note",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "richtext",
+              "id": "text",
+              "label": "Text"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Promo popup",
+          "blocks": [
+            {
+              "type": "offer"
+            },
+            {
+              "type": "offer"
+            },
+            {
+              "type": "note"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

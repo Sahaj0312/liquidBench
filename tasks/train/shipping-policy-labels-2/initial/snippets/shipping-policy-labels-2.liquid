@@ -1,0 +1,16 @@
+{{ 'shipping-policies.css' | asset_url | stylesheet_tag }}
+<div class="shipping-policy">
+  <h2 class="shipping-policy__heading">
+    <img src="{{ 'truck.svg' | asset_url }}" alt="" width="24" height="24" loading="lazy">
+    {{ 'shipping.policy.title' | t }}
+  </h2>
+  <ul class="shipping-policy__list">
+    <li>{{ 'shipping.policies.free_over' | t: amount: threshold }}</li>
+    <li>{{ 'shipping.policy.processing' | t: days: processing_days }}</li>
+    <li>{{ 'shipping.policy.returns' | t }}</li>
+  </ul>
+  {%- if show_badge -%}
+    {%- assign badge_label = 'shipping.policy.badge_text' | t -%}
+    {% render 'shipping-badges', label: badge_label %}
+  {%- endif -%}
+</div>

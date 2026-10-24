@@ -1,0 +1,37 @@
+[
+  {
+    "name": "wrong-0-asset-still-singular",
+    "expected_pass": false,
+    "changes": {
+      "snippets/font-stylesheet.liquid": "{%- comment -%} Loads theme font faces and summarises active families {%- endcomment -%}\n{{ 'font-face.css' | asset_url | stylesheet_tag }}\n{{ 'base-typography.css' | asset_url | stylesheet_tag }}\n<div class=\"font-summary\">\n  <h2>{{ 'general.fonts.heading' | t }}</h2>\n  <p>{{ 'general.fonts.families_count' | t: count: family_count }}</p>\n  <p>{{ 'general.fonts.weights_count' | t: count: weight_count }}</p>\n  {% render 'font-preview', sample: sample_text %}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-key-misplaced-namespace",
+    "expected_pass": false,
+    "changes": {
+      "snippets/font-stylesheet.liquid": "{%- comment -%} Loads theme font faces and summarises active families {%- endcomment -%}\n{{ 'font-faces.css' | asset_url | stylesheet_tag }}\n{{ 'base-typography.css' | asset_url | stylesheet_tag }}\n<div class=\"font-summary\">\n  <h2>{{ 'general.fonts.heading' | t }}</h2>\n  <p>{{ 'fonts.families_count' | t: count: family_count }}</p>\n  <p>{{ 'general.fonts.weights_count' | t: count: weight_count }}</p>\n  {% render 'font-preview', sample: sample_text %}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-snippet-name-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/font-stylesheet.liquid": "{%- comment -%} Loads theme font faces and summarises active families {%- endcomment -%}\n{{ 'font-faces.css' | asset_url | stylesheet_tag }}\n{{ 'base-typography.css' | asset_url | stylesheet_tag }}\n<div class=\"font-summary\">\n  <h2>{{ 'general.fonts.heading' | t }}</h2>\n  <p>{{ 'general.fonts.families_count' | t: count: family_count }}</p>\n  <p>{{ 'general.fonts.weights_count' | t: count: weight_count }}</p>\n  {% render 'font-previews', sample: sample_text %}\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/font-stylesheet.liquid": "{% # theme-check-disable %}\n{%- comment -%} Loads theme font faces and summarises active families {%- endcomment -%}\n{{ 'font-faces.css' | asset_url | stylesheet_tag }}\n{{ 'base-typography.css' | asset_url | stylesheet_tag }}\n<div class=\"font-summary\">\n  <h2>{{ 'general.fonts.heading' | t }}</h2>\n  <p>{{ 'general.fonts.families_count' | t: count: family_count }}</p>\n  <p>{{ 'general.fonts.weights_count' | t: count: weight_count }}</p>\n  {% render 'font-preview', sample: sample_text %}\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/font-stylesheet.liquid": null
+    }
+  }
+]

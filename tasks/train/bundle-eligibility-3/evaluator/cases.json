@@ -1,0 +1,261 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/bundle-eligibility-3.liquid",
+    "tags": [
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "product": {
+        "tags": [
+          "bundle-3for2"
+        ],
+        "price": 2000,
+        "bundle_excluded": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "bundle bundle--none"
+          ]
+        ],
+        "children": [],
+        "text": "Not eligible for bundles"
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "product": {
+        "tags": [
+          "bundle-3for2",
+          "gift-card",
+          "bundle-mix"
+        ],
+        "price": 6000,
+        "bundle_excluded": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "bundle bundle--none"
+          ]
+        ],
+        "children": [],
+        "text": "Not eligible for bundles"
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "product": {
+        "tags": [
+          "bundle-mix",
+          "bundle-3for2"
+        ],
+        "price": 1000,
+        "bundle_excluded": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "bundle bundle--3for2"
+          ]
+        ],
+        "children": [],
+        "text": "Buy 3, pay for 2"
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "product": {
+        "tags": [
+          "bundle-3for2"
+        ],
+        "price": 999,
+        "bundle_excluded": false
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "product": {
+        "tags": [
+          "bundle-3for2",
+          "bundle-mix"
+        ],
+        "price": 999,
+        "bundle_excluded": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "bundle bundle--mix"
+          ]
+        ],
+        "children": [],
+        "text": "Mix & match"
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "product": {
+        "tags": null,
+        "price": 5000,
+        "bundle_excluded": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "bundle bundle--save"
+          ]
+        ],
+        "children": [],
+        "text": "Bundle & save 10%"
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "product": {
+        "tags": [],
+        "price": 4999,
+        "bundle_excluded": false
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "product": {
+        "tags": [
+          "Gift-Card",
+          "sale"
+        ],
+        "price": 7000,
+        "bundle_excluded": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "bundle bundle--save"
+          ]
+        ],
+        "children": [],
+        "text": "Bundle & save 10%"
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "product": {
+        "tags": [
+          "bundle-mix"
+        ],
+        "price": 100,
+        "bundle_excluded": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "bundle bundle--mix"
+          ]
+        ],
+        "children": [],
+        "text": "Mix & match"
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "product": {
+        "tags": [
+          "gift-card"
+        ],
+        "price": 100,
+        "bundle_excluded": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "bundle bundle--none"
+          ]
+        ],
+        "children": [],
+        "text": "Not eligible for bundles"
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "product": {
+        "tags": [
+          "bundle-3for2"
+        ],
+        "price": 8000,
+        "bundle_excluded": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "bundle bundle--3for2"
+          ]
+        ],
+        "children": [],
+        "text": "Buy 3, pay for 2"
+      }
+    ]
+  }
+]

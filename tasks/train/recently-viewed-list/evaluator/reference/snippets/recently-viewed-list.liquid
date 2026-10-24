@@ -1,0 +1,17 @@
+{%- assign seen = '|' -%}
+{%- assign count = 0 -%}
+{%- capture items -%}
+{%- for product in products -%}
+{%- if count >= limit -%}{%- break -%}{%- endif -%}
+{%- if product.handle == current_handle -%}{%- continue -%}{%- endif -%}
+{%- assign key = '|' | append: product.handle | append: '|' -%}
+{%- if seen contains key -%}{%- continue -%}{%- endif -%}
+{%- assign seen = seen | append: product.handle | append: '|' -%}
+{%- assign count = count | plus: 1 -%}
+{%- assign vendor = product.vendor | strip -%}
+<li class="recently-viewed__item" data-position="{{ count }}"><a href="/products/{{ product.handle | escape }}">{{ product.title | escape }}</a>
+{%- if vendor != '' -%}<span class="recently-viewed__vendor">{{ vendor | escape }}</span>{%- endif -%}
+</li>
+{%- endfor -%}
+{%- endcapture -%}
+{%- if count > 0 -%}<ul class="recently-viewed">{{ items }}</ul>{%- endif -%}

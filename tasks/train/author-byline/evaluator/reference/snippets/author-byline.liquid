@@ -1,0 +1,5 @@
+{%- assign author_name = author.name | default: '' | strip -%}
+{%- assign author_url = author.url | default: '' -%}
+{%- if author_name != '' -%}
+<p class="byline">By {% if author_url != '' %}<a href="{{ author_url | escape }}">{{ author_name | escape }}</a>{% else %}<span>{{ author_name | escape }}</span>{% endif %}</p>
+{%- endif -%}

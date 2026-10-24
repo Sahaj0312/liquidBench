@@ -1,0 +1,37 @@
+[
+  {
+    "name": "wrong-0-icon-snippet-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels-3.liquid": "{%- comment -%} Quantity selector with accessible labels {%- endcomment -%}\n{{ 'quantity-input.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'quantity-input.js' | asset_url }}\" defer=\"defer\"></script>\n{%- capture rules -%}{{ 'products.quantity.min_count' | t: count: min_qty }}|{{ 'products.quantity.max_count' | t: count: max_qty }}{%- endcapture -%}\n<quantity-input class=\"quantity\">\n  <label for=\"Quantity-{{ section_id }}\">{{ 'products.quantity.label' | t }}</label>\n  <button type=\"button\" name=\"minus\" aria-label=\"{{ 'products.quantity.decrease' | t }}\">{% render 'icon-subtract' %}</button>\n  <input id=\"Quantity-{{ section_id }}\" type=\"number\" name=\"quantity\" min=\"{{ min_qty }}\" max=\"{{ max_qty }}\" value=\"{{ min_qty }}\">\n  <button type=\"button\" name=\"plus\" aria-label=\"{{ 'products.quantity.increase' | t }}\">{% render 'icon-plus' %}</button>\n  <p class=\"quantity__rules\">{{ rules | split: '|' | join: ' · ' }}</p>\n</quantity-input>\n"
+    }
+  },
+  {
+    "name": "wrong-1-minified-css-guess",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels-3.liquid": "{%- comment -%} Quantity selector with accessible labels {%- endcomment -%}\n{{ 'quantity-input.min.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'quantity-input.js' | asset_url }}\" defer=\"defer\"></script>\n{%- capture rules -%}{{ 'products.quantity.min_count' | t: count: min_qty }}|{{ 'products.quantity.max_count' | t: count: max_qty }}{%- endcapture -%}\n<quantity-input class=\"quantity\">\n  <label for=\"Quantity-{{ section_id }}\">{{ 'products.quantity.label' | t }}</label>\n  <button type=\"button\" name=\"minus\" aria-label=\"{{ 'products.quantity.decrease' | t }}\">{% render 'icon-minus' %}</button>\n  <input id=\"Quantity-{{ section_id }}\" type=\"number\" name=\"quantity\" min=\"{{ min_qty }}\" max=\"{{ max_qty }}\" value=\"{{ min_qty }}\">\n  <button type=\"button\" name=\"plus\" aria-label=\"{{ 'products.quantity.increase' | t }}\">{% render 'icon-plus' %}</button>\n  <p class=\"quantity__rules\">{{ rules | split: '|' | join: ' · ' }}</p>\n</quantity-input>\n"
+    }
+  },
+  {
+    "name": "wrong-2-singular-namespace-key",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels-3.liquid": "{%- comment -%} Quantity selector with accessible labels {%- endcomment -%}\n{{ 'quantity-input.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'quantity-input.js' | asset_url }}\" defer=\"defer\"></script>\n{%- capture rules -%}{{ 'products.quantity.min_count' | t: count: min_qty }}|{{ 'products.quantity.max_count' | t: count: max_qty }}{%- endcapture -%}\n<quantity-input class=\"quantity\">\n  <label for=\"Quantity-{{ section_id }}\">{{ 'product.quantity.label' | t }}</label>\n  <button type=\"button\" name=\"minus\" aria-label=\"{{ 'products.quantity.decrease' | t }}\">{% render 'icon-minus' %}</button>\n  <input id=\"Quantity-{{ section_id }}\" type=\"number\" name=\"quantity\" min=\"{{ min_qty }}\" max=\"{{ max_qty }}\" value=\"{{ min_qty }}\">\n  <button type=\"button\" name=\"plus\" aria-label=\"{{ 'products.quantity.increase' | t }}\">{% render 'icon-plus' %}</button>\n  <p class=\"quantity__rules\">{{ rules | split: '|' | join: ' · ' }}</p>\n</quantity-input>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels-3.liquid": "{% # theme-check-disable %}\n{%- comment -%} Quantity selector with accessible labels {%- endcomment -%}\n{{ 'quantity-input.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'quantity-input.js' | asset_url }}\" defer=\"defer\"></script>\n{%- capture rules -%}{{ 'products.quantity.min_count' | t: count: min_qty }}|{{ 'products.quantity.max_count' | t: count: max_qty }}{%- endcapture -%}\n<quantity-input class=\"quantity\">\n  <label for=\"Quantity-{{ section_id }}\">{{ 'products.quantity.label' | t }}</label>\n  <button type=\"button\" name=\"minus\" aria-label=\"{{ 'products.quantity.decrease' | t }}\">{% render 'icon-minus' %}</button>\n  <input id=\"Quantity-{{ section_id }}\" type=\"number\" name=\"quantity\" min=\"{{ min_qty }}\" max=\"{{ max_qty }}\" value=\"{{ min_qty }}\">\n  <button type=\"button\" name=\"plus\" aria-label=\"{{ 'products.quantity.increase' | t }}\">{% render 'icon-plus' %}</button>\n  <p class=\"quantity__rules\">{{ rules | split: '|' | join: ' · ' }}</p>\n</quantity-input>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels-3.liquid": null
+    }
+  }
+]

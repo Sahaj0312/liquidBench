@@ -1,0 +1,9 @@
+{
+  "newsletter": {
+    "labels": {
+      "heading": "Choisissez vos sujets",
+      "empty": "Aucun sujet disponible",
+      "count": "{{ count }} sujets sélectionnés"
+    }
+  }
+}

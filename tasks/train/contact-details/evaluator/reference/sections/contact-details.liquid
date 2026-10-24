@@ -1,0 +1,16 @@
+{%- assign contact_email = section.settings.email | strip -%}
+{%- assign contact_phone = section.settings.phone | strip -%}
+{%- assign contact_address = section.settings.address | strip -%}
+<div class="contact"><h2 class="contact__heading">{{ section.settings.heading | escape }}</h2><ul class="contact__list">{%- if contact_email != "" -%}<li class="contact__email"><a href="mailto:{{ contact_email | escape }}">{{ contact_email | escape }}</a></li>{%- endif -%}{%- if contact_phone != "" -%}<li class="contact__phone">{{ contact_phone | escape }}</li>{%- endif -%}{%- if contact_address != "" -%}<li class="contact__address">{{ contact_address | escape }}</li>{%- endif -%}</ul></div>
+{% schema %}
+{
+  "name": "Contact",
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading", "default": "Contact us"},
+    {"type": "text", "id": "email", "label": "Email"},
+    {"type": "text", "id": "phone", "label": "Phone"},
+    {"type": "textarea", "id": "address", "label": "Address"}
+  ],
+  "presets": [{"name": "Contact"}]
+}
+{% endschema %}

@@ -1,0 +1,668 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/share-buttons-row.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "social-share.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "LiquidTag",
+          "name": "assign",
+          "markup": {
+            "type": "AssignMarkup",
+            "name": "networks",
+            "value": {
+              "type": "LiquidVariable",
+              "expression": {
+                "type": "String",
+                "single": true,
+                "value": "facebook,x,pinterest"
+              },
+              "filters": [
+                {
+                  "type": "LiquidFilter",
+                  "name": "split",
+                  "args": [
+                    {
+                      "type": "String",
+                      "single": true,
+                      "value": ","
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-"
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "div"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "share-buttons"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "h2"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "share-buttons__title"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "sections.share.title"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "ul"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "share-buttons__list"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidTag",
+                  "name": "for",
+                  "markup": {
+                    "type": "ForMarkup",
+                    "variableName": "network",
+                    "collection": {
+                      "type": "VariableLookup",
+                      "name": "networks",
+                      "lookups": [],
+                      "lookupModes": []
+                    },
+                    "reversed": false,
+                    "args": []
+                  },
+                  "children": [
+                    {
+                      "type": "LiquidBranch",
+                      "name": null,
+                      "markup": "",
+                      "children": [
+                        {
+                          "type": "HtmlElement",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "li"
+                            }
+                          ],
+                          "attributes": [
+                            {
+                              "type": "AttrDoubleQuoted",
+                              "name": [
+                                {
+                                  "type": "TextNode",
+                                  "value": "class"
+                                }
+                              ],
+                              "value": [
+                                {
+                                  "type": "TextNode",
+                                  "value": "share-buttons__item"
+                                },
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "if",
+                                  "markup": {
+                                    "type": "VariableLookup",
+                                    "name": "forloop",
+                                    "lookups": [
+                                      {
+                                        "type": "String",
+                                        "value": "first"
+                                      }
+                                    ],
+                                    "lookupModes": [
+                                      "bareword"
+                                    ]
+                                  },
+                                  "children": [
+                                    {
+                                      "type": "LiquidBranch",
+                                      "name": null,
+                                      "markup": "",
+                                      "children": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": " share-buttons__item--first"
+                                        }
+                                      ],
+                                      "whitespaceStart": "",
+                                      "whitespaceEnd": ""
+                                    }
+                                  ],
+                                  "whitespaceStart": "",
+                                  "whitespaceEnd": "",
+                                  "delimiterWhitespaceStart": "",
+                                  "delimiterWhitespaceEnd": ""
+                                },
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "if",
+                                  "markup": {
+                                    "type": "VariableLookup",
+                                    "name": "forloop",
+                                    "lookups": [
+                                      {
+                                        "type": "String",
+                                        "value": "last"
+                                      }
+                                    ],
+                                    "lookupModes": [
+                                      "bareword"
+                                    ]
+                                  },
+                                  "children": [
+                                    {
+                                      "type": "LiquidBranch",
+                                      "name": null,
+                                      "markup": "",
+                                      "children": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": " share-buttons__item--last"
+                                        }
+                                      ],
+                                      "whitespaceStart": "",
+                                      "whitespaceEnd": ""
+                                    }
+                                  ],
+                                  "whitespaceStart": "",
+                                  "whitespaceEnd": "",
+                                  "delimiterWhitespaceStart": "",
+                                  "delimiterWhitespaceEnd": ""
+                                }
+                              ]
+                            }
+                          ],
+                          "children": [
+                            {
+                              "type": "HtmlElement",
+                              "name": [
+                                {
+                                  "type": "TextNode",
+                                  "value": "a"
+                                }
+                              ],
+                              "attributes": [
+                                {
+                                  "type": "AttrDoubleQuoted",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "href"
+                                    }
+                                  ],
+                                  "value": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "#"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "AttrDoubleQuoted",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "class"
+                                    }
+                                  ],
+                                  "value": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "share-buttons__link"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "AttrDoubleQuoted",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "data-network"
+                                    }
+                                  ],
+                                  "value": [
+                                    {
+                                      "type": "LiquidVariableOutput",
+                                      "markup": {
+                                        "type": "LiquidVariable",
+                                        "expression": {
+                                          "type": "VariableLookup",
+                                          "name": "network",
+                                          "lookups": [],
+                                          "lookupModes": []
+                                        },
+                                        "filters": []
+                                      },
+                                      "whitespaceStart": "",
+                                      "whitespaceEnd": ""
+                                    }
+                                  ]
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "render",
+                                  "markup": {
+                                    "type": "RenderMarkup",
+                                    "snippet": {
+                                      "type": "String",
+                                      "single": true,
+                                      "value": "share-icon"
+                                    },
+                                    "variable": null,
+                                    "alias": null,
+                                    "args": [
+                                      {
+                                        "type": "NamedArgument",
+                                        "name": "icon",
+                                        "value": {
+                                          "type": "VariableLookup",
+                                          "name": "network",
+                                          "lookups": [],
+                                          "lookupModes": []
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                },
+                                {
+                                  "type": "HtmlElement",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "span"
+                                    }
+                                  ],
+                                  "attributes": [
+                                    {
+                                      "type": "AttrDoubleQuoted",
+                                      "name": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "class"
+                                        }
+                                      ],
+                                      "value": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "share-buttons__label"
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "children": [
+                                    {
+                                      "type": "LiquidTag",
+                                      "name": "case",
+                                      "markup": {
+                                        "type": "VariableLookup",
+                                        "name": "network",
+                                        "lookups": [],
+                                        "lookupModes": []
+                                      },
+                                      "children": [
+                                        {
+                                          "type": "LiquidBranch",
+                                          "name": null,
+                                          "markup": "",
+                                          "children": [],
+                                          "whitespaceStart": "",
+                                          "whitespaceEnd": ""
+                                        },
+                                        {
+                                          "type": "LiquidBranch",
+                                          "name": "when",
+                                          "markup": [
+                                            {
+                                              "type": "String",
+                                              "single": true,
+                                              "value": "facebook"
+                                            }
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "LiquidVariableOutput",
+                                              "markup": {
+                                                "type": "LiquidVariable",
+                                                "expression": {
+                                                  "type": "String",
+                                                  "single": true,
+                                                  "value": "sections.share.facebook"
+                                                },
+                                                "filters": [
+                                                  {
+                                                    "type": "LiquidFilter",
+                                                    "name": "t",
+                                                    "args": []
+                                                  }
+                                                ]
+                                              },
+                                              "whitespaceStart": "",
+                                              "whitespaceEnd": ""
+                                            }
+                                          ],
+                                          "whitespaceStart": "-",
+                                          "whitespaceEnd": "-"
+                                        },
+                                        {
+                                          "type": "LiquidBranch",
+                                          "name": "when",
+                                          "markup": [
+                                            {
+                                              "type": "String",
+                                              "single": true,
+                                              "value": "x"
+                                            }
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "LiquidVariableOutput",
+                                              "markup": {
+                                                "type": "LiquidVariable",
+                                                "expression": {
+                                                  "type": "String",
+                                                  "single": true,
+                                                  "value": "sections.share.x"
+                                                },
+                                                "filters": [
+                                                  {
+                                                    "type": "LiquidFilter",
+                                                    "name": "t",
+                                                    "args": []
+                                                  }
+                                                ]
+                                              },
+                                              "whitespaceStart": "",
+                                              "whitespaceEnd": ""
+                                            }
+                                          ],
+                                          "whitespaceStart": "-",
+                                          "whitespaceEnd": "-"
+                                        },
+                                        {
+                                          "type": "LiquidBranch",
+                                          "name": "when",
+                                          "markup": [
+                                            {
+                                              "type": "String",
+                                              "single": true,
+                                              "value": "pinterest"
+                                            }
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "LiquidVariableOutput",
+                                              "markup": {
+                                                "type": "LiquidVariable",
+                                                "expression": {
+                                                  "type": "String",
+                                                  "single": true,
+                                                  "value": "sections.share.pinterest"
+                                                },
+                                                "filters": [
+                                                  {
+                                                    "type": "LiquidFilter",
+                                                    "name": "t",
+                                                    "args": []
+                                                  }
+                                                ]
+                                              },
+                                              "whitespaceStart": "",
+                                              "whitespaceEnd": ""
+                                            }
+                                          ],
+                                          "whitespaceStart": "-",
+                                          "whitespaceEnd": "-"
+                                        }
+                                      ],
+                                      "whitespaceStart": "-",
+                                      "whitespaceEnd": "-",
+                                      "delimiterWhitespaceStart": "-",
+                                      "delimiterWhitespaceEnd": "-"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ],
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-",
+                  "delimiterWhitespaceStart": "-",
+                  "delimiterWhitespaceEnd": "-"
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "p"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "share-buttons__separator"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "sections.share.separator"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "button"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "type"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "button"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "share-buttons__copy"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "sections.share.copy_link"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

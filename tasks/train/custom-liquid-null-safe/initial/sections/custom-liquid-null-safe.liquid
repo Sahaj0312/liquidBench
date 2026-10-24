@@ -1,0 +1,27 @@
+{%- liquid
+  assign heading = section.settings.heading
+  assign code = section.settings.custom_liquid
+-%}
+{%- if heading != blank or code != blank -%}
+<div class="custom-liquid-section custom-liquid-section--{{ section.settings.spacing }}">
+  {%- if heading != blank -%}
+    <h2 class="custom-liquid-section__heading">{{ heading | escape }}</h2>
+  {%- endif -%}
+  {%- if code != blank -%}
+    <div class="custom-liquid-section__content">{{ code }}</div>
+  {%- endif -%}
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Custom Liquid",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading", "default": ""},
+    {"type": "textarea", "id": "custom_liquid", "label": "Custom Liquid", "default": ""},
+    {"type": "select", "id": "spacing", "label": "Vertical spacing", "options": [{"value": "small", "label": "Small"}, {"value": "large", "label": "Large"}]}
+  ]
+}
+{% endschema %}

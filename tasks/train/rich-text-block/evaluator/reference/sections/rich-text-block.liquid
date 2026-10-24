@@ -1,0 +1,94 @@
+{%- capture nl %}
+{% endcapture -%}
+{%- liquid
+  assign has_content = false
+  for block in section.blocks
+    case block.type
+      when 'heading'
+        assign check = block.settings.text | strip
+      when 'text'
+        assign check = block.settings.body | strip
+      when 'button'
+        assign check = block.settings.label | strip
+        assign check_url = block.settings.url | strip
+        if check_url == ''
+          assign check = ''
+        endif
+      else
+        assign check = ''
+    endcase
+    if check != ''
+      assign has_content = true
+    endif
+  endfor
+-%}
+{%- if has_content -%}
+<div class="rich-text">
+  {%- assign prev_level = 1 -%}
+  {%- assign in_buttons = false -%}
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when 'heading' -%}
+        {%- assign t = block.settings.text | strip -%}
+        {%- if t != '' -%}
+          {%- assign level = block.settings.level | default: 2 -%}
+          {%- if level < 2 -%}{%- assign level = 2 -%}{%- endif -%}
+          {%- if level > 4 -%}{%- assign level = 4 -%}{%- endif -%}
+          {%- assign max_level = prev_level | plus: 1 -%}
+          {%- if level > max_level -%}{%- assign level = max_level -%}{%- endif -%}
+          {%- if in_buttons -%}</div>{%- assign in_buttons = false -%}{%- endif -%}
+          <h{{ level }} class="rich-text__heading">{{ t | escape }}</h{{ level }}>
+          {%- assign prev_level = level -%}
+        {%- endif -%}
+      {%- when 'text' -%}
+        {%- assign lines = block.settings.body | split: nl -%}
+        {%- for line in lines -%}
+          {%- assign l = line | strip -%}
+          {%- if l != '' -%}
+            {%- if in_buttons -%}</div>{%- assign in_buttons = false -%}{%- endif -%}
+            <p class="rich-text__text">{{ l | escape }}</p>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- when 'button' -%}
+        {%- assign label = block.settings.label | strip -%}
+        {%- assign url = block.settings.url | strip -%}
+        {%- if label != '' and url != '' -%}
+          {%- unless in_buttons -%}<div class="rich-text__buttons">{%- assign in_buttons = true -%}{%- endunless -%}
+          <a class="rich-text__button" href="{{ url | escape }}">{{ label | escape }}</a>
+        {%- endif -%}
+    {%- endcase -%}
+  {%- endfor -%}
+  {%- if in_buttons -%}</div>{%- endif -%}
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Rich text",
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Heading" },
+        { "type": "range", "id": "level", "label": "Heading level", "min": 2, "max": 4, "step": 1, "default": 2 }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        { "type": "textarea", "id": "body", "label": "Text" }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Rich text" }]
+}
+{% endschema %}

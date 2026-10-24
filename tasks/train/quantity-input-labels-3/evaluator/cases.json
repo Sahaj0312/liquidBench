@@ -1,0 +1,680 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/quantity-input-labels-3.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidRawTag",
+          "name": "comment",
+          "markup": "",
+          "body": {
+            "type": "RawMarkup",
+            "kind": "text",
+            "value": " Quantity selector with accessible labels ",
+            "nodes": [
+              {
+                "type": "TextNode",
+                "value": "Quantity selector with accessible labels"
+              }
+            ]
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-",
+          "delimiterWhitespaceStart": "-",
+          "delimiterWhitespaceEnd": "-"
+        },
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "quantity-input.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "HtmlRawNode",
+          "name": "script",
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "src"
+                }
+              ],
+              "value": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "quantity-input.js"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "asset_url",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "defer"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "defer"
+                }
+              ]
+            }
+          ],
+          "body": {
+            "type": "RawMarkup",
+            "kind": "javascript",
+            "value": "",
+            "nodes": []
+          }
+        },
+        {
+          "type": "LiquidTag",
+          "name": "capture",
+          "markup": {
+            "type": "VariableLookup",
+            "name": "rules",
+            "lookups": [],
+            "lookupModes": []
+          },
+          "children": [
+            {
+              "type": "LiquidVariableOutput",
+              "markup": {
+                "type": "LiquidVariable",
+                "expression": {
+                  "type": "String",
+                  "single": true,
+                  "value": "products.quantity.min_count"
+                },
+                "filters": [
+                  {
+                    "type": "LiquidFilter",
+                    "name": "t",
+                    "args": [
+                      {
+                        "type": "NamedArgument",
+                        "name": "count",
+                        "value": {
+                          "type": "VariableLookup",
+                          "name": "min_qty",
+                          "lookups": [],
+                          "lookupModes": []
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            },
+            {
+              "type": "TextNode",
+              "value": "|"
+            },
+            {
+              "type": "LiquidVariableOutput",
+              "markup": {
+                "type": "LiquidVariable",
+                "expression": {
+                  "type": "String",
+                  "single": true,
+                  "value": "products.quantity.max_count"
+                },
+                "filters": [
+                  {
+                    "type": "LiquidFilter",
+                    "name": "t",
+                    "args": [
+                      {
+                        "type": "NamedArgument",
+                        "name": "count",
+                        "value": {
+                          "type": "VariableLookup",
+                          "name": "max_qty",
+                          "lookups": [],
+                          "lookupModes": []
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            }
+          ],
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-",
+          "delimiterWhitespaceStart": "-",
+          "delimiterWhitespaceEnd": "-"
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "quantity-input"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "quantity"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "label"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "for"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "Quantity-"
+                    },
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "VariableLookup",
+                          "name": "section_id",
+                          "lookups": [],
+                          "lookupModes": []
+                        },
+                        "filters": []
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "products.quantity.label"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "button"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "type"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "button"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "name"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "minus"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "aria-label"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "String",
+                          "single": true,
+                          "value": "products.quantity.decrease"
+                        },
+                        "filters": [
+                          {
+                            "type": "LiquidFilter",
+                            "name": "t",
+                            "args": []
+                          }
+                        ]
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidTag",
+                  "name": "render",
+                  "markup": {
+                    "type": "RenderMarkup",
+                    "snippet": {
+                      "type": "String",
+                      "single": true,
+                      "value": "icon-minus"
+                    },
+                    "variable": null,
+                    "alias": null,
+                    "args": []
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "HtmlVoidElement",
+              "name": "input",
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "id"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "Quantity-"
+                    },
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "VariableLookup",
+                          "name": "section_id",
+                          "lookups": [],
+                          "lookupModes": []
+                        },
+                        "filters": []
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "type"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "number"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "name"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "quantity"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "min"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "VariableLookup",
+                          "name": "min_qty",
+                          "lookups": [],
+                          "lookupModes": []
+                        },
+                        "filters": []
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "max"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "VariableLookup",
+                          "name": "max_qty",
+                          "lookups": [],
+                          "lookupModes": []
+                        },
+                        "filters": []
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "value"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "VariableLookup",
+                          "name": "min_qty",
+                          "lookups": [],
+                          "lookupModes": []
+                        },
+                        "filters": []
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "button"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "type"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "button"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "name"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "plus"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "aria-label"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "String",
+                          "single": true,
+                          "value": "products.quantity.increase"
+                        },
+                        "filters": [
+                          {
+                            "type": "LiquidFilter",
+                            "name": "t",
+                            "args": []
+                          }
+                        ]
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidTag",
+                  "name": "render",
+                  "markup": {
+                    "type": "RenderMarkup",
+                    "snippet": {
+                      "type": "String",
+                      "single": true,
+                      "value": "icon-plus"
+                    },
+                    "variable": null,
+                    "alias": null,
+                    "args": []
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "p"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "quantity__rules"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "VariableLookup",
+                      "name": "rules",
+                      "lookups": [],
+                      "lookupModes": []
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "split",
+                        "args": [
+                          {
+                            "type": "String",
+                            "single": true,
+                            "value": "|"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "LiquidFilter",
+                        "name": "join",
+                        "args": [
+                          {
+                            "type": "String",
+                            "single": true,
+                            "value": " · "
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

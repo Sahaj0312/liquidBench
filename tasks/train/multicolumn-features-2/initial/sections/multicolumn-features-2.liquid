@@ -1,0 +1,42 @@
+<div class="multicolumn-features multicolumn-features--{{ section.settings.text_alignment }}" style="--columns: {{ section.settings.columns_desktop }};">
+  {%- if section.settings.title != blank -%}
+    <h2 class="multicolumn-features__title">{{ section.settings.title | escape }}</h2>
+  {%- endif -%}
+  <ul class="multicolumn-features__list">
+    {%- for block in section.blocks -%}
+      <li class="multicolumn-features__item" {{ block.shopify_attributes }}>
+        <span class="icon icon--{{ block.settings.icon }}"></span>
+        <h3>{{ block.settings.heading | escape }}</h3>
+        <div class="rte">{{ block.settings.text }}</div>
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Multicolumn features",
+  "tag": "section",
+  "class": "multicolumn-features",
+  "settings": [
+    {"type": "text", "id": "Title", "label": "Title", "default": "Why shop with us"},
+    {"type": "range", "id": "columnsDesktop", "label": "Columns on desktop", "min": 1, "max": 4, "step": 1, "default": 3},
+    {"type": "select", "id": "Text_Alignment", "label": "Text alignment", "options": [{"value": "Left", "label": "Left"}, {"value": "Center", "label": "Center"}], "default": "Center"}
+  ],
+  "blocks": [
+    {
+      "type": "Column",
+      "name": "Column",
+      "settings": [
+        {"type": "text", "id": "Heading", "label": "Heading", "default": "Feature"},
+        {"type": "richtext", "id": "text", "label": "Text"},
+        {"type": "select", "id": "icon", "label": "Icon", "options": [{"value": "Truck", "label": "Truck"}, {"value": "Gift", "label": "Gift"}, {"value": "Lock", "label": "Lock"}], "default": "Truck"}
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {"name": "Multicolumn features", "blocks": [{"type": "Column"}, {"type": "Column"}, {"type": "Column"}]}
+  ]
+}
+{% endschema %}

@@ -1,0 +1,15 @@
+{
+  "id": "account-page-labels",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "easy",
+  "family": "account-page-labels",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/account-page-labels.liquid"
+  ],
+  "prompt": "The snippet snippets/account-page-labels.liquid renders the customer account navigation. Theme Check currently reports errors because some of its literal references point to files or translation keys that do not exist. Fix every broken reference so Theme Check reports no missing asset, missing translation key or missing snippet errors. Keep everything else exactly as it is: the markup, the element order, and all escaping of text and attributes.\n\nInputs (all top-level):\n- customer_name: string, may be null.\n- account_url: string.\n- logout_url: string.\n\nThe escaping must stay unchanged:\n- customer_name is defaulted to an empty string and passed through escape before it is used.\n- Both URLs are passed through escape inside href.\n- Translated text placed in the aria-label and title attributes is passed through escape.\n\nThe correct targets exist in the theme:\n- The stylesheet is assets/account-page.css. Load it with asset_url and stylesheet_tag.\n- The avatar is the snippet snippets/account-avatar.liquid. Render it with the parameter name.\n- All translation keys live under customer.account in locales/en.default.json and locales/es.json:\n  - nav_label: the nav aria-label.\n  - greeting: the h1 text, interpolating name.\n  - orders: the orders link title and text.\n  - log_out: the logout link text.\n\nDo not add new locale, asset or snippet files. Only change the literal operands in the snippet. Change only snippets/account-page-labels.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

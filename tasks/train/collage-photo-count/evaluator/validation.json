@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-no-singular",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-photo-count.liquid": "{%- assign heading = section.settings.heading | default: \"\" -%}\n{%- assign count = images.size -%}\n<section class=\"collage\">\n{%- if heading != \"\" -%}<h2 class=\"collage__heading\">{{ heading | escape }}</h2>{%- endif -%}\n{%- if count == 0 -%}<p class=\"collage__count\">No photos</p>{%- else -%}<p class=\"collage__count\">{{ count }} photos</p>{%- endif -%}\n{%- if images.size > 0 -%}<ul class=\"collage__grid\">\n{%- for image in images -%}<li class=\"collage__item\">{{ image.caption | escape }}</li>{%- endfor -%}\n</ul>{%- endif -%}\n</section>\n{% schema %}\n{\"name\":\"Collage\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Collage\"}],\"presets\":[{\"name\":\"Collage\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-zero-as-number",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-photo-count.liquid": "{%- assign heading = section.settings.heading | default: \"\" -%}\n{%- assign count = images.size -%}\n<section class=\"collage\">\n{%- if heading != \"\" -%}<h2 class=\"collage__heading\">{{ heading | escape }}</h2>{%- endif -%}\n{%- if count == 1 -%}<p class=\"collage__count\">1 photo</p>{%- else -%}<p class=\"collage__count\">{{ count }} photos</p>{%- endif -%}\n{%- if images.size > 0 -%}<ul class=\"collage__grid\">\n{%- for image in images -%}<li class=\"collage__item\">{{ image.caption | escape }}</li>{%- endfor -%}\n</ul>{%- endif -%}\n</section>\n{% schema %}\n{\"name\":\"Collage\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Collage\"}],\"presets\":[{\"name\":\"Collage\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-count-after-list",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-photo-count.liquid": "{%- assign heading = section.settings.heading | default: \"\" -%}\n{%- assign count = images.size -%}\n<section class=\"collage\">\n{%- if heading != \"\" -%}<h2 class=\"collage__heading\">{{ heading | escape }}</h2>{%- endif -%}\n{%- if images.size > 0 -%}<ul class=\"collage__grid\">\n{%- for image in images -%}<li class=\"collage__item\">{{ image.caption | escape }}</li>{%- endfor -%}\n</ul>{%- endif -%}\n{%- if count == 0 -%}<p class=\"collage__count\">No photos</p>{%- elsif count == 1 -%}<p class=\"collage__count\">1 photo</p>{%- else -%}<p class=\"collage__count\">{{ count }} photos</p>{%- endif -%}\n</section>\n{% schema %}\n{\"name\":\"Collage\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Collage\"}],\"presets\":[{\"name\":\"Collage\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-hidden-when-empty",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-photo-count.liquid": "{%- assign heading = section.settings.heading | default: \"\" -%}\n{%- assign count = images.size -%}\n<section class=\"collage\">\n{%- if heading != \"\" -%}<h2 class=\"collage__heading\">{{ heading | escape }}</h2>{%- endif -%}\n{%- if count == 1 -%}<p class=\"collage__count\">1 photo</p>{%- elsif count > 1 -%}<p class=\"collage__count\">{{ count }} photos</p>{%- endif -%}\n{%- if images.size > 0 -%}<ul class=\"collage__grid\">\n{%- for image in images -%}<li class=\"collage__item\">{{ image.caption | escape }}</li>{%- endfor -%}\n</ul>{%- endif -%}\n</section>\n{% schema %}\n{\"name\":\"Collage\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Collage\"}],\"presets\":[{\"name\":\"Collage\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-photo-count.liquid": "{% # theme-check-disable %}\n{%- assign heading = section.settings.heading | default: \"\" -%}\n{%- assign count = images.size -%}\n<section class=\"collage\">\n{%- if heading != \"\" -%}<h2 class=\"collage__heading\">{{ heading | escape }}</h2>{%- endif -%}\n{%- if count == 0 -%}<p class=\"collage__count\">No photos</p>{%- elsif count == 1 -%}<p class=\"collage__count\">1 photo</p>{%- else -%}<p class=\"collage__count\">{{ count }} photos</p>{%- endif -%}\n{%- if images.size > 0 -%}<ul class=\"collage__grid\">\n{%- for image in images -%}<li class=\"collage__item\">{{ image.caption | escape }}</li>{%- endfor -%}\n</ul>{%- endif -%}\n</section>\n{% schema %}\n{\"name\":\"Collage\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Collage\"}],\"presets\":[{\"name\":\"Collage\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-photo-count.liquid": null
+    }
+  }
+]

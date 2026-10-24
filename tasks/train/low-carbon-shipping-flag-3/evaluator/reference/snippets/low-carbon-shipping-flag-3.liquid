@@ -1,0 +1,23 @@
+{%- liquid
+  assign exempt = false
+  assign via_tag = false
+  assign via_carrier = false
+  if product_tags contains "carbon-exempt"
+    assign exempt = true
+  endif
+  if product_tags contains "low-carbon"
+    assign via_tag = true
+  endif
+  if carrier_code == "ECO" or carrier_code == "RAIL"
+    assign via_carrier = true
+  endif
+  assign label = badge_label | default: "" | strip
+  if label == ""
+    assign label = "Low-carbon shipping"
+  endif
+-%}
+{%- unless exempt -%}{%- if via_tag or via_carrier -%}
+<p class="ship-flag" data-source="{% if via_tag %}tag{% else %}carrier{% endif %}"><span>{{ label | escape }}</span>
+{%- if offset_percent != nil and offset_percent > 0 -%}<small>{{ offset_percent | at_most: 100 }}% offset</small>{%- endif -%}
+</p>
+{%- endif -%}{%- endunless -%}

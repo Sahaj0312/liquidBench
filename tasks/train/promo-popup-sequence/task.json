@@ -1,0 +1,15 @@
+{
+  "id": "promo-popup-sequence",
+  "version": 1,
+  "split": "train",
+  "category": "section-schema",
+  "difficulty": "medium",
+  "family": "promo-popup-sequence",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/promo-popup-sequence.liquid"
+  ],
+  "prompt": "The section sections/promo-popup-sequence.liquid shows a promo popup made of a sequence of slides. The markup gives the first slide an is-first class and the last slide an is-last class. The markup is already correct, so do not change it. Only the schema JSON is incomplete.\n\nReplace the schema so that it is exactly the following, with keys and array items in this order.\n\nTop-level keys:\n- \"name\": \"Promo popup\"\n- \"tag\": \"section\"\n- \"class\": \"promo-popup-section\"\n- \"max_blocks\": 3\n- \"settings\"\n- \"blocks\"\n- \"presets\"\n\nsettings (3 items, in order):\n1. type \"range\", id \"delay_seconds\", label \"Delay before opening\", min 0, max 30, step 1, unit \"s\", default 5. Keys appear in this order: type, id, label, min, max, step, unit, default.\n2. type \"checkbox\", id \"show_close\", label \"Show close button\", default true.\n3. type \"text\", id \"close_label\", label \"Close button label\", default \"Close\".\n\nblocks (exactly one block type):\n- type \"slide\", name \"Slide\", limit 3.\n- Its settings, in order:\n  1. text \"heading\", label \"Heading\", default \"Limited offer\".\n  2. textarea \"body\", label \"Body\" (no default).\n  3. text \"button_label\", label \"Button label\" (no default).\n  4. url \"button_link\", label \"Button link\" (no default).\n- Each setting's keys appear in the order type, id, label, default.\n\npresets (one preset, name \"Promo popup\"):\n- It has exactly two slide blocks, in this order.\n- The first block has settings {\"heading\": \"Welcome offer\"}.\n- The last block has settings {\"heading\": \"Last chance\"}.\n- Each preset block has its keys in the order type, settings.\n\nAll setting types and ids in the presets and blocks must match the markup exactly. Change only sections/promo-popup-sequence.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

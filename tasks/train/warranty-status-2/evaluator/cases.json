@@ -1,0 +1,541 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/warranty-status-2.liquid",
+    "tags": [
+      "div",
+      "h3",
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "warranty": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "warranty": {
+        "product_name": "Stand Mixer",
+        "months": 24,
+        "months_used": 10,
+        "registered": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--active"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Stand Mixer"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Active"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "14 months left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "warranty": {
+        "product_name": "Toaster",
+        "months": 12,
+        "months_used": 11,
+        "registered": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--expiring"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Toaster"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Expiring soon"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "1 month left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "warranty": {
+        "product_name": "Vacuum",
+        "months": 12,
+        "months_used": 9,
+        "registered": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--expiring"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Vacuum"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Expiring soon"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "3 months left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "warranty": {
+        "product_name": "Air Fryer",
+        "months": 12,
+        "months_used": 8,
+        "registered": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--active"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Air Fryer"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Active"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "4 months left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "warranty": {
+        "product_name": "Kettle",
+        "months": 12,
+        "months_used": 12,
+        "registered": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--expired"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Kettle"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Expired"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "warranty": {
+        "product_name": "Fan",
+        "months": 6,
+        "months_used": 9,
+        "registered": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--expired"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Fan"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Expired"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "warranty": {
+        "product_name": "Heater",
+        "months": 24,
+        "months_used": 0,
+        "registered": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--unregistered"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Heater"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Unregistered"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "warranty": {
+        "product_name": "Lamp",
+        "months": null,
+        "months_used": null,
+        "registered": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--unregistered"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Lamp"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Unregistered"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "warranty": {
+        "product_name": "Radio",
+        "months": null,
+        "months_used": 0,
+        "registered": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--none"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Radio"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "No coverage"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "warranty": {
+        "product_name": "Clock",
+        "months": 0,
+        "months_used": 0,
+        "registered": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--none"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Clock"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "No coverage"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "warranty": {
+        "product_name": "Kettle <Pro> & \"Max\"",
+        "months": 12,
+        "months_used": null,
+        "registered": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--active"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Kettle <Pro> & \"Max\""
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Active"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "12 months left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-12",
+    "variables": {
+      "warranty": {
+        "product_name": null,
+        "months": 24,
+        "months_used": 23,
+        "registered": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--expiring"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Unnamed product"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Expiring soon"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "1 month left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-13",
+    "variables": {
+      "warranty": {
+        "product_name": "   ",
+        "months": 6,
+        "months_used": 2,
+        "registered": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--active"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Unnamed product"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Active"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "4 months left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

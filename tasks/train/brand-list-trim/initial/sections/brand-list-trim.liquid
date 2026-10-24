@@ -1,0 +1,22 @@
+<div class="brand-list">
+{%- if section.settings.heading != nil and section.settings.heading != '' -%}
+<h2 class="brand-list__heading">{{ section.settings.heading | escape }}</h2>
+{%- endif -%}
+<ul class="brand-list__items">
+{%- assign names = section.settings.brands | split: ',' -%}
+{%- for name in names -%}
+<li class="brand-list__item">{{ name | escape }}</li>
+{%- endfor -%}
+</ul>
+</div>
+{% schema %}
+{
+  "name": "Brand list",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Our brands" },
+    { "type": "textarea", "id": "brands", "label": "Brands (comma-separated)" },
+    { "type": "number", "id": "max_brands", "label": "Maximum brands (0 = no limit)", "default": 0 }
+  ],
+  "presets": [{ "name": "Brand list" }]
+}
+{% endschema %}

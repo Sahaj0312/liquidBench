@@ -1,0 +1,374 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/restock-alert.liquid",
+    "tags": [
+      "div",
+      "p",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "product_title": "Linen Shirt",
+      "stock": 0,
+      "threshold": 10,
+      "daily_sales": 3
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "restock-alert restock-alert--out"
+          ]
+        ],
+        "children": [],
+        "text": "Linen Shirt is out of stock."
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "product_title": "Linen Shirt",
+      "stock": 11,
+      "threshold": 10,
+      "daily_sales": 3
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "product_title": "Linen Shirt",
+      "stock": 10,
+      "threshold": 10,
+      "daily_sales": 3
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "restock-alert restock-alert--low"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Only 10 left of Linen Shirt (100% of reorder level)."
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "restock-alert__days"
+              ]
+            ],
+            "children": [],
+            "text": "About 4 days of stock left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "product_title": "Wool Socks",
+      "stock": 1,
+      "threshold": 8,
+      "daily_sales": 5
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "restock-alert restock-alert--low"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Only 1 left of Wool Socks (13% of reorder level)."
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "restock-alert__days"
+              ]
+            ],
+            "children": [],
+            "text": "About 1 day of stock left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "product_title": "Canvas Tote",
+      "stock": 3,
+      "threshold": 7,
+      "daily_sales": 0
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "restock-alert restock-alert--low"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Only 3 left of Canvas Tote (43% of reorder level)."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "product_title": "Canvas Tote",
+      "stock": 6,
+      "threshold": 9,
+      "daily_sales": 2
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "restock-alert restock-alert--low"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Only 6 left of Canvas Tote (67% of reorder level)."
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "restock-alert__days"
+              ]
+            ],
+            "children": [],
+            "text": "About 3 days of stock left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "product_title": "Rain Jacket",
+      "stock": 7,
+      "threshold": 12,
+      "daily_sales": 2
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "restock-alert restock-alert--low"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Only 7 left of Rain Jacket (58% of reorder level)."
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "restock-alert__days"
+              ]
+            ],
+            "children": [],
+            "text": "About 4 days of stock left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "product_title": "Tom & Jerry's \"<Mug>\"",
+      "stock": 2,
+      "threshold": 4,
+      "daily_sales": 1
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "restock-alert restock-alert--low"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Only 2 left of Tom & Jerry's \"<Mug>\" (50% of reorder level)."
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "restock-alert__days"
+              ]
+            ],
+            "children": [],
+            "text": "About 2 days of stock left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "product_title": "A<B>",
+      "stock": 0,
+      "threshold": 5,
+      "daily_sales": 0
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "restock-alert restock-alert--out"
+          ]
+        ],
+        "children": [],
+        "text": "A<B> is out of stock."
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "product_title": "Single Candle",
+      "stock": 1,
+      "threshold": 1,
+      "daily_sales": 1
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "restock-alert restock-alert--low"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Only 1 left of Single Candle (100% of reorder level)."
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "restock-alert__days"
+              ]
+            ],
+            "children": [],
+            "text": "About 1 day of stock left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "product_title": "Bulk Pens",
+      "stock": 5,
+      "threshold": 200,
+      "daily_sales": 10
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "restock-alert restock-alert--low"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Only 5 left of Bulk Pens (3% of reorder level)."
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "restock-alert__days"
+              ]
+            ],
+            "children": [],
+            "text": "About 1 day of stock left"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

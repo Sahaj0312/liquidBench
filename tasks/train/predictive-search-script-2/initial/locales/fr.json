@@ -1,0 +1,10 @@
+{
+  "templates": {
+    "search": {
+      "loading": "Chargement...",
+      "results_label": "Suggestions de recherche",
+      "no_results": "Aucun resultat pour {{ terms }}",
+      "view_all": "Voir tous les resultats"
+    }
+  }
+}

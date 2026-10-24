@@ -1,0 +1,27 @@
+{%- assign heading = section.settings.heading | strip -%}
+<div class="collage">
+  {%- if heading != '' -%}
+  <h2 class="collage__heading">{{ heading | escape }}</h2>
+  {%- endif -%}
+  <ul class="collage__grid">
+    {%- for block in section.blocks -%}
+    <li class="collage__item">{{ block.settings.title | escape }}</li>
+    {%- endfor -%}
+  </ul></div>
+
+{% schema %}
+{
+  "name": "Collage",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [{ "type": "text", "id": "title", "label": "Title" }]
+    }
+  ],
+  "presets": [{ "name": "Collage" }]
+}
+{% endschema %}

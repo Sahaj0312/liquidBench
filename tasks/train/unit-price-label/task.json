@@ -1,0 +1,15 @@
+{
+  "id": "unit-price-label",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "easy",
+  "family": "unit-price-label",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/unit-price-label.liquid"
+  ],
+  "prompt": "Fix the snippet snippets/unit-price-label.liquid so that it renders a unit price label with correct pluralization.\n\nInputs (all top-level variables, none under section.settings):\n- price: string or null. An already formatted price such as \"$4.99\".\n- count: integer or null. The number of units the price refers to.\n- unit: string, never null. The singular unit name, such as \"ounce\".\n\nRules:\n1. Output nothing (empty string) if any of these is true: price is null, price is the empty string \"\", count is null, or count is less than 1 (0 or negative).\n2. If count is exactly 1, output exactly: <span class=\"unit-price\">PRICE per UNIT</span>\n3. If count is greater than 1, output exactly: <span class=\"unit-price\">PRICE per COUNT UNITs</span>. The plural is formed by appending a lowercase \"s\" to the unit, with no other changes. Example: price \"$4.99\", count 3, unit \"ounce\" gives <span class=\"unit-price\">$4.99 per 3 ounces</span>.\n4. PRICE and UNIT must be HTML-escaped. For example, < becomes &lt;, > becomes &gt;, & becomes &amp; and \" becomes &quot;. COUNT is printed as a plain integer.\n5. Do not output any whitespace or newlines before or after the span. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/unit-price-label.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

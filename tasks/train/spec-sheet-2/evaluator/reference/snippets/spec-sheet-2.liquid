@@ -1,0 +1,29 @@
+{%- liquid
+  assign title_text = title | strip
+  assign row_count = 0
+  for spec in specs
+    assign spec_label = spec.label | strip
+    if spec_label != ""
+      assign row_count = row_count | plus: 1
+    endif
+  endfor
+-%}
+{%- if row_count > 0 -%}
+<div class="spec-sheet">
+{%- if title_text != "" -%}<h3 class="spec-sheet__title">{{ title_text | escape }}</h3>{%- endif -%}
+<dl class="spec-sheet__list">
+{%- for spec in specs -%}
+{%- assign spec_label = spec.label | strip -%}
+{%- if spec_label != "" -%}
+{%- assign spec_value = spec.value | strip -%}
+{%- assign spec_unit = spec.unit | strip -%}
+<div class="spec-sheet__row"><dt>{{ spec_label | escape }}</dt>
+{%- if spec_value == "" -%}<dd class="spec-sheet__empty">N/A</dd>
+{%- elsif spec_unit == "" -%}<dd>{{ spec_value | escape }}</dd>
+{%- else -%}<dd>{{ spec_value | escape }} {{ spec_unit | escape }}</dd>
+{%- endif -%}
+</div>
+{%- endif -%}
+{%- endfor -%}
+</dl></div>
+{%- endif -%}

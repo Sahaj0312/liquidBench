@@ -1,0 +1,9 @@
+{
+  "general": {
+    "search": {
+      "label": "Rechercher",
+      "placeholder": "Rechercher dans la boutique",
+      "submit": "Lancer la recherche"
+    }
+  }
+}

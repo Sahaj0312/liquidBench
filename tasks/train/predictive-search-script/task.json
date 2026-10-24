@@ -1,0 +1,15 @@
+{
+  "id": "predictive-search-script",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "easy",
+  "family": "predictive-search-script",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/predictive-search-script.liquid"
+  ],
+  "prompt": "The snippet snippets/predictive-search-script.liquid loads the predictive search JavaScript and shows a live status line with the number of results. Theme Check reports broken references in it: a missing asset, missing translation keys and a missing snippet. Fix every literal reference so it points to files and keys that actually exist. Read assets/, locales/en.default.json, locales/de.json and snippets/ to find the real names.\n\nRequirements:\n- The script tag must load the predictive search JavaScript file that exists in assets/.\n- The status line reads the top-level number `results_count`, which is never nil. When it is greater than 0, it must use the pluralized translation in the templates.search namespace. That entry is an object with `one` and `other` forms. Reference the parent key itself, not one of its plural forms, and pass `count: results_count` so that the correct form is picked. When `results_count` is 0, it must use the no-results translation from the same namespace.\n- The loading indicator must render the spinner snippet that exists in snippets/.\n\nDo not change the markup, the attributes or the condition. Change only the wrong string operands. Theme Check must report no missing asset, translation key or snippet errors. Change only snippets/predictive-search-script.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

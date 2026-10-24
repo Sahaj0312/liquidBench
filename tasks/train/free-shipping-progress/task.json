@@ -1,0 +1,15 @@
+{
+  "id": "free-shipping-progress",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "hard",
+  "family": "free-shipping-progress",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/free-shipping-progress.liquid"
+  ],
+  "prompt": "Rewrite snippets/free-shipping-progress.liquid so it renders an accessible free-shipping progress bar with a safely escaped label.\n\nInputs (all top-level; there is no section object):\n- `total_cents`: integer >= 0. This is the cart total in cents.\n- `threshold_cents`: integer or null. This is the free-shipping threshold in cents.\n- `currency`: string, never null. It is a currency prefix such as \"$\", and it may contain characters like < > &.\n- `remaining_template`: string or null. It is merchant text in which every occurrence of the literal placeholder `[amount]` is replaced with the formatted remaining amount.\n- `success_text`: string or null.\n\nRules:\n1. If `threshold_cents` is null, or is <= 0, output nothing (an empty string).\n2. percent = (total_cents * 100) integer-divided by threshold_cents, rounded down. Cap it at 100 when it exceeds 100. Examples: 4995 of 5000 gives 99, and 1999 of 2000 gives 99.\n3. remaining = threshold_cents - total_cents.\n4. If remaining > 0, build the message:\n   - Format the amount as currency + whole units + \".\" + cents padded to exactly two digits. For example, 5 cents gives \"$0.05\", 1205 gives \"$12.05\" and 1000 gives \"$10.00\".\n   - Strip `remaining_template`. If it is null or empty after stripping, use the default \"Add [amount] for free shipping\".\n   - Replace every `[amount]` in that template with the formatted amount, using the raw, unescaped amount.\n5. If remaining <= 0, the message is `success_text` after stripping. If it is null or empty after stripping, use the default \"Free shipping unlocked!\".\n6. The final message is HTML-escaped exactly once, as a whole, after the placeholder substitution: & < > \" become &amp; &lt; &gt; &quot;. This includes any characters coming from the currency. Do not double-escape.\n\nOutput is a single line with no whitespace between tags. N is the percent and L is the escaped message:\n`<div class=\"shipping-bar\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"N\" aria-label=\"L\"><p class=\"shipping-bar__label\">L</p><span class=\"shipping-bar__fill\" style=\"width: N%\"></span></div>` Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/free-shipping-progress.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

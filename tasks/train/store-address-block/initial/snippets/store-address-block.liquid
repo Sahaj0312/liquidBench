@@ -1,0 +1,7 @@
+<address class="address-block">
+  <span class="address-block__line">{{ address.name }}</span>
+  <span class="address-block__line">{{ address.street }}</span>
+  <span class="address-block__line">{{ address.zip }} {{ address.city }}</span>
+  <span class="address-block__line">{{ address.country }}</span>
+  <span class="address-block__distance">{{ distance_m | divided_by: 1000 }} km</span>
+</address>

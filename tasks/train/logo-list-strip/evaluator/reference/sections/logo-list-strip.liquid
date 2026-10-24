@@ -1,0 +1,25 @@
+<div class="logo-list logo-list--{{ section.settings.layout }}" style="--logos-per-row: {{ section.settings.logos_per_row }};">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="logo-list__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  <ul class="logo-list__items">
+    {%- for block in section.blocks -%}
+      <li class="logo-list__item" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          {%- capture logo -%}{{ block.settings.image | image_url: width: 300 | image_tag: alt: block.settings.alt_text, loading: 'lazy' }}{%- endcapture -%}
+        {%- else -%}
+          {%- capture logo -%}{{ 'logo' | placeholder_svg_tag: 'logo-list__placeholder' }}{%- endcapture -%}
+        {%- endif -%}
+        {%- if block.settings.link != blank -%}
+          <a href="{{ block.settings.link }}">{{ logo }}</a>
+        {%- else -%}
+          {{ logo }}
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+
+{% schema %}
+{"name":"Logo list","tag":"section","class":"section-logo-list","max_blocks":12,"settings":[{"type":"text","id":"heading","label":"Heading","default":"Trusted by"},{"type":"select","id":"layout","label":"Layout","options":[{"value":"grid","label":"Grid"},{"value":"carousel","label":"Carousel"}],"default":"grid"},{"type":"range","id":"logos_per_row","label":"Logos per row","min":2,"max":6,"step":1,"default":4}],"blocks":[{"type":"logo","name":"Logo","settings":[{"type":"image_picker","id":"image","label":"Image"},{"type":"text","id":"alt_text","label":"Alt text"},{"type":"url","id":"link","label":"Link"}]}],"presets":[{"name":"Logo list","blocks":[{"type":"logo"},{"type":"logo"},{"type":"logo"},{"type":"logo"}]}]}
+{% endschema %}

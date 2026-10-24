@@ -1,0 +1,15 @@
+{
+  "id": "contact-languages",
+  "version": 1,
+  "split": "train",
+  "category": "theme-modification",
+  "difficulty": "easy",
+  "family": "contact-languages",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/contact-languages.liquid"
+  ],
+  "prompt": "The section file sections/contact-languages.liquid renders a contact block. It reads `section.settings.heading` (string or null) and `section.settings.email` (string or null). It currently outputs `<div class=\"contact\">`, then `<h2 class=\"contact__heading\">` with the escaped heading when the heading is non-null and non-empty, then `<p class=\"contact__email\">` with the escaped email when the email is non-null and non-empty, then `</div>`. There is no whitespace between tags.\n\nChange: support a new top-level variable `languages` (an array of strings, never null, possibly empty). When it has at least one entry, output `<p class=\"contact__languages\">Languages: X</p>` immediately after the email paragraph position (i.e. as the last child of the div, after heading and email when present). X is the entries in their given order, each HTML-escaped, joined with a comma followed by a single space (`, `), with no separator before the first or after the last entry. Example: [\"English\",\"French\"] gives `Languages: English, French`. When `languages` is empty, output nothing for it (no paragraph). Do not add whitespace between tags. Keep all existing behavior, markup and the {% schema %} block byte-for-byte unchanged. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/contact-languages.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

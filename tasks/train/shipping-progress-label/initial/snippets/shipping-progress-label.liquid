@@ -1,0 +1,10 @@
+{%- if threshold_cents -%}
+{%- assign remaining = threshold_cents | minus: cart_total_cents -%}
+{%- if remaining < 0 -%}
+<p class="ship-bar ship-bar--done">Free shipping unlocked! <span>100%</span></p>
+{%- else -%}
+{%- assign pct = cart_total_cents | times: 100 | divided_by: threshold_cents -%}
+{%- assign amount = remaining | divided_by: 100.0 -%}
+<p class="ship-bar">Spend {{ currency_symbol }}{{ amount }} more for free shipping <span>{{ pct }}%</span></p>
+{%- endif -%}
+{%- endif -%}

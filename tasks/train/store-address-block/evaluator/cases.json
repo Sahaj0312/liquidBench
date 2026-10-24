@@ -1,0 +1,580 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/store-address-block.liquid",
+    "tags": [
+      "address",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "address": {
+        "name": "Ada Lovelace",
+        "street": "12 Analytical Way",
+        "zip": "10115",
+        "city": "Berlin",
+        "country": "Germany"
+      },
+      "distance_m": 1050
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "Ada Lovelace"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "12 Analytical Way"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "10115 Berlin"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "Germany"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "1.1 km"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "address": {
+        "name": null,
+        "street": null,
+        "zip": null,
+        "city": "Oslo",
+        "country": null
+      },
+      "distance_m": 1049
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "Oslo"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "1.0 km"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "address": {
+        "name": null,
+        "street": "1 Rue de Rivoli",
+        "zip": "75001",
+        "city": null,
+        "country": "France"
+      },
+      "distance_m": 999
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "1 Rue de Rivoli"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "75001"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "France"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "999 m"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "address": {
+        "name": "  Bob  ",
+        "street": "",
+        "zip": "  ",
+        "city": " Leeds ",
+        "country": null
+      },
+      "distance_m": 0
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "Bob"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "Leeds"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "0 m"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "address": null,
+      "distance_m": 99949
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "99.9 km"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "address": null,
+      "distance_m": 99950
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "100 km"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "address": {
+        "name": "Depot",
+        "street": null,
+        "zip": null,
+        "city": null,
+        "country": null
+      },
+      "distance_m": 150500
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "Depot"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "151 km"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "address": {
+        "name": "Depot",
+        "street": null,
+        "zip": null,
+        "city": null,
+        "country": null
+      },
+      "distance_m": 150499
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "Depot"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "150 km"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "address": null,
+      "distance_m": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "address": null,
+      "distance_m": 2500
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "2.5 km"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "address": {
+        "name": "Tom & Jerry <Ltd>",
+        "street": "Suite \"B\"",
+        "zip": null,
+        "city": "Paris & Co",
+        "country": "   "
+      },
+      "distance_m": null
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "Tom & Jerry <Ltd>"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "Suite \"B\""
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "Paris & Co"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "address": {
+        "name": " ",
+        "street": null,
+        "zip": "",
+        "city": null,
+        "country": "  "
+      },
+      "distance_m": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-12",
+    "variables": {
+      "address": null,
+      "distance_m": 9950
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "10.0 km"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

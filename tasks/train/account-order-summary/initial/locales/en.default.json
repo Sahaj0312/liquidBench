@@ -1,0 +1,15 @@
+{
+  "customer": {
+    "account": {
+      "title": "Account",
+      "view_addresses": "View addresses ({{ count }})",
+      "logout": "Log out"
+    },
+    "orders": {
+      "title": "Order history",
+      "none": "You haven't placed any orders yet.",
+      "single": "You have placed 1 order.",
+      "many": "You have placed {{ count }} orders."
+    }
+  }
+}

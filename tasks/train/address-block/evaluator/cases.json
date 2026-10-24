@@ -1,0 +1,572 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/address-block.liquid",
+    "tags": [
+      "a",
+      "address",
+      "p",
+      "span",
+      "strong"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "address": {
+        "company": "Acme Co",
+        "street": "12 Main St",
+        "city": "Springfield",
+        "phone": "555-0100"
+      }
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [
+              [
+                "class",
+                "address-block__company"
+              ]
+            ],
+            "children": [],
+            "text": "Acme Co"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__street"
+              ]
+            ],
+            "children": [],
+            "text": "12 Main St"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "Springfield"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "address-block__phone"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "tel:555-0100"
+                  ]
+                ],
+                "children": [],
+                "text": "555-0100"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "address": {
+        "company": null,
+        "street": "1 Elm Rd",
+        "city": "Dover",
+        "phone": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__street"
+              ]
+            ],
+            "children": [],
+            "text": "1 Elm Rd"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "Dover"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "address": {
+        "company": "",
+        "street": "1 Elm Rd",
+        "city": "Dover",
+        "phone": ""
+      }
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__street"
+              ]
+            ],
+            "children": [],
+            "text": "1 Elm Rd"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "Dover"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "address": {
+        "company": "Northwind",
+        "street": "8 Bay Ave",
+        "city": "Portland",
+        "phone": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [
+              [
+                "class",
+                "address-block__company"
+              ]
+            ],
+            "children": [],
+            "text": "Northwind"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__street"
+              ]
+            ],
+            "children": [],
+            "text": "8 Bay Ave"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "Portland"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "address": {
+        "company": null,
+        "street": "77 Lake Dr",
+        "city": "Austin",
+        "phone": "+1 555 0199"
+      }
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__street"
+              ]
+            ],
+            "children": [],
+            "text": "77 Lake Dr"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "Austin"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "address-block__phone"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "tel:+1 555 0199"
+                  ]
+                ],
+                "children": [],
+                "text": "+1 555 0199"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "address": {
+        "company": "",
+        "street": "3 Pine Ct",
+        "city": "Salem",
+        "phone": "555-0111"
+      }
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__street"
+              ]
+            ],
+            "children": [],
+            "text": "3 Pine Ct"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "Salem"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "address-block__phone"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "tel:555-0111"
+                  ]
+                ],
+                "children": [],
+                "text": "555-0111"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "address": {
+        "company": "Smith & Sons <Ltd>",
+        "street": "5 Oak St",
+        "city": "Leeds",
+        "phone": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [
+              [
+                "class",
+                "address-block__company"
+              ]
+            ],
+            "children": [],
+            "text": "Smith & Sons <Ltd>"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__street"
+              ]
+            ],
+            "children": [],
+            "text": "5 Oak St"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "Leeds"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "address": {
+        "company": null,
+        "street": "\"Old\" Mill & Co",
+        "city": "<York>",
+        "phone": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__street"
+              ]
+            ],
+            "children": [],
+            "text": "\"Old\" Mill & Co"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "<York>"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "address": {
+        "company": "Kiosk",
+        "street": "9 Rail Way",
+        "city": "Bath",
+        "phone": "555\"0100&<x>"
+      }
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [
+              [
+                "class",
+                "address-block__company"
+              ]
+            ],
+            "children": [],
+            "text": "Kiosk"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__street"
+              ]
+            ],
+            "children": [],
+            "text": "9 Rail Way"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "Bath"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "address-block__phone"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "tel:555\"0100&<x>"
+                  ]
+                ],
+                "children": [],
+                "text": "555\"0100&<x>"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

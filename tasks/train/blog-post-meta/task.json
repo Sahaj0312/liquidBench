@@ -1,0 +1,15 @@
+{
+  "id": "blog-post-meta",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "hard",
+  "family": "blog-post-meta",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/blog-post-meta.liquid"
+  ],
+  "prompt": "Rewrite snippets/blog-post-meta.liquid so it renders a blog post's meta line. The snippet must handle null, empty-string and whitespace-only inputs.\n\nINPUTS\nThere is one top-level object `post`, never null. All four keys are always present:\n- `post.author`: string or null\n- `post.published_at`: string or null. It is an already formatted date such as \"March 3, 2024\".\n- `post.comments_count`: non-negative integer or null\n- `post.tags`: array of strings, or null. The array may be empty. Elements are never null but may be \"\" or whitespace-only.\n\nThere are no section.settings.\n\nA string is \"blank\" when it is null, or empty after stripping leading and trailing whitespace. Non-blank strings are always displayed stripped and HTML-escaped with the standard escape (& < > \" ').\n\nPARTS, in this order:\n1. Author: if the author is not blank, output `<span class=\"post-meta__author\">By AUTHOR</span>`.\n2. Date: if published_at is not blank, output `<time class=\"post-meta__date\">DATE</time>`.\n3. Comments: if comments_count is not null, output `<span class=\"post-meta__comments\">TEXT</span>`, where TEXT is:\n   - \"No comments\" for 0\n   - \"1 comment\" for 1\n   - \"N comments\" otherwise\n4. Tags:\n   - Walk the tags in order and skip blank tags.\n   - The first 3 non-blank tags each become `<li>TAG</li>`.\n   - If K more non-blank tags exist after those 3, append `<li class=\"post-meta__more\">+K</li>`. Blank tags never count toward K.\n   - If there is at least one non-blank tag, output `<ul class=\"post-meta__tags\">` + items + `</ul>`.\n   - Otherwise output nothing for this part, including when tags is null or empty.\n\nWRAPPER\n- If at least one part is output, wrap all parts in `<div class=\"post-meta\">` ... `</div>`.\n- If no part is output, the snippet outputs the empty string. Do not output an empty div.\n\nThe output must be a single line with no whitespace or newlines between tags. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/blog-post-meta.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

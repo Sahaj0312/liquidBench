@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-days-floored",
+    "expected_pass": false,
+    "changes": {
+      "snippets/restock-alert.liquid": "{%- if stock == 0 -%}\n<p class=\"restock-alert restock-alert--out\">{{ product_title | escape }} is out of stock.</p>\n{%- elsif stock <= threshold -%}\n{%- assign denom = threshold | times: 2 -%}\n{%- assign pct = stock | times: 200 | plus: threshold | divided_by: denom -%}\n<div class=\"restock-alert restock-alert--low\"><p>Only {{ stock }} left of {{ product_title | escape }} ({{ pct }}% of reorder level).</p>\n{%- if daily_sales > 0 -%}\n{%- assign days = stock | divided_by: daily_sales -%}\n<span class=\"restock-alert__days\">About {{ days }} {% if days == 1 %}day{% else %}days{% endif %} of stock left</span>\n{%- endif -%}\n</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-percent-floored",
+    "expected_pass": false,
+    "changes": {
+      "snippets/restock-alert.liquid": "{%- if stock == 0 -%}\n<p class=\"restock-alert restock-alert--out\">{{ product_title | escape }} is out of stock.</p>\n{%- elsif stock <= threshold -%}\n{%- assign pct = stock | times: 100 | divided_by: threshold -%}\n<div class=\"restock-alert restock-alert--low\"><p>Only {{ stock }} left of {{ product_title | escape }} ({{ pct }}% of reorder level).</p>\n{%- if daily_sales > 0 -%}\n{%- assign days = stock | plus: daily_sales | minus: 1 | divided_by: daily_sales -%}\n<span class=\"restock-alert__days\">About {{ days }} {% if days == 1 %}day{% else %}days{% endif %} of stock left</span>\n{%- endif -%}\n</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-threshold-exclusive",
+    "expected_pass": false,
+    "changes": {
+      "snippets/restock-alert.liquid": "{%- if stock == 0 -%}\n<p class=\"restock-alert restock-alert--out\">{{ product_title | escape }} is out of stock.</p>\n{%- elsif stock < threshold -%}\n{%- assign denom = threshold | times: 2 -%}\n{%- assign pct = stock | times: 200 | plus: threshold | divided_by: denom -%}\n<div class=\"restock-alert restock-alert--low\"><p>Only {{ stock }} left of {{ product_title | escape }} ({{ pct }}% of reorder level).</p>\n{%- if daily_sales > 0 -%}\n{%- assign days = stock | plus: daily_sales | minus: 1 | divided_by: daily_sales -%}\n<span class=\"restock-alert__days\">About {{ days }} {% if days == 1 %}day{% else %}days{% endif %} of stock left</span>\n{%- endif -%}\n</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-always-plural-days",
+    "expected_pass": false,
+    "changes": {
+      "snippets/restock-alert.liquid": "{%- if stock == 0 -%}\n<p class=\"restock-alert restock-alert--out\">{{ product_title | escape }} is out of stock.</p>\n{%- elsif stock <= threshold -%}\n{%- assign denom = threshold | times: 2 -%}\n{%- assign pct = stock | times: 200 | plus: threshold | divided_by: denom -%}\n<div class=\"restock-alert restock-alert--low\"><p>Only {{ stock }} left of {{ product_title | escape }} ({{ pct }}% of reorder level).</p>\n{%- if daily_sales > 0 -%}\n{%- assign days = stock | plus: daily_sales | minus: 1 | divided_by: daily_sales -%}\n<span class=\"restock-alert__days\">About {{ days }} days of stock left</span>\n{%- endif -%}\n</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/restock-alert.liquid": "{% # theme-check-disable %}\n{%- if stock == 0 -%}\n<p class=\"restock-alert restock-alert--out\">{{ product_title | escape }} is out of stock.</p>\n{%- elsif stock <= threshold -%}\n{%- assign denom = threshold | times: 2 -%}\n{%- assign pct = stock | times: 200 | plus: threshold | divided_by: denom -%}\n<div class=\"restock-alert restock-alert--low\"><p>Only {{ stock }} left of {{ product_title | escape }} ({{ pct }}% of reorder level).</p>\n{%- if daily_sales > 0 -%}\n{%- assign days = stock | plus: daily_sales | minus: 1 | divided_by: daily_sales -%}\n<span class=\"restock-alert__days\">About {{ days }} {% if days == 1 %}day{% else %}days{% endif %} of stock left</span>\n{%- endif -%}\n</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/restock-alert.liquid": null
+    }
+  }
+]

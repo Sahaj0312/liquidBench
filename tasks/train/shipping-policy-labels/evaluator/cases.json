@@ -1,0 +1,794 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/shipping-policy-labels.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "shipping-policy.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "div"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "shipping-policy"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "h2"
+                }
+              ],
+              "attributes": [],
+              "children": [
+                {
+                  "type": "LiquidTag",
+                  "name": "render",
+                  "markup": {
+                    "type": "RenderMarkup",
+                    "snippet": {
+                      "type": "String",
+                      "single": true,
+                      "value": "icon-truck"
+                    },
+                    "variable": null,
+                    "alias": null,
+                    "args": []
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                },
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "shipping.policy.heading"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "LiquidTag",
+              "name": "assign",
+              "markup": {
+                "type": "AssignMarkup",
+                "name": "rate_count",
+                "value": {
+                  "type": "LiquidVariable",
+                  "expression": {
+                    "type": "VariableLookup",
+                    "name": "rates",
+                    "lookups": [],
+                    "lookupModes": []
+                  },
+                  "filters": [
+                    {
+                      "type": "LiquidFilter",
+                      "name": "size",
+                      "args": []
+                    }
+                  ]
+                }
+              },
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-"
+            },
+            {
+              "type": "LiquidTag",
+              "name": "if",
+              "markup": {
+                "type": "Comparison",
+                "comparator": "==",
+                "left": {
+                  "type": "VariableLookup",
+                  "name": "rate_count",
+                  "lookups": [],
+                  "lookupModes": []
+                },
+                "right": {
+                  "type": "Number",
+                  "value": "0"
+                }
+              },
+              "children": [
+                {
+                  "type": "LiquidBranch",
+                  "name": null,
+                  "markup": "",
+                  "children": [
+                    {
+                      "type": "HtmlElement",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "p"
+                        }
+                      ],
+                      "attributes": [],
+                      "children": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "String",
+                              "single": true,
+                              "value": "shipping.policy.empty"
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "t",
+                                "args": []
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                },
+                {
+                  "type": "LiquidBranch",
+                  "name": "else",
+                  "markup": "",
+                  "children": [
+                    {
+                      "type": "LiquidTag",
+                      "name": "assign",
+                      "markup": {
+                        "type": "AssignMarkup",
+                        "name": "current_region",
+                        "value": {
+                          "type": "LiquidVariable",
+                          "expression": {
+                            "type": "String",
+                            "single": true,
+                            "value": ""
+                          },
+                          "filters": []
+                        }
+                      },
+                      "whitespaceStart": "-",
+                      "whitespaceEnd": "-"
+                    },
+                    {
+                      "type": "LiquidTag",
+                      "name": "assign",
+                      "markup": {
+                        "type": "AssignMarkup",
+                        "name": "free_seen",
+                        "value": {
+                          "type": "LiquidVariable",
+                          "expression": {
+                            "type": "LiquidLiteral",
+                            "keyword": "false",
+                            "value": false
+                          },
+                          "filters": []
+                        }
+                      },
+                      "whitespaceStart": "-",
+                      "whitespaceEnd": "-"
+                    },
+                    {
+                      "type": "HtmlElement",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "ul"
+                        }
+                      ],
+                      "attributes": [],
+                      "children": [
+                        {
+                          "type": "LiquidTag",
+                          "name": "for",
+                          "markup": {
+                            "type": "ForMarkup",
+                            "variableName": "rate",
+                            "collection": {
+                              "type": "VariableLookup",
+                              "name": "rates",
+                              "lookups": [],
+                              "lookupModes": []
+                            },
+                            "reversed": false,
+                            "args": []
+                          },
+                          "children": [
+                            {
+                              "type": "LiquidBranch",
+                              "name": null,
+                              "markup": "",
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "region",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "VariableLookup",
+                                        "name": "rate",
+                                        "lookups": [
+                                          {
+                                            "type": "String",
+                                            "value": "region"
+                                          }
+                                        ],
+                                        "lookupModes": [
+                                          "bareword"
+                                        ]
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "default",
+                                          "args": [
+                                            {
+                                              "type": "String",
+                                              "single": true,
+                                              "value": ""
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "strip",
+                                          "args": []
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                },
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "if",
+                                  "markup": {
+                                    "type": "LogicalExpression",
+                                    "relation": "or",
+                                    "left": {
+                                      "type": "VariableLookup",
+                                      "name": "forloop",
+                                      "lookups": [
+                                        {
+                                          "type": "String",
+                                          "value": "first"
+                                        }
+                                      ],
+                                      "lookupModes": [
+                                        "bareword"
+                                      ]
+                                    },
+                                    "right": {
+                                      "type": "Comparison",
+                                      "comparator": "!=",
+                                      "left": {
+                                        "type": "VariableLookup",
+                                        "name": "region",
+                                        "lookups": [],
+                                        "lookupModes": []
+                                      },
+                                      "right": {
+                                        "type": "VariableLookup",
+                                        "name": "current_region",
+                                        "lookups": [],
+                                        "lookupModes": []
+                                      }
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "type": "LiquidBranch",
+                                      "name": null,
+                                      "markup": "",
+                                      "children": [
+                                        {
+                                          "type": "HtmlElement",
+                                          "name": [
+                                            {
+                                              "type": "TextNode",
+                                              "value": "li"
+                                            }
+                                          ],
+                                          "attributes": [
+                                            {
+                                              "type": "AttrDoubleQuoted",
+                                              "name": [
+                                                {
+                                                  "type": "TextNode",
+                                                  "value": "class"
+                                                }
+                                              ],
+                                              "value": [
+                                                {
+                                                  "type": "TextNode",
+                                                  "value": "shipping-policy__region"
+                                                }
+                                              ]
+                                            }
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "LiquidTag",
+                                              "name": "if",
+                                              "markup": {
+                                                "type": "Comparison",
+                                                "comparator": "==",
+                                                "left": {
+                                                  "type": "VariableLookup",
+                                                  "name": "region",
+                                                  "lookups": [],
+                                                  "lookupModes": []
+                                                },
+                                                "right": {
+                                                  "type": "String",
+                                                  "single": true,
+                                                  "value": ""
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "type": "LiquidBranch",
+                                                  "name": null,
+                                                  "markup": "",
+                                                  "children": [
+                                                    {
+                                                      "type": "LiquidVariableOutput",
+                                                      "markup": {
+                                                        "type": "LiquidVariable",
+                                                        "expression": {
+                                                          "type": "String",
+                                                          "single": true,
+                                                          "value": "shipping.policy.other_regions"
+                                                        },
+                                                        "filters": [
+                                                          {
+                                                            "type": "LiquidFilter",
+                                                            "name": "t",
+                                                            "args": []
+                                                          }
+                                                        ]
+                                                      },
+                                                      "whitespaceStart": "",
+                                                      "whitespaceEnd": ""
+                                                    }
+                                                  ],
+                                                  "whitespaceStart": "",
+                                                  "whitespaceEnd": ""
+                                                },
+                                                {
+                                                  "type": "LiquidBranch",
+                                                  "name": "else",
+                                                  "markup": "",
+                                                  "children": [
+                                                    {
+                                                      "type": "LiquidVariableOutput",
+                                                      "markup": {
+                                                        "type": "LiquidVariable",
+                                                        "expression": {
+                                                          "type": "VariableLookup",
+                                                          "name": "region",
+                                                          "lookups": [],
+                                                          "lookupModes": []
+                                                        },
+                                                        "filters": [
+                                                          {
+                                                            "type": "LiquidFilter",
+                                                            "name": "escape",
+                                                            "args": []
+                                                          }
+                                                        ]
+                                                      },
+                                                      "whitespaceStart": "",
+                                                      "whitespaceEnd": ""
+                                                    }
+                                                  ],
+                                                  "whitespaceStart": "",
+                                                  "whitespaceEnd": ""
+                                                }
+                                              ],
+                                              "whitespaceStart": "",
+                                              "whitespaceEnd": "",
+                                              "delimiterWhitespaceStart": "",
+                                              "delimiterWhitespaceEnd": ""
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "LiquidTag",
+                                          "name": "assign",
+                                          "markup": {
+                                            "type": "AssignMarkup",
+                                            "name": "current_region",
+                                            "value": {
+                                              "type": "LiquidVariable",
+                                              "expression": {
+                                                "type": "VariableLookup",
+                                                "name": "region",
+                                                "lookups": [],
+                                                "lookupModes": []
+                                              },
+                                              "filters": []
+                                            }
+                                          },
+                                          "whitespaceStart": "-",
+                                          "whitespaceEnd": "-"
+                                        }
+                                      ],
+                                      "whitespaceStart": "",
+                                      "whitespaceEnd": ""
+                                    }
+                                  ],
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-",
+                                  "delimiterWhitespaceStart": "-",
+                                  "delimiterWhitespaceEnd": "-"
+                                },
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "if",
+                                  "markup": {
+                                    "type": "Comparison",
+                                    "comparator": "==",
+                                    "left": {
+                                      "type": "VariableLookup",
+                                      "name": "rate",
+                                      "lookups": [
+                                        {
+                                          "type": "String",
+                                          "value": "price_cents"
+                                        }
+                                      ],
+                                      "lookupModes": [
+                                        "bareword"
+                                      ]
+                                    },
+                                    "right": {
+                                      "type": "Number",
+                                      "value": "0"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "type": "LiquidBranch",
+                                      "name": null,
+                                      "markup": "",
+                                      "children": [
+                                        {
+                                          "type": "LiquidTag",
+                                          "name": "if",
+                                          "markup": {
+                                            "type": "VariableLookup",
+                                            "name": "free_seen",
+                                            "lookups": [],
+                                            "lookupModes": []
+                                          },
+                                          "children": [
+                                            {
+                                              "type": "LiquidBranch",
+                                              "name": null,
+                                              "markup": "",
+                                              "children": [
+                                                {
+                                                  "type": "LiquidTag",
+                                                  "name": "assign",
+                                                  "markup": {
+                                                    "type": "AssignMarkup",
+                                                    "name": "rate_label",
+                                                    "value": {
+                                                      "type": "LiquidVariable",
+                                                      "expression": {
+                                                        "type": "String",
+                                                        "single": true,
+                                                        "value": "shipping.policy.also_free"
+                                                      },
+                                                      "filters": [
+                                                        {
+                                                          "type": "LiquidFilter",
+                                                          "name": "t",
+                                                          "args": []
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "whitespaceStart": "-",
+                                                  "whitespaceEnd": "-"
+                                                }
+                                              ],
+                                              "whitespaceStart": "",
+                                              "whitespaceEnd": ""
+                                            },
+                                            {
+                                              "type": "LiquidBranch",
+                                              "name": "else",
+                                              "markup": "",
+                                              "children": [
+                                                {
+                                                  "type": "LiquidTag",
+                                                  "name": "assign",
+                                                  "markup": {
+                                                    "type": "AssignMarkup",
+                                                    "name": "rate_label",
+                                                    "value": {
+                                                      "type": "LiquidVariable",
+                                                      "expression": {
+                                                        "type": "String",
+                                                        "single": true,
+                                                        "value": "shipping.policy.free"
+                                                      },
+                                                      "filters": [
+                                                        {
+                                                          "type": "LiquidFilter",
+                                                          "name": "t",
+                                                          "args": []
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "whitespaceStart": "-",
+                                                  "whitespaceEnd": "-"
+                                                },
+                                                {
+                                                  "type": "LiquidTag",
+                                                  "name": "assign",
+                                                  "markup": {
+                                                    "type": "AssignMarkup",
+                                                    "name": "free_seen",
+                                                    "value": {
+                                                      "type": "LiquidVariable",
+                                                      "expression": {
+                                                        "type": "LiquidLiteral",
+                                                        "keyword": "true",
+                                                        "value": true
+                                                      },
+                                                      "filters": []
+                                                    }
+                                                  },
+                                                  "whitespaceStart": "-",
+                                                  "whitespaceEnd": "-"
+                                                }
+                                              ],
+                                              "whitespaceStart": "-",
+                                              "whitespaceEnd": "-"
+                                            }
+                                          ],
+                                          "whitespaceStart": "-",
+                                          "whitespaceEnd": "-",
+                                          "delimiterWhitespaceStart": "-",
+                                          "delimiterWhitespaceEnd": "-"
+                                        }
+                                      ],
+                                      "whitespaceStart": "",
+                                      "whitespaceEnd": ""
+                                    },
+                                    {
+                                      "type": "LiquidBranch",
+                                      "name": "else",
+                                      "markup": "",
+                                      "children": [
+                                        {
+                                          "type": "LiquidTag",
+                                          "name": "assign",
+                                          "markup": {
+                                            "type": "AssignMarkup",
+                                            "name": "price_text",
+                                            "value": {
+                                              "type": "LiquidVariable",
+                                              "expression": {
+                                                "type": "VariableLookup",
+                                                "name": "rate",
+                                                "lookups": [
+                                                  {
+                                                    "type": "String",
+                                                    "value": "price_cents"
+                                                  }
+                                                ],
+                                                "lookupModes": [
+                                                  "bareword"
+                                                ]
+                                              },
+                                              "filters": [
+                                                {
+                                                  "type": "LiquidFilter",
+                                                  "name": "divided_by",
+                                                  "args": [
+                                                    {
+                                                      "type": "Number",
+                                                      "value": "100.0"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "whitespaceStart": "-",
+                                          "whitespaceEnd": "-"
+                                        },
+                                        {
+                                          "type": "LiquidTag",
+                                          "name": "assign",
+                                          "markup": {
+                                            "type": "AssignMarkup",
+                                            "name": "rate_label",
+                                            "value": {
+                                              "type": "LiquidVariable",
+                                              "expression": {
+                                                "type": "String",
+                                                "single": true,
+                                                "value": "shipping.policy.flat_rate"
+                                              },
+                                              "filters": [
+                                                {
+                                                  "type": "LiquidFilter",
+                                                  "name": "t",
+                                                  "args": [
+                                                    {
+                                                      "type": "NamedArgument",
+                                                      "name": "price",
+                                                      "value": {
+                                                        "type": "VariableLookup",
+                                                        "name": "price_text",
+                                                        "lookups": [],
+                                                        "lookupModes": []
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "whitespaceStart": "-",
+                                          "whitespaceEnd": "-"
+                                        }
+                                      ],
+                                      "whitespaceStart": "-",
+                                      "whitespaceEnd": "-"
+                                    }
+                                  ],
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-",
+                                  "delimiterWhitespaceStart": "-",
+                                  "delimiterWhitespaceEnd": "-"
+                                },
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "render",
+                                  "markup": {
+                                    "type": "RenderMarkup",
+                                    "snippet": {
+                                      "type": "String",
+                                      "single": true,
+                                      "value": "shipping-rate-row"
+                                    },
+                                    "variable": null,
+                                    "alias": null,
+                                    "args": [
+                                      {
+                                        "type": "NamedArgument",
+                                        "name": "title",
+                                        "value": {
+                                          "type": "VariableLookup",
+                                          "name": "rate",
+                                          "lookups": [
+                                            {
+                                              "type": "String",
+                                              "value": "title"
+                                            }
+                                          ],
+                                          "lookupModes": [
+                                            "bareword"
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "type": "NamedArgument",
+                                        "name": "label",
+                                        "value": {
+                                          "type": "VariableLookup",
+                                          "name": "rate_label",
+                                          "lookups": [],
+                                          "lookupModes": []
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "whitespaceStart": "",
+                                  "whitespaceEnd": ""
+                                }
+                              ],
+                              "whitespaceStart": "",
+                              "whitespaceEnd": ""
+                            }
+                          ],
+                          "whitespaceStart": "-",
+                          "whitespaceEnd": "-",
+                          "delimiterWhitespaceStart": "-",
+                          "delimiterWhitespaceEnd": "-"
+                        }
+                      ]
+                    }
+                  ],
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-"
+                }
+              ],
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-",
+              "delimiterWhitespaceStart": "-",
+              "delimiterWhitespaceEnd": "-"
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

@@ -1,0 +1,5 @@
+<table class="order-summary">
+{%- for row in rows -%}
+<tr><th>{{ row.label }}</th><td>{{ currency }} {{ row.amount_cents }}</td></tr>
+{%- endfor -%}
+</table>

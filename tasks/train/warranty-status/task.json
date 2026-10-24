@@ -1,0 +1,15 @@
+{
+  "id": "warranty-status",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "easy",
+  "family": "warranty-status",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/warranty-status.liquid"
+  ],
+  "prompt": "Fix snippets/warranty-status.liquid so it renders a product warranty line. It reads exactly two top-level variables (neither is under section.settings):\n- warranty_months: integer, may be null.\n- warranty_label: string, may be null, empty, or whitespace-only.\n\nRules:\n1. If warranty_months is null, or is less than 1 (0 or negative), output exactly:\n<p class=\"warranty warranty--none\">No warranty</p>\n2. Otherwise output exactly:\n<p class=\"warranty\">LABEL: N UNIT</p>\nwhere N is warranty_months. UNIT is \"month\" when N is exactly 1, otherwise \"months\". LABEL is warranty_label with leading and trailing whitespace removed. If warranty_label is null, or is empty after removing whitespace, LABEL is \"Warranty\". LABEL must be HTML-escaped (& < > \" become &amp; &lt; &gt; &quot;).\n\nThe snippet outputs only that single element, with no leading or trailing whitespace or newlines. Never compare null with < or > (that raises an error under strict rendering). Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/warranty-status.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

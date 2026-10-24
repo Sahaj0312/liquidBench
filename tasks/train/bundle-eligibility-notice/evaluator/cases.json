@@ -1,0 +1,535 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/bundle-eligibility-notice.liquid",
+    "tags": [
+      "div",
+      "h3",
+      "li",
+      "p",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "bundle": null,
+      "cart_items": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "bundle": {
+        "title": "Snack Pack",
+        "min_items": 3
+      },
+      "cart_items": [
+        {
+          "title": "Chips",
+          "eligible": true
+        },
+        {
+          "title": "Soda",
+          "eligible": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-notice"
+          ],
+          [
+            "data-bundle",
+            "Snack Pack"
+          ],
+          [
+            "data-count",
+            "1"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Snack Pack"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Add 2 more eligible items to unlock Snack Pack."
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "title",
+                    "Chips"
+                  ]
+                ],
+                "children": [],
+                "text": "Chips"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "bundle": {
+        "title": "Mix & Match <Deluxe>",
+        "min_items": 2
+      },
+      "cart_items": [
+        {
+          "title": "Tea \"Earl Grey\"",
+          "eligible": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-notice"
+          ],
+          [
+            "data-bundle",
+            "Mix & Match <Deluxe>"
+          ],
+          [
+            "data-count",
+            "1"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Mix & Match <Deluxe>"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Add 1 more eligible item to unlock Mix & Match <Deluxe>."
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "title",
+                    "Tea \"Earl Grey\""
+                  ]
+                ],
+                "children": [],
+                "text": "Tea \"Earl Grey\""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "bundle": {
+        "title": "Duo",
+        "min_items": 2
+      },
+      "cart_items": [
+        {
+          "title": "A & B",
+          "eligible": true
+        },
+        {
+          "title": "X",
+          "eligible": false
+        },
+        {
+          "title": "C>D",
+          "eligible": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-notice"
+          ],
+          [
+            "data-bundle",
+            "Duo"
+          ],
+          [
+            "data-count",
+            "2"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Duo"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Bundle unlocked!"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "title",
+                    "A & B"
+                  ]
+                ],
+                "children": [],
+                "text": "A & B"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "title",
+                    "C>D"
+                  ]
+                ],
+                "children": [],
+                "text": "C>D"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "bundle": {
+        "title": null,
+        "min_items": 1
+      },
+      "cart_items": []
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-notice"
+          ],
+          [
+            "data-bundle",
+            "Bundle"
+          ],
+          [
+            "data-count",
+            "0"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Bundle"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Add 1 more eligible item to unlock Bundle."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "bundle": {
+        "title": "   ",
+        "min_items": 2
+      },
+      "cart_items": [
+        {
+          "title": "Gum",
+          "eligible": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-notice"
+          ],
+          [
+            "data-bundle",
+            "Bundle"
+          ],
+          [
+            "data-count",
+            "0"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Bundle"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Add 2 more eligible items to unlock Bundle."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "bundle": {
+        "title": "  Chef's Kit  ",
+        "min_items": 1
+      },
+      "cart_items": [
+        {
+          "title": "Knife",
+          "eligible": true
+        },
+        {
+          "title": "Board <Oak>",
+          "eligible": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-notice"
+          ],
+          [
+            "data-bundle",
+            "Chef's Kit"
+          ],
+          [
+            "data-count",
+            "2"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Chef's Kit"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Bundle unlocked!"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "title",
+                    "Knife"
+                  ]
+                ],
+                "children": [],
+                "text": "Knife"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "title",
+                    "Board <Oak>"
+                  ]
+                ],
+                "children": [],
+                "text": "Board <Oak>"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "bundle": {
+        "title": "Trio",
+        "min_items": 3
+      },
+      "cart_items": [
+        {
+          "title": "P",
+          "eligible": null
+        },
+        {
+          "title": "Q",
+          "eligible": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-notice"
+          ],
+          [
+            "data-bundle",
+            "Trio"
+          ],
+          [
+            "data-count",
+            "1"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Trio"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Add 2 more eligible items to unlock Trio."
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "title",
+                    "Q"
+                  ]
+                ],
+                "children": [],
+                "text": "Q"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "bundle": {
+        "title": "<b>Gift</b>",
+        "min_items": 1
+      },
+      "cart_items": []
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-notice"
+          ],
+          [
+            "data-bundle",
+            "<b>Gift</b>"
+          ],
+          [
+            "data-count",
+            "0"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "<b>Gift</b>"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Add 1 more eligible item to unlock <b>Gift</b>."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

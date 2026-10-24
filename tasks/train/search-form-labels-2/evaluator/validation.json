@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-placeholder-key-guessed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-2.liquid": "{{ 'search-form.css' | asset_url | stylesheet_tag }}\n{%- assign query = search_terms | default: '' | strip -%}\n{%- assign placeholder_text = placeholder | default: '' | strip -%}\n{%- if placeholder_text == '' -%}\n  {%- assign placeholder_text = 'search.form.placeholder_text' | t -%}\n{%- endif -%}\n{%- assign reset_label = 'search.form.reset' | t -%}\n<form action=\"/search\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label for=\"SearchInput-{{ form_id }}\">{{ 'search.form.label' | t }}</label>\n  <input id=\"SearchInput-{{ form_id }}\" type=\"search\" name=\"q\" value=\"{{ query | escape }}\" placeholder=\"{{ placeholder_text | escape }}\">\n  <button type=\"submit\" aria-label=\"{{ 'search.form.submit' | t }}\">{% render 'icon-search' %}</button>\n  {%- if query != '' -%}\n    {% render 'search-reset-button', label: reset_label %}\n  {%- endif -%}\n</form>\n"
+    }
+  },
+  {
+    "name": "wrong-1-reset-snippet-truncated",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-2.liquid": "{{ 'search-form.css' | asset_url | stylesheet_tag }}\n{%- assign query = search_terms | default: '' | strip -%}\n{%- assign placeholder_text = placeholder | default: '' | strip -%}\n{%- if placeholder_text == '' -%}\n  {%- assign placeholder_text = 'search.form.placeholder' | t -%}\n{%- endif -%}\n{%- assign reset_label = 'search.form.reset' | t -%}\n<form action=\"/search\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label for=\"SearchInput-{{ form_id }}\">{{ 'search.form.label' | t }}</label>\n  <input id=\"SearchInput-{{ form_id }}\" type=\"search\" name=\"q\" value=\"{{ query | escape }}\" placeholder=\"{{ placeholder_text | escape }}\">\n  <button type=\"submit\" aria-label=\"{{ 'search.form.submit' | t }}\">{% render 'icon-search' %}</button>\n  {%- if query != '' -%}\n    {% render 'search-reset', label: reset_label %}\n  {%- endif -%}\n</form>\n"
+    }
+  },
+  {
+    "name": "wrong-2-minified-asset-name",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-2.liquid": "{{ 'search-form.min.css' | asset_url | stylesheet_tag }}\n{%- assign query = search_terms | default: '' | strip -%}\n{%- assign placeholder_text = placeholder | default: '' | strip -%}\n{%- if placeholder_text == '' -%}\n  {%- assign placeholder_text = 'search.form.placeholder' | t -%}\n{%- endif -%}\n{%- assign reset_label = 'search.form.reset' | t -%}\n<form action=\"/search\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label for=\"SearchInput-{{ form_id }}\">{{ 'search.form.label' | t }}</label>\n  <input id=\"SearchInput-{{ form_id }}\" type=\"search\" name=\"q\" value=\"{{ query | escape }}\" placeholder=\"{{ placeholder_text | escape }}\">\n  <button type=\"submit\" aria-label=\"{{ 'search.form.submit' | t }}\">{% render 'icon-search' %}</button>\n  {%- if query != '' -%}\n    {% render 'search-reset-button', label: reset_label %}\n  {%- endif -%}\n</form>\n"
+    }
+  },
+  {
+    "name": "wrong-3-submit-key-left-unfixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-2.liquid": "{{ 'search-form.css' | asset_url | stylesheet_tag }}\n{%- assign query = search_terms | default: '' | strip -%}\n{%- assign placeholder_text = placeholder | default: '' | strip -%}\n{%- if placeholder_text == '' -%}\n  {%- assign placeholder_text = 'search.form.placeholder' | t -%}\n{%- endif -%}\n{%- assign reset_label = 'search.form.reset' | t -%}\n<form action=\"/search\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label for=\"SearchInput-{{ form_id }}\">{{ 'search.form.label' | t }}</label>\n  <input id=\"SearchInput-{{ form_id }}\" type=\"search\" name=\"q\" value=\"{{ query | escape }}\" placeholder=\"{{ placeholder_text | escape }}\">\n  <button type=\"submit\" aria-label=\"{{ 'search.submit' | t }}\">{% render 'icon-search' %}</button>\n  {%- if query != '' -%}\n    {% render 'search-reset-button', label: reset_label %}\n  {%- endif -%}\n</form>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-2.liquid": "{% # theme-check-disable %}\n{{ 'search-form.css' | asset_url | stylesheet_tag }}\n{%- assign query = search_terms | default: '' | strip -%}\n{%- assign placeholder_text = placeholder | default: '' | strip -%}\n{%- if placeholder_text == '' -%}\n  {%- assign placeholder_text = 'search.form.placeholder' | t -%}\n{%- endif -%}\n{%- assign reset_label = 'search.form.reset' | t -%}\n<form action=\"/search\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label for=\"SearchInput-{{ form_id }}\">{{ 'search.form.label' | t }}</label>\n  <input id=\"SearchInput-{{ form_id }}\" type=\"search\" name=\"q\" value=\"{{ query | escape }}\" placeholder=\"{{ placeholder_text | escape }}\">\n  <button type=\"submit\" aria-label=\"{{ 'search.form.submit' | t }}\">{% render 'icon-search' %}</button>\n  {%- if query != '' -%}\n    {% render 'search-reset-button', label: reset_label %}\n  {%- endif -%}\n</form>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-2.liquid": null
+    }
+  }
+]

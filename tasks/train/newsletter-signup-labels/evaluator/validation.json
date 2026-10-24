@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-button-key-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-signup-labels.liquid": "{%- comment -%} Newsletter signup labels {%- endcomment -%}\n{{ 'newsletter-signup.css' | asset_url | stylesheet_tag }}\n{%- assign rounded_readers = subscriber_count | plus: 50 | divided_by: 100 | times: 100 -%}\n{%- assign discount_whole = discount_percent | round -%}\n<div class=\"newsletter-signup\">\n  {% render 'icon-envelope' %}\n  <h2>{{ 'newsletter.form.heading' | t }}</h2>\n  <p>{{ 'newsletter.form.readers' | t: readers: rounded_readers }}</p>\n  <p>{{ 'newsletter.form.discount' | t: percent: discount_whole }}</p>\n  <button type=\"submit\">{{ 'newsletter.form.subscribe' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-render-with-extension",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-signup-labels.liquid": "{%- comment -%} Newsletter signup labels {%- endcomment -%}\n{{ 'newsletter-signup.css' | asset_url | stylesheet_tag }}\n{%- assign rounded_readers = subscriber_count | plus: 50 | divided_by: 100 | times: 100 -%}\n{%- assign discount_whole = discount_percent | round -%}\n<div class=\"newsletter-signup\">\n  {% render 'icon-envelope.svg' %}\n  <h2>{{ 'newsletter.form.heading' | t }}</h2>\n  <p>{{ 'newsletter.form.readers' | t: readers: rounded_readers }}</p>\n  <p>{{ 'newsletter.form.discount' | t: percent: discount_whole }}</p>\n  <button type=\"submit\">{{ 'newsletter.form.button' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-heading-wrong-nesting",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-signup-labels.liquid": "{%- comment -%} Newsletter signup labels {%- endcomment -%}\n{{ 'newsletter-signup.css' | asset_url | stylesheet_tag }}\n{%- assign rounded_readers = subscriber_count | plus: 50 | divided_by: 100 | times: 100 -%}\n{%- assign discount_whole = discount_percent | round -%}\n<div class=\"newsletter-signup\">\n  {% render 'icon-envelope' %}\n  <h2>{{ 'newsletter.heading' | t }}</h2>\n  <p>{{ 'newsletter.form.readers' | t: readers: rounded_readers }}</p>\n  <p>{{ 'newsletter.form.discount' | t: percent: discount_whole }}</p>\n  <button type=\"submit\">{{ 'newsletter.form.button' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-stylesheet-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-signup-labels.liquid": "{%- comment -%} Newsletter signup labels {%- endcomment -%}\n{{ 'newsletter.css' | asset_url | stylesheet_tag }}\n{%- assign rounded_readers = subscriber_count | plus: 50 | divided_by: 100 | times: 100 -%}\n{%- assign discount_whole = discount_percent | round -%}\n<div class=\"newsletter-signup\">\n  {% render 'icon-envelope' %}\n  <h2>{{ 'newsletter.form.heading' | t }}</h2>\n  <p>{{ 'newsletter.form.readers' | t: readers: rounded_readers }}</p>\n  <p>{{ 'newsletter.form.discount' | t: percent: discount_whole }}</p>\n  <button type=\"submit\">{{ 'newsletter.form.button' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-signup-labels.liquid": "{% # theme-check-disable %}\n{%- comment -%} Newsletter signup labels {%- endcomment -%}\n{{ 'newsletter-signup.css' | asset_url | stylesheet_tag }}\n{%- assign rounded_readers = subscriber_count | plus: 50 | divided_by: 100 | times: 100 -%}\n{%- assign discount_whole = discount_percent | round -%}\n<div class=\"newsletter-signup\">\n  {% render 'icon-envelope' %}\n  <h2>{{ 'newsletter.form.heading' | t }}</h2>\n  <p>{{ 'newsletter.form.readers' | t: readers: rounded_readers }}</p>\n  <p>{{ 'newsletter.form.discount' | t: percent: discount_whole }}</p>\n  <button type=\"submit\">{{ 'newsletter.form.button' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-signup-labels.liquid": null
+    }
+  }
+]

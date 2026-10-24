@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-no-strip-of-name",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline.liquid": "{%- assign author_name = author.name | default: '' -%}\n{%- assign author_url = author.url | default: '' -%}\n{%- if author_name != '' -%}\n<p class=\"byline\">By {% if author_url != '' %}<a href=\"{{ author_url | escape }}\">{{ author_name | escape }}</a>{% else %}<span>{{ author_name | escape }}</span>{% endif %}</p>\n{%- endif -%}"
+    }
+  },
+  {
+    "name": "wrong-1-name-not-escaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline.liquid": "{%- assign author_name = author.name | default: '' | strip -%}\n{%- assign author_url = author.url | default: '' -%}\n{%- if author_name != '' -%}\n<p class=\"byline\">By {% if author_url != '' %}<a href=\"{{ author_url | escape }}\">{{ author_name }}</a>{% else %}<span>{{ author_name }}</span>{% endif %}</p>\n{%- endif -%}"
+    }
+  },
+  {
+    "name": "wrong-2-empty-url-treated-as-link",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline.liquid": "{%- assign author_name = author.name | default: '' | strip -%}\n{%- if author_name != '' -%}\n<p class=\"byline\">By {% if author.url %}<a href=\"{{ author.url | escape }}\">{{ author_name | escape }}</a>{% else %}<span>{{ author_name | escape }}</span>{% endif %}</p>\n{%- endif -%}"
+    }
+  },
+  {
+    "name": "wrong-3-no-span-wrapper",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline.liquid": "{%- assign author_name = author.name | default: '' | strip -%}\n{%- assign author_url = author.url | default: '' -%}\n{%- if author_name != '' -%}\n<p class=\"byline\">By {% if author_url != '' %}<a href=\"{{ author_url | escape }}\">{{ author_name | escape }}</a>{% else %}{{ author_name | escape }}{% endif %}</p>\n{%- endif -%}"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline.liquid": "{% # theme-check-disable %}\n{%- assign author_name = author.name | default: '' | strip -%}\n{%- assign author_url = author.url | default: '' -%}\n{%- if author_name != '' -%}\n<p class=\"byline\">By {% if author_url != '' %}<a href=\"{{ author_url | escape }}\">{{ author_name | escape }}</a>{% else %}<span>{{ author_name | escape }}</span>{% endif %}</p>\n{%- endif -%}"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline.liquid": null
+    }
+  }
+]

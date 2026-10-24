@@ -1,0 +1,15 @@
+{
+  "id": "pickup-availability-list",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "hard",
+  "family": "pickup-availability-list",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/pickup-availability-list.liquid"
+  ],
+  "prompt": "Fix snippets/pickup-availability-list.liquid so it renders the store-pickup list exactly as specified.\n\nInputs:\n- `locations` is a top-level array. It is never null but may be empty. Each element is an object with:\n  - `name`: string, never null. It may contain HTML special characters.\n  - `available`: boolean (true or false).\n  - `pickup_time`: string or null.\n\nThe output is a single run of HTML with no whitespace, newlines or indentation between tags.\n\nRules:\n1. If `locations` is empty, output nothing (an empty string).\n2. If `locations` is non-empty but no element has `available` == true, output exactly `<p class=\"pickup-none\">No pickup locations available</p>`.\n3. Otherwise, output `<ul class=\"pickup-list\">`, then one `<li>` for each location whose `available` is true, then `</ul>`.\n   - Keep the original array order. Unavailable locations produce no output at all.\n   - Each item is `<li class=\"CLASSES\"><span>NAME</span>TIME</li>`.\n   - CLASSES always starts with `pickup-item`.\n     - Append ` is-first` to the first rendered (available) item.\n     - Append ` is-last` to the last rendered (available) item.\n     - When only one item is rendered, its CLASSES are `pickup-item is-first is-last`.\n     - First and last are determined among available locations only, never by position in the full `locations` array.\n   - NAME is `name`, HTML-escaped.\n   - TIME is built from `pickup_time` trimmed of leading and trailing whitespace.\n     - If `pickup_time` is null, or is empty after trimming, TIME is omitted entirely (no `<em>` element).\n     - Otherwise TIME is `<em>TRIMMED</em>`, where TRIMMED is the trimmed value, HTML-escaped.\n\nUse only core Liquid. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/pickup-availability-list.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

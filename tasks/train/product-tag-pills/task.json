@@ -1,0 +1,15 @@
+{
+  "id": "product-tag-pills",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "easy",
+  "family": "product-tag-pills",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/product-tag-pills.liquid"
+  ],
+  "prompt": "Fix the snippet snippets/product-tag-pills.liquid. It lists a product's tags. It currently prints every tag, including internal tags, without escaping, and it always prints the list wrapper.\n\nInputs (top-level variables only, there is no section.settings):\n- tags: array of non-empty strings, never null, possibly empty.\n\nRules:\n- A tag is internal, and must be skipped, when its very first character is an underscore \"_\". Tags that contain an underscore elsewhere, such as \"new_arrival\" or \"A_\", are visible. A tag that starts with a space followed by an underscore, such as \" _x\", is also visible. Do not strip tags.\n- Visible tags are output in their original order. Skipping an internal tag must not stop processing of the tags after it.\n- Each visible tag is output as <li>TAG</li>, where TAG is HTML-escaped with the escape filter.\n- The list items are wrapped in <ul class=\"product-tags\">...</ul>.\n- If there are no visible tags, because the array is empty or every tag is internal, output nothing at all (empty string). In that case do not output an empty ul.\n- Do not emit whitespace or newlines between or around tags.\n\nExample: [\"_sync\",\"Linen\"] renders exactly <ul class=\"product-tags\"><li>Linen</li></ul> Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/product-tag-pills.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

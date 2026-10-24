@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-asset-underscore-kept",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-script.liquid": "<script src=\"{{ 'predictive_search.js' | asset_url }}\" defer=\"defer\"></script>\n<predictive-search class=\"predictive-search\" data-results-count=\"{{ results_count }}\">\n  <p class=\"predictive-search__status\" role=\"status\">\n    {%- if results_count > 0 -%}\n      {{ 'templates.search.results_with_count' | t: count: results_count }}\n    {%- else -%}\n      {{ 'templates.search.no_results' | t }}\n    {%- endif -%}\n  </p>\n  <div class=\"predictive-search__loading\" hidden>\n    {%- render 'loading-spinner' -%}\n  </div>\n</predictive-search>\n"
+    }
+  },
+  {
+    "name": "wrong-1-count-key-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-script.liquid": "<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n<predictive-search class=\"predictive-search\" data-results-count=\"{{ results_count }}\">\n  <p class=\"predictive-search__status\" role=\"status\">\n    {%- if results_count > 0 -%}\n      {{ 'templates.search.result_count' | t: count: results_count }}\n    {%- else -%}\n      {{ 'templates.search.no_results' | t }}\n    {%- endif -%}\n  </p>\n  <div class=\"predictive-search__loading\" hidden>\n    {%- render 'loading-spinner' -%}\n  </div>\n</predictive-search>\n"
+    }
+  },
+  {
+    "name": "wrong-2-empty-key-kept",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-script.liquid": "<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n<predictive-search class=\"predictive-search\" data-results-count=\"{{ results_count }}\">\n  <p class=\"predictive-search__status\" role=\"status\">\n    {%- if results_count > 0 -%}\n      {{ 'templates.search.results_with_count' | t: count: results_count }}\n    {%- else -%}\n      {{ 'templates.search.empty' | t }}\n    {%- endif -%}\n  </p>\n  <div class=\"predictive-search__loading\" hidden>\n    {%- render 'loading-spinner' -%}\n  </div>\n</predictive-search>\n"
+    }
+  },
+  {
+    "name": "wrong-3-spinner-snippet-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-script.liquid": "<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n<predictive-search class=\"predictive-search\" data-results-count=\"{{ results_count }}\">\n  <p class=\"predictive-search__status\" role=\"status\">\n    {%- if results_count > 0 -%}\n      {{ 'templates.search.results_with_count' | t: count: results_count }}\n    {%- else -%}\n      {{ 'templates.search.no_results' | t }}\n    {%- endif -%}\n  </p>\n  <div class=\"predictive-search__loading\" hidden>\n    {%- render 'spinner' -%}\n  </div>\n</predictive-search>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-script.liquid": "{% # theme-check-disable %}\n<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n<predictive-search class=\"predictive-search\" data-results-count=\"{{ results_count }}\">\n  <p class=\"predictive-search__status\" role=\"status\">\n    {%- if results_count > 0 -%}\n      {{ 'templates.search.results_with_count' | t: count: results_count }}\n    {%- else -%}\n      {{ 'templates.search.no_results' | t }}\n    {%- endif -%}\n  </p>\n  <div class=\"predictive-search__loading\" hidden>\n    {%- render 'loading-spinner' -%}\n  </div>\n</predictive-search>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-script.liquid": null
+    }
+  }
+]

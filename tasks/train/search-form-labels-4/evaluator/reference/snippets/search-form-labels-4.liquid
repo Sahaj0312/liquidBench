@@ -1,0 +1,12 @@
+{{ 'component-search.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
+<form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
+  <label class="visually-hidden" for="Search-{{ section_id }}">{{ 'general.search.label' | t }}</label>
+  <input type="search" id="Search-{{ section_id }}" name="q" value="{{ search_terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}">
+  <button type="reset" class="search-form__reset" aria-label="{{ 'general.search.reset' | t }}">
+    {%- render 'icon-close' -%}
+  </button>
+  <button type="submit" class="search-form__submit" aria-label="{{ 'general.search.submit' | t }}">
+    {%- render 'icon-search' -%}
+  </button>
+</form>

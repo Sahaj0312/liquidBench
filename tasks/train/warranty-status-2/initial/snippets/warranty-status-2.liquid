@@ -1,0 +1,9 @@
+{%- assign remaining = warranty.months | minus: warranty.months_used -%}
+<div class="warranty">
+  <h3>{{ warranty.product_name }}</h3>
+  {%- if remaining > 0 -%}
+    <p>Active</p>
+  {%- else -%}
+    <p>Expired</p>
+  {%- endif -%}
+</div>

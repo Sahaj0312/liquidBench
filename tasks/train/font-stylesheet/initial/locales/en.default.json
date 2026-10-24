@@ -1,0 +1,15 @@
+{
+  "general": {
+    "fonts": {
+      "heading": "Typography",
+      "families_count": {
+        "one": "{{ count }} font family",
+        "other": "{{ count }} font families"
+      },
+      "weights_count": {
+        "one": "{{ count }} weight loaded",
+        "other": "{{ count }} weights loaded"
+      }
+    }
+  }
+}

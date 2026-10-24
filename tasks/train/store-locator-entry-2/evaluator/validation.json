@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-name-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/store-locator-entry-2.liquid": "{%- liquid\n  assign store_name = store.name | default: \"\"\n  assign line1 = store.address_line1 | strip\n  assign line2 = store.address_line2 | strip\n  assign city = store.city | strip\n  assign postal = store.postal_code | strip\n  assign phone = store.phone | strip\n  if postal != \"\" and city != \"\"\n    assign city_line = postal | append: \" \" | append: city\n  elsif postal != \"\"\n    assign city_line = postal\n  else\n    assign city_line = city\n  endif\n-%}\n{%- if store_name != \"\" -%}\n<article class=\"store-entry\"><h4 class=\"store-entry__name\">{{ store_name | strip | escape }}</h4>\n{%- if line1 != \"\" or line2 != \"\" or city_line != \"\" -%}\n<address class=\"store-entry__address\">\n{%- if line1 != \"\" -%}<span>{{ line1 | escape }}</span>{%- endif -%}\n{%- if line2 != \"\" -%}<span>{{ line2 | escape }}</span>{%- endif -%}\n{%- if city_line != \"\" -%}<span>{{ city_line | escape }}</span>{%- endif -%}\n</address>\n{%- endif -%}\n{%- if phone != \"\" -%}\n{%- assign tel = phone | replace: \" \", \"\" | replace: \"-\", \"\" | replace: \"(\", \"\" | replace: \")\", \"\" -%}\n<p class=\"store-entry__phone\"><a href=\"tel:{{ tel | escape }}\">{{ phone | escape }}</a></p>\n{%- endif -%}\n{%- if store.distance_km != nil -%}\n{%- if store.distance_km < 1 -%}<p class=\"store-entry__distance\">Under 1 km away</p>\n{%- else -%}<p class=\"store-entry__distance\">{{ store.distance_km | round }} km away</p>\n{%- endif -%}\n{%- endif -%}\n</article>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-city-line-always-joined",
+    "expected_pass": false,
+    "changes": {
+      "snippets/store-locator-entry-2.liquid": "{%- liquid\n  assign store_name = store.name | strip\n  assign line1 = store.address_line1 | strip\n  assign line2 = store.address_line2 | strip\n  assign city = store.city | strip\n  assign postal = store.postal_code | strip\n  assign phone = store.phone | strip\n  assign city_line = \"\"\n  if postal != \"\" or city != \"\"\n    assign city_line = postal | append: \" \" | append: city\n  endif\n-%}\n{%- if store_name != \"\" -%}\n<article class=\"store-entry\"><h4 class=\"store-entry__name\">{{ store_name | escape }}</h4>\n{%- if line1 != \"\" or line2 != \"\" or city_line != \"\" -%}\n<address class=\"store-entry__address\">\n{%- if line1 != \"\" -%}<span>{{ line1 | escape }}</span>{%- endif -%}\n{%- if line2 != \"\" -%}<span>{{ line2 | escape }}</span>{%- endif -%}\n{%- if city_line != \"\" -%}<span>{{ city_line | escape }}</span>{%- endif -%}\n</address>\n{%- endif -%}\n{%- if phone != \"\" -%}\n{%- assign tel = phone | replace: \" \", \"\" | replace: \"-\", \"\" | replace: \"(\", \"\" | replace: \")\", \"\" -%}\n<p class=\"store-entry__phone\"><a href=\"tel:{{ tel | escape }}\">{{ phone | escape }}</a></p>\n{%- endif -%}\n{%- if store.distance_km != nil -%}\n{%- if store.distance_km < 1 -%}<p class=\"store-entry__distance\">Under 1 km away</p>\n{%- else -%}<p class=\"store-entry__distance\">{{ store.distance_km | round }} km away</p>\n{%- endif -%}\n{%- endif -%}\n</article>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-distance-boundary-inclusive",
+    "expected_pass": false,
+    "changes": {
+      "snippets/store-locator-entry-2.liquid": "{%- liquid\n  assign store_name = store.name | strip\n  assign line1 = store.address_line1 | strip\n  assign line2 = store.address_line2 | strip\n  assign city = store.city | strip\n  assign postal = store.postal_code | strip\n  assign phone = store.phone | strip\n  if postal != \"\" and city != \"\"\n    assign city_line = postal | append: \" \" | append: city\n  elsif postal != \"\"\n    assign city_line = postal\n  else\n    assign city_line = city\n  endif\n-%}\n{%- if store_name != \"\" -%}\n<article class=\"store-entry\"><h4 class=\"store-entry__name\">{{ store_name | escape }}</h4>\n{%- if line1 != \"\" or line2 != \"\" or city_line != \"\" -%}\n<address class=\"store-entry__address\">\n{%- if line1 != \"\" -%}<span>{{ line1 | escape }}</span>{%- endif -%}\n{%- if line2 != \"\" -%}<span>{{ line2 | escape }}</span>{%- endif -%}\n{%- if city_line != \"\" -%}<span>{{ city_line | escape }}</span>{%- endif -%}\n</address>\n{%- endif -%}\n{%- if phone != \"\" -%}\n{%- assign tel = phone | replace: \" \", \"\" | replace: \"-\", \"\" | replace: \"(\", \"\" | replace: \")\", \"\" -%}\n<p class=\"store-entry__phone\"><a href=\"tel:{{ tel | escape }}\">{{ phone | escape }}</a></p>\n{%- endif -%}\n{%- if store.distance_km != nil -%}\n{%- if store.distance_km <= 1 -%}<p class=\"store-entry__distance\">Under 1 km away</p>\n{%- else -%}<p class=\"store-entry__distance\">{{ store.distance_km | round }} km away</p>\n{%- endif -%}\n{%- endif -%}\n</article>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-tel-keeps-parentheses",
+    "expected_pass": false,
+    "changes": {
+      "snippets/store-locator-entry-2.liquid": "{%- liquid\n  assign store_name = store.name | strip\n  assign line1 = store.address_line1 | strip\n  assign line2 = store.address_line2 | strip\n  assign city = store.city | strip\n  assign postal = store.postal_code | strip\n  assign phone = store.phone | strip\n  if postal != \"\" and city != \"\"\n    assign city_line = postal | append: \" \" | append: city\n  elsif postal != \"\"\n    assign city_line = postal\n  else\n    assign city_line = city\n  endif\n-%}\n{%- if store_name != \"\" -%}\n<article class=\"store-entry\"><h4 class=\"store-entry__name\">{{ store_name | escape }}</h4>\n{%- if line1 != \"\" or line2 != \"\" or city_line != \"\" -%}\n<address class=\"store-entry__address\">\n{%- if line1 != \"\" -%}<span>{{ line1 | escape }}</span>{%- endif -%}\n{%- if line2 != \"\" -%}<span>{{ line2 | escape }}</span>{%- endif -%}\n{%- if city_line != \"\" -%}<span>{{ city_line | escape }}</span>{%- endif -%}\n</address>\n{%- endif -%}\n{%- if phone != \"\" -%}\n{%- assign tel = phone | replace: \" \", \"\" | replace: \"-\", \"\" -%}\n<p class=\"store-entry__phone\"><a href=\"tel:{{ tel | escape }}\">{{ phone | escape }}</a></p>\n{%- endif -%}\n{%- if store.distance_km != nil -%}\n{%- if store.distance_km < 1 -%}<p class=\"store-entry__distance\">Under 1 km away</p>\n{%- else -%}<p class=\"store-entry__distance\">{{ store.distance_km | round }} km away</p>\n{%- endif -%}\n{%- endif -%}\n</article>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/store-locator-entry-2.liquid": "{% # theme-check-disable %}\n{%- liquid\n  assign store_name = store.name | strip\n  assign line1 = store.address_line1 | strip\n  assign line2 = store.address_line2 | strip\n  assign city = store.city | strip\n  assign postal = store.postal_code | strip\n  assign phone = store.phone | strip\n  if postal != \"\" and city != \"\"\n    assign city_line = postal | append: \" \" | append: city\n  elsif postal != \"\"\n    assign city_line = postal\n  else\n    assign city_line = city\n  endif\n-%}\n{%- if store_name != \"\" -%}\n<article class=\"store-entry\"><h4 class=\"store-entry__name\">{{ store_name | escape }}</h4>\n{%- if line1 != \"\" or line2 != \"\" or city_line != \"\" -%}\n<address class=\"store-entry__address\">\n{%- if line1 != \"\" -%}<span>{{ line1 | escape }}</span>{%- endif -%}\n{%- if line2 != \"\" -%}<span>{{ line2 | escape }}</span>{%- endif -%}\n{%- if city_line != \"\" -%}<span>{{ city_line | escape }}</span>{%- endif -%}\n</address>\n{%- endif -%}\n{%- if phone != \"\" -%}\n{%- assign tel = phone | replace: \" \", \"\" | replace: \"-\", \"\" | replace: \"(\", \"\" | replace: \")\", \"\" -%}\n<p class=\"store-entry__phone\"><a href=\"tel:{{ tel | escape }}\">{{ phone | escape }}</a></p>\n{%- endif -%}\n{%- if store.distance_km != nil -%}\n{%- if store.distance_km < 1 -%}<p class=\"store-entry__distance\">Under 1 km away</p>\n{%- else -%}<p class=\"store-entry__distance\">{{ store.distance_km | round }} km away</p>\n{%- endif -%}\n{%- endif -%}\n</article>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/store-locator-entry-2.liquid": null
+    }
+  }
+]

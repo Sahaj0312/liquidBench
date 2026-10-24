@@ -1,0 +1,5 @@
+{%- case warranty.status -%}
+  {%- when 'active' -%}
+    <div class="warranty warranty--active"><span>Under warranty</span>{% if warranty.expires_on %}<time>{{ warranty.expires_on }}</time>{% endif %}</div>
+  {%- when 'expiring' -%}
+    <div class="warranty warranty--expiring"><span>Warranty ending soon</span>{% if warranty.expires_on %}<time>{{ warranty.expires_on }}</time>{% endif %}</div>

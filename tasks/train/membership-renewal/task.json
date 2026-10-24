@@ -1,0 +1,15 @@
+{
+  "id": "membership-renewal",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "membership-renewal",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/membership-renewal.liquid"
+  ],
+  "prompt": "The snippet snippets/membership-renewal.liquid is broken: it does not parse and its logic is incomplete. Rewrite it so it parses under strict Liquid and renders a membership renewal reminder.\n\nInputs (all top-level, always supplied):\n- `member`: object or null. When non-null it always has these keys:\n  - `member.name`: string or null\n  - `member.plan`: string, never null\n  - `member.days_left`: integer or null. Negative means the membership already expired.\n  - `member.auto_renew`: boolean\n\nRules:\n1. Output nothing (empty string) if `member` is null, if `member.days_left` is null, or if `member.days_left` is greater than 30.\n2. STATE is `expired` when days_left < 0, `today` when days_left == 0, and `soon` when days_left is 1..30.\n3. N is the absolute value of days_left. UNIT is `day` when N is 1, otherwise `days`.\n4. VERB is `renews` when auto_renew is true, otherwise `expires`.\n5. Output exactly, with no whitespace between or around tags and no leading or trailing whitespace:\n   `<div class=\"renewal renewal--STATE\"><p>GREETING SENTENCE</p>LINK</div>`\n   - GREETING: if name, after stripping surrounding whitespace, is non-empty, output `<strong>Hi NAME,</strong> ` (the stripped name, HTML-escaped with the escape filter, followed by exactly one space). Otherwise output nothing (no space either).\n   - SENTENCE: expired: `Your PLAN membership expired N UNIT ago.`; today: `Your PLAN membership VERB today.`; soon: `Your PLAN membership VERB in N UNIT.` PLAN is HTML-escaped with the escape filter.\n   - LINK: `<a class=\"renewal__link\" href=\"/account/renew\">Renew now</a>` when STATE is expired (regardless of auto_renew) or when auto_renew is false. Otherwise nothing. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/membership-renewal.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

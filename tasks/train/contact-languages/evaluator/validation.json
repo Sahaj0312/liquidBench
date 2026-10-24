@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-comma-without-space",
+    "expected_pass": false,
+    "changes": {
+      "sections/contact-languages.liquid": "{%- assign heading = section.settings.heading | default: \"\" -%}\n{%- assign email = section.settings.email | default: \"\" -%}\n<div class=\"contact\">\n{%- if heading != \"\" -%}<h2 class=\"contact__heading\">{{ heading | escape }}</h2>{%- endif -%}\n{%- if email != \"\" -%}<p class=\"contact__email\">{{ email | escape }}</p>{%- endif -%}\n{%- if languages.size > 0 -%}<p class=\"contact__languages\">Languages: {{ languages | join: \",\" | escape }}</p>{%- endif -%}\n</div>\n{% schema %}\n{\"name\":\"Contact\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Contact us\"},{\"type\":\"text\",\"id\":\"email\",\"label\":\"Email\"}],\"presets\":[{\"name\":\"Contact\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-trailing-separator",
+    "expected_pass": false,
+    "changes": {
+      "sections/contact-languages.liquid": "{%- assign heading = section.settings.heading | default: \"\" -%}\n{%- assign email = section.settings.email | default: \"\" -%}\n<div class=\"contact\">\n{%- if heading != \"\" -%}<h2 class=\"contact__heading\">{{ heading | escape }}</h2>{%- endif -%}\n{%- if email != \"\" -%}<p class=\"contact__email\">{{ email | escape }}</p>{%- endif -%}\n{%- if languages.size > 0 -%}<p class=\"contact__languages\">Languages: {% for lang in languages %}{{ lang | escape }}, {% endfor %}</p>{%- endif -%}\n</div>\n{% schema %}\n{\"name\":\"Contact\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Contact us\"},{\"type\":\"text\",\"id\":\"email\",\"label\":\"Email\"}],\"presets\":[{\"name\":\"Contact\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-unescaped-languages",
+    "expected_pass": false,
+    "changes": {
+      "sections/contact-languages.liquid": "{%- assign heading = section.settings.heading | default: \"\" -%}\n{%- assign email = section.settings.email | default: \"\" -%}\n<div class=\"contact\">\n{%- if heading != \"\" -%}<h2 class=\"contact__heading\">{{ heading | escape }}</h2>{%- endif -%}\n{%- if email != \"\" -%}<p class=\"contact__email\">{{ email | escape }}</p>{%- endif -%}\n{%- if languages.size > 0 -%}<p class=\"contact__languages\">Languages: {{ languages | join: \", \" }}</p>{%- endif -%}\n</div>\n{% schema %}\n{\"name\":\"Contact\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Contact us\"},{\"type\":\"text\",\"id\":\"email\",\"label\":\"Email\"}],\"presets\":[{\"name\":\"Contact\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-always-shows-paragraph",
+    "expected_pass": false,
+    "changes": {
+      "sections/contact-languages.liquid": "{%- assign heading = section.settings.heading | default: \"\" -%}\n{%- assign email = section.settings.email | default: \"\" -%}\n<div class=\"contact\">\n{%- if heading != \"\" -%}<h2 class=\"contact__heading\">{{ heading | escape }}</h2>{%- endif -%}\n{%- if email != \"\" -%}<p class=\"contact__email\">{{ email | escape }}</p>{%- endif -%}\n<p class=\"contact__languages\">Languages: {{ languages | join: \", \" | escape }}</p>\n</div>\n{% schema %}\n{\"name\":\"Contact\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Contact us\"},{\"type\":\"text\",\"id\":\"email\",\"label\":\"Email\"}],\"presets\":[{\"name\":\"Contact\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/contact-languages.liquid": "{% # theme-check-disable %}\n{%- assign heading = section.settings.heading | default: \"\" -%}\n{%- assign email = section.settings.email | default: \"\" -%}\n<div class=\"contact\">\n{%- if heading != \"\" -%}<h2 class=\"contact__heading\">{{ heading | escape }}</h2>{%- endif -%}\n{%- if email != \"\" -%}<p class=\"contact__email\">{{ email | escape }}</p>{%- endif -%}\n{%- if languages.size > 0 -%}<p class=\"contact__languages\">Languages: {{ languages | join: \", \" | escape }}</p>{%- endif -%}\n</div>\n{% schema %}\n{\"name\":\"Contact\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Contact us\"},{\"type\":\"text\",\"id\":\"email\",\"label\":\"Email\"}],\"presets\":[{\"name\":\"Contact\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/contact-languages.liquid": null
+    }
+  }
+]

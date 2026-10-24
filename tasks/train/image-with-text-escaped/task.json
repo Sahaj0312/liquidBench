@@ -1,0 +1,15 @@
+{
+  "id": "image-with-text-escaped",
+  "version": 1,
+  "split": "train",
+  "category": "section-schema",
+  "difficulty": "medium",
+  "family": "image-with-text-escaped",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/image-with-text-escaped.liquid"
+  ],
+  "prompt": "The section sections/image-with-text-escaped.liquid renders an image beside a text column. Its markup handles values in two ways:\n- It passes image_alt to the image tag as an attribute.\n- It escapes the plain-text settings heading and button_label in both text and attributes.\n- It outputs the text setting raw, so that setting must be a richtext setting containing HTML.\n\nThe markup is correct, so do not change it. Only rewrite the schema so that it is exactly the following, with keys and items in this order.\n\nTop-level keys:\n- \"name\": \"Image with text\"\n- \"tag\": \"section\"\n- \"class\": \"image-with-text-section\"\n- \"settings\"\n- \"presets\"\n\nsettings (7 items, in order):\n1. type \"image_picker\", id \"image\", label \"Image\".\n2. type \"text\", id \"image_alt\", label \"Image alt text\", info \"Describe the image for screen readers\".\n3. type \"select\", id \"layout\", label \"Layout\", default \"image-first\".\n   - options, in order: {\"value\":\"image-first\",\"label\":\"Image first\"} then {\"value\":\"text-first\",\"label\":\"Text first\"}.\n   - Key order: type, id, label, options, default.\n4. type \"text\", id \"heading\", label \"Heading\", default \"Image with text\".\n5. type \"richtext\", id \"text\", label \"Text\", default \"<p>Pair text with an image to tell your story.</p>\" (the default is literal HTML, wrapped in a p element).\n6. type \"text\", id \"button_label\", label \"Button label\" (no default).\n7. type \"url\", id \"button_link\", label \"Button link\" (no default).\n\nUnless stated otherwise, each setting's keys appear in the order type, id, label, then info/default.\n\npresets: a single preset [{\"name\":\"Image with text\"}]. Change only sections/image-with-text-escaped.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

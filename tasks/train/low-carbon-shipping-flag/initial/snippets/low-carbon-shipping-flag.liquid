@@ -1,0 +1,8 @@
+{%- if shipment.weight_grams and shipment.distance_km -%}
+{%- assign kg = shipment.weight_grams | divided_by: 1000 -%}
+{%- if shipment.method == 'air' -%}{%- assign factor = 602 -%}{%- elsif shipment.method == 'rail' -%}{%- assign factor = 22 -%}{%- else -%}{%- assign factor = 62 -%}{%- endif -%}
+{%- assign e = kg | times: shipment.distance_km | times: factor | divided_by: 1000 -%}
+{%- if e < 50 -%}
+<span class="carbon carbon--low">Low-carbon shipping: {{ e }} g CO2 via {{ shipment.carrier }}</span>
+{%- endif -%}
+{%- endif -%}

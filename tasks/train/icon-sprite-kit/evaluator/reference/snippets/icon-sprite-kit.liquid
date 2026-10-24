@@ -1,0 +1,7 @@
+{{ 'icon-sprite.css' | asset_url | stylesheet_tag }}
+<div class="icon-sprite">
+  <img src="{{ 'icon-sprite.svg' | asset_url }}" alt="{{ 'icons.sprite.alt' | t }}" width="24" height="24" loading="lazy">
+  <p>{{ 'icons.sprite.caption' | t: count: 3 }}</p>
+  {% render 'icon-symbol', name: 'cart' %}
+  {% render 'icon-badge', count: 3 %}
+</div>

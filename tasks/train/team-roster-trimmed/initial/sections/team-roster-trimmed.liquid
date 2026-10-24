@@ -1,0 +1,13 @@
+<div class="team">
+  <h2 class="team__heading">{{ section.settings.heading }}</h2>
+  <ul class="team__list">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'member' -%}
+        <li class="team__member"><span class="team__name">{{ block.settings.name }}</span><span class="team__role">{{ block.settings.role }}</span></li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</div>
+{% schema %}
+{"name":"Team members","tag":"section","settings":[{"type":"text","id":"heading","label":"Heading","default":"Meet the team"},{"type":"number","id":"max_members","label":"Maximum members to show (0 = all)"}],"blocks":[{"type":"member","name":"Team member","settings":[{"type":"text","id":"name","label":"Name"},{"type":"text","id":"role","label":"Role"}]},{"type":"divider","name":"Divider","settings":[]}],"presets":[{"name":"Team members","blocks":[{"type":"member"},{"type":"member"}]}]}
+{% endschema %}

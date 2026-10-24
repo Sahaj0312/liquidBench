@@ -1,0 +1,15 @@
+{
+  "products": {
+    "product": {
+      "quantity": {
+        "label": "Anzahl",
+        "input_label": "Anzahl für {{ product }}",
+        "increase": "Anzahl für {{ product }} erhöhen",
+        "decrease": "Anzahl für {{ product }} verringern",
+        "min_of": "Mindestens {{ quantity }}",
+        "max_of": "Höchstens {{ quantity }}",
+        "multiples_of": "Schritte von {{ quantity }}"
+      }
+    }
+  }
+}

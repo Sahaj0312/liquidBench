@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-raw-attributes",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility-notice.liquid": "{%- if bundle -%}\n{%- assign bundle_title_raw = bundle.title | strip | default: \"Bundle\" -%}\n{%- assign bundle_title = bundle_title_raw | escape -%}\n{%- assign eligible_count = 0 -%}\n{%- for item in cart_items -%}\n{%- if item.eligible -%}{%- assign eligible_count = eligible_count | plus: 1 -%}{%- endif -%}\n{%- endfor -%}\n<div class=\"bundle-notice\" data-bundle=\"{{ bundle_title_raw }}\" data-count=\"{{ eligible_count }}\"><h3>{{ bundle_title }}</h3><p>\n{%- if eligible_count >= bundle.min_items -%}Bundle unlocked!\n{%- else -%}\n{%- assign remaining = bundle.min_items | minus: eligible_count -%}Add {{ remaining }} more eligible item{% if remaining != 1 %}s{% endif %} to unlock {{ bundle_title }}.\n{%- endif -%}</p>\n{%- if eligible_count > 0 -%}<ul>\n{%- for item in cart_items -%}\n{%- if item.eligible -%}<li title=\"{{ item.title }}\">{{ item.title | escape }}</li>{%- endif -%}\n{%- endfor -%}\n</ul>\n{%- endif -%}</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-default-before-strip",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility-notice.liquid": "{%- if bundle -%}\n{%- assign bundle_title = bundle.title | default: \"Bundle\" | strip | escape -%}\n{%- assign eligible_count = 0 -%}\n{%- for item in cart_items -%}\n{%- if item.eligible -%}{%- assign eligible_count = eligible_count | plus: 1 -%}{%- endif -%}\n{%- endfor -%}\n<div class=\"bundle-notice\" data-bundle=\"{{ bundle_title }}\" data-count=\"{{ eligible_count }}\"><h3>{{ bundle_title }}</h3><p>\n{%- if eligible_count >= bundle.min_items -%}Bundle unlocked!\n{%- else -%}\n{%- assign remaining = bundle.min_items | minus: eligible_count -%}Add {{ remaining }} more eligible item{% if remaining != 1 %}s{% endif %} to unlock {{ bundle_title }}.\n{%- endif -%}</p>\n{%- if eligible_count > 0 -%}<ul>\n{%- for item in cart_items -%}\n{%- if item.eligible -%}<li title=\"{{ item.title | escape }}\">{{ item.title | escape }}</li>{%- endif -%}\n{%- endfor -%}\n</ul>\n{%- endif -%}</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-strict-greater-unlock",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility-notice.liquid": "{%- if bundle -%}\n{%- assign bundle_title = bundle.title | strip | default: \"Bundle\" | escape -%}\n{%- assign eligible_count = 0 -%}\n{%- for item in cart_items -%}\n{%- if item.eligible -%}{%- assign eligible_count = eligible_count | plus: 1 -%}{%- endif -%}\n{%- endfor -%}\n<div class=\"bundle-notice\" data-bundle=\"{{ bundle_title }}\" data-count=\"{{ eligible_count }}\"><h3>{{ bundle_title }}</h3><p>\n{%- if eligible_count > bundle.min_items -%}Bundle unlocked!\n{%- else -%}\n{%- assign remaining = bundle.min_items | minus: eligible_count -%}Add {{ remaining }} more eligible item{% if remaining != 1 %}s{% endif %} to unlock {{ bundle_title }}.\n{%- endif -%}</p>\n{%- if eligible_count > 0 -%}<ul>\n{%- for item in cart_items -%}\n{%- if item.eligible -%}<li title=\"{{ item.title | escape }}\">{{ item.title | escape }}</li>{%- endif -%}\n{%- endfor -%}\n</ul>\n{%- endif -%}</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-lists-ineligible-items",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility-notice.liquid": "{%- if bundle -%}\n{%- assign bundle_title = bundle.title | strip | default: \"Bundle\" | escape -%}\n{%- assign eligible_count = 0 -%}\n{%- for item in cart_items -%}\n{%- if item.eligible -%}{%- assign eligible_count = eligible_count | plus: 1 -%}{%- endif -%}\n{%- endfor -%}\n<div class=\"bundle-notice\" data-bundle=\"{{ bundle_title }}\" data-count=\"{{ eligible_count }}\"><h3>{{ bundle_title }}</h3><p>\n{%- if eligible_count >= bundle.min_items -%}Bundle unlocked!\n{%- else -%}\n{%- assign remaining = bundle.min_items | minus: eligible_count -%}Add {{ remaining }} more eligible item{% if remaining != 1 %}s{% endif %} to unlock {{ bundle_title }}.\n{%- endif -%}</p>\n{%- if eligible_count > 0 -%}<ul>\n{%- for item in cart_items -%}\n<li title=\"{{ item.title | escape }}\">{{ item.title | escape }}</li>\n{%- endfor -%}\n</ul>\n{%- endif -%}</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility-notice.liquid": "{% # theme-check-disable %}\n{%- if bundle -%}\n{%- assign bundle_title = bundle.title | strip | default: \"Bundle\" | escape -%}\n{%- assign eligible_count = 0 -%}\n{%- for item in cart_items -%}\n{%- if item.eligible -%}{%- assign eligible_count = eligible_count | plus: 1 -%}{%- endif -%}\n{%- endfor -%}\n<div class=\"bundle-notice\" data-bundle=\"{{ bundle_title }}\" data-count=\"{{ eligible_count }}\"><h3>{{ bundle_title }}</h3><p>\n{%- if eligible_count >= bundle.min_items -%}Bundle unlocked!\n{%- else -%}\n{%- assign remaining = bundle.min_items | minus: eligible_count -%}Add {{ remaining }} more eligible item{% if remaining != 1 %}s{% endif %} to unlock {{ bundle_title }}.\n{%- endif -%}</p>\n{%- if eligible_count > 0 -%}<ul>\n{%- for item in cart_items -%}\n{%- if item.eligible -%}<li title=\"{{ item.title | escape }}\">{{ item.title | escape }}</li>{%- endif -%}\n{%- endfor -%}\n</ul>\n{%- endif -%}</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility-notice.liquid": null
+    }
+  }
+]

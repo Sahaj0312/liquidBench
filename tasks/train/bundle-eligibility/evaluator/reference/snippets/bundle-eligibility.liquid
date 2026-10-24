@@ -1,0 +1,13 @@
+{%- assign heading = bundle_title | strip -%}
+{%- if heading == "" -%}{%- assign heading = "Bundle" -%}{%- endif -%}
+{%- assign required = min_items | default: 2 -%}
+{%- assign count = 0 -%}
+{%- for item in items -%}{%- assign t = item.title | strip -%}{%- if t != "" -%}{%- assign count = count | plus: 1 -%}{%- endif -%}{%- endfor -%}
+<div class="bundle-eligibility"><h3>{{ heading | escape }}</h3>
+{%- if count >= required -%}
+<p class="bundle-eligibility__status">Eligible with {{ count }} {% if count == 1 %}item{% else %}items{% endif %}</p>
+{%- else -%}
+{%- assign missing = required | minus: count -%}
+<p class="bundle-eligibility__status">Add {{ missing }} more {% if missing == 1 %}item{% else %}items{% endif %} to qualify</p>
+{%- endif -%}
+{%- if count > 0 -%}<ul class="bundle-eligibility__items">{%- for item in items -%}{%- assign t = item.title | strip -%}{%- if t != "" -%}<li>{{ t | escape }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}</div>

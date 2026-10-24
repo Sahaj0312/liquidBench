@@ -1,0 +1,9 @@
+{
+  "products": {
+    "media": {
+      "open_zoom": "Open media {{ index }} in modal",
+      "play_video": "Play video",
+      "load_model": "Load 3D model"
+    }
+  }
+}

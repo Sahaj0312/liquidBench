@@ -1,0 +1,29 @@
+{%- assign product = section.settings.product -%}
+<div class="featured-product section-{{ section.id }}">
+  {%- unless section.settings.full_width -%}<div class="page-width">{%- endunless -%}
+  {%- if section.settings.heading != blank -%}
+    <header class="featured-product__header"><h2>{{ section.settings.heading | escape }}</h2></header>
+  {%- endif -%}
+  {%- if product != blank -%}
+    <h3 class="featured-product__title">{{ product.title | escape }}</h3>
+    {%- if section.settings.show_vendor and product.vendor != blank -%}
+      <p class="featured-product__vendor">{{ product.vendor | escape }}</p>
+    {%- endif -%}
+  {%- endif -%}
+  {%- unless section.settings.full_width -%}</div>{%- endunless -%}
+</div>
+
+{% schema %}
+{
+  "name": "Featured product",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {"type": "product", "id": "product", "label": "Product"},
+    {"type": "checkbox", "id": "full_width", "label": "Make section full width", "default": false},
+    {"type": "text", "id": "heading", "label": "Heading", "default": "Featured product"},
+    {"type": "checkbox", "id": "show_vendor", "label": "Show vendor", "default": true}
+  ],
+  "presets": [{"name": "Featured product"}]
+}
+{% endschema %}

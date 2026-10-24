@@ -1,0 +1,275 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/preorder-notice-3.liquid",
+    "tags": [
+      "p",
+      "span",
+      "strong"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "label": "Pre-order now",
+      "ship_date": "March 3"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "preorder-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Pre-order now"
+          },
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Ships March 3"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "label": null,
+      "ship_date": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "preorder-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Pre-order"
+          },
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Ships soon"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "label": "",
+      "ship_date": ""
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "preorder-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Pre-order"
+          },
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Ships soon"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "label": "   ",
+      "ship_date": "  "
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "preorder-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Pre-order"
+          },
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Ships soon"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "label": "  Reserve  ",
+      "ship_date": " in May "
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "preorder-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Reserve"
+          },
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in May"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "label": "Tom & Jerry <Pre>",
+      "ship_date": "\"Q3\""
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "preorder-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Tom & Jerry <Pre>"
+          },
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Ships \"Q3\""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "label": null,
+      "ship_date": "June"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "preorder-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Pre-order"
+          },
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Ships June"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "label": "Back soon",
+      "ship_date": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "preorder-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Back soon"
+          },
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Ships soon"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

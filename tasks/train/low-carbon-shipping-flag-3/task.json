@@ -1,0 +1,15 @@
+{
+  "id": "low-carbon-shipping-flag-3",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "hard",
+  "family": "low-carbon-shipping-flag-3",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/low-carbon-shipping-flag-3.liquid"
+  ],
+  "prompt": "Fix snippets/low-carbon-shipping-flag-3.liquid, which decides whether to show a low-carbon shipping flag. All matching must be exact and case-sensitive.\n\nInputs (all top-level variables, always supplied):\n- product_tags: array of strings, or null (null behaves like an empty array).\n- carrier_code: string or null.\n- offset_percent: integer or null.\n- badge_label: string or null.\n\nRules:\n1. Exempt: if any element of product_tags is exactly the string carbon-exempt (case-sensitive, no trimming; substrings like not-carbon-exempt or variants like Carbon-Exempt do NOT count), output nothing. Exemption overrides every other rule.\n2. Tag match: any element of product_tags is exactly low-carbon (case-sensitive, no trimming; Low-Carbon, \" low-carbon\" and low-carbon-pack do NOT match).\n3. Carrier match: carrier_code is exactly ECO or exactly RAIL (case-sensitive; eco, Rail etc. do not match).\n4. If neither tag match nor carrier match, output nothing.\n5. Otherwise output exactly: <p class=\"ship-flag\" data-source=\"SOURCE\"><span>LABEL</span>OFFSET</p>\n   - SOURCE is tag when the tag match holds (even if the carrier also matches), otherwise carrier.\n   - LABEL is badge_label stripped of leading/trailing whitespace and HTML-escaped; if badge_label is null or empty after stripping, LABEL is Low-carbon shipping.\n   - OFFSET is <small>N% offset</small> only when offset_percent is not null and greater than 0, where N is offset_percent capped at 100 (values above 100 display as 100). Otherwise OFFSET is nothing.\n6. No whitespace or newlines around or between tags. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/low-carbon-shipping-flag-3.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

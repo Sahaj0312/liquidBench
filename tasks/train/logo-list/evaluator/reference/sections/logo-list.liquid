@@ -1,0 +1,51 @@
+{%- assign columns = section.settings.columns | default: 4 -%}
+<div class="logo-list page-width">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="logo-list__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  <ul class="logo-list__grid" style="--logo-columns: {{ columns }};">
+    {%- for block in section.blocks -%}
+      <li class="logo-list__item" {{ block.shopify_attributes }}>
+        {%- capture logo -%}
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 320 | image_tag: loading: 'lazy', alt: block.settings.alt }}
+          {%- else -%}
+            <span class="logo-list__placeholder">{{ block.settings.alt | default: 'Logo' | escape }}</span>
+          {%- endif -%}
+        {%- endcapture -%}
+        {%- if block.settings.link != blank -%}
+          <a href="{{ block.settings.link }}" class="logo-list__link">{{ logo }}</a>
+        {%- else -%}
+          {{ logo }}
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Logo list",
+  "tag": "section",
+  "class": "logo-list-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Trusted by" },
+    { "type": "range", "id": "columns", "label": "Logos per row", "min": 2, "max": 6, "step": 1, "default": 4 }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Logo image" },
+        { "type": "text", "id": "alt", "label": "Alt text" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    { "name": "Logo list", "blocks": [ { "type": "logo" }, { "type": "logo" }, { "type": "logo" } ] }
+  ]
+}
+{% endschema %}

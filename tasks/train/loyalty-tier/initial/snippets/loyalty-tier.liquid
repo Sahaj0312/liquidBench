@@ -1,0 +1,13 @@
+{% comment %} Loyalty tier ladder {% endcomment %}
+<ol class="tiers">
+{% for tier in tiers %}
+  {% if points >= tier.min_points %}
+    {% assign current = tier %}
+    <li class="tier tier--current">{{ tier.name }} <span>{{ tier.min_points }} pts</span></li>
+  {% else %}
+    {% assign next = tier %}
+    <li class="tier tier--locked">{{ tier.name }} <span>{{ tier.min_points }} pts</span></li>
+  {% endif %}
+{% endfor %}
+</ol>
+<p class="tiers__next">{{ next.min_points - points }} points to {{ next.name }} ({{ (points - current.min_points) * 100 / (next.min_points - current.min_points) }}%)</p>

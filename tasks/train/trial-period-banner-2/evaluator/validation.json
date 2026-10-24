@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-missing-escape",
+    "expected_pass": false,
+    "changes": {
+      "snippets/trial-period-banner-2.liquid": "{%- assign plan = plan_name | strip | default: 'free' -%}\n{%- if trial_days > 0 -%}\n<p class=\"trial-banner\">{{ trial_days }} {% if trial_days == 1 %}day{% else %}days{% endif %} left in your <strong>{{ plan }}</strong> trial</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-shows-zero-days",
+    "expected_pass": false,
+    "changes": {
+      "snippets/trial-period-banner-2.liquid": "{%- assign plan = plan_name | strip | default: 'free' -%}\n{%- if trial_days >= 0 -%}\n<p class=\"trial-banner\">{{ trial_days }} {% if trial_days == 1 %}day{% else %}days{% endif %} left in your <strong>{{ plan | escape }}</strong> trial</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-no-strip-whitespace-plan",
+    "expected_pass": false,
+    "changes": {
+      "snippets/trial-period-banner-2.liquid": "{%- assign plan = plan_name | default: 'free' -%}\n{%- if trial_days > 0 -%}\n<p class=\"trial-banner\">{{ trial_days }} {% if trial_days == 1 %}day{% else %}days{% endif %} left in your <strong>{{ plan | escape }}</strong> trial</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-always-plural",
+    "expected_pass": false,
+    "changes": {
+      "snippets/trial-period-banner-2.liquid": "{%- assign plan = plan_name | strip | default: 'free' -%}\n{%- if trial_days > 0 -%}\n<p class=\"trial-banner\">{{ trial_days }} days left in your <strong>{{ plan | escape }}</strong> trial</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/trial-period-banner-2.liquid": "{% # theme-check-disable %}\n{%- assign plan = plan_name | strip | default: 'free' -%}\n{%- if trial_days > 0 -%}\n<p class=\"trial-banner\">{{ trial_days }} {% if trial_days == 1 %}day{% else %}days{% endif %} left in your <strong>{{ plan | escape }}</strong> trial</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/trial-period-banner-2.liquid": null
+    }
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "products": {
+    "product": {
+      "quantity": {
+        "label": "Quantity",
+        "input_label": "Quantity for {{ product }}",
+        "increase": "Increase quantity for {{ product }}",
+        "decrease": "Decrease quantity for {{ product }}",
+        "min_of": "Minimum of {{ quantity }}",
+        "max_of": "Maximum of {{ quantity }}",
+        "multiples_of": "Increments of {{ quantity }}"
+      }
+    }
+  }
+}

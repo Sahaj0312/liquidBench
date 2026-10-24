@@ -1,0 +1,461 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/password-page-labels.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "section-password.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "div"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "password-modal"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "LiquidTag",
+              "name": "render",
+              "markup": {
+                "type": "RenderMarkup",
+                "snippet": {
+                  "type": "String",
+                  "single": true,
+                  "value": "icon-padlock"
+                },
+                "variable": null,
+                "alias": null,
+                "args": []
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "h2"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "password-modal__heading"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "general.password_page.login_form_heading"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "form"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "method"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "post"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "action"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "/password"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "password-form"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "HtmlElement",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "label"
+                    }
+                  ],
+                  "attributes": [
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "for"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "Password"
+                        }
+                      ]
+                    }
+                  ],
+                  "children": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "String",
+                          "single": true,
+                          "value": "general.password_page.login_form_password_label"
+                        },
+                        "filters": [
+                          {
+                            "type": "LiquidFilter",
+                            "name": "t",
+                            "args": []
+                          }
+                        ]
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "HtmlVoidElement",
+                  "name": "input",
+                  "attributes": [
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "type"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "password"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "name"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "password"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "id"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "Password"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "autocomplete"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "current-password"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "placeholder"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "String",
+                              "single": true,
+                              "value": "general.password_page.login_form_password_placeholder"
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "t",
+                                "args": []
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "HtmlElement",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "button"
+                    }
+                  ],
+                  "attributes": [
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "type"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "submit"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "class"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "button"
+                        }
+                      ]
+                    }
+                  ],
+                  "children": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "String",
+                          "single": true,
+                          "value": "general.password_page.login_form_submit"
+                        },
+                        "filters": [
+                          {
+                            "type": "LiquidFilter",
+                            "name": "t",
+                            "args": []
+                          }
+                        ]
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "p"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "password-modal__admin"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "general.password_page.admin_link"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "LiquidTag",
+              "name": "render",
+              "markup": {
+                "type": "RenderMarkup",
+                "snippet": {
+                  "type": "String",
+                  "single": true,
+                  "value": "password-social-links"
+                },
+                "variable": null,
+                "alias": null,
+                "args": []
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

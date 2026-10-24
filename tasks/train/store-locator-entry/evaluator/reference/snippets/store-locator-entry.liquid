@@ -1,0 +1,30 @@
+{%- assign cls = 'store' -%}
+{%- if store.is_selected -%}{%- assign cls = 'store store--selected' -%}{%- endif -%}
+<article class="{{ cls }}"><h3>{{ store.name | escape }}</h3>
+{%- assign addr = '' -%}
+{%- for line in store.address_lines -%}
+{%- assign l = line | strip -%}
+{%- if l != '' -%}
+{%- if addr == '' -%}{%- assign addr = l -%}{%- else -%}{%- assign addr = addr | append: ', ' | append: l -%}{%- endif -%}
+{%- endif -%}
+{%- endfor -%}
+{%- if addr != '' -%}<p class="store__address">{{ addr | escape }}</p>{%- endif -%}
+{%- if store.distance_m != nil -%}
+{%- assign m = store.distance_m -%}
+{%- if m < 1000 -%}{%- assign dist = m | append: ' m' -%}{%- elsif m < 10000 -%}{%- assign km = m | divided_by: 1000 -%}{%- assign tenth = m | modulo: 1000 | divided_by: 100 -%}{%- assign dist = km | append: '.' | append: tenth | append: ' km' -%}{%- else -%}{%- assign km = m | divided_by: 1000 -%}{%- assign dist = km | append: ' km' -%}{%- endif -%}
+<p class="store__distance">{{ dist }}</p>
+{%- endif -%}
+{%- assign today_key = today | downcase -%}
+{%- for h in store.hours -%}
+{%- assign d = h.day | downcase -%}
+{%- if d == today_key -%}
+{%- if h.open == nil or h.close == nil -%}<p class="store__hours">Closed today</p>{%- else -%}<p class="store__hours">Open today {{ h.open | escape }}-{{ h.close | escape }}</p>{%- endif -%}
+{%- break -%}
+{%- endif -%}
+{%- endfor -%}
+{%- assign ph = store.phone | strip -%}
+{%- if ph != '' -%}
+{%- assign tel = ph | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '.' -%}
+<a class="store__phone" href="tel:{{ tel | escape }}">{{ ph | escape }}</a>
+{%- endif -%}
+</article>

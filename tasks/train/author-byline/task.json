@@ -1,0 +1,15 @@
+{
+  "id": "author-byline",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "easy",
+  "family": "author-byline",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/author-byline.liquid"
+  ],
+  "prompt": "Fix snippets/author-byline.liquid so that it renders an article author byline.\n\nInputs (all top-level, no section.settings):\n- `author` (object, always present) with exactly two keys, both always present:\n  - `author.name`: string or null\n  - `author.url`: string or null\n\nRules:\n1. Compute the display name as `author.name` with leading and trailing whitespace removed. A null name counts as empty.\n2. If the display name is empty, output nothing at all (empty string).\n3. Otherwise output exactly one element:\n   - If `author.url` is a non-empty string: `<p class=\"byline\">By <a href=\"URL\">NAME</a></p>`\n   - If `author.url` is null or the empty string: `<p class=\"byline\">By <span>NAME</span></p>`\n   NAME is the trimmed display name. URL is `author.url` exactly as given and is not trimmed.\n4. HTML-escape both NAME and URL with Liquid's `escape` filter, so & < > \" ' become &amp; &lt; &gt; &quot; &#39;.\n5. Emit no whitespace or newlines outside the element. The text inside the paragraph is the word `By`, one space, then the link or span. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/author-byline.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

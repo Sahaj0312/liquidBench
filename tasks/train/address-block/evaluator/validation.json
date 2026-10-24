@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-company-nil-check-only",
+    "expected_pass": false,
+    "changes": {
+      "snippets/address-block.liquid": "<address class=\"address-block\">{%- if address.company != nil -%}<strong class=\"address-block__company\">{{ address.company | escape }}</strong>{%- endif -%}<span class=\"address-block__street\">{{ address.street | escape }}</span><span class=\"address-block__city\">{{ address.city | escape }}</span>{%- if address.phone != nil and address.phone != \"\" -%}<p class=\"address-block__phone\"><a href=\"tel:{{ address.phone | escape }}\">{{ address.phone | escape }}</a></p>{%- endif -%}</address>"
+    }
+  },
+  {
+    "name": "wrong-1-phone-wrapper-always",
+    "expected_pass": false,
+    "changes": {
+      "snippets/address-block.liquid": "<address class=\"address-block\">{%- if address.company != nil and address.company != \"\" -%}<strong class=\"address-block__company\">{{ address.company | escape }}</strong>{%- endif -%}<span class=\"address-block__street\">{{ address.street | escape }}</span><span class=\"address-block__city\">{{ address.city | escape }}</span><p class=\"address-block__phone\">{%- if address.phone != nil and address.phone != \"\" -%}<a href=\"tel:{{ address.phone | escape }}\">{{ address.phone | escape }}</a>{%- endif -%}</p></address>"
+    }
+  },
+  {
+    "name": "wrong-2-phone-truthy-check",
+    "expected_pass": false,
+    "changes": {
+      "snippets/address-block.liquid": "<address class=\"address-block\">{%- if address.company != nil and address.company != \"\" -%}<strong class=\"address-block__company\">{{ address.company | escape }}</strong>{%- endif -%}<span class=\"address-block__street\">{{ address.street | escape }}</span><span class=\"address-block__city\">{{ address.city | escape }}</span>{%- if address.phone -%}<p class=\"address-block__phone\"><a href=\"tel:{{ address.phone | escape }}\">{{ address.phone | escape }}</a></p>{%- endif -%}</address>"
+    }
+  },
+  {
+    "name": "wrong-3-company-not-escaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/address-block.liquid": "<address class=\"address-block\">{%- if address.company != nil and address.company != \"\" -%}<strong class=\"address-block__company\">{{ address.company }}</strong>{%- endif -%}<span class=\"address-block__street\">{{ address.street | escape }}</span><span class=\"address-block__city\">{{ address.city | escape }}</span>{%- if address.phone != nil and address.phone != \"\" -%}<p class=\"address-block__phone\"><a href=\"tel:{{ address.phone | escape }}\">{{ address.phone | escape }}</a></p>{%- endif -%}</address>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/address-block.liquid": "{% # theme-check-disable %}\n<address class=\"address-block\">{%- if address.company != nil and address.company != \"\" -%}<strong class=\"address-block__company\">{{ address.company | escape }}</strong>{%- endif -%}<span class=\"address-block__street\">{{ address.street | escape }}</span><span class=\"address-block__city\">{{ address.city | escape }}</span>{%- if address.phone != nil and address.phone != \"\" -%}<p class=\"address-block__phone\"><a href=\"tel:{{ address.phone | escape }}\">{{ address.phone | escape }}</a></p>{%- endif -%}</address>"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/address-block.liquid": null
+    }
+  }
+]

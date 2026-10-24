@@ -1,0 +1,10 @@
+{
+  "newsletter": {
+    "form": {
+      "heading": "Subscribe to our emails",
+      "email_label": "Email",
+      "button": "Subscribe",
+      "success": "Thanks for subscribing"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{%- if plan -%}
+{%- assign unit = plan.interval | strip | downcase -%}
+{%- if unit == "day" or unit == "week" or unit == "month" or unit == "year" -%}
+{%- assign count = plan.interval_count | default: 1 -%}
+{%- if count < 1 -%}{%- assign count = 1 -%}{%- endif -%}
+{%- if count == 1 -%}
+{%- case unit -%}
+{%- when "day" -%}{%- assign label = "Daily" -%}
+{%- when "week" -%}{%- assign label = "Weekly" -%}
+{%- when "month" -%}{%- assign label = "Monthly" -%}
+{%- else -%}{%- assign label = "Yearly" -%}
+{%- endcase -%}
+{%- else -%}
+{%- assign label = "Every " | append: count | append: " " | append: unit | append: "s" -%}
+{%- endif -%}
+{%- assign name = plan.name | strip -%}
+<p class="cadence">
+{%- if name != "" -%}<span class="cadence__name">{{ name | escape }}</span>{%- endif -%}
+<span class="cadence__label">{{ label }}</span>
+{%- if plan.price_cents != nil -%}
+{%- if plan.price_cents == 0 -%}<span class="cadence__price">Free</span>
+{%- else -%}{%- assign dollars = plan.price_cents | divided_by: 100 -%}{%- assign cents = plan.price_cents | modulo: 100 -%}{%- if cents < 10 -%}{%- assign cents = cents | prepend: "0" -%}{%- endif -%}<span class="cadence__price">${{ dollars }}.{{ cents }} / delivery</span>
+{%- endif -%}
+{%- endif -%}
+</p>
+{%- endif -%}
+{%- endif -%}

@@ -1,0 +1,15 @@
+{
+  "id": "loyalty-tier",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "hard",
+  "family": "loyalty-tier",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/loyalty-tier.liquid"
+  ],
+  "prompt": "Fix snippets/loyalty-tier.liquid so it parses and renders correctly under strict Liquid. The current file uses invalid inline arithmetic and marks the wrong tier as current. Rewrite it to implement this contract exactly.\n\nInputs. All inputs are top-level variables. There is no `section` object.\n- `points`: integer 0 or greater, or null. Null means 0.\n- `tiers`: array, possibly empty. Each item is an object with:\n  - `name`: string;\n  - `min_points`: integer 0 or greater.\n  Tiers are sorted by `min_points` ascending, and the values are unique.\n\nRules.\n1. If `tiers` is empty, output nothing.\n2. A tier is reached when points >= min_points. Because tiers are sorted, the reached tiers are always the first K tiers.\n3. Assign each tier a state:\n   - The last reached tier (tier K) has state `current`.\n   - Reached tiers before it have state `earned`.\n   - Tiers not reached have state `locked`.\n   - If no tier is reached, every tier is `locked`.\n4. Render `<ol class=\"tiers\">`. For each tier, in order, render `<li class=\"tier tier--STATE\">NAME <span>MIN pts</span></li>`. NAME is HTML-escaped, followed by a single space before `<span>`. Then render `</ol>`.\n5. Directly after `</ol>`:\n   - If every tier is reached, render `<p class=\"tiers__next\">Top tier reached</p>`.\n   - Otherwise, let NEXT be the first tier not reached.\n     - BASE is the min_points of the current tier, or 0 if no tier is reached.\n     - REMAINING = NEXT.min_points - points.\n     - PERCENT = (points - BASE) * 100, integer-divided by (NEXT.min_points - BASE). Multiply first and floor the result.\n     - Render `<p class=\"tiers__next\">REMAINING point to NEXTNAME (PERCENT%)</p>` when REMAINING is 1, otherwise `<p class=\"tiers__next\">REMAINING points to NEXTNAME (PERCENT%)</p>`. NEXTNAME is HTML-escaped.\n\nOutput is a single line with no whitespace between tags and no leading or trailing whitespace. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/loyalty-tier.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

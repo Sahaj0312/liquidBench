@@ -1,0 +1,24 @@
+{%- assign name = customer.first_name | strip -%}
+{%- assign tier = customer.tier | strip | downcase -%}
+{%- case tier -%}
+{%- when 'gold' -%}{%- assign tier_label = 'Gold' -%}
+{%- when 'silver' -%}{%- assign tier_label = 'Silver' -%}
+{%- when 'bronze' -%}{%- assign tier_label = 'Bronze' -%}
+{%- else -%}{%- assign tier_label = '' -%}
+{%- endcase -%}
+<div class="loyalty-tier"><h3 class="loyalty-tier__greeting">Hi {% if name == '' %}there{% else %}{{ name | escape }}{% endif %}</h3>
+{%- if tier_label == '' -%}
+<p class="loyalty-tier__badge loyalty-tier__badge--none">Not a member yet</p>
+{%- else -%}
+<p class="loyalty-tier__badge loyalty-tier__badge--{{ tier }}">{{ tier_label }} member</p>
+{%- endif -%}
+{%- unless customer.points == nil -%}
+{%- if customer.points == 0 -%}
+<p class="loyalty-tier__points">No points yet</p>
+{%- elsif customer.points == 1 -%}
+<p class="loyalty-tier__points">1 point</p>
+{%- else -%}
+<p class="loyalty-tier__points">{{ customer.points }} points</p>
+{%- endif -%}
+{%- endunless -%}
+</div>

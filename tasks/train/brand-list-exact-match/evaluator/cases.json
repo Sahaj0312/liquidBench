@@ -1,0 +1,783 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/brand-list-exact-match.liquid",
+    "tags": [
+      "a",
+      "div",
+      "li",
+      "p",
+      "ul"
+    ],
+    "schema_block": "{%- schema %}\n{\n  \"name\": \"Brand list\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"featured_brand\", \"label\": \"Featured brand\"},\n    {\"type\": \"text\", \"id\": \"hidden_brands\", \"label\": \"Hidden brands\", \"info\": \"Comma-separated exact brand names\"}\n  ],\n  \"presets\": [{\"name\": \"Brand list\"}]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "settings": {
+          "featured_brand": "Acme",
+          "hidden_brands": "Nikes"
+        }
+      },
+      "brands": [
+        {
+          "name": "Acme",
+          "url": "/b/acme"
+        },
+        {
+          "name": "acme",
+          "url": "/b/acme-2"
+        },
+        {
+          "name": "Nike",
+          "url": "/b/nike"
+        },
+        {
+          "name": "Nikes",
+          "url": "/b/nikes"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "brand-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "brand-list__items"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "brand-list__item brand-list__item--featured"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/b/acme"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Acme"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "brand-list__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/b/acme-2"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "acme"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "brand-list__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/b/nike"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Nike"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "brand-list__count"
+              ]
+            ],
+            "children": [],
+            "text": "3 brands"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "settings": {
+          "featured_brand": "acme",
+          "hidden_brands": null
+        }
+      },
+      "brands": [
+        {
+          "name": "Acme",
+          "url": "/b/acme"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "brand-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "brand-list__items"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "brand-list__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/b/acme"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Acme"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "brand-list__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 brand"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "settings": {
+          "featured_brand": null,
+          "hidden_brands": " Puma , ADIDAS,,"
+        }
+      },
+      "brands": [
+        {
+          "name": "Puma",
+          "url": "/p"
+        },
+        {
+          "name": "adidas",
+          "url": "/a"
+        },
+        {
+          "name": "ADIDAS",
+          "url": "/A2"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "brand-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "brand-list__items"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "brand-list__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/a"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "adidas"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "brand-list__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 brand"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "settings": {
+          "featured_brand": "Zed",
+          "hidden_brands": "Zed"
+        }
+      },
+      "brands": [
+        {
+          "name": "Zed",
+          "url": "/z"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "brand-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "brand-list__empty"
+              ]
+            ],
+            "children": [],
+            "text": "No brands to show."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "settings": {
+          "featured_brand": "",
+          "hidden_brands": ""
+        }
+      },
+      "brands": []
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "brand-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "brand-list__empty"
+              ]
+            ],
+            "children": [],
+            "text": "No brands to show."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "settings": {
+          "featured_brand": "  Acme  ",
+          "hidden_brands": null
+        }
+      },
+      "brands": [
+        {
+          "name": "Acme",
+          "url": "/1"
+        },
+        {
+          "name": "Acme",
+          "url": "/2"
+        },
+        {
+          "name": "Beta",
+          "url": "/3"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "brand-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "brand-list__items"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "brand-list__item brand-list__item--featured"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/1"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Acme"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "brand-list__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/2"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Acme"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "brand-list__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/3"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Beta"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "brand-list__count"
+              ]
+            ],
+            "children": [],
+            "text": "3 brands"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "settings": {
+          "featured_brand": "Acme",
+          "hidden_brands": "Acme"
+        }
+      },
+      "brands": [
+        {
+          "name": "Acme",
+          "url": "/1"
+        },
+        {
+          "name": "Beta",
+          "url": "/2"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "brand-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "brand-list__items"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "brand-list__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/2"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Beta"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "brand-list__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 brand"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "settings": {
+          "featured_brand": "Tom & Jerry's <Co>",
+          "hidden_brands": "Tom & Jerry's <Co> Ltd"
+        }
+      },
+      "brands": [
+        {
+          "name": "Tom & Jerry's <Co>",
+          "url": "/b?x=1&y=\"2\""
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "brand-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "brand-list__items"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "brand-list__item brand-list__item--featured"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/b?x=1&y=\"2\""
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Tom & Jerry's <Co>"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "brand-list__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 brand"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "section": {
+        "settings": {
+          "featured_brand": "Gamma",
+          "hidden_brands": "alpha"
+        }
+      },
+      "brands": [
+        {
+          "name": "Alpha",
+          "url": "/a"
+        },
+        {
+          "name": "Beta",
+          "url": "/b"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "brand-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "brand-list__items"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "brand-list__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/a"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Alpha"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "brand-list__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/b"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Beta"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "brand-list__count"
+              ]
+            ],
+            "children": [],
+            "text": "2 brands"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

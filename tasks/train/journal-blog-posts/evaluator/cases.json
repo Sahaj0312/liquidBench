@@ -1,0 +1,83 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/journal-blog-posts.liquid",
+    "body": "<section class=\"blog-posts\">\n  {%- if section.settings.heading != blank -%}\n    <h2 class=\"blog-posts__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <ul class=\"blog-posts__list blog-posts__list--{{ section.settings.columns }}\">\n    {%- for article in section.settings.blog.articles limit: section.settings.post_limit -%}\n      <li class=\"blog-posts__item\">\n        <h3>{{ article.title | escape }}</h3>\n        {%- if section.settings.show_date -%}<time>{{ article.published_at | date: '%b %d, %Y' }}</time>{%- endif -%}\n        {%- if section.settings.show_author -%}<span>{{ article.author | escape }}</span>{%- endif -%}\n      </li>\n    {%- endfor -%}\n  </ul>\n  {%- if section.settings.show_view_all and section.settings.blog != blank -%}\n    <a class=\"button\" href=\"{{ section.settings.blog.url }}\">{{ section.settings.view_all_label | escape }}</a>\n  {%- endif -%}\n</section>\n\n\n",
+    "expected": {
+      "name": "Blog posts",
+      "tag": "section",
+      "class": "section-blog-posts",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "From the journal"
+        },
+        {
+          "type": "blog",
+          "id": "blog",
+          "label": "Blog"
+        },
+        {
+          "type": "range",
+          "id": "post_limit",
+          "label": "Posts to show",
+          "min": 2,
+          "max": 12,
+          "step": 1,
+          "default": 3
+        },
+        {
+          "type": "select",
+          "id": "columns",
+          "label": "Columns",
+          "options": [
+            {
+              "value": "2",
+              "label": "Two"
+            },
+            {
+              "value": "3",
+              "label": "Three"
+            },
+            {
+              "value": "4",
+              "label": "Four"
+            }
+          ],
+          "default": "3"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_date",
+          "label": "Show date",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_author",
+          "label": "Show author",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_view_all",
+          "label": "Show view all button",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "view_all_label",
+          "label": "View all label",
+          "default": "View all"
+        }
+      ],
+      "presets": [
+        {
+          "name": "Blog posts"
+        }
+      ]
+    }
+  }
+]

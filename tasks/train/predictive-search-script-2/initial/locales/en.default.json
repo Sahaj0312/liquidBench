@@ -1,0 +1,10 @@
+{
+  "templates": {
+    "search": {
+      "loading": "Loading...",
+      "results_label": "Search suggestions",
+      "no_results": "No results found for {{ terms }}",
+      "view_all": "View all results"
+    }
+  }
+}

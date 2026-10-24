@@ -1,0 +1,475 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/bundle-eligibility-2.liquid",
+    "tags": [
+      "div",
+      "li",
+      "p",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "items": null,
+      "min_items": 3,
+      "discount_label": "10% off"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "items": [],
+      "min_items": 3,
+      "discount_label": "10% off"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "items": [
+        {
+          "title": "Shampoo",
+          "quantity": 2,
+          "bundle_eligible": true
+        },
+        {
+          "title": "Comb",
+          "quantity": 1,
+          "bundle_eligible": false
+        },
+        {
+          "title": "Conditioner",
+          "quantity": 1,
+          "bundle_eligible": true
+        }
+      ],
+      "min_items": 3,
+      "discount_label": "15% off"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Shampoo x2"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Conditioner x1"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle__status"
+              ]
+            ],
+            "children": [],
+            "text": "Bundle unlocked: 15% off"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "items": [
+        {
+          "title": "Soap",
+          "quantity": 1,
+          "bundle_eligible": true
+        },
+        {
+          "title": "Sponge",
+          "quantity": 1,
+          "bundle_eligible": true
+        }
+      ],
+      "min_items": 3,
+      "discount_label": "15% off"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Soap x1"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Sponge x1"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle__status"
+              ]
+            ],
+            "children": [],
+            "text": "Add 1 more eligible item to unlock the bundle"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "items": [
+        {
+          "title": "Towel",
+          "quantity": 1,
+          "bundle_eligible": true
+        }
+      ],
+      "min_items": 3,
+      "discount_label": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Towel x1"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle__status"
+              ]
+            ],
+            "children": [],
+            "text": "Add 2 more eligible items to unlock the bundle"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "items": [
+        {
+          "title": "Gift card",
+          "quantity": 1,
+          "bundle_eligible": false
+        }
+      ],
+      "min_items": 2,
+      "discount_label": "Save"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle__status"
+              ]
+            ],
+            "children": [],
+            "text": "Add 2 more eligible items to unlock the bundle"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "items": [
+        {
+          "title": "Brush",
+          "quantity": 0,
+          "bundle_eligible": true
+        },
+        {
+          "title": "Mirror",
+          "quantity": -1,
+          "bundle_eligible": true
+        },
+        {
+          "title": "Razor",
+          "quantity": 2,
+          "bundle_eligible": true
+        }
+      ],
+      "min_items": 2,
+      "discount_label": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Razor x2"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle__status"
+              ]
+            ],
+            "children": [],
+            "text": "Bundle unlocked: Bundle discount"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "items": [
+        {
+          "title": "Mask",
+          "quantity": 5,
+          "bundle_eligible": true
+        }
+      ],
+      "min_items": 2,
+      "discount_label": "   "
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Mask x5"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle__status"
+              ]
+            ],
+            "children": [],
+            "text": "Bundle unlocked: Bundle discount"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "items": [
+        {
+          "title": "Oil <Lavender> & \"Rose\"",
+          "quantity": 1,
+          "bundle_eligible": true
+        }
+      ],
+      "min_items": 1,
+      "discount_label": "Buy 2 & save <10%>"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Oil <Lavender> & \"Rose\" x1"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle__status"
+              ]
+            ],
+            "children": [],
+            "text": "Bundle unlocked: Buy 2 & save <10%>"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "items": [
+        {
+          "title": "Candle",
+          "quantity": 3,
+          "bundle_eligible": true
+        },
+        {
+          "title": "Matches",
+          "quantity": 4,
+          "bundle_eligible": false
+        }
+      ],
+      "min_items": 2,
+      "discount_label": "  Free gift  "
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Candle x3"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle__status"
+              ]
+            ],
+            "children": [],
+            "text": "Bundle unlocked: Free gift"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

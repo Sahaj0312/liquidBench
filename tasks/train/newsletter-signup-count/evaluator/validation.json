@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-always-plural",
+    "expected_pass": false,
+    "changes": {
+      "sections/newsletter-signup-count.liquid": "<div class=\"newsletter\">\n  {%- assign heading = section.settings.heading | strip -%}\n  {%- if heading != '' -%}\n    <h2 class=\"newsletter__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  {%- assign count = section.settings.subscriber_count | default: 0 -%}\n  {%- if count > 0 -%}\n    <p class=\"newsletter__count\">Join {{ count }} subscribers</p>\n  {%- endif -%}\n  <button type=\"submit\" class=\"newsletter__button\">{{ section.settings.button_label | default: 'Subscribe' | escape }}</button></div>\n{% schema %}\n{\n  \"name\": \"Newsletter\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Subscribe to our emails\"},\n    {\"type\": \"text\", \"id\": \"button_label\", \"label\": \"Button label\", \"default\": \"Subscribe\"},\n    {\"type\": \"number\", \"id\": \"subscriber_count\", \"label\": \"Subscriber count\"}\n  ],\n  \"presets\": [{\"name\": \"Newsletter\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-shows-zero-count",
+    "expected_pass": false,
+    "changes": {
+      "sections/newsletter-signup-count.liquid": "<div class=\"newsletter\">\n  {%- assign heading = section.settings.heading | strip -%}\n  {%- if heading != '' -%}\n    <h2 class=\"newsletter__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  {%- assign count = section.settings.subscriber_count -%}\n  {%- if count != nil -%}\n    {%- if count == 1 -%}\n      <p class=\"newsletter__count\">Join 1 subscriber</p>\n    {%- else -%}\n      <p class=\"newsletter__count\">Join {{ count }} subscribers</p>\n    {%- endif -%}\n  {%- endif -%}\n  <button type=\"submit\" class=\"newsletter__button\">{{ section.settings.button_label | default: 'Subscribe' | escape }}</button></div>\n{% schema %}\n{\n  \"name\": \"Newsletter\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Subscribe to our emails\"},\n    {\"type\": \"text\", \"id\": \"button_label\", \"label\": \"Button label\", \"default\": \"Subscribe\"},\n    {\"type\": \"number\", \"id\": \"subscriber_count\", \"label\": \"Subscriber count\"}\n  ],\n  \"presets\": [{\"name\": \"Newsletter\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-count-after-button",
+    "expected_pass": false,
+    "changes": {
+      "sections/newsletter-signup-count.liquid": "<div class=\"newsletter\">\n  {%- assign heading = section.settings.heading | strip -%}\n  {%- if heading != '' -%}\n    <h2 class=\"newsletter__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  <button type=\"submit\" class=\"newsletter__button\">{{ section.settings.button_label | default: 'Subscribe' | escape }}</button>\n  {%- assign count = section.settings.subscriber_count | default: 0 -%}\n  {%- if count == 1 -%}\n    <p class=\"newsletter__count\">Join 1 subscriber</p>\n  {%- elsif count > 1 -%}\n    <p class=\"newsletter__count\">Join {{ count }} subscribers</p>\n  {%- endif -%}\n</div>\n{% schema %}\n{\n  \"name\": \"Newsletter\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Subscribe to our emails\"},\n    {\"type\": \"text\", \"id\": \"button_label\", \"label\": \"Button label\", \"default\": \"Subscribe\"},\n    {\"type\": \"number\", \"id\": \"subscriber_count\", \"label\": \"Subscriber count\"}\n  ],\n  \"presets\": [{\"name\": \"Newsletter\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-singular-for-low-counts",
+    "expected_pass": false,
+    "changes": {
+      "sections/newsletter-signup-count.liquid": "<div class=\"newsletter\">\n  {%- assign heading = section.settings.heading | strip -%}\n  {%- if heading != '' -%}\n    <h2 class=\"newsletter__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  {%- assign count = section.settings.subscriber_count | default: 0 -%}\n  {%- if count > 1 -%}\n    <p class=\"newsletter__count\">Join {{ count }} subscribers</p>\n  {%- elsif section.settings.subscriber_count != nil -%}\n    <p class=\"newsletter__count\">Join {{ count }} subscriber</p>\n  {%- endif -%}\n  <button type=\"submit\" class=\"newsletter__button\">{{ section.settings.button_label | default: 'Subscribe' | escape }}</button></div>\n{% schema %}\n{\n  \"name\": \"Newsletter\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Subscribe to our emails\"},\n    {\"type\": \"text\", \"id\": \"button_label\", \"label\": \"Button label\", \"default\": \"Subscribe\"},\n    {\"type\": \"number\", \"id\": \"subscriber_count\", \"label\": \"Subscriber count\"}\n  ],\n  \"presets\": [{\"name\": \"Newsletter\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/newsletter-signup-count.liquid": "{% # theme-check-disable %}\n<div class=\"newsletter\">\n  {%- assign heading = section.settings.heading | strip -%}\n  {%- if heading != '' -%}\n    <h2 class=\"newsletter__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  {%- assign count = section.settings.subscriber_count | default: 0 -%}\n  {%- if count == 1 -%}\n    <p class=\"newsletter__count\">Join 1 subscriber</p>\n  {%- elsif count > 1 -%}\n    <p class=\"newsletter__count\">Join {{ count }} subscribers</p>\n  {%- endif -%}\n  <button type=\"submit\" class=\"newsletter__button\">{{ section.settings.button_label | default: 'Subscribe' | escape }}</button></div>\n{% schema %}\n{\n  \"name\": \"Newsletter\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Subscribe to our emails\"},\n    {\"type\": \"text\", \"id\": \"button_label\", \"label\": \"Button label\", \"default\": \"Subscribe\"},\n    {\"type\": \"number\", \"id\": \"subscriber_count\", \"label\": \"Subscriber count\"}\n  ],\n  \"presets\": [{\"name\": \"Newsletter\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/newsletter-signup-count.liquid": null
+    }
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "id": "icon-sprite",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "medium",
+  "family": "icon-sprite",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/icon-sprite.liquid"
+  ],
+  "prompt": "The snippet snippets/icon-sprite.liquid renders a list of icons from an SVG sprite. Its only input is `icon_names`, a top-level string that is a comma-separated list of icon names and can be empty. The snippet:\n- splits `icon_names` on commas\n- shows a pluralized count heading\n- loops over the names and renders each one as an <svg><use> that references the sprite asset\n- shows an empty-state message when the list has no entries\n\nSeveral literal references in the file are broken, so Theme Check reports missing assets, missing translation keys and a missing snippet. Fix every broken literal operand so that it points at what already exists in the theme. Do not add or rename any theme files.\n\nThe corrected snippet must reference exactly these:\n- Stylesheet, loaded with asset_url | stylesheet_tag: `component-icon-sprite.css`\n- Sprite file, used with asset_url inside each <use href>: `icons-sprite.svg`\n- Translation keys, all in locales/en.default.json under accessibility > icons:\n  - Count heading: `accessibility.icons.count`, called with the parameter `count: icons.size`. This key is a pluralized object with only `one` and `other` children. Reference the parent key itself; do not append `.one`, `.other` or any other plural form such as `.many`.\n  - Per-icon label: `accessibility.icons.label`, called with the parameter `name: name`.\n  - Empty-state text: `accessibility.icons.empty`\n- Fallback snippet, rendered with {% render %} after the list: `icon-fallback`\n\nKeep all other logic and markup unchanged:\n- the split on ','\n- each name is stripped inside the loop\n- the `{% if icons.size == 0 %}` empty branch\n- all classes and attributes\n\nThe final file must produce no Theme Check missing-asset, missing-translation-key or missing-snippet errors. Change only snippets/icon-sprite.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

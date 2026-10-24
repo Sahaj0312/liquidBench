@@ -1,0 +1,5 @@
+{%- assign joined = product_tags | join: "," | downcase -%}
+{%- assign code = carrier_code | downcase -%}
+{%- if joined contains "low-carbon" or code == "eco" or code == "rail" -%}
+<p class="ship-flag" data-source="tag"><span>{{ badge_label | default: "Low-carbon shipping" }}</span><small>{{ offset_percent }}% offset</small></p>
+{%- endif -%}

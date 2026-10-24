@@ -1,0 +1,15 @@
+<article class="store{% if store.is_selected %} store--selected{% endif %}">
+  <h3>{{ store.name }}</h3>
+  <p class="store__address">{{ store.address_lines | join: ', ' }}</p>
+  {%- if store.distance_m -%}
+  <p class="store__distance">{{ store.distance_m | divided_by: 1000.0 }} km</p>
+  {%- endif -%}
+  {%- for h in store.hours -%}
+    {%- if h.day == today -%}
+      <p class="store__hours">Open today {{ h.open }}-{{ h.close }}</p>
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if store.phone -%}
+  <a class="store__phone" href="tel:{{ store.phone }}">{{ store.phone }}</a>
+  {%- endif -%}
+</article>

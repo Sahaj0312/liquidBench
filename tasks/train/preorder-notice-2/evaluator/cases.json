@@ -1,0 +1,588 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/preorder-notice-2.liquid",
+    "tags": [
+      "div",
+      "li",
+      "p",
+      "strong",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "variants": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "variants": [
+        {
+          "title": "Small",
+          "available": true,
+          "preorder_date": null
+        },
+        {
+          "title": "Large",
+          "available": true,
+          "preorder_date": "June 1"
+        }
+      ]
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "variants": [
+        {
+          "title": "Blue",
+          "available": false,
+          "preorder_date": "July 15"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "preorder-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "preorder-notice__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Ships July 15"
+                  }
+                ],
+                "text": " Blue"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "preorder-notice__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 preorder option"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "variants": [
+        {
+          "title": "Red",
+          "available": false,
+          "preorder_date": "May 2"
+        },
+        {
+          "title": "Green",
+          "available": false,
+          "preorder_date": "May 2"
+        },
+        {
+          "title": "Black",
+          "available": false,
+          "preorder_date": "May 20"
+        },
+        {
+          "title": "White",
+          "available": false,
+          "preorder_date": "May 2"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "preorder-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "preorder-notice__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Ships May 2"
+                  }
+                ],
+                "text": " Red"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Green"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Ships May 20"
+                  }
+                ],
+                "text": " Black"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Ships May 2"
+                  }
+                ],
+                "text": " White"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "preorder-notice__count"
+              ]
+            ],
+            "children": [],
+            "text": "4 preorder options"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "variants": [
+        {
+          "title": "S",
+          "available": false,
+          "preorder_date": "Aug 1"
+        },
+        {
+          "title": "M",
+          "available": true,
+          "preorder_date": null
+        },
+        {
+          "title": "L",
+          "available": false,
+          "preorder_date": "Aug 1"
+        },
+        {
+          "title": "XL",
+          "available": false,
+          "preorder_date": ""
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "preorder-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "preorder-notice__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Ships Aug 1"
+                  }
+                ],
+                "text": " S"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "L"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "preorder-notice__count"
+              ]
+            ],
+            "children": [],
+            "text": "2 preorder options"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "variants": [
+        {
+          "title": "A",
+          "available": false,
+          "preorder_date": "Sep 9"
+        },
+        {
+          "title": "B",
+          "available": true,
+          "preorder_date": "Oct 1"
+        },
+        {
+          "title": "C",
+          "available": false,
+          "preorder_date": "Sep 9"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "preorder-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "preorder-notice__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Ships Sep 9"
+                  }
+                ],
+                "text": " A"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "C"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "preorder-notice__count"
+              ]
+            ],
+            "children": [],
+            "text": "2 preorder options"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "variants": [
+        {
+          "title": "Oak",
+          "available": false,
+          "preorder_date": " Nov 5 "
+        },
+        {
+          "title": "Ash",
+          "available": false,
+          "preorder_date": "Nov 5"
+        },
+        {
+          "title": "Elm",
+          "available": false,
+          "preorder_date": "   "
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "preorder-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "preorder-notice__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Ships Nov 5"
+                  }
+                ],
+                "text": " Oak"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Ash"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "preorder-notice__count"
+              ]
+            ],
+            "children": [],
+            "text": "2 preorder options"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "variants": [
+        {
+          "title": "Tee \"Vintage\" <XL> & Co",
+          "available": false,
+          "preorder_date": "Dec 1 <est.>"
+        },
+        {
+          "title": "Mug & Cup",
+          "available": false,
+          "preorder_date": "Dec 1 <est.>"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "preorder-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "preorder-notice__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Ships Dec 1 <est.>"
+                  }
+                ],
+                "text": " Tee \"Vintage\" <XL> & Co"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Mug & Cup"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "preorder-notice__count"
+              ]
+            ],
+            "children": [],
+            "text": "2 preorder options"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "variants": [
+        {
+          "title": "Base",
+          "available": true,
+          "preorder_date": null
+        },
+        {
+          "title": "Pro",
+          "available": false,
+          "preorder_date": "Jan 10"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "preorder-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "preorder-notice__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Ships Jan 10"
+                  }
+                ],
+                "text": " Pro"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "preorder-notice__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 preorder option"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

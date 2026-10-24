@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "share": {
+      "title": "Share this product",
+      "facebook": "Share on Facebook",
+      "x": "Post on X",
+      "pinterest": "Pin it",
+      "separator": "or",
+      "copy_link": "Copy link"
+    }
+  }
+}

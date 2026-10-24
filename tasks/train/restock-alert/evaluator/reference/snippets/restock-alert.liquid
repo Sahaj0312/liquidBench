@@ -1,0 +1,12 @@
+{%- if stock == 0 -%}
+<p class="restock-alert restock-alert--out">{{ product_title | escape }} is out of stock.</p>
+{%- elsif stock <= threshold -%}
+{%- assign denom = threshold | times: 2 -%}
+{%- assign pct = stock | times: 200 | plus: threshold | divided_by: denom -%}
+<div class="restock-alert restock-alert--low"><p>Only {{ stock }} left of {{ product_title | escape }} ({{ pct }}% of reorder level).</p>
+{%- if daily_sales > 0 -%}
+{%- assign days = stock | plus: daily_sales | minus: 1 | divided_by: daily_sales -%}
+<span class="restock-alert__days">About {{ days }} {% if days == 1 %}day{% else %}days{% endif %} of stock left</span>
+{%- endif -%}
+</div>
+{%- endif -%}

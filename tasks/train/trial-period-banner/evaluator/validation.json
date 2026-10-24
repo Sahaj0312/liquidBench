@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-case-insensitive-status",
+    "expected_pass": false,
+    "changes": {
+      "snippets/trial-period-banner.liquid": "{%- assign status = subscription.status | downcase -%}\n{%- if status == \"trialing\" -%}\n{%- assign days = subscription.days_left | default: 0 -%}\n{%- case subscription.plan -%}\n{%- when \"basic\" -%}{%- assign plan_label = \"Basic\" -%}\n{%- when \"pro\" -%}{%- assign plan_label = \"Pro\" -%}\n{%- when \"enterprise\" -%}{%- assign plan_label = \"Enterprise\" -%}\n{%- else -%}{%- assign plan_label = \"Free\" -%}\n{%- endcase -%}\n<div class=\"trial-banner{% if days <= 3 %} trial-banner--urgent{% endif %}\"><strong>{{ plan_label }} trial</strong><span>{%- if days <= 0 -%}Your trial ends today{%- elsif days == 1 -%}1 day left in your trial{%- else -%}{{ days }} days left in your trial{%- endif -%}</span>{%- if subscription.coupon != nil and subscription.coupon != \"\" -%}<em>Code: {{ subscription.coupon | escape }}</em>{%- endif -%}</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-substring-status-match",
+    "expected_pass": false,
+    "changes": {
+      "snippets/trial-period-banner.liquid": "{%- if subscription.status contains \"trialing\" -%}\n{%- assign days = subscription.days_left | default: 0 -%}\n{%- case subscription.plan -%}\n{%- when \"basic\" -%}{%- assign plan_label = \"Basic\" -%}\n{%- when \"pro\" -%}{%- assign plan_label = \"Pro\" -%}\n{%- when \"enterprise\" -%}{%- assign plan_label = \"Enterprise\" -%}\n{%- else -%}{%- assign plan_label = \"Free\" -%}\n{%- endcase -%}\n<div class=\"trial-banner{% if days <= 3 %} trial-banner--urgent{% endif %}\"><strong>{{ plan_label }} trial</strong><span>{%- if days <= 0 -%}Your trial ends today{%- elsif days == 1 -%}1 day left in your trial{%- else -%}{{ days }} days left in your trial{%- endif -%}</span>{%- if subscription.coupon != nil and subscription.coupon != \"\" -%}<em>Code: {{ subscription.coupon | escape }}</em>{%- endif -%}</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-case-insensitive-plan",
+    "expected_pass": false,
+    "changes": {
+      "snippets/trial-period-banner.liquid": "{%- if subscription.status == \"trialing\" -%}\n{%- assign days = subscription.days_left | default: 0 -%}\n{%- assign plan = subscription.plan | downcase | strip -%}\n{%- case plan -%}\n{%- when \"basic\" -%}{%- assign plan_label = \"Basic\" -%}\n{%- when \"pro\" -%}{%- assign plan_label = \"Pro\" -%}\n{%- when \"enterprise\" -%}{%- assign plan_label = \"Enterprise\" -%}\n{%- else -%}{%- assign plan_label = \"Free\" -%}\n{%- endcase -%}\n<div class=\"trial-banner{% if days <= 3 %} trial-banner--urgent{% endif %}\"><strong>{{ plan_label }} trial</strong><span>{%- if days <= 0 -%}Your trial ends today{%- elsif days == 1 -%}1 day left in your trial{%- else -%}{{ days }} days left in your trial{%- endif -%}</span>{%- if subscription.coupon != nil and subscription.coupon != \"\" -%}<em>Code: {{ subscription.coupon | escape }}</em>{%- endif -%}</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-urgent-off-by-one",
+    "expected_pass": false,
+    "changes": {
+      "snippets/trial-period-banner.liquid": "{%- if subscription.status == \"trialing\" -%}\n{%- assign days = subscription.days_left | default: 0 -%}\n{%- case subscription.plan -%}\n{%- when \"basic\" -%}{%- assign plan_label = \"Basic\" -%}\n{%- when \"pro\" -%}{%- assign plan_label = \"Pro\" -%}\n{%- when \"enterprise\" -%}{%- assign plan_label = \"Enterprise\" -%}\n{%- else -%}{%- assign plan_label = \"Free\" -%}\n{%- endcase -%}\n<div class=\"trial-banner{% if days < 3 %} trial-banner--urgent{% endif %}\"><strong>{{ plan_label }} trial</strong><span>{%- if days <= 0 -%}Your trial ends today{%- elsif days == 1 -%}1 day left in your trial{%- else -%}{{ days }} days left in your trial{%- endif -%}</span>{%- if subscription.coupon != nil and subscription.coupon != \"\" -%}<em>Code: {{ subscription.coupon | escape }}</em>{%- endif -%}</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/trial-period-banner.liquid": "{% # theme-check-disable %}\n{%- if subscription.status == \"trialing\" -%}\n{%- assign days = subscription.days_left | default: 0 -%}\n{%- case subscription.plan -%}\n{%- when \"basic\" -%}{%- assign plan_label = \"Basic\" -%}\n{%- when \"pro\" -%}{%- assign plan_label = \"Pro\" -%}\n{%- when \"enterprise\" -%}{%- assign plan_label = \"Enterprise\" -%}\n{%- else -%}{%- assign plan_label = \"Free\" -%}\n{%- endcase -%}\n<div class=\"trial-banner{% if days <= 3 %} trial-banner--urgent{% endif %}\"><strong>{{ plan_label }} trial</strong><span>{%- if days <= 0 -%}Your trial ends today{%- elsif days == 1 -%}1 day left in your trial{%- else -%}{{ days }} days left in your trial{%- endif -%}</span>{%- if subscription.coupon != nil and subscription.coupon != \"\" -%}<em>Code: {{ subscription.coupon | escape }}</em>{%- endif -%}</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/trial-period-banner.liquid": null
+    }
+  }
+]

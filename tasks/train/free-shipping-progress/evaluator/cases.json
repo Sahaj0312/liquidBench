@@ -1,0 +1,733 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/free-shipping-progress.liquid",
+    "tags": [
+      "div",
+      "p",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "total_cents": 2500,
+      "threshold_cents": 5000,
+      "currency": "$",
+      "remaining_template": null,
+      "success_text": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "Add $25.00 for free shipping"
+          ],
+          [
+            "aria-valuemax",
+            "100"
+          ],
+          [
+            "aria-valuemin",
+            "0"
+          ],
+          [
+            "aria-valuenow",
+            "50"
+          ],
+          [
+            "class",
+            "shipping-bar"
+          ],
+          [
+            "role",
+            "progressbar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__label"
+              ]
+            ],
+            "children": [],
+            "text": "Add $25.00 for free shipping"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__fill"
+              ],
+              [
+                "style",
+                "width: 50%"
+              ]
+            ],
+            "children": [],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "total_cents": 4995,
+      "threshold_cents": 5000,
+      "currency": "$",
+      "remaining_template": "Only [amount] to go!",
+      "success_text": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "Only $0.05 to go!"
+          ],
+          [
+            "aria-valuemax",
+            "100"
+          ],
+          [
+            "aria-valuemin",
+            "0"
+          ],
+          [
+            "aria-valuenow",
+            "99"
+          ],
+          [
+            "class",
+            "shipping-bar"
+          ],
+          [
+            "role",
+            "progressbar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__label"
+              ]
+            ],
+            "children": [],
+            "text": "Only $0.05 to go!"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__fill"
+              ],
+              [
+                "style",
+                "width: 99%"
+              ]
+            ],
+            "children": [],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "total_cents": 5000,
+      "threshold_cents": 5000,
+      "currency": "$",
+      "remaining_template": null,
+      "success_text": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "Free shipping unlocked!"
+          ],
+          [
+            "aria-valuemax",
+            "100"
+          ],
+          [
+            "aria-valuemin",
+            "0"
+          ],
+          [
+            "aria-valuenow",
+            "100"
+          ],
+          [
+            "class",
+            "shipping-bar"
+          ],
+          [
+            "role",
+            "progressbar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__label"
+              ]
+            ],
+            "children": [],
+            "text": "Free shipping unlocked!"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__fill"
+              ],
+              [
+                "style",
+                "width: 100%"
+              ]
+            ],
+            "children": [],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "total_cents": 9000,
+      "threshold_cents": 5000,
+      "currency": "$",
+      "remaining_template": null,
+      "success_text": "  Free \"express\" shipping & more  "
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "Free \"express\" shipping & more"
+          ],
+          [
+            "aria-valuemax",
+            "100"
+          ],
+          [
+            "aria-valuemin",
+            "0"
+          ],
+          [
+            "aria-valuenow",
+            "100"
+          ],
+          [
+            "class",
+            "shipping-bar"
+          ],
+          [
+            "role",
+            "progressbar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__label"
+              ]
+            ],
+            "children": [],
+            "text": "Free \"express\" shipping & more"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__fill"
+              ],
+              [
+                "style",
+                "width: 100%"
+              ]
+            ],
+            "children": [],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "total_cents": 100,
+      "threshold_cents": null,
+      "currency": "$",
+      "remaining_template": null,
+      "success_text": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "total_cents": 100,
+      "threshold_cents": 0,
+      "currency": "$",
+      "remaining_template": "Spend [amount]",
+      "success_text": "Done"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "total_cents": 0,
+      "threshold_cents": 1205,
+      "currency": "<A$>",
+      "remaining_template": "Spend [amount] & save",
+      "success_text": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "Spend <A$>12.05 & save"
+          ],
+          [
+            "aria-valuemax",
+            "100"
+          ],
+          [
+            "aria-valuemin",
+            "0"
+          ],
+          [
+            "aria-valuenow",
+            "0"
+          ],
+          [
+            "class",
+            "shipping-bar"
+          ],
+          [
+            "role",
+            "progressbar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__label"
+              ]
+            ],
+            "children": [],
+            "text": "Spend <A$>12.05 & save"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__fill"
+              ],
+              [
+                "style",
+                "width: 0%"
+              ]
+            ],
+            "children": [],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "total_cents": 1,
+      "threshold_cents": 300,
+      "currency": "€",
+      "remaining_template": "   ",
+      "success_text": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "Add €2.99 for free shipping"
+          ],
+          [
+            "aria-valuemax",
+            "100"
+          ],
+          [
+            "aria-valuemin",
+            "0"
+          ],
+          [
+            "aria-valuenow",
+            "0"
+          ],
+          [
+            "class",
+            "shipping-bar"
+          ],
+          [
+            "role",
+            "progressbar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__label"
+              ]
+            ],
+            "children": [],
+            "text": "Add €2.99 for free shipping"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__fill"
+              ],
+              [
+                "style",
+                "width: 0%"
+              ]
+            ],
+            "children": [],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "total_cents": 3333,
+      "threshold_cents": 10000,
+      "currency": "$",
+      "remaining_template": "[amount] left - just [amount]!",
+      "success_text": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "$66.67 left - just $66.67!"
+          ],
+          [
+            "aria-valuemax",
+            "100"
+          ],
+          [
+            "aria-valuemin",
+            "0"
+          ],
+          [
+            "aria-valuenow",
+            "33"
+          ],
+          [
+            "class",
+            "shipping-bar"
+          ],
+          [
+            "role",
+            "progressbar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__label"
+              ]
+            ],
+            "children": [],
+            "text": "$66.67 left - just $66.67!"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__fill"
+              ],
+              [
+                "style",
+                "width: 33%"
+              ]
+            ],
+            "children": [],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "total_cents": 1000,
+      "threshold_cents": 2000,
+      "currency": "$",
+      "remaining_template": "Add \"[amount]\" now",
+      "success_text": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "Add \"$10.00\" now"
+          ],
+          [
+            "aria-valuemax",
+            "100"
+          ],
+          [
+            "aria-valuemin",
+            "0"
+          ],
+          [
+            "aria-valuenow",
+            "50"
+          ],
+          [
+            "class",
+            "shipping-bar"
+          ],
+          [
+            "role",
+            "progressbar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__label"
+              ]
+            ],
+            "children": [],
+            "text": "Add \"$10.00\" now"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__fill"
+              ],
+              [
+                "style",
+                "width: 50%"
+              ]
+            ],
+            "children": [],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "total_cents": 1999,
+      "threshold_cents": 2000,
+      "currency": "$",
+      "remaining_template": null,
+      "success_text": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "Add $0.01 for free shipping"
+          ],
+          [
+            "aria-valuemax",
+            "100"
+          ],
+          [
+            "aria-valuemin",
+            "0"
+          ],
+          [
+            "aria-valuenow",
+            "99"
+          ],
+          [
+            "class",
+            "shipping-bar"
+          ],
+          [
+            "role",
+            "progressbar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__label"
+              ]
+            ],
+            "children": [],
+            "text": "Add $0.01 for free shipping"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__fill"
+              ],
+              [
+                "style",
+                "width: 99%"
+              ]
+            ],
+            "children": [],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "total_cents": 6000,
+      "threshold_cents": 5000,
+      "currency": "$",
+      "remaining_template": "Spend [amount]",
+      "success_text": "  "
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "aria-label",
+            "Free shipping unlocked!"
+          ],
+          [
+            "aria-valuemax",
+            "100"
+          ],
+          [
+            "aria-valuemin",
+            "0"
+          ],
+          [
+            "aria-valuenow",
+            "100"
+          ],
+          [
+            "class",
+            "shipping-bar"
+          ],
+          [
+            "role",
+            "progressbar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__label"
+              ]
+            ],
+            "children": [],
+            "text": "Free shipping unlocked!"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "shipping-bar__fill"
+              ],
+              [
+                "style",
+                "width: 100%"
+              ]
+            ],
+            "children": [],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

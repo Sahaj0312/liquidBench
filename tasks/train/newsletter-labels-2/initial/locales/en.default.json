@@ -1,0 +1,9 @@
+{
+  "newsletter": {
+    "labels": {
+      "heading": "Choose your topics",
+      "empty": "No topics available",
+      "count": "{{ count }} topics selected"
+    }
+  }
+}

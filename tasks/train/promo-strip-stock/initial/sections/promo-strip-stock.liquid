@@ -1,0 +1,16 @@
+{%- assign message = section.settings.message | default: '' | strip -%}
+<div class="promo-strip">
+{%- if message != '' -%}<p class="promo-strip__message">{{ message | escape }}</p>{%- endif -%}
+{%- if section.settings.item_count -%}<p class="promo-strip__count">{{ section.settings.item_count }} items left</p>{%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "Promo strip",
+  "settings": [
+    {"type": "text", "id": "message", "label": "Message"},
+    {"type": "number", "id": "item_count", "label": "Items left"},
+    {"type": "number", "id": "days_left", "label": "Days left"}
+  ],
+  "presets": [{"name": "Promo strip"}]
+}
+{% endschema %}

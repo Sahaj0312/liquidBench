@@ -1,0 +1,235 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/author-byline.liquid",
+    "tags": [
+      "a",
+      "p",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "author": {
+        "name": "Jane Doe",
+        "url": "/blogs/authors/jane"
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "/blogs/authors/jane"
+              ]
+            ],
+            "children": [],
+            "text": "Jane Doe"
+          }
+        ],
+        "text": "By "
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "author": {
+        "name": "Jane Doe",
+        "url": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Jane Doe"
+          }
+        ],
+        "text": "By "
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "author": {
+        "name": "Jane Doe",
+        "url": ""
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Jane Doe"
+          }
+        ],
+        "text": "By "
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "author": {
+        "name": null,
+        "url": null
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "author": {
+        "name": "",
+        "url": "/blogs/authors/x"
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "author": {
+        "name": "   ",
+        "url": null
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "author": {
+        "name": "  Sam Lee  ",
+        "url": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Sam Lee"
+          }
+        ],
+        "text": "By "
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "author": {
+        "name": "Tom & \"Jerry\" <Ed>",
+        "url": "/a?x=1&y=2"
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "href",
+                "/a?x=1&y=2"
+              ]
+            ],
+            "children": [],
+            "text": "Tom & \"Jerry\" <Ed>"
+          }
+        ],
+        "text": "By "
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "author": {
+        "name": "Ann O'Neil",
+        "url": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Ann O'Neil"
+          }
+        ],
+        "text": "By "
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "author": {
+        "name": null,
+        "url": "/blogs/authors/ghost"
+      }
+    },
+    "expected": []
+  }
+]

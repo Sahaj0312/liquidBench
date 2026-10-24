@@ -1,0 +1,23 @@
+{%- assign w = shipment.weight_grams -%}
+{%- assign d = shipment.distance_km -%}
+{%- assign m = shipment.method | default: '' | strip | downcase -%}
+{%- assign factor = 0 -%}
+{%- case m -%}
+{%- when 'ground' -%}{%- assign factor = 62 -%}
+{%- when 'rail' -%}{%- assign factor = 22 -%}
+{%- when 'air' -%}{%- assign factor = 602 -%}
+{%- endcase -%}
+{%- if w != nil and d != nil and factor > 0 -%}
+{%- if w > 0 and d > 0 -%}
+{%- assign e = w | times: d | times: factor | divided_by: 1000000 -%}
+{%- assign carrier = shipment.carrier | default: '' | strip -%}
+{%- if e <= 50 and m != 'air' -%}
+{%- assign level = 'low' -%}{%- assign label = 'Low-carbon shipping' -%}
+{%- elsif e <= 200 -%}
+{%- assign level = 'medium' -%}{%- assign label = 'Moderate-carbon shipping' -%}
+{%- else -%}
+{%- assign level = 'high' -%}{%- assign label = 'High-carbon shipping' -%}
+{%- endif -%}
+<span class="carbon carbon--{{ level }}">{{ label }}: {{ e }} g CO2{% if carrier != '' %} via {{ carrier | escape }}{% endif %}</span>
+{%- endif -%}
+{%- endif -%}

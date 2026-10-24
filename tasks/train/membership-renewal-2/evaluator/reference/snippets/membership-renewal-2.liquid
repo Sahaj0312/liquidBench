@@ -1,0 +1,13 @@
+{%- if renewals.size > 0 -%}
+{%- assign term = 0 -%}
+<ul class="renewals">
+{%- for r in renewals -%}
+{%- if r.status == "paid" -%}
+{%- assign term = term | plus: 1 -%}
+<li>Term {{ term }}: {{ r.plan | escape }}</li>
+{%- else -%}
+<li class="lapsed">Lapsed: {{ r.plan | escape }}</li>
+{%- endif -%}
+{%- endfor -%}
+</ul>
+{%- endif -%}

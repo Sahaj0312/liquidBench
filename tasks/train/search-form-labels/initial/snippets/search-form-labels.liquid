@@ -1,0 +1,8 @@
+{{ 'search-component.css' | asset_url | stylesheet_tag }}
+<form action="/search" method="get" role="search" class="search-form">
+  <label for="SearchInput" class="visually-hidden">{{ 'search.label' | t }}</label>
+  <input type="search" id="SearchInput" name="q" placeholder="{{ 'general.search.placeholder_text' | t }}">
+  <button type="submit" aria-label="{{ 'general.search.submit_button' | t }}">
+    {% render 'search-icon' %}
+  </button>
+</form>

@@ -1,0 +1,687 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/order-summary-rows-2.liquid",
+    "tags": [
+      "table",
+      "td",
+      "th",
+      "tr"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "rows": [
+        {
+          "label": "Subtotal",
+          "amount_cents": 12999
+        },
+        {
+          "label": "Shipping",
+          "amount_cents": 500
+        }
+      ],
+      "currency": "USD",
+      "empty_text": null
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "Subtotal"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "USD 129.99"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "Shipping"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "USD 5.00"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "tr",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "Total"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "USD 134.99"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "rows": [
+        {
+          "label": null,
+          "amount_cents": 7
+        }
+      ],
+      "currency": null,
+      "empty_text": null
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "Item"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "USD 0.07"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "tr",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "Total"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "USD 0.07"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "rows": [
+        {
+          "label": "  ",
+          "amount_cents": null
+        },
+        {
+          "label": " Tax ",
+          "amount_cents": 1050
+        }
+      ],
+      "currency": "  EUR ",
+      "empty_text": "Empty"
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "Item"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "EUR 0.00"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "Tax"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "EUR 10.50"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "tr",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "Total"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "EUR 10.50"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "rows": null,
+      "currency": "USD",
+      "empty_text": null
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "No items"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "rows": [],
+      "currency": "GBP",
+      "empty_text": "Your cart is empty"
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "Your cart is empty"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "rows": [],
+      "currency": null,
+      "empty_text": "   "
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "No items"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "rows": [
+        {
+          "label": "Gift wrap & \"bow\" <red>",
+          "amount_cents": 1999
+        }
+      ],
+      "currency": "<C$>",
+      "empty_text": null
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "Gift wrap & \"bow\" <red>"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "<C$> 19.99"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "tr",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "Total"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "<C$> 19.99"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "rows": null,
+      "currency": null,
+      "empty_text": "Nothing <here> & \"now\""
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "Nothing <here> & \"now\""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "rows": [
+        {
+          "label": "Discount applied",
+          "amount_cents": 0
+        },
+        {
+          "label": "Deposit",
+          "amount_cents": 100000
+        }
+      ],
+      "currency": "",
+      "empty_text": null
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "Discount applied"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "USD 0.00"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "Deposit"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "USD 1000.00"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "tr",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "Total"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "USD 1000.00"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "rows": [
+        {
+          "label": "A",
+          "amount_cents": 10
+        },
+        {
+          "label": "B",
+          "amount_cents": 1
+        },
+        {
+          "label": "C",
+          "amount_cents": 9
+        }
+      ],
+      "currency": "CAD",
+      "empty_text": null
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "A"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "CAD 0.10"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "B"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "CAD 0.01"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "C"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "CAD 0.09"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "tr",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [],
+                "children": [],
+                "text": "Total"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "CAD 0.20"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,615 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/blog-post-meta-defaults.liquid",
+    "tags": [
+      "div",
+      "h2",
+      "p",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "article_title": "Spring Lookbook",
+      "author": "Jane Doe",
+      "published": "March 4, 2024"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "post-meta__title"
+              ]
+            ],
+            "children": [],
+            "text": "Spring Lookbook"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "post-meta__byline"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__author"
+                  ]
+                ],
+                "children": [],
+                "text": "Jane Doe"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__date"
+                  ]
+                ],
+                "children": [],
+                "text": "March 4, 2024"
+              }
+            ],
+            "text": "By  on "
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "article_title": null,
+      "author": null,
+      "published": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "post-meta__title"
+              ]
+            ],
+            "children": [],
+            "text": "Untitled post"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "post-meta__byline"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__author"
+                  ]
+                ],
+                "children": [],
+                "text": "Staff Writer"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__date"
+                  ]
+                ],
+                "children": [],
+                "text": "Unscheduled"
+              }
+            ],
+            "text": "By  on "
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "article_title": "",
+      "author": "",
+      "published": ""
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "post-meta__title"
+              ]
+            ],
+            "children": [],
+            "text": "Untitled post"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "post-meta__byline"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__author"
+                  ]
+                ],
+                "children": [],
+                "text": "Staff Writer"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__date"
+                  ]
+                ],
+                "children": [],
+                "text": "Unscheduled"
+              }
+            ],
+            "text": "By  on "
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "article_title": "News",
+      "author": "   ",
+      "published": "May 1, 2024"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "post-meta__title"
+              ]
+            ],
+            "children": [],
+            "text": "News"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "post-meta__byline"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__author"
+                  ]
+                ],
+                "children": [],
+                "text": "Staff Writer"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__date"
+                  ]
+                ],
+                "children": [],
+                "text": "May 1, 2024"
+              }
+            ],
+            "text": "By  on "
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "article_title": "  Padded Title  ",
+      "author": " Ann Lee ",
+      "published": "June 2, 2024"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "post-meta__title"
+              ]
+            ],
+            "children": [],
+            "text": "Padded Title"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "post-meta__byline"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__author"
+                  ]
+                ],
+                "children": [],
+                "text": "Ann Lee"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__date"
+                  ]
+                ],
+                "children": [],
+                "text": "June 2, 2024"
+              }
+            ],
+            "text": "By  on "
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "article_title": "Cats & Dogs <Part \"2\">",
+      "author": "A&B Media",
+      "published": "July 9, 2024"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "post-meta__title"
+              ]
+            ],
+            "children": [],
+            "text": "Cats & Dogs <Part \"2\">"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "post-meta__byline"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__author"
+                  ]
+                ],
+                "children": [],
+                "text": "A&B Media"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__date"
+                  ]
+                ],
+                "children": [],
+                "text": "July 9, 2024"
+              }
+            ],
+            "text": "By  on "
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "article_title": "Draft Notes",
+      "author": "Sam Ortiz",
+      "published": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "post-meta__title"
+              ]
+            ],
+            "children": [],
+            "text": "Draft Notes"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "post-meta__byline"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__author"
+                  ]
+                ],
+                "children": [],
+                "text": "Sam Ortiz"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__date"
+                  ]
+                ],
+                "children": [],
+                "text": "Unscheduled"
+              }
+            ],
+            "text": "By  on "
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "article_title": null,
+      "author": "Kim Park",
+      "published": "Aug 15, 2024"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "post-meta__title"
+              ]
+            ],
+            "children": [],
+            "text": "Untitled post"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "post-meta__byline"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__author"
+                  ]
+                ],
+                "children": [],
+                "text": "Kim Park"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__date"
+                  ]
+                ],
+                "children": [],
+                "text": "Aug 15, 2024"
+              }
+            ],
+            "text": "By  on "
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "article_title": "Tabs",
+      "author": "\n\t",
+      "published": " "
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "post-meta__title"
+              ]
+            ],
+            "children": [],
+            "text": "Tabs"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "post-meta__byline"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__author"
+                  ]
+                ],
+                "children": [],
+                "text": "Staff Writer"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__date"
+                  ]
+                ],
+                "children": [],
+                "text": "Unscheduled"
+              }
+            ],
+            "text": "By  on "
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

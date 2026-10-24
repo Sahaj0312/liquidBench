@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-asset-name-still-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels.liquid": "{{ 'search-component.css' | asset_url | stylesheet_tag }}\n<form action=\"/search\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label for=\"SearchInput\" class=\"visually-hidden\">{{ 'general.search.label' | t }}</label>\n  <input type=\"search\" id=\"SearchInput\" name=\"q\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"submit\" aria-label=\"{{ 'general.search.submit' | t }}\">\n    {% render 'icon-search' %}\n  </button>\n</form>\n"
+    }
+  },
+  {
+    "name": "wrong-1-label-key-missing-general-pref",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels.liquid": "{{ 'component-search.css' | asset_url | stylesheet_tag }}\n<form action=\"/search\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label for=\"SearchInput\" class=\"visually-hidden\">{{ 'search.label' | t }}</label>\n  <input type=\"search\" id=\"SearchInput\" name=\"q\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"submit\" aria-label=\"{{ 'general.search.submit' | t }}\">\n    {% render 'icon-search' %}\n  </button>\n</form>\n"
+    }
+  },
+  {
+    "name": "wrong-2-submit-key-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels.liquid": "{{ 'component-search.css' | asset_url | stylesheet_tag }}\n<form action=\"/search\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label for=\"SearchInput\" class=\"visually-hidden\">{{ 'general.search.label' | t }}</label>\n  <input type=\"search\" id=\"SearchInput\" name=\"q\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"submit\" aria-label=\"{{ 'general.search.submit_button' | t }}\">\n    {% render 'icon-search' %}\n  </button>\n</form>\n"
+    }
+  },
+  {
+    "name": "wrong-3-snippet-name-still-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels.liquid": "{{ 'component-search.css' | asset_url | stylesheet_tag }}\n<form action=\"/search\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label for=\"SearchInput\" class=\"visually-hidden\">{{ 'general.search.label' | t }}</label>\n  <input type=\"search\" id=\"SearchInput\" name=\"q\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"submit\" aria-label=\"{{ 'general.search.submit' | t }}\">\n    {% render 'search-icon' %}\n  </button>\n</form>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels.liquid": "{% # theme-check-disable %}\n{{ 'component-search.css' | asset_url | stylesheet_tag }}\n<form action=\"/search\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label for=\"SearchInput\" class=\"visually-hidden\">{{ 'general.search.label' | t }}</label>\n  <input type=\"search\" id=\"SearchInput\" name=\"q\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"submit\" aria-label=\"{{ 'general.search.submit' | t }}\">\n    {% render 'icon-search' %}\n  </button>\n</form>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels.liquid": null
+    }
+  }
+]

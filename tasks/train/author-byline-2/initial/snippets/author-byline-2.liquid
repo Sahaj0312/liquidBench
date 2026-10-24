@@ -1,0 +1,4 @@
+<p class="byline">
+  <span class="byline__authors">By {{ author_name }}</span>
+  {% if word_count %}<span class="byline__reading">{{ word_count | divided_by: 200 }} min read</span>{% endif %}
+</p>

@@ -1,0 +1,10 @@
+{%- if author -%}
+{%- assign name = author.name | strip -%}
+{%- if name != "" -%}
+{%- assign url = author.url | strip -%}
+{%- assign role = author.role | strip -%}
+{%- assign when = date | strip -%}
+{%- capture line -%}<p class="byline">By {% if url != "" %}<a class="byline-link" href="{{ url | escape }}">{% endif %}<span class="byline-name">{{ name | escape }}</span>{% if url != "" %}</a>{% endif %}{% if role != "" %} <span class="byline-role">{{ role | escape }}</span>{% endif %}{% if when != "" %} <time>{{ when | escape }}</time>{% endif %}</p>{%- endcapture -%}
+{%- if wrapper -%}<div class="byline-wrap">{{ line }}</div>{%- else -%}{{ line }}{%- endif -%}
+{%- endif -%}
+{%- endif -%}

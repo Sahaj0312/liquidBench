@@ -1,0 +1,180 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/unit-price-label.liquid",
+    "tags": [
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "price": "$4.99",
+      "count": 1,
+      "unit": "ounce"
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "unit-price"
+          ]
+        ],
+        "children": [],
+        "text": "$4.99 per ounce"
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "price": "$4.99",
+      "count": 3,
+      "unit": "ounce"
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "unit-price"
+          ]
+        ],
+        "children": [],
+        "text": "$4.99 per 3 ounces"
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "price": "$4.99",
+      "count": 0,
+      "unit": "ounce"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "price": "$4.99",
+      "count": null,
+      "unit": "ounce"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "price": null,
+      "count": 2,
+      "unit": "ounce"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "price": "",
+      "count": 2,
+      "unit": "ounce"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "price": "$10.00",
+      "count": 2,
+      "unit": "lb"
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "unit-price"
+          ]
+        ],
+        "children": [],
+        "text": "$10.00 per 2 lbs"
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "price": "<b>$2</b>",
+      "count": 2,
+      "unit": "\"bag\" & box"
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "unit-price"
+          ]
+        ],
+        "children": [],
+        "text": "<b>$2</b> per 2 \"bag\" & boxs"
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "price": "$1.00",
+      "count": -1,
+      "unit": "gram"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "price": "$0.50",
+      "count": 100,
+      "unit": "gram"
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "unit-price"
+          ]
+        ],
+        "children": [],
+        "text": "$0.50 per 100 grams"
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "price": "5 & up",
+      "count": 1,
+      "unit": "<kg>"
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "unit-price"
+          ]
+        ],
+        "children": [],
+        "text": "5 & up per <kg>"
+      }
+    ]
+  }
+]

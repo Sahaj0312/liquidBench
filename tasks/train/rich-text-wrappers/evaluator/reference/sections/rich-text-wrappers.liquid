@@ -1,0 +1,25 @@
+{%- assign wrapper = section.settings.wrapper_tag | default: 'div' -%}
+<div class="rich-text rich-text--{{ section.settings.text_alignment }}" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  {%- if section.settings.use_container -%}<div class="page-width">{%- endif -%}
+  <{{ wrapper }} class="rich-text__blocks">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'heading' -%}
+          <{{ block.settings.heading_size }} class="rich-text__heading" {{ block.shopify_attributes }}>{{ block.settings.heading }}</{{ block.settings.heading_size }}>
+        {%- when 'text' -%}
+          <div class="rich-text__text rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+        {%- when 'button' -%}
+          {%- if block.settings.button_label != blank -%}
+            <div class="rich-text__buttons" {{ block.shopify_attributes }}>
+              {%- if block.settings.button_link != blank -%}<a class="button" href="{{ block.settings.button_link }}">{{ block.settings.button_label | escape }}</a>{%- else -%}<span class="button button--disabled">{{ block.settings.button_label | escape }}</span>{%- endif -%}
+            </div>
+          {%- endif -%}
+      {%- endcase -%}
+    {%- endfor -%}
+  </{{ wrapper }}>
+  {%- if section.settings.use_container -%}</div>{%- endif -%}
+</div>
+
+{% schema %}
+{"name":"Rich text","tag":"section","class":"section-rich-text","settings":[{"type":"checkbox","id":"use_container","label":"Constrain to page width","default":true},{"type":"select","id":"wrapper_tag","label":"Content wrapper element","options":[{"value":"div","label":"Div"},{"value":"article","label":"Article"},{"value":"aside","label":"Aside"}],"default":"div"},{"type":"select","id":"text_alignment","label":"Text alignment","options":[{"value":"left","label":"Left"},{"value":"center","label":"Center"},{"value":"right","label":"Right"}],"default":"center"},{"type":"range","id":"padding_top","label":"Top padding","min":0,"max":100,"step":4,"unit":"px","default":36},{"type":"range","id":"padding_bottom","label":"Bottom padding","min":0,"max":100,"step":4,"unit":"px","default":36}],"blocks":[{"type":"heading","name":"Heading","limit":2,"settings":[{"type":"inline_richtext","id":"heading","label":"Heading","default":"Talk about your brand"},{"type":"select","id":"heading_size","label":"Heading size","options":[{"value":"h1","label":"Large"},{"value":"h2","label":"Medium"},{"value":"h3","label":"Small"}],"default":"h2"}]},{"type":"text","name":"Text","settings":[{"type":"richtext","id":"text","label":"Text","default":"<p>Share information about your brand with your customers.</p>"}]},{"type":"button","name":"Button","limit":1,"settings":[{"type":"text","id":"button_label","label":"Button label","default":"Learn more"},{"type":"url","id":"button_link","label":"Button link"}]}],"max_blocks":6,"presets":[{"name":"Rich text","blocks":[{"type":"heading"},{"type":"text"},{"type":"button"}]}]}
+{% endschema %}

@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-ignores-availability",
+    "expected_pass": false,
+    "changes": {
+      "snippets/wishlist-count.liquid": "{%- assign total = items | size -%}\n{%- assign limit = cap | default: 99 -%}\n{%- if total > limit -%}\n  {%- assign shown = limit | append: '+' -%}\n{%- else -%}\n  {%- assign shown = total -%}\n{%- endif -%}\n{%- if total == 1 -%}\n  {%- assign noun = 'item' -%}\n{%- else -%}\n  {%- assign noun = 'items' -%}\n{%- endif -%}\n{%- assign text = label | default: '' | strip -%}\n{%- if text == '' -%}\n  {%- assign text = 'Wishlist' -%}\n{%- endif -%}\n{%- assign classes = 'wishlist' -%}\n{%- if total == 0 -%}\n  {%- assign classes = 'wishlist wishlist--empty' -%}\n{%- endif -%}\n<a class=\"{{ classes }}\" href=\"/pages/wishlist\" aria-label=\"{{ text | escape }} ({{ total }} {{ noun }})\"><span class=\"wishlist__label\">{{ text | escape }}</span>\n{%- if total > 0 -%}<span class=\"wishlist__count\">{{ shown }}</span>{%- endif -%}\n</a>\n"
+    }
+  },
+  {
+    "name": "wrong-1-zero-uses-singular",
+    "expected_pass": false,
+    "changes": {
+      "snippets/wishlist-count.liquid": "{%- assign total = 0 -%}\n{%- for item in items -%}\n  {%- if show_unavailable or item.available == true -%}\n    {%- assign total = total | plus: 1 -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- assign limit = cap | default: 99 -%}\n{%- if total > limit -%}\n  {%- assign shown = limit | append: '+' -%}\n{%- else -%}\n  {%- assign shown = total -%}\n{%- endif -%}\n{%- if total > 1 -%}\n  {%- assign noun = 'items' -%}\n{%- else -%}\n  {%- assign noun = 'item' -%}\n{%- endif -%}\n{%- assign text = label | default: '' | strip -%}\n{%- if text == '' -%}\n  {%- assign text = 'Wishlist' -%}\n{%- endif -%}\n{%- assign classes = 'wishlist' -%}\n{%- if total == 0 -%}\n  {%- assign classes = 'wishlist wishlist--empty' -%}\n{%- endif -%}\n<a class=\"{{ classes }}\" href=\"/pages/wishlist\" aria-label=\"{{ text | escape }} ({{ total }} {{ noun }})\"><span class=\"wishlist__label\">{{ text | escape }}</span>\n{%- if total > 0 -%}<span class=\"wishlist__count\">{{ shown }}</span>{%- endif -%}\n</a>\n"
+    }
+  },
+  {
+    "name": "wrong-2-cap-inclusive",
+    "expected_pass": false,
+    "changes": {
+      "snippets/wishlist-count.liquid": "{%- assign total = 0 -%}\n{%- for item in items -%}\n  {%- if show_unavailable or item.available == true -%}\n    {%- assign total = total | plus: 1 -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- assign limit = cap | default: 99 -%}\n{%- if total >= limit -%}\n  {%- assign shown = limit | append: '+' -%}\n{%- else -%}\n  {%- assign shown = total -%}\n{%- endif -%}\n{%- if total == 1 -%}\n  {%- assign noun = 'item' -%}\n{%- else -%}\n  {%- assign noun = 'items' -%}\n{%- endif -%}\n{%- assign text = label | default: '' | strip -%}\n{%- if text == '' -%}\n  {%- assign text = 'Wishlist' -%}\n{%- endif -%}\n{%- assign classes = 'wishlist' -%}\n{%- if total == 0 -%}\n  {%- assign classes = 'wishlist wishlist--empty' -%}\n{%- endif -%}\n<a class=\"{{ classes }}\" href=\"/pages/wishlist\" aria-label=\"{{ text | escape }} ({{ total }} {{ noun }})\"><span class=\"wishlist__label\">{{ text | escape }}</span>\n{%- if total > 0 -%}<span class=\"wishlist__count\">{{ shown }}</span>{%- endif -%}\n</a>\n"
+    }
+  },
+  {
+    "name": "wrong-3-aria-uses-capped-value",
+    "expected_pass": false,
+    "changes": {
+      "snippets/wishlist-count.liquid": "{%- assign total = 0 -%}\n{%- for item in items -%}\n  {%- if show_unavailable or item.available == true -%}\n    {%- assign total = total | plus: 1 -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- assign limit = cap | default: 99 -%}\n{%- if total > limit -%}\n  {%- assign shown = limit | append: '+' -%}\n{%- else -%}\n  {%- assign shown = total -%}\n{%- endif -%}\n{%- if total == 1 -%}\n  {%- assign noun = 'item' -%}\n{%- else -%}\n  {%- assign noun = 'items' -%}\n{%- endif -%}\n{%- assign text = label | default: '' | strip -%}\n{%- if text == '' -%}\n  {%- assign text = 'Wishlist' -%}\n{%- endif -%}\n{%- assign classes = 'wishlist' -%}\n{%- if total == 0 -%}\n  {%- assign classes = 'wishlist wishlist--empty' -%}\n{%- endif -%}\n<a class=\"{{ classes }}\" href=\"/pages/wishlist\" aria-label=\"{{ text | escape }} ({{ shown }} {{ noun }})\"><span class=\"wishlist__label\">{{ text | escape }}</span>\n{%- if total > 0 -%}<span class=\"wishlist__count\">{{ shown }}</span>{%- endif -%}\n</a>\n"
+    }
+  },
+  {
+    "name": "wrong-4-label-not-escaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/wishlist-count.liquid": "{%- assign total = 0 -%}\n{%- for item in items -%}\n  {%- if show_unavailable or item.available == true -%}\n    {%- assign total = total | plus: 1 -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- assign limit = cap | default: 99 -%}\n{%- if total > limit -%}\n  {%- assign shown = limit | append: '+' -%}\n{%- else -%}\n  {%- assign shown = total -%}\n{%- endif -%}\n{%- if total == 1 -%}\n  {%- assign noun = 'item' -%}\n{%- else -%}\n  {%- assign noun = 'items' -%}\n{%- endif -%}\n{%- assign text = label | default: '' | strip -%}\n{%- if text == '' -%}\n  {%- assign text = 'Wishlist' -%}\n{%- endif -%}\n{%- assign classes = 'wishlist' -%}\n{%- if total == 0 -%}\n  {%- assign classes = 'wishlist wishlist--empty' -%}\n{%- endif -%}\n<a class=\"{{ classes }}\" href=\"/pages/wishlist\" aria-label=\"{{ text }} ({{ total }} {{ noun }})\"><span class=\"wishlist__label\">{{ text }}</span>\n{%- if total > 0 -%}<span class=\"wishlist__count\">{{ shown }}</span>{%- endif -%}\n</a>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/wishlist-count.liquid": "{% # theme-check-disable %}\n{%- assign total = 0 -%}\n{%- for item in items -%}\n  {%- if show_unavailable or item.available == true -%}\n    {%- assign total = total | plus: 1 -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- assign limit = cap | default: 99 -%}\n{%- if total > limit -%}\n  {%- assign shown = limit | append: '+' -%}\n{%- else -%}\n  {%- assign shown = total -%}\n{%- endif -%}\n{%- if total == 1 -%}\n  {%- assign noun = 'item' -%}\n{%- else -%}\n  {%- assign noun = 'items' -%}\n{%- endif -%}\n{%- assign text = label | default: '' | strip -%}\n{%- if text == '' -%}\n  {%- assign text = 'Wishlist' -%}\n{%- endif -%}\n{%- assign classes = 'wishlist' -%}\n{%- if total == 0 -%}\n  {%- assign classes = 'wishlist wishlist--empty' -%}\n{%- endif -%}\n<a class=\"{{ classes }}\" href=\"/pages/wishlist\" aria-label=\"{{ text | escape }} ({{ total }} {{ noun }})\"><span class=\"wishlist__label\">{{ text | escape }}</span>\n{%- if total > 0 -%}<span class=\"wishlist__count\">{{ shown }}</span>{%- endif -%}\n</a>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/wishlist-count.liquid": null
+    }
+  }
+]

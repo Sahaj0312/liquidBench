@@ -1,0 +1,16 @@
+{{ 'component-search.css' | asset_url | stylesheet_tag }}
+<form action="{{ routes.search_url }}" method="get" role="search" class="search">
+  <label class="search__label" for="Search-{{ form_id }}">{{ 'general.search.search' | t }}</label>
+  <input class="search__input" id="Search-{{ form_id }}" type="search" name="q" value="{{ terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}">
+  <button type="reset" class="search__reset" aria-label="{{ 'general.search.reset' | t }}">{% render 'icon-close' %}</button>
+  <button type="submit" class="search__submit" aria-label="{{ 'general.search.submit' | t }}">{% render 'icon-search' %}</button>
+  {%- if popular_terms.size > 0 -%}
+    <p class="search__popular-heading">{{ 'general.search.popular' | t }}</p>
+    <ul class="search__popular">
+      {%- for term in popular_terms -%}
+        <li class="search__term{% if forloop.first %} search__term--first{% endif %}{% if forloop.last %} search__term--last{% endif %}">{{ term | escape }}</li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+</form>
+<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>

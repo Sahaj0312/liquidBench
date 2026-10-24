@@ -1,0 +1,20 @@
+<div class="image-with-text image-with-text--{{ section.settings.layout | escape }}">
+  {%- if section.settings.image != blank -%}
+    <div class="image-with-text__media">
+      {{ section.settings.image | image_url: width: 1200 | image_tag: alt: section.settings.image_alt, loading: 'lazy' }}
+    </div>
+  {%- endif -%}
+  <div class="image-with-text__content">
+    {%- if section.settings.heading != blank -%}
+      <h2 title="{{ section.settings.heading | escape }}">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+    <div class="rte">{{ section.settings.text }}</div>
+    {%- if section.settings.button_label != blank -%}
+      <a class="button" href="{{ section.settings.button_link | default: '#' }}" aria-label="{{ section.settings.button_label | escape }}">{{ section.settings.button_label | escape }}</a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{"name":"Image with text","settings":[{"type":"image_picker","id":"image","label":"Image"},{"type":"text","id":"layout","label":"Layout","default":"image-first"},{"type":"text","id":"heading","label":"Heading"},{"type":"textarea","id":"text","label":"Text"},{"type":"text","id":"button_label","label":"Button label"}]}
+{% endschema %}

@@ -1,0 +1,5 @@
+<div class="preorder-notice"><ul class="preorder-notice__list">
+{%- for v in variants -%}
+{%- if v.preorder_date -%}<li><strong>Ships {{ v.preorder_date }}</strong> {{ v.title }}</li>{%- endif -%}
+{%- endfor -%}
+</ul><p class="preorder-notice__count">{{ variants.size }} preorder options</p></div>

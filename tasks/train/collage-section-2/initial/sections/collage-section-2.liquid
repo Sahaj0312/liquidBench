@@ -1,0 +1,29 @@
+{%- assign heading = section.settings.heading | strip -%}
+<section class="collage">
+{%- if heading != empty -%}<h2 class="collage__heading">{{ heading | escape }}</h2>{%- endif -%}
+<ul class="collage__grid">
+{%- for block in section.blocks -%}
+<li class="collage__item collage__item--{{ block.settings.size }}">{{ block.settings.title | escape }}</li>
+{%- endfor -%}
+</ul></section>
+{%- comment -%}collage{%- endcomment -%}
+{% schema %}
+{
+  "name": "Collage",
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading"},
+    {"type": "number", "id": "max_large", "label": "Maximum large tiles"}
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        {"type": "text", "id": "title", "label": "Title"},
+        {"type": "select", "id": "size", "label": "Size", "options": [{"value": "small", "label": "Small"}, {"value": "large", "label": "Large"}], "default": "small"}
+      ]
+    }
+  ],
+  "presets": [{"name": "Collage"}]
+}
+{% endschema %}

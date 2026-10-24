@@ -1,0 +1,15 @@
+{
+  "id": "search-form-labels",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "easy",
+  "family": "search-form-labels",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/search-form-labels.liquid"
+  ],
+  "prompt": "The snippet snippets/search-form-labels.liquid renders the header search form. It currently points to an asset, translation keys and a snippet that do not exist in the theme, so Theme Check reports errors. Fix only the literal operands so that every reference resolves to a file or key that already exists. Do not change any markup, attributes or filters.\n\nRequired references:\n1. The stylesheet must be loaded through asset_url | stylesheet_tag using the existing asset assets/component-search.css.\n2. The visually hidden label text must use the translation key general.search.label.\n3. The input placeholder must use the translation key general.search.placeholder.\n4. The submit button aria-label must use the translation key general.search.submit.\n5. The button icon must be rendered with {% render %} using the existing snippet snippets/icon-search.liquid.\n\nThe keys exist in locales/en.default.json and locales/fr.json. Do not create, rename or edit any asset, locale or snippet file. After your change, Theme Check must report no missing asset, missing translation key or missing snippet errors for this file. Change only snippets/search-form-labels.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

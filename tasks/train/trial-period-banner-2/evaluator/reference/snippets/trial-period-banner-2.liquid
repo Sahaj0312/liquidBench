@@ -1,0 +1,4 @@
+{%- assign plan = plan_name | strip | default: 'free' -%}
+{%- if trial_days > 0 -%}
+<p class="trial-banner">{{ trial_days }} {% if trial_days == 1 %}day{% else %}days{% endif %} left in your <strong>{{ plan | escape }}</strong> trial</p>
+{%- endif -%}

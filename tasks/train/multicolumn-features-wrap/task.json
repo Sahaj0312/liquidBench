@@ -1,0 +1,15 @@
+{
+  "id": "multicolumn-features-wrap",
+  "version": 1,
+  "split": "train",
+  "category": "section-schema",
+  "difficulty": "hard",
+  "family": "multicolumn-features-wrap",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/multicolumn-features-wrap.liquid"
+  ],
+  "prompt": "The multicolumn features section in sections/multicolumn-features-wrap.liquid has finished markup, but its {% schema %} JSON is broken. Rewrite only the JSON inside the single top-level {% schema %} block and leave the markup untouched.\n\nThe markup has several optional wrappers, each with its own setting:\n- Each column is wrapped in an <a> only when its block setting `link` is present, so `link` must be a url setting.\n- The media <div> appears only when the block's `image` (an image_picker) is set.\n- The section button appears only when both `button_label` and `button_link` are present. These two settings must have no default, so the button is hidden until a merchant fills them in.\n\nThe final schema must be exactly the following, with keys at each level in this order and no other keys anywhere.\n\nTop level:\n- \"name\": \"Multicolumn\"\n- \"tag\": \"section\"\n- \"class\": \"section-multicolumn\"\n- \"max_blocks\": 6 (a number)\n- \"settings\": an array of five entries, in this order:\n  1. type \"text\", id \"title\", label \"Heading\", default \"Why shop with us\"\n  2. type \"range\", id \"columns_desktop\", label \"Columns on desktop\", min 1, max 4, step 1, default 3 (all numbers)\n  3. type \"header\", content \"Button\" (only these two keys)\n  4. type \"text\", id \"button_label\", label \"Button label\" (no default key)\n  5. type \"url\", id \"button_link\", label \"Button link\" (no default key)\n- \"blocks\": one block definition with type \"column\" and name \"Column\". Its settings are, in this order:\n  1. type \"image_picker\", id \"image\", label \"Image\"\n  2. type \"text\", id \"heading\", label \"Heading\", default \"Column\"\n  3. type \"richtext\", id \"text\", label \"Description\", default \"<p>Pair text with an image to focus on your chosen product.</p>\"\n  4. type \"url\", id \"link\", label \"Link\"\n- \"presets\": one preset with name \"Multicolumn\" and blocks [{\"type\":\"column\"},{\"type\":\"column\"},{\"type\":\"column\"}]\n\nKey order inside each setting: type, then id, then label, then (range only) min, max, step, then default where one is present. Header entries are ordered type, content. Inside the block definition: type, name, settings. Inside the preset: name, blocks. Change only sections/multicolumn-features-wrap.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

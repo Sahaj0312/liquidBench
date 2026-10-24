@@ -1,0 +1,355 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/membership-renewal.liquid",
+    "tags": [
+      "a",
+      "div",
+      "p",
+      "strong"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "member": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "member": {
+        "name": "Ana",
+        "plan": "Gold",
+        "days_left": null,
+        "auto_renew": false
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "member": {
+        "name": "Ana",
+        "plan": "Gold",
+        "days_left": 31,
+        "auto_renew": false
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "member": {
+        "name": "Ana",
+        "plan": "Gold",
+        "days_left": 30,
+        "auto_renew": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "renewal renewal--soon"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Hi Ana,"
+              }
+            ],
+            "text": " Your Gold membership renews in 30 days."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "member": {
+        "name": null,
+        "plan": "Basic",
+        "days_left": 1,
+        "auto_renew": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "renewal renewal--soon"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Your Basic membership expires in 1 day."
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "renewal__link"
+              ],
+              [
+                "href",
+                "/account/renew"
+              ]
+            ],
+            "children": [],
+            "text": "Renew now"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "member": {
+        "name": "  Lee  ",
+        "plan": "Plus",
+        "days_left": 0,
+        "auto_renew": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "renewal renewal--today"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Hi Lee,"
+              }
+            ],
+            "text": " Your Plus membership renews today."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "member": {
+        "name": "   ",
+        "plan": "Plus",
+        "days_left": 0,
+        "auto_renew": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "renewal renewal--today"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Your Plus membership expires today."
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "renewal__link"
+              ],
+              [
+                "href",
+                "/account/renew"
+              ]
+            ],
+            "children": [],
+            "text": "Renew now"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "member": {
+        "name": "Kim",
+        "plan": "Gold",
+        "days_left": -1,
+        "auto_renew": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "renewal renewal--expired"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Hi Kim,"
+              }
+            ],
+            "text": " Your Gold membership expired 1 day ago."
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "renewal__link"
+              ],
+              [
+                "href",
+                "/account/renew"
+              ]
+            ],
+            "children": [],
+            "text": "Renew now"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "member": {
+        "name": "Tom & \"Jerry\"",
+        "plan": "Gold & <VIP>",
+        "days_left": -12,
+        "auto_renew": false
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "renewal renewal--expired"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Hi Tom & \"Jerry\","
+              }
+            ],
+            "text": " Your Gold & <VIP> membership expired 12 days ago."
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "renewal__link"
+              ],
+              [
+                "href",
+                "/account/renew"
+              ]
+            ],
+            "children": [],
+            "text": "Renew now"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "member": {
+        "name": "<b>",
+        "plan": "Pro",
+        "days_left": 2,
+        "auto_renew": true
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "renewal renewal--soon"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Hi <b>,"
+              }
+            ],
+            "text": " Your Pro membership renews in 2 days."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

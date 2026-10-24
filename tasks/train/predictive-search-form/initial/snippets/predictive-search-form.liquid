@@ -1,0 +1,19 @@
+{%- comment -%} Predictive search form and assets. {%- endcomment -%}
+{{ 'predictive-search.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'predictive_search.js' | asset_url }}" defer="defer"></script>
+<predictive-search class="predictive-search" data-loading-text="{{ 'general.loading' | t }}">
+  <form action="{{ routes.search_url }}" method="get" role="search" class="predictive-search__form">
+    <label class="visually-hidden" for="PredictiveSearchInput">{{ 'templates.search.label' | t }}</label>
+    <input id="PredictiveSearchInput" class="predictive-search__input" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'search.placeholder' | t }}" role="combobox" aria-expanded="false" aria-controls="predictive-search-results" aria-haspopup="listbox" aria-autocomplete="list" autocomplete="off" spellcheck="false">
+    <input type="hidden" name="options[prefix]" value="last">
+    <button type="submit" class="predictive-search__submit" aria-label="{{ 'templates.search.submit' | t }}">
+      {%- render 'search-icon' -%}
+    </button>
+    <div class="predictive-search__results" id="predictive-search-results" tabindex="-1" data-predictive-search>
+      <div class="predictive-search__loading-state">
+        {%- render 'spinner' -%}
+      </div>
+    </div>
+    <span class="predictive-search__status visually-hidden" role="status" aria-hidden="true"></span>
+  </form>
+</predictive-search>

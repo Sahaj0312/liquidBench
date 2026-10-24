@@ -1,0 +1,20 @@
+{%- liquid
+  assign key = 'valid'
+  assign label = 'Valid'
+  if ticket.checked_in
+    assign key = 'checked-in'
+    assign label = 'Checked in'
+  elsif ticket.cancelled
+    assign key = 'cancelled'
+    assign label = 'Cancelled'
+  elsif ticket.refunded
+    assign key = 'refunded'
+    assign label = 'Refunded'
+  elsif ticket.event_ended
+    assign key = 'expired'
+    assign label = 'Expired'
+  endif
+-%}
+<div class="ticket"><span class="ticket__status ticket__status--{{ key }}">{{ label }}</span>
+{%- if ticket.holder -%}<span class="ticket__holder">{{ ticket.holder }}</span>{%- endif -%}
+</div>

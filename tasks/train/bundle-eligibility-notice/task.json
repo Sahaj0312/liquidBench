@@ -1,0 +1,15 @@
+{
+  "id": "bundle-eligibility-notice",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "hard",
+  "family": "bundle-eligibility-notice",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/bundle-eligibility-notice.liquid"
+  ],
+  "prompt": "Rewrite snippets/bundle-eligibility-notice.liquid. It shows whether a cart qualifies for a product bundle. Every piece of user text must be HTML-escaped exactly once, both in element text and in attribute values.\n\nInputs (all top-level variables, there is no section object):\n- `bundle`: object or null. When it is an object it always has both keys:\n  - `bundle.title`: string or null. It may contain surrounding whitespace and the characters < > & \" '.\n  - `bundle.min_items`: integer >= 1, never null.\n- `cart_items`: array, always present, possibly empty. Each element always has both keys:\n  - `title`: string, never null. It may contain < > & \" '.\n  - `eligible`: boolean or null. Only `true` counts as eligible; false and null do not.\n\nRules:\n1. If `bundle` is null, output nothing (empty string).\n2. Display title T: take `bundle.title`, strip leading and trailing whitespace. If the result is empty (or the title is null), use `Bundle`. Then HTML-escape it with the core `escape` filter. Use the same escaped T in all three places below.\n3. N = the number of eligible items in `cart_items`.\n4. Output, with no whitespace or newlines between or inside tags:\n`<div class=\"bundle-notice\" data-bundle=\"T\" data-count=\"N\"><h3>T</h3><p>MESSAGE</p>LIST</div>`\n5. MESSAGE: when N >= min_items it is `Bundle unlocked!`. Otherwise let R = min_items - N. The message is `Add R more eligible item to unlock T.` when R is 1, and `Add R more eligible items to unlock T.` for any other R.\n6. LIST: when N is 0, output nothing. Otherwise output `<ul>` followed by one `<li title=\"I\">I</li>` per eligible item, in input order, then `</ul>`. I is the item title HTML-escaped (not stripped). Ineligible items are never listed.\n\nExample: title `Mix & Match <Deluxe>` becomes `Mix &amp; Match &lt;Deluxe&gt;`. A double quote becomes `&quot;` and an apostrophe becomes `&#39;`. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/bundle-eligibility-notice.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

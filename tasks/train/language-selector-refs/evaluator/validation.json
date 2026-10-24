@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-script-asset-left-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-selector-refs.liquid": "{{ 'component-localization.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'language-select.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"language-selector\">\n  <span class=\"language-selector__label\">{% render 'icon-language' %}{{ 'localization.language_label' | t }}</span>\n  <ul class=\"language-selector__list\" role=\"list\">\n    {%- for language in languages -%}\n      {% render 'language-option', language: language, current: current_language %}\n    {%- endfor -%}\n  </ul>\n  <button type=\"submit\" class=\"language-selector__submit\">{{ 'localization.update_language' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-submit-key-guessed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-selector-refs.liquid": "{{ 'component-localization.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'localization-form.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"language-selector\">\n  <span class=\"language-selector__label\">{% render 'icon-language' %}{{ 'localization.language_label' | t }}</span>\n  <ul class=\"language-selector__list\" role=\"list\">\n    {%- for language in languages -%}\n      {% render 'language-option', language: language, current: current_language %}\n    {%- endfor -%}\n  </ul>\n  <button type=\"submit\" class=\"language-selector__submit\">{{ 'localization.update' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-snippet-name-with-extension",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-selector-refs.liquid": "{{ 'component-localization.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'localization-form.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"language-selector\">\n  <span class=\"language-selector__label\">{% render 'icon-language.liquid' %}{{ 'localization.language_label' | t }}</span>\n  <ul class=\"language-selector__list\" role=\"list\">\n    {%- for language in languages -%}\n      {% render 'language-option', language: language, current: current_language %}\n    {%- endfor -%}\n  </ul>\n  <button type=\"submit\" class=\"language-selector__submit\">{{ 'localization.update_language' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-item-snippet-left-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-selector-refs.liquid": "{{ 'component-localization.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'localization-form.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"language-selector\">\n  <span class=\"language-selector__label\">{% render 'icon-language' %}{{ 'localization.language_label' | t }}</span>\n  <ul class=\"language-selector__list\" role=\"list\">\n    {%- for language in languages -%}\n      {% render 'language-item', language: language, current: current_language %}\n    {%- endfor -%}\n  </ul>\n  <button type=\"submit\" class=\"language-selector__submit\">{{ 'localization.update_language' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-selector-refs.liquid": "{% # theme-check-disable %}\n{{ 'component-localization.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'localization-form.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"language-selector\">\n  <span class=\"language-selector__label\">{% render 'icon-language' %}{{ 'localization.language_label' | t }}</span>\n  <ul class=\"language-selector__list\" role=\"list\">\n    {%- for language in languages -%}\n      {% render 'language-option', language: language, current: current_language %}\n    {%- endfor -%}\n  </ul>\n  <button type=\"submit\" class=\"language-selector__submit\">{{ 'localization.update_language' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-selector-refs.liquid": null
+    }
+  }
+]

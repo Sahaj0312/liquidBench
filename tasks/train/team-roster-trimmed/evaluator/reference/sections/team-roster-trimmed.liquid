@@ -1,0 +1,32 @@
+{%- liquid
+  assign heading = section.settings.heading | split: ' ' | join: ' '
+  assign limit = section.settings.max_members | default: 0
+  assign count = 0
+-%}
+{%- capture items -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'member' -%}
+      {%- assign name = block.settings.name | split: ' ' | join: ' ' -%}
+      {%- assign role = block.settings.role | split: ' ' | join: ' ' -%}
+      {%- if name != '' -%}
+        {%- if limit <= 0 or count < limit -%}
+          {%- assign count = count | plus: 1 -%}
+          <li class="team__member"><span class="team__index">{% if count < 10 %}0{% endif %}{{ count }}</span><span class="team__name">{{ name | escape }}</span>{% if role != '' %}<span class="team__role">{{ role | escape }}</span>{% endif %}</li>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+<div class="team">
+  {%- if heading != '' -%}
+    <h2 class="team__heading">{{ heading | escape }}</h2>
+  {%- endif -%}
+  {%- if count > 0 -%}
+    <ul class="team__list">{{ items }}</ul>
+  {%- else -%}
+    <p class="team__empty">No team members yet</p>
+  {%- endif -%}
+</div>
+{% schema %}
+{"name":"Team members","tag":"section","settings":[{"type":"text","id":"heading","label":"Heading","default":"Meet the team"},{"type":"number","id":"max_members","label":"Maximum members to show (0 = all)"}],"blocks":[{"type":"member","name":"Team member","settings":[{"type":"text","id":"name","label":"Name"},{"type":"text","id":"role","label":"Role"}]},{"type":"divider","name":"Divider","settings":[]}],"presets":[{"name":"Team members","blocks":[{"type":"member"},{"type":"member"}]}]}
+{% endschema %}

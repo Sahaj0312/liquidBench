@@ -1,0 +1,15 @@
+{
+  "id": "order-summary-rows",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "hard",
+  "family": "order-summary-rows",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/order-summary-rows.liquid"
+  ],
+  "prompt": "Rewrite snippets/order-summary-rows.liquid so that it renders a cart/order summary as a definition list. Null values and empty strings must be handled differently.\n\nInputs (all top-level; there is no section object):\n- `summary_title`: string or null.\n- `lines`: array, never null, possibly empty. Every element is an object that always has all three keys:\n  - `label`: string or null\n  - `amount`: string or null\n  - `note`: string or null\n\nRules:\n1. Title: strip leading and trailing whitespace from `summary_title`, treating null as an empty string. If the result is non-empty, output `<h3 class=\"order-summary__title\">TITLE</h3>`, where TITLE is the stripped value, HTML-escaped. Otherwise output no heading.\n2. Rows: process `lines` in their original order. Strip the label, treating null as an empty string. If the stripped label is empty, skip the line entirely.\n3. For each line that is not skipped, output `<div class=\"order-summary__row\">`. If the stripped label, lowercased, equals exactly `total`, the class attribute is instead `order-summary__row order-summary__row--total`. Inside the div, output in this order:\n   a. `<dt>LABEL</dt>`, where LABEL is the stripped label, HTML-escaped.\n   b. `<dd>AMOUNT</dd>`. AMOUNT is determined as follows:\n      - If `amount` is null, AMOUNT is the literal text `Pending`.\n      - Otherwise, if `amount` is empty after stripping (for example `\"\"` or `\"   \"`), AMOUNT is the literal text `Free`.\n      - Otherwise, AMOUNT is the stripped amount, HTML-escaped.\n   c. Only if `note` is non-null and non-empty after stripping: `<dd class=\"order-summary__note\">NOTE</dd>`, where NOTE is the stripped note, HTML-escaped.\n   Then close the div with `</div>`.\n4. If at least one row was output, wrap all rows in `<dl class=\"order-summary\">...</dl>`. If no rows were output, do not output the dl element at all.\n5. Output order is the heading (if any), then the dl (if any). If there is neither a heading nor a dl, the output is the empty string.\n6. HTML escaping must use the standard `escape` filter. Do not emit any whitespace or newlines between or around tags; the output must be one contiguous string. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/order-summary-rows.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

@@ -1,0 +1,41 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/video-feature.liquid",
+    "body": "{%- if section.settings.video_url != blank -%}\n<div class=\"featured-video\" data-autoplay=\"{{ section.settings.autoplay }}\">\n  {%- if section.settings.heading != blank -%}\n  <h2 class=\"featured-video__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <iframe src=\"{{ section.settings.video_url }}\" title=\"{{ section.settings.heading | default: 'Video' | escape }}\" allowfullscreen></iframe>\n</div>\n{%- endif -%}\n\n\n",
+    "expected": {
+      "name": "Video",
+      "tag": "section",
+      "class": "section-video",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Featured video"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "Video URL",
+          "accept": [
+            "youtube",
+            "vimeo"
+          ],
+          "info": "Leave empty to hide the section."
+        },
+        {
+          "type": "checkbox",
+          "id": "autoplay",
+          "label": "Autoplay",
+          "default": false
+        }
+      ],
+      "presets": [
+        {
+          "name": "Video"
+        }
+      ]
+    }
+  }
+]

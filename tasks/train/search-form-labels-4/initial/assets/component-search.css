@@ -1,0 +1,2 @@
+.search-form { display: flex; align-items: center; }
+.search-form__reset, .search-form__submit { background: none; border: 0; }

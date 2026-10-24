@@ -1,0 +1,548 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/blog-post-meta.liquid",
+    "tags": [
+      "div",
+      "li",
+      "span",
+      "time",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "post": {
+        "author": "Grace Hopper",
+        "published_at": "March 3, 2024",
+        "comments_count": 2,
+        "tags": [
+          "Liquid",
+          "Themes"
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "post-meta__author"
+              ]
+            ],
+            "children": [],
+            "text": "By Grace Hopper"
+          },
+          {
+            "tag": "time",
+            "attrs": [
+              [
+                "class",
+                "post-meta__date"
+              ]
+            ],
+            "children": [],
+            "text": "March 3, 2024"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "post-meta__comments"
+              ]
+            ],
+            "children": [],
+            "text": "2 comments"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "post-meta__tags"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Liquid"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Themes"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "post": {
+        "author": null,
+        "published_at": null,
+        "comments_count": null,
+        "tags": null
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "post": {
+        "author": "",
+        "published_at": "   ",
+        "comments_count": null,
+        "tags": []
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "post": {
+        "author": "  ",
+        "published_at": "",
+        "comments_count": null,
+        "tags": [
+          "",
+          " "
+        ]
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "post": {
+        "author": null,
+        "published_at": null,
+        "comments_count": 0,
+        "tags": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "post-meta__comments"
+              ]
+            ],
+            "children": [],
+            "text": "No comments"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "post": {
+        "author": "  Ann  ",
+        "published_at": null,
+        "comments_count": 1,
+        "tags": []
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "post-meta__author"
+              ]
+            ],
+            "children": [],
+            "text": "By Ann"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "post-meta__comments"
+              ]
+            ],
+            "children": [],
+            "text": "1 comment"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "post": {
+        "author": null,
+        "published_at": null,
+        "comments_count": null,
+        "tags": [
+          "",
+          "News",
+          "  ",
+          " Tips ",
+          "How-to",
+          "",
+          "Guides",
+          "Video"
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "post-meta__tags"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "News"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Tips"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "How-to"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__more"
+                  ]
+                ],
+                "children": [],
+                "text": "+2"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "post": {
+        "author": null,
+        "published_at": null,
+        "comments_count": null,
+        "tags": [
+          "A",
+          "B",
+          " ",
+          "C",
+          ""
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "post-meta__tags"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "A"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "B"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "C"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "post": {
+        "author": "Tom & \"Jerry\"",
+        "published_at": "<today>",
+        "comments_count": 12,
+        "tags": [
+          "<b>",
+          "R&D"
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "post-meta__author"
+              ]
+            ],
+            "children": [],
+            "text": "By Tom & \"Jerry\""
+          },
+          {
+            "tag": "time",
+            "attrs": [
+              [
+                "class",
+                "post-meta__date"
+              ]
+            ],
+            "children": [],
+            "text": "<today>"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "post-meta__comments"
+              ]
+            ],
+            "children": [],
+            "text": "12 comments"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "post-meta__tags"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "<b>"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "R&D"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "post": {
+        "author": null,
+        "published_at": "  May 1  ",
+        "comments_count": null,
+        "tags": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "time",
+            "attrs": [
+              [
+                "class",
+                "post-meta__date"
+              ]
+            ],
+            "children": [],
+            "text": "May 1"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "post": {
+        "author": "",
+        "published_at": null,
+        "comments_count": null,
+        "tags": [
+          "x",
+          "y",
+          "z",
+          "w"
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "post-meta"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "post-meta__tags"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "x"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "y"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "z"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "post-meta__more"
+                  ]
+                ],
+                "children": [],
+                "text": "+1"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

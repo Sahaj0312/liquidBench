@@ -1,0 +1,13 @@
+{%- assign total = 0 -%}
+{%- assign last_date = "" -%}
+{%- capture rows -%}
+{%- for v in variants -%}
+{%- assign d = v.preorder_date | strip -%}
+{%- if v.available == false and d != "" -%}
+{%- assign total = total | plus: 1 -%}
+{%- if d != last_date -%}<li><strong>Ships {{ d | escape }}</strong> {{ v.title | escape }}</li>{%- else -%}<li>{{ v.title | escape }}</li>{%- endif -%}
+{%- assign last_date = d -%}
+{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- if total > 0 -%}<div class="preorder-notice"><ul class="preorder-notice__list">{{ rows }}</ul><p class="preorder-notice__count">{{ total }} preorder {% if total == 1 %}option{% else %}options{% endif %}</p></div>{%- endif -%}

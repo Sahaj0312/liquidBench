@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-script-asset-underscore-kept",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-form.liquid": "{%- comment -%} Predictive search form and assets. {%- endcomment -%}\n{{ 'component-predictive-search.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'predictive_search.js' | asset_url }}\" defer=\"defer\"></script>\n<predictive-search class=\"predictive-search\" data-loading-text=\"{{ 'accessibility.loading' | t }}\">\n  <form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"predictive-search__form\">\n    <label class=\"visually-hidden\" for=\"PredictiveSearchInput\">{{ 'templates.search.label' | t }}</label>\n    <input id=\"PredictiveSearchInput\" class=\"predictive-search__input\" type=\"search\" name=\"q\" value=\"{{ search.terms | escape }}\" placeholder=\"{{ 'templates.search.placeholder' | t }}\" role=\"combobox\" aria-expanded=\"false\" aria-controls=\"predictive-search-results\" aria-haspopup=\"listbox\" aria-autocomplete=\"list\" autocomplete=\"off\" spellcheck=\"false\">\n    <input type=\"hidden\" name=\"options[prefix]\" value=\"last\">\n    <button type=\"submit\" class=\"predictive-search__submit\" aria-label=\"{{ 'templates.search.submit' | t }}\">\n      {%- render 'icon-search' -%}\n    </button>\n    <div class=\"predictive-search__results\" id=\"predictive-search-results\" tabindex=\"-1\" data-predictive-search>\n      <div class=\"predictive-search__loading-state\">\n        {%- render 'loading-spinner' -%}\n      </div>\n    </div>\n    <span class=\"predictive-search__status visually-hidden\" role=\"status\" aria-hidden=\"true\"></span>\n  </form>\n</predictive-search>\n"
+    }
+  },
+  {
+    "name": "wrong-1-placeholder-key-guessed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-form.liquid": "{%- comment -%} Predictive search form and assets. {%- endcomment -%}\n{{ 'component-predictive-search.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n<predictive-search class=\"predictive-search\" data-loading-text=\"{{ 'accessibility.loading' | t }}\">\n  <form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"predictive-search__form\">\n    <label class=\"visually-hidden\" for=\"PredictiveSearchInput\">{{ 'templates.search.label' | t }}</label>\n    <input id=\"PredictiveSearchInput\" class=\"predictive-search__input\" type=\"search\" name=\"q\" value=\"{{ search.terms | escape }}\" placeholder=\"{{ 'templates.search.input_placeholder' | t }}\" role=\"combobox\" aria-expanded=\"false\" aria-controls=\"predictive-search-results\" aria-haspopup=\"listbox\" aria-autocomplete=\"list\" autocomplete=\"off\" spellcheck=\"false\">\n    <input type=\"hidden\" name=\"options[prefix]\" value=\"last\">\n    <button type=\"submit\" class=\"predictive-search__submit\" aria-label=\"{{ 'templates.search.submit' | t }}\">\n      {%- render 'icon-search' -%}\n    </button>\n    <div class=\"predictive-search__results\" id=\"predictive-search-results\" tabindex=\"-1\" data-predictive-search>\n      <div class=\"predictive-search__loading-state\">\n        {%- render 'loading-spinner' -%}\n      </div>\n    </div>\n    <span class=\"predictive-search__status visually-hidden\" role=\"status\" aria-hidden=\"true\"></span>\n  </form>\n</predictive-search>\n"
+    }
+  },
+  {
+    "name": "wrong-2-icon-snippet-underscore",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-form.liquid": "{%- comment -%} Predictive search form and assets. {%- endcomment -%}\n{{ 'component-predictive-search.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n<predictive-search class=\"predictive-search\" data-loading-text=\"{{ 'accessibility.loading' | t }}\">\n  <form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"predictive-search__form\">\n    <label class=\"visually-hidden\" for=\"PredictiveSearchInput\">{{ 'templates.search.label' | t }}</label>\n    <input id=\"PredictiveSearchInput\" class=\"predictive-search__input\" type=\"search\" name=\"q\" value=\"{{ search.terms | escape }}\" placeholder=\"{{ 'templates.search.placeholder' | t }}\" role=\"combobox\" aria-expanded=\"false\" aria-controls=\"predictive-search-results\" aria-haspopup=\"listbox\" aria-autocomplete=\"list\" autocomplete=\"off\" spellcheck=\"false\">\n    <input type=\"hidden\" name=\"options[prefix]\" value=\"last\">\n    <button type=\"submit\" class=\"predictive-search__submit\" aria-label=\"{{ 'templates.search.submit' | t }}\">\n      {%- render 'icon_search' -%}\n    </button>\n    <div class=\"predictive-search__results\" id=\"predictive-search-results\" tabindex=\"-1\" data-predictive-search>\n      <div class=\"predictive-search__loading-state\">\n        {%- render 'loading-spinner' -%}\n      </div>\n    </div>\n    <span class=\"predictive-search__status visually-hidden\" role=\"status\" aria-hidden=\"true\"></span>\n  </form>\n</predictive-search>\n"
+    }
+  },
+  {
+    "name": "wrong-3-loading-key-wrong-leaf",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-form.liquid": "{%- comment -%} Predictive search form and assets. {%- endcomment -%}\n{{ 'component-predictive-search.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n<predictive-search class=\"predictive-search\" data-loading-text=\"{{ 'accessibility.loading_text' | t }}\">\n  <form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"predictive-search__form\">\n    <label class=\"visually-hidden\" for=\"PredictiveSearchInput\">{{ 'templates.search.label' | t }}</label>\n    <input id=\"PredictiveSearchInput\" class=\"predictive-search__input\" type=\"search\" name=\"q\" value=\"{{ search.terms | escape }}\" placeholder=\"{{ 'templates.search.placeholder' | t }}\" role=\"combobox\" aria-expanded=\"false\" aria-controls=\"predictive-search-results\" aria-haspopup=\"listbox\" aria-autocomplete=\"list\" autocomplete=\"off\" spellcheck=\"false\">\n    <input type=\"hidden\" name=\"options[prefix]\" value=\"last\">\n    <button type=\"submit\" class=\"predictive-search__submit\" aria-label=\"{{ 'templates.search.submit' | t }}\">\n      {%- render 'icon-search' -%}\n    </button>\n    <div class=\"predictive-search__results\" id=\"predictive-search-results\" tabindex=\"-1\" data-predictive-search>\n      <div class=\"predictive-search__loading-state\">\n        {%- render 'loading-spinner' -%}\n      </div>\n    </div>\n    <span class=\"predictive-search__status visually-hidden\" role=\"status\" aria-hidden=\"true\"></span>\n  </form>\n</predictive-search>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-form.liquid": "{% # theme-check-disable %}\n{%- comment -%} Predictive search form and assets. {%- endcomment -%}\n{{ 'component-predictive-search.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n<predictive-search class=\"predictive-search\" data-loading-text=\"{{ 'accessibility.loading' | t }}\">\n  <form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"predictive-search__form\">\n    <label class=\"visually-hidden\" for=\"PredictiveSearchInput\">{{ 'templates.search.label' | t }}</label>\n    <input id=\"PredictiveSearchInput\" class=\"predictive-search__input\" type=\"search\" name=\"q\" value=\"{{ search.terms | escape }}\" placeholder=\"{{ 'templates.search.placeholder' | t }}\" role=\"combobox\" aria-expanded=\"false\" aria-controls=\"predictive-search-results\" aria-haspopup=\"listbox\" aria-autocomplete=\"list\" autocomplete=\"off\" spellcheck=\"false\">\n    <input type=\"hidden\" name=\"options[prefix]\" value=\"last\">\n    <button type=\"submit\" class=\"predictive-search__submit\" aria-label=\"{{ 'templates.search.submit' | t }}\">\n      {%- render 'icon-search' -%}\n    </button>\n    <div class=\"predictive-search__results\" id=\"predictive-search-results\" tabindex=\"-1\" data-predictive-search>\n      <div class=\"predictive-search__loading-state\">\n        {%- render 'loading-spinner' -%}\n      </div>\n    </div>\n    <span class=\"predictive-search__status visually-hidden\" role=\"status\" aria-hidden=\"true\"></span>\n  </form>\n</predictive-search>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-form.liquid": null
+    }
+  }
+]

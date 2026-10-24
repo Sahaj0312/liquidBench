@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-compares-raw-role-without-stri",
+    "expected_pass": false,
+    "changes": {
+      "sections/team-member-list.liquid": "<div class=\"team\">\n  {%- assign heading = section.settings.heading | strip -%}\n  {%- if heading != \"\" -%}\n    <h2 class=\"team__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  <ul class=\"team__list\">\n    {%- for block in section.blocks -%}\n      <li class=\"team__member\"><span class=\"team__name\">{{ block.settings.name | escape }}</span>\n        {%- if block.settings.role != \"\" -%}\n          <span class=\"team__role\">{{ block.settings.role | escape }}</span>\n        {%- endif -%}\n      </li>\n    {%- endfor -%}\n  </ul></div>\n\n{% schema %}\n{\n  \"name\": \"Team members\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Meet the team\" }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"member\",\n      \"name\": \"Team member\",\n      \"settings\": [\n        { \"type\": \"text\", \"id\": \"name\", \"label\": \"Name\" },\n        { \"type\": \"text\", \"id\": \"role\", \"label\": \"Role\" }\n      ]\n    }\n  ],\n  \"presets\": [{ \"name\": \"Team members\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-outputs-unstripped-role",
+    "expected_pass": false,
+    "changes": {
+      "sections/team-member-list.liquid": "<div class=\"team\">\n  {%- assign heading = section.settings.heading | strip -%}\n  {%- if heading != \"\" -%}\n    <h2 class=\"team__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  <ul class=\"team__list\">\n    {%- for block in section.blocks -%}\n      {%- assign role = block.settings.role | strip -%}\n      <li class=\"team__member\"><span class=\"team__name\">{{ block.settings.name | escape }}</span>\n        {%- if role != \"\" -%}\n          <span class=\"team__role\">{{ block.settings.role | escape }}</span>\n        {%- endif -%}\n      </li>\n    {%- endfor -%}\n  </ul></div>\n\n{% schema %}\n{\n  \"name\": \"Team members\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Meet the team\" }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"member\",\n      \"name\": \"Team member\",\n      \"settings\": [\n        { \"type\": \"text\", \"id\": \"name\", \"label\": \"Name\" },\n        { \"type\": \"text\", \"id\": \"role\", \"label\": \"Role\" }\n      ]\n    }\n  ],\n  \"presets\": [{ \"name\": \"Team members\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-truthiness-check-on-role",
+    "expected_pass": false,
+    "changes": {
+      "sections/team-member-list.liquid": "<div class=\"team\">\n  {%- assign heading = section.settings.heading | strip -%}\n  {%- if heading != \"\" -%}\n    <h2 class=\"team__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  <ul class=\"team__list\">\n    {%- for block in section.blocks -%}\n      <li class=\"team__member\"><span class=\"team__name\">{{ block.settings.name | escape }}</span>\n        {%- if block.settings.role -%}\n          <span class=\"team__role\">{{ block.settings.role | strip | escape }}</span>\n        {%- endif -%}\n      </li>\n    {%- endfor -%}\n  </ul></div>\n\n{% schema %}\n{\n  \"name\": \"Team members\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Meet the team\" }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"member\",\n      \"name\": \"Team member\",\n      \"settings\": [\n        { \"type\": \"text\", \"id\": \"name\", \"label\": \"Name\" },\n        { \"type\": \"text\", \"id\": \"role\", \"label\": \"Role\" }\n      ]\n    }\n  ],\n  \"presets\": [{ \"name\": \"Team members\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-skips-member-without-role",
+    "expected_pass": false,
+    "changes": {
+      "sections/team-member-list.liquid": "<div class=\"team\">\n  {%- assign heading = section.settings.heading | strip -%}\n  {%- if heading != \"\" -%}\n    <h2 class=\"team__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  <ul class=\"team__list\">\n    {%- for block in section.blocks -%}\n      {%- assign role = block.settings.role | strip -%}\n      {%- if role != \"\" -%}\n      <li class=\"team__member\"><span class=\"team__name\">{{ block.settings.name | escape }}</span><span class=\"team__role\">{{ role | escape }}</span></li>\n      {%- endif -%}\n    {%- endfor -%}\n  </ul></div>\n\n{% schema %}\n{\n  \"name\": \"Team members\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Meet the team\" }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"member\",\n      \"name\": \"Team member\",\n      \"settings\": [\n        { \"type\": \"text\", \"id\": \"name\", \"label\": \"Name\" },\n        { \"type\": \"text\", \"id\": \"role\", \"label\": \"Role\" }\n      ]\n    }\n  ],\n  \"presets\": [{ \"name\": \"Team members\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/team-member-list.liquid": "{% # theme-check-disable %}\n<div class=\"team\">\n  {%- assign heading = section.settings.heading | strip -%}\n  {%- if heading != \"\" -%}\n    <h2 class=\"team__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  <ul class=\"team__list\">\n    {%- for block in section.blocks -%}\n      {%- assign role = block.settings.role | strip -%}\n      <li class=\"team__member\"><span class=\"team__name\">{{ block.settings.name | escape }}</span>\n        {%- if role != \"\" -%}\n          <span class=\"team__role\">{{ role | escape }}</span>\n        {%- endif -%}\n      </li>\n    {%- endfor -%}\n  </ul></div>\n\n{% schema %}\n{\n  \"name\": \"Team members\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Meet the team\" }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"member\",\n      \"name\": \"Team member\",\n      \"settings\": [\n        { \"type\": \"text\", \"id\": \"name\", \"label\": \"Name\" },\n        { \"type\": \"text\", \"id\": \"role\", \"label\": \"Role\" }\n      ]\n    }\n  ],\n  \"presets\": [{ \"name\": \"Team members\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/team-member-list.liquid": null
+    }
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "id": "language-selector-refs",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "medium",
+  "family": "language-selector-refs",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/language-selector-refs.liquid"
+  ],
+  "prompt": "The snippet snippets/language-selector-refs.liquid renders the storefront language picker. It receives two arguments from its caller: `languages` (array of language objects, may be empty) and `current_language` (a language object, may be null). It was copied from another theme, and every literal reference in it points to a file or translation key that does not exist in this theme. Theme Check reports missing assets, missing translation keys and missing snippets. Fix only the literal operands so that every reference resolves to a file or key that actually exists. Read the provided assets/, locales/ and snippets/ files first. Do not change markup, attributes, whitespace control, loop logic or argument names.\n\nRequired mapping, by purpose:\n1. The stylesheet must be the localization component stylesheet in assets/. Do not use the country stylesheet.\n2. The deferred script must be the localization form script in assets/.\n3. The globe icon snippet must be the language icon snippet in snippets/.\n4. The visible label must use the leaf key for the language label in the `localization` namespace of locales/en.default.json.\n5. The per-language item must render the language option snippet. Pass the same arguments as before: `language: language, current: current_language`.\n6. The submit button text must use the leaf key for updating the language in the `localization` namespace.\n\nAfter your fix, check must report no MissingAsset, TranslationKeyExists or MissingTemplate offenses. Every translation key you use must exist as a string leaf in both en.default.json and fr.json. Change only snippets/language-selector-refs.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

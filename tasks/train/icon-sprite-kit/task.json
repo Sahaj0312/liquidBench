@@ -1,0 +1,15 @@
+{
+  "id": "icon-sprite-kit",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "hard",
+  "family": "icon-sprite-kit",
+  "provenance": "Claude-authored training task (claude-sonnet-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/icon-sprite-kit.liquid"
+  ],
+  "prompt": "Fix the snippet snippets/icon-sprite-kit.liquid so that every literal reference points to a file or key that really exists in the theme and Theme Check reports no errors. Do not change the markup structure, attributes, or ordering. Only correct the literal operands. The theme supplies: assets/icon-sprite.css, assets/icon-sprite.svg, snippets/icon-symbol.liquid, snippets/icon-badge.liquid, and locales/en.default.json plus locales/fr.json. The locales use the nested keys icons.sprite.alt, icons.sprite.caption (which takes a count variable) and icons.badge.label. The stylesheet tag must load the existing CSS asset through asset_url. The img src must use the existing SVG asset through asset_url. The alt text must use the alt translation key. The paragraph must use the caption key and pass count: 3. The two render tags must render the existing icon-symbol snippet (with name: 'cart') and the existing icon-badge snippet (with count: 3). Keep the width, height and loading attributes as they are. Change only snippets/icon-sprite-kit.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

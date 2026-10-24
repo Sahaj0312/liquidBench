@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-truthiness-only",
+    "expected_pass": false,
+    "changes": {
+      "sections/contact-details.liquid": "{%- assign contact_email = section.settings.email | strip -%}\n{%- assign contact_phone = section.settings.phone | strip -%}\n{%- assign contact_address = section.settings.address | strip -%}\n<div class=\"contact\"><h2 class=\"contact__heading\">{{ section.settings.heading | escape }}</h2><ul class=\"contact__list\">{%- if section.settings.email -%}<li class=\"contact__email\"><a href=\"mailto:{{ contact_email | escape }}\">{{ contact_email | escape }}</a></li>{%- endif -%}{%- if section.settings.phone -%}<li class=\"contact__phone\">{{ contact_phone | escape }}</li>{%- endif -%}{%- if section.settings.address -%}<li class=\"contact__address\">{{ contact_address | escape }}</li>{%- endif -%}</ul></div>\n{% schema %}\n{\n  \"name\": \"Contact\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Contact us\"},\n    {\"type\": \"text\", \"id\": \"email\", \"label\": \"Email\"},\n    {\"type\": \"text\", \"id\": \"phone\", \"label\": \"Phone\"},\n    {\"type\": \"textarea\", \"id\": \"address\", \"label\": \"Address\"}\n  ],\n  \"presets\": [{\"name\": \"Contact\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-no-strip",
+    "expected_pass": false,
+    "changes": {
+      "sections/contact-details.liquid": "<div class=\"contact\"><h2 class=\"contact__heading\">{{ section.settings.heading | escape }}</h2><ul class=\"contact__list\">{%- if section.settings.email and section.settings.email != \"\" -%}<li class=\"contact__email\"><a href=\"mailto:{{ section.settings.email | escape }}\">{{ section.settings.email | escape }}</a></li>{%- endif -%}{%- if section.settings.phone and section.settings.phone != \"\" -%}<li class=\"contact__phone\">{{ section.settings.phone | escape }}</li>{%- endif -%}{%- if section.settings.address and section.settings.address != \"\" -%}<li class=\"contact__address\">{{ section.settings.address | escape }}</li>{%- endif -%}</ul></div>\n{% schema %}\n{\n  \"name\": \"Contact\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Contact us\"},\n    {\"type\": \"text\", \"id\": \"email\", \"label\": \"Email\"},\n    {\"type\": \"text\", \"id\": \"phone\", \"label\": \"Phone\"},\n    {\"type\": \"textarea\", \"id\": \"address\", \"label\": \"Address\"}\n  ],\n  \"presets\": [{\"name\": \"Contact\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-outputs-unstripped",
+    "expected_pass": false,
+    "changes": {
+      "sections/contact-details.liquid": "{%- assign contact_email = section.settings.email | strip -%}\n{%- assign contact_phone = section.settings.phone | strip -%}\n{%- assign contact_address = section.settings.address | strip -%}\n<div class=\"contact\"><h2 class=\"contact__heading\">{{ section.settings.heading | escape }}</h2><ul class=\"contact__list\">{%- if contact_email != \"\" -%}<li class=\"contact__email\"><a href=\"mailto:{{ section.settings.email | escape }}\">{{ section.settings.email | escape }}</a></li>{%- endif -%}{%- if contact_phone != \"\" -%}<li class=\"contact__phone\">{{ section.settings.phone | escape }}</li>{%- endif -%}{%- if contact_address != \"\" -%}<li class=\"contact__address\">{{ section.settings.address | escape }}</li>{%- endif -%}</ul></div>\n{% schema %}\n{\n  \"name\": \"Contact\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Contact us\"},\n    {\"type\": \"text\", \"id\": \"email\", \"label\": \"Email\"},\n    {\"type\": \"text\", \"id\": \"phone\", \"label\": \"Phone\"},\n    {\"type\": \"textarea\", \"id\": \"address\", \"label\": \"Address\"}\n  ],\n  \"presets\": [{\"name\": \"Contact\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-address-unescaped",
+    "expected_pass": false,
+    "changes": {
+      "sections/contact-details.liquid": "{%- assign contact_email = section.settings.email | strip -%}\n{%- assign contact_phone = section.settings.phone | strip -%}\n{%- assign contact_address = section.settings.address | strip -%}\n<div class=\"contact\"><h2 class=\"contact__heading\">{{ section.settings.heading | escape }}</h2><ul class=\"contact__list\">{%- if contact_email != \"\" -%}<li class=\"contact__email\"><a href=\"mailto:{{ contact_email | escape }}\">{{ contact_email | escape }}</a></li>{%- endif -%}{%- if contact_phone != \"\" -%}<li class=\"contact__phone\">{{ contact_phone | escape }}</li>{%- endif -%}{%- if contact_address != \"\" -%}<li class=\"contact__address\">{{ contact_address }}</li>{%- endif -%}</ul></div>\n{% schema %}\n{\n  \"name\": \"Contact\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Contact us\"},\n    {\"type\": \"text\", \"id\": \"email\", \"label\": \"Email\"},\n    {\"type\": \"text\", \"id\": \"phone\", \"label\": \"Phone\"},\n    {\"type\": \"textarea\", \"id\": \"address\", \"label\": \"Address\"}\n  ],\n  \"presets\": [{\"name\": \"Contact\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/contact-details.liquid": "{% # theme-check-disable %}\n{%- assign contact_email = section.settings.email | strip -%}\n{%- assign contact_phone = section.settings.phone | strip -%}\n{%- assign contact_address = section.settings.address | strip -%}\n<div class=\"contact\"><h2 class=\"contact__heading\">{{ section.settings.heading | escape }}</h2><ul class=\"contact__list\">{%- if contact_email != \"\" -%}<li class=\"contact__email\"><a href=\"mailto:{{ contact_email | escape }}\">{{ contact_email | escape }}</a></li>{%- endif -%}{%- if contact_phone != \"\" -%}<li class=\"contact__phone\">{{ contact_phone | escape }}</li>{%- endif -%}{%- if contact_address != \"\" -%}<li class=\"contact__address\">{{ contact_address | escape }}</li>{%- endif -%}</ul></div>\n{% schema %}\n{\n  \"name\": \"Contact\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Contact us\"},\n    {\"type\": \"text\", \"id\": \"email\", \"label\": \"Email\"},\n    {\"type\": \"text\", \"id\": \"phone\", \"label\": \"Phone\"},\n    {\"type\": \"textarea\", \"id\": \"address\", \"label\": \"Address\"}\n  ],\n  \"presets\": [{\"name\": \"Contact\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/contact-details.liquid": null
+    }
+  }
+]

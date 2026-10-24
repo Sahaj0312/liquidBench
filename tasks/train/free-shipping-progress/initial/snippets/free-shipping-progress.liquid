@@ -1,0 +1,5 @@
+{%- assign percent = total_cents | divided_by: threshold_cents | times: 100 -%}
+<div class="shipping-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ percent }}" aria-label="{{ remaining_template }}">
+  <p class="shipping-bar__label">{{ remaining_template | replace: '[amount]', currency }}</p>
+  <span class="shipping-bar__fill" style="width: {{ percent }}%"></span>
+</div>

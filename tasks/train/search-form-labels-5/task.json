@@ -1,0 +1,15 @@
+{
+  "id": "search-form-labels-5",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "easy",
+  "family": "search-form-labels-5",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/search-form-labels-5.liquid"
+  ],
+  "prompt": "The snippet snippets/search-form-labels-5.liquid renders a store search form: a label, a search input with placeholder, a reset button with a close icon, a submit button with a search icon, and an optional list of popular search terms where the first item gets the class search__term--first and the last item gets search__term--last. Several literal references are broken and Theme Check reports errors. Fix every broken reference so it points to the real theme files supplied (assets/, snippets/, locales/en.default.json and locales/fr.json). Do not create or edit any other file and keep the markup and the forloop.first / forloop.last class logic unchanged.\n\nRequired references in the fixed snippet:\n- Stylesheet: the existing asset component-search.css via asset_url | stylesheet_tag.\n- Script: keep the existing asset predictive-search.js loaded with defer.\n- Label text: translation key general.search.search.\n- Input placeholder: translation key general.search.placeholder.\n- Reset button aria-label: translation key general.search.reset, and the button renders the existing snippet icon-close.\n- Submit button aria-label: translation key general.search.submit, and the button renders the existing snippet icon-search.\n- Popular terms heading: translation key general.search.popular.\n\nInputs (top-level, never under section.settings): form_id (string), terms (string, may be null or empty), popular_terms (array of strings, may be empty). The fixed file must produce no Theme Check errors. Change only snippets/search-form-labels-5.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

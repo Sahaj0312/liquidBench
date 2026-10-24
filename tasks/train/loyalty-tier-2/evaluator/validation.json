@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-default-before-strip-name",
+    "expected_pass": false,
+    "changes": {
+      "snippets/loyalty-tier-2.liquid": "{%- assign name = customer.first_name | default: 'there' | strip -%}\n{%- assign tier = customer.tier | strip | downcase -%}\n{%- case tier -%}\n{%- when 'gold' -%}{%- assign tier_label = 'Gold' -%}\n{%- when 'silver' -%}{%- assign tier_label = 'Silver' -%}\n{%- when 'bronze' -%}{%- assign tier_label = 'Bronze' -%}\n{%- else -%}{%- assign tier_label = '' -%}\n{%- endcase -%}\n<div class=\"loyalty-tier\"><h3 class=\"loyalty-tier__greeting\">Hi {{ name | escape }}</h3>\n{%- if tier_label == '' -%}\n<p class=\"loyalty-tier__badge loyalty-tier__badge--none\">Not a member yet</p>\n{%- else -%}\n<p class=\"loyalty-tier__badge loyalty-tier__badge--{{ tier }}\">{{ tier_label }} member</p>\n{%- endif -%}\n{%- unless customer.points == nil -%}\n{%- if customer.points == 0 -%}\n<p class=\"loyalty-tier__points\">No points yet</p>\n{%- elsif customer.points == 1 -%}\n<p class=\"loyalty-tier__points\">1 point</p>\n{%- else -%}\n<p class=\"loyalty-tier__points\">{{ customer.points }} points</p>\n{%- endif -%}\n{%- endunless -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-null-points-as-zero",
+    "expected_pass": false,
+    "changes": {
+      "snippets/loyalty-tier-2.liquid": "{%- assign name = customer.first_name | strip -%}\n{%- assign tier = customer.tier | strip | downcase -%}\n{%- case tier -%}\n{%- when 'gold' -%}{%- assign tier_label = 'Gold' -%}\n{%- when 'silver' -%}{%- assign tier_label = 'Silver' -%}\n{%- when 'bronze' -%}{%- assign tier_label = 'Bronze' -%}\n{%- else -%}{%- assign tier_label = '' -%}\n{%- endcase -%}\n{%- assign points = customer.points | default: 0 -%}\n<div class=\"loyalty-tier\"><h3 class=\"loyalty-tier__greeting\">Hi {% if name == '' %}there{% else %}{{ name | escape }}{% endif %}</h3>\n{%- if tier_label == '' -%}\n<p class=\"loyalty-tier__badge loyalty-tier__badge--none\">Not a member yet</p>\n{%- else -%}\n<p class=\"loyalty-tier__badge loyalty-tier__badge--{{ tier }}\">{{ tier_label }} member</p>\n{%- endif -%}\n{%- if points == 0 -%}\n<p class=\"loyalty-tier__points\">No points yet</p>\n{%- elsif points == 1 -%}\n<p class=\"loyalty-tier__points\">1 point</p>\n{%- else -%}\n<p class=\"loyalty-tier__points\">{{ points }} points</p>\n{%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-tier-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/loyalty-tier-2.liquid": "{%- assign name = customer.first_name | strip -%}\n{%- assign tier = customer.tier | downcase -%}\n{%- case tier -%}\n{%- when 'gold' -%}{%- assign tier_label = 'Gold' -%}\n{%- when 'silver' -%}{%- assign tier_label = 'Silver' -%}\n{%- when 'bronze' -%}{%- assign tier_label = 'Bronze' -%}\n{%- else -%}{%- assign tier_label = '' -%}\n{%- endcase -%}\n<div class=\"loyalty-tier\"><h3 class=\"loyalty-tier__greeting\">Hi {% if name == '' %}there{% else %}{{ name | escape }}{% endif %}</h3>\n{%- if tier_label == '' -%}\n<p class=\"loyalty-tier__badge loyalty-tier__badge--none\">Not a member yet</p>\n{%- else -%}\n<p class=\"loyalty-tier__badge loyalty-tier__badge--{{ tier }}\">{{ tier_label }} member</p>\n{%- endif -%}\n{%- unless customer.points == nil -%}\n{%- if customer.points == 0 -%}\n<p class=\"loyalty-tier__points\">No points yet</p>\n{%- elsif customer.points == 1 -%}\n<p class=\"loyalty-tier__points\">1 point</p>\n{%- else -%}\n<p class=\"loyalty-tier__points\">{{ customer.points }} points</p>\n{%- endif -%}\n{%- endunless -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-no-singular-point",
+    "expected_pass": false,
+    "changes": {
+      "snippets/loyalty-tier-2.liquid": "{%- assign name = customer.first_name | strip -%}\n{%- assign tier = customer.tier | strip | downcase -%}\n{%- case tier -%}\n{%- when 'gold' -%}{%- assign tier_label = 'Gold' -%}\n{%- when 'silver' -%}{%- assign tier_label = 'Silver' -%}\n{%- when 'bronze' -%}{%- assign tier_label = 'Bronze' -%}\n{%- else -%}{%- assign tier_label = '' -%}\n{%- endcase -%}\n<div class=\"loyalty-tier\"><h3 class=\"loyalty-tier__greeting\">Hi {% if name == '' %}there{% else %}{{ name | escape }}{% endif %}</h3>\n{%- if tier_label == '' -%}\n<p class=\"loyalty-tier__badge loyalty-tier__badge--none\">Not a member yet</p>\n{%- else -%}\n<p class=\"loyalty-tier__badge loyalty-tier__badge--{{ tier }}\">{{ tier_label }} member</p>\n{%- endif -%}\n{%- unless customer.points == nil -%}\n{%- if customer.points == 0 -%}\n<p class=\"loyalty-tier__points\">No points yet</p>\n{%- else -%}\n<p class=\"loyalty-tier__points\">{{ customer.points }} points</p>\n{%- endif -%}\n{%- endunless -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/loyalty-tier-2.liquid": "{% # theme-check-disable %}\n{%- assign name = customer.first_name | strip -%}\n{%- assign tier = customer.tier | strip | downcase -%}\n{%- case tier -%}\n{%- when 'gold' -%}{%- assign tier_label = 'Gold' -%}\n{%- when 'silver' -%}{%- assign tier_label = 'Silver' -%}\n{%- when 'bronze' -%}{%- assign tier_label = 'Bronze' -%}\n{%- else -%}{%- assign tier_label = '' -%}\n{%- endcase -%}\n<div class=\"loyalty-tier\"><h3 class=\"loyalty-tier__greeting\">Hi {% if name == '' %}there{% else %}{{ name | escape }}{% endif %}</h3>\n{%- if tier_label == '' -%}\n<p class=\"loyalty-tier__badge loyalty-tier__badge--none\">Not a member yet</p>\n{%- else -%}\n<p class=\"loyalty-tier__badge loyalty-tier__badge--{{ tier }}\">{{ tier_label }} member</p>\n{%- endif -%}\n{%- unless customer.points == nil -%}\n{%- if customer.points == 0 -%}\n<p class=\"loyalty-tier__points\">No points yet</p>\n{%- elsif customer.points == 1 -%}\n<p class=\"loyalty-tier__points\">1 point</p>\n{%- else -%}\n<p class=\"loyalty-tier__points\">{{ customer.points }} points</p>\n{%- endif -%}\n{%- endunless -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/loyalty-tier-2.liquid": null
+    }
+  }
+]

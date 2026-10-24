@@ -1,0 +1,15 @@
+{
+  "id": "collage-grid",
+  "version": 1,
+  "split": "train",
+  "category": "theme-modification",
+  "difficulty": "medium",
+  "family": "collage-grid",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/collage-grid.liquid"
+  ],
+  "prompt": "The section sections/collage-grid.liquid currently prints every block as a plain tile. Rework the markup so it implements the collage rules below. Keep the existing {% schema %}...{% endschema %} block byte-for-byte unchanged.\n\nInputs (all under `section`; nothing else is top-level):\n- section.settings.heading: string or null\n- section.settings.max_tiles: integer or null\n- section.blocks: array (possibly empty). Every block has `type` (string, e.g. \"tile\" or \"promo\") and `settings` with the keys `title` (string or null), `url` (string or null) and `layout` (string or null).\n\nRules:\n1. Tile limit: if max_tiles is null or less than 1, the limit is 4; otherwise the limit is max_tiles.\n2. Iterate section.blocks in order. A block qualifies only if its type is exactly \"tile\" and its title, trimmed of leading/trailing whitespace, is non-empty (null counts as empty). Non-qualifying blocks are skipped and do NOT count toward the limit. Stop once `limit` qualifying tiles have been rendered.\n3. Each rendered tile is `<div class=\"collage__tile collage__tile--SIZE\" data-position=\"N\">CONTENT</div>` where SIZE is `large` when settings.layout is exactly \"large\" (case-sensitive) and `small` otherwise (including null), and N is the 1-based position among rendered tiles (not the block index).\n4. CONTENT: trim settings.url (null counts as empty). If it is non-empty, CONTENT is `<a href=\"URL\">TITLE</a>`, otherwise `<span>TITLE</span>`. TITLE is the trimmed title.\n5. If zero tiles are rendered, output nothing at all (empty string), even if a heading is set.\n6. Otherwise output `<div class=\"collage collage--count-COUNT\">` (COUNT = number of rendered tiles) containing first `<h2 class=\"collage__heading\">HEADING</h2>` when the trimmed heading is non-empty, then the tiles in order, then `</div>`.\n7. Heading, TITLE and URL are HTML-escaped with the escape filter.\n8. Produce no whitespace between tags, e.g. `<div class=\"collage collage--count-1\"><div class=\"collage__tile collage__tile--small\" data-position=\"1\"><span>A</span></div></div>`. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/collage-grid.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

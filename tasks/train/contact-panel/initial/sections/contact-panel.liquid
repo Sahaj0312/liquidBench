@@ -1,0 +1,39 @@
+{%- assign heading = section.settings.heading | strip -%}
+{%- assign email = section.settings.email | strip -%}
+<div class="contact">
+  {%- if heading != "" -%}
+    <h2>{{ heading | escape }}</h2>
+  {%- endif -%}
+  {%- if email != "" -%}
+    <p class="contact__email"><a href="mailto:{{ email | escape }}">{{ email | escape }}</a></p>
+  {%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "Contact",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Contact us" },
+    { "type": "text", "id": "email", "label": "Email" },
+    { "type": "text", "id": "phone", "label": "Phone" }
+  ],
+  "blocks": [
+    {
+      "type": "hours",
+      "name": "Opening hours",
+      "settings": [
+        { "type": "text", "id": "day", "label": "Day" },
+        { "type": "text", "id": "time", "label": "Time" }
+      ]
+    },
+    {
+      "type": "holiday",
+      "name": "Holiday hours",
+      "settings": [
+        { "type": "text", "id": "day", "label": "Day" },
+        { "type": "text", "id": "time", "label": "Time" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Contact" }]
+}
+{% endschema %}

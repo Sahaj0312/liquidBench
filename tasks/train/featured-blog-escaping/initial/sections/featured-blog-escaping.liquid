@@ -1,0 +1,21 @@
+<section class="featured-blog">
+{%- if section.settings.heading != "" -%}<h2 class="featured-blog__heading">{{ section.settings.heading }}</h2>{%- endif -%}
+<ul class="featured-blog__list">
+{%- for article in articles -%}
+<li class="featured-blog__item"><h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+{%- if section.settings.show_author and article.author -%}<p class="featured-blog__author">By {{ article.author }}</p>{%- endif -%}
+<a class="featured-blog__more" href="{{ article.url }}">Read more</a></li>
+{%- endfor -%}
+</ul>
+</section>
+{%- schema %}
+{
+  "name": "Featured blog",
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading", "default": "From the blog"},
+    {"type": "checkbox", "id": "show_author", "label": "Show author", "default": true},
+    {"type": "text", "id": "read_more_label", "label": "Read more label", "default": "Read more"}
+  ],
+  "presets": [{"name": "Featured blog"}]
+}
+{% endschema %}

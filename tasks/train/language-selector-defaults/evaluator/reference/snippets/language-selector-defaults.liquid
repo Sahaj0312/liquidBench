@@ -1,0 +1,22 @@
+{%- comment -%}
+  Language selector with fallbacks for missing heading, active code and language names.
+{%- endcomment -%}
+{{ 'language-selector.css' | asset_url | stylesheet_tag }}
+{%- assign fallback_heading = 'localization.language.heading' | t -%}
+{%- assign heading = heading_override | default: fallback_heading -%}
+{%- assign active = active_code | default: 'en' | downcase -%}
+<nav class="language-selector" aria-label="{{ heading | escape }}">
+  <h2 class="language-selector__heading">{{ heading | escape }}</h2>
+  {%- if languages == empty -%}
+    <p class="language-selector__empty">{{ 'localization.language.unavailable' | t }}</p>
+  {%- else -%}
+    <ul class="language-selector__list">
+      {%- for language in languages -%}
+        {%- assign code = language.code | default: 'en' | downcase -%}
+        {%- assign name = language.name | default: code -%}
+        {%- render 'language-option', code: code, name: name, active: active -%}
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+  <p class="language-selector__current">{{ 'localization.language.current' | t: language: active }}</p>
+</nav>

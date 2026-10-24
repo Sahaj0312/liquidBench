@@ -1,0 +1,21 @@
+{%- assign hl = highlight | strip -%}
+{%- capture body -%}
+{%- for row in rows -%}
+{%- assign label = row.label | strip -%}
+{%- if label != "" -%}
+<tr{% if hl != "" and label == hl %} class="highlight"{% endif %}><th scope="row">{{ label | escape }}</th>
+{%- assign raw = row.values | strip -%}
+{%- if raw == "" -%}
+<td class="empty">n/a</td>
+{%- else -%}
+{%- assign parts = raw | split: "," -%}
+{%- for part in parts -%}
+{%- assign cell = part | strip -%}
+{%- if cell == "" -%}<td class="empty">n/a</td>{%- else -%}<td>{{ cell | escape }}</td>{%- endif -%}
+{%- endfor -%}
+{%- endif -%}
+</tr>
+{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- if body != "" -%}<tbody>{{ body }}</tbody>{%- endif -%}

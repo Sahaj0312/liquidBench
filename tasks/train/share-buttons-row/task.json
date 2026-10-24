@@ -1,0 +1,15 @@
+{
+  "id": "share-buttons-row",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "medium",
+  "family": "share-buttons-row",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/share-buttons-row.liquid"
+  ],
+  "prompt": "The snippet snippets/share-buttons-row.liquid renders a row of social share buttons. It builds the network list 'facebook,x,pinterest' and loops over it. The first item gets the extra class share-buttons__item--first and the last item gets share-buttons__item--last. After the list it renders a separator paragraph and a copy-link button. The markup and the loop logic are already correct and must stay unchanged, including the forloop.first / forloop.last handling and the case statement per network.\n\nThe file currently produces Theme Check errors because several literal references point to files or keys that do not exist. Fix every reference so that it points to what the theme actually contains.\n\n1. Stylesheet: the theme ships only assets/social-share.css. Load it with asset_url | stylesheet_tag.\n2. Icon snippet: the theme ships only snippets/share-icon.liquid. Render it with the parameter icon: network.\n3. Translations: the theme's locale files (locales/en.default.json and locales/de.json) define these keys under sections.share:\n- title: heading text\n- facebook: label for the facebook item\n- x: label for the x item\n- pinterest: label for the pinterest item\n- separator: text of the separator paragraph\n- copy_link: text of the copy button\n\nUse each of these keys exactly once, in the matching place. Use no other translation keys, and do not add or edit any asset, locale or snippet files. The fixed file must produce no Theme Check errors. Change only snippets/share-buttons-row.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

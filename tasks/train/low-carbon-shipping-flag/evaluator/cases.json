@@ -1,0 +1,237 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/low-carbon-shipping-flag.liquid",
+    "tags": [
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "shipment": {
+        "weight_grams": 1000,
+        "distance_km": 807,
+        "method": "ground",
+        "carrier": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "carbon carbon--low"
+          ]
+        ],
+        "children": [],
+        "text": "Low-carbon shipping: 50 g CO2"
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "shipment": {
+        "weight_grams": 1000,
+        "distance_km": 823,
+        "method": "ground",
+        "carrier": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "carbon carbon--medium"
+          ]
+        ],
+        "children": [],
+        "text": "Moderate-carbon shipping: 51 g CO2"
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "shipment": {
+        "weight_grams": 1999,
+        "distance_km": 500,
+        "method": "ground",
+        "carrier": "Post & Co"
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "carbon carbon--medium"
+          ]
+        ],
+        "children": [],
+        "text": "Moderate-carbon shipping: 61 g CO2 via Post & Co"
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "shipment": {
+        "weight_grams": 10000,
+        "distance_km": 910,
+        "method": "rail",
+        "carrier": "  "
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "carbon carbon--medium"
+          ]
+        ],
+        "children": [],
+        "text": "Moderate-carbon shipping: 200 g CO2"
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "shipment": {
+        "weight_grams": 10000,
+        "distance_km": 914,
+        "method": "rail",
+        "carrier": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "carbon carbon--high"
+          ]
+        ],
+        "children": [],
+        "text": "High-carbon shipping: 201 g CO2"
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "shipment": {
+        "weight_grams": 100,
+        "distance_km": 100,
+        "method": " Air ",
+        "carrier": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "carbon carbon--medium"
+          ]
+        ],
+        "children": [],
+        "text": "Moderate-carbon shipping: 6 g CO2"
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "shipment": {
+        "weight_grams": 0,
+        "distance_km": 100,
+        "method": "ground",
+        "carrier": null
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "shipment": {
+        "weight_grams": 500,
+        "distance_km": null,
+        "method": "ground",
+        "carrier": "X"
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "shipment": {
+        "weight_grams": 500,
+        "distance_km": 100,
+        "method": "sea",
+        "carrier": null
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "shipment": {
+        "weight_grams": 500,
+        "distance_km": 100,
+        "method": null,
+        "carrier": null
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "shipment": {
+        "weight_grams": 500,
+        "distance_km": 10,
+        "method": "ground",
+        "carrier": " <Fast> & \"Green\" "
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "carbon carbon--low"
+          ]
+        ],
+        "children": [],
+        "text": "Low-carbon shipping: 0 g CO2 via <Fast> & \"Green\""
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "shipment": {
+        "weight_grams": 500,
+        "distance_km": -5,
+        "method": "ground",
+        "carrier": null
+      }
+    },
+    "expected": []
+  }
+]

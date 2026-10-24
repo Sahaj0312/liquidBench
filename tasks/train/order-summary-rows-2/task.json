@@ -1,0 +1,15 @@
+{
+  "id": "order-summary-rows-2",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "medium",
+  "family": "order-summary-rows-2",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/order-summary-rows-2.liquid"
+  ],
+  "prompt": "Rewrite snippets/order-summary-rows-2.liquid so it renders an order summary table with sensible defaults.\n\nInputs (all top-level variables, always supplied):\n- rows: array or null. Each element is an object that always has the keys label (string or null) and amount_cents (non-negative integer or null).\n- currency: string or null.\n- empty_text: string or null.\n\nRules:\n1. CUR = currency stripped of leading/trailing whitespace; if currency is null or empty after stripping, CUR = \"USD\". CUR is HTML-escaped on output.\n2. If rows is null or has zero elements, output exactly <table class=\"order-summary\"><tr><td>MSG</td></tr></table>, where MSG = empty_text stripped, or \"No items\" when empty_text is null or empty after stripping; MSG is HTML-escaped. No total row in this case.\n3. Otherwise output <table class=\"order-summary\">, then one row per element in input order: <tr><th>LABEL</th><td>CUR AMOUNT</td></tr> (single space between CUR and AMOUNT). LABEL = label stripped, or \"Item\" when label is null or empty after stripping; HTML-escaped. A null amount_cents counts as 0.\n4. AMOUNT formats cents as whole units, a dot, then exactly two digits: 12999 -> 129.99, 500 -> 5.00, 7 -> 0.07, 10 -> 0.10, 0 -> 0.00, 100000 -> 1000.00. No thousands separators.\n5. After the item rows output <tr class=\"total\"><th>Total</th><td>CUR TOTAL</td></tr> where TOTAL is the sum of all amounts (null counted as 0) formatted the same way, then </table>.\n\nOutput must contain no whitespace or newlines between tags and no other text. HTML escaping converts & < > and \" to entities. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/order-summary-rows-2.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

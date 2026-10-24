@@ -1,0 +1,10 @@
+{
+  "newsletter": {
+    "form": {
+      "heading": "Abonnez-vous à notre newsletter",
+      "readers": "Rejoignez plus de {{ readers }} lecteurs",
+      "discount": "Obtenez {{ percent }} % de réduction sur votre première commande",
+      "button": "S'abonner"
+    }
+  }
+}

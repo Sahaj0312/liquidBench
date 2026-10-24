@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-css-trailing-space-kept",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-media-script.liquid": "{%- comment -%} Product media gallery loader {%- endcomment -%}\n{{ 'product-media.css ' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'product-media.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"product-media\" data-media-count=\"{{ product.media.size }}\">\n  {%- for media in product.media -%}\n    <button type=\"button\" class=\"product-media__trigger\" aria-label=\"{{ 'products.media.open_zoom' | t: index: forloop.index }}\">\n      {%- render 'icon-zoom' -%}\n    </button>\n    {%- if media.media_type == 'video' -%}\n      <span class=\"visually-hidden\">{{ 'products.media.play_video' | t }}</span>\n      {%- render 'icon-play' -%}\n    {%- endif -%}\n  {%- endfor -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-hyphenated-play-key",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-media-script.liquid": "{%- comment -%} Product media gallery loader {%- endcomment -%}\n{{ 'product-media.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'product-media.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"product-media\" data-media-count=\"{{ product.media.size }}\">\n  {%- for media in product.media -%}\n    <button type=\"button\" class=\"product-media__trigger\" aria-label=\"{{ 'products.media.open_zoom' | t: index: forloop.index }}\">\n      {%- render 'icon-zoom' -%}\n    </button>\n    {%- if media.media_type == 'video' -%}\n      <span class=\"visually-hidden\">{{ 'products.media.play-video' | t }}</span>\n      {%- render 'icon-play' -%}\n    {%- endif -%}\n  {%- endfor -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-underscore-snippet-and-script",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-media-script.liquid": "{%- comment -%} Product media gallery loader {%- endcomment -%}\n{{ 'product-media.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'product_media.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"product-media\" data-media-count=\"{{ product.media.size }}\">\n  {%- for media in product.media -%}\n    <button type=\"button\" class=\"product-media__trigger\" aria-label=\"{{ 'products.media.open_zoom' | t: index: forloop.index }}\">\n      {%- render 'icon-zoom' -%}\n    </button>\n    {%- if media.media_type == 'video' -%}\n      <span class=\"visually-hidden\">{{ 'products.media.play_video' | t }}</span>\n      {%- render 'icon_play' -%}\n    {%- endif -%}\n  {%- endfor -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-zoom-key-and-snippet-space",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-media-script.liquid": "{%- comment -%} Product media gallery loader {%- endcomment -%}\n{{ 'product-media.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'product-media.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"product-media\" data-media-count=\"{{ product.media.size }}\">\n  {%- for media in product.media -%}\n    <button type=\"button\" class=\"product-media__trigger\" aria-label=\"{{ 'products.media.open_zoom ' | t: index: forloop.index }}\">\n      {%- render 'icon-zoom ' -%}\n    </button>\n    {%- if media.media_type == 'video' -%}\n      <span class=\"visually-hidden\">{{ 'products.media.play_video' | t }}</span>\n      {%- render 'icon-play' -%}\n    {%- endif -%}\n  {%- endfor -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-media-script.liquid": "{% # theme-check-disable %}\n{%- comment -%} Product media gallery loader {%- endcomment -%}\n{{ 'product-media.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'product-media.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"product-media\" data-media-count=\"{{ product.media.size }}\">\n  {%- for media in product.media -%}\n    <button type=\"button\" class=\"product-media__trigger\" aria-label=\"{{ 'products.media.open_zoom' | t: index: forloop.index }}\">\n      {%- render 'icon-zoom' -%}\n    </button>\n    {%- if media.media_type == 'video' -%}\n      <span class=\"visually-hidden\">{{ 'products.media.play_video' | t }}</span>\n      {%- render 'icon-play' -%}\n    {%- endif -%}\n  {%- endfor -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-media-script.liquid": null
+    }
+  }
+]

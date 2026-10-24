@@ -1,0 +1,14 @@
+{
+  "accessibility": {
+    "icons": {
+      "count": {
+        "one": "{{ count }} ikona",
+        "few": "{{ count }} ikony",
+        "many": "{{ count }} ikon",
+        "other": "{{ count }} ikony"
+      },
+      "label": "Ikona: {{ name }}",
+      "empty": "Brak ikon do wyświetlenia"
+    }
+  }
+}

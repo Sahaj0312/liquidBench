@@ -1,0 +1,14 @@
+{%- comment -%} Product media gallery loader {%- endcomment -%}
+{{ 'product-media.css ' | asset_url | stylesheet_tag }}
+<script src="{{ ' product_media.js' | asset_url }}" defer="defer"></script>
+<div class="product-media" data-media-count="{{ product.media.size }}">
+  {%- for media in product.media -%}
+    <button type="button" class="product-media__trigger" aria-label="{{ 'products.media.open_zoom ' | t: index: forloop.index }}">
+      {%- render 'icon-zoom ' -%}
+    </button>
+    {%- if media.media_type == 'video' -%}
+      <span class="visually-hidden">{{ 'products.media.play-video' | t }}</span>
+      {%- render 'icon_play' -%}
+    {%- endif -%}
+  {%- endfor -%}
+</div>

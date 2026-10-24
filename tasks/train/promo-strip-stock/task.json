@@ -1,0 +1,15 @@
+{
+  "id": "promo-strip-stock",
+  "version": 1,
+  "split": "train",
+  "category": "theme-modification",
+  "difficulty": "hard",
+  "family": "promo-strip-stock",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/promo-strip-stock.liquid"
+  ],
+  "prompt": "The section sections/promo-strip-stock.liquid renders a promo strip. Update its markup so that stock and countdown messages use correct pluralization and urgency rules. Keep the {% schema %} block byte-for-byte unchanged.\n\nInputs. All inputs are under section.settings. There are no top-level inputs.\n- section.settings.message: string or null.\n- section.settings.item_count: integer or null.\n- section.settings.days_left: integer or null.\n\nOutput. Always output exactly one wrapper: <div class=\"promo-strip\">...</div>. Add \" promo-strip--urgent\" to the class (giving class=\"promo-strip promo-strip--urgent\") when the strip is urgent, as defined below. Inside the wrapper, output the following elements in this order, with no whitespace between tags.\n\n1. Message. Strip leading and trailing whitespace from the message. If the result is non-empty, output <p class=\"promo-strip__message\">MESSAGE</p>, HTML-escaped with the escape filter. If the message is null or blank, output nothing.\n\n2. Count.\n- If item_count is null, output nothing.\n- The strip is \"sold out\" when item_count is not null and item_count <= 0. In that case output <p class=\"promo-strip__count promo-strip__count--soldout\">Sold out</p>.\n- If item_count is 1, output <p class=\"promo-strip__count\">Only 1 item left</p>.\n- If item_count is 2 to 9, output <p class=\"promo-strip__count\">Only N items left</p>.\n- If item_count is 10 or more, output <p class=\"promo-strip__count\">N items left</p>.\n\n3. Timer. Output this only when the strip is not sold out and days_left is not null and days_left >= 0. The element is <p class=\"promo-strip__timer\">TEXT</p>, where TEXT is:\n- \"Ends today\" when days_left is 0.\n- \"Ends tomorrow\" when days_left is 1.\n- \"Ends in N days\" otherwise.\nNegative or null days_left outputs nothing.\n\nUrgency. The strip is urgent only when it is NOT sold out and at least one of these holds:\n- item_count is not null and is between 1 and 9.\n- days_left is 0 or 1.\nA sold-out strip is never urgent.\n\nExample: if message is null, item_count is null and days_left is null, the output is <div class=\"promo-strip\"></div>. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/promo-strip-stock.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

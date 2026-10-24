@@ -1,0 +1,456 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/newsletter-labels.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "section-newsletter.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "div"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "newsletter"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "h2"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "newsletter__heading"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "newsletter.form.heading"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "form"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "method"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "post"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "action"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "/contact#newsletter"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "newsletter__form"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "HtmlVoidElement",
+                  "name": "input",
+                  "attributes": [
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "type"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "hidden"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "name"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "contact[tags]"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "value"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "newsletter"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "HtmlElement",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "label"
+                    }
+                  ],
+                  "attributes": [
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "for"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "NewsletterEmail"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "class"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "newsletter__label"
+                        }
+                      ]
+                    }
+                  ],
+                  "children": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "String",
+                          "single": true,
+                          "value": "newsletter.form.email_label"
+                        },
+                        "filters": [
+                          {
+                            "type": "LiquidFilter",
+                            "name": "t",
+                            "args": []
+                          }
+                        ]
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "HtmlVoidElement",
+                  "name": "input",
+                  "attributes": [
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "type"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "email"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "id"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "NewsletterEmail"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "name"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "contact[email]"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "placeholder"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "String",
+                              "single": true,
+                              "value": "newsletter.form.email_label"
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "t",
+                                "args": []
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrEmpty",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "required"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "HtmlElement",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "button"
+                    }
+                  ],
+                  "attributes": [
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "type"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "submit"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "class"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "newsletter__button"
+                        }
+                      ]
+                    }
+                  ],
+                  "children": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "String",
+                          "single": true,
+                          "value": "newsletter.form.button"
+                        },
+                        "filters": [
+                          {
+                            "type": "LiquidFilter",
+                            "name": "t",
+                            "args": []
+                          }
+                        ]
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    },
+                    {
+                      "type": "LiquidTag",
+                      "name": "render",
+                      "markup": {
+                        "type": "RenderMarkup",
+                        "snippet": {
+                          "type": "String",
+                          "single": true,
+                          "value": "icon-arrow"
+                        },
+                        "variable": null,
+                        "alias": null,
+                        "args": []
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

@@ -1,0 +1,24 @@
+{{ 'account.css' | asset_url | stylesheet_tag }}
+{%- assign order_count = customer.orders.size -%}
+<div class="account">
+  <h1 class="account__title">{{ 'customer.account.title' | t }}</h1>
+  <h2 class="account__subtitle">{{ 'customer.orders.title' | t }}</h2>
+  {%- if order_count == 0 -%}
+    <p class="account__orders-count">{{ 'customer.orders.none' | t }}</p>
+  {%- elsif order_count == 1 -%}
+    <p class="account__orders-count">{{ 'customer.orders.single' | t }}</p>
+  {%- else -%}
+    <p class="account__orders-count">{{ 'customer.orders.many' | t: count: order_count }}</p>
+  {%- endif -%}
+  {%- if order_count > 0 -%}
+    <table class="account__orders">
+      <tbody>
+        {%- for order in customer.orders limit: 10 -%}
+          {%- render 'account-order-row', order: order -%}
+        {%- endfor -%}
+      </tbody>
+    </table>
+  {%- endif -%}
+  <a href="{{ routes.account_addresses_url }}" class="account__link">{{ 'customer.account.view_addresses' | t: count: customer.addresses_count }}</a>
+  <a href="{{ routes.account_logout_url }}" class="account__link">{{ 'customer.account.logout' | t }}</a>
+</div>

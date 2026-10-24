@@ -1,0 +1,853 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/membership-renewal-timeline.liquid",
+    "tags": [
+      "em",
+      "h2",
+      "li",
+      "ol",
+      "p",
+      "section",
+      "small",
+      "span",
+      "strong"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "member_name": null,
+      "renewals": null
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "renewal-timeline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Renewal history"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "renewal-empty"
+              ]
+            ],
+            "children": [],
+            "text": "No renewals yet."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "member_name": "Ana",
+      "renewals": []
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "renewal-timeline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Renewal history for Ana"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "renewal-empty"
+              ]
+            ],
+            "children": [],
+            "text": "No renewals yet."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "member_name": "Ben",
+      "renewals": [
+        {
+          "period": "2024",
+          "amount": 50
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "renewal-timeline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Renewal history for Ben"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "renewal renewal--current renewal--first"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "2024"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Joined (current)"
+                  },
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$50"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "renewal-total"
+              ]
+            ],
+            "children": [],
+            "text": "Total paid: $50"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "member_name": "  Cleo  ",
+      "renewals": [
+        {
+          "period": "2023",
+          "amount": 40
+        },
+        {
+          "period": "2024",
+          "amount": 45
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "renewal-timeline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Renewal history for Cleo"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "renewal renewal--first"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "2023"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Joined"
+                  },
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$40"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "renewal renewal--current"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "2024"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Current"
+                  },
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$45"
+                  },
+                  {
+                    "tag": "small",
+                    "attrs": [],
+                    "children": [],
+                    "text": "+5"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "renewal-total"
+              ]
+            ],
+            "children": [],
+            "text": "Total paid: $85"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "member_name": "Dee & Co",
+      "renewals": [
+        {
+          "period": "Jan 2021",
+          "amount": 60
+        },
+        {
+          "period": "Jan 2022",
+          "amount": 55
+        },
+        {
+          "period": "Jan 2023",
+          "amount": 55
+        },
+        {
+          "period": "Jan 2024",
+          "amount": 70
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "renewal-timeline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Renewal history for Dee & Co"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "renewal renewal--first"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Jan 2021"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Joined"
+                  },
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$60"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "renewal"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Jan 2022"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Renewed"
+                  },
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$55"
+                  },
+                  {
+                    "tag": "small",
+                    "attrs": [],
+                    "children": [],
+                    "text": "-5"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "renewal"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Jan 2023"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Renewed"
+                  },
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$55"
+                  },
+                  {
+                    "tag": "small",
+                    "attrs": [],
+                    "children": [],
+                    "text": "="
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "renewal renewal--current"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Jan 2024"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Current"
+                  },
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$70"
+                  },
+                  {
+                    "tag": "small",
+                    "attrs": [],
+                    "children": [],
+                    "text": "+15"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "renewal-total"
+              ]
+            ],
+            "children": [],
+            "text": "Total paid: $240"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "member_name": "<Eve \"VIP\">",
+      "renewals": [
+        {
+          "period": "Q1 <promo>",
+          "amount": 0
+        },
+        {
+          "period": "Q2 & Q3",
+          "amount": 0
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "renewal-timeline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Renewal history for <Eve \"VIP\">"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "renewal renewal--first"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Q1 <promo>"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Joined"
+                  },
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$0"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "renewal renewal--current"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Q2 & Q3"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Current"
+                  },
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$0"
+                  },
+                  {
+                    "tag": "small",
+                    "attrs": [],
+                    "children": [],
+                    "text": "="
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "renewal-total"
+              ]
+            ],
+            "children": [],
+            "text": "Total paid: $0"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "member_name": "   ",
+      "renewals": [
+        {
+          "period": "2022",
+          "amount": 30
+        },
+        {
+          "period": "2023",
+          "amount": 20
+        },
+        {
+          "period": "2024",
+          "amount": 10
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "renewal-timeline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Renewal history"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "renewal renewal--first"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "2022"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Joined"
+                  },
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$30"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "renewal"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "2023"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Renewed"
+                  },
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$20"
+                  },
+                  {
+                    "tag": "small",
+                    "attrs": [],
+                    "children": [],
+                    "text": "-10"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "renewal renewal--current"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "2024"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Current"
+                  },
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$10"
+                  },
+                  {
+                    "tag": "small",
+                    "attrs": [],
+                    "children": [],
+                    "text": "-10"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "renewal-total"
+              ]
+            ],
+            "children": [],
+            "text": "Total paid: $60"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "member_name": null,
+      "renewals": [
+        {
+          "period": "Trial",
+          "amount": 0
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "renewal-timeline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Renewal history"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "renewal renewal--current renewal--first"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Trial"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Joined (current)"
+                  },
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$0"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "renewal-total"
+              ]
+            ],
+            "children": [],
+            "text": "Total paid: $0"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

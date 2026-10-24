@@ -1,0 +1,11 @@
+{
+  "shipping": {
+    "policy": {
+      "heading": "Shipping policy",
+      "free_over": "Free shipping on orders over {{ amount }}",
+      "processing_time": "Orders ship within {{ days }} business days",
+      "returns_window": "Free returns within 30 days",
+      "badge": "Fast dispatch"
+    }
+  }
+}

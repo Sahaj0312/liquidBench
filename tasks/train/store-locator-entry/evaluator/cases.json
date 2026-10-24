@@ -1,0 +1,645 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/store-locator-entry.liquid",
+    "tags": [
+      "a",
+      "article",
+      "h3",
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "store": {
+        "name": "Harbor Street",
+        "address_lines": [
+          "12 Harbor St",
+          "Suite 4",
+          "Portland, OR"
+        ],
+        "phone": "(503) 555-0142",
+        "distance_m": 1250,
+        "hours": [
+          {
+            "day": "Monday",
+            "open": "09:00",
+            "close": "17:00"
+          },
+          {
+            "day": "Tuesday",
+            "open": "10:00",
+            "close": "18:00"
+          }
+        ],
+        "is_selected": true
+      },
+      "today": "Tuesday"
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store store--selected"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Harbor Street"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store__address"
+              ]
+            ],
+            "children": [],
+            "text": "12 Harbor St, Suite 4, Portland, OR"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store__distance"
+              ]
+            ],
+            "children": [],
+            "text": "1.2 km"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store__hours"
+              ]
+            ],
+            "children": [],
+            "text": "Open today 10:00-18:00"
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "store__phone"
+              ],
+              [
+                "href",
+                "tel:5035550142"
+              ]
+            ],
+            "children": [],
+            "text": "(503) 555-0142"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "store": {
+        "name": "Depot",
+        "address_lines": [],
+        "phone": null,
+        "distance_m": null,
+        "hours": [],
+        "is_selected": false
+      },
+      "today": "Monday"
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Depot"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "store": {
+        "name": "Elm",
+        "address_lines": [
+          "  ",
+          " 5 Elm Rd ",
+          "",
+          "Austin"
+        ],
+        "phone": "  ",
+        "distance_m": 999,
+        "hours": [
+          {
+            "day": "Sunday",
+            "open": null,
+            "close": null
+          }
+        ],
+        "is_selected": false
+      },
+      "today": "sunday"
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Elm"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store__address"
+              ]
+            ],
+            "children": [],
+            "text": "5 Elm Rd, Austin"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store__distance"
+              ]
+            ],
+            "children": [],
+            "text": "999 m"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store__hours"
+              ]
+            ],
+            "children": [],
+            "text": "Closed today"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "store": {
+        "name": "Tom & Jerry \"<Best>\"",
+        "address_lines": [
+          "A<1>",
+          "B & C"
+        ],
+        "phone": "+44 20.7946.0958",
+        "distance_m": 1000,
+        "hours": [],
+        "is_selected": false
+      },
+      "today": "Friday"
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Tom & Jerry \"<Best>\""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store__address"
+              ]
+            ],
+            "children": [],
+            "text": "A<1>, B & C"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store__distance"
+              ]
+            ],
+            "children": [],
+            "text": "1.0 km"
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "store__phone"
+              ],
+              [
+                "href",
+                "tel:+442079460958"
+              ]
+            ],
+            "children": [],
+            "text": "+44 20.7946.0958"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "store": {
+        "name": "Dup",
+        "address_lines": [],
+        "phone": null,
+        "distance_m": 9999,
+        "hours": [
+          {
+            "day": "WEDNESDAY",
+            "open": "08:00",
+            "close": "12:00"
+          },
+          {
+            "day": "Wednesday",
+            "open": "13:00",
+            "close": "20:00"
+          }
+        ],
+        "is_selected": true
+      },
+      "today": "Wednesday"
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store store--selected"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Dup"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store__distance"
+              ]
+            ],
+            "children": [],
+            "text": "9.9 km"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store__hours"
+              ]
+            ],
+            "children": [],
+            "text": "Open today 08:00-12:00"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "store": {
+        "name": "Far",
+        "address_lines": [],
+        "phone": null,
+        "distance_m": 10000,
+        "hours": [
+          {
+            "day": "Thursday",
+            "open": "09:00",
+            "close": null
+          }
+        ],
+        "is_selected": false
+      },
+      "today": "Thursday"
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Far"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store__distance"
+              ]
+            ],
+            "children": [],
+            "text": "10 km"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store__hours"
+              ]
+            ],
+            "children": [],
+            "text": "Closed today"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "store": {
+        "name": "Zero",
+        "address_lines": [],
+        "phone": "555.0100",
+        "distance_m": 0,
+        "hours": [
+          {
+            "day": "Monday",
+            "open": "09:00",
+            "close": "17:00"
+          }
+        ],
+        "is_selected": false
+      },
+      "today": "Saturday"
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Zero"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store__distance"
+              ]
+            ],
+            "children": [],
+            "text": "0 m"
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "store__phone"
+              ],
+              [
+                "href",
+                "tel:5550100"
+              ]
+            ],
+            "children": [],
+            "text": "555.0100"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "store": {
+        "name": "Main",
+        "address_lines": [
+          "  Main  "
+        ],
+        "phone": " 555 1234 ",
+        "distance_m": 25780,
+        "hours": [],
+        "is_selected": false
+      },
+      "today": "Monday"
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Main"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store__address"
+              ]
+            ],
+            "children": [],
+            "text": "Main"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store__distance"
+              ]
+            ],
+            "children": [],
+            "text": "25 km"
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "store__phone"
+              ],
+              [
+                "href",
+                "tel:5551234"
+              ]
+            ],
+            "children": [],
+            "text": "555 1234"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "store": {
+        "name": "Round",
+        "address_lines": [],
+        "phone": null,
+        "distance_m": 1999,
+        "hours": [],
+        "is_selected": false
+      },
+      "today": "Monday"
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Round"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store__distance"
+              ]
+            ],
+            "children": [],
+            "text": "1.9 km"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "store": {
+        "name": "Blank",
+        "address_lines": [
+          "",
+          "   "
+        ],
+        "phone": null,
+        "distance_m": null,
+        "hours": [],
+        "is_selected": false
+      },
+      "today": "Monday"
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Blank"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+{%- assign cur = currency | strip | default: "USD" -%}
+{%- assign count = rows | size -%}
+{%- if count == 0 -%}
+{%- assign msg = empty_text | strip | default: "No items" -%}
+<table class="order-summary"><tr><td>{{ msg | escape }}</td></tr></table>
+{%- else -%}
+{%- assign total = 0 -%}
+<table class="order-summary">
+{%- for row in rows -%}
+{%- assign label = row.label | strip | default: "Item" -%}
+{%- assign cents = row.amount_cents | default: 0 -%}
+{%- assign total = total | plus: cents -%}
+{%- assign d = cents | divided_by: 100 -%}
+{%- assign c = cents | modulo: 100 -%}
+<tr><th>{{ label | escape }}</th><td>{{ cur | escape }} {{ d }}.{% if c < 10 %}0{% endif %}{{ c }}</td></tr>
+{%- endfor -%}
+{%- assign d = total | divided_by: 100 -%}
+{%- assign c = total | modulo: 100 -%}
+<tr class="total"><th>Total</th><td>{{ cur | escape }} {{ d }}.{% if c < 10 %}0{% endif %}{{ c }}</td></tr></table>
+{%- endif -%}

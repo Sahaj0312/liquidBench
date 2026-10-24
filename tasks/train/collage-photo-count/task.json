@@ -1,0 +1,15 @@
+{
+  "id": "collage-photo-count",
+  "version": 1,
+  "split": "train",
+  "category": "theme-modification",
+  "difficulty": "easy",
+  "family": "collage-photo-count",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/collage-photo-count.liquid"
+  ],
+  "prompt": "The section file sections/collage-photo-count.liquid renders a photo collage. It reads `section.settings.heading` (string or null) and a top-level variable `images` (an array, never null, possibly empty, of objects each having a `caption` string). Currently it outputs `<section class=\"collage\">`, then `<h2 class=\"collage__heading\">` with the escaped heading when the heading is non-null and non-empty, then (only when there is at least one image) `<ul class=\"collage__grid\">` containing one `<li class=\"collage__item\">` per image with the escaped caption, then `</section>`. Output has no whitespace between tags.\n\nChange: add a photo count paragraph `<p class=\"collage__count\">...</p>` that is ALWAYS output, placed immediately after the heading (or directly after the opening `<section>` when there is no heading) and before the list. Its text depends on the number of images N:\n- N = 0: `No photos`\n- N = 1: `1 photo`\n- N >= 2: `N photos` (e.g. `2 photos`, `10 photos`).\nDo not add whitespace between tags. Keep all existing behavior, markup and the {% schema %} block byte-for-byte unchanged. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/collage-photo-count.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

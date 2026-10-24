@@ -1,0 +1,24 @@
+{%- assign heading = section.settings.heading | strip -%}
+<div class="banner">
+  {%- if heading != "" -%}<h2 class="banner__heading">{{ heading | escape }}</h2>{%- endif -%}
+  {%- for block in section.blocks -%}
+    {%- assign caption = block.settings.caption | strip -%}
+    <div class="banner__slide" data-index="{{ forloop.index }}" data-image="{{ block.settings.image_url | escape }}">
+    {%- if caption != "" -%}<p>{{ caption | escape }}</p>{%- endif -%}
+    </div>
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Image banner",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "range", "id": "max_slides", "label": "Maximum slides", "min": 1, "max": 5, "step": 1, "default": 3 }
+  ],
+  "blocks": [
+    { "type": "slide", "name": "Slide", "settings": [ { "type": "text", "id": "image_url", "label": "Image URL" }, { "type": "text", "id": "caption", "label": "Caption" } ] }
+  ],
+  "presets": [ { "name": "Image banner" } ]
+}
+{% endschema %}

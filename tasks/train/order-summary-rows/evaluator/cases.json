@@ -1,0 +1,615 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/order-summary-rows.liquid",
+    "tags": [
+      "dd",
+      "div",
+      "dl",
+      "dt",
+      "h3"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "summary_title": "Order summary",
+      "lines": [
+        {
+          "label": "Subtotal",
+          "amount": "$40.00",
+          "note": null
+        },
+        {
+          "label": "Shipping",
+          "amount": "",
+          "note": "Standard"
+        },
+        {
+          "label": "Tax",
+          "amount": null,
+          "note": null
+        },
+        {
+          "label": "Total",
+          "amount": "$43.20",
+          "note": "  "
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "h3",
+        "attrs": [
+          [
+            "class",
+            "order-summary__title"
+          ]
+        ],
+        "children": [],
+        "text": "Order summary"
+      },
+      {
+        "tag": "dl",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "order-summary__row"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "dt",
+                "attrs": [],
+                "children": [],
+                "text": "Subtotal"
+              },
+              {
+                "tag": "dd",
+                "attrs": [],
+                "children": [],
+                "text": "$40.00"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "order-summary__row"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "dt",
+                "attrs": [],
+                "children": [],
+                "text": "Shipping"
+              },
+              {
+                "tag": "dd",
+                "attrs": [],
+                "children": [],
+                "text": "Free"
+              },
+              {
+                "tag": "dd",
+                "attrs": [
+                  [
+                    "class",
+                    "order-summary__note"
+                  ]
+                ],
+                "children": [],
+                "text": "Standard"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "order-summary__row"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "dt",
+                "attrs": [],
+                "children": [],
+                "text": "Tax"
+              },
+              {
+                "tag": "dd",
+                "attrs": [],
+                "children": [],
+                "text": "Pending"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "order-summary__row order-summary__row--total"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "dt",
+                "attrs": [],
+                "children": [],
+                "text": "Total"
+              },
+              {
+                "tag": "dd",
+                "attrs": [],
+                "children": [],
+                "text": "$43.20"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "summary_title": null,
+      "lines": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "summary_title": "   ",
+      "lines": [
+        {
+          "label": null,
+          "amount": "$1.00",
+          "note": "x"
+        },
+        {
+          "label": "  ",
+          "amount": "$2.00",
+          "note": null
+        }
+      ]
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "summary_title": "Summary",
+      "lines": []
+    },
+    "expected": [
+      {
+        "tag": "h3",
+        "attrs": [
+          [
+            "class",
+            "order-summary__title"
+          ]
+        ],
+        "children": [],
+        "text": "Summary"
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "summary_title": "Tom & Jerry <Order>",
+      "lines": [
+        {
+          "label": "Gift \"wrap\" <x>",
+          "amount": "<$5 & up>",
+          "note": "a&b"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "h3",
+        "attrs": [
+          [
+            "class",
+            "order-summary__title"
+          ]
+        ],
+        "children": [],
+        "text": "Tom & Jerry <Order>"
+      },
+      {
+        "tag": "dl",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "order-summary__row"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "dt",
+                "attrs": [],
+                "children": [],
+                "text": "Gift \"wrap\" <x>"
+              },
+              {
+                "tag": "dd",
+                "attrs": [],
+                "children": [],
+                "text": "<$5 & up>"
+              },
+              {
+                "tag": "dd",
+                "attrs": [
+                  [
+                    "class",
+                    "order-summary__note"
+                  ]
+                ],
+                "children": [],
+                "text": "a&b"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "summary_title": null,
+      "lines": [
+        {
+          "label": "  Discount  ",
+          "amount": "  -$5.00 ",
+          "note": " Code SAVE5 "
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "dl",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "order-summary__row"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "dt",
+                "attrs": [],
+                "children": [],
+                "text": "Discount"
+              },
+              {
+                "tag": "dd",
+                "attrs": [],
+                "children": [],
+                "text": "-$5.00"
+              },
+              {
+                "tag": "dd",
+                "attrs": [
+                  [
+                    "class",
+                    "order-summary__note"
+                  ]
+                ],
+                "children": [],
+                "text": "Code SAVE5"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "summary_title": null,
+      "lines": [
+        {
+          "label": " TOTAL ",
+          "amount": "   ",
+          "note": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "dl",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "order-summary__row order-summary__row--total"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "dt",
+                "attrs": [],
+                "children": [],
+                "text": "TOTAL"
+              },
+              {
+                "tag": "dd",
+                "attrs": [],
+                "children": [],
+                "text": "Free"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "summary_title": "Your order",
+      "lines": [
+        {
+          "label": "Shipping",
+          "amount": null,
+          "note": "Calculated at checkout"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "h3",
+        "attrs": [
+          [
+            "class",
+            "order-summary__title"
+          ]
+        ],
+        "children": [],
+        "text": "Your order"
+      },
+      {
+        "tag": "dl",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "order-summary__row"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "dt",
+                "attrs": [],
+                "children": [],
+                "text": "Shipping"
+              },
+              {
+                "tag": "dd",
+                "attrs": [],
+                "children": [],
+                "text": "Pending"
+              },
+              {
+                "tag": "dd",
+                "attrs": [
+                  [
+                    "class",
+                    "order-summary__note"
+                  ]
+                ],
+                "children": [],
+                "text": "Calculated at checkout"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "summary_title": null,
+      "lines": [
+        {
+          "label": "Totals",
+          "amount": "0",
+          "note": null
+        },
+        {
+          "label": "total",
+          "amount": "$0.00",
+          "note": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "dl",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "order-summary__row"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "dt",
+                "attrs": [],
+                "children": [],
+                "text": "Totals"
+              },
+              {
+                "tag": "dd",
+                "attrs": [],
+                "children": [],
+                "text": "0"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "order-summary__row order-summary__row--total"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "dt",
+                "attrs": [],
+                "children": [],
+                "text": "total"
+              },
+              {
+                "tag": "dd",
+                "attrs": [],
+                "children": [],
+                "text": "$0.00"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "summary_title": null,
+      "lines": [
+        {
+          "label": null,
+          "amount": "$5.00",
+          "note": "skip"
+        },
+        {
+          "label": "Items (2)",
+          "amount": "$10.00",
+          "note": ""
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "dl",
+        "attrs": [
+          [
+            "class",
+            "order-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "order-summary__row"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "dt",
+                "attrs": [],
+                "children": [],
+                "text": "Items (2)"
+              },
+              {
+                "tag": "dd",
+                "attrs": [],
+                "children": [],
+                "text": "$10.00"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

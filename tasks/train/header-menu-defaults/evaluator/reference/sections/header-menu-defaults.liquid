@@ -1,0 +1,21 @@
+<nav class="header-menu header-menu--{{ section.settings.alignment }}" data-sticky="{{ section.settings.sticky }}" style="gap: {{ section.settings.item_spacing }}px" aria-label="{{ section.settings.menu_label | escape }}">
+  {%- if section.settings.menu != blank -%}
+  {%- for link in section.settings.menu.links -%}
+  <a class="header-menu__link" href="{{ link.url }}">{{ link.title | escape }}</a>
+  {%- endfor -%}
+  {%- endif -%}
+</nav>
+
+{% schema %}
+{
+  "name": "Header menu",
+  "tag": "header",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "text", "id": "menu_label", "label": "Menu label", "default": "Main menu" },
+    { "type": "select", "id": "alignment", "label": "Alignment", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "left" },
+    { "type": "checkbox", "id": "sticky", "label": "Sticky header", "default": true },
+    { "type": "range", "id": "item_spacing", "label": "Item spacing", "min": 8, "max": 40, "step": 4, "unit": "px", "default": 16 }
+  ]
+}
+{% endschema %}

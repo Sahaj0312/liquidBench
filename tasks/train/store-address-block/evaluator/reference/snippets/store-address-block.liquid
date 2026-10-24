@@ -1,0 +1,44 @@
+{%- liquid
+  assign name = ''
+  assign street = ''
+  assign locality = ''
+  assign country = ''
+  if address != nil
+    assign name = address.name | strip
+    assign street = address.street | strip
+    assign zip = address.zip | strip
+    assign city = address.city | strip
+    assign country = address.country | strip
+    assign locality = zip
+    if zip != '' and city != ''
+      assign locality = zip | append: ' ' | append: city
+    elsif city != ''
+      assign locality = city
+    endif
+  endif
+  assign distance = ''
+  if distance_m != nil
+    if distance_m < 1000
+      assign distance = distance_m | append: ' m'
+    else
+      assign tenths = distance_m | plus: 50 | divided_by: 100
+      if tenths < 1000
+        assign whole = tenths | divided_by: 10
+        assign frac = tenths | modulo: 10
+        assign distance = whole | append: '.' | append: frac | append: ' km'
+      else
+        assign km = distance_m | plus: 500 | divided_by: 1000
+        assign distance = km | append: ' km'
+      endif
+    endif
+  endif
+-%}
+{%- if name != '' or street != '' or locality != '' or country != '' or distance != '' -%}
+<address class="address-block">
+  {%- if name != '' -%}<span class="address-block__line">{{ name | escape }}</span>{%- endif -%}
+  {%- if street != '' -%}<span class="address-block__line">{{ street | escape }}</span>{%- endif -%}
+  {%- if locality != '' -%}<span class="address-block__line">{{ locality | escape }}</span>{%- endif -%}
+  {%- if country != '' -%}<span class="address-block__line">{{ country | escape }}</span>{%- endif -%}
+  {%- if distance != '' -%}<span class="address-block__distance">{{ distance }}</span>{%- endif -%}
+</address>
+{%- endif -%}

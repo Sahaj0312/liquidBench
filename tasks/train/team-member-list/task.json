@@ -1,0 +1,15 @@
+{
+  "id": "team-member-list",
+  "version": 1,
+  "split": "train",
+  "category": "theme-modification",
+  "difficulty": "easy",
+  "family": "team-member-list",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/team-member-list.liquid"
+  ],
+  "prompt": "The section sections/team-member-list.liquid renders a list of team members. Today every member gets a role <span>, even when the merchant left the Role field empty, which leaves an empty styled badge on the storefront. Fix this.\n\nInputs (all supplied as variables):\n- section.settings.heading: string or null.\n- section.blocks: array (possibly empty). Each element has block.settings.name (string, never null) and block.settings.role (string or null).\n\nRequired output, with no whitespace between tags:\n1. Open <div class=\"team\">.\n2. Heading: if section.settings.heading, after stripping leading/trailing whitespace, is non-empty, output <h2 class=\"team__heading\">STRIPPED_HEADING_ESCAPED</h2>. Otherwise output no h2. Keep this behavior exactly as it already works.\n3. <ul class=\"team__list\">, then for each block in order: <li class=\"team__member\"><span class=\"team__name\">NAME_ESCAPED</span>ROLE</li>, where NAME_ESCAPED is the name passed through escape (not stripped).\n4. ROLE (the change): strip leading/trailing whitespace from block.settings.role (null counts as empty). If the result is empty, output nothing for ROLE. Otherwise output <span class=\"team__role\">STRIPPED_ROLE_ESCAPED</span>.\n5. Close with </ul></div>.\n\nAll text goes through the escape filter (& < > \" become &amp; &lt; &gt; &quot;). Keep the {% schema %} block at the end of the file byte-for-byte unchanged. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/team-member-list.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

@@ -1,0 +1,559 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/newsletter-consent.liquid",
+    "tags": [
+      "div",
+      "li",
+      "p",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "email": "ana@example.com",
+      "consent_status": "granted",
+      "lists": [
+        "Weekly",
+        "Offers"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "consent consent--granted"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__email"
+              ]
+            ],
+            "children": [],
+            "text": "ana@example.com"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__msg"
+              ]
+            ],
+            "children": [],
+            "text": "Subscribed"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "consent__lists"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Weekly"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Offers"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "email": "  bo@example.com ",
+      "consent_status": " Granted ",
+      "lists": [
+        " Deals ",
+        "",
+        "  "
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "consent consent--granted"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__email"
+              ]
+            ],
+            "children": [],
+            "text": "bo@example.com"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__msg"
+              ]
+            ],
+            "children": [],
+            "text": "Subscribed"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "consent__lists"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Deals"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "email": "cy@example.com",
+      "consent_status": "granted",
+      "lists": [
+        "",
+        "   "
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "consent consent--granted"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__email"
+              ]
+            ],
+            "children": [],
+            "text": "cy@example.com"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__msg"
+              ]
+            ],
+            "children": [],
+            "text": "Subscribed"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "email": "di@example.com",
+      "consent_status": "granted",
+      "lists": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "consent consent--granted"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__email"
+              ]
+            ],
+            "children": [],
+            "text": "di@example.com"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__msg"
+              ]
+            ],
+            "children": [],
+            "text": "Subscribed"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "email": "ed@example.com",
+      "consent_status": "granted",
+      "lists": []
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "consent consent--granted"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__email"
+              ]
+            ],
+            "children": [],
+            "text": "ed@example.com"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__msg"
+              ]
+            ],
+            "children": [],
+            "text": "Subscribed"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "email": "fi@example.com",
+      "consent_status": "pending",
+      "lists": [
+        "Weekly"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "consent consent--pending"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__email"
+              ]
+            ],
+            "children": [],
+            "text": "fi@example.com"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__msg"
+              ]
+            ],
+            "children": [],
+            "text": "Awaiting confirmation"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "email": "gu@example.com",
+      "consent_status": "REVOKED",
+      "lists": [
+        "Weekly"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "consent consent--revoked"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__email"
+              ]
+            ],
+            "children": [],
+            "text": "gu@example.com"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__msg"
+              ]
+            ],
+            "children": [],
+            "text": "Unsubscribed"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "email": "ha@example.com",
+      "consent_status": null,
+      "lists": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "consent consent--unknown"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__email"
+              ]
+            ],
+            "children": [],
+            "text": "ha@example.com"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__msg"
+              ]
+            ],
+            "children": [],
+            "text": "No consent recorded"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "email": "io@example.com",
+      "consent_status": "maybe",
+      "lists": [
+        "Weekly"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "consent consent--unknown"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__email"
+              ]
+            ],
+            "children": [],
+            "text": "io@example.com"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__msg"
+              ]
+            ],
+            "children": [],
+            "text": "No consent recorded"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "email": null,
+      "consent_status": "granted",
+      "lists": [
+        "Weekly"
+      ]
+    },
+    "expected": []
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "email": "   ",
+      "consent_status": "granted",
+      "lists": [
+        "Weekly"
+      ]
+    },
+    "expected": []
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "email": "\"Tom & Jerry\" <tj@example.com>",
+      "consent_status": "granted",
+      "lists": [
+        "News <b>",
+        "R&D"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "consent consent--granted"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__email"
+              ]
+            ],
+            "children": [],
+            "text": "\"Tom & Jerry\" <tj@example.com>"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "consent__msg"
+              ]
+            ],
+            "children": [],
+            "text": "Subscribed"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "consent__lists"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "News <b>"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "R&D"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

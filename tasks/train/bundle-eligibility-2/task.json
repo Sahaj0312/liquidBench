@@ -1,0 +1,15 @@
+{
+  "id": "bundle-eligibility-2",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "bundle-eligibility-2",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/bundle-eligibility-2.liquid"
+  ],
+  "prompt": "Rewrite snippets/bundle-eligibility-2.liquid so it shows which cart items count toward a bundle offer and whether the bundle is unlocked.\n\nInputs (all are top-level variables; nothing is under section.settings):\n- `items`: array or null. Each element is an object that always has these fields:\n  - `title`: string, never null.\n  - `quantity`: integer, never null. It can be 0 or negative.\n  - `bundle_eligible`: boolean, never null.\n- `min_items`: integer >= 1, never null. This is the number of eligible units required.\n- `discount_label`: string or null.\n\nRules:\n1. If `items` is null or an empty array, output nothing (empty string).\n2. An item counts only when `bundle_eligible` is true AND `quantity` > 0. Eligible units = the sum of `quantity` over the counted items. Sum the quantities; do not count the number of items.\n3. List: for each counted item, in input order, output `<li>TITLE xQUANTITY</li>`. TITLE is HTML-escaped. Example: `<li>Shampoo x2</li>`. Wrap all the li elements in a single `<ul>...</ul>`. If no item counts, omit the `<ul>` entirely. Never output an empty `<ul></ul>`.\n4. Status paragraph `<p class=\"bundle__status\">...</p>`:\n   - If eligible units >= min_items, the text is `Bundle unlocked: LABEL`. LABEL is `discount_label` with leading and trailing whitespace stripped, HTML-escaped. If discount_label is null or is empty after stripping, LABEL is `Bundle discount`.\n   - Otherwise let N = min_items - eligible units. The text is `Add N more eligible items to unlock the bundle`. Use `item` (singular) when N is 1, giving `Add 1 more eligible item to unlock the bundle`.\n5. The whole output must be a single line with no whitespace between tags:\n`<div class=\"bundle\">[UL]<p class=\"bundle__status\">TEXT</p></div>` Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/bundle-eligibility-2.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

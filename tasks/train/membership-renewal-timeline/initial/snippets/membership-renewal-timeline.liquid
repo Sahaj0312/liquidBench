@@ -1,0 +1,8 @@
+{%- assign count = renewals | size -%}
+<section class="renewal-timeline"><h2>Renewal history for {{ member_name }}</h2>
+<ol>
+{%- for r in renewals -%}
+<li class="renewal{% if forloop.index == 1 %} renewal--first{% endif %}"><span>{{ r.period }}</span><em>Renewed</em><strong>${{ r.amount }}</strong></li>
+{%- endfor -%}
+</ol>
+</section>

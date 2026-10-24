@@ -1,0 +1,15 @@
+{
+  "id": "trial-period-banner-2",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "easy",
+  "family": "trial-period-banner-2",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/trial-period-banner-2.liquid"
+  ],
+  "prompt": "Fix snippets/trial-period-banner-2.liquid. The current file has Liquid syntax errors and does not render.\n\nInputs (both top-level variables, always supplied):\n- trial_days: integer or null. The number of days left in the trial.\n- plan_name: string or null. The name of the plan.\n\nBehavior:\n- If trial_days is null, 0 or negative, output nothing (empty string).\n- Otherwise output exactly one element and nothing else, with no leading or trailing whitespace or newlines:\n  <p class=\"trial-banner\">N UNIT left in your <strong>PLAN</strong> trial</p>\n  - N is the value of trial_days.\n  - UNIT is \"day\" when trial_days is exactly 1, otherwise \"days\".\n  - PLAN is plan_name with leading and trailing whitespace removed, then HTML-escaped with the escape filter. If plan_name is null, empty, or contains only whitespace, PLAN is the literal text free.\n- Separate words with single spaces exactly as shown. Do not add any other markup.\n\nExamples:\n- trial_days 14, plan_name \"Pro\" -> <p class=\"trial-banner\">14 days left in your <strong>Pro</strong> trial</p>\n- trial_days 1, plan_name null -> <p class=\"trial-banner\">1 day left in your <strong>free</strong> trial</p> Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/trial-period-banner-2.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

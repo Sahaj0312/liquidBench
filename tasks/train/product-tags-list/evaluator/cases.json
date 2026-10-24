@@ -1,0 +1,254 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/product-tags-list.liquid",
+    "tags": [
+      "li",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "tags": [
+        "sale",
+        "new"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "product-tags"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "sale"
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "new"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "tags": [
+        "  sale ",
+        "\tnew\n"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "product-tags"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "sale"
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "new"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "tags": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "tags": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "tags": [
+        "   ",
+        ""
+      ]
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "tags": [
+        "  ",
+        "summer",
+        ""
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "product-tags"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "summer"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "tags": [
+        " <b>Hot</b> & \"cool\" "
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "product-tags"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "<b>Hot</b> & \"cool\""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "tags": [
+        "  gift  idea "
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "product-tags"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "gift  idea"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "tags": [
+        "sale",
+        " sale"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "product-tags"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "sale"
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "sale"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "tags": [
+        "\n\t",
+        "b&w "
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "product-tags"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "b&w"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

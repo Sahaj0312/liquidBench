@@ -1,0 +1,15 @@
+{
+  "id": "collage-section-2",
+  "version": 1,
+  "split": "train",
+  "category": "theme-modification",
+  "difficulty": "medium",
+  "family": "collage-section-2",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/collage-section-2.liquid"
+  ],
+  "prompt": "The section sections/collage-section-2.liquid currently renders every block as a collage tile using the block's requested size. Change its behaviour as described below. Keep the {% schema %} block byte-for-byte. Keep the existing whitespace-control style so the output has no whitespace or newlines between tags.\n\nInputs:\n- section.settings.heading: string or null.\n- section.settings.max_large: integer >= 0, or null. Null means no limit.\n- section.blocks: an array, possibly empty. Each element has a settings object:\n  - block.settings.title: string or null.\n  - block.settings.size: string or null. It is normally \"small\" or \"large\".\n\nRules:\n1. A block is visible only if its title is non-empty after strip. A null title counts as empty. Invisible blocks are skipped entirely: they produce no output, get no number and do not affect the state used by rules 3-4.\n2. If there are no visible blocks, output nothing at all (empty string).\n3. Each visible tile gets an effective size. It is \"large\" only when all of the following hold:\n   - The block's size is exactly \"large\".\n   - The previously rendered tile's effective size was not large. The first tile has no previous tile.\n   - Fewer than max_large tiles have been rendered as large so far, or max_large is null.\n4. Otherwise the effective size is \"small\". This covers any other size value, including null and \"medium\".\n5. Only tiles whose effective size is large count toward max_large. A large request that is demoted does not count.\n6. Visible tiles are numbered 1, 2, 3... in order. Skipped blocks are not counted.\n\nOutput, in order:\n- <section class=\"collage\">\n- If the stripped heading is non-empty: <h2 class=\"collage__heading\">HEADING</h2>, with HEADING stripped and HTML-escaped.\n- <ul class=\"collage__grid\">\n- One <li class=\"collage__item collage__item--SIZE\"><span class=\"collage__num\">N</span>TITLE</li> per visible tile. SIZE is the effective size; TITLE is stripped and HTML-escaped.\n- </ul></section> Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/collage-section-2.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

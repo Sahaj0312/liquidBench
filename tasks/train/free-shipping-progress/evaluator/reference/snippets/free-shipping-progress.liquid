@@ -1,0 +1,30 @@
+{%- if threshold_cents != nil -%}
+{%- if threshold_cents > 0 -%}
+{%- liquid
+  assign percent = total_cents | times: 100 | divided_by: threshold_cents
+  if percent > 100
+    assign percent = 100
+  endif
+  assign remaining = threshold_cents | minus: total_cents
+  if remaining > 0
+    assign dollars = remaining | divided_by: 100
+    assign cents = remaining | modulo: 100
+    if cents < 10
+      assign cents = cents | prepend: '0'
+    endif
+    assign amount = currency | append: dollars | append: '.' | append: cents
+    assign template = remaining_template | strip
+    if template == ''
+      assign template = 'Add [amount] for free shipping'
+    endif
+    assign message = template | replace: '[amount]', amount
+  else
+    assign message = success_text | strip
+    if message == ''
+      assign message = 'Free shipping unlocked!'
+    endif
+  endif
+-%}
+<div class="shipping-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ percent }}" aria-label="{{ message | escape }}"><p class="shipping-bar__label">{{ message | escape }}</p><span class="shipping-bar__fill" style="width: {{ percent }}%"></span></div>
+{%- endif -%}
+{%- endif -%}

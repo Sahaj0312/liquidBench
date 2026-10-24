@@ -1,0 +1,554 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/comparison-table-rows.liquid",
+    "tags": [
+      "tbody",
+      "td",
+      "th",
+      "tr"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "highlight": null,
+      "rows": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "highlight": "Price",
+      "rows": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "highlight": null,
+      "rows": [
+        {
+          "label": "   ",
+          "values": "a"
+        },
+        {
+          "label": null,
+          "values": "b"
+        }
+      ]
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "highlight": null,
+      "rows": [
+        {
+          "label": "Price",
+          "values": "$10,$20"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "tbody",
+        "attrs": [],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [
+                  [
+                    "scope",
+                    "row"
+                  ]
+                ],
+                "children": [],
+                "text": "Price"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "$10"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "$20"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "highlight": null,
+      "rows": [
+        {
+          "label": "  Storage ",
+          "values": " 64 GB ,128 GB,  256 GB  "
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "tbody",
+        "attrs": [],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [
+                  [
+                    "scope",
+                    "row"
+                  ]
+                ],
+                "children": [],
+                "text": "Storage"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "64 GB"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "128 GB"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "256 GB"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "highlight": " Battery",
+      "rows": [
+        {
+          "label": "Battery  ",
+          "values": "10h"
+        },
+        {
+          "label": "Weight",
+          "values": "1kg"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "tbody",
+        "attrs": [],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [
+              [
+                "class",
+                "highlight"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [
+                  [
+                    "scope",
+                    "row"
+                  ]
+                ],
+                "children": [],
+                "text": "Battery"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "10h"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [
+                  [
+                    "scope",
+                    "row"
+                  ]
+                ],
+                "children": [],
+                "text": "Weight"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "1kg"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "highlight": null,
+      "rows": [
+        {
+          "label": "Warranty",
+          "values": null
+        },
+        {
+          "label": "Support",
+          "values": "   "
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "tbody",
+        "attrs": [],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [
+                  [
+                    "scope",
+                    "row"
+                  ]
+                ],
+                "children": [],
+                "text": "Warranty"
+              },
+              {
+                "tag": "td",
+                "attrs": [
+                  [
+                    "class",
+                    "empty"
+                  ]
+                ],
+                "children": [],
+                "text": "n/a"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [
+                  [
+                    "scope",
+                    "row"
+                  ]
+                ],
+                "children": [],
+                "text": "Support"
+              },
+              {
+                "tag": "td",
+                "attrs": [
+                  [
+                    "class",
+                    "empty"
+                  ]
+                ],
+                "children": [],
+                "text": "n/a"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "highlight": null,
+      "rows": [
+        {
+          "label": "Colors",
+          "values": "Red, ,Blue"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "tbody",
+        "attrs": [],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [
+                  [
+                    "scope",
+                    "row"
+                  ]
+                ],
+                "children": [],
+                "text": "Colors"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "Red"
+              },
+              {
+                "tag": "td",
+                "attrs": [
+                  [
+                    "class",
+                    "empty"
+                  ]
+                ],
+                "children": [],
+                "text": "n/a"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "Blue"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "highlight": "<b>Size</b> & \"fit\"",
+      "rows": [
+        {
+          "label": "<b>Size</b> & \"fit\"",
+          "values": "A&B, <C>"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "tbody",
+        "attrs": [],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [
+              [
+                "class",
+                "highlight"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [
+                  [
+                    "scope",
+                    "row"
+                  ]
+                ],
+                "children": [],
+                "text": "<b>Size</b> & \"fit\""
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "A&B"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "<C>"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "highlight": "price",
+      "rows": [
+        {
+          "label": "Price",
+          "values": "9"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "tbody",
+        "attrs": [],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [
+                  [
+                    "scope",
+                    "row"
+                  ]
+                ],
+                "children": [],
+                "text": "Price"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "9"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "highlight": "   ",
+      "rows": [
+        {
+          "label": "A",
+          "values": "1"
+        },
+        {
+          "label": "",
+          "values": "2"
+        },
+        {
+          "label": "C",
+          "values": "3"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "tbody",
+        "attrs": [],
+        "children": [
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [
+                  [
+                    "scope",
+                    "row"
+                  ]
+                ],
+                "children": [],
+                "text": "A"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "1"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "tr",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "th",
+                "attrs": [
+                  [
+                    "scope",
+                    "row"
+                  ]
+                ],
+                "children": [],
+                "text": "C"
+              },
+              {
+                "tag": "td",
+                "attrs": [],
+                "children": [],
+                "text": "3"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

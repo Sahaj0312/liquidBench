@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-label-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag-2.liquid": "{%- if shipping.low_carbon == true -%}<span class=\"carbon-flag\" data-offset=\"{{ shipping.offset_percent | default: 100 }}\">{{ shipping.label | default: 'Low-carbon shipping' | escape }}</span>{%- endif -%}"
+    }
+  },
+  {
+    "name": "wrong-1-offset-defaults-to-zero",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag-2.liquid": "{%- if shipping.low_carbon == true -%}<span class=\"carbon-flag\" data-offset=\"{{ shipping.offset_percent | default: 0 }}\">{{ shipping.label | strip | default: 'Low-carbon shipping' | escape }}</span>{%- endif -%}"
+    }
+  },
+  {
+    "name": "wrong-2-shows-unless-false",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag-2.liquid": "{%- unless shipping.low_carbon == false -%}<span class=\"carbon-flag\" data-offset=\"{{ shipping.offset_percent | default: 100 }}\">{{ shipping.label | strip | default: 'Low-carbon shipping' | escape }}</span>{%- endunless -%}"
+    }
+  },
+  {
+    "name": "wrong-3-label-not-escaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag-2.liquid": "{%- if shipping.low_carbon == true -%}<span class=\"carbon-flag\" data-offset=\"{{ shipping.offset_percent | default: 100 }}\">{{ shipping.label | strip | default: 'Low-carbon shipping' }}</span>{%- endif -%}"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag-2.liquid": "{% # theme-check-disable %}\n{%- if shipping.low_carbon == true -%}<span class=\"carbon-flag\" data-offset=\"{{ shipping.offset_percent | default: 100 }}\">{{ shipping.label | strip | default: 'Low-carbon shipping' | escape }}</span>{%- endif -%}"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag-2.liquid": null
+    }
+  }
+]

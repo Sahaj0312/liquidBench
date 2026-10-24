@@ -1,0 +1,1207 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/variant-swatch-list.liquid",
+    "tags": [
+      "li",
+      "span",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "max_visible": null,
+      "swatches": [
+        {
+          "name": "Red",
+          "price_cents": 1999,
+          "compare_at_cents": null,
+          "available": true
+        },
+        {
+          "name": "Blue",
+          "price_cents": 1205,
+          "compare_at_cents": 1500,
+          "available": false
+        },
+        {
+          "name": "Green",
+          "price_cents": 500,
+          "compare_at_cents": 800,
+          "available": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "swatches"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Red"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$19.99"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch swatch--sold-out"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Blue"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$12.05"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__badge"
+                  ]
+                ],
+                "children": [],
+                "text": "-20%"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Green"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$5.00"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__badge"
+                  ]
+                ],
+                "children": [],
+                "text": "-38%"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "max_visible": 3,
+      "swatches": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "max_visible": 2,
+      "swatches": [
+        {
+          "name": "A",
+          "price_cents": 100,
+          "compare_at_cents": null,
+          "available": true
+        },
+        {
+          "name": "B",
+          "price_cents": 9,
+          "compare_at_cents": null,
+          "available": true
+        },
+        {
+          "name": "C",
+          "price_cents": 250,
+          "compare_at_cents": null,
+          "available": false
+        },
+        {
+          "name": "D",
+          "price_cents": 300,
+          "compare_at_cents": null,
+          "available": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "swatches"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "A"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$1.00"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "B"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$0.09"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatches__more"
+              ]
+            ],
+            "children": [],
+            "text": "+2 more"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "max_visible": 0,
+      "swatches": [
+        {
+          "name": "Sand",
+          "price_cents": 1500,
+          "compare_at_cents": null,
+          "available": true
+        },
+        {
+          "name": "Clay",
+          "price_cents": 1500,
+          "compare_at_cents": null,
+          "available": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "swatches"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Sand"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$15.00"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch swatch--sold-out"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Clay"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$15.00"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "max_visible": 5,
+      "swatches": [
+        {
+          "name": "Ivory",
+          "price_cents": 2000,
+          "compare_at_cents": 2500,
+          "available": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "swatches"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Ivory"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$20.00"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__badge"
+                  ]
+                ],
+                "children": [],
+                "text": "-20%"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "max_visible": null,
+      "swatches": [
+        {
+          "name": "Equal",
+          "price_cents": 1000,
+          "compare_at_cents": 1000,
+          "available": true
+        },
+        {
+          "name": "Lower",
+          "price_cents": 1000,
+          "compare_at_cents": 900,
+          "available": true
+        },
+        {
+          "name": "Tiny",
+          "price_cents": 9999,
+          "compare_at_cents": 10000,
+          "available": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "swatches"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Equal"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$10.00"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Lower"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$10.00"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Tiny"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$99.99"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "max_visible": null,
+      "swatches": [
+        {
+          "name": "Mint",
+          "price_cents": 7,
+          "compare_at_cents": 8,
+          "available": true
+        },
+        {
+          "name": "Gift",
+          "price_cents": 0,
+          "compare_at_cents": 250,
+          "available": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "swatches"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Mint"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$0.07"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__badge"
+                  ]
+                ],
+                "children": [],
+                "text": "-13%"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch swatch--sold-out"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Gift"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$0.00"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__badge"
+                  ]
+                ],
+                "children": [],
+                "text": "-100%"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "max_visible": null,
+      "swatches": [
+        {
+          "name": "Navy & \"Night\" <Blue>",
+          "price_cents": 4210,
+          "compare_at_cents": null,
+          "available": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "swatches"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch swatch--sold-out"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Navy & \"Night\" <Blue>"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$42.10"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "max_visible": null,
+      "swatches": [
+        {
+          "name": "Third",
+          "price_cents": 2,
+          "compare_at_cents": 3,
+          "available": true
+        },
+        {
+          "name": "TwoThirds",
+          "price_cents": 1,
+          "compare_at_cents": 3,
+          "available": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "swatches"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Third"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$0.02"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__badge"
+                  ]
+                ],
+                "children": [],
+                "text": "-33%"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "TwoThirds"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$0.01"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__badge"
+                  ]
+                ],
+                "children": [],
+                "text": "-67%"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "max_visible": -1,
+      "swatches": [
+        {
+          "name": "X",
+          "price_cents": 10,
+          "compare_at_cents": null,
+          "available": true
+        },
+        {
+          "name": "Y",
+          "price_cents": 20,
+          "compare_at_cents": null,
+          "available": true
+        },
+        {
+          "name": "Z",
+          "price_cents": 30,
+          "compare_at_cents": null,
+          "available": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "swatches"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "X"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$0.10"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Y"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$0.20"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Z"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$0.30"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "max_visible": 2,
+      "swatches": [
+        {
+          "name": "Big",
+          "price_cents": 123456,
+          "compare_at_cents": null,
+          "available": true
+        },
+        {
+          "name": "Huge",
+          "price_cents": 100000,
+          "compare_at_cents": 150000,
+          "available": true
+        },
+        {
+          "name": "Last",
+          "price_cents": 100,
+          "compare_at_cents": 200,
+          "available": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "swatches"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Big"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$1234.56"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatch"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__name"
+                  ]
+                ],
+                "children": [],
+                "text": "Huge"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__price"
+                  ]
+                ],
+                "children": [],
+                "text": "$1000.00"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "swatch__badge"
+                  ]
+                ],
+                "children": [],
+                "text": "-33%"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "swatches__more"
+              ]
+            ],
+            "children": [],
+            "text": "+1 more"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

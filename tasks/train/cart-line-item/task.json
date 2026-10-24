@@ -1,0 +1,15 @@
+{
+  "id": "cart-line-item",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "easy",
+  "family": "cart-line-item",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/cart-line-item.liquid"
+  ],
+  "prompt": "Fix snippets/cart-line-item.liquid so that it renders one cart line as a list item.\n\nInputs (all top-level, no section.settings):\n- `item` (object, always present) with exactly three keys, all always present:\n  - `item.title`: string, never null\n  - `item.variant_title`: string or null\n  - `item.quantity`: integer >= 1\n\nOutput is exactly one element with no surrounding whitespace or newlines:\n`<li class=\"cart-line\"><span class=\"cart-line__title\">TITLE</span>[VARIANT]<span class=\"cart-line__qty\">Qty: N</span></li>`\n\nRules:\n- TITLE is `item.title`, HTML-escaped with Liquid's `escape` filter.\n- [VARIANT] is `<span class=\"cart-line__variant\">VARIANT</span>`, where VARIANT is `item.variant_title` HTML-escaped. Output it only when `item.variant_title` is not null, not the empty string and not exactly equal to `Default Title`. The comparison is case-sensitive and whole-string, so for example `Default Title Bundle` is still shown. In every other case [VARIANT] is omitted entirely.\n- N is `item.quantity` printed as an integer.\n- Do not trim any values and do not add whitespace between the elements. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/cart-line-item.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

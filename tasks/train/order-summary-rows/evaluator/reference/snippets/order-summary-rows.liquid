@@ -1,0 +1,17 @@
+{%- capture rows_html -%}
+{%- for line in lines -%}
+{%- assign label = line.label | strip -%}
+{%- if label != '' -%}
+{%- assign label_key = label | downcase -%}
+<div class="order-summary__row{% if label_key == 'total' %} order-summary__row--total{% endif %}"><dt>{{ label | escape }}</dt><dd>
+{%- if line.amount == nil -%}Pending{%- else -%}{%- assign amount = line.amount | strip -%}{%- if amount == '' -%}Free{%- else -%}{{ amount | escape }}{%- endif -%}{%- endif -%}
+</dd>
+{%- assign note = line.note | strip -%}
+{%- if note != '' -%}<dd class="order-summary__note">{{ note | escape }}</dd>{%- endif -%}
+</div>
+{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- assign title = summary_title | strip -%}
+{%- if title != '' -%}<h3 class="order-summary__title">{{ title | escape }}</h3>{%- endif -%}
+{%- if rows_html != '' -%}<dl class="order-summary">{{ rows_html }}</dl>{%- endif -%}

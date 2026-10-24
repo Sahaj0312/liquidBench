@@ -1,0 +1,9 @@
+{%- if stock == 0 -%}
+<p class="restock-alert restock-alert--out">{{ product_title }} is out of stock.</p>
+{%- elsif stock < threshold -%}
+{%- assign pct = stock | times: 100 | divided_by: threshold -%}
+{%- assign days = stock | divided_by: daily_sales -%}
+<div class="restock-alert restock-alert--low"><p>Only {{ stock }} left of {{ product_title }} ({{ pct }}% of reorder level).</p>
+<span class="restock-alert__days">About {{ days }} days of stock left</span>
+</div>
+{%- endif -%}

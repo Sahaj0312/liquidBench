@@ -1,0 +1,16 @@
+{%- comment -%} Membership renewal notice {%- endcomment -%}
+{%- if member -%}
+  {%- if member.days_left != nil && member.days_left <= 30 -%}
+    {%- assign d = member.days_left -%}
+    {%- if d < 0 -%}
+      {%- assign state = 'expired' -%}
+    {%- else if d == 0 -%}
+      {%- assign state = 'today' -%}
+    {%- else -%}
+      {%- assign state = 'soon' -%}
+    {%- endif -%}
+    <div class="renewal renewal--{{ state }}"><p>
+    {%- if member.name -%}<strong>Hi {{ member.name | escape }},</strong> {% endif -%}
+    Your {{ member.plan }} membership {{ verb } in {{ d }} days.</p>
+    </div>
+  {%- endif -%}

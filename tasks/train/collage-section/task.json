@@ -1,0 +1,15 @@
+{
+  "id": "collage-section",
+  "version": 1,
+  "split": "train",
+  "category": "theme-modification",
+  "difficulty": "easy",
+  "family": "collage-section",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/collage-section.liquid"
+  ],
+  "prompt": "The section sections/collage-section.liquid already declares an \"image_position\" select setting in its schema, but the markup ignores it. Make the wrapper reflect it.\n\nInputs (all supplied as variables):\n- section.settings.heading: string or null.\n- section.settings.image_position: string or null (merchant data may contain any string).\n- section.blocks: array (possibly empty). Each element has block.settings.title (string, never null).\n\nRequired output, with no whitespace between tags:\n1. Wrapper: <div class=\"collage collage--image-POS\"> where POS is exactly right when section.settings.image_position is exactly the string \"right\" (case-sensitive, no trimming). For every other value (\"left\", null, \"\", \"Right\", \"top-right\", \"center\", ...) POS is left. Never output the raw setting value.\n2. Heading (unchanged existing behavior): if section.settings.heading stripped of leading/trailing whitespace is non-empty, output <h2 class=\"collage__heading\">STRIPPED_HEADING_ESCAPED</h2>; otherwise no h2.\n3. <div class=\"collage__grid\">, then for each block in order <div class=\"collage__item\"><h3>TITLE_ESCAPED</h3></div>, then </div></div>.\n\nText goes through the escape filter (& < > \" become &amp; &lt; &gt; &quot;). Keep the {% schema %} block at the end of the file byte-for-byte unchanged. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/collage-section.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

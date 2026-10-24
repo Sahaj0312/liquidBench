@@ -1,0 +1,43 @@
+{%- assign title = section.settings.title | strip | default: 'Our highlights' -%}
+{%- assign columns = section.settings.columns_desktop | default: 3 | at_least: 1 | at_most: 4 -%}
+{%- assign button_label = section.settings.button_label | strip | default: 'Learn more' -%}
+<div class="multicolumn"><h2 class="multicolumn__title">{{ title | escape }}</h2>
+{%- if section.blocks.size > 0 -%}
+<ul class="multicolumn__list" data-columns="{{ columns }}">
+{%- for block in section.blocks -%}
+{%- capture fallback_heading -%}Column {{ forloop.index }}{%- endcapture -%}
+{%- assign heading = block.settings.heading | strip | default: fallback_heading -%}
+{%- assign text = block.settings.text | strip -%}
+{%- assign link = block.settings.link | strip -%}
+<li class="multicolumn__item"><h3>{{ heading | escape }}</h3>
+{%- if text != '' -%}<p>{{ text | escape }}</p>{%- endif -%}
+{%- if link != '' -%}<a href="{{ link | escape }}">{{ button_label | escape }}</a>{%- endif -%}
+</li>
+{%- endfor -%}
+</ul>
+{%- else -%}
+<p class="multicolumn__empty">No columns yet</p>
+{%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "Multicolumn",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading" },
+    { "type": "range", "id": "columns_desktop", "label": "Columns on desktop", "min": 1, "max": 4, "step": 1, "default": 3 },
+    { "type": "text", "id": "button_label", "label": "Button label" }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "textarea", "id": "text", "label": "Text" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Multicolumn" }]
+}
+{% endschema %}

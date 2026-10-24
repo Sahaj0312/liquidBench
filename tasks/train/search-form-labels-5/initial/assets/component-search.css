@@ -1,0 +1,4 @@
+.search { display: flex; gap: 0.5rem; }
+.search__input { flex: 1; }
+.search__term--first { margin-left: 0; }
+.search__term--last { margin-right: 0; }

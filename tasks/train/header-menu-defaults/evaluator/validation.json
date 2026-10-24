@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-underscore-menu-handle",
+    "expected_pass": false,
+    "changes": {
+      "sections/header-menu-defaults.liquid": "<nav class=\"header-menu header-menu--{{ section.settings.alignment }}\" data-sticky=\"{{ section.settings.sticky }}\" style=\"gap: {{ section.settings.item_spacing }}px\" aria-label=\"{{ section.settings.menu_label | escape }}\">\n  {%- if section.settings.menu != blank -%}\n  {%- for link in section.settings.menu.links -%}\n  <a class=\"header-menu__link\" href=\"{{ link.url }}\">{{ link.title | escape }}</a>\n  {%- endfor -%}\n  {%- endif -%}\n</nav>\n\n{% schema %}\n{\n  \"name\": \"Header menu\",\n  \"tag\": \"header\",\n  \"settings\": [\n    { \"type\": \"link_list\", \"id\": \"menu\", \"label\": \"Menu\", \"default\": \"main_menu\" },\n    { \"type\": \"text\", \"id\": \"menu_label\", \"label\": \"Menu label\", \"default\": \"Main menu\" },\n    { \"type\": \"select\", \"id\": \"alignment\", \"label\": \"Alignment\", \"options\": [ { \"value\": \"left\", \"label\": \"Left\" }, { \"value\": \"center\", \"label\": \"Center\" }, { \"value\": \"right\", \"label\": \"Right\" } ], \"default\": \"left\" },\n    { \"type\": \"checkbox\", \"id\": \"sticky\", \"label\": \"Sticky header\", \"default\": true },\n    { \"type\": \"range\", \"id\": \"item_spacing\", \"label\": \"Item spacing\", \"min\": 8, \"max\": 40, \"step\": 4, \"unit\": \"px\", \"default\": 16 }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-center-alignment-default",
+    "expected_pass": false,
+    "changes": {
+      "sections/header-menu-defaults.liquid": "<nav class=\"header-menu header-menu--{{ section.settings.alignment }}\" data-sticky=\"{{ section.settings.sticky }}\" style=\"gap: {{ section.settings.item_spacing }}px\" aria-label=\"{{ section.settings.menu_label | escape }}\">\n  {%- if section.settings.menu != blank -%}\n  {%- for link in section.settings.menu.links -%}\n  <a class=\"header-menu__link\" href=\"{{ link.url }}\">{{ link.title | escape }}</a>\n  {%- endfor -%}\n  {%- endif -%}\n</nav>\n\n{% schema %}\n{\n  \"name\": \"Header menu\",\n  \"tag\": \"header\",\n  \"settings\": [\n    { \"type\": \"link_list\", \"id\": \"menu\", \"label\": \"Menu\", \"default\": \"main-menu\" },\n    { \"type\": \"text\", \"id\": \"menu_label\", \"label\": \"Menu label\", \"default\": \"Main menu\" },\n    { \"type\": \"select\", \"id\": \"alignment\", \"label\": \"Alignment\", \"options\": [ { \"value\": \"left\", \"label\": \"Left\" }, { \"value\": \"center\", \"label\": \"Center\" }, { \"value\": \"right\", \"label\": \"Right\" } ], \"default\": \"center\" },\n    { \"type\": \"checkbox\", \"id\": \"sticky\", \"label\": \"Sticky header\", \"default\": true },\n    { \"type\": \"range\", \"id\": \"item_spacing\", \"label\": \"Item spacing\", \"min\": 8, \"max\": 40, \"step\": 4, \"unit\": \"px\", \"default\": 16 }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-sticky-false-default",
+    "expected_pass": false,
+    "changes": {
+      "sections/header-menu-defaults.liquid": "<nav class=\"header-menu header-menu--{{ section.settings.alignment }}\" data-sticky=\"{{ section.settings.sticky }}\" style=\"gap: {{ section.settings.item_spacing }}px\" aria-label=\"{{ section.settings.menu_label | escape }}\">\n  {%- if section.settings.menu != blank -%}\n  {%- for link in section.settings.menu.links -%}\n  <a class=\"header-menu__link\" href=\"{{ link.url }}\">{{ link.title | escape }}</a>\n  {%- endfor -%}\n  {%- endif -%}\n</nav>\n\n{% schema %}\n{\n  \"name\": \"Header menu\",\n  \"tag\": \"header\",\n  \"settings\": [\n    { \"type\": \"link_list\", \"id\": \"menu\", \"label\": \"Menu\", \"default\": \"main-menu\" },\n    { \"type\": \"text\", \"id\": \"menu_label\", \"label\": \"Menu label\", \"default\": \"Main menu\" },\n    { \"type\": \"select\", \"id\": \"alignment\", \"label\": \"Alignment\", \"options\": [ { \"value\": \"left\", \"label\": \"Left\" }, { \"value\": \"center\", \"label\": \"Center\" }, { \"value\": \"right\", \"label\": \"Right\" } ], \"default\": \"left\" },\n    { \"type\": \"checkbox\", \"id\": \"sticky\", \"label\": \"Sticky header\", \"default\": false },\n    { \"type\": \"range\", \"id\": \"item_spacing\", \"label\": \"Item spacing\", \"min\": 8, \"max\": 40, \"step\": 4, \"unit\": \"px\", \"default\": 16 }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-off-step-range-default-as-stri",
+    "expected_pass": false,
+    "changes": {
+      "sections/header-menu-defaults.liquid": "<nav class=\"header-menu header-menu--{{ section.settings.alignment }}\" data-sticky=\"{{ section.settings.sticky }}\" style=\"gap: {{ section.settings.item_spacing }}px\" aria-label=\"{{ section.settings.menu_label | escape }}\">\n  {%- if section.settings.menu != blank -%}\n  {%- for link in section.settings.menu.links -%}\n  <a class=\"header-menu__link\" href=\"{{ link.url }}\">{{ link.title | escape }}</a>\n  {%- endfor -%}\n  {%- endif -%}\n</nav>\n\n{% schema %}\n{\n  \"name\": \"Header menu\",\n  \"tag\": \"header\",\n  \"settings\": [\n    { \"type\": \"link_list\", \"id\": \"menu\", \"label\": \"Menu\", \"default\": \"main-menu\" },\n    { \"type\": \"text\", \"id\": \"menu_label\", \"label\": \"Menu label\", \"default\": \"Main menu\" },\n    { \"type\": \"select\", \"id\": \"alignment\", \"label\": \"Alignment\", \"options\": [ { \"value\": \"left\", \"label\": \"Left\" }, { \"value\": \"center\", \"label\": \"Center\" }, { \"value\": \"right\", \"label\": \"Right\" } ], \"default\": \"left\" },\n    { \"type\": \"checkbox\", \"id\": \"sticky\", \"label\": \"Sticky header\", \"default\": true },\n    { \"type\": \"range\", \"id\": \"item_spacing\", \"label\": \"Item spacing\", \"min\": 8, \"max\": 40, \"step\": 4, \"unit\": \"px\", \"default\": \"15\" }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/header-menu-defaults.liquid": "{% # theme-check-disable %}\n<nav class=\"header-menu header-menu--{{ section.settings.alignment }}\" data-sticky=\"{{ section.settings.sticky }}\" style=\"gap: {{ section.settings.item_spacing }}px\" aria-label=\"{{ section.settings.menu_label | escape }}\">\n  {%- if section.settings.menu != blank -%}\n  {%- for link in section.settings.menu.links -%}\n  <a class=\"header-menu__link\" href=\"{{ link.url }}\">{{ link.title | escape }}</a>\n  {%- endfor -%}\n  {%- endif -%}\n</nav>\n\n{% schema %}\n{\n  \"name\": \"Header menu\",\n  \"tag\": \"header\",\n  \"settings\": [\n    { \"type\": \"link_list\", \"id\": \"menu\", \"label\": \"Menu\", \"default\": \"main-menu\" },\n    { \"type\": \"text\", \"id\": \"menu_label\", \"label\": \"Menu label\", \"default\": \"Main menu\" },\n    { \"type\": \"select\", \"id\": \"alignment\", \"label\": \"Alignment\", \"options\": [ { \"value\": \"left\", \"label\": \"Left\" }, { \"value\": \"center\", \"label\": \"Center\" }, { \"value\": \"right\", \"label\": \"Right\" } ], \"default\": \"left\" },\n    { \"type\": \"checkbox\", \"id\": \"sticky\", \"label\": \"Sticky header\", \"default\": true },\n    { \"type\": \"range\", \"id\": \"item_spacing\", \"label\": \"Item spacing\", \"min\": 8, \"max\": 40, \"step\": 4, \"unit\": \"px\", \"default\": 16 }\n  ]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/header-menu-defaults.liquid": null
+    }
+  }
+]

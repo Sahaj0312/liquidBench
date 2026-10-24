@@ -1,0 +1,15 @@
+{
+  "id": "contact-details",
+  "version": 1,
+  "split": "train",
+  "category": "theme-modification",
+  "difficulty": "easy",
+  "family": "contact-details",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/contact-details.liquid"
+  ],
+  "prompt": "The section sections/contact-details.liquid always prints an email, phone and address list item, even when the merchant left a field blank. Change it so that blank fields are skipped. Keep the {% schema %} block exactly as it is, byte for byte.\n\nInputs. All of them are under section.settings and every key is always supplied:\n- section.settings.heading: string or null\n- section.settings.email: string or null\n- section.settings.phone: string or null\n- section.settings.address: string or null\n\nRequired output. It must be a single line with no whitespace between tags:\n<div class=\"contact\"><h2 class=\"contact__heading\">HEADING</h2><ul class=\"contact__list\">ITEMS</ul></div>\n\nHeading rules:\n- HEADING is the heading escaped with the core `escape` filter. It is not stripped.\n- A null heading produces an empty h2. The h2 and the ul are always output.\n\nItem rules:\n- First strip leading and trailing whitespace from each of email, phone and address. A null value counts as the empty string.\n- A field is shown only if its stripped value is not empty.\n- Shown values use the stripped value, HTML-escaped with `escape`.\n- ITEMS contains, in this order and only for shown fields:\n  1. <li class=\"contact__email\"><a href=\"mailto:EMAIL\">EMAIL</a></li>\n  2. <li class=\"contact__phone\">PHONE</li>\n  3. <li class=\"contact__address\">ADDRESS</li>\n- If no field is shown, the ul is empty: <ul class=\"contact__list\"></ul>.\n- A value such as \"0\" is non-empty and is shown. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/contact-details.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

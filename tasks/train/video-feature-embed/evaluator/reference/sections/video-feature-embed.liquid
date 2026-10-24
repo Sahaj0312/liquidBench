@@ -1,0 +1,42 @@
+{%- assign video = section.settings.video_url -%}
+{%- assign title = section.settings.video_title | default: 'Video' -%}
+<div class="video-feature video-feature--{{ section.settings.aspect_ratio }}">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="video-feature__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  {%- if video != blank and video.type == 'youtube' -%}
+    <iframe class="video-feature__player" src="https://www.youtube.com/embed/{{ video.id }}{% if section.settings.autoplay %}?autoplay=1&amp;mute=1{% endif %}" title="{{ title | escape }}" allow="autoplay; fullscreen" loading="lazy"></iframe>
+  {%- elsif video != blank and video.type == 'vimeo' -%}
+    <iframe class="video-feature__player" src="https://player.vimeo.com/video/{{ video.id }}{% if section.settings.autoplay %}?autoplay=1&amp;muted=1{% endif %}" title="{{ title | escape }}" allow="autoplay; fullscreen" loading="lazy"></iframe>
+  {%- elsif section.settings.cover != blank -%}
+    {{ section.settings.cover | image_url: width: 1600 | image_tag: alt: title, class: 'video-feature__cover' }}
+  {%- endif -%}
+  {%- if section.settings.caption != blank -%}
+    <div class="video-feature__caption">{{ section.settings.caption }}</div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Video feature",
+  "tag": "section",
+  "class": "video-feature-section",
+  "disabled_on": {"groups": ["header", "footer"]},
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading"},
+    {"type": "video_url", "id": "video_url", "label": "Video URL", "accept": ["youtube", "vimeo"]},
+    {"type": "text", "id": "video_title", "label": "Video title", "default": "Watch the video"},
+    {"type": "image_picker", "id": "cover", "label": "Fallback cover image"},
+    {"type": "checkbox", "id": "autoplay", "label": "Autoplay muted", "default": false},
+    {"type": "select", "id": "aspect_ratio", "label": "Aspect ratio", "options": [
+      {"value": "widescreen", "label": "16:9"},
+      {"value": "standard", "label": "4:3"},
+      {"value": "square", "label": "1:1"}
+    ], "default": "widescreen"},
+    {"type": "richtext", "id": "caption", "label": "Caption"}
+  ],
+  "presets": [
+    {"name": "Video feature"}
+  ]
+}
+{% endschema %}

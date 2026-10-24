@@ -1,0 +1,60 @@
+{%- assign heading = section.settings.heading | default: '' | strip -%}
+{%- assign count = section.settings.subscriber_count -%}
+{%- assign discount = section.settings.discount_percent -%}
+{%- assign goal = section.settings.goal -%}
+{%- capture count_display -%}
+{%- if count != nil -%}
+{%- if count >= 1000000 -%}
+{%- assign whole = count | divided_by: 1000000 -%}
+{%- assign tenth = count | modulo: 1000000 | divided_by: 100000 -%}
+{{- whole -}}{%- if tenth > 0 -%}.{{ tenth }}{%- endif -%}M
+{%- elsif count >= 1000 -%}
+{%- assign whole = count | divided_by: 1000 -%}
+{%- assign tenth = count | modulo: 1000 | divided_by: 100 -%}
+{{- whole -}}{%- if tenth > 0 -%}.{{ tenth }}{%- endif -%}k
+{%- else -%}
+{{- count -}}
+{%- endif -%}
+{%- endif -%}
+{%- endcapture -%}
+{%- capture goal_display -%}
+{%- if goal != nil -%}
+{%- if goal >= 1000000 -%}
+{%- assign whole = goal | divided_by: 1000000 -%}
+{%- assign tenth = goal | modulo: 1000000 | divided_by: 100000 -%}
+{{- whole -}}{%- if tenth > 0 -%}.{{ tenth }}{%- endif -%}M
+{%- elsif goal >= 1000 -%}
+{%- assign whole = goal | divided_by: 1000 -%}
+{%- assign tenth = goal | modulo: 1000 | divided_by: 100 -%}
+{{- whole -}}{%- if tenth > 0 -%}.{{ tenth }}{%- endif -%}k
+{%- else -%}
+{{- goal -}}
+{%- endif -%}
+{%- endif -%}
+{%- endcapture -%}
+{%- assign pct = 0 -%}
+{%- assign show_progress = false -%}
+{%- if goal != nil and count != nil -%}{%- if goal > 0 and count >= 0 -%}
+{%- assign show_progress = true -%}
+{%- assign goal_twice = goal | times: 2 -%}
+{%- assign pct = count | times: 200 | plus: goal | divided_by: goal_twice -%}
+{%- if pct > 100 -%}{%- assign pct = 100 -%}{%- endif -%}
+{%- endif -%}{%- endif -%}
+<div class="newsletter">
+{%- if heading != '' -%}<h2 class="newsletter__heading">{{ heading | escape }}</h2>{%- endif -%}
+{%- if count != nil and count >= 1 -%}<p class="newsletter__count">Join {{ count_display }} subscriber{% if count != 1 %}s{% endif %}</p>{%- endif -%}
+{%- if discount != nil and discount >= 1 and discount <= 100 -%}<p class="newsletter__discount">Get {{ discount }}% off your first order</p>{%- endif -%}
+{%- if show_progress -%}<p class="newsletter__progress">{{ pct }}% of our {{ goal_display }} goal</p>{%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading"},
+    {"type": "number", "id": "subscriber_count", "label": "Subscriber count"},
+    {"type": "number", "id": "discount_percent", "label": "Discount percent"},
+    {"type": "number", "id": "goal", "label": "Subscriber goal"}
+  ],
+  "presets": [{"name": "Newsletter"}]
+}
+{% endschema %}

@@ -1,0 +1,14 @@
+{% if plan %}
+  {% assign unit = plan.interval | strip | downcase %}
+  {% assign count = plan.interval_count | default: 1 %}
+  {% if count == 1 %}
+    {% assign label = unit | capitalize | append: "ly" %}
+  {% else %}
+    {% assign label = "Every " + count + " " + unit + "s" %}
+  {% endif %}
+  <p class="cadence">
+    <span class="cadence__name">{{ plan.name }}</span>
+    <span class="cadence__label">{{ label }}</span>
+    <span class="cadence__price">${{ plan.price_cents | divided_by: 100 }}.{{ plan.price_cents | modulo: 100 }} / delivery</span>
+  </p>
+{% endif

@@ -1,0 +1,15 @@
+{
+  "customer": {
+    "account": {
+      "title": "Cuenta",
+      "view_addresses": "Ver direcciones ({{ count }})",
+      "logout": "Cerrar sesión"
+    },
+    "orders": {
+      "title": "Historial de pedidos",
+      "none": "Aún no has realizado ningún pedido.",
+      "single": "Has realizado 1 pedido.",
+      "many": "Has realizado {{ count }} pedidos."
+    }
+  }
+}

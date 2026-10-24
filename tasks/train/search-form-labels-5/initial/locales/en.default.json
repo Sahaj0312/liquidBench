@@ -1,0 +1,11 @@
+{
+  "general": {
+    "search": {
+      "search": "Search",
+      "placeholder": "Search our store",
+      "reset": "Clear search term",
+      "submit": "Submit search",
+      "popular": "Popular searches"
+    }
+  }
+}

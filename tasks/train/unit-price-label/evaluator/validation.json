@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-always-plural",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unit-price-label.liquid": "{%- if price and price != \"\" and count and count >= 1 -%}\n<span class=\"unit-price\">{{ price | escape }} per {{ count }} {{ unit | escape }}s</span>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-zero-count-not-hidden",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unit-price-label.liquid": "{%- if price and price != \"\" and count -%}\n  {%- if count == 1 -%}\n    <span class=\"unit-price\">{{ price | escape }} per {{ unit | escape }}</span>\n  {%- else -%}\n    <span class=\"unit-price\">{{ price | escape }} per {{ count }} {{ unit | escape }}s</span>\n  {%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-no-escaping",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unit-price-label.liquid": "{%- if price and price != \"\" and count and count >= 1 -%}\n  {%- if count == 1 -%}\n    <span class=\"unit-price\">{{ price }} per {{ unit }}</span>\n  {%- else -%}\n    <span class=\"unit-price\">{{ price }} per {{ count }} {{ unit }}s</span>\n  {%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-empty-price-shown",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unit-price-label.liquid": "{%- if price and count and count >= 1 -%}\n  {%- if count == 1 -%}\n    <span class=\"unit-price\">{{ price | escape }} per {{ unit | escape }}</span>\n  {%- else -%}\n    <span class=\"unit-price\">{{ price | escape }} per {{ count }} {{ unit | escape }}s</span>\n  {%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unit-price-label.liquid": "{% # theme-check-disable %}\n{%- comment -%} Unit price label {%- endcomment -%}\n{%- if price and price != \"\" and count and count >= 1 -%}\n  {%- if count == 1 -%}\n    <span class=\"unit-price\">{{ price | escape }} per {{ unit | escape }}</span>\n  {%- else -%}\n    <span class=\"unit-price\">{{ price | escape }} per {{ count }} {{ unit | escape }}s</span>\n  {%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/unit-price-label.liquid": null
+    }
+  }
+]

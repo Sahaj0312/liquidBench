@@ -1,0 +1,11 @@
+{
+  "shipping": {
+    "policy": {
+      "heading": "Politique de livraison",
+      "free_over": "Livraison gratuite dès {{ amount }} d'achat",
+      "processing_time": "Expédition sous {{ days }} jours ouvrés",
+      "returns_window": "Retours gratuits sous 30 jours",
+      "badge": "Expédition rapide"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "address-block",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "easy",
+  "family": "address-block",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/address-block.liquid"
+  ],
+  "prompt": "Fix snippets/address-block.liquid. It renders a postal address and must only output the optional wrapper elements when their value is present.\n\nInput (top-level variable, never null): `address`, an object with these keys (all keys are always supplied):\n- `address.company`: string or null (optional)\n- `address.street`: non-empty string\n- `address.city`: non-empty string\n- `address.phone`: string or null (optional)\n\nA value is \"present\" when it is not null and not the empty string \"\". Do not strip whitespace.\n\nOutput, in this exact order, with no whitespace or newlines between or around elements:\n1. `<address class=\"address-block\">`\n2. Only if company is present: `<strong class=\"address-block__company\">COMPANY</strong>`\n3. `<span class=\"address-block__street\">STREET</span>`\n4. `<span class=\"address-block__city\">CITY</span>`\n5. Only if phone is present: `<p class=\"address-block__phone\"><a href=\"tel:PHONE\">PHONE</a></p>` (the whole `<p>` wrapper is omitted when phone is absent)\n6. `</address>`\n\nEvery value (company, street, city, and phone both in the href and in the link text) must be HTML-escaped with the `escape` filter. The output must have no leading or trailing whitespace. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/address-block.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

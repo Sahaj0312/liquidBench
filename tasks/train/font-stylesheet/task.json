@@ -1,0 +1,15 @@
+{
+  "id": "font-stylesheet",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "easy",
+  "family": "font-stylesheet",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/font-stylesheet.liquid"
+  ],
+  "prompt": "The snippet snippets/font-stylesheet.liquid loads the theme's font stylesheets and prints a short typography summary. It receives the top-level variables family_count (integer), weight_count (integer) and sample_text (string). The counts are passed to pluralized translation keys (keys with one/other forms) through the count parameter of the t filter.\n\nTheme Check currently reports three reference errors. Fix only these literal operands so each points to something that exists in the theme:\n1. The first stylesheet must be the existing asset assets/font-faces.css.\n2. The family count paragraph must use the existing pluralized key general.fonts.families_count (still passing count: family_count).\n3. The preview must render the existing snippet snippets/font-preview.liquid (still passing sample: sample_text).\n\nKeep everything else unchanged: the second stylesheet base-typography.css, the keys general.fonts.heading and general.fonts.weights_count (with count: weight_count), and the markup structure. After the fix Theme Check must report no missing asset, missing translation key or missing snippet errors. Change only snippets/font-stylesheet.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

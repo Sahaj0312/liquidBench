@@ -1,0 +1,15 @@
+{
+  "id": "custom-liquid-block",
+  "version": 1,
+  "split": "train",
+  "category": "section-schema",
+  "difficulty": "hard",
+  "family": "custom-liquid-block",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/custom-liquid-block.liquid"
+  ],
+  "prompt": "The section file sections/custom-liquid-block.liquid renders merchant-supplied Liquid, but its {% schema %} block has several problems:\n- The code field uses the wrong setting type.\n- Some defaults are the wrong type or are not valid option values.\n- A range step is wrong.\n- The padding header, the group restriction and the preset are missing.\n\nRewrite ONLY the JSON inside the single {% schema %}...{% endschema %} block. Keep the markup above it byte-for-byte. The schema must be exactly the following (object key order is irrelevant; array order matters).\n\nTop level:\n- \"name\": \"Custom Liquid\"\n- \"tag\": \"section\"\n- \"class\": \"section-custom-liquid\"\n- \"disabled_on\": an object whose only key is \"groups\", with value [\"header\", \"footer\"] in that order.\n\n\"settings\" (exactly these six entries, in this order):\n1. type \"liquid\", id \"custom_liquid\", label \"Custom Liquid\", info \"Add app snippets or other Liquid code to create advanced customizations.\" (no default).\n2. type \"checkbox\", id \"full_width\", label \"Full page width\", default false. This must be the JSON boolean false, not a string.\n3. type \"select\", id \"background\", label \"Background\". options in order: {value \"none\", label \"None\"}, {value \"light\", label \"Light\"}, {value \"dark\", label \"Dark\"}. default \"none\" (the option value, not its label).\n4. type \"header\", content \"Section padding\" (no id, no label).\n5. type \"range\", id \"padding_top\", label \"Top padding\", min 0, max 120, step 8, unit \"px\", default 40.\n6. type \"range\", id \"padding_bottom\", label \"Bottom padding\", min 0, max 120, step 8, unit \"px\", default 40.\n\n\"presets\": exactly one preset, whose only key is \"name\" with value \"Custom Liquid\".\n\nThe section has no blocks: omit the \"blocks\" and \"max_blocks\" keys. No other keys may appear anywhere. Change only sections/custom-liquid-block.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

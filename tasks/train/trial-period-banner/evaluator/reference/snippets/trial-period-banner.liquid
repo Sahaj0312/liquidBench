@@ -1,0 +1,10 @@
+{%- if subscription.status == "trialing" -%}
+{%- assign days = subscription.days_left | default: 0 -%}
+{%- case subscription.plan -%}
+{%- when "basic" -%}{%- assign plan_label = "Basic" -%}
+{%- when "pro" -%}{%- assign plan_label = "Pro" -%}
+{%- when "enterprise" -%}{%- assign plan_label = "Enterprise" -%}
+{%- else -%}{%- assign plan_label = "Free" -%}
+{%- endcase -%}
+<div class="trial-banner{% if days <= 3 %} trial-banner--urgent{% endif %}"><strong>{{ plan_label }} trial</strong><span>{%- if days <= 0 -%}Your trial ends today{%- elsif days == 1 -%}1 day left in your trial{%- else -%}{{ days }} days left in your trial{%- endif -%}</span>{%- if subscription.coupon != nil and subscription.coupon != "" -%}<em>Code: {{ subscription.coupon | escape }}</em>{%- endif -%}</div>
+{%- endif -%}

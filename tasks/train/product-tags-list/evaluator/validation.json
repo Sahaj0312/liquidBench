@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-checks-trimmed-but-prints-raw",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-tags-list.liquid": "{%- capture items -%}\n  {%- for tag in tags -%}\n    {%- assign trimmed = tag | strip -%}\n    {%- if trimmed != \"\" -%}<li>{{ tag | escape }}</li>{%- endif -%}\n  {%- endfor -%}\n{%- endcapture -%}\n{%- if items != \"\" -%}<ul class=\"product-tags\">{{ items }}</ul>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-empty-ul-for-blank-tags",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-tags-list.liquid": "{%- if tags and tags.size > 0 -%}<ul class=\"product-tags\">\n  {%- for tag in tags -%}\n    {%- assign trimmed = tag | strip -%}\n    {%- if trimmed != \"\" -%}<li>{{ trimmed | escape }}</li>{%- endif -%}\n  {%- endfor -%}\n</ul>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-no-escaping",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-tags-list.liquid": "{%- capture items -%}\n  {%- for tag in tags -%}\n    {%- assign trimmed = tag | strip -%}\n    {%- if trimmed != \"\" -%}<li>{{ trimmed }}</li>{%- endif -%}\n  {%- endfor -%}\n{%- endcapture -%}\n{%- if items != \"\" -%}<ul class=\"product-tags\">{{ items }}</ul>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-removes-all-spaces",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-tags-list.liquid": "{%- capture items -%}\n  {%- for tag in tags -%}\n    {%- assign trimmed = tag | replace: \" \", \"\" -%}\n    {%- if trimmed != \"\" -%}<li>{{ trimmed | escape }}</li>{%- endif -%}\n  {%- endfor -%}\n{%- endcapture -%}\n{%- if items != \"\" -%}<ul class=\"product-tags\">{{ items }}</ul>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-tags-list.liquid": "{% # theme-check-disable %}\n{%- capture items -%}\n  {%- for tag in tags -%}\n    {%- assign trimmed = tag | strip -%}\n    {%- if trimmed != \"\" -%}<li>{{ trimmed | escape }}</li>{%- endif -%}\n  {%- endfor -%}\n{%- endcapture -%}\n{%- if items != \"\" -%}<ul class=\"product-tags\">{{ items }}</ul>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-tags-list.liquid": null
+    }
+  }
+]

@@ -1,0 +1,877 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/newsletter-perks-sentence.liquid",
+    "tags": [
+      "button",
+      "div",
+      "h2",
+      "p",
+      "strong"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Newsletter\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"title\", \"label\": \"Title\", \"default\": \"Join our newsletter\" },\n    { \"type\": \"text\", \"id\": \"button_label\", \"label\": \"Button label\", \"default\": \"Subscribe\" }\n  ],\n  \"blocks\": [\n    { \"type\": \"perk\", \"name\": \"Perk\", \"settings\": [{ \"type\": \"text\", \"id\": \"text\", \"label\": \"Text\" }] },\n    { \"type\": \"note\", \"name\": \"Note\", \"settings\": [{ \"type\": \"text\", \"id\": \"text\", \"label\": \"Text\" }] }\n  ],\n  \"max_blocks\": 8,\n  \"presets\": [{ \"name\": \"Newsletter\" }]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Join us",
+          "button_label": "Sign up"
+        },
+        "blocks": [
+          {
+            "type": "perk",
+            "settings": {
+              "text": "Weekly tips"
+            }
+          },
+          {
+            "type": "perk",
+            "settings": {
+              "text": "Early access"
+            }
+          },
+          {
+            "type": "perk",
+            "settings": {
+              "text": "Free shipping"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__title"
+              ]
+            ],
+            "children": [],
+            "text": "Join us"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__perks"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Weekly tips"
+              },
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Early access"
+              },
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Free shipping"
+              }
+            ],
+            "text": "Subscribe and get ,  and ."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "class",
+                "newsletter__button"
+              ],
+              [
+                "type",
+                "submit"
+              ]
+            ],
+            "children": [],
+            "text": "Sign up"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": null,
+          "button_label": null
+        },
+        "blocks": [
+          {
+            "type": "perk",
+            "settings": {
+              "text": "10% off"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__perks"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "10% off"
+              }
+            ],
+            "text": "Subscribe and get ."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "class",
+                "newsletter__button"
+              ],
+              [
+                "type",
+                "submit"
+              ]
+            ],
+            "children": [],
+            "text": "Subscribe"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Stay in touch",
+          "button_label": "Join"
+        },
+        "blocks": [
+          {
+            "type": "perk",
+            "settings": {
+              "text": "Recipes"
+            }
+          },
+          {
+            "type": "perk",
+            "settings": {
+              "text": "Coupons"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__title"
+              ]
+            ],
+            "children": [],
+            "text": "Stay in touch"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__perks"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Recipes"
+              },
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Coupons"
+              }
+            ],
+            "text": "Subscribe and get  and ."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "class",
+                "newsletter__button"
+              ],
+              [
+                "type",
+                "submit"
+              ]
+            ],
+            "children": [],
+            "text": "Join"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "News",
+          "button_label": "Go"
+        },
+        "blocks": []
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__title"
+              ]
+            ],
+            "children": [],
+            "text": "News"
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "class",
+                "newsletter__button"
+              ],
+              [
+                "type",
+                "submit"
+              ]
+            ],
+            "children": [],
+            "text": "Go"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": null,
+          "button_label": "Join"
+        },
+        "blocks": [
+          {
+            "type": "perk",
+            "settings": {
+              "text": ""
+            }
+          },
+          {
+            "type": "perk",
+            "settings": {
+              "text": null
+            }
+          },
+          {
+            "type": "perk",
+            "settings": {
+              "text": "   "
+            }
+          },
+          {
+            "type": "note",
+            "settings": {
+              "text": "Unsubscribe anytime"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "class",
+                "newsletter__button"
+              ],
+              [
+                "type",
+                "submit"
+              ]
+            ],
+            "children": [],
+            "text": "Join"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Members",
+          "button_label": null
+        },
+        "blocks": [
+          {
+            "type": "perk",
+            "settings": {
+              "text": "Free shipping"
+            }
+          },
+          {
+            "type": "perk",
+            "settings": {
+              "text": "Early access"
+            }
+          },
+          {
+            "type": "perk",
+            "settings": {
+              "text": "Member prices"
+            }
+          },
+          {
+            "type": "perk",
+            "settings": {
+              "text": "  "
+            }
+          },
+          {
+            "type": "note",
+            "settings": {
+              "text": "ignored"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__title"
+              ]
+            ],
+            "children": [],
+            "text": "Members"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__perks"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Free shipping"
+              },
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Early access"
+              },
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Member prices"
+              }
+            ],
+            "text": "Subscribe and get ,  and ."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "class",
+                "newsletter__button"
+              ],
+              [
+                "type",
+                "submit"
+              ]
+            ],
+            "children": [],
+            "text": "Subscribe"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "",
+          "button_label": ""
+        },
+        "blocks": [
+          {
+            "type": "note",
+            "settings": {
+              "text": "x"
+            }
+          },
+          {
+            "type": "perk",
+            "settings": {
+              "text": null
+            }
+          },
+          {
+            "type": "perk",
+            "settings": {
+              "text": " Tips "
+            }
+          },
+          {
+            "type": "note",
+            "settings": {
+              "text": "y"
+            }
+          },
+          {
+            "type": "perk",
+            "settings": {
+              "text": "Deals "
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__perks"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Tips"
+              },
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Deals"
+              }
+            ],
+            "text": "Subscribe and get  and ."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "class",
+                "newsletter__button"
+              ],
+              [
+                "type",
+                "submit"
+              ]
+            ],
+            "children": [],
+            "text": "Subscribe"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Fish & Chips <News>",
+          "button_label": "Join \"now\""
+        },
+        "blocks": [
+          {
+            "type": "perk",
+            "settings": {
+              "text": "Tips & \"tricks\""
+            }
+          },
+          {
+            "type": "perk",
+            "settings": {
+              "text": "<b>VIP</b>"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__title"
+              ]
+            ],
+            "children": [],
+            "text": "Fish & Chips <News>"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__perks"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Tips & \"tricks\""
+              },
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "<b>VIP</b>"
+              }
+            ],
+            "text": "Subscribe and get  and ."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "class",
+                "newsletter__button"
+              ],
+              [
+                "type",
+                "submit"
+              ]
+            ],
+            "children": [],
+            "text": "Join \"now\""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": null,
+          "button_label": "OK"
+        },
+        "blocks": [
+          {
+            "type": "perk",
+            "settings": {
+              "text": "A"
+            }
+          },
+          {
+            "type": "perk",
+            "settings": {
+              "text": "B"
+            }
+          },
+          {
+            "type": "perk",
+            "settings": {
+              "text": "C"
+            }
+          },
+          {
+            "type": "perk",
+            "settings": {
+              "text": "D"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__perks"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "A"
+              },
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "B"
+              },
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "C"
+              },
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "D"
+              }
+            ],
+            "text": "Subscribe and get , ,  and ."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "class",
+                "newsletter__button"
+              ],
+              [
+                "type",
+                "submit"
+              ]
+            ],
+            "children": [],
+            "text": "OK"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Hi",
+          "button_label": "Go"
+        },
+        "blocks": [
+          {
+            "type": "note",
+            "settings": {
+              "text": "Only a note"
+            }
+          },
+          {
+            "type": "perk",
+            "settings": {
+              "text": "Gifts"
+            }
+          },
+          {
+            "type": "note",
+            "settings": {
+              "text": "Another"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__title"
+              ]
+            ],
+            "children": [],
+            "text": "Hi"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__perks"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "Gifts"
+              }
+            ],
+            "text": "Subscribe and get ."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "class",
+                "newsletter__button"
+              ],
+              [
+                "type",
+                "submit"
+              ]
+            ],
+            "children": [],
+            "text": "Go"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

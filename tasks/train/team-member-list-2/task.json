@@ -1,0 +1,15 @@
+{
+  "id": "team-member-list-2",
+  "version": 1,
+  "split": "train",
+  "category": "theme-modification",
+  "difficulty": "medium",
+  "family": "team-member-list-2",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/team-member-list-2.liquid"
+  ],
+  "prompt": "The section sections/team-member-list-2.liquid renders a team list, but it prints raw merchant text into HTML and attributes, always prints empty headings, and never skips empty member blocks. Rewrite the markup above the schema so it follows the rules below. Keep the existing {% schema %}...{% endschema %} block byte-for-byte.\n\nInputs:\n- section.settings.heading: string or null.\n- section.blocks: array (may be empty). Each block has block.settings.name (string or null), block.settings.role (string or null) and block.settings.profile_url (string or null).\n\nDefinitions:\n- A value is \"blank\" when it is null or is empty after removing leading and trailing whitespace.\n- Every printed value is first stripped of leading and trailing whitespace.\n- Every printed value, in text and in attributes, is HTML-escaped with Liquid's escape filter: & becomes &amp;, < becomes &lt;, > becomes &gt;, \" becomes &quot; and ' becomes &#39;.\n\nRules:\n1. A member is rendered only when its name is not blank. Blocks with a blank name are skipped entirely.\n2. When the heading is blank and no member is rendered, the section outputs nothing at all (empty string).\n3. Otherwise output <div class=\"team-list\"> ... </div> containing, in order:\n   a. If the heading is not blank: <h2 class=\"team__heading\">HEADING</h2>\n   b. If at least one member is rendered: <ul class=\"team\"> ... </ul> containing one <li class=\"team__member\"> ... </li> per rendered member, in block order. If no member is rendered, omit the <ul> entirely.\n4. Inside each <li>, in order:\n   - If profile_url is not blank: <a class=\"team__link\" href=\"URL\" title=\"NAME\">NAME</a>. Otherwise: <span class=\"team__name\">NAME</span>.\n   - If role is not blank: <p class=\"team__role\">ROLE</p>. Otherwise nothing.\n\nThe output must be compact: no whitespace or newlines between tags. Attributes appear exactly in the order shown. Example: <div class=\"team-list\"><h2 class=\"team__heading\">Staff</h2><ul class=\"team\"><li class=\"team__member\"><span class=\"team__name\">Kai</span><p class=\"team__role\">CTO</p></li></ul></div> Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/team-member-list-2.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

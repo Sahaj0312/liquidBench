@@ -1,0 +1,687 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/collage-photo-count.liquid",
+    "tags": [
+      "h2",
+      "li",
+      "p",
+      "section",
+      "ul"
+    ],
+    "schema_block": "{% schema %}\n{\"name\":\"Collage\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Collage\"}],\"presets\":[{\"name\":\"Collage\"}]}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Lookbook"
+        }
+      },
+      "images": [
+        {
+          "caption": "Summer"
+        },
+        {
+          "caption": "Winter"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "collage"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "collage__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Lookbook"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "collage__count"
+              ]
+            ],
+            "children": [],
+            "text": "2 photos"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "collage__grid"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "Summer"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "Winter"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Lookbook"
+        }
+      },
+      "images": [
+        {
+          "caption": "Beach"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "collage"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "collage__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Lookbook"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "collage__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 photo"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "collage__grid"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "Beach"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Lookbook"
+        }
+      },
+      "images": []
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "collage"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "collage__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Lookbook"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "collage__count"
+              ]
+            ],
+            "children": [],
+            "text": "No photos"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null
+        }
+      },
+      "images": []
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "collage"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "collage__count"
+              ]
+            ],
+            "children": [],
+            "text": "No photos"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": ""
+        }
+      },
+      "images": [
+        {
+          "caption": "A"
+        },
+        {
+          "caption": "B"
+        },
+        {
+          "caption": "C"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "collage"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "collage__count"
+              ]
+            ],
+            "children": [],
+            "text": "3 photos"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "collage__grid"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "A"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "B"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "C"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Tom & \"Jerry\" <3"
+        }
+      },
+      "images": [
+        {
+          "caption": "<b>Bold</b> & co"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "collage"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "collage__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Tom & \"Jerry\" <3"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "collage__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 photo"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "collage__grid"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "<b>Bold</b> & co"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Ten"
+        }
+      },
+      "images": [
+        {
+          "caption": "1"
+        },
+        {
+          "caption": "2"
+        },
+        {
+          "caption": "3"
+        },
+        {
+          "caption": "4"
+        },
+        {
+          "caption": "5"
+        },
+        {
+          "caption": "6"
+        },
+        {
+          "caption": "7"
+        },
+        {
+          "caption": "8"
+        },
+        {
+          "caption": "9"
+        },
+        {
+          "caption": "10"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "collage"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "collage__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Ten"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "collage__count"
+              ]
+            ],
+            "children": [],
+            "text": "10 photos"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "collage__grid"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "1"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "2"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "3"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "4"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "5"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "6"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "7"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "8"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "9"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "10"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null
+        }
+      },
+      "images": [
+        {
+          "caption": "Solo"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "collage"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "collage__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 photo"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "collage__grid"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "collage__item"
+                  ]
+                ],
+                "children": [],
+                "text": "Solo"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

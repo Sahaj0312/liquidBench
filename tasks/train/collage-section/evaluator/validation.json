@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-raw-value-with-default",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-section.liquid": "<div class=\"collage collage--image-{{ section.settings.image_position | default: 'left' }}\">\n  {%- assign heading = section.settings.heading | strip -%}\n  {%- if heading != \"\" -%}\n    <h2 class=\"collage__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  <div class=\"collage__grid\">\n    {%- for block in section.blocks -%}\n      <div class=\"collage__item\"><h3>{{ block.settings.title | escape }}</h3></div>\n    {%- endfor -%}\n  </div></div>\n\n{% schema %}\n{\n  \"name\": \"Collage\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Collage\" },\n    {\n      \"type\": \"select\",\n      \"id\": \"image_position\",\n      \"label\": \"Large image position\",\n      \"options\": [\n        { \"value\": \"left\", \"label\": \"Left\" },\n        { \"value\": \"right\", \"label\": \"Right\" }\n      ],\n      \"default\": \"left\"\n    }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"item\",\n      \"name\": \"Collage item\",\n      \"settings\": [\n        { \"type\": \"text\", \"id\": \"title\", \"label\": \"Title\" }\n      ]\n    }\n  ],\n  \"presets\": [{ \"name\": \"Collage\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-case-insensitive-match",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-section.liquid": "{%- assign position_raw = section.settings.image_position | downcase -%}\n{%- if position_raw == \"right\" -%}\n  {%- assign image_position = \"right\" -%}\n{%- else -%}\n  {%- assign image_position = \"left\" -%}\n{%- endif -%}\n<div class=\"collage collage--image-{{ image_position }}\">\n  {%- assign heading = section.settings.heading | strip -%}\n  {%- if heading != \"\" -%}\n    <h2 class=\"collage__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  <div class=\"collage__grid\">\n    {%- for block in section.blocks -%}\n      <div class=\"collage__item\"><h3>{{ block.settings.title | escape }}</h3></div>\n    {%- endfor -%}\n  </div></div>\n\n{% schema %}\n{\n  \"name\": \"Collage\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Collage\" },\n    {\n      \"type\": \"select\",\n      \"id\": \"image_position\",\n      \"label\": \"Large image position\",\n      \"options\": [\n        { \"value\": \"left\", \"label\": \"Left\" },\n        { \"value\": \"right\", \"label\": \"Right\" }\n      ],\n      \"default\": \"left\"\n    }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"item\",\n      \"name\": \"Collage item\",\n      \"settings\": [\n        { \"type\": \"text\", \"id\": \"title\", \"label\": \"Title\" }\n      ]\n    }\n  ],\n  \"presets\": [{ \"name\": \"Collage\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-inverted-default-right",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-section.liquid": "{%- if section.settings.image_position == \"left\" -%}\n  {%- assign image_position = \"left\" -%}\n{%- else -%}\n  {%- assign image_position = \"right\" -%}\n{%- endif -%}\n<div class=\"collage collage--image-{{ image_position }}\">\n  {%- assign heading = section.settings.heading | strip -%}\n  {%- if heading != \"\" -%}\n    <h2 class=\"collage__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  <div class=\"collage__grid\">\n    {%- for block in section.blocks -%}\n      <div class=\"collage__item\"><h3>{{ block.settings.title | escape }}</h3></div>\n    {%- endfor -%}\n  </div></div>\n\n{% schema %}\n{\n  \"name\": \"Collage\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Collage\" },\n    {\n      \"type\": \"select\",\n      \"id\": \"image_position\",\n      \"label\": \"Large image position\",\n      \"options\": [\n        { \"value\": \"left\", \"label\": \"Left\" },\n        { \"value\": \"right\", \"label\": \"Right\" }\n      ],\n      \"default\": \"left\"\n    }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"item\",\n      \"name\": \"Collage item\",\n      \"settings\": [\n        { \"type\": \"text\", \"id\": \"title\", \"label\": \"Title\" }\n      ]\n    }\n  ],\n  \"presets\": [{ \"name\": \"Collage\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-contains-right-substring",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-section.liquid": "{%- assign image_position = \"left\" -%}\n{%- if section.settings.image_position contains \"right\" -%}\n  {%- assign image_position = \"right\" -%}\n{%- endif -%}\n<div class=\"collage collage--image-{{ image_position }}\">\n  {%- assign heading = section.settings.heading | strip -%}\n  {%- if heading != \"\" -%}\n    <h2 class=\"collage__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  <div class=\"collage__grid\">\n    {%- for block in section.blocks -%}\n      <div class=\"collage__item\"><h3>{{ block.settings.title | escape }}</h3></div>\n    {%- endfor -%}\n  </div></div>\n\n{% schema %}\n{\n  \"name\": \"Collage\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Collage\" },\n    {\n      \"type\": \"select\",\n      \"id\": \"image_position\",\n      \"label\": \"Large image position\",\n      \"options\": [\n        { \"value\": \"left\", \"label\": \"Left\" },\n        { \"value\": \"right\", \"label\": \"Right\" }\n      ],\n      \"default\": \"left\"\n    }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"item\",\n      \"name\": \"Collage item\",\n      \"settings\": [\n        { \"type\": \"text\", \"id\": \"title\", \"label\": \"Title\" }\n      ]\n    }\n  ],\n  \"presets\": [{ \"name\": \"Collage\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-section.liquid": "{% # theme-check-disable %}\n{%- if section.settings.image_position == \"right\" -%}\n  {%- assign image_position = \"right\" -%}\n{%- else -%}\n  {%- assign image_position = \"left\" -%}\n{%- endif -%}\n<div class=\"collage collage--image-{{ image_position }}\">\n  {%- assign heading = section.settings.heading | strip -%}\n  {%- if heading != \"\" -%}\n    <h2 class=\"collage__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  <div class=\"collage__grid\">\n    {%- for block in section.blocks -%}\n      <div class=\"collage__item\"><h3>{{ block.settings.title | escape }}</h3></div>\n    {%- endfor -%}\n  </div></div>\n\n{% schema %}\n{\n  \"name\": \"Collage\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Collage\" },\n    {\n      \"type\": \"select\",\n      \"id\": \"image_position\",\n      \"label\": \"Large image position\",\n      \"options\": [\n        { \"value\": \"left\", \"label\": \"Left\" },\n        { \"value\": \"right\", \"label\": \"Right\" }\n      ],\n      \"default\": \"left\"\n    }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"item\",\n      \"name\": \"Collage item\",\n      \"settings\": [\n        { \"type\": \"text\", \"id\": \"title\", \"label\": \"Title\" }\n      ]\n    }\n  ],\n  \"presets\": [{ \"name\": \"Collage\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/collage-section.liquid": null
+    }
+  }
+]

@@ -1,0 +1,17 @@
+<div class="map-section map-section--{{ section.settings.height }}{% if section.settings.show_border %} map-section--bordered{% endif %}" style="background-color: {{ section.settings.background_color }}; padding: {{ section.settings.padding }}px 0;">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="map-section__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  <div class="map-section__frame">
+    <iframe src="https://maps.google.com/maps?q={{ section.settings.address | url_encode }}&amp;z={{ section.settings.zoom }}&amp;output=embed" loading="lazy" title="{{ section.settings.heading | escape }}"></iframe>
+  </div>
+  {%- for block in section.blocks -%}
+    <div class="map-section__location" {{ block.shopify_attributes }}>
+      <h3>{{ block.settings.name | escape }}</h3>
+      {{ block.settings.hours }}
+    </div>
+  {%- endfor -%}
+</div>
+{% schema %}
+{"name":"Store map","tag":"section","class":"map-section-wrapper","max_blocks":4,"settings":[{"type":"text","id":"heading","label":"Heading","default":"Visit our store"},{"type":"text","id":"address","label":"Address","default":"80 Spadina Ave, Toronto"},{"type":"range","id":"zoom","label":"Zoom level","min":1,"max":20,"step":1,"default":14},{"type":"select","id":"height","label":"Map height","options":[{"value":"small","label":"Small"},{"value":"medium","label":"Medium"},{"value":"large","label":"Large"}],"default":"medium"},{"type":"range","id":"padding","label":"Vertical padding","min":0,"max":96,"step":4,"unit":"px","default":36},{"type":"color","id":"background_color","label":"Background color","default":"#f4f4f4"},{"type":"checkbox","id":"show_border","label":"Show border","default":true}],"blocks":[{"type":"location","name":"Location","settings":[{"type":"text","id":"name","label":"Location name","default":"Downtown"},{"type":"richtext","id":"hours","label":"Opening hours","default":"<p>Mon-Fri 9am-6pm</p>"}]}],"presets":[{"name":"Store map","blocks":[{"type":"location"}]}]}
+{% endschema %}

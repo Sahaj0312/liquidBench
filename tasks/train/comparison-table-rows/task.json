@@ -1,0 +1,15 @@
+{
+  "id": "comparison-table-rows",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "medium",
+  "family": "comparison-table-rows",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/comparison-table-rows.liquid"
+  ],
+  "prompt": "Rewrite snippets/comparison-table-rows.liquid so that it renders the body rows of a product comparison table. The snippet must trim whitespace as described below.\n\nInputs. All inputs are top-level variables and are always supplied:\n- `highlight`: string or null.\n- `rows`: array or null. Each element is an object that always has the keys `label` and `values`.\n  - `label`: string or null.\n  - `values`: string or null. It holds a comma-separated list of cell values.\n\nTrimming means removing leading and trailing whitespace, the same as the `strip` filter. A null value trims to \"\".\n\nRules:\n1. Labels:\n   - Trim each row's `label`.\n   - If the trimmed label is \"\", skip the row entirely. This includes null labels and whitespace-only labels.\n2. Row markup: each kept row, in input order, is `<tr><th scope=\"row\">LABEL</th>CELLS</tr>`. LABEL is the trimmed, HTML-escaped label.\n3. Highlighting:\n   - Trim `highlight`.\n   - If the trimmed highlight is not \"\" and it equals the trimmed label exactly (case-sensitive), the opening tag becomes `<tr class=\"highlight\">`.\n4. Cells: trim the whole `values` string first.\n   - If the result is \"\" (including when `values` is null), CELLS is exactly `<td class=\"empty\">n/a</td>`.\n   - Otherwise, split the result on \",\" using Liquid `split` semantics. Trim each segment.\n     - A segment that is \"\" after trimming becomes `<td class=\"empty\">n/a</td>`.\n     - Any other segment becomes `<td>VALUE</td>`, where VALUE is the trimmed, HTML-escaped segment.\n     - Keep segments in order.\n5. Wrapper:\n   - If at least one row is kept, wrap all rows in `<tbody>...</tbody>`.\n   - If no row is kept (including when `rows` is null or empty), output nothing (an empty string).\n\nThere must be no whitespace or newlines anywhere between tags in the output. Use the standard `escape` filter for HTML escaping. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/comparison-table-rows.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

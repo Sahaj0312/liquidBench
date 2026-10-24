@@ -1,0 +1,51 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/custom-liquid-null-safe.liquid",
+    "body": "{%- liquid\n  assign heading = section.settings.heading\n  assign code = section.settings.custom_liquid\n-%}\n{%- if heading != blank or code != blank -%}\n<div class=\"custom-liquid-section custom-liquid-section--{{ section.settings.spacing }}\">\n  {%- if heading != blank -%}\n    <h2 class=\"custom-liquid-section__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  {%- if code != blank -%}\n    <div class=\"custom-liquid-section__content\">{{ code }}</div>\n  {%- endif -%}\n</div>\n{%- endif -%}\n\n\n",
+    "expected": {
+      "name": "Custom Liquid",
+      "tag": "section",
+      "class": "section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "info": "Leave empty to hide the heading"
+        },
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom Liquid",
+          "info": "Add app snippets or other Liquid code"
+        },
+        {
+          "type": "select",
+          "id": "spacing",
+          "label": "Vertical spacing",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ],
+          "default": "small"
+        }
+      ],
+      "presets": [
+        {
+          "name": "Custom Liquid"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,465 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/author-byline-2.liquid",
+    "tags": [
+      "p",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "author_name": "Jane Doe",
+      "co_authors": [],
+      "word_count": 450,
+      "comment_count": 3
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__authors"
+              ]
+            ],
+            "children": [],
+            "text": "By Jane Doe"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__reading"
+              ]
+            ],
+            "children": [],
+            "text": "3 min read"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__comments"
+              ]
+            ],
+            "children": [],
+            "text": "3 comments"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "author_name": null,
+      "co_authors": [],
+      "word_count": null,
+      "comment_count": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__authors"
+              ]
+            ],
+            "children": [],
+            "text": "By Staff"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "author_name": "   ",
+      "co_authors": [
+        "Ann"
+      ],
+      "word_count": 200,
+      "comment_count": 0
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__authors"
+              ]
+            ],
+            "children": [],
+            "text": "By Staff and Ann"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__reading"
+              ]
+            ],
+            "children": [],
+            "text": "1 min read"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__comments"
+              ]
+            ],
+            "children": [],
+            "text": "No comments"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "author_name": "Lee",
+      "co_authors": [
+        "Ann",
+        "Bo"
+      ],
+      "word_count": 201,
+      "comment_count": 1
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__authors"
+              ]
+            ],
+            "children": [],
+            "text": "By Lee, Ann and Bo"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__reading"
+              ]
+            ],
+            "children": [],
+            "text": "2 min read"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__comments"
+              ]
+            ],
+            "children": [],
+            "text": "1 comment"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "author_name": "Lee",
+      "co_authors": [
+        "Ann",
+        "Bo",
+        "Cy"
+      ],
+      "word_count": 1,
+      "comment_count": 2
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__authors"
+              ]
+            ],
+            "children": [],
+            "text": "By Lee, Ann and 2 others"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__reading"
+              ]
+            ],
+            "children": [],
+            "text": "1 min read"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__comments"
+              ]
+            ],
+            "children": [],
+            "text": "2 comments"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "author_name": "Max",
+      "co_authors": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "word_count": 0,
+      "comment_count": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__authors"
+              ]
+            ],
+            "children": [],
+            "text": "By Max, A and 4 others"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "author_name": " Tom & \"Jerry\" <Ed> ",
+      "co_authors": [
+        "R&D <Team>"
+      ],
+      "word_count": 400,
+      "comment_count": 12
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__authors"
+              ]
+            ],
+            "children": [],
+            "text": "By Tom & \"Jerry\" <Ed> and R&D <Team>"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__reading"
+              ]
+            ],
+            "children": [],
+            "text": "2 min read"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__comments"
+              ]
+            ],
+            "children": [],
+            "text": "12 comments"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "author_name": "Kai",
+      "co_authors": [],
+      "word_count": -5,
+      "comment_count": 0
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__authors"
+              ]
+            ],
+            "children": [],
+            "text": "By Kai"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__comments"
+              ]
+            ],
+            "children": [],
+            "text": "No comments"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "author_name": "Ivy",
+      "co_authors": [],
+      "word_count": 399,
+      "comment_count": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__authors"
+              ]
+            ],
+            "children": [],
+            "text": "By Ivy"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline__reading"
+              ]
+            ],
+            "children": [],
+            "text": "2 min read"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

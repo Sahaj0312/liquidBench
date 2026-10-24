@@ -1,0 +1,22 @@
+{%- comment -%} Language picker: trims and normalizes locale codes {%- endcomment -%}
+{{ 'language_picker.css' | asset_url | stylesheet_tag }}
+{%- assign current = current_locale | strip | downcase -%}
+{%- assign codes = available_locales | split: ',' -%}
+<nav class="language-picker" aria-label="{{ 'localization.language' | t }}">
+  {% render 'icon-world' %}
+  <ul>
+  {%- for raw in codes -%}
+    {%- assign code = raw | strip | downcase -%}
+    {%- if code != blank -%}
+    <li>
+      {%- if code == current -%}
+      <span aria-current="true">{{ code | upcase | escape }} {% render 'icon-check' %}<span class="visually-hidden">{{ 'localization.current' | t }}</span></span>
+      {%- else -%}
+      <a href="/{{ code | escape }}">{{ code | upcase | escape }}</a>
+      {%- endif -%}
+    </li>
+    {%- endif -%}
+  {%- endfor -%}
+  </ul>
+</nav>
+<script src="{{ 'language-selector.js' | asset_url }}" defer="defer"></script>

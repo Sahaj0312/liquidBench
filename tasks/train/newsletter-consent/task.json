@@ -1,0 +1,15 @@
+{
+  "id": "newsletter-consent",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "newsletter-consent",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/newsletter-consent.liquid"
+  ],
+  "prompt": "The snippet snippets/newsletter-consent.liquid currently fails to parse and has logic gaps. Rewrite it so it renders a customer's newsletter consent summary exactly as specified.\n\nInputs. All are top-level variables and every one is always supplied:\n- email: string or null.\n- consent_status: string or null.\n- lists: array of strings, or null. It may be an empty array.\n\nRules:\n1. Let ADDR be email with leading and trailing whitespace stripped. A null email counts as an empty string. If ADDR is empty, output nothing at all, not even whitespace.\n2. Let STATUS be consent_status stripped of surrounding whitespace and lowercased. A null value counts as an empty string. If STATUS is not exactly \"granted\", \"pending\" or \"revoked\", treat it as \"unknown\".\n3. Otherwise output, in this order:\n   - <div class=\"consent consent--STATUS\">\n   - <p class=\"consent__email\">ADDR</p>, where ADDR is HTML-escaped.\n   - A message paragraph <p class=\"consent__msg\">TEXT</p>. TEXT depends on STATUS:\n     - granted: Subscribed\n     - pending: Awaiting confirmation\n     - revoked: Unsubscribed\n     - unknown: No consent recorded\n   - When STATUS is granted only, a list <ul class=\"consent__lists\"> follows the message paragraph. It holds one <li>NAME</li> per entry of lists, in input order. NAME is the entry stripped of surrounding whitespace and HTML-escaped. Entries that are empty after stripping are skipped. If no entries remain, or if lists is null or empty, omit the <ul> element entirely.\n   - </div>\n4. The output must contain no whitespace or newlines between tags and no leading or trailing whitespace.\n\nExample for a granted status: <div class=\"consent consent--granted\"><p class=\"consent__email\">a@b.co</p><p class=\"consent__msg\">Subscribed</p><ul class=\"consent__lists\"><li>Weekly</li></ul></div> Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/newsletter-consent.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

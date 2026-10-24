@@ -1,0 +1,17 @@
+{%- liquid
+  assign label = warranty_label | default: '' | strip
+  if label == ''
+    assign label = 'Warranty'
+  endif
+  assign has_warranty = false
+  if warranty_months != nil
+    if warranty_months >= 1
+      assign has_warranty = true
+    endif
+  endif
+-%}
+{%- if has_warranty -%}
+<p class="warranty">{{ label | escape }}: {{ warranty_months }} {% if warranty_months == 1 %}month{% else %}months{% endif %}</p>
+{%- else -%}
+<p class="warranty warranty--none">No warranty</p>
+{%- endif -%}

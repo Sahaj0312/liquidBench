@@ -1,0 +1,26 @@
+{%- assign seen = '|' -%}
+{%- assign shown = 0 -%}
+{%- assign extra = 0 -%}
+{%- capture items -%}
+{%- for loc in locations -%}
+{%- unless loc.available -%}{%- continue -%}{%- endunless -%}
+{%- assign nm = loc.name | strip -%}
+{%- assign key = '|' | append: nm | append: '|' -%}
+{%- if seen contains key -%}{%- continue -%}{%- endif -%}
+{%- assign seen = seen | append: nm | append: '|' -%}
+{%- if shown < max_shown -%}
+{%- assign t = loc.pickup_time | default: '' | strip -%}
+{%- if t == '' -%}{%- assign t = 'Usually ready in 24 hours' -%}{%- endif -%}
+<li{% if shown == 0 %} class="pickup-primary"{% endif %}>{{ nm | escape }}: {{ t | escape }}</li>
+{%- assign shown = shown | plus: 1 -%}
+{%- else -%}
+{%- assign extra = extra | plus: 1 -%}
+{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- if shown == 0 -%}
+<p class="pickup-none">No pickup locations available</p>
+{%- else -%}
+<ul class="pickup">{{ items }}</ul>
+{%- if extra > 0 %}<p class="pickup-more">+{{ extra }} more</p>{% endif -%}
+{%- endif -%}

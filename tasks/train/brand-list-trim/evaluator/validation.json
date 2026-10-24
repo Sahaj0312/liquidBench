@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-keeps-empty-items",
+    "expected_pass": false,
+    "changes": {
+      "sections/brand-list-trim.liquid": "{%- assign limit = section.settings.max_brands | default: 0 -%}\n{%- assign heading = section.settings.heading | strip -%}\n{%- assign names = section.settings.brands | split: ',' -%}\n<div class=\"brand-list\">\n{%- if heading != '' -%}\n<h2 class=\"brand-list__heading\">{{ heading | escape }}</h2>\n{%- endif -%}\n{%- if names.size > 0 -%}\n<ul class=\"brand-list__items\">\n{%- for raw_name in names -%}\n{%- if limit < 1 or forloop.index <= limit -%}\n<li class=\"brand-list__item\">{{ raw_name | strip | escape }}</li>\n{%- endif -%}\n{%- endfor -%}\n</ul>\n{%- else -%}\n<p class=\"brand-list__empty\">No brands yet</p>\n{%- endif -%}\n</div>\n{% schema %}\n{\n  \"name\": \"Brand list\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Our brands\" },\n    { \"type\": \"textarea\", \"id\": \"brands\", \"label\": \"Brands (comma-separated)\" },\n    { \"type\": \"number\", \"id\": \"max_brands\", \"label\": \"Maximum brands (0 = no limit)\", \"default\": 0 }\n  ],\n  \"presets\": [{ \"name\": \"Brand list\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-limit-counts-raw-positions",
+    "expected_pass": false,
+    "changes": {
+      "sections/brand-list-trim.liquid": "{%- assign limit = section.settings.max_brands | default: 0 -%}\n{%- assign heading = section.settings.heading | strip -%}\n{%- assign raw_names = section.settings.brands | split: ',' -%}\n{%- assign kept = '' -%}\n{%- assign count = 0 -%}\n{%- for raw_name in raw_names -%}\n  {%- assign name = raw_name | strip -%}\n  {%- if name != '' -%}\n    {%- if limit < 1 or forloop.index <= limit -%}\n      {%- if count > 0 -%}\n        {%- assign kept = kept | append: ',' -%}\n      {%- endif -%}\n      {%- assign kept = kept | append: name -%}\n      {%- assign count = count | plus: 1 -%}\n    {%- endif -%}\n  {%- endif -%}\n{%- endfor -%}\n<div class=\"brand-list\">\n{%- if heading != '' -%}\n<h2 class=\"brand-list__heading\">{{ heading | escape }}</h2>\n{%- endif -%}\n{%- if count > 0 -%}\n<ul class=\"brand-list__items\">\n{%- assign names = kept | split: ',' -%}\n{%- for name in names -%}\n<li class=\"brand-list__item\">{{ name | escape }}</li>\n{%- endfor -%}\n</ul>\n{%- else -%}\n<p class=\"brand-list__empty\">No brands yet</p>\n{%- endif -%}\n</div>\n{% schema %}\n{\n  \"name\": \"Brand list\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Our brands\" },\n    { \"type\": \"textarea\", \"id\": \"brands\", \"label\": \"Brands (comma-separated)\" },\n    { \"type\": \"number\", \"id\": \"max_brands\", \"label\": \"Maximum brands (0 = no limit)\", \"default\": 0 }\n  ],\n  \"presets\": [{ \"name\": \"Brand list\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-heading-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "sections/brand-list-trim.liquid": "{%- assign limit = section.settings.max_brands | default: 0 -%}\n{%- assign heading = section.settings.heading | default: '' -%}\n{%- assign raw_names = section.settings.brands | split: ',' -%}\n{%- assign kept = '' -%}\n{%- assign count = 0 -%}\n{%- for raw_name in raw_names -%}\n  {%- assign name = raw_name | strip -%}\n  {%- if name != '' -%}\n    {%- if limit < 1 or count < limit -%}\n      {%- if count > 0 -%}\n        {%- assign kept = kept | append: ',' -%}\n      {%- endif -%}\n      {%- assign kept = kept | append: name -%}\n      {%- assign count = count | plus: 1 -%}\n    {%- endif -%}\n  {%- endif -%}\n{%- endfor -%}\n<div class=\"brand-list\">\n{%- if heading != '' -%}\n<h2 class=\"brand-list__heading\">{{ heading | escape }}</h2>\n{%- endif -%}\n{%- if count > 0 -%}\n<ul class=\"brand-list__items\">\n{%- assign names = kept | split: ',' -%}\n{%- for name in names -%}\n<li class=\"brand-list__item\">{{ name | escape }}</li>\n{%- endfor -%}\n</ul>\n{%- else -%}\n<p class=\"brand-list__empty\">No brands yet</p>\n{%- endif -%}\n</div>\n{% schema %}\n{\n  \"name\": \"Brand list\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Our brands\" },\n    { \"type\": \"textarea\", \"id\": \"brands\", \"label\": \"Brands (comma-separated)\" },\n    { \"type\": \"number\", \"id\": \"max_brands\", \"label\": \"Maximum brands (0 = no limit)\", \"default\": 0 }\n  ],\n  \"presets\": [{ \"name\": \"Brand list\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-zero-limit-means-zero",
+    "expected_pass": false,
+    "changes": {
+      "sections/brand-list-trim.liquid": "{%- assign limit = section.settings.max_brands | default: 1000 -%}\n{%- assign heading = section.settings.heading | strip -%}\n{%- assign raw_names = section.settings.brands | split: ',' -%}\n{%- assign kept = '' -%}\n{%- assign count = 0 -%}\n{%- for raw_name in raw_names -%}\n  {%- assign name = raw_name | strip -%}\n  {%- if name != '' -%}\n    {%- if count < limit -%}\n      {%- if count > 0 -%}\n        {%- assign kept = kept | append: ',' -%}\n      {%- endif -%}\n      {%- assign kept = kept | append: name -%}\n      {%- assign count = count | plus: 1 -%}\n    {%- endif -%}\n  {%- endif -%}\n{%- endfor -%}\n<div class=\"brand-list\">\n{%- if heading != '' -%}\n<h2 class=\"brand-list__heading\">{{ heading | escape }}</h2>\n{%- endif -%}\n{%- if count > 0 -%}\n<ul class=\"brand-list__items\">\n{%- assign names = kept | split: ',' -%}\n{%- for name in names -%}\n<li class=\"brand-list__item\">{{ name | escape }}</li>\n{%- endfor -%}\n</ul>\n{%- else -%}\n<p class=\"brand-list__empty\">No brands yet</p>\n{%- endif -%}\n</div>\n{% schema %}\n{\n  \"name\": \"Brand list\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Our brands\" },\n    { \"type\": \"textarea\", \"id\": \"brands\", \"label\": \"Brands (comma-separated)\" },\n    { \"type\": \"number\", \"id\": \"max_brands\", \"label\": \"Maximum brands (0 = no limit)\", \"default\": 0 }\n  ],\n  \"presets\": [{ \"name\": \"Brand list\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/brand-list-trim.liquid": "{% # theme-check-disable %}\n{%- assign limit = section.settings.max_brands | default: 0 -%}\n{%- assign heading = section.settings.heading | strip -%}\n{%- assign raw_names = section.settings.brands | split: ',' -%}\n{%- assign kept = '' -%}\n{%- assign count = 0 -%}\n{%- for raw_name in raw_names -%}\n  {%- assign name = raw_name | strip -%}\n  {%- if name != '' -%}\n    {%- if limit < 1 or count < limit -%}\n      {%- if count > 0 -%}\n        {%- assign kept = kept | append: ',' -%}\n      {%- endif -%}\n      {%- assign kept = kept | append: name -%}\n      {%- assign count = count | plus: 1 -%}\n    {%- endif -%}\n  {%- endif -%}\n{%- endfor -%}\n<div class=\"brand-list\">\n{%- if heading != '' -%}\n<h2 class=\"brand-list__heading\">{{ heading | escape }}</h2>\n{%- endif -%}\n{%- if count > 0 -%}\n<ul class=\"brand-list__items\">\n{%- assign names = kept | split: ',' -%}\n{%- for name in names -%}\n<li class=\"brand-list__item\">{{ name | escape }}</li>\n{%- endfor -%}\n</ul>\n{%- else -%}\n<p class=\"brand-list__empty\">No brands yet</p>\n{%- endif -%}\n</div>\n{% schema %}\n{\n  \"name\": \"Brand list\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Our brands\" },\n    { \"type\": \"textarea\", \"id\": \"brands\", \"label\": \"Brands (comma-separated)\" },\n    { \"type\": \"number\", \"id\": \"max_brands\", \"label\": \"Maximum brands (0 = no limit)\", \"default\": 0 }\n  ],\n  \"presets\": [{ \"name\": \"Brand list\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/brand-list-trim.liquid": null
+    }
+  }
+]

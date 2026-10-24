@@ -1,0 +1,11 @@
+{
+  "general": {
+    "close": "Fermer"
+  },
+  "localization": {
+    "language_label": "Langue",
+    "update_language": "Mettre à jour la langue",
+    "current_language": "Langue actuelle",
+    "country_label": "Pays/région"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "rich-text-escaped",
+  "version": 1,
+  "split": "train",
+  "category": "theme-modification",
+  "difficulty": "easy",
+  "family": "rich-text-escaped",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/rich-text-escaped.liquid"
+  ],
+  "prompt": "The section sections/rich-text-escaped.liquid prints merchant text without escaping and never shows the button that the merchant configures. Fix the markup. Keep the {% schema %} block exactly as it is, byte for byte.\n\nInputs. All of them are under section.settings and every key is always supplied:\n- section.settings.heading: string or null\n- section.settings.text: string or null\n- section.settings.button_label: string or null\n- section.settings.button_link: string or null\n\nRequired output. It must be a single line with no whitespace between tags:\n<div class=\"rich-text\"><h2 class=\"rich-text__heading\">HEADING</h2><p class=\"rich-text__body\">TEXT</p>BUTTON</div>\n\nRules:\n- HEADING is the heading, HTML-escaped with the core `escape` filter. TEXT is the text, escaped the same way. The filter converts & < > \" ' to &amp; &lt; &gt; &quot; &#39;.\n- Escaping always applies, even to text that already contains entities. For example, \"&amp;\" must become \"&amp;amp;\".\n- A null heading or null text produces empty element content. The h2 and the p are always output.\n- BUTTON is <a class=\"rich-text__button\" href=\"LINK\">LABEL</a>.\n- LINK is button_link escaped with `escape`. LABEL is button_label escaped with `escape`.\n- BUTTON is output only when button_label and button_link are both non-null and both are not the empty string \"\". Otherwise nothing is output in its place.\n- Values are not stripped. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/rich-text-escaped.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

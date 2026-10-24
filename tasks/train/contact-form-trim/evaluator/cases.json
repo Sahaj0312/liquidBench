@@ -1,0 +1,49 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/contact-form-trim.liquid",
+    "body": "{%- assign heading = section.settings.heading | strip -%}\n{%- assign intro = section.settings.intro | strip -%}\n{%- assign submit_label = section.settings.submit_label | strip | default: 'Send' -%}\n<div class=\"contact-form\">\n  {%- if heading != blank -%}<h2 class=\"contact-form__heading\">{{ heading | escape }}</h2>{%- endif -%}\n  {%- if intro != blank -%}<p class=\"contact-form__intro\">{{ intro | escape }}</p>{%- endif -%}\n  <form method=\"post\" action=\"/contact#contact-form\" id=\"contact-form\">\n    <label for=\"ContactName\">Name</label>\n    <input type=\"text\" id=\"ContactName\" name=\"contact[name]\">\n    <label for=\"ContactEmail\">Email</label>\n    <input type=\"email\" id=\"ContactEmail\" name=\"contact[email]\" required>\n    {%- if section.settings.show_phone -%}\n    <label for=\"ContactPhone\">Phone</label>\n    <input type=\"tel\" id=\"ContactPhone\" name=\"contact[phone]\">\n    {%- endif -%}\n    <label for=\"ContactBody\">Message</label>\n    <textarea id=\"ContactBody\" name=\"contact[body]\"></textarea>\n    <button type=\"submit\">{{ submit_label | escape }}</button>\n  </form>\n  <p class=\"contact-form__success\" hidden>{{ section.settings.success_message | strip | escape }}</p>\n</div>\n\n\n",
+    "expected": {
+      "name": "Contact form",
+      "tag": "section",
+      "class": "contact-form-section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Contact us"
+        },
+        {
+          "type": "textarea",
+          "id": "intro",
+          "label": "Introduction",
+          "default": "We usually reply within one business day."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_phone",
+          "label": "Show phone field",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "submit_label",
+          "label": "Submit button label",
+          "default": "Send message"
+        },
+        {
+          "type": "text",
+          "id": "success_message",
+          "label": "Success message",
+          "default": "Thanks for contacting us!"
+        }
+      ],
+      "presets": [
+        {
+          "name": "Contact form"
+        }
+      ]
+    }
+  }
+]

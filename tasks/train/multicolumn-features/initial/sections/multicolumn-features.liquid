@@ -1,0 +1,26 @@
+<div class="multicolumn multicolumn--{{ section.settings.image_ratio }}" style="--columns: {{ section.settings.columns_desktop }};">
+  {%- if section.settings.title != blank -%}
+    <h2 class="multicolumn__title">{{ section.settings.title | escape }}</h2>
+  {%- endif -%}
+  <ul class="multicolumn__list">
+    {%- for block in section.blocks -%}
+      <li class="multicolumn__item" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy' }}
+        {%- endif -%}
+        <h3>{{ block.settings.title | escape }}</h3>
+        <div class="rte">{{ block.settings.text }}</div>
+        {%- if block.settings.link_label != blank -%}
+          <a href="{{ block.settings.link }}">{{ block.settings.link_label | escape }}</a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+  {%- if section.settings.button_label != blank -%}
+    <a class="button" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{"name":"Multicolumn","tag":"section","class":"section-multicolumn","settings":[{"type":"text","id":"title","label":"Heading","default":"Why shop with us"},{"type":"number","id":"columns_desktop","label":"Columns on desktop","default":3},{"type":"text","id":"button_label","label":"Button label"},{"type":"url","id":"button_link","label":"Button link"}],"blocks":[{"type":"column","name":"Column","settings":[{"type":"image_picker","id":"image","label":"Image"},{"type":"text","id":"title","label":"Heading","default":"Column"},{"type":"textarea","id":"text","label":"Description"},{"type":"text","id":"link_label","label":"Link label"},{"type":"url","id":"link","label":"Link"}]}],"presets":[{"name":"Multicolumn"}]}
+{% endschema %}

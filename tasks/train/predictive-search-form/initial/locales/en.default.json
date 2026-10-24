@@ -1,0 +1,12 @@
+{
+  "accessibility": {
+    "loading": "Loading..."
+  },
+  "templates": {
+    "search": {
+      "label": "Search",
+      "placeholder": "Search our store",
+      "submit": "Submit search"
+    }
+  }
+}

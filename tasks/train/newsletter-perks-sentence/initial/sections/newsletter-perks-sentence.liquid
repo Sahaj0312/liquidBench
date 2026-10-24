@@ -1,0 +1,25 @@
+<div class="newsletter">
+{%- if section.settings.title != nil and section.settings.title != '' -%}
+<h2 class="newsletter__title">{{ section.settings.title | escape }}</h2>
+{%- endif -%}
+<ul class="newsletter__perks">
+{%- for block in section.blocks -%}
+<li class="newsletter__perk">{{ block.settings.text | escape }}</li>
+{%- endfor -%}
+</ul>
+<button class="newsletter__button" type="submit">{{ section.settings.button_label | default: 'Subscribe' | escape }}</button></div>
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Join our newsletter" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Subscribe" }
+  ],
+  "blocks": [
+    { "type": "perk", "name": "Perk", "settings": [{ "type": "text", "id": "text", "label": "Text" }] },
+    { "type": "note", "name": "Note", "settings": [{ "type": "text", "id": "text", "label": "Text" }] }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "Newsletter" }]
+}
+{% endschema %}

@@ -1,0 +1,1273 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/store-info-hours.liquid",
+    "tags": [
+      "div",
+      "h2",
+      "li",
+      "p",
+      "span",
+      "ul"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Store info\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"store_name\", \"label\": \"Store name\" },\n    { \"type\": \"text\", \"id\": \"address\", \"label\": \"Address\" }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"hours\",\n      \"name\": \"Opening hours\",\n      \"settings\": [\n        { \"type\": \"text\", \"id\": \"day\", \"label\": \"Day\", \"default\": \"Mon\" },\n        { \"type\": \"number\", \"id\": \"opens\", \"label\": \"Opens (minutes after midnight)\" },\n        { \"type\": \"number\", \"id\": \"closes\", \"label\": \"Closes (minutes after midnight)\" }\n      ]\n    }\n  ],\n  \"presets\": [{ \"name\": \"Store info\" }]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "settings": {
+          "store_name": "Corner Shop",
+          "address": "12 High St"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "day": "Mon",
+              "opens": 540,
+              "closes": 1020
+            }
+          },
+          {
+            "settings": {
+              "day": "Tue",
+              "opens": 540,
+              "closes": 1020
+            }
+          },
+          {
+            "settings": {
+              "day": "Wed",
+              "opens": 540,
+              "closes": 1020
+            }
+          },
+          {
+            "settings": {
+              "day": "Thu",
+              "opens": 540,
+              "closes": 1020
+            }
+          },
+          {
+            "settings": {
+              "day": "Fri",
+              "opens": 540,
+              "closes": 1020
+            }
+          },
+          {
+            "settings": {
+              "day": "Sat",
+              "opens": 600,
+              "closes": 960
+            }
+          },
+          {
+            "settings": {
+              "day": "Sun",
+              "opens": null,
+              "closes": null
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "store-info"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "store-info__name"
+              ]
+            ],
+            "children": [],
+            "text": "Corner Shop"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-info__address"
+              ]
+            ],
+            "children": [],
+            "text": "12 High St"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "store-info__hours"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Mon-Fri"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "9:00 AM - 5:00 PM"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Sat"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "10:00 AM - 4:00 PM"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Sun"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Closed"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "settings": {
+          "store_name": null,
+          "address": null
+        },
+        "blocks": []
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "store-info"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "store-info__name"
+              ]
+            ],
+            "children": [],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-info__address"
+              ]
+            ],
+            "children": [],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "settings": {
+          "store_name": "Night Owl",
+          "address": "5 Elm"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "day": "Mon",
+              "opens": 0,
+              "closes": 720
+            }
+          },
+          {
+            "settings": {
+              "day": "Tue",
+              "opens": 725,
+              "closes": 1439
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "store-info"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "store-info__name"
+              ]
+            ],
+            "children": [],
+            "text": "Night Owl"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-info__address"
+              ]
+            ],
+            "children": [],
+            "text": "5 Elm"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "store-info__hours"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Mon"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "12:00 AM - 12:00 PM"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Tue"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "12:05 PM - 11:59 PM"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "settings": {
+          "store_name": "Weekend",
+          "address": "Dock 3"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "day": "Fri",
+              "opens": 480,
+              "closes": 1230
+            }
+          },
+          {
+            "settings": {
+              "day": "Sat",
+              "opens": 600,
+              "closes": 600
+            }
+          },
+          {
+            "settings": {
+              "day": "Sun",
+              "opens": null,
+              "closes": null
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "store-info"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "store-info__name"
+              ]
+            ],
+            "children": [],
+            "text": "Weekend"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-info__address"
+              ]
+            ],
+            "children": [],
+            "text": "Dock 3"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "store-info__hours"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Fri"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "8:00 AM - 8:30 PM"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Sat-Sun"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Closed"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "settings": {
+          "store_name": "Mid",
+          "address": "Ave"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "day": "Mon",
+              "opens": 540,
+              "closes": 1020
+            }
+          },
+          {
+            "settings": {
+              "day": "Tue",
+              "opens": null,
+              "closes": null
+            }
+          },
+          {
+            "settings": {
+              "day": "Wed",
+              "opens": 540,
+              "closes": 1020
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "store-info"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "store-info__name"
+              ]
+            ],
+            "children": [],
+            "text": "Mid"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-info__address"
+              ]
+            ],
+            "children": [],
+            "text": "Ave"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "store-info__hours"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Mon"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "9:00 AM - 5:00 PM"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Tue"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Closed"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Wed"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "9:00 AM - 5:00 PM"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "settings": {
+          "store_name": "Bob's \"Bikes\" & <Boards>",
+          "address": "1 Main St <Unit 2>"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "day": "Mon & Tue",
+              "opens": 545,
+              "closes": 1081
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "store-info"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "store-info__name"
+              ]
+            ],
+            "children": [],
+            "text": "Bob's \"Bikes\" & <Boards>"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-info__address"
+              ]
+            ],
+            "children": [],
+            "text": "1 Main St <Unit 2>"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "store-info__hours"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Mon & Tue"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "9:05 AM - 6:01 PM"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "settings": {
+          "store_name": "24 Seven",
+          "address": "Hwy 1"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "day": "Every day",
+              "opens": 60,
+              "closes": 1380
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "store-info"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "store-info__name"
+              ]
+            ],
+            "children": [],
+            "text": "24 Seven"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-info__address"
+              ]
+            ],
+            "children": [],
+            "text": "Hwy 1"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "store-info__hours"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Every day"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "1:00 AM - 11:00 PM"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "settings": {
+          "store_name": "Dup",
+          "address": "X"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "day": "Mon",
+              "opens": 600,
+              "closes": 1080
+            }
+          },
+          {
+            "settings": {
+              "day": "Mon",
+              "opens": 600,
+              "closes": 1080
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "store-info"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "store-info__name"
+              ]
+            ],
+            "children": [],
+            "text": "Dup"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-info__address"
+              ]
+            ],
+            "children": [],
+            "text": "X"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "store-info__hours"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Mon-Mon"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "10:00 AM - 6:00 PM"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "section": {
+        "settings": {
+          "store_name": "Gaps",
+          "address": "Y"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "day": "A",
+              "opens": null,
+              "closes": 600
+            }
+          },
+          {
+            "settings": {
+              "day": "B",
+              "opens": 600,
+              "closes": null
+            }
+          },
+          {
+            "settings": {
+              "day": "C",
+              "opens": 600,
+              "closes": 660
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "store-info"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "store-info__name"
+              ]
+            ],
+            "children": [],
+            "text": "Gaps"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-info__address"
+              ]
+            ],
+            "children": [],
+            "text": "Y"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "store-info__hours"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "A-B"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Closed"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "C"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "10:00 AM - 11:00 AM"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "section": {
+        "settings": {
+          "store_name": "Edge",
+          "address": "Z"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "day": "Sat",
+              "opens": 780,
+              "closes": 781
+            }
+          },
+          {
+            "settings": {
+              "day": "Sun",
+              "opens": 719,
+              "closes": 721
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "store-info"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "store-info__name"
+              ]
+            ],
+            "children": [],
+            "text": "Edge"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-info__address"
+              ]
+            ],
+            "children": [],
+            "text": "Z"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "store-info__hours"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Sat"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "1:00 PM - 1:01 PM"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__days"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Sun"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "store-info__time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "11:59 AM - 12:01 PM"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

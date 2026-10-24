@@ -1,0 +1,342 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/low-carbon-shipping-flag-3.liquid",
+    "tags": [
+      "p",
+      "small",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "product_tags": [
+        "low-carbon"
+      ],
+      "carrier_code": null,
+      "offset_percent": null,
+      "badge_label": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-flag"
+          ],
+          [
+            "data-source",
+            "tag"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Low-carbon shipping"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "product_tags": [
+        "Low-Carbon",
+        "LOW-CARBON"
+      ],
+      "carrier_code": "eco",
+      "offset_percent": 20,
+      "badge_label": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "product_tags": [
+        "low-carbon-pack",
+        "recycled"
+      ],
+      "carrier_code": "GROUND",
+      "offset_percent": 10,
+      "badge_label": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "product_tags": null,
+      "carrier_code": "RAIL",
+      "offset_percent": 150,
+      "badge_label": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-flag"
+          ],
+          [
+            "data-source",
+            "carrier"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Low-carbon shipping"
+          },
+          {
+            "tag": "small",
+            "attrs": [],
+            "children": [],
+            "text": "100% offset"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "product_tags": [
+        "low-carbon",
+        "carbon-exempt"
+      ],
+      "carrier_code": "ECO",
+      "offset_percent": 50,
+      "badge_label": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "product_tags": [
+        "low-carbon"
+      ],
+      "carrier_code": "ECO",
+      "offset_percent": 0,
+      "badge_label": "  Green & <Clean> \"ride\"  "
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-flag"
+          ],
+          [
+            "data-source",
+            "tag"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Green & <Clean> \"ride\""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "product_tags": [
+        " low-carbon",
+        "Carbon-Exempt"
+      ],
+      "carrier_code": "ECO",
+      "offset_percent": 35,
+      "badge_label": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-flag"
+          ],
+          [
+            "data-source",
+            "carrier"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Low-carbon shipping"
+          },
+          {
+            "tag": "small",
+            "attrs": [],
+            "children": [],
+            "text": "35% offset"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "product_tags": [],
+      "carrier_code": "Rail",
+      "offset_percent": null,
+      "badge_label": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "product_tags": [
+        "carbon-exempt"
+      ],
+      "carrier_code": "RAIL",
+      "offset_percent": 10,
+      "badge_label": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "product_tags": [
+        "sale",
+        "low-carbon"
+      ],
+      "carrier_code": "RAIL",
+      "offset_percent": 100,
+      "badge_label": "   "
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-flag"
+          ],
+          [
+            "data-source",
+            "tag"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Low-carbon shipping"
+          },
+          {
+            "tag": "small",
+            "attrs": [],
+            "children": [],
+            "text": "100% offset"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "product_tags": [
+        "low-carbon"
+      ],
+      "carrier_code": null,
+      "offset_percent": -5,
+      "badge_label": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-flag"
+          ],
+          [
+            "data-source",
+            "tag"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Low-carbon shipping"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "product_tags": [
+        "not-carbon-exempt",
+        "low-carbon"
+      ],
+      "carrier_code": null,
+      "offset_percent": 5,
+      "badge_label": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-flag"
+          ],
+          [
+            "data-source",
+            "tag"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Low-carbon shipping"
+          },
+          {
+            "tag": "small",
+            "attrs": [],
+            "children": [],
+            "text": "5% offset"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-no-blank-name-check",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline-3.liquid": "{%- if author and author.name -%}\n{%- assign name = author.name | strip -%}\n{%- assign url = author.url | strip -%}\n{%- assign role = author.role | strip -%}\n{%- assign when = date | strip -%}\n{%- capture line -%}<p class=\"byline\">By {% if url != \"\" %}<a class=\"byline-link\" href=\"{{ url | escape }}\">{% endif %}<span class=\"byline-name\">{{ name | escape }}</span>{% if url != \"\" %}</a>{% endif %}{% if role != \"\" %} <span class=\"byline-role\">{{ role | escape }}</span>{% endif %}{% if when != \"\" %} <time>{{ when | escape }}</time>{% endif %}</p>{%- endcapture -%}\n{%- if wrapper -%}<div class=\"byline-wrap\">{{ line }}</div>{%- else -%}{{ line }}{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-link-wraps-role",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline-3.liquid": "{%- if author -%}\n{%- assign name = author.name | strip -%}\n{%- if name != \"\" -%}\n{%- assign url = author.url | strip -%}\n{%- assign role = author.role | strip -%}\n{%- assign when = date | strip -%}\n{%- capture line -%}<p class=\"byline\">By {% if url != \"\" %}<a class=\"byline-link\" href=\"{{ url | escape }}\">{% endif %}<span class=\"byline-name\">{{ name | escape }}</span>{% if role != \"\" %} <span class=\"byline-role\">{{ role | escape }}</span>{% endif %}{% if url != \"\" %}</a>{% endif %}{% if when != \"\" %} <time>{{ when | escape }}</time>{% endif %}</p>{%- endcapture -%}\n{%- if wrapper -%}<div class=\"byline-wrap\">{{ line }}</div>{%- else -%}{{ line }}{%- endif -%}\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-url-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline-3.liquid": "{%- if author -%}\n{%- assign name = author.name | strip -%}\n{%- if name != \"\" -%}\n{%- assign url = author.url | default: \"\" -%}\n{%- assign role = author.role | strip -%}\n{%- assign when = date | strip -%}\n{%- capture line -%}<p class=\"byline\">By {% if url != \"\" %}<a class=\"byline-link\" href=\"{{ url | escape }}\">{% endif %}<span class=\"byline-name\">{{ name | escape }}</span>{% if url != \"\" %}</a>{% endif %}{% if role != \"\" %} <span class=\"byline-role\">{{ role | escape }}</span>{% endif %}{% if when != \"\" %} <time>{{ when | escape }}</time>{% endif %}</p>{%- endcapture -%}\n{%- if wrapper -%}<div class=\"byline-wrap\">{{ line }}</div>{%- else -%}{{ line }}{%- endif -%}\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-wrapper-always-emitted",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline-3.liquid": "{%- if wrapper -%}<div class=\"byline-wrap\">{%- endif -%}\n{%- if author -%}\n{%- assign name = author.name | strip -%}\n{%- if name != \"\" -%}\n{%- assign url = author.url | strip -%}\n{%- assign role = author.role | strip -%}\n{%- assign when = date | strip -%}\n<p class=\"byline\">By {% if url != \"\" %}<a class=\"byline-link\" href=\"{{ url | escape }}\">{% endif %}<span class=\"byline-name\">{{ name | escape }}</span>{% if url != \"\" %}</a>{% endif %}{% if role != \"\" %} <span class=\"byline-role\">{{ role | escape }}</span>{% endif %}{% if when != \"\" %} <time>{{ when | escape }}</time>{% endif %}</p>\n{%- endif -%}\n{%- endif -%}\n{%- if wrapper -%}</div>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline-3.liquid": "{% # theme-check-disable %}\n{%- if author -%}\n{%- assign name = author.name | strip -%}\n{%- if name != \"\" -%}\n{%- assign url = author.url | strip -%}\n{%- assign role = author.role | strip -%}\n{%- assign when = date | strip -%}\n{%- capture line -%}<p class=\"byline\">By {% if url != \"\" %}<a class=\"byline-link\" href=\"{{ url | escape }}\">{% endif %}<span class=\"byline-name\">{{ name | escape }}</span>{% if url != \"\" %}</a>{% endif %}{% if role != \"\" %} <span class=\"byline-role\">{{ role | escape }}</span>{% endif %}{% if when != \"\" %} <time>{{ when | escape }}</time>{% endif %}</p>{%- endcapture -%}\n{%- if wrapper -%}<div class=\"byline-wrap\">{{ line }}</div>{%- else -%}{{ line }}{%- endif -%}\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/author-byline-3.liquid": null
+    }
+  }
+]

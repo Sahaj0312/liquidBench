@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-no-deduplication",
+    "expected_pass": false,
+    "changes": {
+      "snippets/recently-viewed-list.liquid": "{%- assign count = 0 -%}\n{%- capture items -%}\n{%- for product in products -%}\n{%- if count >= limit -%}{%- break -%}{%- endif -%}\n{%- if product.handle == current_handle -%}{%- continue -%}{%- endif -%}\n{%- assign count = count | plus: 1 -%}\n{%- assign vendor = product.vendor | strip -%}\n<li class=\"recently-viewed__item\" data-position=\"{{ count }}\"><a href=\"/products/{{ product.handle | escape }}\">{{ product.title | escape }}</a>\n{%- if vendor != '' -%}<span class=\"recently-viewed__vendor\">{{ vendor | escape }}</span>{%- endif -%}\n</li>\n{%- endfor -%}\n{%- endcapture -%}\n{%- if count > 0 -%}<ul class=\"recently-viewed\">{{ items }}</ul>{%- endif -%}"
+    }
+  },
+  {
+    "name": "wrong-1-limit-counts-skipped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/recently-viewed-list.liquid": "{%- assign seen = '|' -%}\n{%- assign count = 0 -%}\n{%- capture items -%}\n{%- for product in products -%}\n{%- if forloop.index > limit -%}{%- break -%}{%- endif -%}\n{%- if product.handle == current_handle -%}{%- continue -%}{%- endif -%}\n{%- assign key = '|' | append: product.handle | append: '|' -%}\n{%- if seen contains key -%}{%- continue -%}{%- endif -%}\n{%- assign seen = seen | append: product.handle | append: '|' -%}\n{%- assign count = count | plus: 1 -%}\n{%- assign vendor = product.vendor | strip -%}\n<li class=\"recently-viewed__item\" data-position=\"{{ count }}\"><a href=\"/products/{{ product.handle | escape }}\">{{ product.title | escape }}</a>\n{%- if vendor != '' -%}<span class=\"recently-viewed__vendor\">{{ vendor | escape }}</span>{%- endif -%}\n</li>\n{%- endfor -%}\n{%- endcapture -%}\n{%- if count > 0 -%}<ul class=\"recently-viewed\">{{ items }}</ul>{%- endif -%}"
+    }
+  },
+  {
+    "name": "wrong-2-position-from-forloop-index",
+    "expected_pass": false,
+    "changes": {
+      "snippets/recently-viewed-list.liquid": "{%- assign seen = '|' -%}\n{%- assign count = 0 -%}\n{%- capture items -%}\n{%- for product in products -%}\n{%- if count >= limit -%}{%- break -%}{%- endif -%}\n{%- if product.handle == current_handle -%}{%- continue -%}{%- endif -%}\n{%- assign key = '|' | append: product.handle | append: '|' -%}\n{%- if seen contains key -%}{%- continue -%}{%- endif -%}\n{%- assign seen = seen | append: product.handle | append: '|' -%}\n{%- assign count = count | plus: 1 -%}\n{%- assign vendor = product.vendor | strip -%}\n<li class=\"recently-viewed__item\" data-position=\"{{ forloop.index }}\"><a href=\"/products/{{ product.handle | escape }}\">{{ product.title | escape }}</a>\n{%- if vendor != '' -%}<span class=\"recently-viewed__vendor\">{{ vendor | escape }}</span>{%- endif -%}\n</li>\n{%- endfor -%}\n{%- endcapture -%}\n{%- if count > 0 -%}<ul class=\"recently-viewed\">{{ items }}</ul>{%- endif -%}"
+    }
+  },
+  {
+    "name": "wrong-3-empty-ul-when-nothing",
+    "expected_pass": false,
+    "changes": {
+      "snippets/recently-viewed-list.liquid": "{%- assign seen = '|' -%}\n{%- assign count = 0 -%}\n<ul class=\"recently-viewed\">\n{%- for product in products -%}\n{%- if count >= limit -%}{%- break -%}{%- endif -%}\n{%- if product.handle == current_handle -%}{%- continue -%}{%- endif -%}\n{%- assign key = '|' | append: product.handle | append: '|' -%}\n{%- if seen contains key -%}{%- continue -%}{%- endif -%}\n{%- assign seen = seen | append: product.handle | append: '|' -%}\n{%- assign count = count | plus: 1 -%}\n{%- assign vendor = product.vendor | strip -%}\n<li class=\"recently-viewed__item\" data-position=\"{{ count }}\"><a href=\"/products/{{ product.handle | escape }}\">{{ product.title | escape }}</a>\n{%- if vendor != '' -%}<span class=\"recently-viewed__vendor\">{{ vendor | escape }}</span>{%- endif -%}\n</li>\n{%- endfor -%}\n</ul>"
+    }
+  },
+  {
+    "name": "wrong-4-substring-dedup",
+    "expected_pass": false,
+    "changes": {
+      "snippets/recently-viewed-list.liquid": "{%- assign seen = '|' -%}\n{%- assign count = 0 -%}\n{%- capture items -%}\n{%- for product in products -%}\n{%- if count >= limit -%}{%- break -%}{%- endif -%}\n{%- if product.handle == current_handle -%}{%- continue -%}{%- endif -%}\n{%- if seen contains product.handle -%}{%- continue -%}{%- endif -%}\n{%- assign seen = seen | append: product.handle | append: '|' -%}\n{%- assign count = count | plus: 1 -%}\n{%- assign vendor = product.vendor | strip -%}\n<li class=\"recently-viewed__item\" data-position=\"{{ count }}\"><a href=\"/products/{{ product.handle | escape }}\">{{ product.title | escape }}</a>\n{%- if vendor != '' -%}<span class=\"recently-viewed__vendor\">{{ vendor | escape }}</span>{%- endif -%}\n</li>\n{%- endfor -%}\n{%- endcapture -%}\n{%- if count > 0 -%}<ul class=\"recently-viewed\">{{ items }}</ul>{%- endif -%}"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/recently-viewed-list.liquid": "{% # theme-check-disable %}\n{%- assign seen = '|' -%}\n{%- assign count = 0 -%}\n{%- capture items -%}\n{%- for product in products -%}\n{%- if count >= limit -%}{%- break -%}{%- endif -%}\n{%- if product.handle == current_handle -%}{%- continue -%}{%- endif -%}\n{%- assign key = '|' | append: product.handle | append: '|' -%}\n{%- if seen contains key -%}{%- continue -%}{%- endif -%}\n{%- assign seen = seen | append: product.handle | append: '|' -%}\n{%- assign count = count | plus: 1 -%}\n{%- assign vendor = product.vendor | strip -%}\n<li class=\"recently-viewed__item\" data-position=\"{{ count }}\"><a href=\"/products/{{ product.handle | escape }}\">{{ product.title | escape }}</a>\n{%- if vendor != '' -%}<span class=\"recently-viewed__vendor\">{{ vendor | escape }}</span>{%- endif -%}\n</li>\n{%- endfor -%}\n{%- endcapture -%}\n{%- if count > 0 -%}<ul class=\"recently-viewed\">{{ items }}</ul>{%- endif -%}"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/recently-viewed-list.liquid": null
+    }
+  }
+]

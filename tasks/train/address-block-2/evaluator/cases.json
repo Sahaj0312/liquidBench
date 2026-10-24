@@ -1,0 +1,900 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/address-block-2.liquid",
+    "tags": [
+      "address",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "address": {
+        "name": "Ada Lovelace",
+        "line1": "12 Market Street",
+        "line2": null,
+        "postal_code": "10115",
+        "city": "Berlin"
+      },
+      "distance_m": null
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__name"
+              ]
+            ],
+            "children": [],
+            "text": "Ada Lovelace"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "12 Market Street"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "10115 Berlin"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "address": {
+        "name": "Ada Lovelace",
+        "line1": "12 Market Street",
+        "line2": null,
+        "postal_code": "10115",
+        "city": "Berlin"
+      },
+      "distance_m": 0
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__name"
+              ]
+            ],
+            "children": [],
+            "text": "Ada Lovelace"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "12 Market Street"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "10115 Berlin"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "0 m, 1 min walk"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "address": {
+        "name": "Ada Lovelace",
+        "line1": "12 Market Street",
+        "line2": null,
+        "postal_code": "10115",
+        "city": "Berlin"
+      },
+      "distance_m": 994
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__name"
+              ]
+            ],
+            "children": [],
+            "text": "Ada Lovelace"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "12 Market Street"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "10115 Berlin"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "990 m, 13 min walk"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "address": {
+        "name": "Ada Lovelace",
+        "line1": "12 Market Street",
+        "line2": null,
+        "postal_code": "10115",
+        "city": "Berlin"
+      },
+      "distance_m": 995
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__name"
+              ]
+            ],
+            "children": [],
+            "text": "Ada Lovelace"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "12 Market Street"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "10115 Berlin"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "1000 m, 13 min walk"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "address": {
+        "name": "Ada Lovelace",
+        "line1": "12 Market Street",
+        "line2": null,
+        "postal_code": "10115",
+        "city": "Berlin"
+      },
+      "distance_m": 1000
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__name"
+              ]
+            ],
+            "children": [],
+            "text": "Ada Lovelace"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "12 Market Street"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "10115 Berlin"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "1.0 km, 13 min walk"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "address": {
+        "name": "Ada Lovelace",
+        "line1": "12 Market Street",
+        "line2": null,
+        "postal_code": "10115",
+        "city": "Berlin"
+      },
+      "distance_m": 1249
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__name"
+              ]
+            ],
+            "children": [],
+            "text": "Ada Lovelace"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "12 Market Street"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "10115 Berlin"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "1.2 km, 16 min walk"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "address": {
+        "name": "Ada Lovelace",
+        "line1": "12 Market Street",
+        "line2": null,
+        "postal_code": "10115",
+        "city": "Berlin"
+      },
+      "distance_m": 1250
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__name"
+              ]
+            ],
+            "children": [],
+            "text": "Ada Lovelace"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "12 Market Street"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "10115 Berlin"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "1.3 km, 16 min walk"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "address": {
+        "name": "Ada Lovelace",
+        "line1": "12 Market Street",
+        "line2": null,
+        "postal_code": "10115",
+        "city": "Berlin"
+      },
+      "distance_m": 4800
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__name"
+              ]
+            ],
+            "children": [],
+            "text": "Ada Lovelace"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "12 Market Street"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "10115 Berlin"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "4.8 km, 1 h walk"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "address": {
+        "name": "Ada Lovelace",
+        "line1": "12 Market Street",
+        "line2": null,
+        "postal_code": "10115",
+        "city": "Berlin"
+      },
+      "distance_m": 4801
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__name"
+              ]
+            ],
+            "children": [],
+            "text": "Ada Lovelace"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "12 Market Street"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "10115 Berlin"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "4.8 km, 1 h 1 min walk"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "address": {
+        "name": "Ada Lovelace",
+        "line1": "12 Market Street",
+        "line2": null,
+        "postal_code": "10115",
+        "city": "Berlin"
+      },
+      "distance_m": 19960
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__name"
+              ]
+            ],
+            "children": [],
+            "text": "Ada Lovelace"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "12 Market Street"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "10115 Berlin"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "20.0 km, 4 h 10 min walk"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "address": {
+        "name": "Tom & \"Jerry\" <Co>",
+        "line1": "5 <Main> St",
+        "line2": "",
+        "postal_code": null,
+        "city": "A&B"
+      },
+      "distance_m": 44
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__name"
+              ]
+            ],
+            "children": [],
+            "text": "Tom & \"Jerry\" <Co>"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "5 <Main> St"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "A&B"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "40 m, 1 min walk"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "address": {
+        "name": "",
+        "line1": "12 Market Street",
+        "line2": "Apt 4",
+        "postal_code": "",
+        "city": "Berlin"
+      },
+      "distance_m": 45
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "12 Market Street"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "Apt 4"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "Berlin"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__distance"
+              ]
+            ],
+            "children": [],
+            "text": "50 m, 1 min walk"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-12",
+    "variables": {
+      "address": {
+        "name": null,
+        "line1": "12 Market Street",
+        "line2": null,
+        "postal_code": null,
+        "city": "Berlin"
+      },
+      "distance_m": null
+    },
+    "expected": [
+      {
+        "tag": "address",
+        "attrs": [
+          [
+            "class",
+            "address-block"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__line"
+              ]
+            ],
+            "children": [],
+            "text": "12 Market Street"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "address-block__city"
+              ]
+            ],
+            "children": [],
+            "text": "Berlin"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

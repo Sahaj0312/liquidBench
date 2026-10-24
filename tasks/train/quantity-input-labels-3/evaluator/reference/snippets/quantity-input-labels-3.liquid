@@ -1,0 +1,11 @@
+{%- comment -%} Quantity selector with accessible labels {%- endcomment -%}
+{{ 'quantity-input.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'quantity-input.js' | asset_url }}" defer="defer"></script>
+{%- capture rules -%}{{ 'products.quantity.min_count' | t: count: min_qty }}|{{ 'products.quantity.max_count' | t: count: max_qty }}{%- endcapture -%}
+<quantity-input class="quantity">
+  <label for="Quantity-{{ section_id }}">{{ 'products.quantity.label' | t }}</label>
+  <button type="button" name="minus" aria-label="{{ 'products.quantity.decrease' | t }}">{% render 'icon-minus' %}</button>
+  <input id="Quantity-{{ section_id }}" type="number" name="quantity" min="{{ min_qty }}" max="{{ max_qty }}" value="{{ min_qty }}">
+  <button type="button" name="plus" aria-label="{{ 'products.quantity.increase' | t }}">{% render 'icon-plus' %}</button>
+  <p class="quantity__rules">{{ rules | split: '|' | join: ' · ' }}</p>
+</quantity-input>

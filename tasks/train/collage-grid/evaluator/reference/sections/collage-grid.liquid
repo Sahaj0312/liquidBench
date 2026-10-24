@@ -1,0 +1,70 @@
+{%- assign heading = section.settings.heading | strip -%}
+{%- assign limit = section.settings.max_tiles | default: 4 -%}
+{%- if limit < 1 -%}
+  {%- assign limit = 4 -%}
+{%- endif -%}
+{%- assign count = 0 -%}
+{%- capture tiles -%}
+  {%- for block in section.blocks -%}
+    {%- if count >= limit -%}
+      {%- break -%}
+    {%- endif -%}
+    {%- if block.type == "tile" -%}
+      {%- assign title = block.settings.title | strip -%}
+      {%- if title != "" -%}
+        {%- assign count = count | plus: 1 -%}
+        {%- assign url = block.settings.url | strip -%}
+        {%- if block.settings.layout == "large" -%}
+          {%- assign size = "large" -%}
+        {%- else -%}
+          {%- assign size = "small" -%}
+        {%- endif -%}
+        <div class="collage__tile collage__tile--{{ size }}" data-position="{{ count }}">
+          {%- if url != "" -%}
+            <a href="{{ url | escape }}">{{ title | escape }}</a>
+          {%- else -%}
+            <span>{{ title | escape }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if count > 0 -%}
+<div class="collage collage--count-{{ count }}">
+  {%- if heading != "" -%}
+    <h2 class="collage__heading">{{ heading | escape }}</h2>
+  {%- endif -%}
+  {{- tiles -}}
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Collage",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "range", "id": "max_tiles", "label": "Maximum tiles", "min": 1, "max": 8, "step": 1, "default": 4 }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "url", "id": "url", "label": "Link" },
+        { "type": "select", "id": "layout", "label": "Layout", "options": [{ "value": "large", "label": "Large" }, { "value": "small", "label": "Small" }], "default": "small" }
+      ]
+    },
+    {
+      "type": "promo",
+      "name": "Promo",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "url", "id": "url", "label": "Link" },
+        { "type": "select", "id": "layout", "label": "Layout", "options": [{ "value": "large", "label": "Large" }, { "value": "small", "label": "Small" }], "default": "small" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Collage" }]
+}
+{% endschema %}

@@ -1,0 +1,5 @@
+<tr class="account-order-row">
+  <td>{{ order.name }}</td>
+  <td>{{ order.created_at | date: '%Y-%m-%d' }}</td>
+  <td>{{ order.total_price | money }}</td>
+</tr>

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-default-without-strip",
+    "expected_pass": false,
+    "changes": {
+      "snippets/preorder-notice-3.liquid": "<p class=\"preorder-notice\"><strong>{{ label | default: 'Pre-order' | escape }}</strong> <span>Ships {{ ship_date | default: 'soon' | escape }}</span></p>"
+    }
+  },
+  {
+    "name": "wrong-1-strip-after-default",
+    "expected_pass": false,
+    "changes": {
+      "snippets/preorder-notice-3.liquid": "<p class=\"preorder-notice\"><strong>{{ label | default: 'Pre-order' | strip | escape }}</strong> <span>Ships {{ ship_date | default: 'soon' | strip | escape }}</span></p>"
+    }
+  },
+  {
+    "name": "wrong-2-missing-escape",
+    "expected_pass": false,
+    "changes": {
+      "snippets/preorder-notice-3.liquid": "<p class=\"preorder-notice\"><strong>{{ label | strip | default: 'Pre-order' }}</strong> <span>Ships {{ ship_date | strip | default: 'soon' }}</span></p>"
+    }
+  },
+  {
+    "name": "wrong-3-wrong-date-fallback-case",
+    "expected_pass": false,
+    "changes": {
+      "snippets/preorder-notice-3.liquid": "<p class=\"preorder-notice\"><strong>{{ label | strip | default: 'Pre-order' | escape }}</strong> <span>Ships {{ ship_date | strip | default: 'Soon' | escape }}</span></p>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/preorder-notice-3.liquid": "{% # theme-check-disable %}\n<p class=\"preorder-notice\"><strong>{{ label | strip | default: 'Pre-order' | escape }}</strong> <span>Ships {{ ship_date | strip | default: 'soon' | escape }}</span></p>"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/preorder-notice-3.liquid": null
+    }
+  }
+]

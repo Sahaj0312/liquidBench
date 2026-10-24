@@ -1,0 +1,629 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/store-locator-entry-2.liquid",
+    "tags": [
+      "a",
+      "address",
+      "article",
+      "h4",
+      "p",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "store": {
+        "name": "Downtown",
+        "address_line1": "12 Main St",
+        "address_line2": "Suite 4",
+        "city": "Springfield",
+        "postal_code": "12345",
+        "phone": "+1 (555) 010-2000",
+        "distance_km": 2.5
+      }
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store-entry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h4",
+            "attrs": [
+              [
+                "class",
+                "store-entry__name"
+              ]
+            ],
+            "children": [],
+            "text": "Downtown"
+          },
+          {
+            "tag": "address",
+            "attrs": [
+              [
+                "class",
+                "store-entry__address"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "12 Main St"
+              },
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "Suite 4"
+              },
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "12345 Springfield"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-entry__phone"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "tel:+15550102000"
+                  ]
+                ],
+                "children": [],
+                "text": "+1 (555) 010-2000"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-entry__distance"
+              ]
+            ],
+            "children": [],
+            "text": "3 km away"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "store": {
+        "name": null,
+        "address_line1": "12 Main St",
+        "address_line2": null,
+        "city": "Springfield",
+        "postal_code": "12345",
+        "phone": "555",
+        "distance_km": 4
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "store": {
+        "name": "   ",
+        "address_line1": "1 Road",
+        "address_line2": "",
+        "city": "Town",
+        "postal_code": "",
+        "phone": "",
+        "distance_km": null
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "store": {
+        "name": "Kiosk",
+        "address_line1": null,
+        "address_line2": null,
+        "city": null,
+        "postal_code": null,
+        "phone": null,
+        "distance_km": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store-entry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h4",
+            "attrs": [
+              [
+                "class",
+                "store-entry__name"
+              ]
+            ],
+            "children": [],
+            "text": "Kiosk"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "store": {
+        "name": "Mall",
+        "address_line1": "",
+        "address_line2": null,
+        "city": "Riverton",
+        "postal_code": "",
+        "phone": "",
+        "distance_km": 0.4
+      }
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store-entry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h4",
+            "attrs": [
+              [
+                "class",
+                "store-entry__name"
+              ]
+            ],
+            "children": [],
+            "text": "Mall"
+          },
+          {
+            "tag": "address",
+            "attrs": [
+              [
+                "class",
+                "store-entry__address"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "Riverton"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-entry__distance"
+              ]
+            ],
+            "children": [],
+            "text": "Under 1 km away"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "store": {
+        "name": "Depot",
+        "address_line1": " 9 Dock Rd ",
+        "address_line2": "  ",
+        "city": null,
+        "postal_code": " 90210 ",
+        "phone": "555-0199",
+        "distance_km": 12.4
+      }
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store-entry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h4",
+            "attrs": [
+              [
+                "class",
+                "store-entry__name"
+              ]
+            ],
+            "children": [],
+            "text": "Depot"
+          },
+          {
+            "tag": "address",
+            "attrs": [
+              [
+                "class",
+                "store-entry__address"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "9 Dock Rd"
+              },
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "90210"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-entry__phone"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "tel:5550199"
+                  ]
+                ],
+                "children": [],
+                "text": "555-0199"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-entry__distance"
+              ]
+            ],
+            "children": [],
+            "text": "12 km away"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "store": {
+        "name": " Bread & Butter <Downtown> ",
+        "address_line1": "\"The Yard\" Unit 2",
+        "address_line2": null,
+        "city": "A&B",
+        "postal_code": null,
+        "phone": null,
+        "distance_km": 0
+      }
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store-entry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h4",
+            "attrs": [
+              [
+                "class",
+                "store-entry__name"
+              ]
+            ],
+            "children": [],
+            "text": "Bread & Butter <Downtown>"
+          },
+          {
+            "tag": "address",
+            "attrs": [
+              [
+                "class",
+                "store-entry__address"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "\"The Yard\" Unit 2"
+              },
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "A&B"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-entry__distance"
+              ]
+            ],
+            "children": [],
+            "text": "Under 1 km away"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "store": {
+        "name": "Edge",
+        "address_line1": "",
+        "address_line2": "",
+        "city": "",
+        "postal_code": "",
+        "phone": "",
+        "distance_km": 1
+      }
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store-entry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h4",
+            "attrs": [
+              [
+                "class",
+                "store-entry__name"
+              ]
+            ],
+            "children": [],
+            "text": "Edge"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-entry__distance"
+              ]
+            ],
+            "children": [],
+            "text": "1 km away"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "store": {
+        "name": "North",
+        "address_line1": null,
+        "address_line2": "Building B",
+        "city": "Oslo",
+        "postal_code": null,
+        "phone": "   ",
+        "distance_km": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store-entry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h4",
+            "attrs": [
+              [
+                "class",
+                "store-entry__name"
+              ]
+            ],
+            "children": [],
+            "text": "North"
+          },
+          {
+            "tag": "address",
+            "attrs": [
+              [
+                "class",
+                "store-entry__address"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "Building B"
+              },
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "Oslo"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "store": {
+        "name": "West",
+        "address_line1": "1 A St",
+        "address_line2": "",
+        "city": "",
+        "postal_code": "",
+        "phone": "(02) 9999 1234",
+        "distance_km": 7
+      }
+    },
+    "expected": [
+      {
+        "tag": "article",
+        "attrs": [
+          [
+            "class",
+            "store-entry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h4",
+            "attrs": [
+              [
+                "class",
+                "store-entry__name"
+              ]
+            ],
+            "children": [],
+            "text": "West"
+          },
+          {
+            "tag": "address",
+            "attrs": [
+              [
+                "class",
+                "store-entry__address"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "1 A St"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-entry__phone"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "tel:0299991234"
+                  ]
+                ],
+                "children": [],
+                "text": "(02) 9999 1234"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "store-entry__distance"
+              ]
+            ],
+            "children": [],
+            "text": "7 km away"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

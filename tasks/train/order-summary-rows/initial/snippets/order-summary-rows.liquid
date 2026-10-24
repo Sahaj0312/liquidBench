@@ -1,0 +1,6 @@
+{%- if summary_title != blank -%}<h3 class="order-summary__title">{{ summary_title }}</h3>{%- endif -%}
+<dl class="order-summary">
+{%- for line in lines -%}
+<div class="order-summary__row"><dt>{{ line.label }}</dt><dd>{{ line.amount | default: 'Free' }}</dd></div>
+{%- endfor -%}
+</dl>

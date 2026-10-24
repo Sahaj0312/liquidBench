@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-logout-key-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/account-page-labels.liquid": "{{ 'account-page.css' | asset_url | stylesheet_tag }}\n{%- assign safe_name = customer_name | default: '' | escape -%}\n<nav class=\"account-nav\" aria-label=\"{{ 'customer.account.nav_label' | t | escape }}\">\n  {% render 'account-avatar', name: safe_name %}\n  <h1>{{ 'customer.account.greeting' | t: name: safe_name }}</h1>\n  <a href=\"{{ account_url | escape }}\" title=\"{{ 'customer.account.orders' | t | escape }}\">{{ 'customer.account.orders' | t }}</a>\n  <a href=\"{{ logout_url | escape }}\">{{ 'customers.account.log_out' | t }}</a>\n</nav>\n"
+    }
+  },
+  {
+    "name": "wrong-1-avatar-snippet-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/account-page-labels.liquid": "{{ 'account-page.css' | asset_url | stylesheet_tag }}\n{%- assign safe_name = customer_name | default: '' | escape -%}\n<nav class=\"account-nav\" aria-label=\"{{ 'customer.account.nav_label' | t | escape }}\">\n  {% render 'avatar', name: safe_name %}\n  <h1>{{ 'customer.account.greeting' | t: name: safe_name }}</h1>\n  <a href=\"{{ account_url | escape }}\" title=\"{{ 'customer.account.orders' | t | escape }}\">{{ 'customer.account.orders' | t }}</a>\n  <a href=\"{{ logout_url | escape }}\">{{ 'customer.account.log_out' | t }}</a>\n</nav>\n"
+    }
+  },
+  {
+    "name": "wrong-2-stylesheet-scss-name",
+    "expected_pass": false,
+    "changes": {
+      "snippets/account-page-labels.liquid": "{{ 'account-page.scss.css' | asset_url | stylesheet_tag }}\n{%- assign safe_name = customer_name | default: '' | escape -%}\n<nav class=\"account-nav\" aria-label=\"{{ 'customer.account.nav_label' | t | escape }}\">\n  {% render 'account-avatar', name: safe_name %}\n  <h1>{{ 'customer.account.greeting' | t: name: safe_name }}</h1>\n  <a href=\"{{ account_url | escape }}\" title=\"{{ 'customer.account.orders' | t | escape }}\">{{ 'customer.account.orders' | t }}</a>\n  <a href=\"{{ logout_url | escape }}\">{{ 'customer.account.log_out' | t }}</a>\n</nav>\n"
+    }
+  },
+  {
+    "name": "wrong-3-greeting-key-renamed-to-welcom",
+    "expected_pass": false,
+    "changes": {
+      "snippets/account-page-labels.liquid": "{{ 'account-page.css' | asset_url | stylesheet_tag }}\n{%- assign safe_name = customer_name | default: '' | escape -%}\n<nav class=\"account-nav\" aria-label=\"{{ 'customer.account.nav_label' | t | escape }}\">\n  {% render 'account-avatar', name: safe_name %}\n  <h1>{{ 'customer.account.welcome' | t: name: safe_name }}</h1>\n  <a href=\"{{ account_url | escape }}\" title=\"{{ 'customer.account.orders' | t | escape }}\">{{ 'customer.account.orders' | t }}</a>\n  <a href=\"{{ logout_url | escape }}\">{{ 'customer.account.log_out' | t }}</a>\n</nav>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/account-page-labels.liquid": "{% # theme-check-disable %}\n{{ 'account-page.css' | asset_url | stylesheet_tag }}\n{%- assign safe_name = customer_name | default: '' | escape -%}\n<nav class=\"account-nav\" aria-label=\"{{ 'customer.account.nav_label' | t | escape }}\">\n  {% render 'account-avatar', name: safe_name %}\n  <h1>{{ 'customer.account.greeting' | t: name: safe_name }}</h1>\n  <a href=\"{{ account_url | escape }}\" title=\"{{ 'customer.account.orders' | t | escape }}\">{{ 'customer.account.orders' | t }}</a>\n  <a href=\"{{ logout_url | escape }}\">{{ 'customer.account.log_out' | t }}</a>\n</nav>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/account-page-labels.liquid": null
+    }
+  }
+]

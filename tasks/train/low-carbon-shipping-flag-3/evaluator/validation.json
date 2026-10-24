@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-case-insensitive-match",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag-3.liquid": "{%- liquid\n  assign exempt = false\n  assign via_tag = false\n  assign via_carrier = false\n  for tag in product_tags\n    assign t = tag | downcase\n    if t == \"carbon-exempt\"\n      assign exempt = true\n    endif\n    if t == \"low-carbon\"\n      assign via_tag = true\n    endif\n  endfor\n  assign code = carrier_code | upcase\n  if code == \"ECO\" or code == \"RAIL\"\n    assign via_carrier = true\n  endif\n  assign label = badge_label | default: \"\" | strip\n  if label == \"\"\n    assign label = \"Low-carbon shipping\"\n  endif\n-%}\n{%- unless exempt -%}{%- if via_tag or via_carrier -%}\n<p class=\"ship-flag\" data-source=\"{% if via_tag %}tag{% else %}carrier{% endif %}\"><span>{{ label | escape }}</span>\n{%- if offset_percent != nil and offset_percent > 0 -%}<small>{{ offset_percent | at_most: 100 }}% offset</small>{%- endif -%}\n</p>\n{%- endif -%}{%- endunless -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-substring-match-on-joined-tags",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag-3.liquid": "{%- liquid\n  assign exempt = false\n  assign via_tag = false\n  assign via_carrier = false\n  assign joined = product_tags | join: \",\"\n  if joined contains \"carbon-exempt\"\n    assign exempt = true\n  endif\n  if joined contains \"low-carbon\"\n    assign via_tag = true\n  endif\n  if carrier_code == \"ECO\" or carrier_code == \"RAIL\"\n    assign via_carrier = true\n  endif\n  assign label = badge_label | default: \"\" | strip\n  if label == \"\"\n    assign label = \"Low-carbon shipping\"\n  endif\n-%}\n{%- unless exempt -%}{%- if via_tag or via_carrier -%}\n<p class=\"ship-flag\" data-source=\"{% if via_tag %}tag{% else %}carrier{% endif %}\"><span>{{ label | escape }}</span>\n{%- if offset_percent != nil and offset_percent > 0 -%}<small>{{ offset_percent | at_most: 100 }}% offset</small>{%- endif -%}\n</p>\n{%- endif -%}{%- endunless -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-carrier-source-precedence",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag-3.liquid": "{%- liquid\n  assign exempt = false\n  assign via_tag = false\n  assign via_carrier = false\n  if product_tags contains \"carbon-exempt\"\n    assign exempt = true\n  endif\n  if product_tags contains \"low-carbon\"\n    assign via_tag = true\n  endif\n  if carrier_code == \"ECO\" or carrier_code == \"RAIL\"\n    assign via_carrier = true\n  endif\n  assign label = badge_label | default: \"\" | strip\n  if label == \"\"\n    assign label = \"Low-carbon shipping\"\n  endif\n-%}\n{%- unless exempt -%}{%- if via_tag or via_carrier -%}\n<p class=\"ship-flag\" data-source=\"{% if via_carrier %}carrier{% else %}tag{% endif %}\"><span>{{ label | escape }}</span>\n{%- if offset_percent != nil and offset_percent > 0 -%}<small>{{ offset_percent | at_most: 100 }}% offset</small>{%- endif -%}\n</p>\n{%- endif -%}{%- endunless -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-offset-unclamped-and-zero",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag-3.liquid": "{%- liquid\n  assign exempt = false\n  assign via_tag = false\n  assign via_carrier = false\n  if product_tags contains \"carbon-exempt\"\n    assign exempt = true\n  endif\n  if product_tags contains \"low-carbon\"\n    assign via_tag = true\n  endif\n  if carrier_code == \"ECO\" or carrier_code == \"RAIL\"\n    assign via_carrier = true\n  endif\n  assign label = badge_label | default: \"\" | strip\n  if label == \"\"\n    assign label = \"Low-carbon shipping\"\n  endif\n-%}\n{%- unless exempt -%}{%- if via_tag or via_carrier -%}\n<p class=\"ship-flag\" data-source=\"{% if via_tag %}tag{% else %}carrier{% endif %}\"><span>{{ label | escape }}</span>\n{%- if offset_percent != nil and offset_percent >= 0 -%}<small>{{ offset_percent }}% offset</small>{%- endif -%}\n</p>\n{%- endif -%}{%- endunless -%}\n"
+    }
+  },
+  {
+    "name": "wrong-4-trims-tags-before-compare",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag-3.liquid": "{%- liquid\n  assign exempt = false\n  assign via_tag = false\n  assign via_carrier = false\n  for tag in product_tags\n    assign t = tag | strip\n    if t == \"carbon-exempt\"\n      assign exempt = true\n    endif\n    if t == \"low-carbon\"\n      assign via_tag = true\n    endif\n  endfor\n  if carrier_code == \"ECO\" or carrier_code == \"RAIL\"\n    assign via_carrier = true\n  endif\n  assign label = badge_label | default: \"\" | strip\n  if label == \"\"\n    assign label = \"Low-carbon shipping\"\n  endif\n-%}\n{%- unless exempt -%}{%- if via_tag or via_carrier -%}\n<p class=\"ship-flag\" data-source=\"{% if via_tag %}tag{% else %}carrier{% endif %}\"><span>{{ label | escape }}</span>\n{%- if offset_percent != nil and offset_percent > 0 -%}<small>{{ offset_percent | at_most: 100 }}% offset</small>{%- endif -%}\n</p>\n{%- endif -%}{%- endunless -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag-3.liquid": "{% # theme-check-disable %}\n{%- liquid\n  assign exempt = false\n  assign via_tag = false\n  assign via_carrier = false\n  if product_tags contains \"carbon-exempt\"\n    assign exempt = true\n  endif\n  if product_tags contains \"low-carbon\"\n    assign via_tag = true\n  endif\n  if carrier_code == \"ECO\" or carrier_code == \"RAIL\"\n    assign via_carrier = true\n  endif\n  assign label = badge_label | default: \"\" | strip\n  if label == \"\"\n    assign label = \"Low-carbon shipping\"\n  endif\n-%}\n{%- unless exempt -%}{%- if via_tag or via_carrier -%}\n<p class=\"ship-flag\" data-source=\"{% if via_tag %}tag{% else %}carrier{% endif %}\"><span>{{ label | escape }}</span>\n{%- if offset_percent != nil and offset_percent > 0 -%}<small>{{ offset_percent | at_most: 100 }}% offset</small>{%- endif -%}\n</p>\n{%- endif -%}{%- endunless -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag-3.liquid": null
+    }
+  }
+]

@@ -1,0 +1,30 @@
+{%- if warranty -%}
+  {%- assign name = warranty.product_name | strip -%}
+  {%- if name == '' -%}
+    {%- assign name = 'Unnamed product' -%}
+  {%- endif -%}
+  {%- assign months = warranty.months | default: 0 -%}
+  {%- assign used = warranty.months_used | default: 0 -%}
+  {%- assign remaining = months | minus: used -%}
+  {%- if warranty.registered != true -%}
+    {%- assign slug = 'unregistered' -%}
+    {%- assign label = 'Unregistered' -%}
+  {%- elsif months <= 0 -%}
+    {%- assign slug = 'none' -%}
+    {%- assign label = 'No coverage' -%}
+  {%- elsif remaining <= 0 -%}
+    {%- assign slug = 'expired' -%}
+    {%- assign label = 'Expired' -%}
+  {%- elsif remaining <= 3 -%}
+    {%- assign slug = 'expiring' -%}
+    {%- assign label = 'Expiring soon' -%}
+  {%- else -%}
+    {%- assign slug = 'active' -%}
+    {%- assign label = 'Active' -%}
+  {%- endif -%}
+  <div class="warranty warranty--{{ slug }}"><h3>{{ name | escape }}</h3><p>{{ label }}</p>
+  {%- if slug == 'active' or slug == 'expiring' -%}
+    <p>{{ remaining }} {% if remaining == 1 %}month{% else %}months{% endif %} left</p>
+  {%- endif -%}
+  </div>
+{%- endif -%}

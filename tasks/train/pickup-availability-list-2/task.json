@@ -1,0 +1,15 @@
+{
+  "id": "pickup-availability-list-2",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "hard",
+  "family": "pickup-availability-list-2",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/pickup-availability-list-2.liquid"
+  ],
+  "prompt": "Fix snippets/pickup-availability-list-2.liquid so that it renders a store-pickup availability block exactly as specified.\n\nInputs (all top-level variables, always supplied):\n- heading: string or null.\n- locations: array or null. Each item is an object that always has these keys: name (string), available (boolean), pickup_time (string or null).\n\nOutput rules:\n1. If locations is null or has 0 items, output nothing (empty string).\n2. Otherwise output a wrapper <div class=\"pickup\"> ... </div>.\n3. Optional heading: only when heading is not null and is non-empty after stripping leading/trailing whitespace, the first child is <h3 class=\"pickup-heading\">HEADING</h3>, where HEADING is the stripped heading, HTML-escaped. Otherwise there is no h3 at all.\n4. A location is available only when its available value is true. If there are no available locations, output <p class=\"pickup-none\">Pickup currently unavailable</p> (and no ul).\n5. Otherwise output <ul class=\"pickup-list\"> containing one <li> for each of the FIRST 3 available locations in input order (unavailable locations are skipped and do not count toward the 3). Each li is <li><strong>NAME</strong>TIME</li>, where NAME is the HTML-escaped name, and TIME is <span class=\"pickup-time\">PICKUP</span> only when pickup_time is not null and non-empty after stripping (PICKUP = stripped, HTML-escaped pickup_time); otherwise TIME is nothing (no empty span).\n6. If more than 3 locations are available, directly after </ul> output <p class=\"pickup-more\">+N more locations</p>, where N is the number of available locations not shown; when N is 1 the word is singular: +1 more location.\n7. Output contains no whitespace or newlines between or around tags; text appears exactly as described. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/pickup-availability-list-2.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

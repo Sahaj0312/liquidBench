@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-plural-many-suffix",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-sprite.liquid": "{{ 'component-icon-sprite.css' | asset_url | stylesheet_tag }}\n{%- assign icons = icon_names | split: ',' -%}\n<div class=\"icon-sprite\">\n  {%- if icons.size == 0 -%}\n    <p class=\"icon-sprite__empty\">{{ 'accessibility.icons.empty' | t }}</p>\n  {%- else -%}\n    <h3 class=\"icon-sprite__count\">{{ 'accessibility.icons.count.many' | t: count: icons.size }}</h3>\n    <ul class=\"icon-sprite__list\">\n      {%- for raw in icons -%}\n        {%- assign name = raw | strip -%}\n        <li class=\"icon-sprite__item\">\n          <svg class=\"icon icon-{{ name | escape }}\" role=\"img\" aria-label=\"{{ 'accessibility.icons.label' | t: name: name }}\"><use href=\"{{ 'icons-sprite.svg' | asset_url }}#icon-{{ name | escape }}\"></use></svg>\n        </li>\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n  {%- render 'icon-fallback' -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-singular-icon-namespace",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-sprite.liquid": "{{ 'component-icon-sprite.css' | asset_url | stylesheet_tag }}\n{%- assign icons = icon_names | split: ',' -%}\n<div class=\"icon-sprite\">\n  {%- if icons.size == 0 -%}\n    <p class=\"icon-sprite__empty\">{{ 'accessibility.icons.empty' | t }}</p>\n  {%- else -%}\n    <h3 class=\"icon-sprite__count\">{{ 'accessibility.icon.count' | t: count: icons.size }}</h3>\n    <ul class=\"icon-sprite__list\">\n      {%- for raw in icons -%}\n        {%- assign name = raw | strip -%}\n        <li class=\"icon-sprite__item\">\n          <svg class=\"icon icon-{{ name | escape }}\" role=\"img\" aria-label=\"{{ 'accessibility.icons.label' | t: name: name }}\"><use href=\"{{ 'icons-sprite.svg' | asset_url }}#icon-{{ name | escape }}\"></use></svg>\n        </li>\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n  {%- render 'icon-fallback' -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-plural-stylesheet-name",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-sprite.liquid": "{{ 'component-icons-sprite.css' | asset_url | stylesheet_tag }}\n{%- assign icons = icon_names | split: ',' -%}\n<div class=\"icon-sprite\">\n  {%- if icons.size == 0 -%}\n    <p class=\"icon-sprite__empty\">{{ 'accessibility.icons.empty' | t }}</p>\n  {%- else -%}\n    <h3 class=\"icon-sprite__count\">{{ 'accessibility.icons.count' | t: count: icons.size }}</h3>\n    <ul class=\"icon-sprite__list\">\n      {%- for raw in icons -%}\n        {%- assign name = raw | strip -%}\n        <li class=\"icon-sprite__item\">\n          <svg class=\"icon icon-{{ name | escape }}\" role=\"img\" aria-label=\"{{ 'accessibility.icons.label' | t: name: name }}\"><use href=\"{{ 'icons-sprite.svg' | asset_url }}#icon-{{ name | escape }}\"></use></svg>\n        </li>\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n  {%- render 'icon-fallback' -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-fallback-snippet-plural",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-sprite.liquid": "{{ 'component-icon-sprite.css' | asset_url | stylesheet_tag }}\n{%- assign icons = icon_names | split: ',' -%}\n<div class=\"icon-sprite\">\n  {%- if icons.size == 0 -%}\n    <p class=\"icon-sprite__empty\">{{ 'accessibility.icons.empty' | t }}</p>\n  {%- else -%}\n    <h3 class=\"icon-sprite__count\">{{ 'accessibility.icons.count' | t: count: icons.size }}</h3>\n    <ul class=\"icon-sprite__list\">\n      {%- for raw in icons -%}\n        {%- assign name = raw | strip -%}\n        <li class=\"icon-sprite__item\">\n          <svg class=\"icon icon-{{ name | escape }}\" role=\"img\" aria-label=\"{{ 'accessibility.icons.label' | t: name: name }}\"><use href=\"{{ 'icons-sprite.svg' | asset_url }}#icon-{{ name | escape }}\"></use></svg>\n        </li>\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n  {%- render 'icon-fallbacks' -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-sprite.liquid": "{% # theme-check-disable %}\n{{ 'component-icon-sprite.css' | asset_url | stylesheet_tag }}\n{%- assign icons = icon_names | split: ',' -%}\n<div class=\"icon-sprite\">\n  {%- if icons.size == 0 -%}\n    <p class=\"icon-sprite__empty\">{{ 'accessibility.icons.empty' | t }}</p>\n  {%- else -%}\n    <h3 class=\"icon-sprite__count\">{{ 'accessibility.icons.count' | t: count: icons.size }}</h3>\n    <ul class=\"icon-sprite__list\">\n      {%- for raw in icons -%}\n        {%- assign name = raw | strip -%}\n        <li class=\"icon-sprite__item\">\n          <svg class=\"icon icon-{{ name | escape }}\" role=\"img\" aria-label=\"{{ 'accessibility.icons.label' | t: name: name }}\"><use href=\"{{ 'icons-sprite.svg' | asset_url }}#icon-{{ name | escape }}\"></use></svg>\n        </li>\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n  {%- render 'icon-fallback' -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/icon-sprite.liquid": null
+    }
+  }
+]

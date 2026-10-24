@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-truncates-percent",
+    "expected_pass": false,
+    "changes": {
+      "snippets/variant-swatch-list.liquid": "{%- if swatches.size > 0 -%}\n{%- assign total = swatches.size -%}\n{%- assign limit = total -%}\n{%- if max_visible != nil -%}\n{%- if max_visible >= 1 and max_visible < total -%}{%- assign limit = max_visible -%}{%- endif -%}\n{%- endif -%}\n<ul class=\"swatches\">\n{%- for swatch in swatches limit: limit -%}\n{%- assign dollars = swatch.price_cents | divided_by: 100 -%}\n{%- assign cents = swatch.price_cents | modulo: 100 -%}\n<li class=\"swatch{% unless swatch.available %} swatch--sold-out{% endunless %}\"><span class=\"swatch__name\">{{ swatch.name | escape }}</span><span class=\"swatch__price\">${{ dollars }}.{% if cents < 10 %}0{% endif %}{{ cents }}</span>\n{%- if swatch.compare_at_cents != nil -%}\n{%- if swatch.compare_at_cents > swatch.price_cents -%}\n{%- assign diff = swatch.compare_at_cents | minus: swatch.price_cents -%}\n{%- assign pct = diff | times: 100 | divided_by: swatch.compare_at_cents -%}\n{%- if pct > 0 -%}<span class=\"swatch__badge\">-{{ pct }}%</span>{%- endif -%}\n{%- endif -%}\n{%- endif -%}\n</li>\n{%- endfor -%}\n{%- assign hidden = total | minus: limit -%}\n{%- if hidden > 0 -%}<li class=\"swatches__more\">+{{ hidden }} more</li>{%- endif -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-no-cents-padding",
+    "expected_pass": false,
+    "changes": {
+      "snippets/variant-swatch-list.liquid": "{%- if swatches.size > 0 -%}\n{%- assign total = swatches.size -%}\n{%- assign limit = total -%}\n{%- if max_visible != nil -%}\n{%- if max_visible >= 1 and max_visible < total -%}{%- assign limit = max_visible -%}{%- endif -%}\n{%- endif -%}\n<ul class=\"swatches\">\n{%- for swatch in swatches limit: limit -%}\n{%- assign dollars = swatch.price_cents | divided_by: 100 -%}\n{%- assign cents = swatch.price_cents | modulo: 100 -%}\n<li class=\"swatch{% unless swatch.available %} swatch--sold-out{% endunless %}\"><span class=\"swatch__name\">{{ swatch.name | escape }}</span><span class=\"swatch__price\">${{ dollars }}.{{ cents }}</span>\n{%- if swatch.compare_at_cents != nil -%}\n{%- if swatch.compare_at_cents > swatch.price_cents -%}\n{%- assign diff = swatch.compare_at_cents | minus: swatch.price_cents -%}\n{%- assign num = diff | times: 200 | plus: swatch.compare_at_cents -%}\n{%- assign den = swatch.compare_at_cents | times: 2 -%}\n{%- assign pct = num | divided_by: den -%}\n{%- if pct > 0 -%}<span class=\"swatch__badge\">-{{ pct }}%</span>{%- endif -%}\n{%- endif -%}\n{%- endif -%}\n</li>\n{%- endfor -%}\n{%- assign hidden = total | minus: limit -%}\n{%- if hidden > 0 -%}<li class=\"swatches__more\">+{{ hidden }} more</li>{%- endif -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-zero-max-visible-hides-all",
+    "expected_pass": false,
+    "changes": {
+      "snippets/variant-swatch-list.liquid": "{%- if swatches.size > 0 -%}\n{%- assign total = swatches.size -%}\n{%- assign limit = total -%}\n{%- if max_visible != nil -%}\n{%- if max_visible < total -%}{%- assign limit = max_visible -%}{%- endif -%}\n{%- endif -%}\n<ul class=\"swatches\">\n{%- for swatch in swatches limit: limit -%}\n{%- assign dollars = swatch.price_cents | divided_by: 100 -%}\n{%- assign cents = swatch.price_cents | modulo: 100 -%}\n<li class=\"swatch{% unless swatch.available %} swatch--sold-out{% endunless %}\"><span class=\"swatch__name\">{{ swatch.name | escape }}</span><span class=\"swatch__price\">${{ dollars }}.{% if cents < 10 %}0{% endif %}{{ cents }}</span>\n{%- if swatch.compare_at_cents != nil -%}\n{%- if swatch.compare_at_cents > swatch.price_cents -%}\n{%- assign diff = swatch.compare_at_cents | minus: swatch.price_cents -%}\n{%- assign num = diff | times: 200 | plus: swatch.compare_at_cents -%}\n{%- assign den = swatch.compare_at_cents | times: 2 -%}\n{%- assign pct = num | divided_by: den -%}\n{%- if pct > 0 -%}<span class=\"swatch__badge\">-{{ pct }}%</span>{%- endif -%}\n{%- endif -%}\n{%- endif -%}\n</li>\n{%- endfor -%}\n{%- assign hidden = total | minus: limit -%}\n{%- if hidden > 0 -%}<li class=\"swatches__more\">+{{ hidden }} more</li>{%- endif -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-shows-zero-percent-badge",
+    "expected_pass": false,
+    "changes": {
+      "snippets/variant-swatch-list.liquid": "{%- if swatches.size > 0 -%}\n{%- assign total = swatches.size -%}\n{%- assign limit = total -%}\n{%- if max_visible != nil -%}\n{%- if max_visible >= 1 and max_visible < total -%}{%- assign limit = max_visible -%}{%- endif -%}\n{%- endif -%}\n<ul class=\"swatches\">\n{%- for swatch in swatches limit: limit -%}\n{%- assign dollars = swatch.price_cents | divided_by: 100 -%}\n{%- assign cents = swatch.price_cents | modulo: 100 -%}\n<li class=\"swatch{% unless swatch.available %} swatch--sold-out{% endunless %}\"><span class=\"swatch__name\">{{ swatch.name | escape }}</span><span class=\"swatch__price\">${{ dollars }}.{% if cents < 10 %}0{% endif %}{{ cents }}</span>\n{%- if swatch.compare_at_cents != nil -%}\n{%- if swatch.compare_at_cents >= swatch.price_cents -%}\n{%- assign diff = swatch.compare_at_cents | minus: swatch.price_cents -%}\n{%- assign num = diff | times: 200 | plus: swatch.compare_at_cents -%}\n{%- assign den = swatch.compare_at_cents | times: 2 -%}\n{%- assign pct = num | divided_by: den -%}\n<span class=\"swatch__badge\">-{{ pct }}%</span>\n{%- endif -%}\n{%- endif -%}\n</li>\n{%- endfor -%}\n{%- assign hidden = total | minus: limit -%}\n{%- if hidden > 0 -%}<li class=\"swatches__more\">+{{ hidden }} more</li>{%- endif -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/variant-swatch-list.liquid": "{% # theme-check-disable %}\n{%- if swatches.size > 0 -%}\n{%- assign total = swatches.size -%}\n{%- assign limit = total -%}\n{%- if max_visible != nil -%}\n{%- if max_visible >= 1 and max_visible < total -%}{%- assign limit = max_visible -%}{%- endif -%}\n{%- endif -%}\n<ul class=\"swatches\">\n{%- for swatch in swatches limit: limit -%}\n{%- assign dollars = swatch.price_cents | divided_by: 100 -%}\n{%- assign cents = swatch.price_cents | modulo: 100 -%}\n<li class=\"swatch{% unless swatch.available %} swatch--sold-out{% endunless %}\"><span class=\"swatch__name\">{{ swatch.name | escape }}</span><span class=\"swatch__price\">${{ dollars }}.{% if cents < 10 %}0{% endif %}{{ cents }}</span>\n{%- if swatch.compare_at_cents != nil -%}\n{%- if swatch.compare_at_cents > swatch.price_cents -%}\n{%- assign diff = swatch.compare_at_cents | minus: swatch.price_cents -%}\n{%- assign num = diff | times: 200 | plus: swatch.compare_at_cents -%}\n{%- assign den = swatch.compare_at_cents | times: 2 -%}\n{%- assign pct = num | divided_by: den -%}\n{%- if pct > 0 -%}<span class=\"swatch__badge\">-{{ pct }}%</span>{%- endif -%}\n{%- endif -%}\n{%- endif -%}\n</li>\n{%- endfor -%}\n{%- assign hidden = total | minus: limit -%}\n{%- if hidden > 0 -%}<li class=\"swatches__more\">+{{ hidden }} more</li>{%- endif -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/variant-swatch-list.liquid": null
+    }
+  }
+]

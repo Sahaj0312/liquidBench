@@ -1,0 +1,15 @@
+{
+  "id": "warranty-status-2",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "warranty-status-2",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/warranty-status-2.liquid"
+  ],
+  "prompt": "Rewrite snippets/warranty-status-2.liquid so it renders a warranty status badge exactly as specified.\n\nInputs (only one top-level variable):\n- `warranty`: object or null. When it is an object, all four fields are always present:\n  - `warranty.product_name`: string or null.\n  - `warranty.months`: integer or null. This is the total warranty length in months.\n  - `warranty.months_used`: integer or null. Null means 0.\n  - `warranty.registered`: boolean, never null.\n\nRules:\n1. If `warranty` is null, output nothing (empty string). Do not access any field when warranty is null.\n2. Display name: `product_name` with leading and trailing whitespace stripped. If it is null or becomes empty after stripping, use `Unnamed product`. The name must be HTML-escaped.\n3. Status. Evaluate these checks in this exact order:\n   - If `registered` is false: slug `unregistered`, label `Unregistered`. This applies even when months is null.\n   - Else if `months` is null or less than or equal to 0: slug `none`, label `No coverage`.\n   - Otherwise compute remaining = months - months_used, with null months_used treated as 0.\n     - If remaining <= 0: slug `expired`, label `Expired`.\n     - Else if remaining <= 3: slug `expiring`, label `Expiring soon`.\n     - Else: slug `active`, label `Active`.\n4. Output must be a single line with no whitespace between tags:\n`<div class=\"warranty warranty--SLUG\"><h3>NAME</h3><p>LABEL</p>REMAINING</div>`\n   REMAINING is present only for the slugs `active` and `expiring`. It is `<p>N months left</p>`, where N is the remaining count. Use `month` (singular) when N is 1, for example `<p>1 month left</p>`. For every other slug, REMAINING is omitted entirely.\n\nExample: product_name \"Stand Mixer\", months 24, months_used 10, registered true renders `<div class=\"warranty warranty--active\"><h3>Stand Mixer</h3><p>Active</p><p>14 months left</p></div>`. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/warranty-status-2.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

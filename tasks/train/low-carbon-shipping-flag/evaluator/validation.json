@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-divides-weight-first",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag.liquid": "{%- assign w = shipment.weight_grams -%}\n{%- assign d = shipment.distance_km -%}\n{%- assign m = shipment.method | default: '' | strip | downcase -%}\n{%- assign factor = 0 -%}\n{%- case m -%}\n{%- when 'ground' -%}{%- assign factor = 62 -%}\n{%- when 'rail' -%}{%- assign factor = 22 -%}\n{%- when 'air' -%}{%- assign factor = 602 -%}\n{%- endcase -%}\n{%- if w != nil and d != nil and factor > 0 -%}\n{%- if w > 0 and d > 0 -%}\n{%- assign e = w | divided_by: 1000 | times: d | times: factor | divided_by: 1000 -%}\n{%- assign carrier = shipment.carrier | default: '' | strip -%}\n{%- if e <= 50 and m != 'air' -%}\n{%- assign level = 'low' -%}{%- assign label = 'Low-carbon shipping' -%}\n{%- elsif e <= 200 -%}\n{%- assign level = 'medium' -%}{%- assign label = 'Moderate-carbon shipping' -%}\n{%- else -%}\n{%- assign level = 'high' -%}{%- assign label = 'High-carbon shipping' -%}\n{%- endif -%}\n<span class=\"carbon carbon--{{ level }}\">{{ label }}: {{ e }} g CO2{% if carrier != '' %} via {{ carrier | escape }}{% endif %}</span>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-low-threshold-exclusive",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag.liquid": "{%- assign w = shipment.weight_grams -%}\n{%- assign d = shipment.distance_km -%}\n{%- assign m = shipment.method | default: '' | strip | downcase -%}\n{%- assign factor = 0 -%}\n{%- case m -%}\n{%- when 'ground' -%}{%- assign factor = 62 -%}\n{%- when 'rail' -%}{%- assign factor = 22 -%}\n{%- when 'air' -%}{%- assign factor = 602 -%}\n{%- endcase -%}\n{%- if w != nil and d != nil and factor > 0 -%}\n{%- if w > 0 and d > 0 -%}\n{%- assign e = w | times: d | times: factor | divided_by: 1000000 -%}\n{%- assign carrier = shipment.carrier | default: '' | strip -%}\n{%- if e < 50 and m != 'air' -%}\n{%- assign level = 'low' -%}{%- assign label = 'Low-carbon shipping' -%}\n{%- elsif e <= 200 -%}\n{%- assign level = 'medium' -%}{%- assign label = 'Moderate-carbon shipping' -%}\n{%- else -%}\n{%- assign level = 'high' -%}{%- assign label = 'High-carbon shipping' -%}\n{%- endif -%}\n<span class=\"carbon carbon--{{ level }}\">{{ label }}: {{ e }} g CO2{% if carrier != '' %} via {{ carrier | escape }}{% endif %}</span>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-air-can-be-low",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag.liquid": "{%- assign w = shipment.weight_grams -%}\n{%- assign d = shipment.distance_km -%}\n{%- assign m = shipment.method | default: '' | strip | downcase -%}\n{%- assign factor = 0 -%}\n{%- case m -%}\n{%- when 'ground' -%}{%- assign factor = 62 -%}\n{%- when 'rail' -%}{%- assign factor = 22 -%}\n{%- when 'air' -%}{%- assign factor = 602 -%}\n{%- endcase -%}\n{%- if w != nil and d != nil and factor > 0 -%}\n{%- if w > 0 and d > 0 -%}\n{%- assign e = w | times: d | times: factor | divided_by: 1000000 -%}\n{%- assign carrier = shipment.carrier | default: '' | strip -%}\n{%- if e <= 50 -%}\n{%- assign level = 'low' -%}{%- assign label = 'Low-carbon shipping' -%}\n{%- elsif e <= 200 -%}\n{%- assign level = 'medium' -%}{%- assign label = 'Moderate-carbon shipping' -%}\n{%- else -%}\n{%- assign level = 'high' -%}{%- assign label = 'High-carbon shipping' -%}\n{%- endif -%}\n<span class=\"carbon carbon--{{ level }}\">{{ label }}: {{ e }} g CO2{% if carrier != '' %} via {{ carrier | escape }}{% endif %}</span>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-method-not-normalized",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag.liquid": "{%- assign w = shipment.weight_grams -%}\n{%- assign d = shipment.distance_km -%}\n{%- assign m = shipment.method | default: '' -%}\n{%- assign factor = 0 -%}\n{%- case m -%}\n{%- when 'ground' -%}{%- assign factor = 62 -%}\n{%- when 'rail' -%}{%- assign factor = 22 -%}\n{%- when 'air' -%}{%- assign factor = 602 -%}\n{%- endcase -%}\n{%- if w != nil and d != nil and factor > 0 -%}\n{%- if w > 0 and d > 0 -%}\n{%- assign e = w | times: d | times: factor | divided_by: 1000000 -%}\n{%- assign carrier = shipment.carrier | default: '' | strip -%}\n{%- if e <= 50 and m != 'air' -%}\n{%- assign level = 'low' -%}{%- assign label = 'Low-carbon shipping' -%}\n{%- elsif e <= 200 -%}\n{%- assign level = 'medium' -%}{%- assign label = 'Moderate-carbon shipping' -%}\n{%- else -%}\n{%- assign level = 'high' -%}{%- assign label = 'High-carbon shipping' -%}\n{%- endif -%}\n<span class=\"carbon carbon--{{ level }}\">{{ label }}: {{ e }} g CO2{% if carrier != '' %} via {{ carrier | escape }}{% endif %}</span>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-4-zero-weight-truthy",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag.liquid": "{%- assign w = shipment.weight_grams -%}\n{%- assign d = shipment.distance_km -%}\n{%- assign m = shipment.method | default: '' | strip | downcase -%}\n{%- assign factor = 0 -%}\n{%- case m -%}\n{%- when 'ground' -%}{%- assign factor = 62 -%}\n{%- when 'rail' -%}{%- assign factor = 22 -%}\n{%- when 'air' -%}{%- assign factor = 602 -%}\n{%- endcase -%}\n{%- if w and d and factor > 0 -%}\n{%- assign e = w | times: d | times: factor | divided_by: 1000000 -%}\n{%- assign carrier = shipment.carrier | default: '' | strip -%}\n{%- if e <= 50 and m != 'air' -%}\n{%- assign level = 'low' -%}{%- assign label = 'Low-carbon shipping' -%}\n{%- elsif e <= 200 -%}\n{%- assign level = 'medium' -%}{%- assign label = 'Moderate-carbon shipping' -%}\n{%- else -%}\n{%- assign level = 'high' -%}{%- assign label = 'High-carbon shipping' -%}\n{%- endif -%}\n<span class=\"carbon carbon--{{ level }}\">{{ label }}: {{ e }} g CO2{% if carrier != '' %} via {{ carrier | escape }}{% endif %}</span>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag.liquid": "{% # theme-check-disable %}\n{%- assign w = shipment.weight_grams -%}\n{%- assign d = shipment.distance_km -%}\n{%- assign m = shipment.method | default: '' | strip | downcase -%}\n{%- assign factor = 0 -%}\n{%- case m -%}\n{%- when 'ground' -%}{%- assign factor = 62 -%}\n{%- when 'rail' -%}{%- assign factor = 22 -%}\n{%- when 'air' -%}{%- assign factor = 602 -%}\n{%- endcase -%}\n{%- if w != nil and d != nil and factor > 0 -%}\n{%- if w > 0 and d > 0 -%}\n{%- assign e = w | times: d | times: factor | divided_by: 1000000 -%}\n{%- assign carrier = shipment.carrier | default: '' | strip -%}\n{%- if e <= 50 and m != 'air' -%}\n{%- assign level = 'low' -%}{%- assign label = 'Low-carbon shipping' -%}\n{%- elsif e <= 200 -%}\n{%- assign level = 'medium' -%}{%- assign label = 'Moderate-carbon shipping' -%}\n{%- else -%}\n{%- assign level = 'high' -%}{%- assign label = 'High-carbon shipping' -%}\n{%- endif -%}\n<span class=\"carbon carbon--{{ level }}\">{{ label }}: {{ e }} g CO2{% if carrier != '' %} via {{ carrier | escape }}{% endif %}</span>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/low-carbon-shipping-flag.liquid": null
+    }
+  }
+]

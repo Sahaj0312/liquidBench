@@ -1,0 +1,223 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/trial-period-banner-2.liquid",
+    "tags": [
+      "p",
+      "strong"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "trial_days": 14,
+      "plan_name": "Pro"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "trial-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Pro"
+          }
+        ],
+        "text": "14 days left in your  trial"
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "trial_days": 1,
+      "plan_name": "Basic"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "trial-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Basic"
+          }
+        ],
+        "text": "1 day left in your  trial"
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "trial_days": 0,
+      "plan_name": "Pro"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "trial_days": null,
+      "plan_name": "Pro"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "trial_days": -3,
+      "plan_name": "Pro"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "trial_days": 7,
+      "plan_name": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "trial-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "free"
+          }
+        ],
+        "text": "7 days left in your  trial"
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "trial_days": 5,
+      "plan_name": "   "
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "trial-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "free"
+          }
+        ],
+        "text": "5 days left in your  trial"
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "trial_days": 2,
+      "plan_name": "Plus & <Max> \"Gold\""
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "trial-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Plus & <Max> \"Gold\""
+          }
+        ],
+        "text": "2 days left in your  trial"
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "trial_days": 30,
+      "plan_name": "  Team  "
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "trial-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Team"
+          }
+        ],
+        "text": "30 days left in your  trial"
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "trial_days": 1,
+      "plan_name": ""
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "trial-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "free"
+          }
+        ],
+        "text": "1 day left in your  trial"
+      }
+    ]
+  }
+]

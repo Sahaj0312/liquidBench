@@ -1,0 +1,15 @@
+{
+  "general": {
+    "search": {
+      "heading": "Search"
+    }
+  },
+  "search": {
+    "form": {
+      "label": "Search",
+      "placeholder": "Search our store",
+      "submit": "Submit search",
+      "reset": "Clear search terms"
+    }
+  }
+}

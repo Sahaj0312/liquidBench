@@ -1,0 +1,15 @@
+{
+  "id": "address-block-2",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "hard",
+  "family": "address-block-2",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/address-block-2.liquid"
+  ],
+  "prompt": "Rewrite snippets/address-block-2.liquid so it renders a postal address plus an optional distance and walking-time line. Use integer arithmetic only; no floats.\n\nINPUTS (all top-level; no section.settings):\n- `address`: object, never null. All five keys are always present:\n  - `address.name`: string or null\n  - `address.line1`: string, never null\n  - `address.line2`: string or null\n  - `address.postal_code`: string or null\n  - `address.city`: string, never null\n- `distance_m`: non-negative integer (meters) or null. 0 is a valid distance.\n\nA string value is \"present\" when it is not null and not exactly the empty string \"\". Do not strip whitespace.\n\nHTML-escape every address text value with the standard escape (& < > \" ').\n\nOUTPUT\nEmit one line with no whitespace or newlines between tags. The parts appear in this order inside `<address class=\"address-block\">` ... `</address>`:\n1. If name is present: `<span class=\"address-block__name\">NAME</span>`.\n2. Always: `<span class=\"address-block__line\">LINE1</span>`.\n3. If line2 is present: `<span class=\"address-block__line\">LINE2</span>`.\n4. Always: `<span class=\"address-block__city\">CITY</span>`. If postal_code is present, the content is instead `POSTAL CITY`, with exactly one space between them.\n5. If distance_m is not null: `<span class=\"address-block__distance\">DIST, WALK walk</span>`.\n\nDIST is chosen by testing the raw distance_m value:\n- distance_m < 1000: round to the nearest multiple of 10, with halves rounding up, and print `<n> m`. Examples: 994 gives \"990 m\" and 995 gives \"1000 m\". The test uses the raw value, not the rounded one.\n- distance_m >= 1000: round to the nearest tenth of a kilometre, with halves rounding up, and print `<whole>.<tenth> km`. Always print exactly one decimal digit. Examples: 1000 gives \"1.0 km\", 1249 gives \"1.2 km\", 1250 gives \"1.3 km\".\n\nWALK:\n- Compute minutes = ceiling(distance_m / 80), with a minimum of 1.\n- If minutes < 60: `<m> min`.\n- Otherwise let H = minutes integer-divided by 60 and M = the remainder.\n  - If M is 0: `<H> h`.\n  - Otherwise: `<H> h <M> min`.\n\nWhen distance_m is null, the distance span is omitted entirely. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/address-block-2.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

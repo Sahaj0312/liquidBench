@@ -1,0 +1,25 @@
+<div class="rich-text-counts" style="--columns: {{ section.settings.columns }};">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="rich-text-counts__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  {%- if section.settings.text != blank -%}
+    <div class="rich-text-counts__text">{{ section.settings.text }}</div>
+  {%- endif -%}
+  {%- if section.settings.show_total -%}
+    {%- assign total = section.blocks.size -%}
+    <p class="rich-text-counts__total">{{ total }} {% if total == 1 %}{{ section.settings.total_label_one | escape }}{% else %}{{ section.settings.total_label_other | escape }}{% endif %}</p>
+  {%- endif -%}
+  <ul class="rich-text-counts__list">
+    {%- for block in section.blocks -%}
+      {%- assign n = block.settings.count | default: 0 -%}
+      <li {{ block.shopify_attributes }}>
+        <span class="rich-text-counts__number">{{ n }}</span>
+        <span class="rich-text-counts__label">{% if n == 1 %}{{ block.settings.label_one | escape }}{% else %}{{ block.settings.label_other | escape }}{% endif %}</span>
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+
+{% schema %}
+{"name":"Rich text","settings":[{"type":"text","id":"heading","label":"Heading","default":"By the numbers"},{"type":"richtext","id":"text","label":"Text"},{"type":"checkbox","id":"show_total","label":"Show total","default":true}],"blocks":[{"type":"stat","name":"Stat","settings":[{"type":"text","id":"count","label":"Count"},{"type":"text","id":"label","label":"Label"}]}],"presets":[{"name":"Rich text"}]}
+{% endschema %}

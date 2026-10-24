@@ -1,0 +1,19 @@
+{%- assign message = section.settings.message | strip -%}
+{%- assign code = section.settings.code | strip -%}
+{%- if message != empty -%}
+<div class="promo-strip"><p class="promo-strip__message">{{ message | escape }}</p>
+{%- if code != empty -%}<span class="promo-strip__code">{{ code | escape }}</span>{%- endif -%}
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Promo strip",
+  "settings": [
+    {"type": "text", "id": "message", "label": "Message"},
+    {"type": "text", "id": "code", "label": "Discount code"},
+    {"type": "number", "id": "compare_cents", "label": "Compare-at price (cents)"},
+    {"type": "number", "id": "price_cents", "label": "Sale price (cents)"}
+  ],
+  "presets": [{"name": "Promo strip"}]
+}
+{% endschema %}

@@ -1,0 +1,262 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/product-tag-pills.liquid",
+    "tags": [
+      "li",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "tags": [
+        "Cotton",
+        "Summer"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "product-tags"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "Cotton"
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "Summer"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "tags": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "tags": [
+        "_hidden",
+        "_sync"
+      ]
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "tags": [
+        "_featured",
+        "Linen",
+        "_bundle",
+        "Blue"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "product-tags"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "Linen"
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "Blue"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "tags": [
+        "new_arrival",
+        "_internal"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "product-tags"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "new_arrival"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "tags": [
+        "Sale",
+        " _spaced"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "product-tags"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "Sale"
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": " _spaced"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "tags": [
+        "Tom & Jerry",
+        "<b>Bold</b>",
+        "Say \"hi\""
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "product-tags"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "Tom & Jerry"
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "<b>Bold</b>"
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "Say \"hi\""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "tags": [
+        "_a",
+        "Wool"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "product-tags"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "Wool"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "tags": [
+        "A_"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "product-tags"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [],
+            "text": "A_"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

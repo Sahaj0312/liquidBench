@@ -1,0 +1,697 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/team-member-list-2.liquid",
+    "tags": [
+      "a",
+      "div",
+      "h2",
+      "li",
+      "p",
+      "span",
+      "ul"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Team members\",\n  \"settings\": [{\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\"}],\n  \"blocks\": [{\"type\": \"member\", \"name\": \"Member\", \"settings\": [{\"type\": \"text\", \"id\": \"name\", \"label\": \"Name\"}, {\"type\": \"text\", \"id\": \"role\", \"label\": \"Role\"}, {\"type\": \"url\", \"id\": \"profile_url\", \"label\": \"Profile URL\"}]}],\n  \"presets\": [{\"name\": \"Team members\"}]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Our Team"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "name": "Ana Ruiz",
+              "role": "CEO",
+              "profile_url": "/pages/ana"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "team-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "team__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Our Team"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "team"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "team__member"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "class",
+                        "team__link"
+                      ],
+                      [
+                        "href",
+                        "/pages/ana"
+                      ],
+                      [
+                        "title",
+                        "Ana Ruiz"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Ana Ruiz"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [
+                      [
+                        "class",
+                        "team__role"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "CEO"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Design & <Build>"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "name": "Tom \"TJ\" O'Neil",
+              "role": "R&D <lead>",
+              "profile_url": "/p?a=1&b=\"2\""
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "team-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "team__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Design & <Build>"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "team"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "team__member"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "class",
+                        "team__link"
+                      ],
+                      [
+                        "href",
+                        "/p?a=1&b=\"2\""
+                      ],
+                      [
+                        "title",
+                        "Tom \"TJ\" O'Neil"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Tom \"TJ\" O'Neil"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [
+                      [
+                        "class",
+                        "team__role"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "R&D <lead>"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null
+        },
+        "blocks": [
+          {
+            "settings": {
+              "name": "Lee & Co",
+              "role": null,
+              "profile_url": null
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "team-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "team"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "team__member"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "team__name"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Lee & Co"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "   "
+        },
+        "blocks": []
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null
+        },
+        "blocks": [
+          {
+            "settings": {
+              "name": null,
+              "role": "X",
+              "profile_url": "/a"
+            }
+          },
+          {
+            "settings": {
+              "name": "  ",
+              "role": "Y",
+              "profile_url": "/b"
+            }
+          }
+        ]
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Staff"
+        },
+        "blocks": []
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "team-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "team__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Staff"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Staff"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "name": "  Mia  ",
+              "role": "  ",
+              "profile_url": "  "
+            }
+          },
+          {
+            "settings": {
+              "name": null,
+              "role": "Ghost",
+              "profile_url": "/x"
+            }
+          },
+          {
+            "settings": {
+              "name": "Kai",
+              "role": "CTO",
+              "profile_url": ""
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "team-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "team__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Staff"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "team"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "team__member"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "team__name"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Mia"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "team__member"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "team__name"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Kai"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [
+                      [
+                        "class",
+                        "team__role"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "CTO"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "  Leadership  "
+        },
+        "blocks": [
+          {
+            "settings": {
+              "name": "<script>",
+              "role": null,
+              "profile_url": " /team/x "
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "team-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "team__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Leadership"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "team"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "team__member"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "class",
+                        "team__link"
+                      ],
+                      [
+                        "href",
+                        "/team/x"
+                      ],
+                      [
+                        "title",
+                        "<script>"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "<script>"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null
+        },
+        "blocks": [
+          {
+            "settings": {
+              "name": "Zoe",
+              "role": "Head of Ops & HR",
+              "profile_url": "/z"
+            }
+          },
+          {
+            "settings": {
+              "name": "Bo",
+              "role": "Dev",
+              "profile_url": null
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "team-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "team"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "team__member"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "class",
+                        "team__link"
+                      ],
+                      [
+                        "href",
+                        "/z"
+                      ],
+                      [
+                        "title",
+                        "Zoe"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Zoe"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [
+                      [
+                        "class",
+                        "team__role"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Head of Ops & HR"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "team__member"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "team__name"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Bo"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [
+                      [
+                        "class",
+                        "team__role"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Dev"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

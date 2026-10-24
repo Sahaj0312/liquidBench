@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-twitter-key-kept",
+    "expected_pass": false,
+    "changes": {
+      "snippets/share-buttons-row.liquid": "{{ 'social-share.css' | asset_url | stylesheet_tag }}\n{%- assign networks = 'facebook,x,pinterest' | split: ',' -%}\n<div class=\"share-buttons\">\n  <h2 class=\"share-buttons__title\">{{ 'sections.share.title' | t }}</h2>\n  <ul class=\"share-buttons__list\">\n    {%- for network in networks -%}\n      <li class=\"share-buttons__item{% if forloop.first %} share-buttons__item--first{% endif %}{% if forloop.last %} share-buttons__item--last{% endif %}\">\n        <a href=\"#\" class=\"share-buttons__link\" data-network=\"{{ network }}\">\n          {%- render 'share-icon', icon: network -%}\n          <span class=\"share-buttons__label\">\n            {%- case network -%}\n              {%- when 'facebook' -%}{{ 'sections.share.facebook' | t }}\n              {%- when 'x' -%}{{ 'sections.share.twitter' | t }}\n              {%- when 'pinterest' -%}{{ 'sections.share.pinterest' | t }}\n            {%- endcase -%}\n          </span>\n        </a>\n      </li>\n    {%- endfor -%}\n  </ul>\n  <p class=\"share-buttons__separator\">{{ 'sections.share.separator' | t }}</p>\n  <button type=\"button\" class=\"share-buttons__copy\">{{ 'sections.share.copy_link' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-plural-snippet-name",
+    "expected_pass": false,
+    "changes": {
+      "snippets/share-buttons-row.liquid": "{{ 'social-share.css' | asset_url | stylesheet_tag }}\n{%- assign networks = 'facebook,x,pinterest' | split: ',' -%}\n<div class=\"share-buttons\">\n  <h2 class=\"share-buttons__title\">{{ 'sections.share.title' | t }}</h2>\n  <ul class=\"share-buttons__list\">\n    {%- for network in networks -%}\n      <li class=\"share-buttons__item{% if forloop.first %} share-buttons__item--first{% endif %}{% if forloop.last %} share-buttons__item--last{% endif %}\">\n        <a href=\"#\" class=\"share-buttons__link\" data-network=\"{{ network }}\">\n          {%- render 'share-icons', icon: network -%}\n          <span class=\"share-buttons__label\">\n            {%- case network -%}\n              {%- when 'facebook' -%}{{ 'sections.share.facebook' | t }}\n              {%- when 'x' -%}{{ 'sections.share.x' | t }}\n              {%- when 'pinterest' -%}{{ 'sections.share.pinterest' | t }}\n            {%- endcase -%}\n          </span>\n        </a>\n      </li>\n    {%- endfor -%}\n  </ul>\n  <p class=\"share-buttons__separator\">{{ 'sections.share.separator' | t }}</p>\n  <button type=\"button\" class=\"share-buttons__copy\">{{ 'sections.share.copy_link' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-old-stylesheet",
+    "expected_pass": false,
+    "changes": {
+      "snippets/share-buttons-row.liquid": "{{ 'share-buttons.css' | asset_url | stylesheet_tag }}\n{%- assign networks = 'facebook,x,pinterest' | split: ',' -%}\n<div class=\"share-buttons\">\n  <h2 class=\"share-buttons__title\">{{ 'sections.share.title' | t }}</h2>\n  <ul class=\"share-buttons__list\">\n    {%- for network in networks -%}\n      <li class=\"share-buttons__item{% if forloop.first %} share-buttons__item--first{% endif %}{% if forloop.last %} share-buttons__item--last{% endif %}\">\n        <a href=\"#\" class=\"share-buttons__link\" data-network=\"{{ network }}\">\n          {%- render 'share-icon', icon: network -%}\n          <span class=\"share-buttons__label\">\n            {%- case network -%}\n              {%- when 'facebook' -%}{{ 'sections.share.facebook' | t }}\n              {%- when 'x' -%}{{ 'sections.share.x' | t }}\n              {%- when 'pinterest' -%}{{ 'sections.share.pinterest' | t }}\n            {%- endcase -%}\n          </span>\n        </a>\n      </li>\n    {%- endfor -%}\n  </ul>\n  <p class=\"share-buttons__separator\">{{ 'sections.share.separator' | t }}</p>\n  <button type=\"button\" class=\"share-buttons__copy\">{{ 'sections.share.copy_link' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-separator-or-key",
+    "expected_pass": false,
+    "changes": {
+      "snippets/share-buttons-row.liquid": "{{ 'social-share.css' | asset_url | stylesheet_tag }}\n{%- assign networks = 'facebook,x,pinterest' | split: ',' -%}\n<div class=\"share-buttons\">\n  <h2 class=\"share-buttons__title\">{{ 'sections.share.title' | t }}</h2>\n  <ul class=\"share-buttons__list\">\n    {%- for network in networks -%}\n      <li class=\"share-buttons__item{% if forloop.first %} share-buttons__item--first{% endif %}{% if forloop.last %} share-buttons__item--last{% endif %}\">\n        <a href=\"#\" class=\"share-buttons__link\" data-network=\"{{ network }}\">\n          {%- render 'share-icon', icon: network -%}\n          <span class=\"share-buttons__label\">\n            {%- case network -%}\n              {%- when 'facebook' -%}{{ 'sections.share.facebook' | t }}\n              {%- when 'x' -%}{{ 'sections.share.x' | t }}\n              {%- when 'pinterest' -%}{{ 'sections.share.pinterest' | t }}\n            {%- endcase -%}\n          </span>\n        </a>\n      </li>\n    {%- endfor -%}\n  </ul>\n  <p class=\"share-buttons__separator\">{{ 'sections.share.or' | t }}</p>\n  <button type=\"button\" class=\"share-buttons__copy\">{{ 'sections.share.copy' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/share-buttons-row.liquid": "{% # theme-check-disable %}\n{{ 'social-share.css' | asset_url | stylesheet_tag }}\n{%- assign networks = 'facebook,x,pinterest' | split: ',' -%}\n<div class=\"share-buttons\">\n  <h2 class=\"share-buttons__title\">{{ 'sections.share.title' | t }}</h2>\n  <ul class=\"share-buttons__list\">\n    {%- for network in networks -%}\n      <li class=\"share-buttons__item{% if forloop.first %} share-buttons__item--first{% endif %}{% if forloop.last %} share-buttons__item--last{% endif %}\">\n        <a href=\"#\" class=\"share-buttons__link\" data-network=\"{{ network }}\">\n          {%- render 'share-icon', icon: network -%}\n          <span class=\"share-buttons__label\">\n            {%- case network -%}\n              {%- when 'facebook' -%}{{ 'sections.share.facebook' | t }}\n              {%- when 'x' -%}{{ 'sections.share.x' | t }}\n              {%- when 'pinterest' -%}{{ 'sections.share.pinterest' | t }}\n            {%- endcase -%}\n          </span>\n        </a>\n      </li>\n    {%- endfor -%}\n  </ul>\n  <p class=\"share-buttons__separator\">{{ 'sections.share.separator' | t }}</p>\n  <button type=\"button\" class=\"share-buttons__copy\">{{ 'sections.share.copy_link' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/share-buttons-row.liquid": null
+    }
+  }
+]

@@ -1,0 +1,673 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/wishlist-count.liquid",
+    "tags": [
+      "a",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "items": [
+        {
+          "title": "Linen Shirt",
+          "available": true
+        },
+        {
+          "title": "Wool Scarf",
+          "available": false
+        },
+        {
+          "title": "Canvas Tote",
+          "available": true
+        }
+      ],
+      "show_unavailable": false,
+      "cap": null,
+      "label": null
+    },
+    "expected": [
+      {
+        "tag": "a",
+        "attrs": [
+          [
+            "aria-label",
+            "Wishlist (2 items)"
+          ],
+          [
+            "class",
+            "wishlist"
+          ],
+          [
+            "href",
+            "/pages/wishlist"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__label"
+              ]
+            ],
+            "children": [],
+            "text": "Wishlist"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__count"
+              ]
+            ],
+            "children": [],
+            "text": "2"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "items": [
+        {
+          "title": "Linen Shirt",
+          "available": true
+        },
+        {
+          "title": "Wool Scarf",
+          "available": false
+        },
+        {
+          "title": "Canvas Tote",
+          "available": true
+        }
+      ],
+      "show_unavailable": true,
+      "cap": null,
+      "label": null
+    },
+    "expected": [
+      {
+        "tag": "a",
+        "attrs": [
+          [
+            "aria-label",
+            "Wishlist (3 items)"
+          ],
+          [
+            "class",
+            "wishlist"
+          ],
+          [
+            "href",
+            "/pages/wishlist"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__label"
+              ]
+            ],
+            "children": [],
+            "text": "Wishlist"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__count"
+              ]
+            ],
+            "children": [],
+            "text": "3"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "items": null,
+      "show_unavailable": false,
+      "cap": null,
+      "label": null
+    },
+    "expected": [
+      {
+        "tag": "a",
+        "attrs": [
+          [
+            "aria-label",
+            "Wishlist (0 items)"
+          ],
+          [
+            "class",
+            "wishlist wishlist--empty"
+          ],
+          [
+            "href",
+            "/pages/wishlist"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__label"
+              ]
+            ],
+            "children": [],
+            "text": "Wishlist"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "items": [],
+      "show_unavailable": true,
+      "cap": 10,
+      "label": "Saved"
+    },
+    "expected": [
+      {
+        "tag": "a",
+        "attrs": [
+          [
+            "aria-label",
+            "Saved (0 items)"
+          ],
+          [
+            "class",
+            "wishlist wishlist--empty"
+          ],
+          [
+            "href",
+            "/pages/wishlist"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__label"
+              ]
+            ],
+            "children": [],
+            "text": "Saved"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "items": [
+        {
+          "title": "Wool Scarf",
+          "available": false
+        }
+      ],
+      "show_unavailable": false,
+      "cap": null,
+      "label": "   "
+    },
+    "expected": [
+      {
+        "tag": "a",
+        "attrs": [
+          [
+            "aria-label",
+            "Wishlist (0 items)"
+          ],
+          [
+            "class",
+            "wishlist wishlist--empty"
+          ],
+          [
+            "href",
+            "/pages/wishlist"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__label"
+              ]
+            ],
+            "children": [],
+            "text": "Wishlist"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "items": [
+        {
+          "title": "Canvas Tote",
+          "available": true
+        }
+      ],
+      "show_unavailable": null,
+      "cap": null,
+      "label": null
+    },
+    "expected": [
+      {
+        "tag": "a",
+        "attrs": [
+          [
+            "aria-label",
+            "Wishlist (1 item)"
+          ],
+          [
+            "class",
+            "wishlist"
+          ],
+          [
+            "href",
+            "/pages/wishlist"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__label"
+              ]
+            ],
+            "children": [],
+            "text": "Wishlist"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__count"
+              ]
+            ],
+            "children": [],
+            "text": "1"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "items": [
+        {
+          "title": "A",
+          "available": null
+        },
+        {
+          "title": "B",
+          "available": true
+        }
+      ],
+      "show_unavailable": false,
+      "cap": null,
+      "label": null
+    },
+    "expected": [
+      {
+        "tag": "a",
+        "attrs": [
+          [
+            "aria-label",
+            "Wishlist (1 item)"
+          ],
+          [
+            "class",
+            "wishlist"
+          ],
+          [
+            "href",
+            "/pages/wishlist"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__label"
+              ]
+            ],
+            "children": [],
+            "text": "Wishlist"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__count"
+              ]
+            ],
+            "children": [],
+            "text": "1"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "items": [
+        {
+          "title": "P1",
+          "available": true
+        },
+        {
+          "title": "P2",
+          "available": true
+        },
+        {
+          "title": "P3",
+          "available": true
+        },
+        {
+          "title": "P4",
+          "available": true
+        },
+        {
+          "title": "P5",
+          "available": true
+        },
+        {
+          "title": "P6",
+          "available": true
+        },
+        {
+          "title": "P7",
+          "available": true
+        }
+      ],
+      "show_unavailable": false,
+      "cap": 5,
+      "label": null
+    },
+    "expected": [
+      {
+        "tag": "a",
+        "attrs": [
+          [
+            "aria-label",
+            "Wishlist (7 items)"
+          ],
+          [
+            "class",
+            "wishlist"
+          ],
+          [
+            "href",
+            "/pages/wishlist"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__label"
+              ]
+            ],
+            "children": [],
+            "text": "Wishlist"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__count"
+              ]
+            ],
+            "children": [],
+            "text": "5+"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "items": [
+        {
+          "title": "P1",
+          "available": true
+        },
+        {
+          "title": "P2",
+          "available": true
+        },
+        {
+          "title": "P3",
+          "available": true
+        },
+        {
+          "title": "P4",
+          "available": true
+        },
+        {
+          "title": "P5",
+          "available": true
+        }
+      ],
+      "show_unavailable": false,
+      "cap": 5,
+      "label": null
+    },
+    "expected": [
+      {
+        "tag": "a",
+        "attrs": [
+          [
+            "aria-label",
+            "Wishlist (5 items)"
+          ],
+          [
+            "class",
+            "wishlist"
+          ],
+          [
+            "href",
+            "/pages/wishlist"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__label"
+              ]
+            ],
+            "children": [],
+            "text": "Wishlist"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__count"
+              ]
+            ],
+            "children": [],
+            "text": "5"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "items": [
+        {
+          "title": "A",
+          "available": true
+        },
+        {
+          "title": "B",
+          "available": true
+        }
+      ],
+      "show_unavailable": false,
+      "cap": null,
+      "label": "Saved <3 & \"faves\""
+    },
+    "expected": [
+      {
+        "tag": "a",
+        "attrs": [
+          [
+            "aria-label",
+            "Saved <3 & \"faves\" (2 items)"
+          ],
+          [
+            "class",
+            "wishlist"
+          ],
+          [
+            "href",
+            "/pages/wishlist"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__label"
+              ]
+            ],
+            "children": [],
+            "text": "Saved <3 & \"faves\""
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__count"
+              ]
+            ],
+            "children": [],
+            "text": "2"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "items": [
+        {
+          "title": "A",
+          "available": false
+        },
+        {
+          "title": "B",
+          "available": false
+        }
+      ],
+      "show_unavailable": true,
+      "cap": 1,
+      "label": " Favorites "
+    },
+    "expected": [
+      {
+        "tag": "a",
+        "attrs": [
+          [
+            "aria-label",
+            "Favorites (2 items)"
+          ],
+          [
+            "class",
+            "wishlist"
+          ],
+          [
+            "href",
+            "/pages/wishlist"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__label"
+              ]
+            ],
+            "children": [],
+            "text": "Favorites"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "wishlist__count"
+              ]
+            ],
+            "children": [],
+            "text": "1+"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

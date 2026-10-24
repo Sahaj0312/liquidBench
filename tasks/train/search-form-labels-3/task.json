@@ -1,0 +1,15 @@
+{
+  "id": "search-form-labels-3",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "easy",
+  "family": "search-form-labels-3",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/search-form-labels-3.liquid"
+  ],
+  "prompt": "The snippet snippets/search-form-labels-3.liquid renders the storefront search form, but Theme Check reports broken references in it: a missing asset, missing translation keys and a missing snippet. Fix every literal reference so it points to files and keys that actually exist in the theme. Read assets/, locales/en.default.json, locales/fr.json and snippets/ to find the real names. The real stylesheet is the search component stylesheet in assets/. The label, placeholder and submit translations live under the general.search namespace in the locale files. The search icon snippet is in snippets/.\n\nKeep the label priority rule unchanged: if the optional top-level `label` variable (string, may be nil or blank) is not blank, it is used as the label text. Otherwise the translated label is used. The custom label always takes priority over the translation. Do not change the markup structure, the classes or the form attributes. Change only the wrong string operands. When you are done, Theme Check must report no missing asset, translation key or snippet errors. Change only snippets/search-form-labels-3.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

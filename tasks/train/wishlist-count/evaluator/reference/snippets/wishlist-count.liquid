@@ -1,0 +1,28 @@
+{%- assign total = 0 -%}
+{%- for item in items -%}
+  {%- if show_unavailable or item.available == true -%}
+    {%- assign total = total | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign limit = cap | default: 99 -%}
+{%- if total > limit -%}
+  {%- assign shown = limit | append: '+' -%}
+{%- else -%}
+  {%- assign shown = total -%}
+{%- endif -%}
+{%- if total == 1 -%}
+  {%- assign noun = 'item' -%}
+{%- else -%}
+  {%- assign noun = 'items' -%}
+{%- endif -%}
+{%- assign text = label | default: '' | strip -%}
+{%- if text == '' -%}
+  {%- assign text = 'Wishlist' -%}
+{%- endif -%}
+{%- assign classes = 'wishlist' -%}
+{%- if total == 0 -%}
+  {%- assign classes = 'wishlist wishlist--empty' -%}
+{%- endif -%}
+<a class="{{ classes }}" href="/pages/wishlist" aria-label="{{ text | escape }} ({{ total }} {{ noun }})"><span class="wishlist__label">{{ text | escape }}</span>
+{%- if total > 0 -%}<span class="wishlist__count">{{ shown }}</span>{%- endif -%}
+</a>

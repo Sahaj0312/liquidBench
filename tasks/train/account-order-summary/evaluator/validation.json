@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-many-branch-other-key",
+    "expected_pass": false,
+    "changes": {
+      "snippets/account-order-summary.liquid": "{{ 'account.css' | asset_url | stylesheet_tag }}\n{%- assign order_count = customer.orders.size -%}\n<div class=\"account\">\n  <h1 class=\"account__title\">{{ 'customer.account.title' | t }}</h1>\n  <h2 class=\"account__subtitle\">{{ 'customer.orders.title' | t }}</h2>\n  {%- if order_count == 0 -%}\n    <p class=\"account__orders-count\">{{ 'customer.orders.none' | t }}</p>\n  {%- elsif order_count == 1 -%}\n    <p class=\"account__orders-count\">{{ 'customer.orders.single' | t }}</p>\n  {%- else -%}\n    <p class=\"account__orders-count\">{{ 'customer.orders.other' | t: count: order_count }}</p>\n  {%- endif -%}\n  {%- if order_count > 0 -%}\n    <table class=\"account__orders\">\n      <tbody>\n        {%- for order in customer.orders limit: 10 -%}\n          {%- render 'account-order-row', order: order -%}\n        {%- endfor -%}\n      </tbody>\n    </table>\n  {%- endif -%}\n  <a href=\"{{ routes.account_addresses_url }}\" class=\"account__link\">{{ 'customer.account.view_addresses' | t: count: customer.addresses_count }}</a>\n  <a href=\"{{ routes.account_logout_url }}\" class=\"account__link\">{{ 'customer.account.logout' | t }}</a>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-single-branch-one-key",
+    "expected_pass": false,
+    "changes": {
+      "snippets/account-order-summary.liquid": "{{ 'account.css' | asset_url | stylesheet_tag }}\n{%- assign order_count = customer.orders.size -%}\n<div class=\"account\">\n  <h1 class=\"account__title\">{{ 'customer.account.title' | t }}</h1>\n  <h2 class=\"account__subtitle\">{{ 'customer.orders.title' | t }}</h2>\n  {%- if order_count == 0 -%}\n    <p class=\"account__orders-count\">{{ 'customer.orders.none' | t }}</p>\n  {%- elsif order_count == 1 -%}\n    <p class=\"account__orders-count\">{{ 'customer.orders.one' | t }}</p>\n  {%- else -%}\n    <p class=\"account__orders-count\">{{ 'customer.orders.many' | t: count: order_count }}</p>\n  {%- endif -%}\n  {%- if order_count > 0 -%}\n    <table class=\"account__orders\">\n      <tbody>\n        {%- for order in customer.orders limit: 10 -%}\n          {%- render 'account-order-row', order: order -%}\n        {%- endfor -%}\n      </tbody>\n    </table>\n  {%- endif -%}\n  <a href=\"{{ routes.account_addresses_url }}\" class=\"account__link\">{{ 'customer.account.view_addresses' | t: count: customer.addresses_count }}</a>\n  <a href=\"{{ routes.account_logout_url }}\" class=\"account__link\">{{ 'customer.account.logout' | t }}</a>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-row-snippet-unfixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/account-order-summary.liquid": "{{ 'account.css' | asset_url | stylesheet_tag }}\n{%- assign order_count = customer.orders.size -%}\n<div class=\"account\">\n  <h1 class=\"account__title\">{{ 'customer.account.title' | t }}</h1>\n  <h2 class=\"account__subtitle\">{{ 'customer.orders.title' | t }}</h2>\n  {%- if order_count == 0 -%}\n    <p class=\"account__orders-count\">{{ 'customer.orders.none' | t }}</p>\n  {%- elsif order_count == 1 -%}\n    <p class=\"account__orders-count\">{{ 'customer.orders.single' | t }}</p>\n  {%- else -%}\n    <p class=\"account__orders-count\">{{ 'customer.orders.many' | t: count: order_count }}</p>\n  {%- endif -%}\n  {%- if order_count > 0 -%}\n    <table class=\"account__orders\">\n      <tbody>\n        {%- for order in customer.orders limit: 10 -%}\n          {%- render 'order-row', order: order -%}\n        {%- endfor -%}\n      </tbody>\n    </table>\n  {%- endif -%}\n  <a href=\"{{ routes.account_addresses_url }}\" class=\"account__link\">{{ 'customer.account.view_addresses' | t: count: customer.addresses_count }}</a>\n  <a href=\"{{ routes.account_logout_url }}\" class=\"account__link\">{{ 'customer.account.logout' | t }}</a>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-customers-plural-title-and-scs",
+    "expected_pass": false,
+    "changes": {
+      "snippets/account-order-summary.liquid": "{{ 'account.scss' | asset_url | stylesheet_tag }}\n{%- assign order_count = customer.orders.size -%}\n<div class=\"account\">\n  <h1 class=\"account__title\">{{ 'customers.account.title' | t }}</h1>\n  <h2 class=\"account__subtitle\">{{ 'customer.orders.title' | t }}</h2>\n  {%- if order_count == 0 -%}\n    <p class=\"account__orders-count\">{{ 'customer.orders.none' | t }}</p>\n  {%- elsif order_count == 1 -%}\n    <p class=\"account__orders-count\">{{ 'customer.orders.single' | t }}</p>\n  {%- else -%}\n    <p class=\"account__orders-count\">{{ 'customer.orders.many' | t: count: order_count }}</p>\n  {%- endif -%}\n  {%- if order_count > 0 -%}\n    <table class=\"account__orders\">\n      <tbody>\n        {%- for order in customer.orders limit: 10 -%}\n          {%- render 'account-order-row', order: order -%}\n        {%- endfor -%}\n      </tbody>\n    </table>\n  {%- endif -%}\n  <a href=\"{{ routes.account_addresses_url }}\" class=\"account__link\">{{ 'customer.account.view_addresses' | t: count: customer.addresses_count }}</a>\n  <a href=\"{{ routes.account_logout_url }}\" class=\"account__link\">{{ 'customer.account.logout' | t }}</a>\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/account-order-summary.liquid": "{% # theme-check-disable %}\n{{ 'account.css' | asset_url | stylesheet_tag }}\n{%- assign order_count = customer.orders.size -%}\n<div class=\"account\">\n  <h1 class=\"account__title\">{{ 'customer.account.title' | t }}</h1>\n  <h2 class=\"account__subtitle\">{{ 'customer.orders.title' | t }}</h2>\n  {%- if order_count == 0 -%}\n    <p class=\"account__orders-count\">{{ 'customer.orders.none' | t }}</p>\n  {%- elsif order_count == 1 -%}\n    <p class=\"account__orders-count\">{{ 'customer.orders.single' | t }}</p>\n  {%- else -%}\n    <p class=\"account__orders-count\">{{ 'customer.orders.many' | t: count: order_count }}</p>\n  {%- endif -%}\n  {%- if order_count > 0 -%}\n    <table class=\"account__orders\">\n      <tbody>\n        {%- for order in customer.orders limit: 10 -%}\n          {%- render 'account-order-row', order: order -%}\n        {%- endfor -%}\n      </tbody>\n    </table>\n  {%- endif -%}\n  <a href=\"{{ routes.account_addresses_url }}\" class=\"account__link\">{{ 'customer.account.view_addresses' | t: count: customer.addresses_count }}</a>\n  <a href=\"{{ routes.account_logout_url }}\" class=\"account__link\">{{ 'customer.account.logout' | t }}</a>\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/account-order-summary.liquid": null
+    }
+  }
+]

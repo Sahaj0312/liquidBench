@@ -1,0 +1,15 @@
+{
+  "id": "quantity-input-labels-3",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "easy",
+  "family": "quantity-input-labels-3",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/quantity-input-labels-3.liquid"
+  ],
+  "prompt": "The snippet snippets/quantity-input-labels-3.liquid renders an accessible quantity selector. It receives the top-level variables section_id (string), min_qty (integer) and max_qty (integer). It builds a rules line by capturing the pluralized minimum and maximum messages separated by '|', then splitting on '|' and joining them with ' · '.\n\nTheme Check currently reports three reference errors. Fix only these literal operands so that each one points to a file or key that actually exists in the theme:\n1. The stylesheet loaded with asset_url | stylesheet_tag must be the existing asset assets/quantity-input.css.\n2. The visible <label> text must use the existing translation key products.quantity.label from locales/en.default.json.\n3. The decrease button icon must render the existing snippet snippets/icon-minus.liquid.\n\nKeep everything else unchanged: the script tag for quantity-input.js (with defer), the translation keys products.quantity.decrease, products.quantity.increase, products.quantity.min_count and products.quantity.max_count, the render of icon-plus, the markup and the split/join of the rules line. After the fix Theme Check must report no missing asset, missing translation key or missing snippet errors. Change only snippets/quantity-input-labels-3.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

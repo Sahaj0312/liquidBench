@@ -1,0 +1,37 @@
+[
+  {
+    "name": "wrong-0-string-boolean-default",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-product-wrapper.liquid": "{%- assign product = section.settings.product -%}\n<div class=\"featured-product section-{{ section.id }}\">\n  {%- unless section.settings.full_width -%}<div class=\"page-width\">{%- endunless -%}\n  {%- if section.settings.heading != blank -%}\n    <header class=\"featured-product__header\"><h2>{{ section.settings.heading | escape }}</h2></header>\n  {%- endif -%}\n  {%- if product != blank -%}\n    <h3 class=\"featured-product__title\">{{ product.title | escape }}</h3>\n    {%- if section.settings.show_vendor and product.vendor != blank -%}\n      <p class=\"featured-product__vendor\">{{ product.vendor | escape }}</p>\n    {%- endif -%}\n  {%- endif -%}\n  {%- unless section.settings.full_width -%}</div>{%- endunless -%}\n</div>\n\n{% schema %}\n{\n  \"name\": \"Featured product\",\n  \"tag\": \"section\",\n  \"class\": \"section\",\n  \"settings\": [\n    {\"type\": \"product\", \"id\": \"product\", \"label\": \"Product\"},\n    {\"type\": \"checkbox\", \"id\": \"full_width\", \"label\": \"Make section full width\", \"default\": false},\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Featured product\"},\n    {\"type\": \"checkbox\", \"id\": \"show_vendor\", \"label\": \"Show vendor\", \"default\": \"true\"}\n  ],\n  \"presets\": [{\"name\": \"Featured product\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-full-width-default-true",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-product-wrapper.liquid": "{%- assign product = section.settings.product -%}\n<div class=\"featured-product section-{{ section.id }}\">\n  {%- unless section.settings.full_width -%}<div class=\"page-width\">{%- endunless -%}\n  {%- if section.settings.heading != blank -%}\n    <header class=\"featured-product__header\"><h2>{{ section.settings.heading | escape }}</h2></header>\n  {%- endif -%}\n  {%- if product != blank -%}\n    <h3 class=\"featured-product__title\">{{ product.title | escape }}</h3>\n    {%- if section.settings.show_vendor and product.vendor != blank -%}\n      <p class=\"featured-product__vendor\">{{ product.vendor | escape }}</p>\n    {%- endif -%}\n  {%- endif -%}\n  {%- unless section.settings.full_width -%}</div>{%- endunless -%}\n</div>\n\n{% schema %}\n{\n  \"name\": \"Featured product\",\n  \"tag\": \"section\",\n  \"class\": \"section\",\n  \"settings\": [\n    {\"type\": \"product\", \"id\": \"product\", \"label\": \"Product\"},\n    {\"type\": \"checkbox\", \"id\": \"full_width\", \"label\": \"Make section full width\", \"default\": true},\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Featured product\"},\n    {\"type\": \"checkbox\", \"id\": \"show_vendor\", \"label\": \"Show vendor\", \"default\": true}\n  ],\n  \"presets\": [{\"name\": \"Featured product\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-settings-out-of-order",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-product-wrapper.liquid": "{%- assign product = section.settings.product -%}\n<div class=\"featured-product section-{{ section.id }}\">\n  {%- unless section.settings.full_width -%}<div class=\"page-width\">{%- endunless -%}\n  {%- if section.settings.heading != blank -%}\n    <header class=\"featured-product__header\"><h2>{{ section.settings.heading | escape }}</h2></header>\n  {%- endif -%}\n  {%- if product != blank -%}\n    <h3 class=\"featured-product__title\">{{ product.title | escape }}</h3>\n    {%- if section.settings.show_vendor and product.vendor != blank -%}\n      <p class=\"featured-product__vendor\">{{ product.vendor | escape }}</p>\n    {%- endif -%}\n  {%- endif -%}\n  {%- unless section.settings.full_width -%}</div>{%- endunless -%}\n</div>\n\n{% schema %}\n{\n  \"name\": \"Featured product\",\n  \"tag\": \"section\",\n  \"class\": \"section\",\n  \"settings\": [\n    {\"type\": \"product\", \"id\": \"product\", \"label\": \"Product\"},\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Featured product\"},\n    {\"type\": \"checkbox\", \"id\": \"full_width\", \"label\": \"Make section full width\", \"default\": false},\n    {\"type\": \"checkbox\", \"id\": \"show_vendor\", \"label\": \"Show vendor\", \"default\": true}\n  ],\n  \"presets\": [{\"name\": \"Featured product\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-product-wrapper.liquid": "{% # theme-check-disable %}\n{%- assign product = section.settings.product -%}\n<div class=\"featured-product section-{{ section.id }}\">\n  {%- unless section.settings.full_width -%}<div class=\"page-width\">{%- endunless -%}\n  {%- if section.settings.heading != blank -%}\n    <header class=\"featured-product__header\"><h2>{{ section.settings.heading | escape }}</h2></header>\n  {%- endif -%}\n  {%- if product != blank -%}\n    <h3 class=\"featured-product__title\">{{ product.title | escape }}</h3>\n    {%- if section.settings.show_vendor and product.vendor != blank -%}\n      <p class=\"featured-product__vendor\">{{ product.vendor | escape }}</p>\n    {%- endif -%}\n  {%- endif -%}\n  {%- unless section.settings.full_width -%}</div>{%- endunless -%}\n</div>\n\n{% schema %}\n{\n  \"name\": \"Featured product\",\n  \"tag\": \"section\",\n  \"class\": \"section\",\n  \"settings\": [\n    {\"type\": \"product\", \"id\": \"product\", \"label\": \"Product\"},\n    {\"type\": \"checkbox\", \"id\": \"full_width\", \"label\": \"Make section full width\", \"default\": false},\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Featured product\"},\n    {\"type\": \"checkbox\", \"id\": \"show_vendor\", \"label\": \"Show vendor\", \"default\": true}\n  ],\n  \"presets\": [{\"name\": \"Featured product\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-product-wrapper.liquid": null
+    }
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-state-updated-on-ignored-varia",
+    "expected_pass": false,
+    "changes": {
+      "snippets/preorder-notice-2.liquid": "{%- assign total = 0 -%}\n{%- assign last_date = \"\" -%}\n{%- capture rows -%}\n{%- for v in variants -%}\n{%- assign d = v.preorder_date | strip -%}\n{%- if v.available == false and d != \"\" -%}\n{%- assign total = total | plus: 1 -%}\n{%- if d != last_date -%}<li><strong>Ships {{ d | escape }}</strong> {{ v.title | escape }}</li>{%- else -%}<li>{{ v.title | escape }}</li>{%- endif -%}\n{%- endif -%}\n{%- assign last_date = d -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if total > 0 -%}<div class=\"preorder-notice\"><ul class=\"preorder-notice__list\">{{ rows }}</ul><p class=\"preorder-notice__count\">{{ total }} preorder {% if total == 1 %}option{% else %}options{% endif %}</p></div>{%- endif -%}"
+    }
+  },
+  {
+    "name": "wrong-1-compares-unstripped-dates",
+    "expected_pass": false,
+    "changes": {
+      "snippets/preorder-notice-2.liquid": "{%- assign total = 0 -%}\n{%- assign last_date = \"\" -%}\n{%- capture rows -%}\n{%- for v in variants -%}\n{%- assign d = v.preorder_date | strip -%}\n{%- assign raw = v.preorder_date -%}\n{%- if v.available == false and d != \"\" -%}\n{%- assign total = total | plus: 1 -%}\n{%- if raw != last_date -%}<li><strong>Ships {{ d | escape }}</strong> {{ v.title | escape }}</li>{%- else -%}<li>{{ v.title | escape }}</li>{%- endif -%}\n{%- assign last_date = raw -%}\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if total > 0 -%}<div class=\"preorder-notice\"><ul class=\"preorder-notice__list\">{{ rows }}</ul><p class=\"preorder-notice__count\">{{ total }} preorder {% if total == 1 %}option{% else %}options{% endif %}</p></div>{%- endif -%}"
+    }
+  },
+  {
+    "name": "wrong-2-ignores-availability",
+    "expected_pass": false,
+    "changes": {
+      "snippets/preorder-notice-2.liquid": "{%- assign total = 0 -%}\n{%- assign last_date = \"\" -%}\n{%- capture rows -%}\n{%- for v in variants -%}\n{%- assign d = v.preorder_date | strip -%}\n{%- if d != \"\" -%}\n{%- assign total = total | plus: 1 -%}\n{%- if d != last_date -%}<li><strong>Ships {{ d | escape }}</strong> {{ v.title | escape }}</li>{%- else -%}<li>{{ v.title | escape }}</li>{%- endif -%}\n{%- assign last_date = d -%}\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if total > 0 -%}<div class=\"preorder-notice\"><ul class=\"preorder-notice__list\">{{ rows }}</ul><p class=\"preorder-notice__count\">{{ total }} preorder {% if total == 1 %}option{% else %}options{% endif %}</p></div>{%- endif -%}"
+    }
+  },
+  {
+    "name": "wrong-3-wrapper-when-empty",
+    "expected_pass": false,
+    "changes": {
+      "snippets/preorder-notice-2.liquid": "{%- assign total = 0 -%}\n{%- assign last_date = \"\" -%}\n{%- capture rows -%}\n{%- for v in variants -%}\n{%- assign d = v.preorder_date | strip -%}\n{%- if v.available == false and d != \"\" -%}\n{%- assign total = total | plus: 1 -%}\n{%- if d != last_date -%}<li><strong>Ships {{ d | escape }}</strong> {{ v.title | escape }}</li>{%- else -%}<li>{{ v.title | escape }}</li>{%- endif -%}\n{%- assign last_date = d -%}\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n<div class=\"preorder-notice\"><ul class=\"preorder-notice__list\">{{ rows }}</ul><p class=\"preorder-notice__count\">{{ total }} preorder {% if total == 1 %}option{% else %}options{% endif %}</p></div>"
+    }
+  },
+  {
+    "name": "wrong-4-count-always-plural",
+    "expected_pass": false,
+    "changes": {
+      "snippets/preorder-notice-2.liquid": "{%- assign total = 0 -%}\n{%- assign last_date = \"\" -%}\n{%- capture rows -%}\n{%- for v in variants -%}\n{%- assign d = v.preorder_date | strip -%}\n{%- if v.available == false and d != \"\" -%}\n{%- assign total = total | plus: 1 -%}\n{%- if d != last_date -%}<li><strong>Ships {{ d | escape }}</strong> {{ v.title | escape }}</li>{%- else -%}<li>{{ v.title | escape }}</li>{%- endif -%}\n{%- assign last_date = d -%}\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if total > 0 -%}<div class=\"preorder-notice\"><ul class=\"preorder-notice__list\">{{ rows }}</ul><p class=\"preorder-notice__count\">{{ total }} preorder options</p></div>{%- endif -%}"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/preorder-notice-2.liquid": "{% # theme-check-disable %}\n{%- assign total = 0 -%}\n{%- assign last_date = \"\" -%}\n{%- capture rows -%}\n{%- for v in variants -%}\n{%- assign d = v.preorder_date | strip -%}\n{%- if v.available == false and d != \"\" -%}\n{%- assign total = total | plus: 1 -%}\n{%- if d != last_date -%}<li><strong>Ships {{ d | escape }}</strong> {{ v.title | escape }}</li>{%- else -%}<li>{{ v.title | escape }}</li>{%- endif -%}\n{%- assign last_date = d -%}\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if total > 0 -%}<div class=\"preorder-notice\"><ul class=\"preorder-notice__list\">{{ rows }}</ul><p class=\"preorder-notice__count\">{{ total }} preorder {% if total == 1 %}option{% else %}options{% endif %}</p></div>{%- endif -%}"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/preorder-notice-2.liquid": null
+    }
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-truthiness-author-date",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-post-meta.liquid": "{%- assign shown = 0 -%}\n{%- assign extra = 0 -%}\n{%- capture tag_items -%}\n{%- for tag in post.tags -%}\n{%- assign t = tag | strip -%}\n{%- if t != \"\" -%}\n{%- if shown < 3 -%}\n<li>{{ t | escape }}</li>\n{%- assign shown = shown | plus: 1 -%}\n{%- else -%}\n{%- assign extra = extra | plus: 1 -%}\n{%- endif -%}\n{%- endif -%}\n{%- endfor -%}\n{%- if extra > 0 -%}<li class=\"post-meta__more\">+{{ extra }}</li>{%- endif -%}\n{%- endcapture -%}\n{%- capture inner -%}\n{%- if post.author -%}<span class=\"post-meta__author\">By {{ post.author | strip | escape }}</span>{%- endif -%}\n{%- if post.published_at -%}<time class=\"post-meta__date\">{{ post.published_at | strip | escape }}</time>{%- endif -%}\n{%- if post.comments_count != nil -%}<span class=\"post-meta__comments\">{%- if post.comments_count == 0 -%}No comments{%- elsif post.comments_count == 1 -%}1 comment{%- else -%}{{ post.comments_count }} comments{%- endif -%}</span>{%- endif -%}\n{%- if shown > 0 -%}<ul class=\"post-meta__tags\">{{ tag_items }}</ul>{%- endif -%}\n{%- endcapture -%}\n{%- if inner != \"\" -%}<div class=\"post-meta\">{{ inner }}</div>{%- endif -%}"
+    }
+  },
+  {
+    "name": "wrong-1-limit-by-loop-index",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-post-meta.liquid": "{%- assign author = post.author | strip -%}\n{%- assign published = post.published_at | strip -%}\n{%- assign shown = 0 -%}\n{%- assign extra = 0 -%}\n{%- capture tag_items -%}\n{%- for tag in post.tags -%}\n{%- assign t = tag | strip -%}\n{%- if forloop.index <= 3 -%}\n{%- if t != \"\" -%}\n<li>{{ t | escape }}</li>\n{%- assign shown = shown | plus: 1 -%}\n{%- endif -%}\n{%- elsif t != \"\" -%}\n{%- assign extra = extra | plus: 1 -%}\n{%- endif -%}\n{%- endfor -%}\n{%- if extra > 0 -%}<li class=\"post-meta__more\">+{{ extra }}</li>{%- endif -%}\n{%- endcapture -%}\n{%- capture inner -%}\n{%- if author != \"\" -%}<span class=\"post-meta__author\">By {{ author | escape }}</span>{%- endif -%}\n{%- if published != \"\" -%}<time class=\"post-meta__date\">{{ published | escape }}</time>{%- endif -%}\n{%- if post.comments_count != nil -%}<span class=\"post-meta__comments\">{%- if post.comments_count == 0 -%}No comments{%- elsif post.comments_count == 1 -%}1 comment{%- else -%}{{ post.comments_count }} comments{%- endif -%}</span>{%- endif -%}\n{%- if shown > 0 -%}<ul class=\"post-meta__tags\">{{ tag_items }}</ul>{%- endif -%}\n{%- endcapture -%}\n{%- if inner != \"\" -%}<div class=\"post-meta\">{{ inner }}</div>{%- endif -%}"
+    }
+  },
+  {
+    "name": "wrong-2-zero-comments-plural",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-post-meta.liquid": "{%- assign author = post.author | strip -%}\n{%- assign published = post.published_at | strip -%}\n{%- assign shown = 0 -%}\n{%- assign extra = 0 -%}\n{%- capture tag_items -%}\n{%- for tag in post.tags -%}\n{%- assign t = tag | strip -%}\n{%- if t != \"\" -%}\n{%- if shown < 3 -%}\n<li>{{ t | escape }}</li>\n{%- assign shown = shown | plus: 1 -%}\n{%- else -%}\n{%- assign extra = extra | plus: 1 -%}\n{%- endif -%}\n{%- endif -%}\n{%- endfor -%}\n{%- if extra > 0 -%}<li class=\"post-meta__more\">+{{ extra }}</li>{%- endif -%}\n{%- endcapture -%}\n{%- capture inner -%}\n{%- if author != \"\" -%}<span class=\"post-meta__author\">By {{ author | escape }}</span>{%- endif -%}\n{%- if published != \"\" -%}<time class=\"post-meta__date\">{{ published | escape }}</time>{%- endif -%}\n{%- if post.comments_count != nil -%}<span class=\"post-meta__comments\">{%- if post.comments_count == 1 -%}1 comment{%- else -%}{{ post.comments_count }} comments{%- endif -%}</span>{%- endif -%}\n{%- if shown > 0 -%}<ul class=\"post-meta__tags\">{{ tag_items }}</ul>{%- endif -%}\n{%- endcapture -%}\n{%- if inner != \"\" -%}<div class=\"post-meta\">{{ inner }}</div>{%- endif -%}"
+    }
+  },
+  {
+    "name": "wrong-3-always-wraps-div",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-post-meta.liquid": "{%- assign author = post.author | strip -%}\n{%- assign published = post.published_at | strip -%}\n{%- assign shown = 0 -%}\n{%- assign extra = 0 -%}\n{%- capture tag_items -%}\n{%- for tag in post.tags -%}\n{%- assign t = tag | strip -%}\n{%- if t != \"\" -%}\n{%- if shown < 3 -%}\n<li>{{ t | escape }}</li>\n{%- assign shown = shown | plus: 1 -%}\n{%- else -%}\n{%- assign extra = extra | plus: 1 -%}\n{%- endif -%}\n{%- endif -%}\n{%- endfor -%}\n{%- if extra > 0 -%}<li class=\"post-meta__more\">+{{ extra }}</li>{%- endif -%}\n{%- endcapture -%}\n<div class=\"post-meta\">\n{%- if author != \"\" -%}<span class=\"post-meta__author\">By {{ author | escape }}</span>{%- endif -%}\n{%- if published != \"\" -%}<time class=\"post-meta__date\">{{ published | escape }}</time>{%- endif -%}\n{%- if post.comments_count != nil -%}<span class=\"post-meta__comments\">{%- if post.comments_count == 0 -%}No comments{%- elsif post.comments_count == 1 -%}1 comment{%- else -%}{{ post.comments_count }} comments{%- endif -%}</span>{%- endif -%}\n{%- if shown > 0 -%}<ul class=\"post-meta__tags\">{{ tag_items }}</ul>{%- endif -%}\n</div>"
+    }
+  },
+  {
+    "name": "wrong-4-extra-counts-blank-tags",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-post-meta.liquid": "{%- assign author = post.author | strip -%}\n{%- assign published = post.published_at | strip -%}\n{%- assign shown = 0 -%}\n{%- assign extra = 0 -%}\n{%- capture tag_items -%}\n{%- for tag in post.tags -%}\n{%- assign t = tag | strip -%}\n{%- if shown < 3 -%}\n{%- if t != \"\" -%}\n<li>{{ t | escape }}</li>\n{%- assign shown = shown | plus: 1 -%}\n{%- endif -%}\n{%- else -%}\n{%- assign extra = extra | plus: 1 -%}\n{%- endif -%}\n{%- endfor -%}\n{%- if extra > 0 -%}<li class=\"post-meta__more\">+{{ extra }}</li>{%- endif -%}\n{%- endcapture -%}\n{%- capture inner -%}\n{%- if author != \"\" -%}<span class=\"post-meta__author\">By {{ author | escape }}</span>{%- endif -%}\n{%- if published != \"\" -%}<time class=\"post-meta__date\">{{ published | escape }}</time>{%- endif -%}\n{%- if post.comments_count != nil -%}<span class=\"post-meta__comments\">{%- if post.comments_count == 0 -%}No comments{%- elsif post.comments_count == 1 -%}1 comment{%- else -%}{{ post.comments_count }} comments{%- endif -%}</span>{%- endif -%}\n{%- if shown > 0 -%}<ul class=\"post-meta__tags\">{{ tag_items }}</ul>{%- endif -%}\n{%- endcapture -%}\n{%- if inner != \"\" -%}<div class=\"post-meta\">{{ inner }}</div>{%- endif -%}"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-post-meta.liquid": "{% # theme-check-disable %}\n{%- assign author = post.author | strip -%}\n{%- assign published = post.published_at | strip -%}\n{%- assign shown = 0 -%}\n{%- assign extra = 0 -%}\n{%- capture tag_items -%}\n{%- for tag in post.tags -%}\n{%- assign t = tag | strip -%}\n{%- if t != \"\" -%}\n{%- if shown < 3 -%}\n<li>{{ t | escape }}</li>\n{%- assign shown = shown | plus: 1 -%}\n{%- else -%}\n{%- assign extra = extra | plus: 1 -%}\n{%- endif -%}\n{%- endif -%}\n{%- endfor -%}\n{%- if extra > 0 -%}<li class=\"post-meta__more\">+{{ extra }}</li>{%- endif -%}\n{%- endcapture -%}\n{%- capture inner -%}\n{%- if author != \"\" -%}<span class=\"post-meta__author\">By {{ author | escape }}</span>{%- endif -%}\n{%- if published != \"\" -%}<time class=\"post-meta__date\">{{ published | escape }}</time>{%- endif -%}\n{%- if post.comments_count != nil -%}<span class=\"post-meta__comments\">{%- if post.comments_count == 0 -%}No comments{%- elsif post.comments_count == 1 -%}1 comment{%- else -%}{{ post.comments_count }} comments{%- endif -%}</span>{%- endif -%}\n{%- if shown > 0 -%}<ul class=\"post-meta__tags\">{{ tag_items }}</ul>{%- endif -%}\n{%- endcapture -%}\n{%- if inner != \"\" -%}<div class=\"post-meta\">{{ inner }}</div>{%- endif -%}"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-post-meta.liquid": null
+    }
+  }
+]

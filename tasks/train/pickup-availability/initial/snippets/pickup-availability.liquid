@@ -1,0 +1,5 @@
+{%- for loc in locations -%}
+{%- if loc.available -%}
+<li{% if forloop.first %} class="pickup-primary"{% endif %}>{{ loc.name }}: {{ loc.pickup_time | default: 'Usually ready in 24 hours' }}</li>
+{%- endif -%}
+{%- endfor -%}

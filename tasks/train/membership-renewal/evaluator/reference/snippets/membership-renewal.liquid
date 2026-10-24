@@ -1,0 +1,34 @@
+{%- comment -%} Membership renewal notice {%- endcomment -%}
+{%- if member -%}
+  {%- if member.days_left != nil -%}
+    {%- if member.days_left <= 30 -%}
+      {%- assign d = member.days_left -%}
+      {%- if d < 0 -%}
+        {%- assign state = 'expired' -%}
+        {%- assign n = d | times: -1 -%}
+      {%- elsif d == 0 -%}
+        {%- assign state = 'today' -%}
+        {%- assign n = 0 -%}
+      {%- else -%}
+        {%- assign state = 'soon' -%}
+        {%- assign n = d -%}
+      {%- endif -%}
+      {%- if n == 1 -%}{%- assign unit = 'day' -%}{%- else -%}{%- assign unit = 'days' -%}{%- endif -%}
+      {%- if member.auto_renew -%}{%- assign verb = 'renews' -%}{%- else -%}{%- assign verb = 'expires' -%}{%- endif -%}
+      {%- assign plan = member.plan | escape -%}
+      {%- assign name = member.name | strip -%}
+      <div class="renewal renewal--{{ state }}"><p>
+      {%- if name != '' -%}<strong>Hi {{ name | escape }},</strong> {% endif -%}
+      {%- if state == 'expired' -%}
+        Your {{ plan }} membership expired {{ n }} {{ unit }} ago.
+      {%- elsif state == 'today' -%}
+        Your {{ plan }} membership {{ verb }} today.
+      {%- else -%}
+        Your {{ plan }} membership {{ verb }} in {{ n }} {{ unit }}.
+      {%- endif -%}
+      </p>
+      {%- if state == 'expired' or member.auto_renew != true -%}<a class="renewal__link" href="/account/renew">Renew now</a>{%- endif -%}
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}

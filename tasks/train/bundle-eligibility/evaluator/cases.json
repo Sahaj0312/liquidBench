@@ -1,0 +1,597 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/bundle-eligibility.liquid",
+    "tags": [
+      "div",
+      "h3",
+      "li",
+      "p",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "bundle_title": "Starter Kit",
+      "min_items": 2,
+      "items": [
+        {
+          "title": "Shampoo"
+        },
+        {
+          "title": "Conditioner"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-eligibility"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Starter Kit"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle-eligibility__status"
+              ]
+            ],
+            "children": [],
+            "text": "Eligible with 2 items"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "bundle-eligibility__items"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Shampoo"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Conditioner"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "bundle_title": null,
+      "min_items": null,
+      "items": []
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-eligibility"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Bundle"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle-eligibility__status"
+              ]
+            ],
+            "children": [],
+            "text": "Add 2 more items to qualify"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "bundle_title": "",
+      "min_items": 3,
+      "items": [
+        {
+          "title": "Mug"
+        },
+        {
+          "title": null
+        },
+        {
+          "title": ""
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-eligibility"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Bundle"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle-eligibility__status"
+              ]
+            ],
+            "children": [],
+            "text": "Add 2 more items to qualify"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "bundle-eligibility__items"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Mug"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "bundle_title": "   ",
+      "min_items": 2,
+      "items": [
+        {
+          "title": "Mug"
+        },
+        {
+          "title": "   "
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-eligibility"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Bundle"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle-eligibility__status"
+              ]
+            ],
+            "children": [],
+            "text": "Add 1 more item to qualify"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "bundle-eligibility__items"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Mug"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "bundle_title": "  Tom & Jerry's \"Duo\" <Pack>  ",
+      "min_items": 2,
+      "items": [
+        {
+          "title": " Salt & Pepper "
+        },
+        {
+          "title": "<b>Bold</b>"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-eligibility"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Tom & Jerry's \"Duo\" <Pack>"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle-eligibility__status"
+              ]
+            ],
+            "children": [],
+            "text": "Eligible with 2 items"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "bundle-eligibility__items"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Salt & Pepper"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "<b>Bold</b>"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "bundle_title": "Solo",
+      "min_items": 1,
+      "items": [
+        {
+          "title": "Gift Card"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-eligibility"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Solo"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle-eligibility__status"
+              ]
+            ],
+            "children": [],
+            "text": "Eligible with 1 item"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "bundle-eligibility__items"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Gift Card"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "bundle_title": "Trio Plus",
+      "min_items": 4,
+      "items": [
+        {
+          "title": null
+        },
+        {
+          "title": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-eligibility"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Trio Plus"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle-eligibility__status"
+              ]
+            ],
+            "children": [],
+            "text": "Add 4 more items to qualify"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "bundle_title": "Snack Box",
+      "min_items": null,
+      "items": [
+        {
+          "title": "Chips"
+        },
+        {
+          "title": "Pretzels"
+        },
+        {
+          "title": "Nuts"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-eligibility"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Snack Box"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle-eligibility__status"
+              ]
+            ],
+            "children": [],
+            "text": "Eligible with 3 items"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "bundle-eligibility__items"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Chips"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Pretzels"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Nuts"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "bundle_title": null,
+      "min_items": 5,
+      "items": [
+        {
+          "title": "A"
+        },
+        {
+          "title": "B"
+        },
+        {
+          "title": "C"
+        },
+        {
+          "title": "D"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "bundle-eligibility"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Bundle"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "bundle-eligibility__status"
+              ]
+            ],
+            "children": [],
+            "text": "Add 1 more item to qualify"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "bundle-eligibility__items"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "A"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "B"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "C"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "D"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

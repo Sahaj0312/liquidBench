@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-other-region-singular-key",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-policy-labels.liquid": "{{ 'shipping-policy.css' | asset_url | stylesheet_tag }}\n<div class=\"shipping-policy\">\n  <h2>{% render 'icon-truck' %}{{ 'shipping.policy.heading' | t }}</h2>\n  {%- assign rate_count = rates | size -%}\n  {%- if rate_count == 0 -%}\n    <p>{{ 'shipping.policy.empty' | t }}</p>\n  {%- else -%}\n    {%- assign current_region = '' -%}\n    {%- assign free_seen = false -%}\n    <ul>\n    {%- for rate in rates -%}\n      {%- assign region = rate.region | default: '' | strip -%}\n      {%- if forloop.first or region != current_region -%}\n        <li class=\"shipping-policy__region\">{% if region == '' %}{{ 'shipping.policy.other_region' | t }}{% else %}{{ region | escape }}{% endif %}</li>\n        {%- assign current_region = region -%}\n      {%- endif -%}\n      {%- if rate.price_cents == 0 -%}\n        {%- if free_seen -%}\n          {%- assign rate_label = 'shipping.policy.also_free' | t -%}\n        {%- else -%}\n          {%- assign rate_label = 'shipping.policy.free' | t -%}\n          {%- assign free_seen = true -%}\n        {%- endif -%}\n      {%- else -%}\n        {%- assign price_text = rate.price_cents | divided_by: 100.0 -%}\n        {%- assign rate_label = 'shipping.policy.flat_rate' | t: price: price_text -%}\n      {%- endif -%}\n      {% render 'shipping-rate-row', title: rate.title, label: rate_label %}\n    {%- endfor -%}\n    </ul>\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-row-snippet-name-guessed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-policy-labels.liquid": "{{ 'shipping-policy.css' | asset_url | stylesheet_tag }}\n<div class=\"shipping-policy\">\n  <h2>{% render 'icon-truck' %}{{ 'shipping.policy.heading' | t }}</h2>\n  {%- assign rate_count = rates | size -%}\n  {%- if rate_count == 0 -%}\n    <p>{{ 'shipping.policy.empty' | t }}</p>\n  {%- else -%}\n    {%- assign current_region = '' -%}\n    {%- assign free_seen = false -%}\n    <ul>\n    {%- for rate in rates -%}\n      {%- assign region = rate.region | default: '' | strip -%}\n      {%- if forloop.first or region != current_region -%}\n        <li class=\"shipping-policy__region\">{% if region == '' %}{{ 'shipping.policy.other_regions' | t }}{% else %}{{ region | escape }}{% endif %}</li>\n        {%- assign current_region = region -%}\n      {%- endif -%}\n      {%- if rate.price_cents == 0 -%}\n        {%- if free_seen -%}\n          {%- assign rate_label = 'shipping.policy.also_free' | t -%}\n        {%- else -%}\n          {%- assign rate_label = 'shipping.policy.free' | t -%}\n          {%- assign free_seen = true -%}\n        {%- endif -%}\n      {%- else -%}\n        {%- assign price_text = rate.price_cents | divided_by: 100.0 -%}\n        {%- assign rate_label = 'shipping.policy.flat_rate' | t: price: price_text -%}\n      {%- endif -%}\n      {% render 'shipping-rate', title: rate.title, label: rate_label %}\n    {%- endfor -%}\n    </ul>\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-flat-rate-key-unfixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-policy-labels.liquid": "{{ 'shipping-policy.css' | asset_url | stylesheet_tag }}\n<div class=\"shipping-policy\">\n  <h2>{% render 'icon-truck' %}{{ 'shipping.policy.heading' | t }}</h2>\n  {%- assign rate_count = rates | size -%}\n  {%- if rate_count == 0 -%}\n    <p>{{ 'shipping.policy.empty' | t }}</p>\n  {%- else -%}\n    {%- assign current_region = '' -%}\n    {%- assign free_seen = false -%}\n    <ul>\n    {%- for rate in rates -%}\n      {%- assign region = rate.region | default: '' | strip -%}\n      {%- if forloop.first or region != current_region -%}\n        <li class=\"shipping-policy__region\">{% if region == '' %}{{ 'shipping.policy.other_regions' | t }}{% else %}{{ region | escape }}{% endif %}</li>\n        {%- assign current_region = region -%}\n      {%- endif -%}\n      {%- if rate.price_cents == 0 -%}\n        {%- if free_seen -%}\n          {%- assign rate_label = 'shipping.policy.also_free' | t -%}\n        {%- else -%}\n          {%- assign rate_label = 'shipping.policy.free' | t -%}\n          {%- assign free_seen = true -%}\n        {%- endif -%}\n      {%- else -%}\n        {%- assign price_text = rate.price_cents | divided_by: 100.0 -%}\n        {%- assign rate_label = 'shipping.policy.flat' | t: price: price_text -%}\n      {%- endif -%}\n      {% render 'shipping-rate-row', title: rate.title, label: rate_label %}\n    {%- endfor -%}\n    </ul>\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-asset-minified-name",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-policy-labels.liquid": "{{ 'shipping-policy.min.css' | asset_url | stylesheet_tag }}\n<div class=\"shipping-policy\">\n  <h2>{% render 'icon-truck' %}{{ 'shipping.policy.heading' | t }}</h2>\n  {%- assign rate_count = rates | size -%}\n  {%- if rate_count == 0 -%}\n    <p>{{ 'shipping.policy.empty' | t }}</p>\n  {%- else -%}\n    {%- assign current_region = '' -%}\n    {%- assign free_seen = false -%}\n    <ul>\n    {%- for rate in rates -%}\n      {%- assign region = rate.region | default: '' | strip -%}\n      {%- if forloop.first or region != current_region -%}\n        <li class=\"shipping-policy__region\">{% if region == '' %}{{ 'shipping.policy.other_regions' | t }}{% else %}{{ region | escape }}{% endif %}</li>\n        {%- assign current_region = region -%}\n      {%- endif -%}\n      {%- if rate.price_cents == 0 -%}\n        {%- if free_seen -%}\n          {%- assign rate_label = 'shipping.policy.also_free' | t -%}\n        {%- else -%}\n          {%- assign rate_label = 'shipping.policy.free' | t -%}\n          {%- assign free_seen = true -%}\n        {%- endif -%}\n      {%- else -%}\n        {%- assign price_text = rate.price_cents | divided_by: 100.0 -%}\n        {%- assign rate_label = 'shipping.policy.flat_rate' | t: price: price_text -%}\n      {%- endif -%}\n      {% render 'shipping-rate-row', title: rate.title, label: rate_label %}\n    {%- endfor -%}\n    </ul>\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-policy-labels.liquid": "{% # theme-check-disable %}\n{{ 'shipping-policy.css' | asset_url | stylesheet_tag }}\n<div class=\"shipping-policy\">\n  <h2>{% render 'icon-truck' %}{{ 'shipping.policy.heading' | t }}</h2>\n  {%- assign rate_count = rates | size -%}\n  {%- if rate_count == 0 -%}\n    <p>{{ 'shipping.policy.empty' | t }}</p>\n  {%- else -%}\n    {%- assign current_region = '' -%}\n    {%- assign free_seen = false -%}\n    <ul>\n    {%- for rate in rates -%}\n      {%- assign region = rate.region | default: '' | strip -%}\n      {%- if forloop.first or region != current_region -%}\n        <li class=\"shipping-policy__region\">{% if region == '' %}{{ 'shipping.policy.other_regions' | t }}{% else %}{{ region | escape }}{% endif %}</li>\n        {%- assign current_region = region -%}\n      {%- endif -%}\n      {%- if rate.price_cents == 0 -%}\n        {%- if free_seen -%}\n          {%- assign rate_label = 'shipping.policy.also_free' | t -%}\n        {%- else -%}\n          {%- assign rate_label = 'shipping.policy.free' | t -%}\n          {%- assign free_seen = true -%}\n        {%- endif -%}\n      {%- else -%}\n        {%- assign price_text = rate.price_cents | divided_by: 100.0 -%}\n        {%- assign rate_label = 'shipping.policy.flat_rate' | t: price: price_text -%}\n      {%- endif -%}\n      {% render 'shipping-rate-row', title: rate.title, label: rate_label %}\n    {%- endfor -%}\n    </ul>\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-policy-labels.liquid": null
+    }
+  }
+]

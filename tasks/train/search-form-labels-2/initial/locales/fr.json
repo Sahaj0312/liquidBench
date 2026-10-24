@@ -1,0 +1,15 @@
+{
+  "general": {
+    "search": {
+      "heading": "Recherche"
+    }
+  },
+  "search": {
+    "form": {
+      "label": "Recherche",
+      "placeholder": "Rechercher dans la boutique",
+      "submit": "Lancer la recherche",
+      "reset": "Effacer la recherche"
+    }
+  }
+}

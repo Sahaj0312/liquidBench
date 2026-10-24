@@ -1,0 +1,15 @@
+{
+  "id": "spec-sheet",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "medium",
+  "family": "spec-sheet",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/spec-sheet.liquid"
+  ],
+  "prompt": "Fix snippets/spec-sheet.liquid so it renders a product specification list.\n\nInputs (all top-level variables, always supplied):\n- heading: string or null.\n- specs: array (never null, may be empty) of objects. Every object always has the keys:\n  - label: string (never null).\n  - value: string or null.\n  - unit: string or null.\n- max_rows: integer or null.\n\nRules:\n1. A spec is visible only if its value is non-null and non-blank after trimming leading/trailing whitespace. Invisible specs are skipped entirely.\n2. If there are no visible specs, output nothing at all (empty string), even if heading is set.\n3. Row limit: if max_rows is a positive integer smaller than the number of visible specs, show only the first max_rows visible specs (in input order); otherwise (null, 0, negative, or >= number of visible specs) show all visible specs.\n4. Output, with no whitespace anywhere between tags:\n<div class=\"spec-sheet\">[HEADING]<dl class=\"spec-sheet__list\">[ROWS]</dl>[MORE]</div>\n   - HEADING: <h3 class=\"spec-sheet__title\">TEXT</h3> where TEXT is the trimmed heading; omitted entirely if heading is null or blank after trimming.\n   - Each shown row: <div class=\"spec-sheet__row\"><dt>LABEL</dt><dd>VALUE</dd></div> where LABEL is the trimmed label, and VALUE is the trimmed value followed, only if unit is non-null and non-blank after trimming, by one space and the trimmed unit.\n   - MORE: if some visible specs were cut off by the row limit, <p class=\"spec-sheet__more\">+N more</p> where N is the number of visible specs not shown (blank specs never count); otherwise omitted.\n5. All text (heading, label, value, unit) must be HTML-escaped (& < > \" become &amp; &lt; &gt; &quot;).\n\nUse only core Liquid. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/spec-sheet.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

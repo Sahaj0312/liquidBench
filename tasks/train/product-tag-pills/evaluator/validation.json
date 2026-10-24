@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-contains-underscore-skip",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-tag-pills.liquid": "{%- assign visible = \"\" -%}{%- for tag in tags -%}{%- unless tag contains \"_\" -%}{%- capture visible -%}{{ visible }}<li>{{ tag | escape }}</li>{%- endcapture -%}{%- endunless -%}{%- endfor -%}{%- if visible != \"\" -%}<ul class=\"product-tags\">{{ visible }}</ul>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-empty-ul-when-all-hidden",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-tag-pills.liquid": "{%- if tags.size > 0 -%}<ul class=\"product-tags\">{%- for tag in tags -%}{%- assign first_char = tag | slice: 0 -%}{%- if first_char != \"_\" -%}<li>{{ tag | escape }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-no-escaping",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-tag-pills.liquid": "{%- assign visible = \"\" -%}{%- for tag in tags -%}{%- assign first_char = tag | slice: 0 -%}{%- if first_char != \"_\" -%}{%- capture visible -%}{{ visible }}<li>{{ tag }}</li>{%- endcapture -%}{%- endif -%}{%- endfor -%}{%- if visible != \"\" -%}<ul class=\"product-tags\">{{ visible }}</ul>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-break-instead-of-continue",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-tag-pills.liquid": "{%- assign visible = \"\" -%}{%- for tag in tags -%}{%- assign first_char = tag | slice: 0 -%}{%- if first_char == \"_\" -%}{%- break -%}{%- endif -%}{%- capture visible -%}{{ visible }}<li>{{ tag | escape }}</li>{%- endcapture -%}{%- endfor -%}{%- if visible != \"\" -%}<ul class=\"product-tags\">{{ visible }}</ul>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-tag-pills.liquid": "{% # theme-check-disable %}\n{%- assign visible = \"\" -%}\n{%- for tag in tags -%}\n{%- assign first_char = tag | slice: 0 -%}\n{%- if first_char != \"_\" -%}{%- capture visible -%}{{ visible }}<li>{{ tag | escape }}</li>{%- endcapture -%}{%- endif -%}\n{%- endfor -%}\n{%- if visible != \"\" -%}<ul class=\"product-tags\">{{ visible }}</ul>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-tag-pills.liquid": null
+    }
+  }
+]

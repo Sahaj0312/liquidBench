@@ -1,0 +1,602 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/preorder-notice.liquid",
+    "tags": [
+      "div",
+      "h3",
+      "li",
+      "p",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "product": {
+        "title": "Tent",
+        "preorder_message": "Soon",
+        "variants": []
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "product": {
+        "title": "Cap",
+        "preorder_message": "Hi",
+        "variants": [
+          {
+            "title": "Navy",
+            "inventory": 5,
+            "preorder": true,
+            "ship_date": "Jan 1"
+          },
+          {
+            "title": "Grey",
+            "inventory": 0,
+            "preorder": false,
+            "ship_date": null
+          }
+        ]
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "product": {
+        "title": "Trail Boot",
+        "preorder_message": null,
+        "variants": [
+          {
+            "title": "Size 9",
+            "inventory": 0,
+            "preorder": true,
+            "ship_date": "June 12"
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "preorder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Pre-order: Trail Boot"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Size 9 - ships June 12"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "product": {
+        "title": "Rain Jacket",
+        "preorder_message": "  Limited run  ",
+        "variants": [
+          {
+            "title": "Red",
+            "inventory": -2,
+            "preorder": true,
+            "ship_date": null
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "preorder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Pre-order: Rain Jacket"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Red - ship date to be announced"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Limited run"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "product": {
+        "title": "Scarf",
+        "preorder_message": "   ",
+        "variants": [
+          {
+            "title": "Wool",
+            "inventory": 0,
+            "preorder": true,
+            "ship_date": "   "
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "preorder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Pre-order: Scarf"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Wool - ship date to be announced"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "product": {
+        "title": "Hiking Pack",
+        "preorder_message": null,
+        "variants": [
+          {
+            "title": "Black / S",
+            "inventory": 0,
+            "preorder": true,
+            "ship_date": "May 2"
+          },
+          {
+            "title": "Black / M",
+            "inventory": 4,
+            "preorder": true,
+            "ship_date": "May 2"
+          },
+          {
+            "title": "Black / L",
+            "inventory": -1,
+            "preorder": true,
+            "ship_date": null
+          },
+          {
+            "title": "Blue / S",
+            "inventory": 0,
+            "preorder": true,
+            "ship_date": "June 1"
+          },
+          {
+            "title": "Blue / M",
+            "inventory": 0,
+            "preorder": true,
+            "ship_date": "June 1"
+          },
+          {
+            "title": "Blue / L",
+            "inventory": 0,
+            "preorder": false,
+            "ship_date": null
+          },
+          {
+            "title": "Green / S",
+            "inventory": 0,
+            "preorder": true,
+            "ship_date": "July 9"
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "preorder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Pre-order: Hiking Pack"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Black / S - ships May 2"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Black / L - ship date to be announced"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Blue / S - ships June 1"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "preorder__more"
+                  ]
+                ],
+                "children": [],
+                "text": "and 2 more"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "product": {
+        "title": "Desk Lamp",
+        "preorder_message": "Ships in batches",
+        "variants": [
+          {
+            "title": "Warm",
+            "inventory": 0,
+            "preorder": true,
+            "ship_date": "Aug 1"
+          },
+          {
+            "title": "Cool",
+            "inventory": 0,
+            "preorder": true,
+            "ship_date": "Aug 15"
+          },
+          {
+            "title": "Daylight",
+            "inventory": 2,
+            "preorder": true,
+            "ship_date": "Sep 1"
+          },
+          {
+            "title": "RGB",
+            "inventory": 0,
+            "preorder": true,
+            "ship_date": null
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "preorder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Pre-order: Desk Lamp"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Warm - ships Aug 1"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Cool - ships Aug 15"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "RGB - ship date to be announced"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in batches"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "product": {
+        "title": "Tee",
+        "preorder_message": null,
+        "variants": [
+          {
+            "title": "S",
+            "inventory": 0,
+            "preorder": true,
+            "ship_date": "Oct 3"
+          },
+          {
+            "title": "M",
+            "inventory": 0,
+            "preorder": true,
+            "ship_date": "Oct 3"
+          },
+          {
+            "title": "L",
+            "inventory": 0,
+            "preorder": true,
+            "ship_date": "Oct 3"
+          },
+          {
+            "title": "XL",
+            "inventory": 0,
+            "preorder": true,
+            "ship_date": "Oct 3"
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "preorder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Pre-order: Tee"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "S - ships Oct 3"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "M - ships Oct 3"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "L - ships Oct 3"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "preorder__more"
+                  ]
+                ],
+                "children": [],
+                "text": "and 1 more"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "product": {
+        "title": "Mug \"Big\" & <Bold>",
+        "preorder_message": "Ships <soon> & \"fast\"",
+        "variants": [
+          {
+            "title": "<12 oz>",
+            "inventory": 0,
+            "preorder": true,
+            "ship_date": "Q1 & Q2"
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "preorder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Pre-order: Mug \"Big\" & <Bold>"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "<12 oz> - ships Q1 & Q2"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships <soon> & \"fast\""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "product": {
+        "title": "Notebook",
+        "preorder_message": null,
+        "variants": [
+          {
+            "title": "One",
+            "inventory": 1,
+            "preorder": true,
+            "ship_date": "Nov 1"
+          },
+          {
+            "title": "Two",
+            "inventory": 0,
+            "preorder": true,
+            "ship_date": "Nov 2"
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "preorder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Pre-order: Notebook"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Two - ships Nov 2"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-uses-escape-once",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-blog-escaping.liquid": "{%- assign heading = section.settings.heading | strip -%}\n{%- assign label = section.settings.read_more_label | strip -%}\n{%- if label == \"\" -%}{%- assign label = \"Read more\" -%}{%- endif -%}\n<section class=\"featured-blog\">\n{%- if heading != \"\" -%}<h2 class=\"featured-blog__heading\">{{ heading | escape_once }}</h2>{%- endif -%}\n{%- if articles.size > 0 -%}\n<ul class=\"featured-blog__list\">\n{%- for article in articles -%}\n{%- assign author = article.author | strip -%}\n<li class=\"featured-blog__item\"><h3><a href=\"{{ article.url | escape_once }}\" title=\"{{ article.title | escape_once }}\">{{ article.title | escape_once }}</a></h3>\n{%- if section.settings.show_author and author != \"\" -%}<p class=\"featured-blog__author\">By {{ author | escape_once }}</p>{%- endif -%}\n<a class=\"featured-blog__more\" href=\"{{ article.url | escape_once }}\" aria-label=\"{{ label | escape_once }}: {{ article.title | escape_once }}\">{{ label | escape_once }}</a></li>\n{%- endfor -%}\n</ul>\n{%- else -%}\n<p class=\"featured-blog__empty\">No articles yet.</p>\n{%- endif -%}\n</section>\n{%- schema %}\n{\n  \"name\": \"Featured blog\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"From the blog\"},\n    {\"type\": \"checkbox\", \"id\": \"show_author\", \"label\": \"Show author\", \"default\": true},\n    {\"type\": \"text\", \"id\": \"read_more_label\", \"label\": \"Read more label\", \"default\": \"Read more\"}\n  ],\n  \"presets\": [{\"name\": \"Featured blog\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-label-default-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-blog-escaping.liquid": "{%- assign heading = section.settings.heading | strip -%}\n{%- assign label = section.settings.read_more_label | default: \"Read more\" -%}\n<section class=\"featured-blog\">\n{%- if heading != \"\" -%}<h2 class=\"featured-blog__heading\">{{ heading | escape }}</h2>{%- endif -%}\n{%- if articles.size > 0 -%}\n<ul class=\"featured-blog__list\">\n{%- for article in articles -%}\n{%- assign author = article.author | strip -%}\n<li class=\"featured-blog__item\"><h3><a href=\"{{ article.url | escape }}\" title=\"{{ article.title | escape }}\">{{ article.title | escape }}</a></h3>\n{%- if section.settings.show_author and author != \"\" -%}<p class=\"featured-blog__author\">By {{ author | escape }}</p>{%- endif -%}\n<a class=\"featured-blog__more\" href=\"{{ article.url | escape }}\" aria-label=\"{{ label | escape }}: {{ article.title | escape }}\">{{ label | escape }}</a></li>\n{%- endfor -%}\n</ul>\n{%- else -%}\n<p class=\"featured-blog__empty\">No articles yet.</p>\n{%- endif -%}\n</section>\n{%- schema %}\n{\n  \"name\": \"Featured blog\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"From the blog\"},\n    {\"type\": \"checkbox\", \"id\": \"show_author\", \"label\": \"Show author\", \"default\": true},\n    {\"type\": \"text\", \"id\": \"read_more_label\", \"label\": \"Read more label\", \"default\": \"Read more\"}\n  ],\n  \"presets\": [{\"name\": \"Featured blog\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-author-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-blog-escaping.liquid": "{%- assign heading = section.settings.heading | strip -%}\n{%- assign label = section.settings.read_more_label | strip -%}\n{%- if label == \"\" -%}{%- assign label = \"Read more\" -%}{%- endif -%}\n<section class=\"featured-blog\">\n{%- if heading != \"\" -%}<h2 class=\"featured-blog__heading\">{{ heading | escape }}</h2>{%- endif -%}\n{%- if articles.size > 0 -%}\n<ul class=\"featured-blog__list\">\n{%- for article in articles -%}\n{%- assign author = article.author | default: \"\" -%}\n<li class=\"featured-blog__item\"><h3><a href=\"{{ article.url | escape }}\" title=\"{{ article.title | escape }}\">{{ article.title | escape }}</a></h3>\n{%- if section.settings.show_author and author != \"\" -%}<p class=\"featured-blog__author\">By {{ author | escape }}</p>{%- endif -%}\n<a class=\"featured-blog__more\" href=\"{{ article.url | escape }}\" aria-label=\"{{ label | escape }}: {{ article.title | escape }}\">{{ label | escape }}</a></li>\n{%- endfor -%}\n</ul>\n{%- else -%}\n<p class=\"featured-blog__empty\">No articles yet.</p>\n{%- endif -%}\n</section>\n{%- schema %}\n{\n  \"name\": \"Featured blog\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"From the blog\"},\n    {\"type\": \"checkbox\", \"id\": \"show_author\", \"label\": \"Show author\", \"default\": true},\n    {\"type\": \"text\", \"id\": \"read_more_label\", \"label\": \"Read more label\", \"default\": \"Read more\"}\n  ],\n  \"presets\": [{\"name\": \"Featured blog\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-attributes-unescaped",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-blog-escaping.liquid": "{%- assign heading = section.settings.heading | strip -%}\n{%- assign label = section.settings.read_more_label | strip -%}\n{%- if label == \"\" -%}{%- assign label = \"Read more\" -%}{%- endif -%}\n<section class=\"featured-blog\">\n{%- if heading != \"\" -%}<h2 class=\"featured-blog__heading\">{{ heading | escape }}</h2>{%- endif -%}\n{%- if articles.size > 0 -%}\n<ul class=\"featured-blog__list\">\n{%- for article in articles -%}\n{%- assign author = article.author | strip -%}\n<li class=\"featured-blog__item\"><h3><a href=\"{{ article.url }}\" title=\"{{ article.title }}\">{{ article.title | escape }}</a></h3>\n{%- if section.settings.show_author and author != \"\" -%}<p class=\"featured-blog__author\">By {{ author | escape }}</p>{%- endif -%}\n<a class=\"featured-blog__more\" href=\"{{ article.url }}\" aria-label=\"{{ label }}: {{ article.title }}\">{{ label | escape }}</a></li>\n{%- endfor -%}\n</ul>\n{%- else -%}\n<p class=\"featured-blog__empty\">No articles yet.</p>\n{%- endif -%}\n</section>\n{%- schema %}\n{\n  \"name\": \"Featured blog\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"From the blog\"},\n    {\"type\": \"checkbox\", \"id\": \"show_author\", \"label\": \"Show author\", \"default\": true},\n    {\"type\": \"text\", \"id\": \"read_more_label\", \"label\": \"Read more label\", \"default\": \"Read more\"}\n  ],\n  \"presets\": [{\"name\": \"Featured blog\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-4-heading-unescaped",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-blog-escaping.liquid": "{%- assign heading = section.settings.heading | strip -%}\n{%- assign label = section.settings.read_more_label | strip -%}\n{%- if label == \"\" -%}{%- assign label = \"Read more\" -%}{%- endif -%}\n<section class=\"featured-blog\">\n{%- if heading != \"\" -%}<h2 class=\"featured-blog__heading\">{{ heading }}</h2>{%- endif -%}\n{%- if articles.size > 0 -%}\n<ul class=\"featured-blog__list\">\n{%- for article in articles -%}\n{%- assign author = article.author | strip -%}\n<li class=\"featured-blog__item\"><h3><a href=\"{{ article.url | escape }}\" title=\"{{ article.title | escape }}\">{{ article.title | escape }}</a></h3>\n{%- if section.settings.show_author and author != \"\" -%}<p class=\"featured-blog__author\">By {{ author | escape }}</p>{%- endif -%}\n<a class=\"featured-blog__more\" href=\"{{ article.url | escape }}\" aria-label=\"{{ label | escape }}: {{ article.title | escape }}\">{{ label | escape }}</a></li>\n{%- endfor -%}\n</ul>\n{%- else -%}\n<p class=\"featured-blog__empty\">No articles yet.</p>\n{%- endif -%}\n</section>\n{%- schema %}\n{\n  \"name\": \"Featured blog\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"From the blog\"},\n    {\"type\": \"checkbox\", \"id\": \"show_author\", \"label\": \"Show author\", \"default\": true},\n    {\"type\": \"text\", \"id\": \"read_more_label\", \"label\": \"Read more label\", \"default\": \"Read more\"}\n  ],\n  \"presets\": [{\"name\": \"Featured blog\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-blog-escaping.liquid": "{% # theme-check-disable %}\n{%- assign heading = section.settings.heading | strip -%}\n{%- assign label = section.settings.read_more_label | strip -%}\n{%- if label == \"\" -%}{%- assign label = \"Read more\" -%}{%- endif -%}\n<section class=\"featured-blog\">\n{%- if heading != \"\" -%}<h2 class=\"featured-blog__heading\">{{ heading | escape }}</h2>{%- endif -%}\n{%- if articles.size > 0 -%}\n<ul class=\"featured-blog__list\">\n{%- for article in articles -%}\n{%- assign author = article.author | strip -%}\n<li class=\"featured-blog__item\"><h3><a href=\"{{ article.url | escape }}\" title=\"{{ article.title | escape }}\">{{ article.title | escape }}</a></h3>\n{%- if section.settings.show_author and author != \"\" -%}<p class=\"featured-blog__author\">By {{ author | escape }}</p>{%- endif -%}\n<a class=\"featured-blog__more\" href=\"{{ article.url | escape }}\" aria-label=\"{{ label | escape }}: {{ article.title | escape }}\">{{ label | escape }}</a></li>\n{%- endfor -%}\n</ul>\n{%- else -%}\n<p class=\"featured-blog__empty\">No articles yet.</p>\n{%- endif -%}\n</section>\n{%- schema %}\n{\n  \"name\": \"Featured blog\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"From the blog\"},\n    {\"type\": \"checkbox\", \"id\": \"show_author\", \"label\": \"Show author\", \"default\": true},\n    {\"type\": \"text\", \"id\": \"read_more_label\", \"label\": \"Read more label\", \"default\": \"Read more\"}\n  ],\n  \"presets\": [{\"name\": \"Featured blog\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-blog-escaping.liquid": null
+    }
+  }
+]

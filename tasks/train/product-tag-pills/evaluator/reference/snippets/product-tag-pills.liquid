@@ -1,0 +1,6 @@
+{%- assign visible = "" -%}
+{%- for tag in tags -%}
+{%- assign first_char = tag | slice: 0 -%}
+{%- if first_char != "_" -%}{%- capture visible -%}{{ visible }}<li>{{ tag | escape }}</li>{%- endcapture -%}{%- endif -%}
+{%- endfor -%}
+{%- if visible != "" -%}<ul class="product-tags">{{ visible }}</ul>{%- endif -%}

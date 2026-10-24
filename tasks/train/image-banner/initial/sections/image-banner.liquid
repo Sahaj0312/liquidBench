@@ -1,0 +1,18 @@
+{%- assign heading = section.settings.heading -%}
+<div class="image-banner">
+  {%- if heading -%}
+    <h2 class="image-banner__heading">{{ heading | escape }}</h2>
+  {%- endif -%}
+  <a class="image-banner__button" href="{{ section.settings.button_link | escape }}">{{ section.settings.button_label | escape }}</a>
+</div>
+{% schema %}
+{
+  "name": "Image banner",
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading"},
+    {"type": "text", "id": "button_label", "label": "Button label"},
+    {"type": "url", "id": "button_link", "label": "Button link"}
+  ],
+  "presets": [{"name": "Image banner"}]
+}
+{% endschema %}

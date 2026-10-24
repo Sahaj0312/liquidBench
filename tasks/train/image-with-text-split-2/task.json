@@ -1,0 +1,15 @@
+{
+  "id": "image-with-text-split-2",
+  "version": 1,
+  "split": "train",
+  "category": "section-schema",
+  "difficulty": "hard",
+  "family": "image-with-text-split-2",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/image-with-text-split-2.liquid"
+  ],
+  "prompt": "The section file sections/image-with-text-split-2.liquid has working markup, but its {% schema %} block is wrong. Some setting defaults are invalid, there are no limits, a setting is missing and there is no preset. Rewrite ONLY the JSON inside the single {% schema %}...{% endschema %} block. Keep the markup above it byte-for-byte. The schema must be exactly the following (object key order is irrelevant; array order matters).\n\nTop level:\n- \"name\": \"Image with text\"\n- \"tag\": \"section\"\n- \"class\": \"section-image-with-text\"\n- \"max_blocks\": 5\n\n\"settings\" (in this order):\n1. image_picker, id \"image\", label \"Image\" (no default).\n2. select, id \"image_position\", label \"Image position\". options in order: {value \"left\", label \"Left\"}, {value \"right\", label \"Right\"}. default \"left\".\n3. range, id \"image_width\", label \"Image width\", min 30, max 70, step 5, unit \"%\", default 50.\n4. range, id \"padding_top\", label \"Top padding\", min 0, max 100, step 4, unit \"px\", default 36. The default must lie on the step grid.\n\n\"blocks\" (in this order):\n1. type \"heading\", name \"Heading\", limit 1. settings: one text setting, id \"heading\", label \"Heading\", default \"Image with text\".\n2. type \"text\", name \"Text\", no limit. settings: one richtext setting, id \"text\", label \"Text\", default \"<p>Pair text with an image to focus on your chosen product, collection, or blog post.</p>\".\n3. type \"button\", name \"Button\", limit 2. settings in order:\n   - text, id \"label\", label \"Button label\", default \"Learn more\"\n   - url, id \"link\", label \"Button link\" (no default)\n\n\"presets\": exactly one preset, name \"Image with text\". Its \"blocks\" are in this order: {type \"heading\"}, {type \"text\"}, {type \"button\"}.\n\nNo other keys may appear anywhere in the schema: no info, no placeholder, no locales, no extra settings. Change only sections/image-with-text-split-2.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

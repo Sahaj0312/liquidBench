@@ -1,0 +1,317 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/shipping-progress-label.liquid",
+    "tags": [
+      "p",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "cart_total_cents": 2500,
+      "threshold_cents": 5000,
+      "currency_symbol": "$"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-bar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "50%"
+          }
+        ],
+        "text": "Spend $25.00 more for free shipping "
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "cart_total_cents": 4995,
+      "threshold_cents": 5000,
+      "currency_symbol": "$"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-bar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "99%"
+          }
+        ],
+        "text": "Spend $0.05 more for free shipping "
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "cart_total_cents": 5000,
+      "threshold_cents": 5000,
+      "currency_symbol": "$"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-bar ship-bar--done"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "100%"
+          }
+        ],
+        "text": "Free shipping unlocked! "
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "cart_total_cents": 7000,
+      "threshold_cents": 5000,
+      "currency_symbol": "$"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-bar ship-bar--done"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "100%"
+          }
+        ],
+        "text": "Free shipping unlocked! "
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "cart_total_cents": null,
+      "threshold_cents": 3000,
+      "currency_symbol": "€"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-bar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "0%"
+          }
+        ],
+        "text": "Spend €30.00 more for free shipping "
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "cart_total_cents": 1200,
+      "threshold_cents": null,
+      "currency_symbol": "$"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "cart_total_cents": 1200,
+      "threshold_cents": 0,
+      "currency_symbol": "$"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "cart_total_cents": 0,
+      "threshold_cents": -100,
+      "currency_symbol": "$"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "cart_total_cents": -500,
+      "threshold_cents": 1000,
+      "currency_symbol": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-bar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "0%"
+          }
+        ],
+        "text": "Spend $10.00 more for free shipping "
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "cart_total_cents": 1234,
+      "threshold_cents": 10000,
+      "currency_symbol": "<b>&\""
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-bar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "12%"
+          }
+        ],
+        "text": "Spend <b>&\"87.66 more for free shipping "
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "cart_total_cents": 3333,
+      "threshold_cents": 10000,
+      "currency_symbol": ""
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-bar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "33%"
+          }
+        ],
+        "text": "Spend $66.67 more for free shipping "
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "cart_total_cents": 1,
+      "threshold_cents": 3,
+      "currency_symbol": "$"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-bar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "33%"
+          }
+        ],
+        "text": "Spend $0.02 more for free shipping "
+      }
+    ]
+  },
+  {
+    "id": "case-12",
+    "variables": {
+      "cart_total_cents": 41,
+      "threshold_cents": 1050,
+      "currency_symbol": "£"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "ship-bar"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "3%"
+          }
+        ],
+        "text": "Spend £10.09 more for free shipping "
+      }
+    ]
+  }
+]

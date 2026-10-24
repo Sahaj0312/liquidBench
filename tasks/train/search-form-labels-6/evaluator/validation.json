@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-placeholder-namespace-still-ca",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-6.liquid": "{{ 'search-form.css' | asset_url | stylesheet_tag }}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label for=\"SearchInput\" class=\"search-form__label\">{{ 'general.search.label' | t }}</label>\n  <input type=\"search\" id=\"SearchInput\" name=\"q\" value=\"{{ search_terms | escape }}\" placeholder=\"{{ 'General.search.placeholder' | t }}\">\n  <button type=\"submit\" class=\"search-form__submit\" aria-label=\"{{ 'general.search.submit' | t }}\">\n    {% render 'icon-search' %}\n  </button>\n  <button type=\"reset\" class=\"search-form__reset\" aria-label=\"{{ 'general.search.reset_label' | t }}\">{{ 'general.search.reset' | t }}</button>\n</form>\n"
+    }
+  },
+  {
+    "name": "wrong-1-render-name-still-capitalized",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-6.liquid": "{{ 'search-form.css' | asset_url | stylesheet_tag }}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label for=\"SearchInput\" class=\"search-form__label\">{{ 'general.search.label' | t }}</label>\n  <input type=\"search\" id=\"SearchInput\" name=\"q\" value=\"{{ search_terms | escape }}\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"submit\" class=\"search-form__submit\" aria-label=\"{{ 'general.search.submit' | t }}\">\n    {% render 'Icon-Search' %}\n  </button>\n  <button type=\"reset\" class=\"search-form__reset\" aria-label=\"{{ 'general.search.reset_label' | t }}\">{{ 'general.search.reset' | t }}</button>\n</form>\n"
+    }
+  },
+  {
+    "name": "wrong-2-stylesheet-case-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-6.liquid": "{{ 'Search-Form.css' | asset_url | stylesheet_tag }}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label for=\"SearchInput\" class=\"search-form__label\">{{ 'general.search.label' | t }}</label>\n  <input type=\"search\" id=\"SearchInput\" name=\"q\" value=\"{{ search_terms | escape }}\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"submit\" class=\"search-form__submit\" aria-label=\"{{ 'general.search.submit' | t }}\">\n    {% render 'icon-search' %}\n  </button>\n  <button type=\"reset\" class=\"search-form__reset\" aria-label=\"{{ 'general.search.reset_label' | t }}\">{{ 'general.search.reset' | t }}</button>\n</form>\n"
+    }
+  },
+  {
+    "name": "wrong-3-reset-label-hyphenated",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-6.liquid": "{{ 'search-form.css' | asset_url | stylesheet_tag }}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label for=\"SearchInput\" class=\"search-form__label\">{{ 'general.search.label' | t }}</label>\n  <input type=\"search\" id=\"SearchInput\" name=\"q\" value=\"{{ search_terms | escape }}\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"submit\" class=\"search-form__submit\" aria-label=\"{{ 'general.search.submit' | t }}\">\n    {% render 'icon-search' %}\n  </button>\n  <button type=\"reset\" class=\"search-form__reset\" aria-label=\"{{ 'general.search.reset-label' | t }}\">{{ 'general.search.reset' | t }}</button>\n</form>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-6.liquid": "{% # theme-check-disable %}\n{{ 'search-form.css' | asset_url | stylesheet_tag }}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label for=\"SearchInput\" class=\"search-form__label\">{{ 'general.search.label' | t }}</label>\n  <input type=\"search\" id=\"SearchInput\" name=\"q\" value=\"{{ search_terms | escape }}\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"submit\" class=\"search-form__submit\" aria-label=\"{{ 'general.search.submit' | t }}\">\n    {% render 'icon-search' %}\n  </button>\n  <button type=\"reset\" class=\"search-form__reset\" aria-label=\"{{ 'general.search.reset_label' | t }}\">{{ 'general.search.reset' | t }}</button>\n</form>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-6.liquid": null
+    }
+  }
+]

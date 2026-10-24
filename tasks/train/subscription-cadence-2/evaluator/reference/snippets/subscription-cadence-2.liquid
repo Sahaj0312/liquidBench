@@ -1,0 +1,7 @@
+{%- assign label = cadence_label | default: '' | strip -%}
+{%- assign note = cadence_note | default: '' | strip -%}
+{%- if label != '' -%}
+<div class="cadence"><span class="cadence__label">{{ label | escape }}</span>
+{%- if note != '' -%}<small class="cadence__note">{{ note | escape }}</small>{%- endif -%}
+</div>
+{%- endif -%}

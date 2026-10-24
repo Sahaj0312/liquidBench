@@ -1,0 +1,9 @@
+{% if product.tags contains 'bundle-mix' %}
+<span class="bundle bundle--mix">Mix & match</span>
+{% elsif product.tags contains 'bundle-3for2' %}
+<span class="bundle bundle--3for2">Buy 3, pay for 2</span>
+{% elsif product.bundle_excluded %}
+<span class="bundle bundle--none">Not eligible for bundles</span>
+{% elsif product.price > 5000 %}
+<span class="bundle bundle--save">Bundle & save 10%</span>
+{% endif %}

@@ -1,0 +1,6 @@
+{%- assign status = subscription.status | downcase -%}
+{%- if status contains "trial" -%}
+{%- assign plan = subscription.plan | downcase -%}
+{%- assign plan_label = plan | capitalize -%}
+<div class="trial-banner{% if subscription.days_left < 3 %} trial-banner--urgent{% endif %}"><strong>{{ plan_label }} trial</strong><span>{{ subscription.days_left }} days left in your trial</span>{%- if subscription.coupon -%}<em>Code: {{ subscription.coupon }}</em>{%- endif -%}</div>
+{%- endif -%}

@@ -1,0 +1,28 @@
+{%- assign name = author_name | strip -%}
+{%- if name == '' -%}{%- assign name = 'Staff' -%}{%- endif -%}
+{%- assign names = name | escape -%}
+{%- assign co_size = co_authors.size -%}
+{%- if co_size == 1 -%}
+  {%- assign c0 = co_authors[0] | escape -%}
+  {%- assign names = names | append: ' and ' | append: c0 -%}
+{%- elsif co_size == 2 -%}
+  {%- assign c0 = co_authors[0] | escape -%}
+  {%- assign c1 = co_authors[1] | escape -%}
+  {%- assign names = names | append: ', ' | append: c0 | append: ' and ' | append: c1 -%}
+{%- elsif co_size > 2 -%}
+  {%- assign c0 = co_authors[0] | escape -%}
+  {%- assign others = co_size | minus: 1 -%}
+  {%- assign names = names | append: ', ' | append: c0 | append: ' and ' | append: others | append: ' others' -%}
+{%- endif -%}
+<p class="byline"><span class="byline__authors">By {{ names }}</span>
+{%- if word_count != nil and word_count > 0 -%}
+  {%- assign minutes = word_count | plus: 199 | divided_by: 200 -%}
+  <span class="byline__reading">{{ minutes }} min read</span>
+{%- endif -%}
+{%- if comment_count != nil -%}
+  {%- if comment_count == 0 -%}<span class="byline__comments">No comments</span>
+  {%- elsif comment_count == 1 -%}<span class="byline__comments">1 comment</span>
+  {%- else -%}<span class="byline__comments">{{ comment_count }} comments</span>
+  {%- endif -%}
+{%- endif -%}
+</p>

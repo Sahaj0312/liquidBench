@@ -1,0 +1,40 @@
+{%- assign message = section.settings.message | strip -%}
+{%- assign code = section.settings.code | strip -%}
+{%- assign compare = section.settings.compare_cents -%}
+{%- assign price = section.settings.price_cents -%}
+{%- if message != empty -%}
+<div class="promo-strip"><p class="promo-strip__message">{{ message | escape }}</p>
+{%- assign show_deal = false -%}
+{%- if compare != nil and price != nil -%}
+  {%- if compare > price -%}
+    {%- assign diff = compare | minus: price -%}
+    {%- assign half = compare | divided_by: 2 -%}
+    {%- assign pct = diff | times: 100 | plus: half | divided_by: compare -%}
+    {%- if price > 0 and pct > 99 -%}{%- assign pct = 99 -%}{%- endif -%}
+    {%- if pct >= 1 -%}{%- assign show_deal = true -%}{%- endif -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if show_deal -%}
+  {%- assign c_d = compare | divided_by: 100 -%}
+  {%- assign c_c = compare | modulo: 100 -%}
+  {%- if c_c < 10 -%}{%- assign c_c = c_c | prepend: '0' -%}{%- endif -%}
+  {%- assign p_d = price | divided_by: 100 -%}
+  {%- assign p_c = price | modulo: 100 -%}
+  {%- if p_c < 10 -%}{%- assign p_c = p_c | prepend: '0' -%}{%- endif -%}
+  <p class="promo-strip__deal">Save {{ pct }}%: <s>${{ c_d }}.{{ c_c }}</s> ${{ p_d }}.{{ p_c }}</p>
+{%- endif -%}
+{%- if code != empty -%}<span class="promo-strip__code">{{ code | escape }}</span>{%- endif -%}
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Promo strip",
+  "settings": [
+    {"type": "text", "id": "message", "label": "Message"},
+    {"type": "text", "id": "code", "label": "Discount code"},
+    {"type": "number", "id": "compare_cents", "label": "Compare-at price (cents)"},
+    {"type": "number", "id": "price_cents", "label": "Sale price (cents)"}
+  ],
+  "presets": [{"name": "Promo strip"}]
+}
+{% endschema %}

@@ -1,0 +1,9 @@
+<ul class="renewals">
+{%- for r in renewals -%}
+{%- if r.status == "paid" -%}
+<li>Term {{ forloop.index }}: {{ r.plan }}</li>
+{%- else -%}
+<li class="lapsed">Lapsed: {{ r.plan }}</li>
+{%- endif -%}
+{%- endfor -%}
+</ul>

@@ -1,0 +1,15 @@
+{
+  "id": "newsletter-signup-labels",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "easy",
+  "family": "newsletter-signup-labels",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/newsletter-signup-labels.liquid"
+  ],
+  "prompt": "The snippet snippets/newsletter-signup-labels.liquid renders the newsletter signup block. Theme Check currently reports errors because some of its literal references point to files or translation keys that do not exist. Fix every broken reference so Theme Check reports no missing asset, missing translation key or missing snippet errors. Keep everything else exactly as it is: the markup, the element order, and the integer arithmetic.\n\nInputs (top-level variables, both integers, never null): subscriber_count (number of subscribers) and discount_percent (signup discount).\n\nThe arithmetic must stay unchanged. The reader count is rounded to the nearest hundred with integer math (plus 50, divided_by 100, times 100). The discount is passed through round.\n\nThe correct targets exist in the theme:\n- The stylesheet is assets/newsletter-signup.css. Load it with asset_url and stylesheet_tag.\n- The icon is the snippet snippets/icon-envelope.liquid. Include it with render.\n- All translation keys live under newsletter.form in locales/en.default.json and locales/fr.json:\n  - heading: the h2 text.\n  - readers: the reader-count text, interpolating the readers variable.\n  - discount: the discount text, interpolating the percent variable.\n  - button: the submit button text.\n\nDo not add new locale, asset or snippet files. Only change the literal operands in the snippet. Change only snippets/newsletter-signup-labels.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

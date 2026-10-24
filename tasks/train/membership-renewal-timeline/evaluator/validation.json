@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-first-label-precedence",
+    "expected_pass": false,
+    "changes": {
+      "snippets/membership-renewal-timeline.liquid": "{%- assign name = member_name | strip | escape -%}\n{%- capture heading -%}Renewal history{% if name != \"\" %} for {{ name }}{% endif %}{%- endcapture -%}\n{%- assign count = renewals | size -%}\n<section class=\"renewal-timeline\"><h2>{{ heading }}</h2>\n{%- if count == 0 -%}<p class=\"renewal-empty\">No renewals yet.</p>\n{%- else -%}<ol>\n{%- assign total = 0 -%}\n{%- assign previous = 0 -%}\n{%- for r in renewals -%}\n{%- assign total = total | plus: r.amount -%}\n<li class=\"renewal{% if forloop.first %} renewal--first{% endif %}{% if forloop.last %} renewal--current{% endif %}\"><span>{{ r.period | escape }}</span><em>\n{%- if forloop.first -%}Joined{%- elsif forloop.last -%}Current{%- elsif forloop.first and forloop.last -%}Joined (current){%- else -%}Renewed{%- endif -%}\n</em><strong>${{ r.amount }}</strong>\n{%- unless forloop.first -%}{%- assign diff = r.amount | minus: previous -%}<small>{% if diff > 0 %}+{{ diff }}{% elsif diff < 0 %}{{ diff }}{% else %}={% endif %}</small>{%- endunless -%}\n</li>\n{%- assign previous = r.amount -%}\n{%- endfor -%}\n</ol><p class=\"renewal-total\">Total paid: ${{ total }}</p>\n{%- endif -%}</section>\n"
+    }
+  },
+  {
+    "name": "wrong-1-delta-against-first",
+    "expected_pass": false,
+    "changes": {
+      "snippets/membership-renewal-timeline.liquid": "{%- assign name = member_name | strip | escape -%}\n{%- capture heading -%}Renewal history{% if name != \"\" %} for {{ name }}{% endif %}{%- endcapture -%}\n{%- assign count = renewals | size -%}\n<section class=\"renewal-timeline\"><h2>{{ heading }}</h2>\n{%- if count == 0 -%}<p class=\"renewal-empty\">No renewals yet.</p>\n{%- else -%}<ol>\n{%- assign total = 0 -%}\n{%- assign previous = 0 -%}\n{%- for r in renewals -%}\n{%- assign total = total | plus: r.amount -%}\n<li class=\"renewal{% if forloop.first %} renewal--first{% endif %}{% if forloop.last %} renewal--current{% endif %}\"><span>{{ r.period | escape }}</span><em>\n{%- if forloop.first and forloop.last -%}Joined (current){%- elsif forloop.first -%}Joined{%- elsif forloop.last -%}Current{%- else -%}Renewed{%- endif -%}\n</em><strong>${{ r.amount }}</strong>\n{%- unless forloop.first -%}{%- assign diff = r.amount | minus: previous -%}<small>{% if diff > 0 %}+{{ diff }}{% elsif diff < 0 %}{{ diff }}{% else %}={% endif %}</small>{%- endunless -%}\n</li>\n{%- if forloop.first -%}{%- assign previous = r.amount -%}{%- endif -%}\n{%- endfor -%}\n</ol><p class=\"renewal-total\">Total paid: ${{ total }}</p>\n{%- endif -%}</section>\n"
+    }
+  },
+  {
+    "name": "wrong-2-delta-on-first-entry",
+    "expected_pass": false,
+    "changes": {
+      "snippets/membership-renewal-timeline.liquid": "{%- assign name = member_name | strip | escape -%}\n{%- capture heading -%}Renewal history{% if name != \"\" %} for {{ name }}{% endif %}{%- endcapture -%}\n{%- assign count = renewals | size -%}\n<section class=\"renewal-timeline\"><h2>{{ heading }}</h2>\n{%- if count == 0 -%}<p class=\"renewal-empty\">No renewals yet.</p>\n{%- else -%}<ol>\n{%- assign total = 0 -%}\n{%- assign previous = 0 -%}\n{%- for r in renewals -%}\n{%- assign total = total | plus: r.amount -%}\n<li class=\"renewal{% if forloop.first %} renewal--first{% endif %}{% if forloop.last %} renewal--current{% endif %}\"><span>{{ r.period | escape }}</span><em>\n{%- if forloop.first and forloop.last -%}Joined (current){%- elsif forloop.first -%}Joined{%- elsif forloop.last -%}Current{%- else -%}Renewed{%- endif -%}\n</em><strong>${{ r.amount }}</strong>\n{%- assign diff = r.amount | minus: previous -%}<small>{% if diff > 0 %}+{{ diff }}{% elsif diff < 0 %}{{ diff }}{% else %}={% endif %}</small>\n</li>\n{%- assign previous = r.amount -%}\n{%- endfor -%}\n</ol><p class=\"renewal-total\">Total paid: ${{ total }}</p>\n{%- endif -%}</section>\n"
+    }
+  },
+  {
+    "name": "wrong-3-unstripped-name",
+    "expected_pass": false,
+    "changes": {
+      "snippets/membership-renewal-timeline.liquid": "{%- assign name = member_name | escape -%}\n{%- capture heading -%}Renewal history{% if name != \"\" %} for {{ name }}{% endif %}{%- endcapture -%}\n{%- assign count = renewals | size -%}\n<section class=\"renewal-timeline\"><h2>{{ heading }}</h2>\n{%- if count == 0 -%}<p class=\"renewal-empty\">No renewals yet.</p>\n{%- else -%}<ol>\n{%- assign total = 0 -%}\n{%- assign previous = 0 -%}\n{%- for r in renewals -%}\n{%- assign total = total | plus: r.amount -%}\n<li class=\"renewal{% if forloop.first %} renewal--first{% endif %}{% if forloop.last %} renewal--current{% endif %}\"><span>{{ r.period | escape }}</span><em>\n{%- if forloop.first and forloop.last -%}Joined (current){%- elsif forloop.first -%}Joined{%- elsif forloop.last -%}Current{%- else -%}Renewed{%- endif -%}\n</em><strong>${{ r.amount }}</strong>\n{%- unless forloop.first -%}{%- assign diff = r.amount | minus: previous -%}<small>{% if diff > 0 %}+{{ diff }}{% elsif diff < 0 %}{{ diff }}{% else %}={% endif %}</small>{%- endunless -%}\n</li>\n{%- assign previous = r.amount -%}\n{%- endfor -%}\n</ol><p class=\"renewal-total\">Total paid: ${{ total }}</p>\n{%- endif -%}</section>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/membership-renewal-timeline.liquid": "{% # theme-check-disable %}\n{%- assign name = member_name | strip | escape -%}\n{%- capture heading -%}Renewal history{% if name != \"\" %} for {{ name }}{% endif %}{%- endcapture -%}\n{%- assign count = renewals | size -%}\n<section class=\"renewal-timeline\"><h2>{{ heading }}</h2>\n{%- if count == 0 -%}<p class=\"renewal-empty\">No renewals yet.</p>\n{%- else -%}<ol>\n{%- assign total = 0 -%}\n{%- assign previous = 0 -%}\n{%- for r in renewals -%}\n{%- assign total = total | plus: r.amount -%}\n<li class=\"renewal{% if forloop.first %} renewal--first{% endif %}{% if forloop.last %} renewal--current{% endif %}\"><span>{{ r.period | escape }}</span><em>\n{%- if forloop.first and forloop.last -%}Joined (current){%- elsif forloop.first -%}Joined{%- elsif forloop.last -%}Current{%- else -%}Renewed{%- endif -%}\n</em><strong>${{ r.amount }}</strong>\n{%- unless forloop.first -%}{%- assign diff = r.amount | minus: previous -%}<small>{% if diff > 0 %}+{{ diff }}{% elsif diff < 0 %}{{ diff }}{% else %}={% endif %}</small>{%- endunless -%}\n</li>\n{%- assign previous = r.amount -%}\n{%- endfor -%}\n</ol><p class=\"renewal-total\">Total paid: ${{ total }}</p>\n{%- endif -%}</section>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/membership-renewal-timeline.liquid": null
+    }
+  }
+]

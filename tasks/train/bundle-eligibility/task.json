@@ -1,0 +1,15 @@
+{
+  "id": "bundle-eligibility",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "bundle-eligibility",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/bundle-eligibility.liquid"
+  ],
+  "prompt": "Fix snippets/bundle-eligibility.liquid. It renders a bundle eligibility box and currently mishandles null and empty-string inputs.\n\nInputs (all top-level variables, always supplied):\n- `bundle_title`: string or null.\n- `min_items`: positive integer or null. When null, the required item count is 2.\n- `items`: array, never null but may be empty. Each element is an object that always has the key `title` (string or null). No other keys are present.\n\nRules:\n1. Heading text: `bundle_title` with leading and trailing whitespace removed. If `bundle_title` is null, an empty string or whitespace only, use the text `Bundle`.\n2. A valid item is one whose `title`, with leading and trailing whitespace removed, is non-empty. Items with a null, empty or whitespace-only title are ignored completely: they are not counted and not listed. Let COUNT be the number of valid items.\n3. Output exactly, with no whitespace or newlines between tags:\n   `<div class=\"bundle-eligibility\"><h3>HEADING</h3>STATUS LIST</div>` (no space between STATUS and LIST; shown with a space only for readability).\n4. STATUS: if COUNT >= required count: `<p class=\"bundle-eligibility__status\">Eligible with COUNT item</p>` when COUNT is 1, otherwise `<p class=\"bundle-eligibility__status\">Eligible with COUNT items</p>`. Otherwise let MISSING = required count - COUNT and output `<p class=\"bundle-eligibility__status\">Add MISSING more item to qualify</p>` when MISSING is 1, otherwise `<p class=\"bundle-eligibility__status\">Add MISSING more items to qualify</p>`.\n5. LIST: only when COUNT > 0, output `<ul class=\"bundle-eligibility__items\">` containing one `<li>TITLE</li>` per valid item in input order, where TITLE is the stripped title, then `</ul>`. When COUNT is 0 output no list at all.\n6. HEADING and every TITLE must be HTML-escaped (escape filter).\n\nThe output must be a single line with nothing before `<div` or after `</div>`. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/bundle-eligibility.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

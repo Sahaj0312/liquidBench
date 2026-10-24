@@ -1,0 +1,7 @@
+{%- capture items -%}
+  {%- for tag in tags -%}
+    {%- assign trimmed = tag | strip -%}
+    {%- if trimmed != "" -%}<li>{{ trimmed | escape }}</li>{%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if items != "" -%}<ul class="product-tags">{{ items }}</ul>{%- endif -%}

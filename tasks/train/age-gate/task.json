@@ -1,0 +1,15 @@
+{
+  "id": "age-gate",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "age-gate",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/age-gate.liquid"
+  ],
+  "prompt": "The snippet snippets/age-gate.liquid has syntax errors and incomplete logic. Rewrite it so it parses under strict Liquid and renders an age verification gate.\n\nInputs (all top-level, always supplied):\n- `age_gate`: object, never null, with keys:\n  - `age_gate.enabled`: boolean\n  - `age_gate.minimum_age`: integer or null (null means 18)\n  - `age_gate.heading`: string or null\n- `customer_age`: integer or null (null means the age is unknown)\n- `age_verified`: boolean\n\nRules, in order of precedence:\n1. If `age_gate.enabled` is false, output nothing.\n2. If `age_verified` is true, output nothing (even when customer_age is below the minimum).\n3. MIN is minimum_age, or 18 when it is null. HEADING is the heading with surrounding whitespace stripped; if the heading is null or empty after stripping, HEADING is `Age verification`. HEADING is always HTML-escaped with the escape filter.\n4. If customer_age is null, output exactly:\n   `<div class=\"age-gate\"><h2>HEADING</h2><p>You must be MIN or older to enter this store.</p><button type=\"button\" class=\"age-gate__confirm\">I am MIN or older</button><button type=\"button\" class=\"age-gate__leave\">Leave</button></div>`\n5. Else if customer_age is less than MIN, let W = MIN minus customer_age and output exactly:\n   `<div class=\"age-gate age-gate--denied\"><h2>HEADING</h2><p>Sorry, you must be MIN or older to enter. Come back in W UNIT.</p></div>` where UNIT is `year` when W is 1, otherwise `years`.\n6. Otherwise (customer_age is greater than or equal to MIN) output nothing.\n\nNo whitespace between or around tags and no leading or trailing whitespace in the output. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/age-gate.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

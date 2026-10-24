@@ -1,0 +1,2 @@
+{%- assign total = items | size -%}
+<a class="wishlist" href="/pages/wishlist" aria-label="Wishlist ({{ total }} items)"><span class="wishlist__label">{{ label | default: 'Wishlist' }}</span><span class="wishlist__count">{{ total }}</span></a>

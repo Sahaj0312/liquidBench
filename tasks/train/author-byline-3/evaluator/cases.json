@@ -1,0 +1,405 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/author-byline-3.liquid",
+    "tags": [
+      "a",
+      "div",
+      "p",
+      "span",
+      "time"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "author": {
+        "name": "Ada Lovelace",
+        "url": "/blogs/authors/ada",
+        "role": "Editor"
+      },
+      "date": "2024-03-01",
+      "wrapper": false
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "byline-link"
+              ],
+              [
+                "href",
+                "/blogs/authors/ada"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "byline-name"
+                  ]
+                ],
+                "children": [],
+                "text": "Ada Lovelace"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline-role"
+              ]
+            ],
+            "children": [],
+            "text": "Editor"
+          },
+          {
+            "tag": "time",
+            "attrs": [],
+            "children": [],
+            "text": "2024-03-01"
+          }
+        ],
+        "text": "By   "
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "author": {
+        "name": "Ada Lovelace",
+        "url": null,
+        "role": null
+      },
+      "date": null,
+      "wrapper": true
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "byline-wrap"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "byline"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "byline-name"
+                  ]
+                ],
+                "children": [],
+                "text": "Ada Lovelace"
+              }
+            ],
+            "text": "By "
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "author": null,
+      "date": "2024-03-01",
+      "wrapper": true
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "author": {
+        "name": "   ",
+        "url": "/blogs/authors/x",
+        "role": "Editor"
+      },
+      "date": "2024-03-01",
+      "wrapper": true
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "author": {
+        "name": null,
+        "url": "/blogs/authors/x",
+        "role": "Editor"
+      },
+      "date": null,
+      "wrapper": false
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "author": {
+        "name": "Tom & \"Jerry\" <Co>",
+        "url": "/a?x=1&y=\"2\"",
+        "role": "<b>Chief</b>"
+      },
+      "date": null,
+      "wrapper": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "byline-link"
+              ],
+              [
+                "href",
+                "/a?x=1&y=\"2\""
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "byline-name"
+                  ]
+                ],
+                "children": [],
+                "text": "Tom & \"Jerry\" <Co>"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline-role"
+              ]
+            ],
+            "children": [],
+            "text": "<b>Chief</b>"
+          }
+        ],
+        "text": "By  "
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "author": {
+        "name": "  Grace Hopper  ",
+        "url": "   ",
+        "role": "  "
+      },
+      "date": "  2023-12-09 ",
+      "wrapper": false
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "byline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "byline-name"
+              ]
+            ],
+            "children": [],
+            "text": "Grace Hopper"
+          },
+          {
+            "tag": "time",
+            "attrs": [],
+            "children": [],
+            "text": "2023-12-09"
+          }
+        ],
+        "text": "By  "
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "author": {
+        "name": "Ada Lovelace",
+        "url": "",
+        "role": "Guest writer"
+      },
+      "date": "",
+      "wrapper": true
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "byline-wrap"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "byline"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "byline-name"
+                  ]
+                ],
+                "children": [],
+                "text": "Ada Lovelace"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "byline-role"
+                  ]
+                ],
+                "children": [],
+                "text": "Guest writer"
+              }
+            ],
+            "text": "By  "
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "author": {
+        "name": "Sam",
+        "url": "https://example.com/sam",
+        "role": null
+      },
+      "date": "May 5",
+      "wrapper": true
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "byline-wrap"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "byline"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "class",
+                    "byline-link"
+                  ],
+                  [
+                    "href",
+                    "https://example.com/sam"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "byline-name"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Sam"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "time",
+                "attrs": [],
+                "children": [],
+                "text": "May 5"
+              }
+            ],
+            "text": "By  "
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

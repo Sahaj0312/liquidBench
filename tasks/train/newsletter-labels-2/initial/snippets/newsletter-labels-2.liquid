@@ -1,0 +1,25 @@
+{%- comment -%}
+  Newsletter interest labels. Skips blank labels and consecutive duplicates.
+{%- endcomment -%}
+{{ 'newsletter-label.css' | asset_url | stylesheet_tag }}
+{%- assign shown = 0 -%}
+{%- assign previous = '' -%}
+<div class="newsletter-labels">
+  <p class="newsletter-labels__heading">{{ 'newsletter.label.heading' | t }}</p>
+  <ul class="newsletter-labels__list">
+    {%- for label in labels -%}
+      {%- assign clean = label | strip -%}
+      {%- if clean == '' or clean == previous -%}
+        {%- continue -%}
+      {%- endif -%}
+      {%- assign shown = shown | plus: 1 -%}
+      {%- render 'newsletter-chip', text: clean, position: shown -%}
+      {%- assign previous = clean -%}
+    {%- endfor -%}
+  </ul>
+  {%- if shown == 0 -%}
+    <p class="newsletter-labels__empty">{{ 'newsletter.labels.none' | t }}</p>
+  {%- else -%}
+    <p class="newsletter-labels__count">{{ 'newsletter.labels.count' | t: count: shown }}</p>
+  {%- endif -%}
+</div>

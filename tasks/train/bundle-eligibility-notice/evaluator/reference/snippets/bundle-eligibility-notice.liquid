@@ -1,0 +1,18 @@
+{%- if bundle -%}
+{%- assign bundle_title = bundle.title | strip | default: "Bundle" | escape -%}
+{%- assign eligible_count = 0 -%}
+{%- for item in cart_items -%}
+{%- if item.eligible -%}{%- assign eligible_count = eligible_count | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
+<div class="bundle-notice" data-bundle="{{ bundle_title }}" data-count="{{ eligible_count }}"><h3>{{ bundle_title }}</h3><p>
+{%- if eligible_count >= bundle.min_items -%}Bundle unlocked!
+{%- else -%}
+{%- assign remaining = bundle.min_items | minus: eligible_count -%}Add {{ remaining }} more eligible item{% if remaining != 1 %}s{% endif %} to unlock {{ bundle_title }}.
+{%- endif -%}</p>
+{%- if eligible_count > 0 -%}<ul>
+{%- for item in cart_items -%}
+{%- if item.eligible -%}<li title="{{ item.title | escape }}">{{ item.title | escape }}</li>{%- endif -%}
+{%- endfor -%}
+</ul>
+{%- endif -%}</div>
+{%- endif -%}

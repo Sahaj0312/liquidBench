@@ -1,0 +1,14 @@
+{{- 'quantity-input.css' | asset_url | stylesheet_tag -}}
+<div class="quantity">
+  <label class="quantity__label" for="Quantity-{{ section_id }}">
+    {{- 'products.product.quantity.label' | t | strip -}}
+  </label>
+  <button type="button" class="quantity__button" name="minus" aria-label="{{ 'products.product.quantity.decrease' | t: product: product_title | strip }}">
+    {%- render 'icon-minus' -%}
+  </button>
+  <input class="quantity__input" type="number" id="Quantity-{{ section_id }}" name="quantity" min="1" value="{{ quantity | default: 1 }}">
+  <button type="button" class="quantity__button" name="plus" aria-label="{{ 'products.product.quantity.increase' | t: product: product_title | strip }}">
+    {%- render 'icon-plus' -%}
+  </button>
+</div>
+<script src="{{ 'quantity-input.js' | asset_url }}" defer="defer"></script>

@@ -1,0 +1,15 @@
+{
+  "id": "preorder-notice-3",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "easy",
+  "family": "preorder-notice-3",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/preorder-notice-3.liquid"
+  ],
+  "prompt": "Fix snippets/preorder-notice-3.liquid so that it always renders a pre-order notice with sensible fallback text.\n\nInputs (both top-level variables, both always supplied):\n- `label`: string or null. The notice heading.\n- `ship_date`: string or null. Free-text shipping estimate.\n\nRules:\n- Remove leading and trailing whitespace from `label`. If the result is empty, or `label` is null, use exactly `Pre-order` instead.\n- Remove leading and trailing whitespace from `ship_date`. If the result is empty, or `ship_date` is null, use exactly `soon` instead.\n- HTML-escape both final values, after the fallback has been applied.\n\nOutput is always exactly this single line, with no other text:\n`<p class=\"preorder-notice\"><strong>{label}</strong> <span>Ships {ship_date}</span></p>`\nThere is exactly one space between `</strong>` and `<span>`, and one space after `Ships`. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/preorder-notice-3.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

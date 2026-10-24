@@ -1,0 +1,13 @@
+{%- comment -%} Age gate overlay {%- endcomment -%}
+{%- if age_gate.enabled -%}
+  {%- unless age_verified -%}
+    {%- assign min_age = age_gate.minimum_age | default: 18 -%}
+    {%- assign heading = age_gate.heading | strip | default: 'Age verification' -%}
+    {%- if customer_age == nil -%}
+      <div class="age-gate"><h2>{{ heading | escape }}</h2><p>You must be {{ min_age }} or older to enter this store.</p><button type="button" class="age-gate__confirm">I am {{ min_age }} or older</button><button type="button" class="age-gate__leave">Leave</button></div>
+    {%- elsif customer_age < min_age -%}
+      {%- assign wait = min_age | minus: customer_age -%}
+      <div class="age-gate age-gate--denied"><h2>{{ heading | escape }}</h2><p>Sorry, you must be {{ min_age }} or older to enter. Come back in {{ wait }} {% if wait == 1 %}year{% else %}years{% endif %}.</p></div>
+    {%- endif -%}
+  {%- endunless -%}
+{%- endif -%}

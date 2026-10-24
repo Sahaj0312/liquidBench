@@ -1,0 +1,14 @@
+{%- assign heading = section.settings.heading | strip -%}
+{%- assign body = section.settings.body | strip -%}
+{%- assign button_label = section.settings.button_label | strip -%}
+{%- if heading != blank or body != blank -%}
+<div class="promo-popup" data-delay="{{ section.settings.delay_seconds }}" data-show-once="{{ section.settings.show_once }}">
+  {%- if heading != blank -%}<h2 class="promo-popup__heading">{{ heading | escape }}</h2>{%- endif -%}
+  {%- if body != blank -%}<p class="promo-popup__body">{{ body | escape }}</p>{%- endif -%}
+  {%- if button_label != blank and section.settings.button_link != blank -%}<a class="promo-popup__button" href="{{ section.settings.button_link }}">{{ button_label | escape }}</a>{%- endif -%}
+</div>
+{%- endif -%}
+
+{% schema %}
+{"name":"Promo popup","tag":"section","class":"promo-popup-section","settings":[{"type":"text","id":"heading","label":"Heading","default":" Get 10% off  "},{"type":"textarea","id":"body","label":"Body text","default":"  Sign up for our newsletter."},{"type":"text","id":"button_label","label":"Button label","default":"Shop now "},{"type":"url","id":"button_link","label":"Button link"},{"type":"checkbox","id":"show_once","label":"Show only once per session","default":true}],"presets":[{"name":"Promo popup"}]}
+{% endschema %}

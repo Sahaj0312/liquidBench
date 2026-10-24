@@ -1,0 +1,39 @@
+{%- assign featured = section.settings.featured_brand | strip -%}
+{%- assign hidden_list = section.settings.hidden_brands | split: "," -%}
+{%- assign featured_done = false -%}
+{%- assign visible_count = 0 -%}
+{%- capture items -%}
+{%- for brand in brands -%}
+{%- assign is_hidden = false -%}
+{%- for entry in hidden_list -%}
+{%- assign e = entry | strip -%}
+{%- if e != "" and e == brand.name -%}{%- assign is_hidden = true -%}{%- endif -%}
+{%- endfor -%}
+{%- unless is_hidden -%}
+{%- assign visible_count = visible_count | plus: 1 -%}
+{%- if featured_done == false and featured != "" and brand.name == featured -%}
+{%- assign featured_done = true -%}
+<li class="brand-list__item brand-list__item--featured"><a href="{{ brand.url | escape }}">{{ brand.name | escape }}</a></li>
+{%- else -%}
+<li class="brand-list__item"><a href="{{ brand.url | escape }}">{{ brand.name | escape }}</a></li>
+{%- endif -%}
+{%- endunless -%}
+{%- endfor -%}
+{%- endcapture -%}
+<div class="brand-list">
+{%- if visible_count > 0 -%}
+<ul class="brand-list__items">{{ items }}</ul><p class="brand-list__count">{{ visible_count }} {% if visible_count == 1 %}brand{% else %}brands{% endif %}</p>
+{%- else -%}
+<p class="brand-list__empty">No brands to show.</p>
+{%- endif -%}
+</div>
+{%- schema %}
+{
+  "name": "Brand list",
+  "settings": [
+    {"type": "text", "id": "featured_brand", "label": "Featured brand"},
+    {"type": "text", "id": "hidden_brands", "label": "Hidden brands", "info": "Comma-separated exact brand names"}
+  ],
+  "presets": [{"name": "Brand list"}]
+}
+{% endschema %}

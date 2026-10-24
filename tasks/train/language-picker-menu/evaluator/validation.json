@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-underscore-script-asset",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-picker-menu.liquid": "{%- comment -%} Language picker: trims and normalizes locale codes {%- endcomment -%}\n{{ 'language-picker.css' | asset_url | stylesheet_tag }}\n{%- assign current = current_locale | strip | downcase -%}\n{%- assign codes = available_locales | split: ',' -%}\n<nav class=\"language-picker\" aria-label=\"{{ 'localization.language_label' | t }}\">\n  {% render 'icon-globe' %}\n  <ul>\n  {%- for raw in codes -%}\n    {%- assign code = raw | strip | downcase -%}\n    {%- if code != blank -%}\n    <li>\n      {%- if code == current -%}\n      <span aria-current=\"true\">{{ code | upcase | escape }} {% render 'icon-check' %}<span class=\"visually-hidden\">{{ 'localization.current_language' | t }}</span></span>\n      {%- else -%}\n      <a href=\"/{{ code | escape }}\">{{ code | upcase | escape }}</a>\n      {%- endif -%}\n    </li>\n    {%- endif -%}\n  {%- endfor -%}\n  </ul>\n</nav>\n<script src=\"{{ 'language_picker.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "wrong-1-current-locale-key",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-picker-menu.liquid": "{%- comment -%} Language picker: trims and normalizes locale codes {%- endcomment -%}\n{{ 'language-picker.css' | asset_url | stylesheet_tag }}\n{%- assign current = current_locale | strip | downcase -%}\n{%- assign codes = available_locales | split: ',' -%}\n<nav class=\"language-picker\" aria-label=\"{{ 'localization.language_label' | t }}\">\n  {% render 'icon-globe' %}\n  <ul>\n  {%- for raw in codes -%}\n    {%- assign code = raw | strip | downcase -%}\n    {%- if code != blank -%}\n    <li>\n      {%- if code == current -%}\n      <span aria-current=\"true\">{{ code | upcase | escape }} {% render 'icon-check' %}<span class=\"visually-hidden\">{{ 'localization.current_locale' | t }}</span></span>\n      {%- else -%}\n      <a href=\"/{{ code | escape }}\">{{ code | upcase | escape }}</a>\n      {%- endif -%}\n    </li>\n    {%- endif -%}\n  {%- endfor -%}\n  </ul>\n</nav>\n<script src=\"{{ 'language-picker.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "wrong-2-globe-small-snippet",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-picker-menu.liquid": "{%- comment -%} Language picker: trims and normalizes locale codes {%- endcomment -%}\n{{ 'language-picker.css' | asset_url | stylesheet_tag }}\n{%- assign current = current_locale | strip | downcase -%}\n{%- assign codes = available_locales | split: ',' -%}\n<nav class=\"language-picker\" aria-label=\"{{ 'localization.language_label' | t }}\">\n  {% render 'icon-globe-small' %}\n  <ul>\n  {%- for raw in codes -%}\n    {%- assign code = raw | strip | downcase -%}\n    {%- if code != blank -%}\n    <li>\n      {%- if code == current -%}\n      <span aria-current=\"true\">{{ code | upcase | escape }} {% render 'icon-check' %}<span class=\"visually-hidden\">{{ 'localization.current_language' | t }}</span></span>\n      {%- else -%}\n      <a href=\"/{{ code | escape }}\">{{ code | upcase | escape }}</a>\n      {%- endif -%}\n    </li>\n    {%- endif -%}\n  {%- endfor -%}\n  </ul>\n</nav>\n<script src=\"{{ 'language-picker.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "wrong-3-label-key-unfixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-picker-menu.liquid": "{%- comment -%} Language picker: trims and normalizes locale codes {%- endcomment -%}\n{{ 'language-picker.css' | asset_url | stylesheet_tag }}\n{%- assign current = current_locale | strip | downcase -%}\n{%- assign codes = available_locales | split: ',' -%}\n<nav class=\"language-picker\" aria-label=\"{{ 'localization.language' | t }}\">\n  {% render 'icon-globe' %}\n  <ul>\n  {%- for raw in codes -%}\n    {%- assign code = raw | strip | downcase -%}\n    {%- if code != blank -%}\n    <li>\n      {%- if code == current -%}\n      <span aria-current=\"true\">{{ code | upcase | escape }} {% render 'icon-check' %}<span class=\"visually-hidden\">{{ 'localization.current_language' | t }}</span></span>\n      {%- else -%}\n      <a href=\"/{{ code | escape }}\">{{ code | upcase | escape }}</a>\n      {%- endif -%}\n    </li>\n    {%- endif -%}\n  {%- endfor -%}\n  </ul>\n</nav>\n<script src=\"{{ 'language-picker.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-picker-menu.liquid": "{% # theme-check-disable %}\n{%- comment -%} Language picker: trims and normalizes locale codes {%- endcomment -%}\n{{ 'language-picker.css' | asset_url | stylesheet_tag }}\n{%- assign current = current_locale | strip | downcase -%}\n{%- assign codes = available_locales | split: ',' -%}\n<nav class=\"language-picker\" aria-label=\"{{ 'localization.language_label' | t }}\">\n  {% render 'icon-globe' %}\n  <ul>\n  {%- for raw in codes -%}\n    {%- assign code = raw | strip | downcase -%}\n    {%- if code != blank -%}\n    <li>\n      {%- if code == current -%}\n      <span aria-current=\"true\">{{ code | upcase | escape }} {% render 'icon-check' %}<span class=\"visually-hidden\">{{ 'localization.current_language' | t }}</span></span>\n      {%- else -%}\n      <a href=\"/{{ code | escape }}\">{{ code | upcase | escape }}</a>\n      {%- endif -%}\n    </li>\n    {%- endif -%}\n  {%- endfor -%}\n  </ul>\n</nav>\n<script src=\"{{ 'language-picker.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-picker-menu.liquid": null
+    }
+  }
+]

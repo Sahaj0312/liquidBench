@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-status-not-normalized",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-consent.liquid": "{%- assign addr = email | strip -%}\n{%- if addr != \"\" -%}\n{%- assign status = consent_status -%}\n{%- unless status == \"granted\" or status == \"pending\" or status == \"revoked\" -%}{%- assign status = \"unknown\" -%}{%- endunless -%}\n<div class=\"consent consent--{{ status }}\"><p class=\"consent__email\">{{ addr | escape }}</p>\n{%- case status -%}\n{%- when \"granted\" -%}<p class=\"consent__msg\">Subscribed</p>\n{%- capture items -%}{%- for name in lists -%}{%- assign n = name | strip -%}{%- if n != \"\" -%}<li>{{ n | escape }}</li>{%- endif -%}{%- endfor -%}{%- endcapture -%}\n{%- if items != \"\" -%}<ul class=\"consent__lists\">{{ items }}</ul>{%- endif -%}\n{%- when \"pending\" -%}<p class=\"consent__msg\">Awaiting confirmation</p>\n{%- when \"revoked\" -%}<p class=\"consent__msg\">Unsubscribed</p>\n{%- else -%}<p class=\"consent__msg\">No consent recorded</p>\n{%- endcase -%}\n</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-empty-ul-when-all-blank",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-consent.liquid": "{%- assign addr = email | strip -%}\n{%- if addr != \"\" -%}\n{%- assign status = consent_status | strip | downcase -%}\n{%- unless status == \"granted\" or status == \"pending\" or status == \"revoked\" -%}{%- assign status = \"unknown\" -%}{%- endunless -%}\n<div class=\"consent consent--{{ status }}\"><p class=\"consent__email\">{{ addr | escape }}</p>\n{%- case status -%}\n{%- when \"granted\" -%}<p class=\"consent__msg\">Subscribed</p>\n{%- for name in lists -%}{%- if forloop.first -%}<ul class=\"consent__lists\">{%- endif -%}{%- assign n = name | strip -%}{%- if n != \"\" -%}<li>{{ n | escape }}</li>{%- endif -%}{%- if forloop.last -%}</ul>{%- endif -%}{%- endfor -%}\n{%- when \"pending\" -%}<p class=\"consent__msg\">Awaiting confirmation</p>\n{%- when \"revoked\" -%}<p class=\"consent__msg\">Unsubscribed</p>\n{%- else -%}<p class=\"consent__msg\">No consent recorded</p>\n{%- endcase -%}\n</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-no-escaping",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-consent.liquid": "{%- assign addr = email | strip -%}\n{%- if addr != \"\" -%}\n{%- assign status = consent_status | strip | downcase -%}\n{%- unless status == \"granted\" or status == \"pending\" or status == \"revoked\" -%}{%- assign status = \"unknown\" -%}{%- endunless -%}\n<div class=\"consent consent--{{ status }}\"><p class=\"consent__email\">{{ addr }}</p>\n{%- case status -%}\n{%- when \"granted\" -%}<p class=\"consent__msg\">Subscribed</p>\n{%- capture items -%}{%- for name in lists -%}{%- assign n = name | strip -%}{%- if n != \"\" -%}<li>{{ n }}</li>{%- endif -%}{%- endfor -%}{%- endcapture -%}\n{%- if items != \"\" -%}<ul class=\"consent__lists\">{{ items }}</ul>{%- endif -%}\n{%- when \"pending\" -%}<p class=\"consent__msg\">Awaiting confirmation</p>\n{%- when \"revoked\" -%}<p class=\"consent__msg\">Unsubscribed</p>\n{%- else -%}<p class=\"consent__msg\">No consent recorded</p>\n{%- endcase -%}\n</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-whitespace-email-renders",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-consent.liquid": "{%- assign addr = email | strip -%}\n{%- if email -%}\n{%- assign status = consent_status | strip | downcase -%}\n{%- unless status == \"granted\" or status == \"pending\" or status == \"revoked\" -%}{%- assign status = \"unknown\" -%}{%- endunless -%}\n<div class=\"consent consent--{{ status }}\"><p class=\"consent__email\">{{ addr | escape }}</p>\n{%- case status -%}\n{%- when \"granted\" -%}<p class=\"consent__msg\">Subscribed</p>\n{%- capture items -%}{%- for name in lists -%}{%- assign n = name | strip -%}{%- if n != \"\" -%}<li>{{ n | escape }}</li>{%- endif -%}{%- endfor -%}{%- endcapture -%}\n{%- if items != \"\" -%}<ul class=\"consent__lists\">{{ items }}</ul>{%- endif -%}\n{%- when \"pending\" -%}<p class=\"consent__msg\">Awaiting confirmation</p>\n{%- when \"revoked\" -%}<p class=\"consent__msg\">Unsubscribed</p>\n{%- else -%}<p class=\"consent__msg\">No consent recorded</p>\n{%- endcase -%}\n</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-consent.liquid": "{% # theme-check-disable %}\n{%- assign addr = email | strip -%}\n{%- if addr != \"\" -%}\n{%- assign status = consent_status | strip | downcase -%}\n{%- unless status == \"granted\" or status == \"pending\" or status == \"revoked\" -%}{%- assign status = \"unknown\" -%}{%- endunless -%}\n<div class=\"consent consent--{{ status }}\"><p class=\"consent__email\">{{ addr | escape }}</p>\n{%- case status -%}\n{%- when \"granted\" -%}<p class=\"consent__msg\">Subscribed</p>\n{%- capture items -%}{%- for name in lists -%}{%- assign n = name | strip -%}{%- if n != \"\" -%}<li>{{ n | escape }}</li>{%- endif -%}{%- endfor -%}{%- endcapture -%}\n{%- if items != \"\" -%}<ul class=\"consent__lists\">{{ items }}</ul>{%- endif -%}\n{%- when \"pending\" -%}<p class=\"consent__msg\">Awaiting confirmation</p>\n{%- when \"revoked\" -%}<p class=\"consent__msg\">Unsubscribed</p>\n{%- else -%}<p class=\"consent__msg\">No consent recorded</p>\n{%- endcase -%}\n</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/newsletter-consent.liquid": null
+    }
+  }
+]

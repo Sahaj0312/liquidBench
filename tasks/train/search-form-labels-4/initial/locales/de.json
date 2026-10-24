@@ -1,0 +1,15 @@
+{
+  "general": {
+    "search": {
+      "label": "Suchen",
+      "placeholder": "Unseren Shop durchsuchen",
+      "submit": "Suche absenden",
+      "reset": "Suchbegriff löschen"
+    }
+  },
+  "templates": {
+    "search": {
+      "title": "Suchergebnisse"
+    }
+  }
+}

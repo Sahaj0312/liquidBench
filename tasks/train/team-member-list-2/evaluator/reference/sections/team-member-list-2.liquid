@@ -1,0 +1,44 @@
+{%- assign heading = section.settings.heading | default: '' | strip -%}
+{%- assign member_count = 0 -%}
+{%- for block in section.blocks -%}
+  {%- assign member_name = block.settings.name | default: '' | strip -%}
+  {%- if member_name != '' -%}
+    {%- assign member_count = member_count | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if heading != '' or member_count > 0 -%}
+  <div class="team-list">
+  {%- if heading != '' -%}
+    <h2 class="team__heading">{{ heading | escape }}</h2>
+  {%- endif -%}
+  {%- if member_count > 0 -%}
+    <ul class="team">
+    {%- for block in section.blocks -%}
+      {%- assign member_name = block.settings.name | default: '' | strip -%}
+      {%- assign member_role = block.settings.role | default: '' | strip -%}
+      {%- assign member_url = block.settings.profile_url | default: '' | strip -%}
+      {%- if member_name != '' -%}
+        <li class="team__member">
+        {%- if member_url != '' -%}
+          <a class="team__link" href="{{ member_url | escape }}" title="{{ member_name | escape }}">{{ member_name | escape }}</a>
+        {%- else -%}
+          <span class="team__name">{{ member_name | escape }}</span>
+        {%- endif -%}
+        {%- if member_role != '' -%}
+          <p class="team__role">{{ member_role | escape }}</p>
+        {%- endif -%}
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+    </ul>
+  {%- endif -%}
+  </div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Team members",
+  "settings": [{"type": "text", "id": "heading", "label": "Heading"}],
+  "blocks": [{"type": "member", "name": "Member", "settings": [{"type": "text", "id": "name", "label": "Name"}, {"type": "text", "id": "role", "label": "Role"}, {"type": "url", "id": "profile_url", "label": "Profile URL"}]}],
+  "presets": [{"name": "Team members"}]
+}
+{% endschema %}

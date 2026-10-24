@@ -1,0 +1,880 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/predictive-search-form.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidRawTag",
+          "name": "comment",
+          "markup": "",
+          "body": {
+            "type": "RawMarkup",
+            "kind": "text",
+            "value": " Predictive search form and assets. ",
+            "nodes": [
+              {
+                "type": "TextNode",
+                "value": "Predictive search form and assets."
+              }
+            ]
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-",
+          "delimiterWhitespaceStart": "-",
+          "delimiterWhitespaceEnd": "-"
+        },
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "component-predictive-search.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "HtmlRawNode",
+          "name": "script",
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "src"
+                }
+              ],
+              "value": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "predictive-search.js"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "asset_url",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "defer"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "defer"
+                }
+              ]
+            }
+          ],
+          "body": {
+            "type": "RawMarkup",
+            "kind": "javascript",
+            "value": "",
+            "nodes": []
+          }
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "predictive-search"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "predictive-search"
+                }
+              ]
+            },
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "data-loading-text"
+                }
+              ],
+              "value": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "accessibility.loading"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "form"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "action"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "VariableLookup",
+                          "name": "routes",
+                          "lookups": [
+                            {
+                              "type": "String",
+                              "value": "search_url"
+                            }
+                          ],
+                          "lookupModes": [
+                            "bareword"
+                          ]
+                        },
+                        "filters": []
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "method"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "get"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "role"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "search"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "predictive-search__form"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "HtmlElement",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "label"
+                    }
+                  ],
+                  "attributes": [
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "class"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "visually-hidden"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "for"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "PredictiveSearchInput"
+                        }
+                      ]
+                    }
+                  ],
+                  "children": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "String",
+                          "single": true,
+                          "value": "templates.search.label"
+                        },
+                        "filters": [
+                          {
+                            "type": "LiquidFilter",
+                            "name": "t",
+                            "args": []
+                          }
+                        ]
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "HtmlVoidElement",
+                  "name": "input",
+                  "attributes": [
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "id"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "PredictiveSearchInput"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "class"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "predictive-search__input"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "type"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "search"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "name"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "q"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "value"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "VariableLookup",
+                              "name": "search",
+                              "lookups": [
+                                {
+                                  "type": "String",
+                                  "value": "terms"
+                                }
+                              ],
+                              "lookupModes": [
+                                "bareword"
+                              ]
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "escape",
+                                "args": []
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "placeholder"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "String",
+                              "single": true,
+                              "value": "templates.search.placeholder"
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "t",
+                                "args": []
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "role"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "combobox"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "aria-expanded"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "false"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "aria-controls"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "predictive-search-results"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "aria-haspopup"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "listbox"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "aria-autocomplete"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "list"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "autocomplete"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "off"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "spellcheck"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "false"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "HtmlVoidElement",
+                  "name": "input",
+                  "attributes": [
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "type"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "hidden"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "name"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "options[prefix]"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "value"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "last"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "HtmlElement",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "button"
+                    }
+                  ],
+                  "attributes": [
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "type"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "submit"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "class"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "predictive-search__submit"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "aria-label"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "String",
+                              "single": true,
+                              "value": "templates.search.submit"
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "t",
+                                "args": []
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "children": [
+                    {
+                      "type": "LiquidTag",
+                      "name": "render",
+                      "markup": {
+                        "type": "RenderMarkup",
+                        "snippet": {
+                          "type": "String",
+                          "single": true,
+                          "value": "icon-search"
+                        },
+                        "variable": null,
+                        "alias": null,
+                        "args": []
+                      },
+                      "whitespaceStart": "-",
+                      "whitespaceEnd": "-"
+                    }
+                  ]
+                },
+                {
+                  "type": "HtmlElement",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "div"
+                    }
+                  ],
+                  "attributes": [
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "class"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "predictive-search__results"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "id"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "predictive-search-results"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "tabindex"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "-1"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrEmpty",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "data-predictive-search"
+                        }
+                      ]
+                    }
+                  ],
+                  "children": [
+                    {
+                      "type": "HtmlElement",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "div"
+                        }
+                      ],
+                      "attributes": [
+                        {
+                          "type": "AttrDoubleQuoted",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "class"
+                            }
+                          ],
+                          "value": [
+                            {
+                              "type": "TextNode",
+                              "value": "predictive-search__loading-state"
+                            }
+                          ]
+                        }
+                      ],
+                      "children": [
+                        {
+                          "type": "LiquidTag",
+                          "name": "render",
+                          "markup": {
+                            "type": "RenderMarkup",
+                            "snippet": {
+                              "type": "String",
+                              "single": true,
+                              "value": "loading-spinner"
+                            },
+                            "variable": null,
+                            "alias": null,
+                            "args": []
+                          },
+                          "whitespaceStart": "-",
+                          "whitespaceEnd": "-"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "HtmlElement",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "span"
+                    }
+                  ],
+                  "attributes": [
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "class"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "predictive-search__status visually-hidden"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "role"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "status"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "aria-hidden"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "true"
+                        }
+                      ]
+                    }
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

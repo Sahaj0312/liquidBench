@@ -1,0 +1,365 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/age-gate.liquid",
+    "tags": [
+      "button",
+      "div",
+      "h2",
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "age_gate": {
+        "enabled": false,
+        "minimum_age": 21,
+        "heading": "Adults only"
+      },
+      "customer_age": null,
+      "age_verified": false
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "age_gate": {
+        "enabled": true,
+        "minimum_age": 21,
+        "heading": "Adults only"
+      },
+      "customer_age": null,
+      "age_verified": true
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "age_gate": {
+        "enabled": true,
+        "minimum_age": null,
+        "heading": null
+      },
+      "customer_age": null,
+      "age_verified": false
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "age-gate"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Age verification"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "You must be 18 or older to enter this store."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "class",
+                "age-gate__confirm"
+              ],
+              [
+                "type",
+                "button"
+              ]
+            ],
+            "children": [],
+            "text": "I am 18 or older"
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "class",
+                "age-gate__leave"
+              ],
+              [
+                "type",
+                "button"
+              ]
+            ],
+            "children": [],
+            "text": "Leave"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "age_gate": {
+        "enabled": true,
+        "minimum_age": 21,
+        "heading": "  Adults only  "
+      },
+      "customer_age": null,
+      "age_verified": false
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "age-gate"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Adults only"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "You must be 21 or older to enter this store."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "class",
+                "age-gate__confirm"
+              ],
+              [
+                "type",
+                "button"
+              ]
+            ],
+            "children": [],
+            "text": "I am 21 or older"
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "class",
+                "age-gate__leave"
+              ],
+              [
+                "type",
+                "button"
+              ]
+            ],
+            "children": [],
+            "text": "Leave"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "age_gate": {
+        "enabled": true,
+        "minimum_age": 21,
+        "heading": "Adults only"
+      },
+      "customer_age": 21,
+      "age_verified": false
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "age_gate": {
+        "enabled": true,
+        "minimum_age": 21,
+        "heading": "Adults only"
+      },
+      "customer_age": 20,
+      "age_verified": false
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "age-gate age-gate--denied"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Adults only"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Sorry, you must be 21 or older to enter. Come back in 1 year."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "age_gate": {
+        "enabled": true,
+        "minimum_age": null,
+        "heading": null
+      },
+      "customer_age": 15,
+      "age_verified": false
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "age-gate age-gate--denied"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Age verification"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Sorry, you must be 18 or older to enter. Come back in 3 years."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "age_gate": {
+        "enabled": true,
+        "minimum_age": 21,
+        "heading": "Wine & \"Spirits\" <21+>"
+      },
+      "customer_age": 18,
+      "age_verified": false
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "age-gate age-gate--denied"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Wine & \"Spirits\" <21+>"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Sorry, you must be 21 or older to enter. Come back in 3 years."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "age_gate": {
+        "enabled": true,
+        "minimum_age": null,
+        "heading": "   "
+      },
+      "customer_age": 30,
+      "age_verified": false
+    },
+    "expected": []
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "age_gate": {
+        "enabled": true,
+        "minimum_age": null,
+        "heading": "   "
+      },
+      "customer_age": 17,
+      "age_verified": false
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "age-gate age-gate--denied"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Age verification"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Sorry, you must be 18 or older to enter. Come back in 1 year."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "age_gate": {
+        "enabled": true,
+        "minimum_age": 18,
+        "heading": "Hold on"
+      },
+      "customer_age": 10,
+      "age_verified": true
+    },
+    "expected": []
+  }
+]

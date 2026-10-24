@@ -1,0 +1,111 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/multicolumn-features.liquid",
+    "body": "<div class=\"multicolumn multicolumn--{{ section.settings.image_ratio }}\" style=\"--columns: {{ section.settings.columns_desktop }};\">\n  {%- if section.settings.title != blank -%}\n    <h2 class=\"multicolumn__title\">{{ section.settings.title | escape }}</h2>\n  {%- endif -%}\n  <ul class=\"multicolumn__list\">\n    {%- for block in section.blocks -%}\n      <li class=\"multicolumn__item\" {{ block.shopify_attributes }}>\n        {%- if block.settings.image != blank -%}\n          {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy' }}\n        {%- endif -%}\n        <h3>{{ block.settings.title | escape }}</h3>\n        <div class=\"rte\">{{ block.settings.text }}</div>\n        {%- if block.settings.link_label != blank -%}\n          <a href=\"{{ block.settings.link }}\">{{ block.settings.link_label | escape }}</a>\n        {%- endif -%}\n      </li>\n    {%- endfor -%}\n  </ul>\n  {%- if section.settings.button_label != blank -%}\n    <a class=\"button\" href=\"{{ section.settings.button_link }}\">{{ section.settings.button_label | escape }}</a>\n  {%- endif -%}\n</div>\n\n\n",
+    "expected": {
+      "name": "Multicolumn features",
+      "tag": "section",
+      "class": "section-multicolumn",
+      "max_blocks": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Why shop with us"
+        },
+        {
+          "type": "range",
+          "id": "columns_desktop",
+          "label": "Columns on desktop",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "default": 3
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "Image ratio",
+          "options": [
+            {
+              "value": "adapt",
+              "label": "Adapt to image"
+            },
+            {
+              "value": "portrait",
+              "label": "Portrait"
+            },
+            {
+              "value": "square",
+              "label": "Square"
+            }
+          ],
+          "default": "adapt"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "column",
+          "name": "Column",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+            },
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Heading",
+              "default": "Column"
+            },
+            {
+              "type": "richtext",
+              "id": "text",
+              "label": "Description",
+              "default": "<p>Pair text with an image to focus on your chosen product.</p>"
+            },
+            {
+              "type": "text",
+              "id": "link_label",
+              "label": "Link label"
+            },
+            {
+              "type": "url",
+              "id": "link",
+              "label": "Link"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Multicolumn features",
+          "blocks": [
+            {
+              "type": "column"
+            },
+            {
+              "type": "column"
+            },
+            {
+              "type": "column"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

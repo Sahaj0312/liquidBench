@@ -1,0 +1,60 @@
+{%- assign heading = section.settings.heading | strip -%}
+{%- assign max_large = section.settings.max_large -%}
+{%- assign visible = 0 -%}
+{%- for block in section.blocks -%}
+  {%- assign t = block.settings.title | strip -%}
+  {%- if t != empty -%}{%- assign visible = visible | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
+{%- if visible > 0 -%}
+<section class="collage">
+{%- if heading != empty -%}<h2 class="collage__heading">{{ heading | escape }}</h2>{%- endif -%}
+<ul class="collage__grid">
+{%- assign n = 0 -%}
+{%- assign large_count = 0 -%}
+{%- assign prev_large = false -%}
+{%- for block in section.blocks -%}
+  {%- assign title = block.settings.title | strip -%}
+  {%- if title != empty -%}
+    {%- assign n = n | plus: 1 -%}
+    {%- assign size = 'small' -%}
+    {%- if block.settings.size == 'large' -%}
+      {%- unless prev_large -%}
+        {%- if max_large == nil -%}
+          {%- assign size = 'large' -%}
+        {%- elsif large_count < max_large -%}
+          {%- assign size = 'large' -%}
+        {%- endif -%}
+      {%- endunless -%}
+    {%- endif -%}
+    {%- if size == 'large' -%}
+      {%- assign large_count = large_count | plus: 1 -%}
+      {%- assign prev_large = true -%}
+    {%- else -%}
+      {%- assign prev_large = false -%}
+    {%- endif -%}
+    <li class="collage__item collage__item--{{ size }}"><span class="collage__num">{{ n }}</span>{{ title | escape }}</li>
+  {%- endif -%}
+{%- endfor -%}
+</ul></section>
+{%- endif -%}
+{%- comment -%}collage{%- endcomment -%}
+{% schema %}
+{
+  "name": "Collage",
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading"},
+    {"type": "number", "id": "max_large", "label": "Maximum large tiles"}
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        {"type": "text", "id": "title", "label": "Title"},
+        {"type": "select", "id": "size", "label": "Size", "options": [{"value": "small", "label": "Small"}, {"value": "large", "label": "Large"}], "default": "small"}
+      ]
+    }
+  ],
+  "presets": [{"name": "Collage"}]
+}
+{% endschema %}

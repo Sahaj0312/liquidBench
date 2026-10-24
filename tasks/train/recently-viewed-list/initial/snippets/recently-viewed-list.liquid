@@ -1,0 +1,5 @@
+<ul class="recently-viewed">
+  {%- for product in products limit: limit -%}
+    <li class="recently-viewed__item" data-position="{{ forloop.index }}"><a href="/products/{{ product.handle }}">{{ product.title }}</a><span class="recently-viewed__vendor">{{ product.vendor }}</span></li>
+  {%- endfor -%}
+</ul>

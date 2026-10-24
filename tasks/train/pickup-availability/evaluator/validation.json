@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-primary-uses-forloop-first",
+    "expected_pass": false,
+    "changes": {
+      "snippets/pickup-availability.liquid": "{%- assign seen = '|' -%}\n{%- assign shown = 0 -%}\n{%- assign extra = 0 -%}\n{%- capture items -%}\n{%- for loc in locations -%}\n{%- unless loc.available -%}{%- continue -%}{%- endunless -%}\n{%- assign nm = loc.name | strip -%}\n{%- assign key = '|' | append: nm | append: '|' -%}\n{%- if seen contains key -%}{%- continue -%}{%- endif -%}\n{%- assign seen = seen | append: nm | append: '|' -%}\n{%- if shown < max_shown -%}\n{%- assign t = loc.pickup_time | default: '' | strip -%}\n{%- if t == '' -%}{%- assign t = 'Usually ready in 24 hours' -%}{%- endif -%}\n<li{% if forloop.first %} class=\"pickup-primary\"{% endif %}>{{ nm | escape }}: {{ t | escape }}</li>\n{%- assign shown = shown | plus: 1 -%}\n{%- else -%}\n{%- assign extra = extra | plus: 1 -%}\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if shown == 0 -%}\n<p class=\"pickup-none\">No pickup locations available</p>\n{%- else -%}\n<ul class=\"pickup\">{{ items }}</ul>\n{%- if extra > 0 %}<p class=\"pickup-more\">+{{ extra }} more</p>{% endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-substring-dedup",
+    "expected_pass": false,
+    "changes": {
+      "snippets/pickup-availability.liquid": "{%- assign seen = '|' -%}\n{%- assign shown = 0 -%}\n{%- assign extra = 0 -%}\n{%- capture items -%}\n{%- for loc in locations -%}\n{%- unless loc.available -%}{%- continue -%}{%- endunless -%}\n{%- assign nm = loc.name | strip -%}\n{%- if seen contains nm -%}{%- continue -%}{%- endif -%}\n{%- assign seen = seen | append: nm | append: '|' -%}\n{%- if shown < max_shown -%}\n{%- assign t = loc.pickup_time | default: '' | strip -%}\n{%- if t == '' -%}{%- assign t = 'Usually ready in 24 hours' -%}{%- endif -%}\n<li{% if shown == 0 %} class=\"pickup-primary\"{% endif %}>{{ nm | escape }}: {{ t | escape }}</li>\n{%- assign shown = shown | plus: 1 -%}\n{%- else -%}\n{%- assign extra = extra | plus: 1 -%}\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if shown == 0 -%}\n<p class=\"pickup-none\">No pickup locations available</p>\n{%- else -%}\n<ul class=\"pickup\">{{ items }}</ul>\n{%- if extra > 0 %}<p class=\"pickup-more\">+{{ extra }} more</p>{% endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-hidden-count-includes-duplicat",
+    "expected_pass": false,
+    "changes": {
+      "snippets/pickup-availability.liquid": "{%- assign seen = '|' -%}\n{%- assign shown = 0 -%}\n{%- assign extra = 0 -%}\n{%- capture items -%}\n{%- for loc in locations -%}\n{%- unless loc.available -%}{%- continue -%}{%- endunless -%}\n{%- assign nm = loc.name | strip -%}\n{%- assign key = '|' | append: nm | append: '|' -%}\n{%- if shown < max_shown -%}\n{%- if seen contains key -%}{%- continue -%}{%- endif -%}\n{%- assign seen = seen | append: nm | append: '|' -%}\n{%- assign t = loc.pickup_time | default: '' | strip -%}\n{%- if t == '' -%}{%- assign t = 'Usually ready in 24 hours' -%}{%- endif -%}\n<li{% if shown == 0 %} class=\"pickup-primary\"{% endif %}>{{ nm | escape }}: {{ t | escape }}</li>\n{%- assign shown = shown | plus: 1 -%}\n{%- else -%}\n{%- assign extra = extra | plus: 1 -%}\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if shown == 0 -%}\n<p class=\"pickup-none\">No pickup locations available</p>\n{%- else -%}\n<ul class=\"pickup\">{{ items }}</ul>\n{%- if extra > 0 %}<p class=\"pickup-more\">+{{ extra }} more</p>{% endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-blank-time-not-defaulted",
+    "expected_pass": false,
+    "changes": {
+      "snippets/pickup-availability.liquid": "{%- assign seen = '|' -%}\n{%- assign shown = 0 -%}\n{%- assign extra = 0 -%}\n{%- capture items -%}\n{%- for loc in locations -%}\n{%- unless loc.available -%}{%- continue -%}{%- endunless -%}\n{%- assign nm = loc.name | strip -%}\n{%- assign key = '|' | append: nm | append: '|' -%}\n{%- if seen contains key -%}{%- continue -%}{%- endif -%}\n{%- assign seen = seen | append: nm | append: '|' -%}\n{%- if shown < max_shown -%}\n{%- assign t = loc.pickup_time | default: 'Usually ready in 24 hours' -%}\n<li{% if shown == 0 %} class=\"pickup-primary\"{% endif %}>{{ nm | escape }}: {{ t | escape }}</li>\n{%- assign shown = shown | plus: 1 -%}\n{%- else -%}\n{%- assign extra = extra | plus: 1 -%}\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if shown == 0 -%}\n<p class=\"pickup-none\">No pickup locations available</p>\n{%- else -%}\n<ul class=\"pickup\">{{ items }}</ul>\n{%- if extra > 0 %}<p class=\"pickup-more\">+{{ extra }} more</p>{% endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/pickup-availability.liquid": "{% # theme-check-disable %}\n{%- assign seen = '|' -%}\n{%- assign shown = 0 -%}\n{%- assign extra = 0 -%}\n{%- capture items -%}\n{%- for loc in locations -%}\n{%- unless loc.available -%}{%- continue -%}{%- endunless -%}\n{%- assign nm = loc.name | strip -%}\n{%- assign key = '|' | append: nm | append: '|' -%}\n{%- if seen contains key -%}{%- continue -%}{%- endif -%}\n{%- assign seen = seen | append: nm | append: '|' -%}\n{%- if shown < max_shown -%}\n{%- assign t = loc.pickup_time | default: '' | strip -%}\n{%- if t == '' -%}{%- assign t = 'Usually ready in 24 hours' -%}{%- endif -%}\n<li{% if shown == 0 %} class=\"pickup-primary\"{% endif %}>{{ nm | escape }}: {{ t | escape }}</li>\n{%- assign shown = shown | plus: 1 -%}\n{%- else -%}\n{%- assign extra = extra | plus: 1 -%}\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if shown == 0 -%}\n<p class=\"pickup-none\">No pickup locations available</p>\n{%- else -%}\n<ul class=\"pickup\">{{ items }}</ul>\n{%- if extra > 0 %}<p class=\"pickup-more\">+{{ extra }} more</p>{% endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/pickup-availability.liquid": null
+    }
+  }
+]

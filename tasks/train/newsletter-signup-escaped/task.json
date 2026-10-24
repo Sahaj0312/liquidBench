@@ -1,0 +1,15 @@
+{
+  "id": "newsletter-signup-escaped",
+  "version": 1,
+  "split": "train",
+  "category": "section-schema",
+  "difficulty": "hard",
+  "family": "newsletter-signup-escaped",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/newsletter-signup-escaped.liquid"
+  ],
+  "prompt": "The newsletter section in sections/newsletter-signup-escaped.liquid has correct markup, but its {% schema %} JSON is out of sync with it. Change only the JSON inside the single top-level {% schema %} block. Do not modify the markup above it.\n\nThe markup treats its settings differently:\n- heading, email_label, placeholder (an HTML attribute) and button_label are always passed through `escape`, so they must be plain-text settings.\n- subtext is output raw inside a <div>, so it must be a richtext setting. Its default must be wrapped in a single <p> element.\n\nThe final schema must be exactly the following, with keys at each level in this order and no other keys anywhere.\n\nTop level:\n- \"name\": \"Newsletter\"\n- \"tag\": \"section\"\n- \"class\": \"section-newsletter\"\n- \"max_blocks\": 3 (a number)\n- \"settings\": an array of six settings, in this order:\n  1. type \"text\", id \"heading\", label \"Heading\", default \"Get 10% off & free shipping\"\n  2. type \"richtext\", id \"subtext\", label \"Text\", default \"<p>New arrivals, restocks & members-only offers.</p>\"\n  3. type \"text\", id \"email_label\", label \"Email field label\", default \"Email address\"\n  4. type \"text\", id \"placeholder\", label \"Email placeholder\", default \"you@example.com\"\n  5. type \"text\", id \"button_label\", label \"Button label\", default \"Sign up\"\n  6. type \"select\", id \"alignment\", label \"Alignment\", options [{\"value\":\"left\",\"label\":\"Left\"},{\"value\":\"center\",\"label\":\"Center\"}] (in that order), default \"center\"\n- \"blocks\": one block definition with type \"note\", name \"Note\", and settings containing exactly one setting: type \"text\", id \"text\", label \"Text\", default \"We'll never share your email.\"\n- \"presets\": one preset with name \"Newsletter\" and blocks [{\"type\":\"note\"}]\n\nKey order inside each setting: type, id, label, then options (select only), then default. Inside the block definition: type, name, settings. Inside the preset: name, blocks.\n\nDefaults containing & must contain a literal & character, not &amp;. Change only sections/newsletter-signup-escaped.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

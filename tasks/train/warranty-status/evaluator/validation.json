@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-whitespace-label-not-defaulted",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status.liquid": "{%- liquid\n  assign label = warranty_label | default: 'Warranty' | strip\n  assign has_warranty = false\n  if warranty_months != nil\n    if warranty_months >= 1\n      assign has_warranty = true\n    endif\n  endif\n-%}\n{%- if has_warranty -%}\n<p class=\"warranty\">{{ label | escape }}: {{ warranty_months }} {% if warranty_months == 1 %}month{% else %}months{% endif %}</p>\n{%- else -%}\n<p class=\"warranty warranty--none\">No warranty</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-always-plural",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status.liquid": "{%- liquid\n  assign label = warranty_label | default: '' | strip\n  if label == ''\n    assign label = 'Warranty'\n  endif\n  assign has_warranty = false\n  if warranty_months != nil\n    if warranty_months >= 1\n      assign has_warranty = true\n    endif\n  endif\n-%}\n{%- if has_warranty -%}\n<p class=\"warranty\">{{ label | escape }}: {{ warranty_months }} months</p>\n{%- else -%}\n<p class=\"warranty warranty--none\">No warranty</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-label-not-escaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status.liquid": "{%- liquid\n  assign label = warranty_label | default: '' | strip\n  if label == ''\n    assign label = 'Warranty'\n  endif\n  assign has_warranty = false\n  if warranty_months != nil\n    if warranty_months >= 1\n      assign has_warranty = true\n    endif\n  endif\n-%}\n{%- if has_warranty -%}\n<p class=\"warranty\">{{ label }}: {{ warranty_months }} {% if warranty_months == 1 %}month{% else %}months{% endif %}</p>\n{%- else -%}\n<p class=\"warranty warranty--none\">No warranty</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-zero-and-negative-treated-as-w",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status.liquid": "{%- liquid\n  assign label = warranty_label | default: '' | strip\n  if label == ''\n    assign label = 'Warranty'\n  endif\n-%}\n{%- if warranty_months != nil -%}\n<p class=\"warranty\">{{ label | escape }}: {{ warranty_months }} {% if warranty_months == 1 %}month{% else %}months{% endif %}</p>\n{%- else -%}\n<p class=\"warranty warranty--none\">No warranty</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status.liquid": "{% # theme-check-disable %}\n{%- liquid\n  assign label = warranty_label | default: '' | strip\n  if label == ''\n    assign label = 'Warranty'\n  endif\n  assign has_warranty = false\n  if warranty_months != nil\n    if warranty_months >= 1\n      assign has_warranty = true\n    endif\n  endif\n-%}\n{%- if has_warranty -%}\n<p class=\"warranty\">{{ label | escape }}: {{ warranty_months }} {% if warranty_months == 1 %}month{% else %}months{% endif %}</p>\n{%- else -%}\n<p class=\"warranty warranty--none\">No warranty</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status.liquid": null
+    }
+  }
+]

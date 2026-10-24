@@ -1,0 +1,32 @@
+<div class="multicolumn"><h2 class="multicolumn__title">{{ section.settings.title | escape }}</h2>
+<ul class="multicolumn__list" data-columns="{{ section.settings.columns_desktop }}">
+{%- for block in section.blocks -%}
+<li class="multicolumn__item"><h3>{{ block.settings.heading | escape }}</h3>
+{%- if block.settings.text -%}<p>{{ block.settings.text | escape }}</p>{%- endif -%}
+{%- if block.settings.link -%}<a href="{{ block.settings.link }}">{{ section.settings.button_label | escape }}</a>{%- endif -%}
+</li>
+{%- endfor -%}
+</ul>
+</div>
+{% schema %}
+{
+  "name": "Multicolumn",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading" },
+    { "type": "range", "id": "columns_desktop", "label": "Columns on desktop", "min": 1, "max": 4, "step": 1, "default": 3 },
+    { "type": "text", "id": "button_label", "label": "Button label" }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "textarea", "id": "text", "label": "Text" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Multicolumn" }]
+}
+{% endschema %}

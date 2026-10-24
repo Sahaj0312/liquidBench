@@ -1,0 +1,15 @@
+{
+  "id": "recipe-ingredient-list",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "medium",
+  "family": "recipe-ingredient-list",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/recipe-ingredient-list.liquid"
+  ],
+  "prompt": "Rewrite snippets/recipe-ingredient-list.liquid so that it renders a recipe's ingredient list. Null and empty-string inputs must be handled exactly as described below.\n\nInputs. All inputs are top-level variables and are always supplied:\n- `title`: string or null.\n- `ingredients`: array or null. Each element is an object that always has the keys `name`, `quantity` and `unit`. Each of these values is a string or null.\n\nDefinitions:\n- A value is \"present\" when it is neither null nor the empty string \"\".\n- Compare values literally. Do not trim them.\n- An ingredient is \"shown\" when its `name` is present. Skip every other ingredient completely.\n\nOutput rules:\n1. If `ingredients` is null, is empty, or contains no shown ingredient, output nothing (an empty string).\n2. Otherwise, output exactly this structure, with no whitespace or newlines between any tags: `<div class=\"ingredients\">` + optional heading + `<ul>` + items + `</ul>` + count paragraph + `</div>`.\n3. Heading: output `<h3>TITLE</h3>` only when `title` is present. TITLE is the HTML-escaped title.\n4. Items: output one `<li>...</li>` per shown ingredient, in input order. The content of the `<li>` is:\n   - When `quantity` is present: `<span class=\"qty\">QTY</span>`, then a single space.\n     - Then, when `unit` is also present: `<span class=\"unit\">UNIT</span>`, then a single space.\n   - When `quantity` is not present, do not output the unit at all, even if `unit` is present.\n   - Finally, the HTML-escaped name.\n   - Example: `<li><span class=\"qty\">2</span> <span class=\"unit\">cups</span> flour</li>`.\n5. Count paragraph: `<p class=\"count\">N ingredients</p>`. N is the number of shown ingredients, not the length of the array. When N is 1, use the singular word: `<p class=\"count\">1 ingredient</p>`.\n\nHTML-escape the title, quantity, unit and name with the standard `escape` filter. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/recipe-ingredient-list.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

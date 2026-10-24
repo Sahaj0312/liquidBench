@@ -1,0 +1,584 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/pickup-availability-list.liquid",
+    "tags": [
+      "em",
+      "li",
+      "p",
+      "span",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "locations": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "locations": [
+        {
+          "name": "North",
+          "available": false,
+          "pickup_time": "Ready today"
+        },
+        {
+          "name": "South",
+          "available": false,
+          "pickup_time": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "pickup-none"
+          ]
+        ],
+        "children": [],
+        "text": "No pickup locations available"
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "locations": [
+        {
+          "name": "Downtown",
+          "available": true,
+          "pickup_time": "Ready in 2 hours"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "pickup-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "is-first is-last pickup-item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "Downtown"
+              },
+              {
+                "tag": "em",
+                "attrs": [],
+                "children": [],
+                "text": "Ready in 2 hours"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "locations": [
+        {
+          "name": "Airport",
+          "available": false,
+          "pickup_time": "Ready in 1 hour"
+        },
+        {
+          "name": "Harbor",
+          "available": true,
+          "pickup_time": "Ready today"
+        },
+        {
+          "name": "Mall",
+          "available": true,
+          "pickup_time": null
+        },
+        {
+          "name": "Station",
+          "available": false,
+          "pickup_time": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "pickup-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "is-first pickup-item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "Harbor"
+              },
+              {
+                "tag": "em",
+                "attrs": [],
+                "children": [],
+                "text": "Ready today"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "is-last pickup-item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "Mall"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "locations": [
+        {
+          "name": "X Store",
+          "available": true,
+          "pickup_time": "Ready in 1 hour"
+        },
+        {
+          "name": "Y Store",
+          "available": true,
+          "pickup_time": "   "
+        },
+        {
+          "name": "Z Store",
+          "available": true,
+          "pickup_time": "  Ready tomorrow  "
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "pickup-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "is-first pickup-item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "X Store"
+              },
+              {
+                "tag": "em",
+                "attrs": [],
+                "children": [],
+                "text": "Ready in 1 hour"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "pickup-item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "Y Store"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "is-last pickup-item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "Z Store"
+              },
+              {
+                "tag": "em",
+                "attrs": [],
+                "children": [],
+                "text": "Ready tomorrow"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "locations": [
+        {
+          "name": "Tom & Jerry's <Depot>",
+          "available": true,
+          "pickup_time": "  Ready in <1 hr & more  "
+        },
+        {
+          "name": "The \"Loft\"",
+          "available": true,
+          "pickup_time": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "pickup-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "is-first pickup-item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "Tom & Jerry's <Depot>"
+              },
+              {
+                "tag": "em",
+                "attrs": [],
+                "children": [],
+                "text": "Ready in <1 hr & more"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "is-last pickup-item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "The \"Loft\""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "locations": [
+        {
+          "name": "A",
+          "available": false,
+          "pickup_time": null
+        },
+        {
+          "name": "B",
+          "available": false,
+          "pickup_time": "Ready today"
+        },
+        {
+          "name": "C",
+          "available": true,
+          "pickup_time": "Ready Friday"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "pickup-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "is-first is-last pickup-item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "C"
+              },
+              {
+                "tag": "em",
+                "attrs": [],
+                "children": [],
+                "text": "Ready Friday"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "locations": [
+        {
+          "name": "A",
+          "available": true,
+          "pickup_time": null
+        },
+        {
+          "name": "B",
+          "available": false,
+          "pickup_time": null
+        },
+        {
+          "name": "C",
+          "available": false,
+          "pickup_time": "Ready today"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "pickup-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "is-first is-last pickup-item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "A"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "locations": [
+        {
+          "name": "Elm Street",
+          "available": true,
+          "pickup_time": ""
+        },
+        {
+          "name": "Oak Avenue",
+          "available": false,
+          "pickup_time": "Ready today"
+        },
+        {
+          "name": "Pine Road",
+          "available": true,
+          "pickup_time": "Ready in 4 hours"
+        },
+        {
+          "name": "Ash Lane",
+          "available": true,
+          "pickup_time": "Ready tomorrow"
+        },
+        {
+          "name": "Birch Court",
+          "available": false,
+          "pickup_time": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "pickup-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "is-first pickup-item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "Elm Street"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "pickup-item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "Pine Road"
+              },
+              {
+                "tag": "em",
+                "attrs": [],
+                "children": [],
+                "text": "Ready in 4 hours"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "is-last pickup-item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "Ash Lane"
+              },
+              {
+                "tag": "em",
+                "attrs": [],
+                "children": [],
+                "text": "Ready tomorrow"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-label-key-missing-suffix",
+    "expected_pass": false,
+    "changes": {
+      "snippets/password-page-labels.liquid": "{{ 'section-password.css' | asset_url | stylesheet_tag }}\n<div class=\"password-modal\">\n  {% render 'icon-padlock' %}\n  <h2 class=\"password-modal__heading\">{{ 'general.password_page.login_form_heading' | t }}</h2>\n  <form method=\"post\" action=\"/password\" class=\"password-form\">\n    <label for=\"Password\">{{ 'general.password_page.login_form_password' | t }}</label>\n    <input type=\"password\" name=\"password\" id=\"Password\" autocomplete=\"current-password\" placeholder=\"{{ 'general.password_page.login_form_password_placeholder' | t }}\">\n    <button type=\"submit\" class=\"button\">{{ 'general.password_page.login_form_submit' | t }}</button>\n  </form>\n  <p class=\"password-modal__admin\">{{ 'general.password_page.admin_link' | t }}</p>\n  {% render 'password-social-links' %}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-stylesheet-name-guessed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/password-page-labels.liquid": "{{ 'password.css' | asset_url | stylesheet_tag }}\n<div class=\"password-modal\">\n  {% render 'icon-padlock' %}\n  <h2 class=\"password-modal__heading\">{{ 'general.password_page.login_form_heading' | t }}</h2>\n  <form method=\"post\" action=\"/password\" class=\"password-form\">\n    <label for=\"Password\">{{ 'general.password_page.login_form_password_label' | t }}</label>\n    <input type=\"password\" name=\"password\" id=\"Password\" autocomplete=\"current-password\" placeholder=\"{{ 'general.password_page.login_form_password_placeholder' | t }}\">\n    <button type=\"submit\" class=\"button\">{{ 'general.password_page.login_form_submit' | t }}</button>\n  </form>\n  <p class=\"password-modal__admin\">{{ 'general.password_page.admin_link' | t }}</p>\n  {% render 'password-social-links' %}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-icon-snippet-left-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/password-page-labels.liquid": "{{ 'section-password.css' | asset_url | stylesheet_tag }}\n<div class=\"password-modal\">\n  {% render 'icon-lock' %}\n  <h2 class=\"password-modal__heading\">{{ 'general.password_page.login_form_heading' | t }}</h2>\n  <form method=\"post\" action=\"/password\" class=\"password-form\">\n    <label for=\"Password\">{{ 'general.password_page.login_form_password_label' | t }}</label>\n    <input type=\"password\" name=\"password\" id=\"Password\" autocomplete=\"current-password\" placeholder=\"{{ 'general.password_page.login_form_password_placeholder' | t }}\">\n    <button type=\"submit\" class=\"button\">{{ 'general.password_page.login_form_submit' | t }}</button>\n  </form>\n  <p class=\"password-modal__admin\">{{ 'general.password_page.admin_link' | t }}</p>\n  {% render 'password-social-links' %}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-namespace-dropped-on-admin-lin",
+    "expected_pass": false,
+    "changes": {
+      "snippets/password-page-labels.liquid": "{{ 'section-password.css' | asset_url | stylesheet_tag }}\n<div class=\"password-modal\">\n  {% render 'icon-padlock' %}\n  <h2 class=\"password-modal__heading\">{{ 'general.password_page.login_form_heading' | t }}</h2>\n  <form method=\"post\" action=\"/password\" class=\"password-form\">\n    <label for=\"Password\">{{ 'general.password_page.login_form_password_label' | t }}</label>\n    <input type=\"password\" name=\"password\" id=\"Password\" autocomplete=\"current-password\" placeholder=\"{{ 'general.password_page.login_form_password_placeholder' | t }}\">\n    <button type=\"submit\" class=\"button\">{{ 'general.password_page.login_form_submit' | t }}</button>\n  </form>\n  <p class=\"password-modal__admin\">{{ 'password_page.admin_link' | t }}</p>\n  {% render 'password-social-links' %}\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/password-page-labels.liquid": "{% # theme-check-disable %}\n{{ 'section-password.css' | asset_url | stylesheet_tag }}\n<div class=\"password-modal\">\n  {% render 'icon-padlock' %}\n  <h2 class=\"password-modal__heading\">{{ 'general.password_page.login_form_heading' | t }}</h2>\n  <form method=\"post\" action=\"/password\" class=\"password-form\">\n    <label for=\"Password\">{{ 'general.password_page.login_form_password_label' | t }}</label>\n    <input type=\"password\" name=\"password\" id=\"Password\" autocomplete=\"current-password\" placeholder=\"{{ 'general.password_page.login_form_password_placeholder' | t }}\">\n    <button type=\"submit\" class=\"button\">{{ 'general.password_page.login_form_submit' | t }}</button>\n  </form>\n  <p class=\"password-modal__admin\">{{ 'general.password_page.admin_link' | t }}</p>\n  {% render 'password-social-links' %}\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/password-page-labels.liquid": null
+    }
+  }
+]

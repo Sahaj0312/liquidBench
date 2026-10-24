@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-expiring-checked-before-expire",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status-2.liquid": "{%- if warranty -%}\n  {%- assign name = warranty.product_name | strip -%}\n  {%- if name == '' -%}\n    {%- assign name = 'Unnamed product' -%}\n  {%- endif -%}\n  {%- assign months = warranty.months | default: 0 -%}\n  {%- assign used = warranty.months_used | default: 0 -%}\n  {%- assign remaining = months | minus: used -%}\n  {%- if warranty.registered != true -%}\n    {%- assign slug = 'unregistered' -%}\n    {%- assign label = 'Unregistered' -%}\n  {%- elsif months <= 0 -%}\n    {%- assign slug = 'none' -%}\n    {%- assign label = 'No coverage' -%}\n  {%- elsif remaining <= 3 -%}\n    {%- assign slug = 'expiring' -%}\n    {%- assign label = 'Expiring soon' -%}\n  {%- elsif remaining <= 0 -%}\n    {%- assign slug = 'expired' -%}\n    {%- assign label = 'Expired' -%}\n  {%- else -%}\n    {%- assign slug = 'active' -%}\n    {%- assign label = 'Active' -%}\n  {%- endif -%}\n  <div class=\"warranty warranty--{{ slug }}\"><h3>{{ name | escape }}</h3><p>{{ label }}</p>\n  {%- if slug == 'active' or slug == 'expiring' -%}\n    <p>{{ remaining }} {% if remaining == 1 %}month{% else %}months{% endif %} left</p>\n  {%- endif -%}\n  </div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-always-plural-months",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status-2.liquid": "{%- if warranty -%}\n  {%- assign name = warranty.product_name | strip -%}\n  {%- if name == '' -%}\n    {%- assign name = 'Unnamed product' -%}\n  {%- endif -%}\n  {%- assign months = warranty.months | default: 0 -%}\n  {%- assign used = warranty.months_used | default: 0 -%}\n  {%- assign remaining = months | minus: used -%}\n  {%- if warranty.registered != true -%}\n    {%- assign slug = 'unregistered' -%}\n    {%- assign label = 'Unregistered' -%}\n  {%- elsif months <= 0 -%}\n    {%- assign slug = 'none' -%}\n    {%- assign label = 'No coverage' -%}\n  {%- elsif remaining <= 0 -%}\n    {%- assign slug = 'expired' -%}\n    {%- assign label = 'Expired' -%}\n  {%- elsif remaining <= 3 -%}\n    {%- assign slug = 'expiring' -%}\n    {%- assign label = 'Expiring soon' -%}\n  {%- else -%}\n    {%- assign slug = 'active' -%}\n    {%- assign label = 'Active' -%}\n  {%- endif -%}\n  <div class=\"warranty warranty--{{ slug }}\"><h3>{{ name | escape }}</h3><p>{{ label }}</p>\n  {%- if slug == 'active' or slug == 'expiring' -%}\n    <p>{{ remaining }} months left</p>\n  {%- endif -%}\n  </div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-zero-months-treated-as-expired",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status-2.liquid": "{%- if warranty -%}\n  {%- assign name = warranty.product_name | strip -%}\n  {%- if name == '' -%}\n    {%- assign name = 'Unnamed product' -%}\n  {%- endif -%}\n  {%- assign used = warranty.months_used | default: 0 -%}\n  {%- if warranty.registered != true -%}\n    {%- assign slug = 'unregistered' -%}\n    {%- assign label = 'Unregistered' -%}\n  {%- elsif warranty.months == nil -%}\n    {%- assign slug = 'none' -%}\n    {%- assign label = 'No coverage' -%}\n  {%- else -%}\n    {%- assign remaining = warranty.months | minus: used -%}\n    {%- if remaining <= 0 -%}\n      {%- assign slug = 'expired' -%}\n      {%- assign label = 'Expired' -%}\n    {%- elsif remaining <= 3 -%}\n      {%- assign slug = 'expiring' -%}\n      {%- assign label = 'Expiring soon' -%}\n    {%- else -%}\n      {%- assign slug = 'active' -%}\n      {%- assign label = 'Active' -%}\n    {%- endif -%}\n  {%- endif -%}\n  <div class=\"warranty warranty--{{ slug }}\"><h3>{{ name | escape }}</h3><p>{{ label }}</p>\n  {%- if slug == 'active' or slug == 'expiring' -%}\n    <p>{{ remaining }} {% if remaining == 1 %}month{% else %}months{% endif %} left</p>\n  {%- endif -%}\n  </div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-name-not-escaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status-2.liquid": "{%- if warranty -%}\n  {%- assign name = warranty.product_name | strip -%}\n  {%- if name == '' -%}\n    {%- assign name = 'Unnamed product' -%}\n  {%- endif -%}\n  {%- assign months = warranty.months | default: 0 -%}\n  {%- assign used = warranty.months_used | default: 0 -%}\n  {%- assign remaining = months | minus: used -%}\n  {%- if warranty.registered != true -%}\n    {%- assign slug = 'unregistered' -%}\n    {%- assign label = 'Unregistered' -%}\n  {%- elsif months <= 0 -%}\n    {%- assign slug = 'none' -%}\n    {%- assign label = 'No coverage' -%}\n  {%- elsif remaining <= 0 -%}\n    {%- assign slug = 'expired' -%}\n    {%- assign label = 'Expired' -%}\n  {%- elsif remaining <= 3 -%}\n    {%- assign slug = 'expiring' -%}\n    {%- assign label = 'Expiring soon' -%}\n  {%- else -%}\n    {%- assign slug = 'active' -%}\n    {%- assign label = 'Active' -%}\n  {%- endif -%}\n  <div class=\"warranty warranty--{{ slug }}\"><h3>{{ name }}</h3><p>{{ label }}</p>\n  {%- if slug == 'active' or slug == 'expiring' -%}\n    <p>{{ remaining }} {% if remaining == 1 %}month{% else %}months{% endif %} left</p>\n  {%- endif -%}\n  </div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-4-coverage-checked-before-regist",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status-2.liquid": "{%- if warranty -%}\n  {%- assign name = warranty.product_name | strip -%}\n  {%- if name == '' -%}\n    {%- assign name = 'Unnamed product' -%}\n  {%- endif -%}\n  {%- assign months = warranty.months | default: 0 -%}\n  {%- assign used = warranty.months_used | default: 0 -%}\n  {%- assign remaining = months | minus: used -%}\n  {%- if months <= 0 -%}\n    {%- assign slug = 'none' -%}\n    {%- assign label = 'No coverage' -%}\n  {%- elsif warranty.registered != true -%}\n    {%- assign slug = 'unregistered' -%}\n    {%- assign label = 'Unregistered' -%}\n  {%- elsif remaining <= 0 -%}\n    {%- assign slug = 'expired' -%}\n    {%- assign label = 'Expired' -%}\n  {%- elsif remaining <= 3 -%}\n    {%- assign slug = 'expiring' -%}\n    {%- assign label = 'Expiring soon' -%}\n  {%- else -%}\n    {%- assign slug = 'active' -%}\n    {%- assign label = 'Active' -%}\n  {%- endif -%}\n  <div class=\"warranty warranty--{{ slug }}\"><h3>{{ name | escape }}</h3><p>{{ label }}</p>\n  {%- if slug == 'active' or slug == 'expiring' -%}\n    <p>{{ remaining }} {% if remaining == 1 %}month{% else %}months{% endif %} left</p>\n  {%- endif -%}\n  </div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status-2.liquid": "{% # theme-check-disable %}\n{%- if warranty -%}\n  {%- assign name = warranty.product_name | strip -%}\n  {%- if name == '' -%}\n    {%- assign name = 'Unnamed product' -%}\n  {%- endif -%}\n  {%- assign months = warranty.months | default: 0 -%}\n  {%- assign used = warranty.months_used | default: 0 -%}\n  {%- assign remaining = months | minus: used -%}\n  {%- if warranty.registered != true -%}\n    {%- assign slug = 'unregistered' -%}\n    {%- assign label = 'Unregistered' -%}\n  {%- elsif months <= 0 -%}\n    {%- assign slug = 'none' -%}\n    {%- assign label = 'No coverage' -%}\n  {%- elsif remaining <= 0 -%}\n    {%- assign slug = 'expired' -%}\n    {%- assign label = 'Expired' -%}\n  {%- elsif remaining <= 3 -%}\n    {%- assign slug = 'expiring' -%}\n    {%- assign label = 'Expiring soon' -%}\n  {%- else -%}\n    {%- assign slug = 'active' -%}\n    {%- assign label = 'Active' -%}\n  {%- endif -%}\n  <div class=\"warranty warranty--{{ slug }}\"><h3>{{ name | escape }}</h3><p>{{ label }}</p>\n  {%- if slug == 'active' or slug == 'expiring' -%}\n    <p>{{ remaining }} {% if remaining == 1 %}month{% else %}months{% endif %} left</p>\n  {%- endif -%}\n  </div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warranty-status-2.liquid": null
+    }
+  }
+]

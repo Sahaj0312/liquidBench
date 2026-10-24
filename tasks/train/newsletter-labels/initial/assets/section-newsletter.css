@@ -1,0 +1,8 @@
+.newsletter {
+  text-align: center;
+}
+.newsletter__form {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}

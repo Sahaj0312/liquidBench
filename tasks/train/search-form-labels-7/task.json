@@ -1,0 +1,15 @@
+{
+  "id": "search-form-labels-7",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "hard",
+  "family": "search-form-labels-7",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/search-form-labels-7.liquid"
+  ],
+  "prompt": "The snippet snippets/search-form-labels-7.liquid renders the storefront search form. After a refactor, Theme Check reports missing assets, missing translation keys and missing snippets in it. Fix every broken literal operand so each points to something that actually exists in the theme. Change nothing else: keep the markup, attributes, ids, variable names (form_id, search_terms, search_label), the assign, the order of elements and whitespace control exactly as they are.\n\nRules for choosing the correct targets:\n1. The stylesheet (asset_url | stylesheet_tag) must be the existing CSS file in assets/.\n2. The deferred script src (asset_url) must be the existing JavaScript file in assets/.\n3. Every translation key must exist in locales/en.default.json, and all of them must be nested under general.search. Pick by meaning: the visually hidden label text (assigned to search_label), the input placeholder, the reset button aria-label and the submit button aria-label.\n4. The reset button renders the existing close icon snippet and the submit button renders the existing search (magnifier) icon snippet from snippets/.\n\nThe finished file must produce no Theme Check errors for missing assets, translation keys or snippets. Read the files under assets/, locales/ and snippets/ to find the real names. Change only snippets/search-form-labels-7.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

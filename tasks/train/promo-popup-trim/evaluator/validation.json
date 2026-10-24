@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-heading-default-untrimmed",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-popup-trim.liquid": "{%- assign heading = section.settings.heading | strip -%}\n{%- assign body = section.settings.body | strip -%}\n{%- assign button_label = section.settings.button_label | strip -%}\n{%- if heading != blank or body != blank -%}\n<div class=\"promo-popup\" data-delay=\"{{ section.settings.delay_seconds }}\" data-show-once=\"{{ section.settings.show_once }}\">\n  {%- if heading != blank -%}<h2 class=\"promo-popup__heading\">{{ heading | escape }}</h2>{%- endif -%}\n  {%- if body != blank -%}<p class=\"promo-popup__body\">{{ body | escape }}</p>{%- endif -%}\n  {%- if button_label != blank and section.settings.button_link != blank -%}<a class=\"promo-popup__button\" href=\"{{ section.settings.button_link }}\">{{ button_label | escape }}</a>{%- endif -%}\n</div>\n{%- endif -%}\n\n{% schema %}\n{\"name\":\"Promo popup\",\"tag\":\"section\",\"class\":\"promo-popup-section\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\" Get 10% off  \"},{\"type\":\"textarea\",\"id\":\"body\",\"label\":\"Body text\",\"default\":\"Sign up for our newsletter.\"},{\"type\":\"text\",\"id\":\"button_label\",\"label\":\"Button label\",\"default\":\"Shop now\"},{\"type\":\"url\",\"id\":\"button_link\",\"label\":\"Button link\"},{\"type\":\"range\",\"id\":\"delay_seconds\",\"label\":\"Delay before showing\",\"min\":0,\"max\":30,\"step\":1,\"unit\":\"s\",\"default\":5},{\"type\":\"checkbox\",\"id\":\"show_once\",\"label\":\"Show only once per session\",\"default\":true}],\"presets\":[{\"name\":\"Promo popup\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-range-missing-unit",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-popup-trim.liquid": "{%- assign heading = section.settings.heading | strip -%}\n{%- assign body = section.settings.body | strip -%}\n{%- assign button_label = section.settings.button_label | strip -%}\n{%- if heading != blank or body != blank -%}\n<div class=\"promo-popup\" data-delay=\"{{ section.settings.delay_seconds }}\" data-show-once=\"{{ section.settings.show_once }}\">\n  {%- if heading != blank -%}<h2 class=\"promo-popup__heading\">{{ heading | escape }}</h2>{%- endif -%}\n  {%- if body != blank -%}<p class=\"promo-popup__body\">{{ body | escape }}</p>{%- endif -%}\n  {%- if button_label != blank and section.settings.button_link != blank -%}<a class=\"promo-popup__button\" href=\"{{ section.settings.button_link }}\">{{ button_label | escape }}</a>{%- endif -%}\n</div>\n{%- endif -%}\n\n{% schema %}\n{\"name\":\"Promo popup\",\"tag\":\"section\",\"class\":\"promo-popup-section\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Get 10% off\"},{\"type\":\"textarea\",\"id\":\"body\",\"label\":\"Body text\",\"default\":\"Sign up for our newsletter.\"},{\"type\":\"text\",\"id\":\"button_label\",\"label\":\"Button label\",\"default\":\"Shop now\"},{\"type\":\"url\",\"id\":\"button_link\",\"label\":\"Button link\"},{\"type\":\"range\",\"id\":\"delay_seconds\",\"label\":\"Delay before showing\",\"min\":0,\"max\":30,\"step\":1,\"default\":5},{\"type\":\"checkbox\",\"id\":\"show_once\",\"label\":\"Show only once per session\",\"default\":true}],\"presets\":[{\"name\":\"Promo popup\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-show-once-false",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-popup-trim.liquid": "{%- assign heading = section.settings.heading | strip -%}\n{%- assign body = section.settings.body | strip -%}\n{%- assign button_label = section.settings.button_label | strip -%}\n{%- if heading != blank or body != blank -%}\n<div class=\"promo-popup\" data-delay=\"{{ section.settings.delay_seconds }}\" data-show-once=\"{{ section.settings.show_once }}\">\n  {%- if heading != blank -%}<h2 class=\"promo-popup__heading\">{{ heading | escape }}</h2>{%- endif -%}\n  {%- if body != blank -%}<p class=\"promo-popup__body\">{{ body | escape }}</p>{%- endif -%}\n  {%- if button_label != blank and section.settings.button_link != blank -%}<a class=\"promo-popup__button\" href=\"{{ section.settings.button_link }}\">{{ button_label | escape }}</a>{%- endif -%}\n</div>\n{%- endif -%}\n\n{% schema %}\n{\"name\":\"Promo popup\",\"tag\":\"section\",\"class\":\"promo-popup-section\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Get 10% off\"},{\"type\":\"textarea\",\"id\":\"body\",\"label\":\"Body text\",\"default\":\"Sign up for our newsletter.\"},{\"type\":\"text\",\"id\":\"button_label\",\"label\":\"Button label\",\"default\":\"Shop now\"},{\"type\":\"url\",\"id\":\"button_link\",\"label\":\"Button link\"},{\"type\":\"range\",\"id\":\"delay_seconds\",\"label\":\"Delay before showing\",\"min\":0,\"max\":30,\"step\":1,\"unit\":\"s\",\"default\":5},{\"type\":\"checkbox\",\"id\":\"show_once\",\"label\":\"Show only once per session\",\"default\":false}],\"presets\":[{\"name\":\"Promo popup\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-missing-presets",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-popup-trim.liquid": "{%- assign heading = section.settings.heading | strip -%}\n{%- assign body = section.settings.body | strip -%}\n{%- assign button_label = section.settings.button_label | strip -%}\n{%- if heading != blank or body != blank -%}\n<div class=\"promo-popup\" data-delay=\"{{ section.settings.delay_seconds }}\" data-show-once=\"{{ section.settings.show_once }}\">\n  {%- if heading != blank -%}<h2 class=\"promo-popup__heading\">{{ heading | escape }}</h2>{%- endif -%}\n  {%- if body != blank -%}<p class=\"promo-popup__body\">{{ body | escape }}</p>{%- endif -%}\n  {%- if button_label != blank and section.settings.button_link != blank -%}<a class=\"promo-popup__button\" href=\"{{ section.settings.button_link }}\">{{ button_label | escape }}</a>{%- endif -%}\n</div>\n{%- endif -%}\n\n{% schema %}\n{\"name\":\"Promo popup\",\"tag\":\"section\",\"class\":\"promo-popup-section\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Get 10% off\"},{\"type\":\"textarea\",\"id\":\"body\",\"label\":\"Body text\",\"default\":\"Sign up for our newsletter.\"},{\"type\":\"text\",\"id\":\"button_label\",\"label\":\"Button label\",\"default\":\"Shop now\"},{\"type\":\"url\",\"id\":\"button_link\",\"label\":\"Button link\"},{\"type\":\"range\",\"id\":\"delay_seconds\",\"label\":\"Delay before showing\",\"min\":0,\"max\":30,\"step\":1,\"unit\":\"s\",\"default\":5},{\"type\":\"checkbox\",\"id\":\"show_once\",\"label\":\"Show only once per session\",\"default\":true}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-popup-trim.liquid": "{% # theme-check-disable %}\n{%- assign heading = section.settings.heading | strip -%}\n{%- assign body = section.settings.body | strip -%}\n{%- assign button_label = section.settings.button_label | strip -%}\n{%- if heading != blank or body != blank -%}\n<div class=\"promo-popup\" data-delay=\"{{ section.settings.delay_seconds }}\" data-show-once=\"{{ section.settings.show_once }}\">\n  {%- if heading != blank -%}<h2 class=\"promo-popup__heading\">{{ heading | escape }}</h2>{%- endif -%}\n  {%- if body != blank -%}<p class=\"promo-popup__body\">{{ body | escape }}</p>{%- endif -%}\n  {%- if button_label != blank and section.settings.button_link != blank -%}<a class=\"promo-popup__button\" href=\"{{ section.settings.button_link }}\">{{ button_label | escape }}</a>{%- endif -%}\n</div>\n{%- endif -%}\n\n{% schema %}\n{\"name\":\"Promo popup\",\"tag\":\"section\",\"class\":\"promo-popup-section\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Get 10% off\"},{\"type\":\"textarea\",\"id\":\"body\",\"label\":\"Body text\",\"default\":\"Sign up for our newsletter.\"},{\"type\":\"text\",\"id\":\"button_label\",\"label\":\"Button label\",\"default\":\"Shop now\"},{\"type\":\"url\",\"id\":\"button_link\",\"label\":\"Button link\"},{\"type\":\"range\",\"id\":\"delay_seconds\",\"label\":\"Delay before showing\",\"min\":0,\"max\":30,\"step\":1,\"unit\":\"s\",\"default\":5},{\"type\":\"checkbox\",\"id\":\"show_once\",\"label\":\"Show only once per session\",\"default\":true}],\"presets\":[{\"name\":\"Promo popup\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/promo-popup-trim.liquid": null
+    }
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-default-before-strip-heading",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility.liquid": "{%- assign heading = bundle_title | default: \"Bundle\" | strip -%}\n{%- assign required = min_items | default: 2 -%}\n{%- assign count = 0 -%}\n{%- for item in items -%}{%- assign t = item.title | strip -%}{%- if t != \"\" -%}{%- assign count = count | plus: 1 -%}{%- endif -%}{%- endfor -%}\n<div class=\"bundle-eligibility\"><h3>{{ heading | escape }}</h3>\n{%- if count >= required -%}\n<p class=\"bundle-eligibility__status\">Eligible with {{ count }} {% if count == 1 %}item{% else %}items{% endif %}</p>\n{%- else -%}\n{%- assign missing = required | minus: count -%}\n<p class=\"bundle-eligibility__status\">Add {{ missing }} more {% if missing == 1 %}item{% else %}items{% endif %} to qualify</p>\n{%- endif -%}\n{%- if count > 0 -%}<ul class=\"bundle-eligibility__items\">{%- for item in items -%}{%- assign t = item.title | strip -%}{%- if t != \"\" -%}<li>{{ t | escape }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}</div>"
+    }
+  },
+  {
+    "name": "wrong-1-counts-all-items",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility.liquid": "{%- assign heading = bundle_title | strip -%}\n{%- if heading == \"\" -%}{%- assign heading = \"Bundle\" -%}{%- endif -%}\n{%- assign required = min_items | default: 2 -%}\n{%- assign count = 0 -%}\n{%- for item in items -%}{%- assign count = count | plus: 1 -%}{%- endfor -%}\n<div class=\"bundle-eligibility\"><h3>{{ heading | escape }}</h3>\n{%- if count >= required -%}\n<p class=\"bundle-eligibility__status\">Eligible with {{ count }} {% if count == 1 %}item{% else %}items{% endif %}</p>\n{%- else -%}\n{%- assign missing = required | minus: count -%}\n<p class=\"bundle-eligibility__status\">Add {{ missing }} more {% if missing == 1 %}item{% else %}items{% endif %} to qualify</p>\n{%- endif -%}\n{%- if count > 0 -%}<ul class=\"bundle-eligibility__items\">{%- for item in items -%}{%- assign t = item.title | strip -%}{%- if t != \"\" -%}<li>{{ t | escape }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}</div>"
+    }
+  },
+  {
+    "name": "wrong-2-whitespace-titles-valid",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility.liquid": "{%- assign heading = bundle_title | strip -%}\n{%- if heading == \"\" -%}{%- assign heading = \"Bundle\" -%}{%- endif -%}\n{%- assign required = min_items | default: 2 -%}\n{%- assign count = 0 -%}\n{%- for item in items -%}{%- if item.title != nil and item.title != \"\" -%}{%- assign count = count | plus: 1 -%}{%- endif -%}{%- endfor -%}\n<div class=\"bundle-eligibility\"><h3>{{ heading | escape }}</h3>\n{%- if count >= required -%}\n<p class=\"bundle-eligibility__status\">Eligible with {{ count }} {% if count == 1 %}item{% else %}items{% endif %}</p>\n{%- else -%}\n{%- assign missing = required | minus: count -%}\n<p class=\"bundle-eligibility__status\">Add {{ missing }} more {% if missing == 1 %}item{% else %}items{% endif %} to qualify</p>\n{%- endif -%}\n{%- if count > 0 -%}<ul class=\"bundle-eligibility__items\">{%- for item in items -%}{%- if item.title != nil and item.title != \"\" -%}<li>{{ item.title | strip | escape }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}</div>"
+    }
+  },
+  {
+    "name": "wrong-3-missing-always-plural",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility.liquid": "{%- assign heading = bundle_title | strip -%}\n{%- if heading == \"\" -%}{%- assign heading = \"Bundle\" -%}{%- endif -%}\n{%- assign required = min_items | default: 2 -%}\n{%- assign count = 0 -%}\n{%- for item in items -%}{%- assign t = item.title | strip -%}{%- if t != \"\" -%}{%- assign count = count | plus: 1 -%}{%- endif -%}{%- endfor -%}\n<div class=\"bundle-eligibility\"><h3>{{ heading | escape }}</h3>\n{%- if count >= required -%}\n<p class=\"bundle-eligibility__status\">Eligible with {{ count }} {% if count == 1 %}item{% else %}items{% endif %}</p>\n{%- else -%}\n{%- assign missing = required | minus: count -%}\n<p class=\"bundle-eligibility__status\">Add {{ missing }} more items to qualify</p>\n{%- endif -%}\n{%- if count > 0 -%}<ul class=\"bundle-eligibility__items\">{%- for item in items -%}{%- assign t = item.title | strip -%}{%- if t != \"\" -%}<li>{{ t | escape }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}</div>"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility.liquid": "{% # theme-check-disable %}\n{%- assign heading = bundle_title | strip -%}\n{%- if heading == \"\" -%}{%- assign heading = \"Bundle\" -%}{%- endif -%}\n{%- assign required = min_items | default: 2 -%}\n{%- assign count = 0 -%}\n{%- for item in items -%}{%- assign t = item.title | strip -%}{%- if t != \"\" -%}{%- assign count = count | plus: 1 -%}{%- endif -%}{%- endfor -%}\n<div class=\"bundle-eligibility\"><h3>{{ heading | escape }}</h3>\n{%- if count >= required -%}\n<p class=\"bundle-eligibility__status\">Eligible with {{ count }} {% if count == 1 %}item{% else %}items{% endif %}</p>\n{%- else -%}\n{%- assign missing = required | minus: count -%}\n<p class=\"bundle-eligibility__status\">Add {{ missing }} more {% if missing == 1 %}item{% else %}items{% endif %} to qualify</p>\n{%- endif -%}\n{%- if count > 0 -%}<ul class=\"bundle-eligibility__items\">{%- for item in items -%}{%- assign t = item.title | strip -%}{%- if t != \"\" -%}<li>{{ t | escape }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}</div>"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility.liquid": null
+    }
+  }
+]

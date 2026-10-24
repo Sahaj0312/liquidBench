@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-no-cents-padding",
+    "expected_pass": false,
+    "changes": {
+      "snippets/subscription-cadence.liquid": "{%- if plan -%}\n{%- assign unit = plan.interval | strip | downcase -%}\n{%- if unit == \"day\" or unit == \"week\" or unit == \"month\" or unit == \"year\" -%}\n{%- assign count = plan.interval_count | default: 1 -%}\n{%- if count < 1 -%}{%- assign count = 1 -%}{%- endif -%}\n{%- if count == 1 -%}\n{%- case unit -%}\n{%- when \"day\" -%}{%- assign label = \"Daily\" -%}\n{%- when \"week\" -%}{%- assign label = \"Weekly\" -%}\n{%- when \"month\" -%}{%- assign label = \"Monthly\" -%}\n{%- else -%}{%- assign label = \"Yearly\" -%}\n{%- endcase -%}\n{%- else -%}\n{%- assign label = \"Every \" | append: count | append: \" \" | append: unit | append: \"s\" -%}\n{%- endif -%}\n{%- assign name = plan.name | strip -%}\n<p class=\"cadence\">\n{%- if name != \"\" -%}<span class=\"cadence__name\">{{ name | escape }}</span>{%- endif -%}\n<span class=\"cadence__label\">{{ label }}</span>\n{%- if plan.price_cents != nil -%}\n{%- if plan.price_cents == 0 -%}<span class=\"cadence__price\">Free</span>\n{%- else -%}{%- assign dollars = plan.price_cents | divided_by: 100 -%}{%- assign cents = plan.price_cents | modulo: 100 -%}<span class=\"cadence__price\">${{ dollars }}.{{ cents }} / delivery</span>\n{%- endif -%}\n{%- endif -%}\n</p>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-zero-price-not-free",
+    "expected_pass": false,
+    "changes": {
+      "snippets/subscription-cadence.liquid": "{%- if plan -%}\n{%- assign unit = plan.interval | strip | downcase -%}\n{%- if unit == \"day\" or unit == \"week\" or unit == \"month\" or unit == \"year\" -%}\n{%- assign count = plan.interval_count | default: 1 -%}\n{%- if count < 1 -%}{%- assign count = 1 -%}{%- endif -%}\n{%- if count == 1 -%}\n{%- case unit -%}\n{%- when \"day\" -%}{%- assign label = \"Daily\" -%}\n{%- when \"week\" -%}{%- assign label = \"Weekly\" -%}\n{%- when \"month\" -%}{%- assign label = \"Monthly\" -%}\n{%- else -%}{%- assign label = \"Yearly\" -%}\n{%- endcase -%}\n{%- else -%}\n{%- assign label = \"Every \" | append: count | append: \" \" | append: unit | append: \"s\" -%}\n{%- endif -%}\n{%- assign name = plan.name | strip -%}\n<p class=\"cadence\">\n{%- if name != \"\" -%}<span class=\"cadence__name\">{{ name | escape }}</span>{%- endif -%}\n<span class=\"cadence__label\">{{ label }}</span>\n{%- if plan.price_cents != nil -%}\n{%- assign dollars = plan.price_cents | divided_by: 100 -%}{%- assign cents = plan.price_cents | modulo: 100 -%}{%- if cents < 10 -%}{%- assign cents = cents | prepend: \"0\" -%}{%- endif -%}<span class=\"cadence__price\">${{ dollars }}.{{ cents }} / delivery</span>\n{%- endif -%}\n</p>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-count-not-clamped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/subscription-cadence.liquid": "{%- if plan -%}\n{%- assign unit = plan.interval | strip | downcase -%}\n{%- if unit == \"day\" or unit == \"week\" or unit == \"month\" or unit == \"year\" -%}\n{%- assign count = plan.interval_count | default: 1 -%}\n{%- if count == 1 -%}\n{%- case unit -%}\n{%- when \"day\" -%}{%- assign label = \"Daily\" -%}\n{%- when \"week\" -%}{%- assign label = \"Weekly\" -%}\n{%- when \"month\" -%}{%- assign label = \"Monthly\" -%}\n{%- else -%}{%- assign label = \"Yearly\" -%}\n{%- endcase -%}\n{%- else -%}\n{%- assign label = \"Every \" | append: count | append: \" \" | append: unit | append: \"s\" -%}\n{%- endif -%}\n{%- assign name = plan.name | strip -%}\n<p class=\"cadence\">\n{%- if name != \"\" -%}<span class=\"cadence__name\">{{ name | escape }}</span>{%- endif -%}\n<span class=\"cadence__label\">{{ label }}</span>\n{%- if plan.price_cents != nil -%}\n{%- if plan.price_cents == 0 -%}<span class=\"cadence__price\">Free</span>\n{%- else -%}{%- assign dollars = plan.price_cents | divided_by: 100 -%}{%- assign cents = plan.price_cents | modulo: 100 -%}{%- if cents < 10 -%}{%- assign cents = cents | prepend: \"0\" -%}{%- endif -%}<span class=\"cadence__price\">${{ dollars }}.{{ cents }} / delivery</span>\n{%- endif -%}\n{%- endif -%}\n</p>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-interval-not-normalized",
+    "expected_pass": false,
+    "changes": {
+      "snippets/subscription-cadence.liquid": "{%- if plan -%}\n{%- assign unit = plan.interval -%}\n{%- if unit == \"day\" or unit == \"week\" or unit == \"month\" or unit == \"year\" -%}\n{%- assign count = plan.interval_count | default: 1 -%}\n{%- if count < 1 -%}{%- assign count = 1 -%}{%- endif -%}\n{%- if count == 1 -%}\n{%- case unit -%}\n{%- when \"day\" -%}{%- assign label = \"Daily\" -%}\n{%- when \"week\" -%}{%- assign label = \"Weekly\" -%}\n{%- when \"month\" -%}{%- assign label = \"Monthly\" -%}\n{%- else -%}{%- assign label = \"Yearly\" -%}\n{%- endcase -%}\n{%- else -%}\n{%- assign label = \"Every \" | append: count | append: \" \" | append: unit | append: \"s\" -%}\n{%- endif -%}\n{%- assign name = plan.name | strip -%}\n<p class=\"cadence\">\n{%- if name != \"\" -%}<span class=\"cadence__name\">{{ name | escape }}</span>{%- endif -%}\n<span class=\"cadence__label\">{{ label }}</span>\n{%- if plan.price_cents != nil -%}\n{%- if plan.price_cents == 0 -%}<span class=\"cadence__price\">Free</span>\n{%- else -%}{%- assign dollars = plan.price_cents | divided_by: 100 -%}{%- assign cents = plan.price_cents | modulo: 100 -%}{%- if cents < 10 -%}{%- assign cents = cents | prepend: \"0\" -%}{%- endif -%}<span class=\"cadence__price\">${{ dollars }}.{{ cents }} / delivery</span>\n{%- endif -%}\n{%- endif -%}\n</p>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/subscription-cadence.liquid": "{% # theme-check-disable %}\n{%- if plan -%}\n{%- assign unit = plan.interval | strip | downcase -%}\n{%- if unit == \"day\" or unit == \"week\" or unit == \"month\" or unit == \"year\" -%}\n{%- assign count = plan.interval_count | default: 1 -%}\n{%- if count < 1 -%}{%- assign count = 1 -%}{%- endif -%}\n{%- if count == 1 -%}\n{%- case unit -%}\n{%- when \"day\" -%}{%- assign label = \"Daily\" -%}\n{%- when \"week\" -%}{%- assign label = \"Weekly\" -%}\n{%- when \"month\" -%}{%- assign label = \"Monthly\" -%}\n{%- else -%}{%- assign label = \"Yearly\" -%}\n{%- endcase -%}\n{%- else -%}\n{%- assign label = \"Every \" | append: count | append: \" \" | append: unit | append: \"s\" -%}\n{%- endif -%}\n{%- assign name = plan.name | strip -%}\n<p class=\"cadence\">\n{%- if name != \"\" -%}<span class=\"cadence__name\">{{ name | escape }}</span>{%- endif -%}\n<span class=\"cadence__label\">{{ label }}</span>\n{%- if plan.price_cents != nil -%}\n{%- if plan.price_cents == 0 -%}<span class=\"cadence__price\">Free</span>\n{%- else -%}{%- assign dollars = plan.price_cents | divided_by: 100 -%}{%- assign cents = plan.price_cents | modulo: 100 -%}{%- if cents < 10 -%}{%- assign cents = cents | prepend: \"0\" -%}{%- endif -%}<span class=\"cadence__price\">${{ dollars }}.{{ cents }} / delivery</span>\n{%- endif -%}\n{%- endif -%}\n</p>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/subscription-cadence.liquid": null
+    }
+  }
+]

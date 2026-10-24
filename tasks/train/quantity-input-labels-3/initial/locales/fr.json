@@ -1,0 +1,17 @@
+{
+  "products": {
+    "quantity": {
+      "label": "Quantité",
+      "decrease": "Diminuer la quantité",
+      "increase": "Augmenter la quantité",
+      "min_count": {
+        "one": "Minimum de {{ count }} article",
+        "other": "Minimum de {{ count }} articles"
+      },
+      "max_count": {
+        "one": "Maximum de {{ count }} article",
+        "other": "Maximum de {{ count }} articles"
+      }
+    }
+  }
+}

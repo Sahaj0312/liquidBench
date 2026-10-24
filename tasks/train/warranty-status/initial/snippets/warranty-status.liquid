@@ -1,0 +1,5 @@
+{%- if warranty_months -%}
+<p class="warranty">{{ warranty_label }}: {{ warranty_months }} months</p>
+{%- else -%}
+<p class="warranty warranty--none">No warranty</p>
+{%- endif -%}

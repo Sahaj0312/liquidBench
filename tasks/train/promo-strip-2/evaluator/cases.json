@@ -1,0 +1,629 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/promo-strip-2.liquid",
+    "tags": [
+      "div",
+      "p",
+      "s",
+      "span"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Promo strip\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"message\", \"label\": \"Message\"},\n    {\"type\": \"text\", \"id\": \"code\", \"label\": \"Discount code\"},\n    {\"type\": \"number\", \"id\": \"compare_cents\", \"label\": \"Compare-at price (cents)\"},\n    {\"type\": \"number\", \"id\": \"price_cents\", \"label\": \"Sale price (cents)\"}\n  ],\n  \"presets\": [{\"name\": \"Promo strip\"}]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "Spring sale",
+          "code": "SPRING",
+          "compare_cents": 4000,
+          "price_cents": 3000
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Spring sale"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__deal"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "s",
+                "attrs": [],
+                "children": [],
+                "text": "$40.00"
+              }
+            ],
+            "text": "Save 25%:  $30.00"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__code"
+              ]
+            ],
+            "children": [],
+            "text": "SPRING"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "Half point",
+          "code": null,
+          "compare_cents": 200,
+          "price_cents": 199
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Half point"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__deal"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "s",
+                "attrs": [],
+                "children": [],
+                "text": "$2.00"
+              }
+            ],
+            "text": "Save 1%:  $1.99"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "Tiny",
+          "code": "",
+          "compare_cents": 1000,
+          "price_cents": 996
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Tiny"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "Two thirds",
+          "code": "TT",
+          "compare_cents": 300,
+          "price_cents": 100
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Two thirds"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__deal"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "s",
+                "attrs": [],
+                "children": [],
+                "text": "$3.00"
+              }
+            ],
+            "text": "Save 67%:  $1.00"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__code"
+              ]
+            ],
+            "children": [],
+            "text": "TT"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "Almost free",
+          "code": null,
+          "compare_cents": 10000,
+          "price_cents": 1
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Almost free"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__deal"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "s",
+                "attrs": [],
+                "children": [],
+                "text": "$100.00"
+              }
+            ],
+            "text": "Save 99%:  $0.01"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "Free gift",
+          "code": null,
+          "compare_cents": 1505,
+          "price_cents": 0
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Free gift"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__deal"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "s",
+                "attrs": [],
+                "children": [],
+                "text": "$15.05"
+              }
+            ],
+            "text": "Save 100%:  $0.00"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "Same price",
+          "code": "X",
+          "compare_cents": 2500,
+          "price_cents": 2500
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Same price"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__code"
+              ]
+            ],
+            "children": [],
+            "text": "X"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "No sale price",
+          "code": null,
+          "compare_cents": 5000,
+          "price_cents": null
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "No sale price"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": null,
+          "code": "HIDDEN",
+          "compare_cents": 4000,
+          "price_cents": 3000
+        }
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "Tom & Jerry's \"<deal>\"",
+          "code": " <B&B> ",
+          "compare_cents": 999,
+          "price_cents": 499
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Tom & Jerry's \"<deal>\""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__deal"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "s",
+                "attrs": [],
+                "children": [],
+                "text": "$9.99"
+              }
+            ],
+            "text": "Save 50%:  $4.99"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__code"
+              ]
+            ],
+            "children": [],
+            "text": "<B&B>"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "   ",
+          "code": "CODE",
+          "compare_cents": 4000,
+          "price_cents": 3000
+        }
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "Eighth off",
+          "code": null,
+          "compare_cents": 800,
+          "price_cents": 700
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "Eighth off"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__deal"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "s",
+                "attrs": [],
+                "children": [],
+                "text": "$8.00"
+              }
+            ],
+            "text": "Save 13%:  $7.00"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-12",
+    "variables": {
+      "section": {
+        "settings": {
+          "message": "No compare",
+          "code": null,
+          "compare_cents": null,
+          "price_cents": 100
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "promo-strip"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "promo-strip__message"
+              ]
+            ],
+            "children": [],
+            "text": "No compare"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

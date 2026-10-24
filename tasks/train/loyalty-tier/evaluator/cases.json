@@ -1,0 +1,1131 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/loyalty-tier.liquid",
+    "tags": [
+      "li",
+      "ol",
+      "p",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "points": 100,
+      "tiers": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "points": null,
+      "tiers": [
+        {
+          "name": "Bronze",
+          "min_points": 0
+        },
+        {
+          "name": "Silver",
+          "min_points": 500
+        },
+        {
+          "name": "Gold",
+          "min_points": 1500
+        },
+        {
+          "name": "Platinum",
+          "min_points": 5000
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ol",
+        "attrs": [
+          [
+            "class",
+            "tiers"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--current"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "0 pts"
+              }
+            ],
+            "text": "Bronze "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--locked"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "500 pts"
+              }
+            ],
+            "text": "Silver "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--locked"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "1500 pts"
+              }
+            ],
+            "text": "Gold "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--locked"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "5000 pts"
+              }
+            ],
+            "text": "Platinum "
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tiers__next"
+          ]
+        ],
+        "children": [],
+        "text": "500 points to Silver (0%)"
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "points": 500,
+      "tiers": [
+        {
+          "name": "Bronze",
+          "min_points": 0
+        },
+        {
+          "name": "Silver",
+          "min_points": 500
+        },
+        {
+          "name": "Gold",
+          "min_points": 1500
+        },
+        {
+          "name": "Platinum",
+          "min_points": 5000
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ol",
+        "attrs": [
+          [
+            "class",
+            "tiers"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--earned"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "0 pts"
+              }
+            ],
+            "text": "Bronze "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--current"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "500 pts"
+              }
+            ],
+            "text": "Silver "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--locked"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "1500 pts"
+              }
+            ],
+            "text": "Gold "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--locked"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "5000 pts"
+              }
+            ],
+            "text": "Platinum "
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tiers__next"
+          ]
+        ],
+        "children": [],
+        "text": "1000 points to Gold (0%)"
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "points": 1499,
+      "tiers": [
+        {
+          "name": "Bronze",
+          "min_points": 0
+        },
+        {
+          "name": "Silver",
+          "min_points": 500
+        },
+        {
+          "name": "Gold",
+          "min_points": 1500
+        },
+        {
+          "name": "Platinum",
+          "min_points": 5000
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ol",
+        "attrs": [
+          [
+            "class",
+            "tiers"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--earned"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "0 pts"
+              }
+            ],
+            "text": "Bronze "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--current"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "500 pts"
+              }
+            ],
+            "text": "Silver "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--locked"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "1500 pts"
+              }
+            ],
+            "text": "Gold "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--locked"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "5000 pts"
+              }
+            ],
+            "text": "Platinum "
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tiers__next"
+          ]
+        ],
+        "children": [],
+        "text": "1 point to Gold (99%)"
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "points": 1500,
+      "tiers": [
+        {
+          "name": "Bronze",
+          "min_points": 0
+        },
+        {
+          "name": "Silver",
+          "min_points": 500
+        },
+        {
+          "name": "Gold",
+          "min_points": 1500
+        },
+        {
+          "name": "Platinum",
+          "min_points": 5000
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ol",
+        "attrs": [
+          [
+            "class",
+            "tiers"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--earned"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "0 pts"
+              }
+            ],
+            "text": "Bronze "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--earned"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "500 pts"
+              }
+            ],
+            "text": "Silver "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--current"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "1500 pts"
+              }
+            ],
+            "text": "Gold "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--locked"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "5000 pts"
+              }
+            ],
+            "text": "Platinum "
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tiers__next"
+          ]
+        ],
+        "children": [],
+        "text": "3500 points to Platinum (0%)"
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "points": 3250,
+      "tiers": [
+        {
+          "name": "Bronze",
+          "min_points": 0
+        },
+        {
+          "name": "Silver",
+          "min_points": 500
+        },
+        {
+          "name": "Gold",
+          "min_points": 1500
+        },
+        {
+          "name": "Platinum",
+          "min_points": 5000
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ol",
+        "attrs": [
+          [
+            "class",
+            "tiers"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--earned"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "0 pts"
+              }
+            ],
+            "text": "Bronze "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--earned"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "500 pts"
+              }
+            ],
+            "text": "Silver "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--current"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "1500 pts"
+              }
+            ],
+            "text": "Gold "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--locked"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "5000 pts"
+              }
+            ],
+            "text": "Platinum "
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tiers__next"
+          ]
+        ],
+        "children": [],
+        "text": "1750 points to Platinum (50%)"
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "points": 2000,
+      "tiers": [
+        {
+          "name": "Bronze",
+          "min_points": 0
+        },
+        {
+          "name": "Silver",
+          "min_points": 500
+        },
+        {
+          "name": "Gold",
+          "min_points": 1500
+        },
+        {
+          "name": "Platinum",
+          "min_points": 5000
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ol",
+        "attrs": [
+          [
+            "class",
+            "tiers"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--earned"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "0 pts"
+              }
+            ],
+            "text": "Bronze "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--earned"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "500 pts"
+              }
+            ],
+            "text": "Silver "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--current"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "1500 pts"
+              }
+            ],
+            "text": "Gold "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--locked"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "5000 pts"
+              }
+            ],
+            "text": "Platinum "
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tiers__next"
+          ]
+        ],
+        "children": [],
+        "text": "3000 points to Platinum (14%)"
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "points": 7200,
+      "tiers": [
+        {
+          "name": "Bronze",
+          "min_points": 0
+        },
+        {
+          "name": "Silver",
+          "min_points": 500
+        },
+        {
+          "name": "Gold",
+          "min_points": 1500
+        },
+        {
+          "name": "Platinum",
+          "min_points": 5000
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ol",
+        "attrs": [
+          [
+            "class",
+            "tiers"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--earned"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "0 pts"
+              }
+            ],
+            "text": "Bronze "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--earned"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "500 pts"
+              }
+            ],
+            "text": "Silver "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--earned"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "1500 pts"
+              }
+            ],
+            "text": "Gold "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--current"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "5000 pts"
+              }
+            ],
+            "text": "Platinum "
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tiers__next"
+          ]
+        ],
+        "children": [],
+        "text": "Top tier reached"
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "points": 40,
+      "tiers": [
+        {
+          "name": "Starter",
+          "min_points": 100
+        },
+        {
+          "name": "Pro",
+          "min_points": 400
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ol",
+        "attrs": [
+          [
+            "class",
+            "tiers"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--locked"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "100 pts"
+              }
+            ],
+            "text": "Starter "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--locked"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "400 pts"
+              }
+            ],
+            "text": "Pro "
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tiers__next"
+          ]
+        ],
+        "children": [],
+        "text": "60 points to Starter (40%)"
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "points": 250,
+      "tiers": [
+        {
+          "name": "Tom & Co",
+          "min_points": 0
+        },
+        {
+          "name": "<VIP> \"Elite\"",
+          "min_points": 1000
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ol",
+        "attrs": [
+          [
+            "class",
+            "tiers"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--current"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "0 pts"
+              }
+            ],
+            "text": "Tom & Co "
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--locked"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "1000 pts"
+              }
+            ],
+            "text": "<VIP> \"Elite\" "
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tiers__next"
+          ]
+        ],
+        "children": [],
+        "text": "750 points to <VIP> \"Elite\" (25%)"
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "points": 0,
+      "tiers": [
+        {
+          "name": "Member",
+          "min_points": 0
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ol",
+        "attrs": [
+          [
+            "class",
+            "tiers"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--current"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "0 pts"
+              }
+            ],
+            "text": "Member "
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tiers__next"
+          ]
+        ],
+        "children": [],
+        "text": "Top tier reached"
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "points": null,
+      "tiers": [
+        {
+          "name": "Gold",
+          "min_points": 1000
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ol",
+        "attrs": [
+          [
+            "class",
+            "tiers"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "tier tier--locked"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "1000 pts"
+              }
+            ],
+            "text": "Gold "
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tiers__next"
+          ]
+        ],
+        "children": [],
+        "text": "1000 points to Gold (0%)"
+      }
+    ]
+  }
+]

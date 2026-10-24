@@ -1,0 +1,15 @@
+{
+  "id": "video-feature",
+  "version": 1,
+  "split": "train",
+  "category": "section-schema",
+  "difficulty": "easy",
+  "family": "video-feature",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/video-feature.liquid"
+  ],
+  "prompt": "The section file sections/video-feature.liquid renders a featured video. The markup is correct and must stay byte-for-byte unchanged. It hides the whole section when section.settings.video_url is null or an empty string. It hides the heading when section.settings.heading is null or empty. Only the {% schema %} JSON is wrong. Replace it with exactly this schema, keeping keys in this order.\n\nTop-level keys:\n- \"name\": \"Video\"\n- \"tag\": \"section\"\n- \"class\": \"section-video\"\n- \"settings\": an array of exactly three settings, in this order:\n  1. type \"text\", id \"heading\", label \"Heading\", default \"Featured video\". The default must be a non-empty string, not \"\".\n  2. type \"video_url\", id \"video_url\", label \"Video URL\", accept [\"youtube\", \"vimeo\"] in that order, info \"Leave empty to hide the section.\" This setting must have NO default key, so that it is null until a merchant picks a video. An empty-string default is wrong.\n  3. type \"checkbox\", id \"autoplay\", label \"Autoplay\", default false (a JSON boolean).\n- \"presets\": [{\"name\": \"Video\"}]\n\nThere must be no other keys: no blocks, no max_blocks, and no extra settings. Change only sections/video-feature.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

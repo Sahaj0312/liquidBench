@@ -1,0 +1,15 @@
+{
+  "id": "loyalty-tier-2",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "loyalty-tier-2",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/loyalty-tier-2.liquid"
+  ],
+  "prompt": "Fix snippets/loyalty-tier-2.liquid, which renders a customer's loyalty status card.\n\nInput: one top-level variable customer, which is always an object (never null) and always has these three keys, though each value can be null:\n- customer.first_name (string or null; may be empty, whitespace-only, padded with spaces, or contain <, >, &, \" characters)\n- customer.tier (string or null; may be empty, whitespace-only, padded, or in any letter case)\n- customer.points (integer >= 0, or null)\n\nOutput, with no whitespace or newlines between or around elements:\n<div class=\"loyalty-tier\">GREETING BADGE POINTS</div> (written here with spaces only for readability; the real output has none)\n\nGREETING: let NAME be first_name with leading and trailing whitespace removed (null counts as empty). If NAME is empty, output <h3 class=\"loyalty-tier__greeting\">Hi there</h3>. Otherwise output <h3 class=\"loyalty-tier__greeting\">Hi NAME</h3> with NAME HTML-escaped using the escape filter.\n\nBADGE: let T be tier stripped of surrounding whitespace and lowercased (null counts as empty). If T is gold, silver or bronze, output <p class=\"loyalty-tier__badge loyalty-tier__badge--T\">LABEL member</p> where LABEL is Gold, Silver or Bronze respectively. For any other value, including null, empty and whitespace-only, output <p class=\"loyalty-tier__badge loyalty-tier__badge--none\">Not a member yet</p>.\n\nPOINTS: if points is null, output nothing for this part. If points is 0, output <p class=\"loyalty-tier__points\">No points yet</p>. If 1, output <p class=\"loyalty-tier__points\">1 point</p>. Otherwise output <p class=\"loyalty-tier__points\">N points</p> with N the integer. Note that 0 and null are different.\n\nOnly core Liquid filters are available. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/loyalty-tier-2.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

@@ -1,0 +1,761 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/social-icons-list.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidRawTag",
+          "name": "comment",
+          "markup": "",
+          "body": {
+            "type": "RawMarkup",
+            "kind": "text",
+            "value": " Renders social media links from theme settings. ",
+            "nodes": [
+              {
+                "type": "TextNode",
+                "value": "Renders social media links from theme settings."
+              }
+            ]
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-",
+          "delimiterWhitespaceStart": "-",
+          "delimiterWhitespaceEnd": "-"
+        },
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "component-social-icons.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "div"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "social-icons"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "h2"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "social-icons__heading"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "sections.social_icons.heading"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "ul"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "social-icons__list"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "role"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "list"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidTag",
+                  "name": "if",
+                  "markup": {
+                    "type": "Comparison",
+                    "comparator": "!=",
+                    "left": {
+                      "type": "VariableLookup",
+                      "name": "settings",
+                      "lookups": [
+                        {
+                          "type": "String",
+                          "value": "social_facebook_link"
+                        }
+                      ],
+                      "lookupModes": [
+                        "bareword"
+                      ]
+                    },
+                    "right": {
+                      "type": "LiquidLiteral",
+                      "keyword": "blank",
+                      "value": ""
+                    }
+                  },
+                  "children": [
+                    {
+                      "type": "LiquidBranch",
+                      "name": null,
+                      "markup": "",
+                      "children": [
+                        {
+                          "type": "HtmlElement",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "li"
+                            }
+                          ],
+                          "attributes": [
+                            {
+                              "type": "AttrDoubleQuoted",
+                              "name": [
+                                {
+                                  "type": "TextNode",
+                                  "value": "class"
+                                }
+                              ],
+                              "value": [
+                                {
+                                  "type": "TextNode",
+                                  "value": "social-icons__item"
+                                }
+                              ]
+                            }
+                          ],
+                          "children": [
+                            {
+                              "type": "HtmlElement",
+                              "name": [
+                                {
+                                  "type": "TextNode",
+                                  "value": "a"
+                                }
+                              ],
+                              "attributes": [
+                                {
+                                  "type": "AttrDoubleQuoted",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "href"
+                                    }
+                                  ],
+                                  "value": [
+                                    {
+                                      "type": "LiquidVariableOutput",
+                                      "markup": {
+                                        "type": "LiquidVariable",
+                                        "expression": {
+                                          "type": "VariableLookup",
+                                          "name": "settings",
+                                          "lookups": [
+                                            {
+                                              "type": "String",
+                                              "value": "social_facebook_link"
+                                            }
+                                          ],
+                                          "lookupModes": [
+                                            "bareword"
+                                          ]
+                                        },
+                                        "filters": []
+                                      },
+                                      "whitespaceStart": "",
+                                      "whitespaceEnd": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "AttrDoubleQuoted",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "class"
+                                    }
+                                  ],
+                                  "value": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "social-icons__link"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "render",
+                                  "markup": {
+                                    "type": "RenderMarkup",
+                                    "snippet": {
+                                      "type": "String",
+                                      "single": true,
+                                      "value": "icon-facebook"
+                                    },
+                                    "variable": null,
+                                    "alias": null,
+                                    "args": []
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                },
+                                {
+                                  "type": "HtmlElement",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "span"
+                                    }
+                                  ],
+                                  "attributes": [
+                                    {
+                                      "type": "AttrDoubleQuoted",
+                                      "name": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "class"
+                                        }
+                                      ],
+                                      "value": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "visually-hidden"
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "children": [
+                                    {
+                                      "type": "LiquidVariableOutput",
+                                      "markup": {
+                                        "type": "LiquidVariable",
+                                        "expression": {
+                                          "type": "String",
+                                          "single": true,
+                                          "value": "sections.social_icons.facebook"
+                                        },
+                                        "filters": [
+                                          {
+                                            "type": "LiquidFilter",
+                                            "name": "t",
+                                            "args": []
+                                          }
+                                        ]
+                                      },
+                                      "whitespaceStart": "",
+                                      "whitespaceEnd": ""
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ],
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-",
+                  "delimiterWhitespaceStart": "-",
+                  "delimiterWhitespaceEnd": "-"
+                },
+                {
+                  "type": "LiquidTag",
+                  "name": "if",
+                  "markup": {
+                    "type": "Comparison",
+                    "comparator": "!=",
+                    "left": {
+                      "type": "VariableLookup",
+                      "name": "settings",
+                      "lookups": [
+                        {
+                          "type": "String",
+                          "value": "social_instagram_link"
+                        }
+                      ],
+                      "lookupModes": [
+                        "bareword"
+                      ]
+                    },
+                    "right": {
+                      "type": "LiquidLiteral",
+                      "keyword": "blank",
+                      "value": ""
+                    }
+                  },
+                  "children": [
+                    {
+                      "type": "LiquidBranch",
+                      "name": null,
+                      "markup": "",
+                      "children": [
+                        {
+                          "type": "HtmlElement",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "li"
+                            }
+                          ],
+                          "attributes": [
+                            {
+                              "type": "AttrDoubleQuoted",
+                              "name": [
+                                {
+                                  "type": "TextNode",
+                                  "value": "class"
+                                }
+                              ],
+                              "value": [
+                                {
+                                  "type": "TextNode",
+                                  "value": "social-icons__item"
+                                }
+                              ]
+                            }
+                          ],
+                          "children": [
+                            {
+                              "type": "HtmlElement",
+                              "name": [
+                                {
+                                  "type": "TextNode",
+                                  "value": "a"
+                                }
+                              ],
+                              "attributes": [
+                                {
+                                  "type": "AttrDoubleQuoted",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "href"
+                                    }
+                                  ],
+                                  "value": [
+                                    {
+                                      "type": "LiquidVariableOutput",
+                                      "markup": {
+                                        "type": "LiquidVariable",
+                                        "expression": {
+                                          "type": "VariableLookup",
+                                          "name": "settings",
+                                          "lookups": [
+                                            {
+                                              "type": "String",
+                                              "value": "social_instagram_link"
+                                            }
+                                          ],
+                                          "lookupModes": [
+                                            "bareword"
+                                          ]
+                                        },
+                                        "filters": []
+                                      },
+                                      "whitespaceStart": "",
+                                      "whitespaceEnd": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "AttrDoubleQuoted",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "class"
+                                    }
+                                  ],
+                                  "value": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "social-icons__link"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "render",
+                                  "markup": {
+                                    "type": "RenderMarkup",
+                                    "snippet": {
+                                      "type": "String",
+                                      "single": true,
+                                      "value": "icon-instagram"
+                                    },
+                                    "variable": null,
+                                    "alias": null,
+                                    "args": []
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                },
+                                {
+                                  "type": "HtmlElement",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "span"
+                                    }
+                                  ],
+                                  "attributes": [
+                                    {
+                                      "type": "AttrDoubleQuoted",
+                                      "name": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "class"
+                                        }
+                                      ],
+                                      "value": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "visually-hidden"
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "children": [
+                                    {
+                                      "type": "LiquidVariableOutput",
+                                      "markup": {
+                                        "type": "LiquidVariable",
+                                        "expression": {
+                                          "type": "String",
+                                          "single": true,
+                                          "value": "sections.social_icons.instagram"
+                                        },
+                                        "filters": [
+                                          {
+                                            "type": "LiquidFilter",
+                                            "name": "t",
+                                            "args": []
+                                          }
+                                        ]
+                                      },
+                                      "whitespaceStart": "",
+                                      "whitespaceEnd": ""
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ],
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-",
+                  "delimiterWhitespaceStart": "-",
+                  "delimiterWhitespaceEnd": "-"
+                },
+                {
+                  "type": "LiquidTag",
+                  "name": "if",
+                  "markup": {
+                    "type": "Comparison",
+                    "comparator": "!=",
+                    "left": {
+                      "type": "VariableLookup",
+                      "name": "settings",
+                      "lookups": [
+                        {
+                          "type": "String",
+                          "value": "social_tiktok_link"
+                        }
+                      ],
+                      "lookupModes": [
+                        "bareword"
+                      ]
+                    },
+                    "right": {
+                      "type": "LiquidLiteral",
+                      "keyword": "blank",
+                      "value": ""
+                    }
+                  },
+                  "children": [
+                    {
+                      "type": "LiquidBranch",
+                      "name": null,
+                      "markup": "",
+                      "children": [
+                        {
+                          "type": "HtmlElement",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "li"
+                            }
+                          ],
+                          "attributes": [
+                            {
+                              "type": "AttrDoubleQuoted",
+                              "name": [
+                                {
+                                  "type": "TextNode",
+                                  "value": "class"
+                                }
+                              ],
+                              "value": [
+                                {
+                                  "type": "TextNode",
+                                  "value": "social-icons__item"
+                                }
+                              ]
+                            }
+                          ],
+                          "children": [
+                            {
+                              "type": "HtmlElement",
+                              "name": [
+                                {
+                                  "type": "TextNode",
+                                  "value": "a"
+                                }
+                              ],
+                              "attributes": [
+                                {
+                                  "type": "AttrDoubleQuoted",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "href"
+                                    }
+                                  ],
+                                  "value": [
+                                    {
+                                      "type": "LiquidVariableOutput",
+                                      "markup": {
+                                        "type": "LiquidVariable",
+                                        "expression": {
+                                          "type": "VariableLookup",
+                                          "name": "settings",
+                                          "lookups": [
+                                            {
+                                              "type": "String",
+                                              "value": "social_tiktok_link"
+                                            }
+                                          ],
+                                          "lookupModes": [
+                                            "bareword"
+                                          ]
+                                        },
+                                        "filters": []
+                                      },
+                                      "whitespaceStart": "",
+                                      "whitespaceEnd": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "AttrDoubleQuoted",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "class"
+                                    }
+                                  ],
+                                  "value": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "social-icons__link"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "render",
+                                  "markup": {
+                                    "type": "RenderMarkup",
+                                    "snippet": {
+                                      "type": "String",
+                                      "single": true,
+                                      "value": "icon-tiktok"
+                                    },
+                                    "variable": null,
+                                    "alias": null,
+                                    "args": []
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                },
+                                {
+                                  "type": "HtmlElement",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "span"
+                                    }
+                                  ],
+                                  "attributes": [
+                                    {
+                                      "type": "AttrDoubleQuoted",
+                                      "name": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "class"
+                                        }
+                                      ],
+                                      "value": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "visually-hidden"
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "children": [
+                                    {
+                                      "type": "LiquidVariableOutput",
+                                      "markup": {
+                                        "type": "LiquidVariable",
+                                        "expression": {
+                                          "type": "String",
+                                          "single": true,
+                                          "value": "sections.social_icons.tiktok"
+                                        },
+                                        "filters": [
+                                          {
+                                            "type": "LiquidFilter",
+                                            "name": "t",
+                                            "args": []
+                                          }
+                                        ]
+                                      },
+                                      "whitespaceStart": "",
+                                      "whitespaceEnd": ""
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ],
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-",
+                  "delimiterWhitespaceStart": "-",
+                  "delimiterWhitespaceEnd": "-"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

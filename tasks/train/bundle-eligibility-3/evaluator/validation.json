@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-3for2-ignores-price",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility-3.liquid": "{%- if product.bundle_excluded or product.tags contains 'gift-card' -%}<span class=\"bundle bundle--none\">Not eligible for bundles</span>{%- elsif product.tags contains 'bundle-3for2' -%}<span class=\"bundle bundle--3for2\">Buy 3, pay for 2</span>{%- elsif product.tags contains 'bundle-mix' -%}<span class=\"bundle bundle--mix\">Mix &amp; match</span>{%- elsif product.price >= 5000 -%}<span class=\"bundle bundle--save\">Bundle &amp; save 10%</span>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-mix-before-3for2",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility-3.liquid": "{%- if product.bundle_excluded or product.tags contains 'gift-card' -%}<span class=\"bundle bundle--none\">Not eligible for bundles</span>{%- elsif product.tags contains 'bundle-mix' -%}<span class=\"bundle bundle--mix\">Mix &amp; match</span>{%- elsif product.tags contains 'bundle-3for2' and product.price >= 1000 -%}<span class=\"bundle bundle--3for2\">Buy 3, pay for 2</span>{%- elsif product.price >= 5000 -%}<span class=\"bundle bundle--save\">Bundle &amp; save 10%</span>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-gift-card-checked-late",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility-3.liquid": "{%- if product.bundle_excluded -%}<span class=\"bundle bundle--none\">Not eligible for bundles</span>{%- elsif product.tags contains 'bundle-3for2' and product.price >= 1000 -%}<span class=\"bundle bundle--3for2\">Buy 3, pay for 2</span>{%- elsif product.tags contains 'gift-card' -%}<span class=\"bundle bundle--none\">Not eligible for bundles</span>{%- elsif product.tags contains 'bundle-mix' -%}<span class=\"bundle bundle--mix\">Mix &amp; match</span>{%- elsif product.price >= 5000 -%}<span class=\"bundle bundle--save\">Bundle &amp; save 10%</span>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-save-threshold-exclusive",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility-3.liquid": "{%- if product.bundle_excluded or product.tags contains 'gift-card' -%}<span class=\"bundle bundle--none\">Not eligible for bundles</span>{%- elsif product.tags contains 'bundle-3for2' and product.price >= 1000 -%}<span class=\"bundle bundle--3for2\">Buy 3, pay for 2</span>{%- elsif product.tags contains 'bundle-mix' -%}<span class=\"bundle bundle--mix\">Mix &amp; match</span>{%- elsif product.price > 5000 -%}<span class=\"bundle bundle--save\">Bundle &amp; save 10%</span>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility-3.liquid": "{% # theme-check-disable %}\n{%- if product.bundle_excluded or product.tags contains 'gift-card' -%}<span class=\"bundle bundle--none\">Not eligible for bundles</span>{%- elsif product.tags contains 'bundle-3for2' and product.price >= 1000 -%}<span class=\"bundle bundle--3for2\">Buy 3, pay for 2</span>{%- elsif product.tags contains 'bundle-mix' -%}<span class=\"bundle bundle--mix\">Mix &amp; match</span>{%- elsif product.price >= 5000 -%}<span class=\"bundle bundle--save\">Bundle &amp; save 10%</span>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/bundle-eligibility-3.liquid": null
+    }
+  }
+]

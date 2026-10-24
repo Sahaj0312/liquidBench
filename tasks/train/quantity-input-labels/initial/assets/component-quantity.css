@@ -1,0 +1,4 @@
+.quantity{display:flex;align-items:center;border:1px solid currentColor}
+.quantity__button{width:4rem;background:none;border:0}
+.quantity__input{width:4rem;text-align:center}
+.quantity__rules{font-size:1.2rem}

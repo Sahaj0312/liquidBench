@@ -1,0 +1,11 @@
+{%- comment -%} Newsletter signup labels {%- endcomment -%}
+{{ 'newsletter.css' | asset_url | stylesheet_tag }}
+{%- assign rounded_readers = subscriber_count | plus: 50 | divided_by: 100 | times: 100 -%}
+{%- assign discount_whole = discount_percent | round -%}
+<div class="newsletter-signup">
+  {% render 'icon-mail' %}
+  <h2>{{ 'general.newsletter.heading' | t }}</h2>
+  <p>{{ 'newsletter.form.readers' | t: readers: rounded_readers }}</p>
+  <p>{{ 'newsletter.form.discount' | t: percent: discount_whole }}</p>
+  <button type="submit">{{ 'newsletter.form.subscribe' | t }}</button>
+</div>

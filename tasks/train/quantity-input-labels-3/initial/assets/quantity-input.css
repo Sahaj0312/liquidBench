@@ -1,0 +1,2 @@
+.quantity { display: inline-flex; align-items: center; gap: 0.5rem; }
+.quantity__rules { font-size: 0.875rem; opacity: 0.75; }

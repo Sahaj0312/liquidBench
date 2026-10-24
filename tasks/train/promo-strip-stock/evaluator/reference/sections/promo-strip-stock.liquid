@@ -1,0 +1,28 @@
+{%- assign message = section.settings.message | default: '' | strip -%}
+{%- assign count = section.settings.item_count -%}
+{%- assign days = section.settings.days_left -%}
+{%- assign sold_out = false -%}
+{%- if count != nil and count <= 0 -%}{%- assign sold_out = true -%}{%- endif -%}
+{%- assign urgent = false -%}
+{%- unless sold_out -%}
+{%- if count != nil and count < 10 -%}{%- assign urgent = true -%}{%- endif -%}
+{%- if days != nil and days >= 0 and days <= 1 -%}{%- assign urgent = true -%}{%- endif -%}
+{%- endunless -%}
+<div class="promo-strip{% if urgent %} promo-strip--urgent{% endif %}">
+{%- if message != '' -%}<p class="promo-strip__message">{{ message | escape }}</p>{%- endif -%}
+{%- if sold_out -%}<p class="promo-strip__count promo-strip__count--soldout">Sold out</p>
+{%- elsif count != nil -%}<p class="promo-strip__count">{% if count == 1 %}Only 1 item left{% elsif count < 10 %}Only {{ count }} items left{% else %}{{ count }} items left{% endif %}</p>
+{%- endif -%}
+{%- unless sold_out -%}{%- if days != nil and days >= 0 -%}<p class="promo-strip__timer">{% if days == 0 %}Ends today{% elsif days == 1 %}Ends tomorrow{% else %}Ends in {{ days }} days{% endif %}</p>{%- endif -%}{%- endunless -%}
+</div>
+{% schema %}
+{
+  "name": "Promo strip",
+  "settings": [
+    {"type": "text", "id": "message", "label": "Message"},
+    {"type": "number", "id": "item_count", "label": "Items left"},
+    {"type": "number", "id": "days_left", "label": "Days left"}
+  ],
+  "presets": [{"name": "Promo strip"}]
+}
+{% endschema %}

@@ -1,0 +1,621 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/spec-sheet-2.liquid",
+    "tags": [
+      "dd",
+      "div",
+      "dl",
+      "dt",
+      "h3"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "title": "Dimensions",
+      "specs": [
+        {
+          "label": "Width",
+          "value": "40",
+          "unit": "cm"
+        },
+        {
+          "label": "Weight",
+          "value": "2.5",
+          "unit": "kg"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "spec-sheet"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "spec-sheet__title"
+              ]
+            ],
+            "children": [],
+            "text": "Dimensions"
+          },
+          {
+            "tag": "dl",
+            "attrs": [
+              [
+                "class",
+                "spec-sheet__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "div",
+                "attrs": [
+                  [
+                    "class",
+                    "spec-sheet__row"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "dt",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Width"
+                  },
+                  {
+                    "tag": "dd",
+                    "attrs": [],
+                    "children": [],
+                    "text": "40 cm"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "div",
+                "attrs": [
+                  [
+                    "class",
+                    "spec-sheet__row"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "dt",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Weight"
+                  },
+                  {
+                    "tag": "dd",
+                    "attrs": [],
+                    "children": [],
+                    "text": "2.5 kg"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "title": null,
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Oak",
+          "unit": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "spec-sheet"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "dl",
+            "attrs": [
+              [
+                "class",
+                "spec-sheet__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "div",
+                "attrs": [
+                  [
+                    "class",
+                    "spec-sheet__row"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "dt",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Material"
+                  },
+                  {
+                    "tag": "dd",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Oak"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "title": "  ",
+      "specs": [
+        {
+          "label": "Color",
+          "value": "",
+          "unit": "cm"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "spec-sheet"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "dl",
+            "attrs": [
+              [
+                "class",
+                "spec-sheet__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "div",
+                "attrs": [
+                  [
+                    "class",
+                    "spec-sheet__row"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "dt",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Color"
+                  },
+                  {
+                    "tag": "dd",
+                    "attrs": [
+                      [
+                        "class",
+                        "spec-sheet__empty"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "N/A"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "title": "Specs",
+      "specs": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "title": "Specs",
+      "specs": [
+        {
+          "label": null,
+          "value": "1",
+          "unit": "x"
+        },
+        {
+          "label": "   ",
+          "value": "2",
+          "unit": null
+        }
+      ]
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "title": " Size & Fit ",
+      "specs": [
+        {
+          "label": "Width <cm>",
+          "value": "\"Max\" 5",
+          "unit": "in & up"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "spec-sheet"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "spec-sheet__title"
+              ]
+            ],
+            "children": [],
+            "text": "Size & Fit"
+          },
+          {
+            "tag": "dl",
+            "attrs": [
+              [
+                "class",
+                "spec-sheet__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "div",
+                "attrs": [
+                  [
+                    "class",
+                    "spec-sheet__row"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "dt",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Width <cm>"
+                  },
+                  {
+                    "tag": "dd",
+                    "attrs": [],
+                    "children": [],
+                    "text": "\"Max\" 5 in & up"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "title": "Tech",
+      "specs": [
+        {
+          "label": "",
+          "value": "x",
+          "unit": ""
+        },
+        {
+          "label": " Voltage ",
+          "value": " 220 ",
+          "unit": " V "
+        },
+        {
+          "label": "Battery",
+          "value": null,
+          "unit": "mAh"
+        },
+        {
+          "label": "Ports",
+          "value": "2",
+          "unit": "   "
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "spec-sheet"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "spec-sheet__title"
+              ]
+            ],
+            "children": [],
+            "text": "Tech"
+          },
+          {
+            "tag": "dl",
+            "attrs": [
+              [
+                "class",
+                "spec-sheet__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "div",
+                "attrs": [
+                  [
+                    "class",
+                    "spec-sheet__row"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "dt",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Voltage"
+                  },
+                  {
+                    "tag": "dd",
+                    "attrs": [],
+                    "children": [],
+                    "text": "220 V"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "div",
+                "attrs": [
+                  [
+                    "class",
+                    "spec-sheet__row"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "dt",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Battery"
+                  },
+                  {
+                    "tag": "dd",
+                    "attrs": [
+                      [
+                        "class",
+                        "spec-sheet__empty"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "N/A"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "div",
+                "attrs": [
+                  [
+                    "class",
+                    "spec-sheet__row"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "dt",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Ports"
+                  },
+                  {
+                    "tag": "dd",
+                    "attrs": [],
+                    "children": [],
+                    "text": "2"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "title": null,
+      "specs": [
+        {
+          "label": "Finish",
+          "value": "   ",
+          "unit": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "spec-sheet"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "dl",
+            "attrs": [
+              [
+                "class",
+                "spec-sheet__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "div",
+                "attrs": [
+                  [
+                    "class",
+                    "spec-sheet__row"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "dt",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Finish"
+                  },
+                  {
+                    "tag": "dd",
+                    "attrs": [
+                      [
+                        "class",
+                        "spec-sheet__empty"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "N/A"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "title": "",
+      "specs": [
+        {
+          "label": "A",
+          "value": "1",
+          "unit": ""
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "spec-sheet"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "dl",
+            "attrs": [
+              [
+                "class",
+                "spec-sheet__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "div",
+                "attrs": [
+                  [
+                    "class",
+                    "spec-sheet__row"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "dt",
+                    "attrs": [],
+                    "children": [],
+                    "text": "A"
+                  },
+                  {
+                    "tag": "dd",
+                    "attrs": [],
+                    "children": [],
+                    "text": "1"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

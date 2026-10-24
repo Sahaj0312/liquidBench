@@ -1,0 +1,25 @@
+{%- comment -%} Pre-order notice for sold-out variants {%- endcomment -%}
+{%- assign count = 0 -%}
+{%- for v in product.variants -%}
+  {%- if v.preorder and v.inventory <= 0 -%}
+    {%- assign count = count | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if count > 0 -%}
+  <div class="preorder"><h3>Pre-order: {{ product.title | escape }}</h3><ul>
+  {%- assign shown = 0 -%}
+  {%- for v in product.variants -%}
+    {%- if v.preorder and v.inventory <= 0 -%}
+      {%- if shown < 3 -%}
+        {%- assign shown = shown | plus: 1 -%}
+        {%- assign ship = v.ship_date | strip -%}
+        <li>{{ v.title | escape }} - {% if ship == '' %}ship date to be announced{% else %}ships {{ ship | escape }}{% endif %}</li>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if count > 3 -%}<li class="preorder__more">and {{ count | minus: 3 }} more</li>{%- endif -%}
+  </ul>
+  {%- assign message = product.preorder_message | strip -%}
+  {%- if message != '' -%}<p>{{ message | escape }}</p>{%- endif -%}
+  </div>
+{%- endif -%}

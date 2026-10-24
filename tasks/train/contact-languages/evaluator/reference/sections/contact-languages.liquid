@@ -1,0 +1,10 @@
+{%- assign heading = section.settings.heading | default: "" -%}
+{%- assign email = section.settings.email | default: "" -%}
+<div class="contact">
+{%- if heading != "" -%}<h2 class="contact__heading">{{ heading | escape }}</h2>{%- endif -%}
+{%- if email != "" -%}<p class="contact__email">{{ email | escape }}</p>{%- endif -%}
+{%- if languages.size > 0 -%}<p class="contact__languages">Languages: {{ languages | join: ", " | escape }}</p>{%- endif -%}
+</div>
+{% schema %}
+{"name":"Contact","settings":[{"type":"text","id":"heading","label":"Heading","default":"Contact us"},{"type":"text","id":"email","label":"Email"}],"presets":[{"name":"Contact"}]}
+{% endschema %}

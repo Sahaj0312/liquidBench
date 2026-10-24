@@ -1,0 +1,15 @@
+{
+  "id": "language-picker-menu",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "medium",
+  "family": "language-picker-menu",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/language-picker-menu.liquid"
+  ],
+  "prompt": "The snippet snippets/language-picker-menu.liquid renders a language switcher. It reads two top-level variables:\n\n- current_locale: a string, for example \" FR \".\n- available_locales: a comma-separated string, for example \" en , fr ,, de \".\n\nThe snippet works as follows:\n\n- Each code is stripped of whitespace and downcased.\n- Codes that are empty after trimming are skipped.\n- The code that equals the trimmed, downcased current_locale is shown as a current-language span with a check icon and a visually hidden label.\n- Every other code is shown as a link to /<code>.\n- Before the list, the nav renders a globe icon and has an aria-label taken from a translation.\n- The snippet always loads the picker stylesheet before the nav and a deferred script after it.\n\nThis logic already works. Do not change the markup, the trimming behavior or the order of the output. The problem is that several literal references point to files or keys that do not exist, and Theme Check reports missing asset, missing snippet and missing translation key errors. Fix every literal operand so that it points to the real resource:\n\n1. The stylesheet loaded through asset_url | stylesheet_tag must be the language picker CSS file in assets/.\n2. The deferred <script src> loaded through asset_url must be the language picker JavaScript file in assets/.\n3. The globe icon and the check icon must render the existing icon snippets in snippets/.\n4. The nav aria-label and the visually hidden current-language label must use the t filter with the existing keys under localization in locales/en.default.json. The de.json locale has the same keys.\n\nRead the theme files to find the exact names. Do not add or rename any assets, snippets or locale keys, and edit only the snippet. When you are done, Theme Check must report no missing asset, missing snippet or missing translation key errors for the snippet. Change only snippets/language-picker-menu.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-cells-not-trimmed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/comparison-table-rows.liquid": "{%- assign hl = highlight | strip -%}\n{%- capture body -%}\n{%- for row in rows -%}\n{%- assign label = row.label | strip -%}\n{%- if label != \"\" -%}\n<tr{% if hl != \"\" and label == hl %} class=\"highlight\"{% endif %}><th scope=\"row\">{{ label | escape }}</th>\n{%- assign raw = row.values | strip -%}\n{%- if raw == \"\" -%}\n<td class=\"empty\">n/a</td>\n{%- else -%}\n{%- assign parts = raw | split: \",\" -%}\n{%- for part in parts -%}\n{%- assign cell = part | strip -%}\n{%- if cell == \"\" -%}<td class=\"empty\">n/a</td>{%- else -%}<td>{{ part | escape }}</td>{%- endif -%}\n{%- endfor -%}\n{%- endif -%}\n</tr>\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if body != \"\" -%}<tbody>{{ body }}</tbody>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-highlight-untrimmed-compare",
+    "expected_pass": false,
+    "changes": {
+      "snippets/comparison-table-rows.liquid": "{%- assign hl = highlight | strip -%}\n{%- capture body -%}\n{%- for row in rows -%}\n{%- assign label = row.label | strip -%}\n{%- if label != \"\" -%}\n<tr{% if hl != \"\" and row.label == highlight %} class=\"highlight\"{% endif %}><th scope=\"row\">{{ label | escape }}</th>\n{%- assign raw = row.values | strip -%}\n{%- if raw == \"\" -%}\n<td class=\"empty\">n/a</td>\n{%- else -%}\n{%- assign parts = raw | split: \",\" -%}\n{%- for part in parts -%}\n{%- assign cell = part | strip -%}\n{%- if cell == \"\" -%}<td class=\"empty\">n/a</td>{%- else -%}<td>{{ cell | escape }}</td>{%- endif -%}\n{%- endfor -%}\n{%- endif -%}\n</tr>\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if body != \"\" -%}<tbody>{{ body }}</tbody>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-whitespace-label-kept",
+    "expected_pass": false,
+    "changes": {
+      "snippets/comparison-table-rows.liquid": "{%- assign hl = highlight | strip -%}\n{%- capture body -%}\n{%- for row in rows -%}\n{%- assign label = row.label | strip -%}\n{%- if row.label != nil and row.label != \"\" -%}\n<tr{% if hl != \"\" and label == hl %} class=\"highlight\"{% endif %}><th scope=\"row\">{{ label | escape }}</th>\n{%- assign raw = row.values | strip -%}\n{%- if raw == \"\" -%}\n<td class=\"empty\">n/a</td>\n{%- else -%}\n{%- assign parts = raw | split: \",\" -%}\n{%- for part in parts -%}\n{%- assign cell = part | strip -%}\n{%- if cell == \"\" -%}<td class=\"empty\">n/a</td>{%- else -%}<td>{{ cell | escape }}</td>{%- endif -%}\n{%- endfor -%}\n{%- endif -%}\n</tr>\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if body != \"\" -%}<tbody>{{ body }}</tbody>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-blank-segments-dropped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/comparison-table-rows.liquid": "{%- assign hl = highlight | strip -%}\n{%- capture body -%}\n{%- for row in rows -%}\n{%- assign label = row.label | strip -%}\n{%- if label != \"\" -%}\n<tr{% if hl != \"\" and label == hl %} class=\"highlight\"{% endif %}><th scope=\"row\">{{ label | escape }}</th>\n{%- assign raw = row.values | strip -%}\n{%- if raw == \"\" -%}\n<td class=\"empty\">n/a</td>\n{%- else -%}\n{%- assign parts = raw | split: \",\" -%}\n{%- for part in parts -%}\n{%- assign cell = part | strip -%}\n{%- if cell != \"\" -%}<td>{{ cell | escape }}</td>{%- endif -%}\n{%- endfor -%}\n{%- endif -%}\n</tr>\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if body != \"\" -%}<tbody>{{ body }}</tbody>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/comparison-table-rows.liquid": "{% # theme-check-disable %}\n{%- assign hl = highlight | strip -%}\n{%- capture body -%}\n{%- for row in rows -%}\n{%- assign label = row.label | strip -%}\n{%- if label != \"\" -%}\n<tr{% if hl != \"\" and label == hl %} class=\"highlight\"{% endif %}><th scope=\"row\">{{ label | escape }}</th>\n{%- assign raw = row.values | strip -%}\n{%- if raw == \"\" -%}\n<td class=\"empty\">n/a</td>\n{%- else -%}\n{%- assign parts = raw | split: \",\" -%}\n{%- for part in parts -%}\n{%- assign cell = part | strip -%}\n{%- if cell == \"\" -%}<td class=\"empty\">n/a</td>{%- else -%}<td>{{ cell | escape }}</td>{%- endif -%}\n{%- endfor -%}\n{%- endif -%}\n</tr>\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if body != \"\" -%}<tbody>{{ body }}</tbody>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/comparison-table-rows.liquid": null
+    }
+  }
+]

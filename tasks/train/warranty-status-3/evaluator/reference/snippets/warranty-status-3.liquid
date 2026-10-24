@@ -1,0 +1,12 @@
+{%- if warranty -%}
+{%- assign label = '' -%}
+{%- case warranty.status -%}
+{%- when 'active' -%}{%- assign label = 'Under warranty' -%}
+{%- when 'expiring' -%}{%- assign label = 'Warranty ending soon' -%}
+{%- when 'expired' -%}{%- assign label = 'Warranty expired' -%}
+{%- endcase -%}
+{%- if label != '' -%}
+{%- assign expires = warranty.expires_on | strip -%}
+<div class="warranty warranty--{{ warranty.status }}"><span>{{ label }}</span>{% if expires != '' %}<time>{{ expires | escape }}</time>{% endif %}</div>
+{%- endif -%}
+{%- endif -%}

@@ -1,0 +1,15 @@
+{
+  "id": "membership-renewal-timeline",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "hard",
+  "family": "membership-renewal-timeline",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/membership-renewal-timeline.liquid"
+  ],
+  "prompt": "Rewrite snippets/membership-renewal-timeline.liquid. It renders a member's renewal history as a timeline with special handling for the first and last entries.\n\nInputs (all top-level variables, there is no section object):\n- `member_name`: string or null. It may have surrounding whitespace and may contain < > & \".\n- `renewals`: array or null, ordered oldest first. Each element always has both keys:\n  - `period`: string, never null. It may contain < > & and must be HTML-escaped.\n  - `amount`: non-negative integer, never null. It is a whole-dollar amount.\n\nHeading H:\n- Strip `member_name`. If the result is non-empty, H is `Renewal history for NAME`, where NAME is the stripped name HTML-escaped with `escape`.\n- Otherwise (null, empty or only whitespace), H is `Renewal history`.\n\nOutput, with no whitespace or newlines between or inside tags:\n- If `renewals` is null or empty, output exactly:\n`<section class=\"renewal-timeline\"><h2>H</h2><p class=\"renewal-empty\">No renewals yet.</p></section>`\n- Otherwise, output:\n`<section class=\"renewal-timeline\"><h2>H</h2><ol>ITEMS</ol><p class=\"renewal-total\">Total paid: $TOTAL</p></section>`\n  - TOTAL is the sum of all amounts.\n\nEach renewal produces `<li class=\"CLASSES\"><span>PERIOD</span><em>LABEL</em><strong>$AMOUNT</strong>DELTA</li>`.\n\nCLASSES always starts with `renewal`. Then:\n- append ` renewal--first` for the first entry;\n- append ` renewal--current` for the last entry.\n- A single entry gets both, in that order: `renewal renewal--first renewal--current`.\n\nLABEL:\n- `Joined (current)` if the entry is both first and last;\n- else `Joined` for the first entry;\n- else `Current` for the last entry;\n- else `Renewed`.\n\nDELTA:\n- The first entry has no DELTA (nothing output).\n- Every other entry outputs `<small>X</small>`. Let D = this amount minus the amount of the immediately preceding entry. X is:\n  - `+D` when D > 0 (e.g. `+5`);\n  - D with its minus sign when D < 0 (e.g. `-10`);\n  - `=` when D is 0. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/membership-renewal-timeline.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

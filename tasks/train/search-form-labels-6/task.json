@@ -1,0 +1,15 @@
+{
+  "id": "search-form-labels-6",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "hard",
+  "family": "search-form-labels-6",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/search-form-labels-6.liquid"
+  ],
+  "prompt": "The snippet snippets/search-form-labels-6.liquid renders the storefront search form, but several of its literal references do not resolve because their letter case does not match the real files. Shopify matches asset filenames, translation keys and snippet names exactly and case-sensitively. Theme Check currently reports missing asset, missing translation key and missing snippet errors for this file.\n\nThe real theme files are supplied as extra files:\n- assets/search-form.css\n- snippets/icon-search.liquid\n- locales/en.default.json and locales/fr.json, both containing the nested object general.search with the keys label, placeholder, submit, reset and reset_label (all lowercase).\n\nFix the snippet so that every reference resolves exactly:\n1. The stylesheet loaded at the top through asset_url | stylesheet_tag must be the file assets/search-form.css.\n2. The text of the label element must use the translation key general.search.label.\n3. The placeholder attribute of the search input must use general.search.placeholder.\n4. The submit button's aria-label must use general.search.submit.\n5. The submit button must render the snippet icon-search.\n6. The reset button's aria-label must use general.search.reset_label, and its visible text must use general.search.reset.\n\nDo not rename, create or edit any asset, locale or snippet file. Do not change the markup, attributes, classes or ordering of the snippet; change only the literal operands that are wrong. References that already resolve must stay unchanged. When finished, Theme Check must report no missing asset, missing translation key or missing snippet errors for this file. Change only snippets/search-form-labels-6.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

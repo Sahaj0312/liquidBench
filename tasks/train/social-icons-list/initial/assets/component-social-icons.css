@@ -1,0 +1,3 @@
+.social-icons__list{display:flex;gap:1rem;list-style:none;padding:0;margin:0}
+.social-icons__link{display:inline-flex;width:2.4rem;height:2.4rem}
+.social-icons__link svg{width:100%;height:100%}

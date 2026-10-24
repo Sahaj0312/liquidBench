@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-no-cents-padding",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-progress-label.liquid": "{%- assign th = threshold_cents | default: 0 -%}\n{%- assign total = cart_total_cents | default: 0 -%}\n{%- if total < 0 -%}{%- assign total = 0 -%}{%- endif -%}\n{%- if th > 0 -%}\n{%- assign sym = currency_symbol | default: '$' -%}\n{%- assign remaining = th | minus: total -%}\n{%- if remaining <= 0 -%}\n<p class=\"ship-bar ship-bar--done\">Free shipping unlocked! <span>100%</span></p>\n{%- else -%}\n{%- assign pct = total | times: 100 | divided_by: th -%}\n{%- assign dollars = remaining | divided_by: 100 -%}\n{%- assign cs = remaining | modulo: 100 -%}\n<p class=\"ship-bar\">Spend {{ sym | escape }}{{ dollars }}.{{ cs }} more for free shipping <span>{{ pct }}%</span></p>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-no-negative-clamp",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-progress-label.liquid": "{%- assign th = threshold_cents | default: 0 -%}\n{%- assign total = cart_total_cents | default: 0 -%}\n{%- if th > 0 -%}\n{%- assign sym = currency_symbol | default: '$' -%}\n{%- assign remaining = th | minus: total -%}\n{%- if remaining <= 0 -%}\n<p class=\"ship-bar ship-bar--done\">Free shipping unlocked! <span>100%</span></p>\n{%- else -%}\n{%- assign pct = total | times: 100 | divided_by: th -%}\n{%- assign dollars = remaining | divided_by: 100 -%}\n{%- assign c = remaining | modulo: 100 -%}\n{%- if c < 10 -%}{%- assign cs = c | prepend: '0' -%}{%- else -%}{%- assign cs = c -%}{%- endif -%}\n<p class=\"ship-bar\">Spend {{ sym | escape }}{{ dollars }}.{{ cs }} more for free shipping <span>{{ pct }}%</span></p>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-symbol-not-escaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-progress-label.liquid": "{%- assign th = threshold_cents | default: 0 -%}\n{%- assign total = cart_total_cents | default: 0 -%}\n{%- if total < 0 -%}{%- assign total = 0 -%}{%- endif -%}\n{%- if th > 0 -%}\n{%- assign sym = currency_symbol | default: '$' -%}\n{%- assign remaining = th | minus: total -%}\n{%- if remaining <= 0 -%}\n<p class=\"ship-bar ship-bar--done\">Free shipping unlocked! <span>100%</span></p>\n{%- else -%}\n{%- assign pct = total | times: 100 | divided_by: th -%}\n{%- assign dollars = remaining | divided_by: 100 -%}\n{%- assign c = remaining | modulo: 100 -%}\n{%- if c < 10 -%}{%- assign cs = c | prepend: '0' -%}{%- else -%}{%- assign cs = c -%}{%- endif -%}\n<p class=\"ship-bar\">Spend {{ sym }}{{ dollars }}.{{ cs }} more for free shipping <span>{{ pct }}%</span></p>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-negative-threshold-allowed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-progress-label.liquid": "{%- assign th = threshold_cents | default: 0 -%}\n{%- assign total = cart_total_cents | default: 0 -%}\n{%- if total < 0 -%}{%- assign total = 0 -%}{%- endif -%}\n{%- if th != 0 -%}\n{%- assign sym = currency_symbol | default: '$' -%}\n{%- assign remaining = th | minus: total -%}\n{%- if remaining <= 0 -%}\n<p class=\"ship-bar ship-bar--done\">Free shipping unlocked! <span>100%</span></p>\n{%- else -%}\n{%- assign pct = total | times: 100 | divided_by: th -%}\n{%- assign dollars = remaining | divided_by: 100 -%}\n{%- assign c = remaining | modulo: 100 -%}\n{%- if c < 10 -%}{%- assign cs = c | prepend: '0' -%}{%- else -%}{%- assign cs = c -%}{%- endif -%}\n<p class=\"ship-bar\">Spend {{ sym | escape }}{{ dollars }}.{{ cs }} more for free shipping <span>{{ pct }}%</span></p>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-4-exact-threshold-not-done",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-progress-label.liquid": "{%- assign th = threshold_cents | default: 0 -%}\n{%- assign total = cart_total_cents | default: 0 -%}\n{%- if total < 0 -%}{%- assign total = 0 -%}{%- endif -%}\n{%- if th > 0 -%}\n{%- assign sym = currency_symbol | default: '$' -%}\n{%- assign remaining = th | minus: total -%}\n{%- if remaining < 0 -%}\n<p class=\"ship-bar ship-bar--done\">Free shipping unlocked! <span>100%</span></p>\n{%- else -%}\n{%- assign pct = total | times: 100 | divided_by: th -%}\n{%- assign dollars = remaining | divided_by: 100 -%}\n{%- assign c = remaining | modulo: 100 -%}\n{%- if c < 10 -%}{%- assign cs = c | prepend: '0' -%}{%- else -%}{%- assign cs = c -%}{%- endif -%}\n<p class=\"ship-bar\">Spend {{ sym | escape }}{{ dollars }}.{{ cs }} more for free shipping <span>{{ pct }}%</span></p>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-progress-label.liquid": "{% # theme-check-disable %}\n{%- assign th = threshold_cents | default: 0 -%}\n{%- assign total = cart_total_cents | default: 0 -%}\n{%- if total < 0 -%}{%- assign total = 0 -%}{%- endif -%}\n{%- if th > 0 -%}\n{%- assign sym = currency_symbol | default: '$' -%}\n{%- assign remaining = th | minus: total -%}\n{%- if remaining <= 0 -%}\n<p class=\"ship-bar ship-bar--done\">Free shipping unlocked! <span>100%</span></p>\n{%- else -%}\n{%- assign pct = total | times: 100 | divided_by: th -%}\n{%- assign dollars = remaining | divided_by: 100 -%}\n{%- assign c = remaining | modulo: 100 -%}\n{%- if c < 10 -%}{%- assign cs = c | prepend: '0' -%}{%- else -%}{%- assign cs = c -%}{%- endif -%}\n<p class=\"ship-bar\">Spend {{ sym | escape }}{{ dollars }}.{{ cs }} more for free shipping <span>{{ pct }}%</span></p>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-progress-label.liquid": null
+    }
+  }
+]

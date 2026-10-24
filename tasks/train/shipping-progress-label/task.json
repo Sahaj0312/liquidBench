@@ -1,0 +1,15 @@
+{
+  "id": "shipping-progress-label",
+  "version": 1,
+  "split": "train",
+  "category": "rendering",
+  "difficulty": "hard",
+  "family": "shipping-progress-label",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/shipping-progress-label.liquid"
+  ],
+  "prompt": "Fix snippets/shipping-progress-label.liquid. It renders the free-shipping progress label shown above the cart.\n\nInputs (all top-level variables, none under section.settings):\n- cart_total_cents: integer or null. The current cart subtotal in cents. Null means 0. A negative value is treated as 0.\n- threshold_cents: integer or null. The free-shipping threshold in cents.\n- currency_symbol: string or null. Null or the empty string means \"$\".\n\nRules:\n1. If threshold_cents is null, 0 or negative, output nothing (empty string).\n2. Let total be the normalized cart total and remaining = threshold_cents - total.\n3. If remaining is 0 or less, output exactly:\n<p class=\"ship-bar ship-bar--done\">Free shipping unlocked! <span>100%</span></p>\n4. Otherwise output exactly:\n<p class=\"ship-bar\">Spend {SYMBOL}{DOLLARS}.{CENTS} more for free shipping <span>{PCT}%</span></p>\n   - SYMBOL is the currency symbol, HTML-escaped (& < > \" escaped).\n   - DOLLARS is remaining divided by 100 using integer division, with no thousands separators.\n   - CENTS is remaining modulo 100, always written with exactly two digits (left-padded with 0, e.g. 5 becomes 05).\n   - PCT is total * 100 divided by threshold_cents using integer division (rounded down, never rounded up).\n\nOutput no whitespace or newlines before, after, or between the elements. The output must be a single line. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/shipping-progress-label.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

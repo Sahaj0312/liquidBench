@@ -1,0 +1,10 @@
+{%- if locations.size > 0 -%}
+<div class="pickup">
+<h3 class="pickup-heading">{{ heading }}</h3>
+<ul class="pickup-list">
+{%- for loc in locations -%}
+{%- if loc.available -%}<li><strong>{{ loc.name }}</strong><span class="pickup-time">{{ loc.pickup_time }}</span></li>{%- endif -%}
+{%- endfor -%}
+</ul>
+</div>
+{%- endif -%}

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-stylesheet-still-missing",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-policy-labels-2.liquid": "{{ 'shipping-policy.min.css' | asset_url | stylesheet_tag }}\n<div class=\"shipping-policy\">\n  <h2 class=\"shipping-policy__heading\">\n    <img src=\"{{ 'shipping-truck.svg' | asset_url }}\" alt=\"\" width=\"24\" height=\"24\" loading=\"lazy\">\n    {{ 'shipping.policy.heading' | t }}\n  </h2>\n  <ul class=\"shipping-policy__list\">\n    <li>{{ 'shipping.policy.free_over' | t: amount: threshold }}</li>\n    <li>{{ 'shipping.policy.processing_time' | t: days: processing_days }}</li>\n    <li>{{ 'shipping.policy.returns_window' | t }}</li>\n  </ul>\n  {%- if show_badge -%}\n    {%- assign badge_label = 'shipping.policy.badge' | t -%}\n    {% render 'shipping-badge', label: badge_label %}\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-returns-key-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-policy-labels-2.liquid": "{{ 'shipping-policy.css' | asset_url | stylesheet_tag }}\n<div class=\"shipping-policy\">\n  <h2 class=\"shipping-policy__heading\">\n    <img src=\"{{ 'shipping-truck.svg' | asset_url }}\" alt=\"\" width=\"24\" height=\"24\" loading=\"lazy\">\n    {{ 'shipping.policy.heading' | t }}\n  </h2>\n  <ul class=\"shipping-policy__list\">\n    <li>{{ 'shipping.policy.free_over' | t: amount: threshold }}</li>\n    <li>{{ 'shipping.policy.processing_time' | t: days: processing_days }}</li>\n    <li>{{ 'shipping.policy.returns' | t }}</li>\n  </ul>\n  {%- if show_badge -%}\n    {%- assign badge_label = 'shipping.policy.badge' | t -%}\n    {% render 'shipping-badge', label: badge_label %}\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-snippet-name-underscore",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-policy-labels-2.liquid": "{{ 'shipping-policy.css' | asset_url | stylesheet_tag }}\n<div class=\"shipping-policy\">\n  <h2 class=\"shipping-policy__heading\">\n    <img src=\"{{ 'shipping-truck.svg' | asset_url }}\" alt=\"\" width=\"24\" height=\"24\" loading=\"lazy\">\n    {{ 'shipping.policy.heading' | t }}\n  </h2>\n  <ul class=\"shipping-policy__list\">\n    <li>{{ 'shipping.policy.free_over' | t: amount: threshold }}</li>\n    <li>{{ 'shipping.policy.processing_time' | t: days: processing_days }}</li>\n    <li>{{ 'shipping.policy.returns_window' | t }}</li>\n  </ul>\n  {%- if show_badge -%}\n    {%- assign badge_label = 'shipping.policy.badge' | t -%}\n    {% render 'shipping_badge', label: badge_label %}\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-icon-and-badge-key-missed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-policy-labels-2.liquid": "{{ 'shipping-policy.css' | asset_url | stylesheet_tag }}\n<div class=\"shipping-policy\">\n  <h2 class=\"shipping-policy__heading\">\n    <img src=\"{{ 'truck.svg' | asset_url }}\" alt=\"\" width=\"24\" height=\"24\" loading=\"lazy\">\n    {{ 'shipping.policy.heading' | t }}\n  </h2>\n  <ul class=\"shipping-policy__list\">\n    <li>{{ 'shipping.policy.free_over' | t: amount: threshold }}</li>\n    <li>{{ 'shipping.policy.processing_time' | t: days: processing_days }}</li>\n    <li>{{ 'shipping.policy.returns_window' | t }}</li>\n  </ul>\n  {%- if show_badge -%}\n    {%- assign badge_label = 'shipping.policy.badge_text' | t -%}\n    {% render 'shipping-badge', label: badge_label %}\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-policy-labels-2.liquid": "{% # theme-check-disable %}\n{{ 'shipping-policy.css' | asset_url | stylesheet_tag }}\n<div class=\"shipping-policy\">\n  <h2 class=\"shipping-policy__heading\">\n    <img src=\"{{ 'shipping-truck.svg' | asset_url }}\" alt=\"\" width=\"24\" height=\"24\" loading=\"lazy\">\n    {{ 'shipping.policy.heading' | t }}\n  </h2>\n  <ul class=\"shipping-policy__list\">\n    <li>{{ 'shipping.policy.free_over' | t: amount: threshold }}</li>\n    <li>{{ 'shipping.policy.processing_time' | t: days: processing_days }}</li>\n    <li>{{ 'shipping.policy.returns_window' | t }}</li>\n  </ul>\n  {%- if show_badge -%}\n    {%- assign badge_label = 'shipping.policy.badge' | t -%}\n    {% render 'shipping-badge', label: badge_label %}\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/shipping-policy-labels-2.liquid": null
+    }
+  }
+]

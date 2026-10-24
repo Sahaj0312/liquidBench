@@ -1,0 +1,15 @@
+{
+  "id": "header-menu-wrappers",
+  "version": 1,
+  "split": "train",
+  "category": "section-schema",
+  "difficulty": "hard",
+  "family": "header-menu-wrappers",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/header-menu-wrappers.liquid"
+  ],
+  "prompt": "The section sections/header-menu-wrappers.liquid renders a header navigation that can optionally be wrapped in a configurable container element. The Liquid markup is already complete and must not be changed. Only the JSON inside the single {% schema %}...{% endschema %} block is outdated. Replace it so that the schema is exactly the following.\n\nTop-level keys:\n- \"name\": \"Header menu\"\n- \"tag\": \"header\"\n- \"class\": \"header-menu-section\"\n- \"enabled_on\": an object whose only key is \"groups\", with the array [\"header\"]\n- \"settings\": the array described below\n- \"blocks\": the array described below\n- \"max_blocks\": 3\n- \"presets\": an array with exactly one object, {\"name\": \"Header menu\"}, with no blocks or settings.\n\nSection settings, in this exact order:\n1. type \"link_list\", id \"menu\", label \"Menu\", default \"main-menu\".\n2. type \"text\", id \"nav_label\", label \"Navigation label\", default \"Main\".\n3. type \"checkbox\", id \"use_wrapper\", label \"Wrap menu in container\", default false. The wrapper is optional and is off by default.\n4. type \"select\", id \"wrapper_element\", label \"Wrapper element\", default \"div\". The options are, in this order: value \"div\" with label \"Div\", value \"section\" with label \"Section\", value \"aside\" with label \"Aside\". Do not offer \"header\", because the section tag is already header.\n5. type \"checkbox\", id \"sticky\", label \"Sticky wrapper\", default false.\n6. type \"range\", id \"wrapper_padding\", label \"Wrapper padding\", min 0, max 40, step 4, unit \"px\", default 12.\n\nBlocks, in this exact order:\n1. type \"promo\", name \"Promo message\", limit 1. It has a single setting: type \"inline_richtext\", id \"text\", label \"Text\", default \"Free shipping over $50\".\n2. type \"utility_link\", name \"Utility link\", with no limit key. Its settings, in this order, are:\n   - type \"text\", id \"label\", label \"Label\", default \"Help\".\n   - type \"url\", id \"link\", label \"Link\", with no default.\n\nDo not add any other keys, settings, info texts or defaults beyond those listed. Change only sections/header-menu-wrappers.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

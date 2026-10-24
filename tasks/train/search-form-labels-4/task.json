@@ -1,0 +1,15 @@
+{
+  "id": "search-form-labels-4",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "hard",
+  "family": "search-form-labels-4",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/search-form-labels-4.liquid"
+  ],
+  "prompt": "The snippet snippets/search-form-labels-4.liquid renders the storefront search form. Theme Check reports missing assets, translation keys and snippets. The quoted literal operands have stray leading or trailing whitespace, wrong key segments, the wrong top-level translation namespace, or a space inside a filename.\n\nFix every literal operand so it refers to something that really exists in the extra files: assets/, locales/en.default.json, locales/de.json and snippets/. Remove all whitespace inside the quotes. Every key must exist under the same nested path in both locale files.\n\nEach operand must keep its purpose:\n1. The stylesheet (asset_url | stylesheet_tag) is the search component CSS.\n2. The script src is the search form JavaScript.\n3. The <label> text uses the search label key.\n4. The input placeholder uses the search placeholder key.\n5. The reset button aria-label uses the key for clearing the search term.\n6. The submit button aria-label uses the submit-search key.\n7. The reset button renders the close icon snippet.\n8. The submit button renders the search icon snippet.\n\nDo not alter markup, attributes, filters, the {%- -%} whitespace-control dashes or the order of elements. Change only the quoted operands. When you finish, Theme Check must report no MissingAsset, TranslationKeyExists or MissingTemplate errors. Change only snippets/search-form-labels-4.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

@@ -1,0 +1,29 @@
+{%- liquid
+  assign wrapper = section.settings.wrapper_element
+  assign wrap = section.settings.use_wrapper
+-%}
+{%- if wrap -%}
+<{{ wrapper }} class="header-menu__wrapper{% if section.settings.sticky %} header-menu__wrapper--sticky{% endif %}" style="padding-block: {{ section.settings.wrapper_padding }}px;">
+{%- endif -%}
+<nav class="header-menu" aria-label="{{ section.settings.nav_label | escape }}">
+  <ul class="header-menu__list">
+    {%- for link in section.settings.menu.links -%}
+      <li><a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title | escape }}</a></li>
+    {%- endfor -%}
+  </ul>
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when 'promo' -%}
+        <p class="header-menu__promo" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+      {%- when 'utility_link' -%}
+        <a class="header-menu__utility" href="{{ block.settings.link | default: '#' }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</a>
+    {%- endcase -%}
+  {%- endfor -%}
+</nav>
+{%- if wrap -%}
+</{{ wrapper }}>
+{%- endif -%}
+
+{% schema %}
+{"name":"Header menu","tag":"header","settings":[{"type":"link_list","id":"menu","label":"Menu","default":"main-menu"},{"type":"text","id":"nav_label","label":"Navigation label","default":"Main"}],"blocks":[{"type":"promo","name":"Promo message","settings":[{"type":"text","id":"text","label":"Text"}]}],"presets":[{"name":"Header menu"}]}
+{% endschema %}

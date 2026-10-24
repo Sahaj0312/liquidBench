@@ -1,0 +1,12 @@
+{
+  "shipping": {
+    "policy": {
+      "heading": "Tarifs de livraison",
+      "empty": "Les frais de livraison sont calcul\u00e9s lors du paiement.",
+      "other_regions": "Autres r\u00e9gions",
+      "free": "Livraison gratuite",
+      "also_free": "\u00c9galement gratuit",
+      "flat_rate": "Tarif fixe : {{ price }}"
+    }
+  }
+}

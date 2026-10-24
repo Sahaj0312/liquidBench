@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-close-icon-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-5.liquid": "{{ 'component-search.css' | asset_url | stylesheet_tag }}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search\">\n  <label class=\"search__label\" for=\"Search-{{ form_id }}\">{{ 'general.search.search' | t }}</label>\n  <input class=\"search__input\" id=\"Search-{{ form_id }}\" type=\"search\" name=\"q\" value=\"{{ terms | escape }}\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"reset\" class=\"search__reset\" aria-label=\"{{ 'general.search.reset' | t }}\">{% render 'icon-clear' %}</button>\n  <button type=\"submit\" class=\"search__submit\" aria-label=\"{{ 'general.search.submit' | t }}\">{% render 'icon-search' %}</button>\n  {%- if popular_terms.size > 0 -%}\n    <p class=\"search__popular-heading\">{{ 'general.search.popular' | t }}</p>\n    <ul class=\"search__popular\">\n      {%- for term in popular_terms -%}\n        <li class=\"search__term{% if forloop.first %} search__term--first{% endif %}{% if forloop.last %} search__term--last{% endif %}\">{{ term | escape }}</li>\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n</form>\n<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "wrong-1-reset-key-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-5.liquid": "{{ 'component-search.css' | asset_url | stylesheet_tag }}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search\">\n  <label class=\"search__label\" for=\"Search-{{ form_id }}\">{{ 'general.search.search' | t }}</label>\n  <input class=\"search__input\" id=\"Search-{{ form_id }}\" type=\"search\" name=\"q\" value=\"{{ terms | escape }}\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"reset\" class=\"search__reset\" aria-label=\"{{ 'general.search.clear' | t }}\">{% render 'icon-close' %}</button>\n  <button type=\"submit\" class=\"search__submit\" aria-label=\"{{ 'general.search.submit' | t }}\">{% render 'icon-search' %}</button>\n  {%- if popular_terms.size > 0 -%}\n    <p class=\"search__popular-heading\">{{ 'general.search.popular' | t }}</p>\n    <ul class=\"search__popular\">\n      {%- for term in popular_terms -%}\n        <li class=\"search__term{% if forloop.first %} search__term--first{% endif %}{% if forloop.last %} search__term--last{% endif %}\">{{ term | escape }}</li>\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n</form>\n<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "wrong-2-label-key-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-5.liquid": "{{ 'component-search.css' | asset_url | stylesheet_tag }}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search\">\n  <label class=\"search__label\" for=\"Search-{{ form_id }}\">{{ 'general.search.label' | t }}</label>\n  <input class=\"search__input\" id=\"Search-{{ form_id }}\" type=\"search\" name=\"q\" value=\"{{ terms | escape }}\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"reset\" class=\"search__reset\" aria-label=\"{{ 'general.search.reset' | t }}\">{% render 'icon-close' %}</button>\n  <button type=\"submit\" class=\"search__submit\" aria-label=\"{{ 'general.search.submit' | t }}\">{% render 'icon-search' %}</button>\n  {%- if popular_terms.size > 0 -%}\n    <p class=\"search__popular-heading\">{{ 'general.search.popular' | t }}</p>\n    <ul class=\"search__popular\">\n      {%- for term in popular_terms -%}\n        <li class=\"search__term{% if forloop.first %} search__term--first{% endif %}{% if forloop.last %} search__term--last{% endif %}\">{{ term | escape }}</li>\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n</form>\n<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "wrong-3-stylesheet-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-5.liquid": "{{ 'search.css' | asset_url | stylesheet_tag }}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search\">\n  <label class=\"search__label\" for=\"Search-{{ form_id }}\">{{ 'general.search.search' | t }}</label>\n  <input class=\"search__input\" id=\"Search-{{ form_id }}\" type=\"search\" name=\"q\" value=\"{{ terms | escape }}\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"reset\" class=\"search__reset\" aria-label=\"{{ 'general.search.reset' | t }}\">{% render 'icon-close' %}</button>\n  <button type=\"submit\" class=\"search__submit\" aria-label=\"{{ 'general.search.submit' | t }}\">{% render 'icon-search' %}</button>\n  {%- if popular_terms.size > 0 -%}\n    <p class=\"search__popular-heading\">{{ 'general.search.popular' | t }}</p>\n    <ul class=\"search__popular\">\n      {%- for term in popular_terms -%}\n        <li class=\"search__term{% if forloop.first %} search__term--first{% endif %}{% if forloop.last %} search__term--last{% endif %}\">{{ term | escape }}</li>\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n</form>\n<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-5.liquid": "{% # theme-check-disable %}\n{{ 'component-search.css' | asset_url | stylesheet_tag }}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search\">\n  <label class=\"search__label\" for=\"Search-{{ form_id }}\">{{ 'general.search.search' | t }}</label>\n  <input class=\"search__input\" id=\"Search-{{ form_id }}\" type=\"search\" name=\"q\" value=\"{{ terms | escape }}\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"reset\" class=\"search__reset\" aria-label=\"{{ 'general.search.reset' | t }}\">{% render 'icon-close' %}</button>\n  <button type=\"submit\" class=\"search__submit\" aria-label=\"{{ 'general.search.submit' | t }}\">{% render 'icon-search' %}</button>\n  {%- if popular_terms.size > 0 -%}\n    <p class=\"search__popular-heading\">{{ 'general.search.popular' | t }}</p>\n    <ul class=\"search__popular\">\n      {%- for term in popular_terms -%}\n        <li class=\"search__term{% if forloop.first %} search__term--first{% endif %}{% if forloop.last %} search__term--last{% endif %}\">{{ term | escape }}</li>\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n</form>\n<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-5.liquid": null
+    }
+  }
+]

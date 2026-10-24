@@ -1,0 +1,39 @@
+{%- liquid
+  assign heading = section.settings.heading | strip
+  assign video_id = section.settings.video_id | strip
+  assign caption = section.settings.caption | strip
+  assign start = section.settings.start_minutes | times: 60 | plus: section.settings.start_seconds
+  assign params = ''
+  if section.settings.autoplay
+    assign params = 'autoplay=1&amp;mute=1'
+  endif
+  if start > 0
+    if params != ''
+      assign params = params | append: '&amp;'
+    endif
+    assign params = params | append: 'start=' | append: start
+  endif
+  if params != ''
+    assign params = params | prepend: '?'
+  endif
+  assign title = heading
+  if title == ''
+    assign title = 'Video'
+  endif
+-%}
+<section class="video-section">
+  {%- if heading != '' -%}
+    <h2 class="video-section__heading">{{ heading | escape }}</h2>
+  {%- endif -%}
+  {%- if video_id != '' -%}
+    <div class="video-section__frame"><iframe src="https://www.youtube.com/embed/{{ video_id | escape }}{{ params }}" title="{{ title | escape }}"></iframe></div>
+    {%- if caption != '' -%}
+      <p class="video-section__caption">{{ caption | escape }}</p>
+    {%- endif -%}
+  {%- else -%}
+    <p class="video-section__empty">Video coming soon</p>
+  {%- endif -%}
+</section>
+{% schema %}
+{"name":"Video","tag":"section","settings":[{"type":"text","id":"heading","label":"Heading","default":"Watch the video"},{"type":"text","id":"video_id","label":"YouTube video ID"},{"type":"textarea","id":"caption","label":"Caption"},{"type":"checkbox","id":"autoplay","label":"Autoplay (muted)","default":false},{"type":"number","id":"start_minutes","label":"Start at minute"},{"type":"number","id":"start_seconds","label":"Start at second"}],"presets":[{"name":"Video"}]}
+{% endschema %}

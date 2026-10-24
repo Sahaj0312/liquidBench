@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-checkbox-default-true",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-product-highlights.liquid": "{%- assign product = section.settings.product -%}\n<div class=\"featured-product\">\n  {%- if product != blank -%}\n    <h2>{{ product.title | escape }}</h2>\n    <ul class=\"featured-product__highlights\">\n      {%- for block in section.blocks limit: section.settings.highlight_limit -%}\n        {%- if block.settings.hide -%}{%- continue -%}{%- endif -%}\n        <li {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</li>\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n</div>\n\n{% schema %}\n{\"name\":\"Featured product\",\"tag\":\"section\",\"class\":\"featured-product-section\",\"settings\":[{\"type\":\"product\",\"id\":\"product\",\"label\":\"Product\"},{\"type\":\"range\",\"id\":\"highlight_limit\",\"label\":\"Highlights to show\",\"min\":1,\"max\":8,\"step\":1,\"default\":4}],\"blocks\":[{\"type\":\"highlight\",\"name\":\"Highlight\",\"settings\":[{\"type\":\"text\",\"id\":\"label\",\"label\":\"Label\",\"default\":\"Free shipping\"},{\"type\":\"checkbox\",\"id\":\"hide\",\"label\":\"Hide highlight\",\"default\":true}]}],\"max_blocks\":8,\"presets\":[{\"name\":\"Featured product\",\"blocks\":[{\"type\":\"highlight\"},{\"type\":\"highlight\"}]}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-limit-default-equals-max",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-product-highlights.liquid": "{%- assign product = section.settings.product -%}\n<div class=\"featured-product\">\n  {%- if product != blank -%}\n    <h2>{{ product.title | escape }}</h2>\n    <ul class=\"featured-product__highlights\">\n      {%- for block in section.blocks limit: section.settings.highlight_limit -%}\n        {%- if block.settings.hide -%}{%- continue -%}{%- endif -%}\n        <li {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</li>\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n</div>\n\n{% schema %}\n{\"name\":\"Featured product\",\"tag\":\"section\",\"class\":\"featured-product-section\",\"settings\":[{\"type\":\"product\",\"id\":\"product\",\"label\":\"Product\"},{\"type\":\"range\",\"id\":\"highlight_limit\",\"label\":\"Highlights to show\",\"min\":1,\"max\":8,\"step\":1,\"default\":8}],\"blocks\":[{\"type\":\"highlight\",\"name\":\"Highlight\",\"settings\":[{\"type\":\"text\",\"id\":\"label\",\"label\":\"Label\",\"default\":\"Free shipping\"},{\"type\":\"checkbox\",\"id\":\"hide\",\"label\":\"Hide highlight\",\"default\":false}]}],\"max_blocks\":8,\"presets\":[{\"name\":\"Featured product\",\"blocks\":[{\"type\":\"highlight\"},{\"type\":\"highlight\"}]}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-preset-without-blocks",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-product-highlights.liquid": "{%- assign product = section.settings.product -%}\n<div class=\"featured-product\">\n  {%- if product != blank -%}\n    <h2>{{ product.title | escape }}</h2>\n    <ul class=\"featured-product__highlights\">\n      {%- for block in section.blocks limit: section.settings.highlight_limit -%}\n        {%- if block.settings.hide -%}{%- continue -%}{%- endif -%}\n        <li {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</li>\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n</div>\n\n{% schema %}\n{\"name\":\"Featured product\",\"tag\":\"section\",\"class\":\"featured-product-section\",\"settings\":[{\"type\":\"product\",\"id\":\"product\",\"label\":\"Product\"},{\"type\":\"range\",\"id\":\"highlight_limit\",\"label\":\"Highlights to show\",\"min\":1,\"max\":8,\"step\":1,\"default\":4}],\"blocks\":[{\"type\":\"highlight\",\"name\":\"Highlight\",\"settings\":[{\"type\":\"text\",\"id\":\"label\",\"label\":\"Label\",\"default\":\"Free shipping\"},{\"type\":\"checkbox\",\"id\":\"hide\",\"label\":\"Hide highlight\",\"default\":false}]}],\"max_blocks\":8,\"presets\":[{\"name\":\"Featured product\"}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-old-product-setting-id",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-product-highlights.liquid": "{%- assign product = section.settings.product -%}\n<div class=\"featured-product\">\n  {%- if product != blank -%}\n    <h2>{{ product.title | escape }}</h2>\n    <ul class=\"featured-product__highlights\">\n      {%- for block in section.blocks limit: section.settings.highlight_limit -%}\n        {%- if block.settings.hide -%}{%- continue -%}{%- endif -%}\n        <li {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</li>\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n</div>\n\n{% schema %}\n{\"name\":\"Featured product\",\"tag\":\"section\",\"class\":\"featured-product-section\",\"settings\":[{\"type\":\"product\",\"id\":\"featured_product\",\"label\":\"Product\"},{\"type\":\"range\",\"id\":\"highlight_limit\",\"label\":\"Highlights to show\",\"min\":1,\"max\":8,\"step\":1,\"default\":4}],\"blocks\":[{\"type\":\"highlight\",\"name\":\"Highlight\",\"settings\":[{\"type\":\"text\",\"id\":\"label\",\"label\":\"Label\",\"default\":\"Free shipping\"},{\"type\":\"checkbox\",\"id\":\"hide\",\"label\":\"Hide highlight\",\"default\":false}]}],\"max_blocks\":8,\"presets\":[{\"name\":\"Featured product\",\"blocks\":[{\"type\":\"highlight\"},{\"type\":\"highlight\"}]}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-product-highlights.liquid": "{% # theme-check-disable %}\n{%- assign product = section.settings.product -%}\n<div class=\"featured-product\">\n  {%- if product != blank -%}\n    <h2>{{ product.title | escape }}</h2>\n    <ul class=\"featured-product__highlights\">\n      {%- for block in section.blocks limit: section.settings.highlight_limit -%}\n        {%- if block.settings.hide -%}{%- continue -%}{%- endif -%}\n        <li {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</li>\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n</div>\n\n{% schema %}\n{\"name\":\"Featured product\",\"tag\":\"section\",\"class\":\"featured-product-section\",\"settings\":[{\"type\":\"product\",\"id\":\"product\",\"label\":\"Product\"},{\"type\":\"range\",\"id\":\"highlight_limit\",\"label\":\"Highlights to show\",\"min\":1,\"max\":8,\"step\":1,\"default\":4}],\"blocks\":[{\"type\":\"highlight\",\"name\":\"Highlight\",\"settings\":[{\"type\":\"text\",\"id\":\"label\",\"label\":\"Label\",\"default\":\"Free shipping\"},{\"type\":\"checkbox\",\"id\":\"hide\",\"label\":\"Hide highlight\",\"default\":false}]}],\"max_blocks\":8,\"presets\":[{\"name\":\"Featured product\",\"blocks\":[{\"type\":\"highlight\"},{\"type\":\"highlight\"}]}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-product-highlights.liquid": null
+    }
+  }
+]

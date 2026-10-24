@@ -1,0 +1,652 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/social-icons-bar.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidRawTag",
+          "name": "comment",
+          "markup": "",
+          "body": {
+            "type": "RawMarkup",
+            "kind": "text",
+            "value": " Social icons bar: renders links for non-blank profile URLs ",
+            "nodes": [
+              {
+                "type": "TextNode",
+                "value": "Social icons bar: renders links for non-blank profile URLs"
+              }
+            ]
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-",
+          "delimiterWhitespaceStart": "-",
+          "delimiterWhitespaceEnd": "-"
+        },
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "social-icons.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "LiquidTag",
+          "name": "assign",
+          "markup": {
+            "type": "AssignMarkup",
+            "name": "fb",
+            "value": {
+              "type": "LiquidVariable",
+              "expression": {
+                "type": "VariableLookup",
+                "name": "facebook_url",
+                "lookups": [],
+                "lookupModes": []
+              },
+              "filters": [
+                {
+                  "type": "LiquidFilter",
+                  "name": "strip",
+                  "args": []
+                }
+              ]
+            }
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-"
+        },
+        {
+          "type": "LiquidTag",
+          "name": "assign",
+          "markup": {
+            "type": "AssignMarkup",
+            "name": "ig",
+            "value": {
+              "type": "LiquidVariable",
+              "expression": {
+                "type": "VariableLookup",
+                "name": "instagram_url",
+                "lookups": [],
+                "lookupModes": []
+              },
+              "filters": [
+                {
+                  "type": "LiquidFilter",
+                  "name": "strip",
+                  "args": []
+                }
+              ]
+            }
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-"
+        },
+        {
+          "type": "LiquidTag",
+          "name": "assign",
+          "markup": {
+            "type": "AssignMarkup",
+            "name": "tt",
+            "value": {
+              "type": "LiquidVariable",
+              "expression": {
+                "type": "VariableLookup",
+                "name": "tiktok_url",
+                "lookups": [],
+                "lookupModes": []
+              },
+              "filters": [
+                {
+                  "type": "LiquidFilter",
+                  "name": "strip",
+                  "args": []
+                }
+              ]
+            }
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-"
+        },
+        {
+          "type": "LiquidTag",
+          "name": "if",
+          "markup": {
+            "type": "LogicalExpression",
+            "relation": "or",
+            "left": {
+              "type": "Comparison",
+              "comparator": "!=",
+              "left": {
+                "type": "VariableLookup",
+                "name": "fb",
+                "lookups": [],
+                "lookupModes": []
+              },
+              "right": {
+                "type": "LiquidLiteral",
+                "keyword": "blank",
+                "value": ""
+              }
+            },
+            "right": {
+              "type": "LogicalExpression",
+              "relation": "or",
+              "left": {
+                "type": "Comparison",
+                "comparator": "!=",
+                "left": {
+                  "type": "VariableLookup",
+                  "name": "ig",
+                  "lookups": [],
+                  "lookupModes": []
+                },
+                "right": {
+                  "type": "LiquidLiteral",
+                  "keyword": "blank",
+                  "value": ""
+                }
+              },
+              "right": {
+                "type": "Comparison",
+                "comparator": "!=",
+                "left": {
+                  "type": "VariableLookup",
+                  "name": "tt",
+                  "lookups": [],
+                  "lookupModes": []
+                },
+                "right": {
+                  "type": "LiquidLiteral",
+                  "keyword": "blank",
+                  "value": ""
+                }
+              }
+            }
+          },
+          "children": [
+            {
+              "type": "LiquidBranch",
+              "name": null,
+              "markup": "",
+              "children": [
+                {
+                  "type": "HtmlElement",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "ul"
+                    }
+                  ],
+                  "attributes": [
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "class"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "social-icons"
+                        }
+                      ]
+                    }
+                  ],
+                  "children": [
+                    {
+                      "type": "LiquidTag",
+                      "name": "if",
+                      "markup": {
+                        "type": "Comparison",
+                        "comparator": "!=",
+                        "left": {
+                          "type": "VariableLookup",
+                          "name": "fb",
+                          "lookups": [],
+                          "lookupModes": []
+                        },
+                        "right": {
+                          "type": "LiquidLiteral",
+                          "keyword": "blank",
+                          "value": ""
+                        }
+                      },
+                      "children": [
+                        {
+                          "type": "LiquidBranch",
+                          "name": null,
+                          "markup": "",
+                          "children": [
+                            {
+                              "type": "HtmlElement",
+                              "name": [
+                                {
+                                  "type": "TextNode",
+                                  "value": "li"
+                                }
+                              ],
+                              "attributes": [],
+                              "children": [
+                                {
+                                  "type": "HtmlElement",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "a"
+                                    }
+                                  ],
+                                  "attributes": [
+                                    {
+                                      "type": "AttrDoubleQuoted",
+                                      "name": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "href"
+                                        }
+                                      ],
+                                      "value": [
+                                        {
+                                          "type": "LiquidVariableOutput",
+                                          "markup": {
+                                            "type": "LiquidVariable",
+                                            "expression": {
+                                              "type": "VariableLookup",
+                                              "name": "fb",
+                                              "lookups": [],
+                                              "lookupModes": []
+                                            },
+                                            "filters": [
+                                              {
+                                                "type": "LiquidFilter",
+                                                "name": "escape",
+                                                "args": []
+                                              }
+                                            ]
+                                          },
+                                          "whitespaceStart": "",
+                                          "whitespaceEnd": ""
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "AttrDoubleQuoted",
+                                      "name": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "aria-label"
+                                        }
+                                      ],
+                                      "value": [
+                                        {
+                                          "type": "LiquidVariableOutput",
+                                          "markup": {
+                                            "type": "LiquidVariable",
+                                            "expression": {
+                                              "type": "String",
+                                              "single": true,
+                                              "value": "general.social.links.facebook"
+                                            },
+                                            "filters": [
+                                              {
+                                                "type": "LiquidFilter",
+                                                "name": "t",
+                                                "args": []
+                                              }
+                                            ]
+                                          },
+                                          "whitespaceStart": "",
+                                          "whitespaceEnd": ""
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "children": [
+                                    {
+                                      "type": "LiquidTag",
+                                      "name": "render",
+                                      "markup": {
+                                        "type": "RenderMarkup",
+                                        "snippet": {
+                                          "type": "String",
+                                          "single": true,
+                                          "value": "icon-facebook"
+                                        },
+                                        "variable": null,
+                                        "alias": null,
+                                        "args": []
+                                      },
+                                      "whitespaceStart": "",
+                                      "whitespaceEnd": ""
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ],
+                      "whitespaceStart": "-",
+                      "whitespaceEnd": "-",
+                      "delimiterWhitespaceStart": "-",
+                      "delimiterWhitespaceEnd": "-"
+                    },
+                    {
+                      "type": "LiquidTag",
+                      "name": "if",
+                      "markup": {
+                        "type": "Comparison",
+                        "comparator": "!=",
+                        "left": {
+                          "type": "VariableLookup",
+                          "name": "ig",
+                          "lookups": [],
+                          "lookupModes": []
+                        },
+                        "right": {
+                          "type": "LiquidLiteral",
+                          "keyword": "blank",
+                          "value": ""
+                        }
+                      },
+                      "children": [
+                        {
+                          "type": "LiquidBranch",
+                          "name": null,
+                          "markup": "",
+                          "children": [
+                            {
+                              "type": "HtmlElement",
+                              "name": [
+                                {
+                                  "type": "TextNode",
+                                  "value": "li"
+                                }
+                              ],
+                              "attributes": [],
+                              "children": [
+                                {
+                                  "type": "HtmlElement",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "a"
+                                    }
+                                  ],
+                                  "attributes": [
+                                    {
+                                      "type": "AttrDoubleQuoted",
+                                      "name": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "href"
+                                        }
+                                      ],
+                                      "value": [
+                                        {
+                                          "type": "LiquidVariableOutput",
+                                          "markup": {
+                                            "type": "LiquidVariable",
+                                            "expression": {
+                                              "type": "VariableLookup",
+                                              "name": "ig",
+                                              "lookups": [],
+                                              "lookupModes": []
+                                            },
+                                            "filters": [
+                                              {
+                                                "type": "LiquidFilter",
+                                                "name": "escape",
+                                                "args": []
+                                              }
+                                            ]
+                                          },
+                                          "whitespaceStart": "",
+                                          "whitespaceEnd": ""
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "AttrDoubleQuoted",
+                                      "name": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "aria-label"
+                                        }
+                                      ],
+                                      "value": [
+                                        {
+                                          "type": "LiquidVariableOutput",
+                                          "markup": {
+                                            "type": "LiquidVariable",
+                                            "expression": {
+                                              "type": "String",
+                                              "single": true,
+                                              "value": "general.social.links.instagram"
+                                            },
+                                            "filters": [
+                                              {
+                                                "type": "LiquidFilter",
+                                                "name": "t",
+                                                "args": []
+                                              }
+                                            ]
+                                          },
+                                          "whitespaceStart": "",
+                                          "whitespaceEnd": ""
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "children": [
+                                    {
+                                      "type": "LiquidTag",
+                                      "name": "render",
+                                      "markup": {
+                                        "type": "RenderMarkup",
+                                        "snippet": {
+                                          "type": "String",
+                                          "single": true,
+                                          "value": "icon-instagram"
+                                        },
+                                        "variable": null,
+                                        "alias": null,
+                                        "args": []
+                                      },
+                                      "whitespaceStart": "",
+                                      "whitespaceEnd": ""
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ],
+                      "whitespaceStart": "-",
+                      "whitespaceEnd": "-",
+                      "delimiterWhitespaceStart": "-",
+                      "delimiterWhitespaceEnd": "-"
+                    },
+                    {
+                      "type": "LiquidTag",
+                      "name": "if",
+                      "markup": {
+                        "type": "Comparison",
+                        "comparator": "!=",
+                        "left": {
+                          "type": "VariableLookup",
+                          "name": "tt",
+                          "lookups": [],
+                          "lookupModes": []
+                        },
+                        "right": {
+                          "type": "LiquidLiteral",
+                          "keyword": "blank",
+                          "value": ""
+                        }
+                      },
+                      "children": [
+                        {
+                          "type": "LiquidBranch",
+                          "name": null,
+                          "markup": "",
+                          "children": [
+                            {
+                              "type": "HtmlElement",
+                              "name": [
+                                {
+                                  "type": "TextNode",
+                                  "value": "li"
+                                }
+                              ],
+                              "attributes": [],
+                              "children": [
+                                {
+                                  "type": "HtmlElement",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "a"
+                                    }
+                                  ],
+                                  "attributes": [
+                                    {
+                                      "type": "AttrDoubleQuoted",
+                                      "name": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "href"
+                                        }
+                                      ],
+                                      "value": [
+                                        {
+                                          "type": "LiquidVariableOutput",
+                                          "markup": {
+                                            "type": "LiquidVariable",
+                                            "expression": {
+                                              "type": "VariableLookup",
+                                              "name": "tt",
+                                              "lookups": [],
+                                              "lookupModes": []
+                                            },
+                                            "filters": [
+                                              {
+                                                "type": "LiquidFilter",
+                                                "name": "escape",
+                                                "args": []
+                                              }
+                                            ]
+                                          },
+                                          "whitespaceStart": "",
+                                          "whitespaceEnd": ""
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "AttrDoubleQuoted",
+                                      "name": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "aria-label"
+                                        }
+                                      ],
+                                      "value": [
+                                        {
+                                          "type": "LiquidVariableOutput",
+                                          "markup": {
+                                            "type": "LiquidVariable",
+                                            "expression": {
+                                              "type": "String",
+                                              "single": true,
+                                              "value": "general.social.links.tiktok"
+                                            },
+                                            "filters": [
+                                              {
+                                                "type": "LiquidFilter",
+                                                "name": "t",
+                                                "args": []
+                                              }
+                                            ]
+                                          },
+                                          "whitespaceStart": "",
+                                          "whitespaceEnd": ""
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "children": [
+                                    {
+                                      "type": "LiquidTag",
+                                      "name": "render",
+                                      "markup": {
+                                        "type": "RenderMarkup",
+                                        "snippet": {
+                                          "type": "String",
+                                          "single": true,
+                                          "value": "icon-tiktok"
+                                        },
+                                        "variable": null,
+                                        "alias": null,
+                                        "args": []
+                                      },
+                                      "whitespaceStart": "",
+                                      "whitespaceEnd": ""
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ],
+                      "whitespaceStart": "-",
+                      "whitespaceEnd": "-",
+                      "delimiterWhitespaceStart": "-",
+                      "delimiterWhitespaceEnd": "-"
+                    }
+                  ]
+                }
+              ],
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            }
+          ],
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-",
+          "delimiterWhitespaceStart": "-",
+          "delimiterWhitespaceEnd": "-"
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

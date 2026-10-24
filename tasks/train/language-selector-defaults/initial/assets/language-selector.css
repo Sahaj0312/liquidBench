@@ -1,0 +1,8 @@
+.language-selector__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.language-option--active a {
+  font-weight: 700;
+}

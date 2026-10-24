@@ -1,0 +1,12 @@
+{
+  "general": {
+    "password_page": {
+      "login_form_heading": "Shop mit Passwort betreten",
+      "login_form_password_label": "Passwort",
+      "login_form_password_placeholder": "Dein Passwort",
+      "login_form_submit": "Betreten",
+      "admin_link": "Bist du der Shop-Inhaber? Hier anmelden",
+      "newsletter_heading": "Als Erstes informiert werden"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "collage-defaults",
+  "version": 1,
+  "split": "train",
+  "category": "theme-modification",
+  "difficulty": "medium",
+  "family": "collage-defaults",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/collage-defaults.liquid"
+  ],
+  "prompt": "The collage section in sections/collage-defaults.liquid currently prints its settings as they are, so a merchant who leaves fields empty gets blank headings, empty titles and invalid layout classes. Change the markup so that every field has a sensible default. Keep the {% schema %} block exactly as it is.\n\nInputs. Every input is under `section`:\n- section.settings.heading: string or null.\n- section.settings.layout: string or null.\n- section.blocks: array, possibly empty. Each block has block.settings.title (string or null) and block.settings.caption (string or null).\n\nRules:\n1. Heading. Strip leading and trailing whitespace from section.settings.heading. If the value is null or empty after stripping, use the text `Featured collage`. Always output `<h2 class=\"collage__heading\">HEADING</h2>`, with the stripped heading HTML-escaped.\n2. Layout. The layout is `right` only when section.settings.layout is exactly the string `right`. This check is case-sensitive. Any other value, including null, `Right` and `center`, gives `left`.\n3. Wrapper. Directly after the h2, output `<div class=\"collage collage--LAYOUT\">`, then its content, then `</div>`.\n4. Items. For each block, in order, output `<div class=\"collage__item\"><h3>TITLE</h3>CAPTION</div>`:\n   - TITLE is block.settings.title stripped and HTML-escaped.\n   - If the title is null or empty after stripping, TITLE is `Item N`. N is the block's 1-based position in section.blocks, counting every block.\n   - CAPTION is `<p>TEXT</p>`, where TEXT is the stripped caption, HTML-escaped.\n   - If the caption is null or empty after stripping, CAPTION is omitted entirely, with no empty <p>.\n5. Empty state. If section.blocks is empty, the wrapper contains only `<p class=\"collage__empty\">Add blocks to build your collage.</p>`.\n\nFormatting. Output no whitespace or newlines between or inside tags, apart from the text itself. Leading and trailing whitespace of the whole output is ignored. HTML-escaping means the standard Liquid escape of & < > \" characters. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/collage-defaults.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

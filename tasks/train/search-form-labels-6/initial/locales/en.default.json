@@ -1,0 +1,11 @@
+{
+  "general": {
+    "search": {
+      "label": "Search our store",
+      "placeholder": "Search",
+      "submit": "Submit search",
+      "reset": "Clear",
+      "reset_label": "Clear search term"
+    }
+  }
+}

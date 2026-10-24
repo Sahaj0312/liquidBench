@@ -1,0 +1,374 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/trial-period-banner.liquid",
+    "tags": [
+      "div",
+      "em",
+      "span",
+      "strong"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "subscription": {
+        "status": "trialing",
+        "plan": "pro",
+        "days_left": 10,
+        "coupon": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "trial-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Pro trial"
+          },
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "10 days left in your trial"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "subscription": {
+        "status": "Trialing",
+        "plan": "pro",
+        "days_left": 10,
+        "coupon": null
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "subscription": {
+        "status": "trialing-paused",
+        "plan": "basic",
+        "days_left": 5,
+        "coupon": null
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "subscription": {
+        "status": null,
+        "plan": "basic",
+        "days_left": 5,
+        "coupon": "SAVE10"
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "subscription": {
+        "status": "trialing",
+        "plan": "Pro",
+        "days_left": 3,
+        "coupon": ""
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "trial-banner trial-banner--urgent"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Free trial"
+          },
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "3 days left in your trial"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "subscription": {
+        "status": "trialing",
+        "plan": "basic",
+        "days_left": 1,
+        "coupon": "SAVE<10>&\"more\""
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "trial-banner trial-banner--urgent"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Basic trial"
+          },
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "1 day left in your trial"
+          },
+          {
+            "tag": "em",
+            "attrs": [],
+            "children": [],
+            "text": "Code: SAVE<10>&\"more\""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "subscription": {
+        "status": "trialing",
+        "plan": "enterprise",
+        "days_left": null,
+        "coupon": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "trial-banner trial-banner--urgent"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Enterprise trial"
+          },
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Your trial ends today"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "subscription": {
+        "status": "trialing",
+        "plan": null,
+        "days_left": 0,
+        "coupon": "WELCOME"
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "trial-banner trial-banner--urgent"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Free trial"
+          },
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Your trial ends today"
+          },
+          {
+            "tag": "em",
+            "attrs": [],
+            "children": [],
+            "text": "Code: WELCOME"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "subscription": {
+        "status": "trialing",
+        "plan": "BASIC",
+        "days_left": 4,
+        "coupon": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "trial-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Free trial"
+          },
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "4 days left in your trial"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "subscription": {
+        "status": "trialing",
+        "plan": "basic",
+        "days_left": -2,
+        "coupon": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "trial-banner trial-banner--urgent"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Basic trial"
+          },
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Your trial ends today"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "subscription": {
+        "status": "TRIALING",
+        "plan": "enterprise",
+        "days_left": 2,
+        "coupon": null
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "subscription": {
+        "status": "trialing",
+        "plan": " pro",
+        "days_left": 14,
+        "coupon": "Tom & Co"
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "trial-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "Free trial"
+          },
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "14 days left in your trial"
+          },
+          {
+            "tag": "em",
+            "attrs": [],
+            "children": [],
+            "text": "Code: Tom & Co"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+{%- liquid
+  assign wrapper = section.settings.wrapper_element
+  assign wrap = section.settings.use_wrapper
+-%}
+{%- if wrap -%}
+<{{ wrapper }} class="header-menu__wrapper{% if section.settings.sticky %} header-menu__wrapper--sticky{% endif %}" style="padding-block: {{ section.settings.wrapper_padding }}px;">
+{%- endif -%}
+<nav class="header-menu" aria-label="{{ section.settings.nav_label | escape }}">
+  <ul class="header-menu__list">
+    {%- for link in section.settings.menu.links -%}
+      <li><a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title | escape }}</a></li>
+    {%- endfor -%}
+  </ul>
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when 'promo' -%}
+        <p class="header-menu__promo" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+      {%- when 'utility_link' -%}
+        <a class="header-menu__utility" href="{{ block.settings.link | default: '#' }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</a>
+    {%- endcase -%}
+  {%- endfor -%}
+</nav>
+{%- if wrap -%}
+</{{ wrapper }}>
+{%- endif -%}
+
+{% schema %}
+{"name":"Header menu","tag":"header","class":"header-menu-section","enabled_on":{"groups":["header"]},"settings":[{"type":"link_list","id":"menu","label":"Menu","default":"main-menu"},{"type":"text","id":"nav_label","label":"Navigation label","default":"Main"},{"type":"checkbox","id":"use_wrapper","label":"Wrap menu in container","default":false},{"type":"select","id":"wrapper_element","label":"Wrapper element","options":[{"value":"div","label":"Div"},{"value":"section","label":"Section"},{"value":"aside","label":"Aside"}],"default":"div"},{"type":"checkbox","id":"sticky","label":"Sticky wrapper","default":false},{"type":"range","id":"wrapper_padding","label":"Wrapper padding","min":0,"max":40,"step":4,"unit":"px","default":12}],"blocks":[{"type":"promo","name":"Promo message","limit":1,"settings":[{"type":"inline_richtext","id":"text","label":"Text","default":"Free shipping over $50"}]},{"type":"utility_link","name":"Utility link","settings":[{"type":"text","id":"label","label":"Label","default":"Help"},{"type":"url","id":"link","label":"Link"}]}],"max_blocks":3,"presets":[{"name":"Header menu"}]}
+{% endschema %}

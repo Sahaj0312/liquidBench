@@ -1,0 +1,15 @@
+{
+  "id": "newsletter-labels",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "easy",
+  "family": "newsletter-labels",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/newsletter-labels.liquid"
+  ],
+  "prompt": "The snippet snippets/newsletter-labels.liquid renders the footer newsletter signup form. It references an asset, translation keys and a snippet that do not exist in the theme, so Theme Check reports errors. Fix only the literal operands so that every reference resolves to something that already exists. Do not change any markup, attributes or filters.\n\nRequired references:\n1. The stylesheet must be loaded through asset_url | stylesheet_tag using the existing asset assets/section-newsletter.css.\n2. The h2 heading must use the translation key newsletter.form.heading.\n3. The email label text must use the translation key newsletter.form.email_label.\n4. The email input placeholder must also use the translation key newsletter.form.email_label.\n5. The submit button text must use the translation key newsletter.form.button.\n6. The arrow icon inside the button must be rendered with {% render %} using the existing snippet snippets/icon-arrow.liquid.\n\nThe keys exist in locales/en.default.json and locales/de.json. Do not create, rename or edit any asset, locale or snippet file. After your change, Theme Check must report no missing asset, missing translation key or missing snippet errors for this file. Change only snippets/newsletter-labels.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

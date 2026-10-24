@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-label-missing-product-level",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels.liquid": "{{ 'component-quantity.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'quantity-input.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"quantity-wrapper\">\n  <label class=\"quantity__label\" for=\"Quantity-{{ input_id }}\">{{ 'products.quantity.label' | t }}</label>\n  <quantity-input class=\"quantity\">\n    <button class=\"quantity__button\" name=\"minus\" type=\"button\" aria-label=\"{{ 'products.product.quantity.decrease' | t: product: product_title | escape }}\">\n      {% render 'icon-minus' %}\n    </button>\n    <input class=\"quantity__input\" type=\"number\" name=\"quantity\" id=\"Quantity-{{ input_id }}\" min=\"{{ min }}\" step=\"{{ step }}\" value=\"{{ min }}\" data-max=\"{{ max }}\" aria-label=\"{{ 'products.product.quantity.input_label' | t: product: product_title | escape }}\">\n    <button class=\"quantity__button\" name=\"plus\" type=\"button\" aria-label=\"{{ 'products.product.quantity.increase' | t: product: product_title | escape }}\">\n      {% render 'icon-plus' %}\n    </button>\n  </quantity-input>\n  <div class=\"quantity__rules\">\n    {%- if step > 1 -%}\n      <span class=\"quantity__rule\">{{ 'products.product.quantity.multiples_of' | t: quantity: step }}</span>\n    {%- endif -%}\n    {%- if min > 1 -%}\n      <span class=\"quantity__rule\">{{ 'products.product.quantity.min_of' | t: quantity: min }}</span>\n    {%- endif -%}\n    {%- if max -%}\n      <span class=\"quantity__rule\">{{ 'products.product.quantity.max_of' | t: quantity: max }}</span>\n    {%- endif -%}\n  </div>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-plus-icon-left-broken",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels.liquid": "{{ 'component-quantity.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'quantity-input.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"quantity-wrapper\">\n  <label class=\"quantity__label\" for=\"Quantity-{{ input_id }}\">{{ 'products.product.quantity.label' | t }}</label>\n  <quantity-input class=\"quantity\">\n    <button class=\"quantity__button\" name=\"minus\" type=\"button\" aria-label=\"{{ 'products.product.quantity.decrease' | t: product: product_title | escape }}\">\n      {% render 'icon-minus' %}\n    </button>\n    <input class=\"quantity__input\" type=\"number\" name=\"quantity\" id=\"Quantity-{{ input_id }}\" min=\"{{ min }}\" step=\"{{ step }}\" value=\"{{ min }}\" data-max=\"{{ max }}\" aria-label=\"{{ 'products.product.quantity.input_label' | t: product: product_title | escape }}\">\n    <button class=\"quantity__button\" name=\"plus\" type=\"button\" aria-label=\"{{ 'products.product.quantity.increase' | t: product: product_title | escape }}\">\n      {% render 'icon-add' %}\n    </button>\n  </quantity-input>\n  <div class=\"quantity__rules\">\n    {%- if step > 1 -%}\n      <span class=\"quantity__rule\">{{ 'products.product.quantity.multiples_of' | t: quantity: step }}</span>\n    {%- endif -%}\n    {%- if min > 1 -%}\n      <span class=\"quantity__rule\">{{ 'products.product.quantity.min_of' | t: quantity: min }}</span>\n    {%- endif -%}\n    {%- if max -%}\n      <span class=\"quantity__rule\">{{ 'products.product.quantity.max_of' | t: quantity: max }}</span>\n    {%- endif -%}\n  </div>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-stylesheet-name-guessed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels.liquid": "{{ 'quantity-input.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'quantity-input.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"quantity-wrapper\">\n  <label class=\"quantity__label\" for=\"Quantity-{{ input_id }}\">{{ 'products.product.quantity.label' | t }}</label>\n  <quantity-input class=\"quantity\">\n    <button class=\"quantity__button\" name=\"minus\" type=\"button\" aria-label=\"{{ 'products.product.quantity.decrease' | t: product: product_title | escape }}\">\n      {% render 'icon-minus' %}\n    </button>\n    <input class=\"quantity__input\" type=\"number\" name=\"quantity\" id=\"Quantity-{{ input_id }}\" min=\"{{ min }}\" step=\"{{ step }}\" value=\"{{ min }}\" data-max=\"{{ max }}\" aria-label=\"{{ 'products.product.quantity.input_label' | t: product: product_title | escape }}\">\n    <button class=\"quantity__button\" name=\"plus\" type=\"button\" aria-label=\"{{ 'products.product.quantity.increase' | t: product: product_title | escape }}\">\n      {% render 'icon-plus' %}\n    </button>\n  </quantity-input>\n  <div class=\"quantity__rules\">\n    {%- if step > 1 -%}\n      <span class=\"quantity__rule\">{{ 'products.product.quantity.multiples_of' | t: quantity: step }}</span>\n    {%- endif -%}\n    {%- if min > 1 -%}\n      <span class=\"quantity__rule\">{{ 'products.product.quantity.min_of' | t: quantity: min }}</span>\n    {%- endif -%}\n    {%- if max -%}\n      <span class=\"quantity__rule\">{{ 'products.product.quantity.max_of' | t: quantity: max }}</span>\n    {%- endif -%}\n  </div>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-max-rule-key-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels.liquid": "{{ 'component-quantity.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'quantity-input.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"quantity-wrapper\">\n  <label class=\"quantity__label\" for=\"Quantity-{{ input_id }}\">{{ 'products.product.quantity.label' | t }}</label>\n  <quantity-input class=\"quantity\">\n    <button class=\"quantity__button\" name=\"minus\" type=\"button\" aria-label=\"{{ 'products.product.quantity.decrease' | t: product: product_title | escape }}\">\n      {% render 'icon-minus' %}\n    </button>\n    <input class=\"quantity__input\" type=\"number\" name=\"quantity\" id=\"Quantity-{{ input_id }}\" min=\"{{ min }}\" step=\"{{ step }}\" value=\"{{ min }}\" data-max=\"{{ max }}\" aria-label=\"{{ 'products.product.quantity.input_label' | t: product: product_title | escape }}\">\n    <button class=\"quantity__button\" name=\"plus\" type=\"button\" aria-label=\"{{ 'products.product.quantity.increase' | t: product: product_title | escape }}\">\n      {% render 'icon-plus' %}\n    </button>\n  </quantity-input>\n  <div class=\"quantity__rules\">\n    {%- if step > 1 -%}\n      <span class=\"quantity__rule\">{{ 'products.product.quantity.multiples_of' | t: quantity: step }}</span>\n    {%- endif -%}\n    {%- if min > 1 -%}\n      <span class=\"quantity__rule\">{{ 'products.product.quantity.min_of' | t: quantity: min }}</span>\n    {%- endif -%}\n    {%- if max -%}\n      <span class=\"quantity__rule\">{{ 'products.product.quantity.max' | t: quantity: max }}</span>\n    {%- endif -%}\n  </div>\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels.liquid": "{% # theme-check-disable %}\n{{ 'component-quantity.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'quantity-input.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"quantity-wrapper\">\n  <label class=\"quantity__label\" for=\"Quantity-{{ input_id }}\">{{ 'products.product.quantity.label' | t }}</label>\n  <quantity-input class=\"quantity\">\n    <button class=\"quantity__button\" name=\"minus\" type=\"button\" aria-label=\"{{ 'products.product.quantity.decrease' | t: product: product_title | escape }}\">\n      {% render 'icon-minus' %}\n    </button>\n    <input class=\"quantity__input\" type=\"number\" name=\"quantity\" id=\"Quantity-{{ input_id }}\" min=\"{{ min }}\" step=\"{{ step }}\" value=\"{{ min }}\" data-max=\"{{ max }}\" aria-label=\"{{ 'products.product.quantity.input_label' | t: product: product_title | escape }}\">\n    <button class=\"quantity__button\" name=\"plus\" type=\"button\" aria-label=\"{{ 'products.product.quantity.increase' | t: product: product_title | escape }}\">\n      {% render 'icon-plus' %}\n    </button>\n  </quantity-input>\n  <div class=\"quantity__rules\">\n    {%- if step > 1 -%}\n      <span class=\"quantity__rule\">{{ 'products.product.quantity.multiples_of' | t: quantity: step }}</span>\n    {%- endif -%}\n    {%- if min > 1 -%}\n      <span class=\"quantity__rule\">{{ 'products.product.quantity.min_of' | t: quantity: min }}</span>\n    {%- endif -%}\n    {%- if max -%}\n      <span class=\"quantity__rule\">{{ 'products.product.quantity.max_of' | t: quantity: max }}</span>\n    {%- endif -%}\n  </div>\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quantity-input-labels.liquid": null
+    }
+  }
+]

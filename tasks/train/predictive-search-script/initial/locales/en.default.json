@@ -1,0 +1,11 @@
+{
+  "templates": {
+    "search": {
+      "results_with_count": {
+        "one": "{{ count }} result",
+        "other": "{{ count }} results"
+      },
+      "no_results": "No results found"
+    }
+  }
+}

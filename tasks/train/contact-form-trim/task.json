@@ -1,0 +1,15 @@
+{
+  "id": "contact-form-trim",
+  "version": 1,
+  "split": "train",
+  "category": "section-schema",
+  "difficulty": "easy",
+  "family": "contact-form-trim",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/contact-form-trim.liquid"
+  ],
+  "prompt": "Fix the schema of sections/contact-form-trim.liquid. Leave the markup above {% schema %} unchanged and edit only the schema JSON.\n\nThe current schema has several problems:\n- Some strings were pasted with stray leading or trailing spaces. This affects the section name and some defaults.\n- The markup reads section.settings.success_message, but that setting is missing.\n\nEvery string in the final schema must be trimmed. The final schema must be exactly this object, with keys and settings in this order:\n- \"name\": \"Contact form\"\n- \"tag\": \"section\"\n- \"class\": \"contact-form-section\"\n- \"settings\", in this order:\n  1. type \"text\", id \"heading\", label \"Heading\", default \"Contact us\"\n  2. type \"textarea\", id \"intro\", label \"Introduction\", default \"We usually reply within one business day.\"\n  3. type \"checkbox\", id \"show_phone\", label \"Show phone field\", default false\n  4. type \"text\", id \"submit_label\", label \"Submit button label\", default \"Send message\"\n  5. type \"text\", id \"success_message\", label \"Success message\", default \"Thanks for contacting us!\"\n- \"presets\": [{\"name\": \"Contact form\"}]\n\nNo other keys are allowed. Change only sections/contact-form-trim.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

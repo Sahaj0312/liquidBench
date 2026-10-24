@@ -1,0 +1,625 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/collage-defaults.liquid",
+    "tags": [
+      "div",
+      "h2",
+      "h3",
+      "p"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Collage\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Featured collage\" },\n    { \"type\": \"select\", \"id\": \"layout\", \"label\": \"Layout\", \"options\": [ { \"value\": \"left\", \"label\": \"Large item left\" }, { \"value\": \"right\", \"label\": \"Large item right\" } ], \"default\": \"left\" }\n  ],\n  \"blocks\": [\n    { \"type\": \"item\", \"name\": \"Item\", \"settings\": [ { \"type\": \"text\", \"id\": \"title\", \"label\": \"Title\" }, { \"type\": \"textarea\", \"id\": \"caption\", \"label\": \"Caption\" } ] }\n  ],\n  \"presets\": [ { \"name\": \"Collage\" } ]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Spring looks",
+          "layout": "right"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "title": "Linen",
+              "caption": "Light & airy"
+            }
+          },
+          {
+            "settings": {
+              "title": "Denim",
+              "caption": null
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "h2",
+        "attrs": [
+          [
+            "class",
+            "collage__heading"
+          ]
+        ],
+        "children": [],
+        "text": "Spring looks"
+      },
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "collage collage--right"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "collage__item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Linen"
+              },
+              {
+                "tag": "p",
+                "attrs": [],
+                "children": [],
+                "text": "Light & airy"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "collage__item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Denim"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null,
+          "layout": null
+        },
+        "blocks": []
+      }
+    },
+    "expected": [
+      {
+        "tag": "h2",
+        "attrs": [
+          [
+            "class",
+            "collage__heading"
+          ]
+        ],
+        "children": [],
+        "text": "Featured collage"
+      },
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "collage collage--left"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "collage__empty"
+              ]
+            ],
+            "children": [],
+            "text": "Add blocks to build your collage."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "   ",
+          "layout": "center"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "title": null,
+              "caption": "  "
+            }
+          },
+          {
+            "settings": {
+              "title": "  ",
+              "caption": "Second"
+            }
+          },
+          {
+            "settings": {
+              "title": "Third",
+              "caption": null
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "h2",
+        "attrs": [
+          [
+            "class",
+            "collage__heading"
+          ]
+        ],
+        "children": [],
+        "text": "Featured collage"
+      },
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "collage collage--left"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "collage__item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Item 1"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "collage__item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Item 2"
+              },
+              {
+                "tag": "p",
+                "attrs": [],
+                "children": [],
+                "text": "Second"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "collage__item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Third"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "<b>\"Best\" & more</b>",
+          "layout": "left"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "title": "A < B",
+              "caption": "x > y"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "h2",
+        "attrs": [
+          [
+            "class",
+            "collage__heading"
+          ]
+        ],
+        "children": [],
+        "text": "<b>\"Best\" & more</b>"
+      },
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "collage collage--left"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "collage__item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "A < B"
+              },
+              {
+                "tag": "p",
+                "attrs": [],
+                "children": [],
+                "text": "x > y"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "  Padded  ",
+          "layout": "Right"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "title": "  Wool ",
+              "caption": " Warm "
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "h2",
+        "attrs": [
+          [
+            "class",
+            "collage__heading"
+          ]
+        ],
+        "children": [],
+        "text": "Padded"
+      },
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "collage collage--left"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "collage__item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Wool"
+              },
+              {
+                "tag": "p",
+                "attrs": [],
+                "children": [],
+                "text": "Warm"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "",
+          "layout": "right"
+        },
+        "blocks": []
+      }
+    },
+    "expected": [
+      {
+        "tag": "h2",
+        "attrs": [
+          [
+            "class",
+            "collage__heading"
+          ]
+        ],
+        "children": [],
+        "text": "Featured collage"
+      },
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "collage collage--right"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "collage__empty"
+              ]
+            ],
+            "children": [],
+            "text": "Add blocks to build your collage."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Mix",
+          "layout": "left"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "title": null,
+              "caption": null
+            }
+          },
+          {
+            "settings": {
+              "title": null,
+              "caption": null
+            }
+          },
+          {
+            "settings": {
+              "title": null,
+              "caption": null
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "h2",
+        "attrs": [
+          [
+            "class",
+            "collage__heading"
+          ]
+        ],
+        "children": [],
+        "text": "Mix"
+      },
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "collage collage--left"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "collage__item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Item 1"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "collage__item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Item 2"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "collage__item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Item 3"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Solo",
+          "layout": "left"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "title": null,
+              "caption": null
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "h2",
+        "attrs": [
+          [
+            "class",
+            "collage__heading"
+          ]
+        ],
+        "children": [],
+        "text": "Solo"
+      },
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "collage collage--left"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "div",
+            "attrs": [
+              [
+                "class",
+                "collage__item"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Item 1"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

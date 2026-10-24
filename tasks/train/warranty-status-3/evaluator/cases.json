@@ -1,0 +1,275 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/warranty-status-3.liquid",
+    "tags": [
+      "div",
+      "span",
+      "time"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "warranty": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "warranty": {
+        "status": "active",
+        "expires_on": "2026-03-01"
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--active"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Under warranty"
+          },
+          {
+            "tag": "time",
+            "attrs": [],
+            "children": [],
+            "text": "2026-03-01"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "warranty": {
+        "status": "expiring",
+        "expires_on": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--expiring"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Warranty ending soon"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "warranty": {
+        "status": "expired",
+        "expires_on": "2023-12-31"
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--expired"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Warranty expired"
+          },
+          {
+            "tag": "time",
+            "attrs": [],
+            "children": [],
+            "text": "2023-12-31"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "warranty": {
+        "status": "unknown",
+        "expires_on": "2025-01-01"
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "warranty": {
+        "status": null,
+        "expires_on": null
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "warranty": {
+        "status": "active",
+        "expires_on": ""
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--active"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Under warranty"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "warranty": {
+        "status": "active",
+        "expires_on": "   "
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--active"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Under warranty"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "warranty": {
+        "status": "expiring",
+        "expires_on": "  June 30 "
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--expiring"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Warranty ending soon"
+          },
+          {
+            "tag": "time",
+            "attrs": [],
+            "children": [],
+            "text": "June 30"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "warranty": {
+        "status": "expired",
+        "expires_on": "<soon> & \"later\""
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "warranty warranty--expired"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [],
+            "children": [],
+            "text": "Warranty expired"
+          },
+          {
+            "tag": "time",
+            "attrs": [],
+            "children": [],
+            "text": "<soon> & \"later\""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "warranty": {
+        "status": "Active",
+        "expires_on": "2026-03-01"
+      }
+    },
+    "expected": []
+  }
+]

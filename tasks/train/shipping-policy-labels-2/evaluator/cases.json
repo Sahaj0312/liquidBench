@@ -1,0 +1,429 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/shipping-policy-labels-2.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "shipping-policy.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "div"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "shipping-policy"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "h2"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "shipping-policy__heading"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "HtmlVoidElement",
+                  "name": "img",
+                  "attributes": [
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "src"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "String",
+                              "single": true,
+                              "value": "shipping-truck.svg"
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "asset_url",
+                                "args": []
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "alt"
+                        }
+                      ],
+                      "value": []
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "width"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "24"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "height"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "24"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "AttrDoubleQuoted",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "loading"
+                        }
+                      ],
+                      "value": [
+                        {
+                          "type": "TextNode",
+                          "value": "lazy"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "shipping.policy.heading"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "ul"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "shipping-policy__list"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "HtmlElement",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "li"
+                    }
+                  ],
+                  "attributes": [],
+                  "children": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "String",
+                          "single": true,
+                          "value": "shipping.policy.free_over"
+                        },
+                        "filters": [
+                          {
+                            "type": "LiquidFilter",
+                            "name": "t",
+                            "args": [
+                              {
+                                "type": "NamedArgument",
+                                "name": "amount",
+                                "value": {
+                                  "type": "VariableLookup",
+                                  "name": "threshold",
+                                  "lookups": [],
+                                  "lookupModes": []
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "HtmlElement",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "li"
+                    }
+                  ],
+                  "attributes": [],
+                  "children": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "String",
+                          "single": true,
+                          "value": "shipping.policy.processing_time"
+                        },
+                        "filters": [
+                          {
+                            "type": "LiquidFilter",
+                            "name": "t",
+                            "args": [
+                              {
+                                "type": "NamedArgument",
+                                "name": "days",
+                                "value": {
+                                  "type": "VariableLookup",
+                                  "name": "processing_days",
+                                  "lookups": [],
+                                  "lookupModes": []
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "HtmlElement",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "li"
+                    }
+                  ],
+                  "attributes": [],
+                  "children": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "String",
+                          "single": true,
+                          "value": "shipping.policy.returns_window"
+                        },
+                        "filters": [
+                          {
+                            "type": "LiquidFilter",
+                            "name": "t",
+                            "args": []
+                          }
+                        ]
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "LiquidTag",
+              "name": "if",
+              "markup": {
+                "type": "VariableLookup",
+                "name": "show_badge",
+                "lookups": [],
+                "lookupModes": []
+              },
+              "children": [
+                {
+                  "type": "LiquidBranch",
+                  "name": null,
+                  "markup": "",
+                  "children": [
+                    {
+                      "type": "LiquidTag",
+                      "name": "assign",
+                      "markup": {
+                        "type": "AssignMarkup",
+                        "name": "badge_label",
+                        "value": {
+                          "type": "LiquidVariable",
+                          "expression": {
+                            "type": "String",
+                            "single": true,
+                            "value": "shipping.policy.badge"
+                          },
+                          "filters": [
+                            {
+                              "type": "LiquidFilter",
+                              "name": "t",
+                              "args": []
+                            }
+                          ]
+                        }
+                      },
+                      "whitespaceStart": "-",
+                      "whitespaceEnd": "-"
+                    },
+                    {
+                      "type": "LiquidTag",
+                      "name": "render",
+                      "markup": {
+                        "type": "RenderMarkup",
+                        "snippet": {
+                          "type": "String",
+                          "single": true,
+                          "value": "shipping-badge"
+                        },
+                        "variable": null,
+                        "alias": null,
+                        "args": [
+                          {
+                            "type": "NamedArgument",
+                            "name": "label",
+                            "value": {
+                              "type": "VariableLookup",
+                              "name": "badge_label",
+                              "lookups": [],
+                              "lookupModes": []
+                            }
+                          }
+                        ]
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ],
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ],
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-",
+              "delimiterWhitespaceStart": "-",
+              "delimiterWhitespaceEnd": "-"
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

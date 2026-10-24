@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-null-amount-treated-as-free",
+    "expected_pass": false,
+    "changes": {
+      "snippets/order-summary-rows.liquid": "{%- capture rows_html -%}\n{%- for line in lines -%}\n{%- assign label = line.label | strip -%}\n{%- if label != '' -%}\n{%- assign label_key = label | downcase -%}\n<div class=\"order-summary__row{% if label_key == 'total' %} order-summary__row--total{% endif %}\"><dt>{{ label | escape }}</dt><dd>\n{%- assign amount = line.amount | strip -%}{%- if amount == '' -%}Free{%- else -%}{{ amount | escape }}{%- endif -%}\n</dd>\n{%- assign note = line.note | strip -%}\n{%- if note != '' -%}<dd class=\"order-summary__note\">{{ note | escape }}</dd>{%- endif -%}\n</div>\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- assign title = summary_title | strip -%}\n{%- if title != '' -%}<h3 class=\"order-summary__title\">{{ title | escape }}</h3>{%- endif -%}\n{%- if rows_html != '' -%}<dl class=\"order-summary\">{{ rows_html }}</dl>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-amount-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/order-summary-rows.liquid": "{%- capture rows_html -%}\n{%- for line in lines -%}\n{%- assign label = line.label | strip -%}\n{%- if label != '' -%}\n{%- assign label_key = label | downcase -%}\n<div class=\"order-summary__row{% if label_key == 'total' %} order-summary__row--total{% endif %}\"><dt>{{ label | escape }}</dt><dd>\n{%- if line.amount == nil -%}Pending{%- elsif line.amount == '' -%}Free{%- else -%}{{ line.amount | escape }}{%- endif -%}\n</dd>\n{%- assign note = line.note | strip -%}\n{%- if note != '' -%}<dd class=\"order-summary__note\">{{ note | escape }}</dd>{%- endif -%}\n</div>\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- assign title = summary_title | strip -%}\n{%- if title != '' -%}<h3 class=\"order-summary__title\">{{ title | escape }}</h3>{%- endif -%}\n{%- if rows_html != '' -%}<dl class=\"order-summary\">{{ rows_html }}</dl>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-always-outputs-dl",
+    "expected_pass": false,
+    "changes": {
+      "snippets/order-summary-rows.liquid": "{%- capture rows_html -%}\n{%- for line in lines -%}\n{%- assign label = line.label | strip -%}\n{%- if label != '' -%}\n{%- assign label_key = label | downcase -%}\n<div class=\"order-summary__row{% if label_key == 'total' %} order-summary__row--total{% endif %}\"><dt>{{ label | escape }}</dt><dd>\n{%- if line.amount == nil -%}Pending{%- else -%}{%- assign amount = line.amount | strip -%}{%- if amount == '' -%}Free{%- else -%}{{ amount | escape }}{%- endif -%}{%- endif -%}\n</dd>\n{%- assign note = line.note | strip -%}\n{%- if note != '' -%}<dd class=\"order-summary__note\">{{ note | escape }}</dd>{%- endif -%}\n</div>\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- assign title = summary_title | strip -%}\n{%- if title != '' -%}<h3 class=\"order-summary__title\">{{ title | escape }}</h3>{%- endif -%}\n<dl class=\"order-summary\">{{ rows_html }}</dl>\n"
+    }
+  },
+  {
+    "name": "wrong-3-case-sensitive-total",
+    "expected_pass": false,
+    "changes": {
+      "snippets/order-summary-rows.liquid": "{%- capture rows_html -%}\n{%- for line in lines -%}\n{%- assign label = line.label | strip -%}\n{%- if label != '' -%}\n<div class=\"order-summary__row{% if label == 'total' %} order-summary__row--total{% endif %}\"><dt>{{ label | escape }}</dt><dd>\n{%- if line.amount == nil -%}Pending{%- else -%}{%- assign amount = line.amount | strip -%}{%- if amount == '' -%}Free{%- else -%}{{ amount | escape }}{%- endif -%}{%- endif -%}\n</dd>\n{%- assign note = line.note | strip -%}\n{%- if note != '' -%}<dd class=\"order-summary__note\">{{ note | escape }}</dd>{%- endif -%}\n</div>\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- assign title = summary_title | strip -%}\n{%- if title != '' -%}<h3 class=\"order-summary__title\">{{ title | escape }}</h3>{%- endif -%}\n{%- if rows_html != '' -%}<dl class=\"order-summary\">{{ rows_html }}</dl>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-4-label-not-escaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/order-summary-rows.liquid": "{%- capture rows_html -%}\n{%- for line in lines -%}\n{%- assign label = line.label | strip -%}\n{%- if label != '' -%}\n{%- assign label_key = label | downcase -%}\n<div class=\"order-summary__row{% if label_key == 'total' %} order-summary__row--total{% endif %}\"><dt>{{ label }}</dt><dd>\n{%- if line.amount == nil -%}Pending{%- else -%}{%- assign amount = line.amount | strip -%}{%- if amount == '' -%}Free{%- else -%}{{ amount | escape }}{%- endif -%}{%- endif -%}\n</dd>\n{%- assign note = line.note | strip -%}\n{%- if note != '' -%}<dd class=\"order-summary__note\">{{ note | escape }}</dd>{%- endif -%}\n</div>\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- assign title = summary_title | strip -%}\n{%- if title != '' -%}<h3 class=\"order-summary__title\">{{ title | escape }}</h3>{%- endif -%}\n{%- if rows_html != '' -%}<dl class=\"order-summary\">{{ rows_html }}</dl>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/order-summary-rows.liquid": "{% # theme-check-disable %}\n{%- capture rows_html -%}\n{%- for line in lines -%}\n{%- assign label = line.label | strip -%}\n{%- if label != '' -%}\n{%- assign label_key = label | downcase -%}\n<div class=\"order-summary__row{% if label_key == 'total' %} order-summary__row--total{% endif %}\"><dt>{{ label | escape }}</dt><dd>\n{%- if line.amount == nil -%}Pending{%- else -%}{%- assign amount = line.amount | strip -%}{%- if amount == '' -%}Free{%- else -%}{{ amount | escape }}{%- endif -%}{%- endif -%}\n</dd>\n{%- assign note = line.note | strip -%}\n{%- if note != '' -%}<dd class=\"order-summary__note\">{{ note | escape }}</dd>{%- endif -%}\n</div>\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- assign title = summary_title | strip -%}\n{%- if title != '' -%}<h3 class=\"order-summary__title\">{{ title | escape }}</h3>{%- endif -%}\n{%- if rows_html != '' -%}<dl class=\"order-summary\">{{ rows_html }}</dl>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/order-summary-rows.liquid": null
+    }
+  }
+]

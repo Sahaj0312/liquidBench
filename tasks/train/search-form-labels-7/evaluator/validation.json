@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-script-asset-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-7.liquid": "{{ 'component-search.css' | asset_url | stylesheet_tag }}\n{%- assign search_label = 'general.search.label' | t -%}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label class=\"visually-hidden\" for=\"SearchInput-{{ form_id }}\">{{ search_label }}</label>\n  <input type=\"search\" id=\"SearchInput-{{ form_id }}\" name=\"q\" value=\"{{ search_terms | escape }}\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"reset\" class=\"search-form__reset\" aria-label=\"{{ 'general.search.reset' | t }}\">\n    {% render 'icon-close' %}\n  </button>\n  <button type=\"submit\" class=\"search-form__submit\" aria-label=\"{{ 'general.search.submit' | t }}\">\n    {% render 'icon-search' %}\n  </button>\n</form>\n<script src=\"{{ 'search-form-component.js' | asset_url }}\" defer></script>\n"
+    }
+  },
+  {
+    "name": "wrong-1-placeholder-key-missing-namesp",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-7.liquid": "{{ 'component-search.css' | asset_url | stylesheet_tag }}\n{%- assign search_label = 'general.search.label' | t -%}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label class=\"visually-hidden\" for=\"SearchInput-{{ form_id }}\">{{ search_label }}</label>\n  <input type=\"search\" id=\"SearchInput-{{ form_id }}\" name=\"q\" value=\"{{ search_terms | escape }}\" placeholder=\"{{ 'search.placeholder' | t }}\">\n  <button type=\"reset\" class=\"search-form__reset\" aria-label=\"{{ 'general.search.reset' | t }}\">\n    {% render 'icon-close' %}\n  </button>\n  <button type=\"submit\" class=\"search-form__submit\" aria-label=\"{{ 'general.search.submit' | t }}\">\n    {% render 'icon-search' %}\n  </button>\n</form>\n<script src=\"{{ 'search-form.js' | asset_url }}\" defer></script>\n"
+    }
+  },
+  {
+    "name": "wrong-2-reset-key-still-clear",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-7.liquid": "{{ 'component-search.css' | asset_url | stylesheet_tag }}\n{%- assign search_label = 'general.search.label' | t -%}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label class=\"visually-hidden\" for=\"SearchInput-{{ form_id }}\">{{ search_label }}</label>\n  <input type=\"search\" id=\"SearchInput-{{ form_id }}\" name=\"q\" value=\"{{ search_terms | escape }}\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"reset\" class=\"search-form__reset\" aria-label=\"{{ 'general.search.clear' | t }}\">\n    {% render 'icon-close' %}\n  </button>\n  <button type=\"submit\" class=\"search-form__submit\" aria-label=\"{{ 'general.search.submit' | t }}\">\n    {% render 'icon-search' %}\n  </button>\n</form>\n<script src=\"{{ 'search-form.js' | asset_url }}\" defer></script>\n"
+    }
+  },
+  {
+    "name": "wrong-3-icon-snippet-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-7.liquid": "{{ 'component-search.css' | asset_url | stylesheet_tag }}\n{%- assign search_label = 'general.search.label' | t -%}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label class=\"visually-hidden\" for=\"SearchInput-{{ form_id }}\">{{ search_label }}</label>\n  <input type=\"search\" id=\"SearchInput-{{ form_id }}\" name=\"q\" value=\"{{ search_terms | escape }}\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"reset\" class=\"search-form__reset\" aria-label=\"{{ 'general.search.reset' | t }}\">\n    {% render 'icon-close' %}\n  </button>\n  <button type=\"submit\" class=\"search-form__submit\" aria-label=\"{{ 'general.search.submit' | t }}\">\n    {% render 'icon-magnify' %}\n  </button>\n</form>\n<script src=\"{{ 'search-form.js' | asset_url }}\" defer></script>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-7.liquid": "{% # theme-check-disable %}\n{{ 'component-search.css' | asset_url | stylesheet_tag }}\n{%- assign search_label = 'general.search.label' | t -%}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search-form\">\n  <label class=\"visually-hidden\" for=\"SearchInput-{{ form_id }}\">{{ search_label }}</label>\n  <input type=\"search\" id=\"SearchInput-{{ form_id }}\" name=\"q\" value=\"{{ search_terms | escape }}\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"reset\" class=\"search-form__reset\" aria-label=\"{{ 'general.search.reset' | t }}\">\n    {% render 'icon-close' %}\n  </button>\n  <button type=\"submit\" class=\"search-form__submit\" aria-label=\"{{ 'general.search.submit' | t }}\">\n    {% render 'icon-search' %}\n  </button>\n</form>\n<script src=\"{{ 'search-form.js' | asset_url }}\" defer></script>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-7.liquid": null
+    }
+  }
+]

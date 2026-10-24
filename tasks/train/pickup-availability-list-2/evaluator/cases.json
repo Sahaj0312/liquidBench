@@ -1,0 +1,678 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/pickup-availability-list-2.liquid",
+    "tags": [
+      "div",
+      "h3",
+      "li",
+      "p",
+      "span",
+      "strong",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "heading": "Pickup",
+      "locations": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "heading": "X",
+      "locations": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "heading": null,
+      "locations": [
+        {
+          "name": "Downtown",
+          "available": true,
+          "pickup_time": "Ready in 2 hours"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "pickup"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "pickup-list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Downtown"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "pickup-time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Ready in 2 hours"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "heading": "   ",
+      "locations": [
+        {
+          "name": "A",
+          "available": false,
+          "pickup_time": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "pickup"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "pickup-none"
+              ]
+            ],
+            "children": [],
+            "text": "Pickup currently unavailable"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "heading": "  Pick up <today> & save \"now\" ",
+      "locations": [
+        {
+          "name": "Tom & Jerry <Shop>",
+          "available": true,
+          "pickup_time": "   "
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "pickup"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "pickup-heading"
+              ]
+            ],
+            "children": [],
+            "text": "Pick up <today> & save \"now\""
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "pickup-list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Tom & Jerry <Shop>"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "heading": "Stores",
+      "locations": [
+        {
+          "name": "A",
+          "available": true,
+          "pickup_time": "1h"
+        },
+        {
+          "name": "B",
+          "available": false,
+          "pickup_time": "2h"
+        },
+        {
+          "name": "C",
+          "available": true,
+          "pickup_time": null
+        },
+        {
+          "name": "D",
+          "available": true,
+          "pickup_time": " Tomorrow "
+        },
+        {
+          "name": "E",
+          "available": true,
+          "pickup_time": "2 days"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "pickup"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "pickup-heading"
+              ]
+            ],
+            "children": [],
+            "text": "Stores"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "pickup-list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "A"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "pickup-time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "1h"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "C"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "D"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "pickup-time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Tomorrow"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "pickup-more"
+              ]
+            ],
+            "children": [],
+            "text": "+1 more location"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "heading": null,
+      "locations": [
+        {
+          "name": "X",
+          "available": true,
+          "pickup_time": "a"
+        },
+        {
+          "name": "Y",
+          "available": true,
+          "pickup_time": null
+        },
+        {
+          "name": "Z",
+          "available": true,
+          "pickup_time": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "pickup"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "pickup-list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "X"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "pickup-time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "a"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Y"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Z"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "heading": "Nearby",
+      "locations": [
+        {
+          "name": "N1",
+          "available": false,
+          "pickup_time": null
+        },
+        {
+          "name": "P1",
+          "available": true,
+          "pickup_time": null
+        },
+        {
+          "name": "P2",
+          "available": true,
+          "pickup_time": null
+        },
+        {
+          "name": "P3",
+          "available": true,
+          "pickup_time": null
+        },
+        {
+          "name": "P4",
+          "available": true,
+          "pickup_time": null
+        },
+        {
+          "name": "P5",
+          "available": true,
+          "pickup_time": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "pickup"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "pickup-heading"
+              ]
+            ],
+            "children": [],
+            "text": "Nearby"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "pickup-list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "P1"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "P2"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "P3"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "pickup-more"
+              ]
+            ],
+            "children": [],
+            "text": "+2 more locations"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "heading": "Pickup",
+      "locations": [
+        {
+          "name": "Q",
+          "available": false,
+          "pickup_time": "1h"
+        },
+        {
+          "name": "R",
+          "available": false,
+          "pickup_time": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "pickup"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "pickup-heading"
+              ]
+            ],
+            "children": [],
+            "text": "Pickup"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "pickup-none"
+              ]
+            ],
+            "children": [],
+            "text": "Pickup currently unavailable"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "heading": null,
+      "locations": [
+        {
+          "name": "Mall \"West\"",
+          "available": true,
+          "pickup_time": "<5 min & \"fast\""
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "pickup"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "pickup-list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Mall \"West\""
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "pickup-time"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "<5 min & \"fast\""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

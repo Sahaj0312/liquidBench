@@ -1,0 +1,16 @@
+{%- assign th = threshold_cents | default: 0 -%}
+{%- assign total = cart_total_cents | default: 0 -%}
+{%- if total < 0 -%}{%- assign total = 0 -%}{%- endif -%}
+{%- if th > 0 -%}
+{%- assign sym = currency_symbol | default: '$' -%}
+{%- assign remaining = th | minus: total -%}
+{%- if remaining <= 0 -%}
+<p class="ship-bar ship-bar--done">Free shipping unlocked! <span>100%</span></p>
+{%- else -%}
+{%- assign pct = total | times: 100 | divided_by: th -%}
+{%- assign dollars = remaining | divided_by: 100 -%}
+{%- assign c = remaining | modulo: 100 -%}
+{%- if c < 10 -%}{%- assign cs = c | prepend: '0' -%}{%- else -%}{%- assign cs = c -%}{%- endif -%}
+<p class="ship-bar">Spend {{ sym | escape }}{{ dollars }}.{{ cs }} more for free shipping <span>{{ pct }}%</span></p>
+{%- endif -%}
+{%- endif -%}

@@ -1,0 +1,15 @@
+{
+  "id": "low-carbon-shipping-flag-2",
+  "version": 1,
+  "split": "train",
+  "category": "liquid-syntax",
+  "difficulty": "easy",
+  "family": "low-carbon-shipping-flag-2",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/low-carbon-shipping-flag-2.liquid"
+  ],
+  "prompt": "Fix snippets/low-carbon-shipping-flag-2.liquid, which shows a small badge for low-carbon shipping.\n\nInputs: one top-level object `shipping` (always supplied) with these keys (all always present):\n- `shipping.low_carbon`: boolean or null.\n- `shipping.label`: string or null. Badge text.\n- `shipping.offset_percent`: integer or null. Percentage of emissions offset; 0 is a valid value.\n\nRules:\n- Output the badge only when `shipping.low_carbon` is true. When it is false or null, output nothing at all (empty string).\n- Badge text: `shipping.label` with leading/trailing whitespace removed; if that is empty or the label is null, use exactly `Low-carbon shipping`. HTML-escape the final text.\n- Offset: `shipping.offset_percent` as-is; if it is null use `100`. A value of 0 must be output as `0`.\n\nOutput when shown is exactly this single line with no other text:\n`<span class=\"carbon-flag\" data-offset=\"{offset}\">{text}</span>` Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/low-carbon-shipping-flag-2.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

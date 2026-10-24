@@ -1,0 +1,15 @@
+{
+  "id": "shipping-policy-labels",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "hard",
+  "family": "shipping-policy-labels",
+  "provenance": "Claude-authored training task (claude-opus-5-5, batch msgbatch_01UuKBSaGmiFmCmj4AvxgtVB, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/shipping-policy-labels.liquid"
+  ],
+  "prompt": "The snippet snippets/shipping-policy-labels.liquid renders a grouped list of shipping rates. Its references are broken. Theme Check reports a missing asset, several missing translation keys and missing snippets. Fix every literal reference so that each one points to a file or key that really exists in this theme. Read assets/, locales/en.default.json, locales/fr.json and snippets/ to find the real names. Do not add, rename or delete any asset, locale file, locale key or snippet. Do not change the snippet's logic, markup, variable names or whitespace control.\n\nInputs. All inputs are top-level; there is no section object.\n- rates: array or null. Each element is an object with:\n  - region: string or null\n  - title: string\n  - price_cents: integer, where 0 means free\n\nIntended behavior, which the existing logic already implements and which must be kept:\n1. The shipping policy stylesheet that exists in assets/ is loaded with asset_url and stylesheet_tag.\n2. A <div class=\"shipping-policy\"> contains an <h2>. The <h2> holds the existing truck icon snippet followed by the translated shipping policy heading.\n3. If rates is null or empty, a <p> with the translated empty-state text follows the heading.\n4. Otherwise the rates are output as one <ul>, and state is carried across loop iterations:\n   - A region heading item <li class=\"shipping-policy__region\"> is emitted on the first rate, and again whenever a rate's stripped region (null treated as an empty string) differs from the previous rate's region.\n   - When the region is empty, the heading text is the translated 'other regions' text. Otherwise it is the escaped region.\n   - The first rate in the whole list with price_cents 0 gets the translated 'free' label. Every later free rate gets the translated 'also free' label.\n   - A non-free rate gets the translated flat-rate label, interpolated with price equal to price_cents divided by 100.0.\n   - Each rate is rendered through the existing rate-row snippet with title and label.\n\nAll translation keys must be nested keys under the shipping policy group in locales/en.default.json. The same keys must also exist in locales/fr.json.\n\nWhen you are done, Theme Check must report no MissingAsset, TranslationKeyExists or MissingTemplate errors for this file. Change only snippets/shipping-policy-labels.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

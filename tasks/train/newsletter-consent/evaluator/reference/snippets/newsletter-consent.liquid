@@ -1,0 +1,15 @@
+{%- assign addr = email | strip -%}
+{%- if addr != "" -%}
+{%- assign status = consent_status | strip | downcase -%}
+{%- unless status == "granted" or status == "pending" or status == "revoked" -%}{%- assign status = "unknown" -%}{%- endunless -%}
+<div class="consent consent--{{ status }}"><p class="consent__email">{{ addr | escape }}</p>
+{%- case status -%}
+{%- when "granted" -%}<p class="consent__msg">Subscribed</p>
+{%- capture items -%}{%- for name in lists -%}{%- assign n = name | strip -%}{%- if n != "" -%}<li>{{ n | escape }}</li>{%- endif -%}{%- endfor -%}{%- endcapture -%}
+{%- if items != "" -%}<ul class="consent__lists">{{ items }}</ul>{%- endif -%}
+{%- when "pending" -%}<p class="consent__msg">Awaiting confirmation</p>
+{%- when "revoked" -%}<p class="consent__msg">Unsubscribed</p>
+{%- else -%}<p class="consent__msg">No consent recorded</p>
+{%- endcase -%}
+</div>
+{%- endif -%}

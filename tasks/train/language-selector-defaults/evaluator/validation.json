@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-minified-asset-name",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-selector-defaults.liquid": "{%- comment -%}\n  Language selector with fallbacks for missing heading, active code and language names.\n{%- endcomment -%}\n{{ 'language-selector.min.css' | asset_url | stylesheet_tag }}\n{%- assign fallback_heading = 'localization.language.heading' | t -%}\n{%- assign heading = heading_override | default: fallback_heading -%}\n{%- assign active = active_code | default: 'en' | downcase -%}\n<nav class=\"language-selector\" aria-label=\"{{ heading | escape }}\">\n  <h2 class=\"language-selector__heading\">{{ heading | escape }}</h2>\n  {%- if languages == empty -%}\n    <p class=\"language-selector__empty\">{{ 'localization.language.unavailable' | t }}</p>\n  {%- else -%}\n    <ul class=\"language-selector__list\">\n      {%- for language in languages -%}\n        {%- assign code = language.code | default: 'en' | downcase -%}\n        {%- assign name = language.name | default: code -%}\n        {%- render 'language-option', code: code, name: name, active: active -%}\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n  <p class=\"language-selector__current\">{{ 'localization.language.current' | t: language: active }}</p>\n</nav>\n"
+    }
+  },
+  {
+    "name": "wrong-1-render-name-left-broken",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-selector-defaults.liquid": "{%- comment -%}\n  Language selector with fallbacks for missing heading, active code and language names.\n{%- endcomment -%}\n{{ 'language-selector.css' | asset_url | stylesheet_tag }}\n{%- assign fallback_heading = 'localization.language.heading' | t -%}\n{%- assign heading = heading_override | default: fallback_heading -%}\n{%- assign active = active_code | default: 'en' | downcase -%}\n<nav class=\"language-selector\" aria-label=\"{{ heading | escape }}\">\n  <h2 class=\"language-selector__heading\">{{ heading | escape }}</h2>\n  {%- if languages == empty -%}\n    <p class=\"language-selector__empty\">{{ 'localization.language.unavailable' | t }}</p>\n  {%- else -%}\n    <ul class=\"language-selector__list\">\n      {%- for language in languages -%}\n        {%- assign code = language.code | default: 'en' | downcase -%}\n        {%- assign name = language.name | default: code -%}\n        {%- render 'language-item', code: code, name: name, active: active -%}\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n  <p class=\"language-selector__current\">{{ 'localization.language.current' | t: language: active }}</p>\n</nav>\n"
+    }
+  },
+  {
+    "name": "wrong-2-current-key-left-broken",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-selector-defaults.liquid": "{%- comment -%}\n  Language selector with fallbacks for missing heading, active code and language names.\n{%- endcomment -%}\n{{ 'language-selector.css' | asset_url | stylesheet_tag }}\n{%- assign fallback_heading = 'localization.language.heading' | t -%}\n{%- assign heading = heading_override | default: fallback_heading -%}\n{%- assign active = active_code | default: 'en' | downcase -%}\n<nav class=\"language-selector\" aria-label=\"{{ heading | escape }}\">\n  <h2 class=\"language-selector__heading\">{{ heading | escape }}</h2>\n  {%- if languages == empty -%}\n    <p class=\"language-selector__empty\">{{ 'localization.language.unavailable' | t }}</p>\n  {%- else -%}\n    <ul class=\"language-selector__list\">\n      {%- for language in languages -%}\n        {%- assign code = language.code | default: 'en' | downcase -%}\n        {%- assign name = language.name | default: code -%}\n        {%- render 'language-option', code: code, name: name, active: active -%}\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n  <p class=\"language-selector__current\">{{ 'localization.current_language' | t: language: active }}</p>\n</nav>\n"
+    }
+  },
+  {
+    "name": "wrong-3-fallback-heading-key-flattened",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-selector-defaults.liquid": "{%- comment -%}\n  Language selector with fallbacks for missing heading, active code and language names.\n{%- endcomment -%}\n{{ 'language-selector.css' | asset_url | stylesheet_tag }}\n{%- assign fallback_heading = 'localization.heading' | t -%}\n{%- assign heading = heading_override | default: fallback_heading -%}\n{%- assign active = active_code | default: 'en' | downcase -%}\n<nav class=\"language-selector\" aria-label=\"{{ heading | escape }}\">\n  <h2 class=\"language-selector__heading\">{{ heading | escape }}</h2>\n  {%- if languages == empty -%}\n    <p class=\"language-selector__empty\">{{ 'localization.language.unavailable' | t }}</p>\n  {%- else -%}\n    <ul class=\"language-selector__list\">\n      {%- for language in languages -%}\n        {%- assign code = language.code | default: 'en' | downcase -%}\n        {%- assign name = language.name | default: code -%}\n        {%- render 'language-option', code: code, name: name, active: active -%}\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n  <p class=\"language-selector__current\">{{ 'localization.language.current' | t: language: active }}</p>\n</nav>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-selector-defaults.liquid": "{% # theme-check-disable %}\n{%- comment -%}\n  Language selector with fallbacks for missing heading, active code and language names.\n{%- endcomment -%}\n{{ 'language-selector.css' | asset_url | stylesheet_tag }}\n{%- assign fallback_heading = 'localization.language.heading' | t -%}\n{%- assign heading = heading_override | default: fallback_heading -%}\n{%- assign active = active_code | default: 'en' | downcase -%}\n<nav class=\"language-selector\" aria-label=\"{{ heading | escape }}\">\n  <h2 class=\"language-selector__heading\">{{ heading | escape }}</h2>\n  {%- if languages == empty -%}\n    <p class=\"language-selector__empty\">{{ 'localization.language.unavailable' | t }}</p>\n  {%- else -%}\n    <ul class=\"language-selector__list\">\n      {%- for language in languages -%}\n        {%- assign code = language.code | default: 'en' | downcase -%}\n        {%- assign name = language.name | default: code -%}\n        {%- render 'language-option', code: code, name: name, active: active -%}\n      {%- endfor -%}\n    </ul>\n  {%- endif -%}\n  <p class=\"language-selector__current\">{{ 'localization.language.current' | t: language: active }}</p>\n</nav>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/language-selector-defaults.liquid": null
+    }
+  }
+]

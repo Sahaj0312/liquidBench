@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-no-strip",
+    "expected_pass": false,
+    "changes": {
+      "snippets/subscription-cadence-2.liquid": "{%- assign label = cadence_label | default: '' -%}\n{%- assign note = cadence_note | default: '' -%}\n{%- if label != '' -%}\n<div class=\"cadence\"><span class=\"cadence__label\">{{ label | escape }}</span>\n{%- if note != '' -%}<small class=\"cadence__note\">{{ note | escape }}</small>{%- endif -%}\n</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-truthy-note-check",
+    "expected_pass": false,
+    "changes": {
+      "snippets/subscription-cadence-2.liquid": "{%- assign label = cadence_label | default: '' | strip -%}\n{%- if label != '' -%}\n<div class=\"cadence\"><span class=\"cadence__label\">{{ label | escape }}</span>\n{%- if cadence_note -%}<small class=\"cadence__note\">{{ cadence_note | strip | escape }}</small>{%- endif -%}\n</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-no-escape",
+    "expected_pass": false,
+    "changes": {
+      "snippets/subscription-cadence-2.liquid": "{%- assign label = cadence_label | default: '' | strip -%}\n{%- assign note = cadence_note | default: '' | strip -%}\n{%- if label != '' -%}\n<div class=\"cadence\"><span class=\"cadence__label\">{{ label }}</span>\n{%- if note != '' -%}<small class=\"cadence__note\">{{ note }}</small>{%- endif -%}\n</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-div-always-rendered",
+    "expected_pass": false,
+    "changes": {
+      "snippets/subscription-cadence-2.liquid": "{%- assign label = cadence_label | default: '' | strip -%}\n{%- assign note = cadence_note | default: '' | strip -%}\n<div class=\"cadence\">\n{%- if label != '' -%}<span class=\"cadence__label\">{{ label | escape }}</span>{%- endif -%}\n{%- if note != '' -%}<small class=\"cadence__note\">{{ note | escape }}</small>{%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/subscription-cadence-2.liquid": "{% # theme-check-disable %}\n{%- assign label = cadence_label | default: '' | strip -%}\n{%- assign note = cadence_note | default: '' | strip -%}\n{%- if label != '' -%}\n<div class=\"cadence\"><span class=\"cadence__label\">{{ label | escape }}</span>\n{%- if note != '' -%}<small class=\"cadence__note\">{{ note | escape }}</small>{%- endif -%}\n</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/subscription-cadence-2.liquid": null
+    }
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-denies-at-exact-minimum",
+    "expected_pass": false,
+    "changes": {
+      "snippets/age-gate.liquid": "{%- if age_gate.enabled -%}\n  {%- unless age_verified -%}\n    {%- assign min_age = age_gate.minimum_age | default: 18 -%}\n    {%- assign heading = age_gate.heading | strip | default: 'Age verification' -%}\n    {%- if customer_age == nil -%}\n      <div class=\"age-gate\"><h2>{{ heading | escape }}</h2><p>You must be {{ min_age }} or older to enter this store.</p><button type=\"button\" class=\"age-gate__confirm\">I am {{ min_age }} or older</button><button type=\"button\" class=\"age-gate__leave\">Leave</button></div>\n    {%- elsif customer_age <= min_age -%}\n      {%- assign wait = min_age | minus: customer_age -%}\n      <div class=\"age-gate age-gate--denied\"><h2>{{ heading | escape }}</h2><p>Sorry, you must be {{ min_age }} or older to enter. Come back in {{ wait }} {% if wait == 1 %}year{% else %}years{% endif %}.</p></div>\n    {%- endif -%}\n  {%- endunless -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-default-before-strip",
+    "expected_pass": false,
+    "changes": {
+      "snippets/age-gate.liquid": "{%- if age_gate.enabled -%}\n  {%- unless age_verified -%}\n    {%- assign min_age = age_gate.minimum_age | default: 18 -%}\n    {%- assign heading = age_gate.heading | default: 'Age verification' | strip -%}\n    {%- if customer_age == nil -%}\n      <div class=\"age-gate\"><h2>{{ heading | escape }}</h2><p>You must be {{ min_age }} or older to enter this store.</p><button type=\"button\" class=\"age-gate__confirm\">I am {{ min_age }} or older</button><button type=\"button\" class=\"age-gate__leave\">Leave</button></div>\n    {%- elsif customer_age < min_age -%}\n      {%- assign wait = min_age | minus: customer_age -%}\n      <div class=\"age-gate age-gate--denied\"><h2>{{ heading | escape }}</h2><p>Sorry, you must be {{ min_age }} or older to enter. Come back in {{ wait }} {% if wait == 1 %}year{% else %}years{% endif %}.</p></div>\n    {%- endif -%}\n  {%- endunless -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-always-plural-years",
+    "expected_pass": false,
+    "changes": {
+      "snippets/age-gate.liquid": "{%- if age_gate.enabled -%}\n  {%- unless age_verified -%}\n    {%- assign min_age = age_gate.minimum_age | default: 18 -%}\n    {%- assign heading = age_gate.heading | strip | default: 'Age verification' -%}\n    {%- if customer_age == nil -%}\n      <div class=\"age-gate\"><h2>{{ heading | escape }}</h2><p>You must be {{ min_age }} or older to enter this store.</p><button type=\"button\" class=\"age-gate__confirm\">I am {{ min_age }} or older</button><button type=\"button\" class=\"age-gate__leave\">Leave</button></div>\n    {%- elsif customer_age < min_age -%}\n      {%- assign wait = min_age | minus: customer_age -%}\n      <div class=\"age-gate age-gate--denied\"><h2>{{ heading | escape }}</h2><p>Sorry, you must be {{ min_age }} or older to enter. Come back in {{ wait }} years.</p></div>\n    {%- endif -%}\n  {%- endunless -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-verified-ignored-when-age-know",
+    "expected_pass": false,
+    "changes": {
+      "snippets/age-gate.liquid": "{%- if age_gate.enabled -%}\n  {%- assign min_age = age_gate.minimum_age | default: 18 -%}\n  {%- assign heading = age_gate.heading | strip | default: 'Age verification' -%}\n  {%- if customer_age == nil -%}\n    {%- unless age_verified -%}\n      <div class=\"age-gate\"><h2>{{ heading | escape }}</h2><p>You must be {{ min_age }} or older to enter this store.</p><button type=\"button\" class=\"age-gate__confirm\">I am {{ min_age }} or older</button><button type=\"button\" class=\"age-gate__leave\">Leave</button></div>\n    {%- endunless -%}\n  {%- elsif customer_age < min_age -%}\n    {%- assign wait = min_age | minus: customer_age -%}\n    <div class=\"age-gate age-gate--denied\"><h2>{{ heading | escape }}</h2><p>Sorry, you must be {{ min_age }} or older to enter. Come back in {{ wait }} {% if wait == 1 %}year{% else %}years{% endif %}.</p></div>\n  {%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/age-gate.liquid": "{% # theme-check-disable %}\n{%- comment -%} Age gate overlay {%- endcomment -%}\n{%- if age_gate.enabled -%}\n  {%- unless age_verified -%}\n    {%- assign min_age = age_gate.minimum_age | default: 18 -%}\n    {%- assign heading = age_gate.heading | strip | default: 'Age verification' -%}\n    {%- if customer_age == nil -%}\n      <div class=\"age-gate\"><h2>{{ heading | escape }}</h2><p>You must be {{ min_age }} or older to enter this store.</p><button type=\"button\" class=\"age-gate__confirm\">I am {{ min_age }} or older</button><button type=\"button\" class=\"age-gate__leave\">Leave</button></div>\n    {%- elsif customer_age < min_age -%}\n      {%- assign wait = min_age | minus: customer_age -%}\n      <div class=\"age-gate age-gate--denied\"><h2>{{ heading | escape }}</h2><p>Sorry, you must be {{ min_age }} or older to enter. Come back in {{ wait }} {% if wait == 1 %}year{% else %}years{% endif %}.</p></div>\n    {%- endif -%}\n  {%- endunless -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/age-gate.liquid": null
+    }
+  }
+]

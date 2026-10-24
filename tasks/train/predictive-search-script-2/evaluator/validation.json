@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-css-extension-still-uppercase",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-script-2.liquid": "<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n{{ 'predictive-search.CSS' | asset_url | stylesheet_tag }}\n<predictive-search class=\"predictive-search\" data-loading-text=\"{{ 'templates.search.loading' | t }}\">\n  <div class=\"predictive-search__results\" role=\"listbox\" aria-label=\"{{ 'templates.search.results_label' | t }}\">\n    {% render 'loading-spinner' %}\n  </div>\n  <span class=\"visually-hidden\" role=\"status\">{{ 'templates.search.no_results' | t: terms: search_terms }}</span>\n  <a class=\"predictive-search__view-all\" href=\"{{ routes.search_url }}?q={{ search_terms | url_encode }}\">{{ 'templates.search.view_all' | t }}</a>\n</predictive-search>\n"
+    }
+  },
+  {
+    "name": "wrong-1-script-renamed-with-underscore",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-script-2.liquid": "<script src=\"{{ 'predictive_search.js' | asset_url }}\" defer=\"defer\"></script>\n{{ 'predictive-search.css' | asset_url | stylesheet_tag }}\n<predictive-search class=\"predictive-search\" data-loading-text=\"{{ 'templates.search.loading' | t }}\">\n  <div class=\"predictive-search__results\" role=\"listbox\" aria-label=\"{{ 'templates.search.results_label' | t }}\">\n    {% render 'loading-spinner' %}\n  </div>\n  <span class=\"visually-hidden\" role=\"status\">{{ 'templates.search.no_results' | t: terms: search_terms }}</span>\n  <a class=\"predictive-search__view-all\" href=\"{{ routes.search_url }}?q={{ search_terms | url_encode }}\">{{ 'templates.search.view_all' | t }}</a>\n</predictive-search>\n"
+    }
+  },
+  {
+    "name": "wrong-2-no-results-namespace-still-cap",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-script-2.liquid": "<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n{{ 'predictive-search.css' | asset_url | stylesheet_tag }}\n<predictive-search class=\"predictive-search\" data-loading-text=\"{{ 'templates.search.loading' | t }}\">\n  <div class=\"predictive-search__results\" role=\"listbox\" aria-label=\"{{ 'templates.search.results_label' | t }}\">\n    {% render 'loading-spinner' %}\n  </div>\n  <span class=\"visually-hidden\" role=\"status\">{{ 'Templates.search.no_results' | t: terms: search_terms }}</span>\n  <a class=\"predictive-search__view-all\" href=\"{{ routes.search_url }}?q={{ search_terms | url_encode }}\">{{ 'templates.search.view_all' | t }}</a>\n</predictive-search>\n"
+    }
+  },
+  {
+    "name": "wrong-3-spinner-render-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-script-2.liquid": "<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n{{ 'predictive-search.css' | asset_url | stylesheet_tag }}\n<predictive-search class=\"predictive-search\" data-loading-text=\"{{ 'templates.search.loading' | t }}\">\n  <div class=\"predictive-search__results\" role=\"listbox\" aria-label=\"{{ 'templates.search.results_label' | t }}\">\n    {% render 'loading-Spinner' %}\n  </div>\n  <span class=\"visually-hidden\" role=\"status\">{{ 'templates.search.no_results' | t: terms: search_terms }}</span>\n  <a class=\"predictive-search__view-all\" href=\"{{ routes.search_url }}?q={{ search_terms | url_encode }}\">{{ 'templates.search.view_all' | t }}</a>\n</predictive-search>\n"
+    }
+  },
+  {
+    "name": "wrong-4-loading-key-still-capitalized",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-script-2.liquid": "<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n{{ 'predictive-search.css' | asset_url | stylesheet_tag }}\n<predictive-search class=\"predictive-search\" data-loading-text=\"{{ 'templates.search.Loading' | t }}\">\n  <div class=\"predictive-search__results\" role=\"listbox\" aria-label=\"{{ 'templates.search.results_label' | t }}\">\n    {% render 'loading-spinner' %}\n  </div>\n  <span class=\"visually-hidden\" role=\"status\">{{ 'templates.search.no_results' | t: terms: search_terms }}</span>\n  <a class=\"predictive-search__view-all\" href=\"{{ routes.search_url }}?q={{ search_terms | url_encode }}\">{{ 'templates.search.view_all' | t }}</a>\n</predictive-search>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-script-2.liquid": "{% # theme-check-disable %}\n<script src=\"{{ 'predictive-search.js' | asset_url }}\" defer=\"defer\"></script>\n{{ 'predictive-search.css' | asset_url | stylesheet_tag }}\n<predictive-search class=\"predictive-search\" data-loading-text=\"{{ 'templates.search.loading' | t }}\">\n  <div class=\"predictive-search__results\" role=\"listbox\" aria-label=\"{{ 'templates.search.results_label' | t }}\">\n    {% render 'loading-spinner' %}\n  </div>\n  <span class=\"visually-hidden\" role=\"status\">{{ 'templates.search.no_results' | t: terms: search_terms }}</span>\n  <a class=\"predictive-search__view-all\" href=\"{{ routes.search_url }}?q={{ search_terms | url_encode }}\">{{ 'templates.search.view_all' | t }}</a>\n</predictive-search>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/predictive-search-script-2.liquid": null
+    }
+  }
+]

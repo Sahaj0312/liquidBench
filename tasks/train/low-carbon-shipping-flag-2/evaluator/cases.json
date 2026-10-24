@@ -1,0 +1,193 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/low-carbon-shipping-flag-2.liquid",
+    "tags": [
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "shipping": {
+        "low_carbon": true,
+        "label": "Ships carbon-neutral",
+        "offset_percent": 100
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "carbon-flag"
+          ],
+          [
+            "data-offset",
+            "100"
+          ]
+        ],
+        "children": [],
+        "text": "Ships carbon-neutral"
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "shipping": {
+        "low_carbon": false,
+        "label": "Green",
+        "offset_percent": 50
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "shipping": {
+        "low_carbon": null,
+        "label": "Green",
+        "offset_percent": 50
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "shipping": {
+        "low_carbon": true,
+        "label": null,
+        "offset_percent": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "carbon-flag"
+          ],
+          [
+            "data-offset",
+            "100"
+          ]
+        ],
+        "children": [],
+        "text": "Low-carbon shipping"
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "shipping": {
+        "low_carbon": true,
+        "label": "   ",
+        "offset_percent": 0
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "carbon-flag"
+          ],
+          [
+            "data-offset",
+            "0"
+          ]
+        ],
+        "children": [],
+        "text": "Low-carbon shipping"
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "shipping": {
+        "low_carbon": true,
+        "label": " Green & <clean> ",
+        "offset_percent": 40
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "carbon-flag"
+          ],
+          [
+            "data-offset",
+            "40"
+          ]
+        ],
+        "children": [],
+        "text": "Green & <clean>"
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "shipping": {
+        "low_carbon": true,
+        "label": "",
+        "offset_percent": 75
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "carbon-flag"
+          ],
+          [
+            "data-offset",
+            "75"
+          ]
+        ],
+        "children": [],
+        "text": "Low-carbon shipping"
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "shipping": {
+        "low_carbon": true,
+        "label": "Eco \"plus\"",
+        "offset_percent": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "span",
+        "attrs": [
+          [
+            "class",
+            "carbon-flag"
+          ],
+          [
+            "data-offset",
+            "100"
+          ]
+        ],
+        "children": [],
+        "text": "Eco \"plus\""
+      }
+    ]
+  }
+]

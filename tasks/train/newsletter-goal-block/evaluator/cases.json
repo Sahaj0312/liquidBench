@@ -1,0 +1,725 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/newsletter-goal-block.liquid",
+    "tags": [
+      "div",
+      "h2",
+      "p"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Newsletter\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\"},\n    {\"type\": \"number\", \"id\": \"subscriber_count\", \"label\": \"Subscriber count\"},\n    {\"type\": \"number\", \"id\": \"discount_percent\", \"label\": \"Discount percent\"},\n    {\"type\": \"number\", \"id\": \"goal\", \"label\": \"Subscriber goal\"}\n  ],\n  \"presets\": [{\"name\": \"Newsletter\"}]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Join our list",
+          "subscriber_count": 850,
+          "discount_percent": 10,
+          "goal": 1000
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Join our list"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__count"
+              ]
+            ],
+            "children": [],
+            "text": "Join 850 subscribers"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__discount"
+              ]
+            ],
+            "children": [],
+            "text": "Get 10% off your first order"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__progress"
+              ]
+            ],
+            "children": [],
+            "text": "85% of our 1k goal"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "News",
+          "subscriber_count": 1250,
+          "discount_percent": null,
+          "goal": 3000
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__heading"
+              ]
+            ],
+            "children": [],
+            "text": "News"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__count"
+              ]
+            ],
+            "children": [],
+            "text": "Join 1.2k subscribers"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__progress"
+              ]
+            ],
+            "children": [],
+            "text": "42% of our 3k goal"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null,
+          "subscriber_count": 1,
+          "discount_percent": 0,
+          "goal": 8
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__count"
+              ]
+            ],
+            "children": [],
+            "text": "Join 1 subscriber"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__progress"
+              ]
+            ],
+            "children": [],
+            "text": "13% of our 8 goal"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Big",
+          "subscriber_count": 1999,
+          "discount_percent": 100,
+          "goal": 1000
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Big"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__count"
+              ]
+            ],
+            "children": [],
+            "text": "Join 1.9k subscribers"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__discount"
+              ]
+            ],
+            "children": [],
+            "text": "Get 100% off your first order"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__progress"
+              ]
+            ],
+            "children": [],
+            "text": "100% of our 1k goal"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Zero",
+          "subscriber_count": 0,
+          "discount_percent": 101,
+          "goal": 500
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Zero"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__progress"
+              ]
+            ],
+            "children": [],
+            "text": "0% of our 500 goal"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Million",
+          "subscriber_count": 2050000,
+          "discount_percent": 5,
+          "goal": 0
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Million"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__count"
+              ]
+            ],
+            "children": [],
+            "text": "Join 2M subscribers"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__discount"
+              ]
+            ],
+            "children": [],
+            "text": "Get 5% off your first order"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "<b>Save</b> & \"win\"",
+          "subscriber_count": null,
+          "discount_percent": 15,
+          "goal": 1000
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__heading"
+              ]
+            ],
+            "children": [],
+            "text": "<b>Save</b> & \"win\""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__discount"
+              ]
+            ],
+            "children": [],
+            "text": "Get 15% off your first order"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null,
+          "subscriber_count": null,
+          "discount_percent": null,
+          "goal": null
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "   ",
+          "subscriber_count": 999999,
+          "discount_percent": 1,
+          "goal": 1500000
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__count"
+              ]
+            ],
+            "children": [],
+            "text": "Join 999.9k subscribers"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__discount"
+              ]
+            ],
+            "children": [],
+            "text": "Get 1% off your first order"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__progress"
+              ]
+            ],
+            "children": [],
+            "text": "67% of our 1.5M goal"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Edge",
+          "subscriber_count": 1000,
+          "discount_percent": -5,
+          "goal": 2000
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Edge"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__count"
+              ]
+            ],
+            "children": [],
+            "text": "Join 1k subscribers"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__progress"
+              ]
+            ],
+            "children": [],
+            "text": "50% of our 2k goal"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Half",
+          "subscriber_count": 3,
+          "discount_percent": null,
+          "goal": 200
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Half"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__count"
+              ]
+            ],
+            "children": [],
+            "text": "Join 3 subscribers"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__progress"
+              ]
+            ],
+            "children": [],
+            "text": "2% of our 200 goal"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Neg",
+          "subscriber_count": -4,
+          "discount_percent": null,
+          "goal": 100
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Neg"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-12",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Low",
+          "subscriber_count": 995,
+          "discount_percent": null,
+          "goal": 1000
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Low"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__count"
+              ]
+            ],
+            "children": [],
+            "text": "Join 995 subscribers"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__progress"
+              ]
+            ],
+            "children": [],
+            "text": "100% of our 1k goal"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

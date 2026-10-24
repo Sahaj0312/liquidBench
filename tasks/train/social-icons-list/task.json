@@ -1,0 +1,15 @@
+{
+  "id": "social-icons-list",
+  "version": 1,
+  "split": "train",
+  "category": "theme-references",
+  "difficulty": "medium",
+  "family": "social-icons-list",
+  "provenance": "Claude-authored training task (claude-opus-5-5, 2026-10-24); kept only after container verification. Not development or held-out data.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/social-icons-list.liquid"
+  ],
+  "prompt": "The snippet snippets/social-icons-list.liquid renders the store's social media links (from settings.social_facebook_link, settings.social_instagram_link and settings.social_tiktok_link). Several of its literal references point to files or keys that do not exist, so Theme Check reports errors. Fix only the literal operands and keep the markup, conditions and order unchanged.\n\nRequirements:\n1. The stylesheet loaded with asset_url | stylesheet_tag must be the existing component stylesheet in assets/ (component-social-icons.css).\n2. Every translation key used with the t filter must exist in locales/en.default.json. The heading must use the heading key under sections.social_icons. Each platform's visually hidden label must use that platform's key under sections.social_icons (facebook, instagram, tiktok).\n3. Each platform's icon must be rendered with {% render %} using the existing snippet for that platform in snippets/ (icon-facebook, icon-instagram, icon-tiktok).\n4. After your fix, Theme Check must report no missing asset, missing translation key or missing snippet errors for this file. Change only snippets/social-icons-list.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

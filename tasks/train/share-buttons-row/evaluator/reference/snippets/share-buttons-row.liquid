@@ -1,0 +1,23 @@
+{{ 'social-share.css' | asset_url | stylesheet_tag }}
+{%- assign networks = 'facebook,x,pinterest' | split: ',' -%}
+<div class="share-buttons">
+  <h2 class="share-buttons__title">{{ 'sections.share.title' | t }}</h2>
+  <ul class="share-buttons__list">
+    {%- for network in networks -%}
+      <li class="share-buttons__item{% if forloop.first %} share-buttons__item--first{% endif %}{% if forloop.last %} share-buttons__item--last{% endif %}">
+        <a href="#" class="share-buttons__link" data-network="{{ network }}">
+          {%- render 'share-icon', icon: network -%}
+          <span class="share-buttons__label">
+            {%- case network -%}
+              {%- when 'facebook' -%}{{ 'sections.share.facebook' | t }}
+              {%- when 'x' -%}{{ 'sections.share.x' | t }}
+              {%- when 'pinterest' -%}{{ 'sections.share.pinterest' | t }}
+            {%- endcase -%}
+          </span>
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+  <p class="share-buttons__separator">{{ 'sections.share.separator' | t }}</p>
+  <button type="button" class="share-buttons__copy">{{ 'sections.share.copy_link' | t }}</button>
+</div>

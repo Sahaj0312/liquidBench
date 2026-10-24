@@ -1,0 +1,30 @@
+<div class="store-info">
+  <h2 class="store-info__name">{{ section.settings.store_name | escape }}</h2>
+  <p class="store-info__address">{{ section.settings.address | escape }}</p>
+  <ul class="store-info__hours">
+    {%- for block in section.blocks -%}
+      <li>{{ block.settings.day }}: {{ block.settings.opens }}-{{ block.settings.closes }}</li>
+    {%- endfor -%}
+  </ul>
+</div>
+{% schema %}
+{
+  "name": "Store info",
+  "settings": [
+    { "type": "text", "id": "store_name", "label": "Store name" },
+    { "type": "text", "id": "address", "label": "Address" }
+  ],
+  "blocks": [
+    {
+      "type": "hours",
+      "name": "Opening hours",
+      "settings": [
+        { "type": "text", "id": "day", "label": "Day", "default": "Mon" },
+        { "type": "number", "id": "opens", "label": "Opens (minutes after midnight)" },
+        { "type": "number", "id": "closes", "label": "Closes (minutes after midnight)" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Store info" }]
+}
+{% endschema %}

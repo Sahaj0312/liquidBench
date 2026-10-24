@@ -1,0 +1,17 @@
+{%- assign shown = 0 -%}
+{%- for ing in ingredients -%}
+{%- if ing.name != nil and ing.name != "" -%}{%- assign shown = shown | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
+{%- if shown > 0 -%}
+<div class="ingredients">
+{%- if title != nil and title != "" -%}<h3>{{ title | escape }}</h3>{%- endif -%}
+<ul>
+{%- for ing in ingredients -%}
+{%- if ing.name != nil and ing.name != "" -%}
+<li>
+{%- if ing.quantity != nil and ing.quantity != "" -%}<span class="qty">{{ ing.quantity | escape }}</span>{%- if ing.unit != nil and ing.unit != "" %} <span class="unit">{{ ing.unit | escape }}</span>{%- endif %} {% endif -%}
+{{ ing.name | escape }}</li>
+{%- endif -%}
+{%- endfor -%}
+</ul><p class="count">{{ shown }} {% if shown == 1 %}ingredient{% else %}ingredients{% endif %}</p></div>
+{%- endif -%}

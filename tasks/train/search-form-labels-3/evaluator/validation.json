@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-asset-still-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-3.liquid": "{{ 'search-form.css' | asset_url | stylesheet_tag }}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search-form\">\n  {%- if label != blank -%}\n    {%- assign search_label = label -%}\n  {%- else -%}\n    {%- assign search_label = 'general.search.label' | t -%}\n  {%- endif -%}\n  <label for=\"SearchInput\">{{ search_label | escape }}</label>\n  <input id=\"SearchInput\" type=\"search\" name=\"q\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"submit\">{{ 'general.search.submit' | t }}</button>\n  {% render 'icon-search' %}\n</form>\n"
+    }
+  },
+  {
+    "name": "wrong-1-label-key-unprefixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-3.liquid": "{{ 'component-search.css' | asset_url | stylesheet_tag }}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search-form\">\n  {%- if label != blank -%}\n    {%- assign search_label = label -%}\n  {%- else -%}\n    {%- assign search_label = 'search.label' | t -%}\n  {%- endif -%}\n  <label for=\"SearchInput\">{{ search_label | escape }}</label>\n  <input id=\"SearchInput\" type=\"search\" name=\"q\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"submit\">{{ 'general.search.submit' | t }}</button>\n  {% render 'icon-search' %}\n</form>\n"
+    }
+  },
+  {
+    "name": "wrong-2-snippet-name-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-3.liquid": "{{ 'component-search.css' | asset_url | stylesheet_tag }}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search-form\">\n  {%- if label != blank -%}\n    {%- assign search_label = label -%}\n  {%- else -%}\n    {%- assign search_label = 'general.search.label' | t -%}\n  {%- endif -%}\n  <label for=\"SearchInput\">{{ search_label | escape }}</label>\n  <input id=\"SearchInput\" type=\"search\" name=\"q\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"submit\">{{ 'general.search.submit' | t }}</button>\n  {% render 'search-icon' %}\n</form>\n"
+    }
+  },
+  {
+    "name": "wrong-3-submit-key-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-3.liquid": "{{ 'component-search.css' | asset_url | stylesheet_tag }}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search-form\">\n  {%- if label != blank -%}\n    {%- assign search_label = label -%}\n  {%- else -%}\n    {%- assign search_label = 'general.search.label' | t -%}\n  {%- endif -%}\n  <label for=\"SearchInput\">{{ search_label | escape }}</label>\n  <input id=\"SearchInput\" type=\"search\" name=\"q\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"submit\">{{ 'general.search.submit_label' | t }}</button>\n  {% render 'icon-search' %}\n</form>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-3.liquid": "{% # theme-check-disable %}\n{{ 'component-search.css' | asset_url | stylesheet_tag }}\n<form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" class=\"search-form\">\n  {%- if label != blank -%}\n    {%- assign search_label = label -%}\n  {%- else -%}\n    {%- assign search_label = 'general.search.label' | t -%}\n  {%- endif -%}\n  <label for=\"SearchInput\">{{ search_label | escape }}</label>\n  <input id=\"SearchInput\" type=\"search\" name=\"q\" placeholder=\"{{ 'general.search.placeholder' | t }}\">\n  <button type=\"submit\">{{ 'general.search.submit' | t }}</button>\n  {% render 'icon-search' %}\n</form>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/search-form-labels-3.liquid": null
+    }
+  }
+]

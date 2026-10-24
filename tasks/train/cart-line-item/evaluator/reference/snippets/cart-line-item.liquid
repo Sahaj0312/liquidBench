@@ -1,0 +1,4 @@
+{%- assign variant = item.variant_title | default: '' -%}
+<li class="cart-line"><span class="cart-line__title">{{ item.title | escape }}</span>
+{%- if variant != '' and variant != 'Default Title' -%}<span class="cart-line__variant">{{ variant | escape }}</span>{%- endif -%}
+<span class="cart-line__qty">Qty: {{ item.quantity }}</span></li>

@@ -1,0 +1,260 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/subscription-cadence-2.liquid",
+    "tags": [
+      "div",
+      "small",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "cadence_label": "Every 2 weeks",
+      "cadence_note": "Skip or cancel anytime"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "cadence"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__label"
+              ]
+            ],
+            "children": [],
+            "text": "Every 2 weeks"
+          },
+          {
+            "tag": "small",
+            "attrs": [
+              [
+                "class",
+                "cadence__note"
+              ]
+            ],
+            "children": [],
+            "text": "Skip or cancel anytime"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "cadence_label": "Monthly",
+      "cadence_note": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "cadence"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__label"
+              ]
+            ],
+            "children": [],
+            "text": "Monthly"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "cadence_label": "Monthly",
+      "cadence_note": ""
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "cadence"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__label"
+              ]
+            ],
+            "children": [],
+            "text": "Monthly"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "cadence_label": "Monthly",
+      "cadence_note": "   "
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "cadence"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__label"
+              ]
+            ],
+            "children": [],
+            "text": "Monthly"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "cadence_label": null,
+      "cadence_note": "Skip anytime"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "cadence_label": "   ",
+      "cadence_note": "Skip anytime"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "cadence_label": "",
+      "cadence_note": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "cadence_label": "  Every 3 months  ",
+      "cadence_note": "  Free shipping "
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "cadence"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__label"
+              ]
+            ],
+            "children": [],
+            "text": "Every 3 months"
+          },
+          {
+            "tag": "small",
+            "attrs": [
+              [
+                "class",
+                "cadence__note"
+              ]
+            ],
+            "children": [],
+            "text": "Free shipping"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "cadence_label": "Weekly <b>&</b>",
+      "cadence_note": "Save \"10%\" & more"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "cadence"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__label"
+              ]
+            ],
+            "children": [],
+            "text": "Weekly <b>&</b>"
+          },
+          {
+            "tag": "small",
+            "attrs": [
+              [
+                "class",
+                "cadence__note"
+              ]
+            ],
+            "children": [],
+            "text": "Save \"10%\" & more"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

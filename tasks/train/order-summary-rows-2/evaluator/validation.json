@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-no-cent-padding",
+    "expected_pass": false,
+    "changes": {
+      "snippets/order-summary-rows-2.liquid": "{%- assign cur = currency | strip | default: \"USD\" -%}\n{%- assign count = rows | size -%}\n{%- if count == 0 -%}\n{%- assign msg = empty_text | strip | default: \"No items\" -%}\n<table class=\"order-summary\"><tr><td>{{ msg | escape }}</td></tr></table>\n{%- else -%}\n{%- assign total = 0 -%}\n<table class=\"order-summary\">\n{%- for row in rows -%}\n{%- assign label = row.label | strip | default: \"Item\" -%}\n{%- assign cents = row.amount_cents | default: 0 -%}\n{%- assign total = total | plus: cents -%}\n{%- assign d = cents | divided_by: 100 -%}\n{%- assign c = cents | modulo: 100 -%}\n<tr><th>{{ label | escape }}</th><td>{{ cur | escape }} {{ d }}.{{ c }}</td></tr>\n{%- endfor -%}\n{%- assign d = total | divided_by: 100 -%}\n{%- assign c = total | modulo: 100 -%}\n<tr class=\"total\"><th>Total</th><td>{{ cur | escape }} {{ d }}.{{ c }}</td></tr></table>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-label-default-before-strip",
+    "expected_pass": false,
+    "changes": {
+      "snippets/order-summary-rows-2.liquid": "{%- assign cur = currency | strip | default: \"USD\" -%}\n{%- assign count = rows | size -%}\n{%- if count == 0 -%}\n{%- assign msg = empty_text | strip | default: \"No items\" -%}\n<table class=\"order-summary\"><tr><td>{{ msg | escape }}</td></tr></table>\n{%- else -%}\n{%- assign total = 0 -%}\n<table class=\"order-summary\">\n{%- for row in rows -%}\n{%- assign label = row.label | default: \"Item\" | strip -%}\n{%- assign cents = row.amount_cents | default: 0 -%}\n{%- assign total = total | plus: cents -%}\n{%- assign d = cents | divided_by: 100 -%}\n{%- assign c = cents | modulo: 100 -%}\n<tr><th>{{ label | escape }}</th><td>{{ cur | escape }} {{ d }}.{% if c < 10 %}0{% endif %}{{ c }}</td></tr>\n{%- endfor -%}\n{%- assign d = total | divided_by: 100 -%}\n{%- assign c = total | modulo: 100 -%}\n<tr class=\"total\"><th>Total</th><td>{{ cur | escape }} {{ d }}.{% if c < 10 %}0{% endif %}{{ c }}</td></tr></table>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-currency-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/order-summary-rows-2.liquid": "{%- assign cur = currency | default: \"USD\" -%}\n{%- assign count = rows | size -%}\n{%- if count == 0 -%}\n{%- assign msg = empty_text | strip | default: \"No items\" -%}\n<table class=\"order-summary\"><tr><td>{{ msg | escape }}</td></tr></table>\n{%- else -%}\n{%- assign total = 0 -%}\n<table class=\"order-summary\">\n{%- for row in rows -%}\n{%- assign label = row.label | strip | default: \"Item\" -%}\n{%- assign cents = row.amount_cents | default: 0 -%}\n{%- assign total = total | plus: cents -%}\n{%- assign d = cents | divided_by: 100 -%}\n{%- assign c = cents | modulo: 100 -%}\n<tr><th>{{ label | escape }}</th><td>{{ cur | escape }} {{ d }}.{% if c < 10 %}0{% endif %}{{ c }}</td></tr>\n{%- endfor -%}\n{%- assign d = total | divided_by: 100 -%}\n{%- assign c = total | modulo: 100 -%}\n<tr class=\"total\"><th>Total</th><td>{{ cur | escape }} {{ d }}.{% if c < 10 %}0{% endif %}{{ c }}</td></tr></table>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-null-rows-not-empty",
+    "expected_pass": false,
+    "changes": {
+      "snippets/order-summary-rows-2.liquid": "{%- assign cur = currency | strip | default: \"USD\" -%}\n{%- if rows == empty -%}\n{%- assign msg = empty_text | strip | default: \"No items\" -%}\n<table class=\"order-summary\"><tr><td>{{ msg | escape }}</td></tr></table>\n{%- else -%}\n{%- assign total = 0 -%}\n<table class=\"order-summary\">\n{%- for row in rows -%}\n{%- assign label = row.label | strip | default: \"Item\" -%}\n{%- assign cents = row.amount_cents | default: 0 -%}\n{%- assign total = total | plus: cents -%}\n{%- assign d = cents | divided_by: 100 -%}\n{%- assign c = cents | modulo: 100 -%}\n<tr><th>{{ label | escape }}</th><td>{{ cur | escape }} {{ d }}.{% if c < 10 %}0{% endif %}{{ c }}</td></tr>\n{%- endfor -%}\n{%- assign d = total | divided_by: 100 -%}\n{%- assign c = total | modulo: 100 -%}\n<tr class=\"total\"><th>Total</th><td>{{ cur | escape }} {{ d }}.{% if c < 10 %}0{% endif %}{{ c }}</td></tr></table>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/order-summary-rows-2.liquid": "{% # theme-check-disable %}\n{%- assign cur = currency | strip | default: \"USD\" -%}\n{%- assign count = rows | size -%}\n{%- if count == 0 -%}\n{%- assign msg = empty_text | strip | default: \"No items\" -%}\n<table class=\"order-summary\"><tr><td>{{ msg | escape }}</td></tr></table>\n{%- else -%}\n{%- assign total = 0 -%}\n<table class=\"order-summary\">\n{%- for row in rows -%}\n{%- assign label = row.label | strip | default: \"Item\" -%}\n{%- assign cents = row.amount_cents | default: 0 -%}\n{%- assign total = total | plus: cents -%}\n{%- assign d = cents | divided_by: 100 -%}\n{%- assign c = cents | modulo: 100 -%}\n<tr><th>{{ label | escape }}</th><td>{{ cur | escape }} {{ d }}.{% if c < 10 %}0{% endif %}{{ c }}</td></tr>\n{%- endfor -%}\n{%- assign d = total | divided_by: 100 -%}\n{%- assign c = total | modulo: 100 -%}\n<tr class=\"total\"><th>Total</th><td>{{ cur | escape }} {{ d }}.{% if c < 10 %}0{% endif %}{{ c }}</td></tr></table>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/order-summary-rows-2.liquid": null
+    }
+  }
+]

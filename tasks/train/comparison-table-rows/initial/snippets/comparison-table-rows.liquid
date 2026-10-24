@@ -1,0 +1,11 @@
+<tbody>
+{%- for row in rows %}
+  <tr{% if row.label == highlight %} class="highlight"{% endif %}>
+    <th scope="row">{{ row.label }}</th>
+    {%- assign parts = row.values | split: "," -%}
+    {%- for part in parts %}
+    <td>{{ part }}</td>
+    {%- endfor %}
+  </tr>
+{%- endfor %}
+</tbody>

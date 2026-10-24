@@ -1,0 +1,27 @@
+{%- comment -%} Loyalty tier ladder {%- endcomment -%}
+{%- if tiers.size > 0 -%}
+  {%- assign pts = points | default: 0 -%}
+  {%- assign earned = 0 -%}
+  {%- for tier in tiers -%}
+    {%- if pts >= tier.min_points -%}{%- assign earned = earned | plus: 1 -%}{%- endif -%}
+  {%- endfor -%}
+  <ol class="tiers">
+  {%- for tier in tiers -%}
+    {%- if forloop.index < earned -%}{%- assign state = 'earned' -%}
+    {%- elsif forloop.index == earned -%}{%- assign state = 'current' -%}
+    {%- else -%}{%- assign state = 'locked' -%}{%- endif -%}
+    <li class="tier tier--{{ state }}">{{ tier.name | escape }} <span>{{ tier.min_points }} pts</span></li>
+  {%- endfor -%}
+  </ol>
+  {%- if earned < tiers.size -%}
+    {%- assign next_tier = tiers[earned] -%}
+    {%- assign base = 0 -%}
+    {%- if earned > 0 -%}{%- assign prev_index = earned | minus: 1 -%}{%- assign base = tiers[prev_index].min_points -%}{%- endif -%}
+    {%- assign remaining = next_tier.min_points | minus: pts -%}
+    {%- assign span = next_tier.min_points | minus: base -%}
+    {%- assign percent = pts | minus: base | times: 100 | divided_by: span -%}
+    <p class="tiers__next">{{ remaining }} {% if remaining == 1 %}point{% else %}points{% endif %} to {{ next_tier.name | escape }} ({{ percent }}%)</p>
+  {%- else -%}
+    <p class="tiers__next">Top tier reached</p>
+  {%- endif -%}
+{%- endif -%}

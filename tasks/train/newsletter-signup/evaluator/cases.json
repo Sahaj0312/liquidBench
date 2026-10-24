@@ -1,0 +1,791 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/newsletter-signup.liquid",
+    "tags": [
+      "button",
+      "div",
+      "form",
+      "h2",
+      "p"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Newsletter\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"button_label\", \"label\": \"Button label\", \"default\": \"Subscribe\" },\n    { \"type\": \"text\", \"id\": \"success_message\", \"label\": \"Success message\", \"default\": \"Thanks for subscribing!\" },\n    { \"type\": \"text\", \"id\": \"error_message\", \"label\": \"Error message\" }\n  ],\n  \"blocks\": [\n    { \"type\": \"heading\", \"name\": \"Heading\", \"settings\": [{ \"type\": \"text\", \"id\": \"text\", \"label\": \"Text\" }] },\n    { \"type\": \"paragraph\", \"name\": \"Paragraph\", \"settings\": [{ \"type\": \"textarea\", \"id\": \"text\", \"label\": \"Text\" }] }\n  ],\n  \"presets\": [{ \"name\": \"Newsletter\" }]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "newsletter_status": null,
+      "section": {
+        "settings": {
+          "button_label": "Sign up",
+          "success_message": null,
+          "error_message": null
+        },
+        "blocks": [
+          {
+            "type": "heading",
+            "settings": {
+              "text": "Join our list"
+            }
+          },
+          {
+            "type": "paragraph",
+            "settings": {
+              "text": "Get 10% off your first order."
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Join our list"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__text"
+              ]
+            ],
+            "children": [],
+            "text": "Get 10% off your first order."
+          },
+          {
+            "tag": "form",
+            "attrs": [
+              [
+                "action",
+                "/contact#newsletter"
+              ],
+              [
+                "class",
+                "newsletter__form"
+              ],
+              [
+                "method",
+                "post"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "button",
+                "attrs": [
+                  [
+                    "class",
+                    "newsletter__button"
+                  ],
+                  [
+                    "type",
+                    "submit"
+                  ]
+                ],
+                "children": [],
+                "text": "Sign up"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "newsletter_status": "success",
+      "section": {
+        "settings": {
+          "button_label": "Sign up",
+          "success_message": "  You are in!  ",
+          "error_message": null
+        },
+        "blocks": [
+          {
+            "type": "heading",
+            "settings": {
+              "text": "Join our list"
+            }
+          },
+          {
+            "type": "paragraph",
+            "settings": {
+              "text": "Get 10% off your first order."
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter newsletter--success"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Join our list"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__success"
+              ]
+            ],
+            "children": [],
+            "text": "You are in!"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "newsletter_status": "success",
+      "section": {
+        "settings": {
+          "button_label": null,
+          "success_message": null,
+          "error_message": null
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "settings": {
+              "text": "Weekly deals"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter newsletter--success"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__success"
+              ]
+            ],
+            "children": [],
+            "text": "Thanks for subscribing!"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "newsletter_status": "error",
+      "section": {
+        "settings": {
+          "button_label": "   ",
+          "success_message": null,
+          "error_message": null
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "settings": {
+              "text": "Weekly deals"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__text"
+              ]
+            ],
+            "children": [],
+            "text": "Weekly deals"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__error"
+              ],
+              [
+                "role",
+                "alert"
+              ]
+            ],
+            "children": [],
+            "text": "Please enter a valid email address."
+          },
+          {
+            "tag": "form",
+            "attrs": [
+              [
+                "action",
+                "/contact#newsletter"
+              ],
+              [
+                "class",
+                "newsletter__form"
+              ],
+              [
+                "method",
+                "post"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "button",
+                "attrs": [
+                  [
+                    "class",
+                    "newsletter__button"
+                  ],
+                  [
+                    "type",
+                    "submit"
+                  ]
+                ],
+                "children": [],
+                "text": "Subscribe"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "newsletter_status": "error",
+      "section": {
+        "settings": {
+          "button_label": "Subscribe",
+          "success_message": null,
+          "error_message": "Email \"x\" is <invalid> & rejected"
+        },
+        "blocks": []
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__error"
+              ],
+              [
+                "role",
+                "alert"
+              ]
+            ],
+            "children": [],
+            "text": "Email \"x\" is <invalid> & rejected"
+          },
+          {
+            "tag": "form",
+            "attrs": [
+              [
+                "action",
+                "/contact#newsletter"
+              ],
+              [
+                "class",
+                "newsletter__form"
+              ],
+              [
+                "method",
+                "post"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "button",
+                "attrs": [
+                  [
+                    "class",
+                    "newsletter__button"
+                  ],
+                  [
+                    "type",
+                    "submit"
+                  ]
+                ],
+                "children": [],
+                "text": "Subscribe"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "newsletter_status": "idle",
+      "section": {
+        "settings": {
+          "button_label": null,
+          "success_message": null,
+          "error_message": null
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "settings": {
+              "text": "First para"
+            }
+          },
+          {
+            "type": "heading",
+            "settings": {
+              "text": "   "
+            }
+          },
+          {
+            "type": "heading",
+            "settings": {
+              "text": "Join"
+            }
+          },
+          {
+            "type": "heading",
+            "settings": {
+              "text": "Ignored"
+            }
+          },
+          {
+            "type": "paragraph",
+            "settings": {
+              "text": null
+            }
+          },
+          {
+            "type": "paragraph",
+            "settings": {
+              "text": " Second para "
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Join"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__text"
+              ]
+            ],
+            "children": [],
+            "text": "First para"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__text"
+              ]
+            ],
+            "children": [],
+            "text": "Second para"
+          },
+          {
+            "tag": "form",
+            "attrs": [
+              [
+                "action",
+                "/contact#newsletter"
+              ],
+              [
+                "class",
+                "newsletter__form"
+              ],
+              [
+                "method",
+                "post"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "button",
+                "attrs": [
+                  [
+                    "class",
+                    "newsletter__button"
+                  ],
+                  [
+                    "type",
+                    "submit"
+                  ]
+                ],
+                "children": [],
+                "text": "Subscribe"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "newsletter_status": "SUCCESS",
+      "section": {
+        "settings": {
+          "button_label": "Go",
+          "success_message": "Done",
+          "error_message": null
+        },
+        "blocks": []
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "form",
+            "attrs": [
+              [
+                "action",
+                "/contact#newsletter"
+              ],
+              [
+                "class",
+                "newsletter__form"
+              ],
+              [
+                "method",
+                "post"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "button",
+                "attrs": [
+                  [
+                    "class",
+                    "newsletter__button"
+                  ],
+                  [
+                    "type",
+                    "submit"
+                  ]
+                ],
+                "children": [],
+                "text": "Go"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "newsletter_status": null,
+      "section": {
+        "settings": {
+          "button_label": "Join & save",
+          "success_message": null,
+          "error_message": null
+        },
+        "blocks": [
+          {
+            "type": "heading",
+            "settings": {
+              "text": "News & \"Offers\" <2024>"
+            }
+          },
+          {
+            "type": "paragraph",
+            "settings": {
+              "text": "a < b > c"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "newsletter__heading"
+              ]
+            ],
+            "children": [],
+            "text": "News & \"Offers\" <2024>"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__text"
+              ]
+            ],
+            "children": [],
+            "text": "a < b > c"
+          },
+          {
+            "tag": "form",
+            "attrs": [
+              [
+                "action",
+                "/contact#newsletter"
+              ],
+              [
+                "class",
+                "newsletter__form"
+              ],
+              [
+                "method",
+                "post"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "button",
+                "attrs": [
+                  [
+                    "class",
+                    "newsletter__button"
+                  ],
+                  [
+                    "type",
+                    "submit"
+                  ]
+                ],
+                "children": [],
+                "text": "Join & save"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "newsletter_status": "error",
+      "section": {
+        "settings": {
+          "button_label": null,
+          "success_message": null,
+          "error_message": "  Try again  "
+        },
+        "blocks": [
+          {
+            "type": "heading",
+            "settings": {
+              "text": null
+            }
+          },
+          {
+            "type": "paragraph",
+            "settings": {
+              "text": "Hi"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "newsletter"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__text"
+              ]
+            ],
+            "children": [],
+            "text": "Hi"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "newsletter__error"
+              ],
+              [
+                "role",
+                "alert"
+              ]
+            ],
+            "children": [],
+            "text": "Try again"
+          },
+          {
+            "tag": "form",
+            "attrs": [
+              [
+                "action",
+                "/contact#newsletter"
+              ],
+              [
+                "class",
+                "newsletter__form"
+              ],
+              [
+                "method",
+                "post"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "button",
+                "attrs": [
+                  [
+                    "class",
+                    "newsletter__button"
+                  ],
+                  [
+                    "type",
+                    "submit"
+                  ]
+                ],
+                "children": [],
+                "text": "Subscribe"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

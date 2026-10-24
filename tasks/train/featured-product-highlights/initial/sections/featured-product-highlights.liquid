@@ -1,0 +1,16 @@
+{%- assign product = section.settings.product -%}
+<div class="featured-product">
+  {%- if product != blank -%}
+    <h2>{{ product.title | escape }}</h2>
+    <ul class="featured-product__highlights">
+      {%- for block in section.blocks limit: section.settings.highlight_limit -%}
+        {%- if block.settings.hide -%}{%- continue -%}{%- endif -%}
+        <li {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{"name":"Featured product","tag":"section","settings":[{"type":"product","id":"featured_product","label":"Product"}],"blocks":[{"type":"highlight","name":"Highlight","settings":[{"type":"text","id":"label","label":"Label"},{"type":"checkbox","id":"hide","label":"Hide highlight"}]}],"presets":[{"name":"Featured product"}]}
+{% endschema %}

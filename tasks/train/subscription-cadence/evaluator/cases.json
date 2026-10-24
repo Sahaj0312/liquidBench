@@ -1,0 +1,472 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/subscription-cadence.liquid",
+    "tags": [
+      "p",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "plan": {
+        "name": "Coffee Club",
+        "interval": "week",
+        "interval_count": 2,
+        "price_cents": 1250
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "cadence"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__name"
+              ]
+            ],
+            "children": [],
+            "text": "Coffee Club"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__label"
+              ]
+            ],
+            "children": [],
+            "text": "Every 2 weeks"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__price"
+              ]
+            ],
+            "children": [],
+            "text": "$12.50 / delivery"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "plan": {
+        "name": null,
+        "interval": " Month ",
+        "interval_count": 1,
+        "price_cents": 999
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "cadence"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__label"
+              ]
+            ],
+            "children": [],
+            "text": "Monthly"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__price"
+              ]
+            ],
+            "children": [],
+            "text": "$9.99 / delivery"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "plan": {
+        "name": "   ",
+        "interval": "day",
+        "interval_count": null,
+        "price_cents": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "cadence"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__label"
+              ]
+            ],
+            "children": [],
+            "text": "Daily"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "plan": {
+        "name": "Annual",
+        "interval": "year",
+        "interval_count": 0,
+        "price_cents": 0
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "cadence"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__name"
+              ]
+            ],
+            "children": [],
+            "text": "Annual"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__label"
+              ]
+            ],
+            "children": [],
+            "text": "Yearly"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__price"
+              ]
+            ],
+            "children": [],
+            "text": "Free"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "plan": {
+        "name": "Greens",
+        "interval": "week",
+        "interval_count": -3,
+        "price_cents": 1005
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "cadence"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__name"
+              ]
+            ],
+            "children": [],
+            "text": "Greens"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__label"
+              ]
+            ],
+            "children": [],
+            "text": "Weekly"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__price"
+              ]
+            ],
+            "children": [],
+            "text": "$10.05 / delivery"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "plan": {
+        "name": "Milk",
+        "interval": "DAY",
+        "interval_count": 3,
+        "price_cents": 5
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "cadence"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__name"
+              ]
+            ],
+            "children": [],
+            "text": "Milk"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__label"
+              ]
+            ],
+            "children": [],
+            "text": "Every 3 days"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__price"
+              ]
+            ],
+            "children": [],
+            "text": "$0.05 / delivery"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "plan": {
+        "name": "Bi-weekly",
+        "interval": "fortnight",
+        "interval_count": 1,
+        "price_cents": 500
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "plan": {
+        "name": "Mystery",
+        "interval": null,
+        "interval_count": 2,
+        "price_cents": 500
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "plan": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "plan": {
+        "name": "Tea & \"Biscuits\" <Deluxe>",
+        "interval": "month",
+        "interval_count": 6,
+        "price_cents": 120000
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "cadence"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__name"
+              ]
+            ],
+            "children": [],
+            "text": "Tea & \"Biscuits\" <Deluxe>"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__label"
+              ]
+            ],
+            "children": [],
+            "text": "Every 6 months"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__price"
+              ]
+            ],
+            "children": [],
+            "text": "$1200.00 / delivery"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "plan": {
+        "name": "Socks",
+        "interval": "year",
+        "interval_count": 2,
+        "price_cents": 100
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "cadence"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__name"
+              ]
+            ],
+            "children": [],
+            "text": "Socks"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__label"
+              ]
+            ],
+            "children": [],
+            "text": "Every 2 years"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "cadence__price"
+              ]
+            ],
+            "children": [],
+            "text": "$1.00 / delivery"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,13 @@
+<div class="loyalty-tier"><h3 class="loyalty-tier__greeting">Hi {{ customer.first_name | default: 'there' }}</h3>
+{%- if customer.tier == 'gold' or customer.tier == 'silver' or customer.tier == 'bronze' -%}
+<p class="loyalty-tier__badge loyalty-tier__badge--{{ customer.tier }}">{{ customer.tier | capitalize }} member</p>
+{%- else -%}
+<p class="loyalty-tier__badge loyalty-tier__badge--none">Not a member yet</p>
+{%- endif -%}
+{%- assign points = customer.points | default: 0 -%}
+{%- if points == 0 -%}
+<p class="loyalty-tier__points">No points yet</p>
+{%- else -%}
+<p class="loyalty-tier__points">{{ points }} points</p>
+{%- endif -%}
+</div>

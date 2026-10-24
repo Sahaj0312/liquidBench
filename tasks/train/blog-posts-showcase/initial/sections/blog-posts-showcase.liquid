@@ -1,0 +1,30 @@
+<div class="blog-posts">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="title {{ section.settings.heading_size }}">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  {%- if section.settings.blog != blank -%}
+    <ul class="blog-posts__list" style="--columns: {{ section.settings.columns_desktop }};">
+      {%- for article in section.settings.blog.articles limit: section.settings.post_limit -%}
+        <li class="blog-posts__item">
+          {%- if section.settings.show_image and article.image -%}
+            {{ article.image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+          {%- endif -%}
+          <h3><a href="{{ article.url }}">{{ article.title | escape }}</a></h3>
+          {%- if section.settings.show_date -%}
+            {{ article.published_at | time_tag: format: 'date' }}
+          {%- endif -%}
+          {%- if section.settings.show_author -%}
+            <span class="blog-posts__author">{{ article.author | escape }}</span>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+    {%- if section.settings.show_view_all -%}
+      <a class="button" href="{{ section.settings.blog.url }}">View all</a>
+    {%- endif -%}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{"name":"Blog posts","tag":"section","class":"section-blog-posts","settings":[{"type":"text","id":"heading","label":"Heading","default":"Blog posts"},{"type":"blog","id":"blog","label":"Blog"},{"type":"range","id":"post_limit","label":"Number of posts to show","min":1,"max":10,"step":1,"default":3},{"type":"range","id":"columns_desktop","label":"Columns on desktop","min":1,"max":4,"step":1,"default":3},{"type":"checkbox","id":"show_image","label":"Show featured image","default":true},{"type":"checkbox","id":"show_date","label":"Show date","default":true},{"type":"checkbox","id":"show_author","label":"Show author","default":true},{"type":"checkbox","id":"show_view_all","label":"Show view all button","default":true}],"presets":[{"name":"Blog posts"}]}
+{% endschema %}

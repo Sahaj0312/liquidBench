@@ -1,0 +1,14 @@
+{%- assign max = section.settings.max_items -%}
+<div class="rich-text-columns">
+  {%- if section.settings.heading != blank -%}
+    <h2>{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  {%- for block in section.blocks limit: max -%}
+    {%- if block.settings.text == blank -%}{%- continue -%}{%- endif -%}
+    <div class="rich-text-columns__item" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{"name":"Rich text columns","tag":"section","settings":[{"type":"text","id":"heading","label":"Heading"},{"type":"range","id":"max_items","label":"Maximum columns","min":1,"max":6,"step":1,"default":10}],"blocks":[{"type":"item","name":"Column","settings":[{"type":"richtext","id":"text","label":"Text","default":"Column text"}]}]}
+{% endschema %}
