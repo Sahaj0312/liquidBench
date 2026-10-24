@@ -1,4 +1,4 @@
-# Diagnostic v1 plan (frozen, not run)
+# Diagnostic v1 plan (frozen; executed, see [results](results.md))
 
 **Status:** prepared and frozen. No GPU rented. No paid inference. No fine-tuning.
 Milestone 6 evidence is unchanged. Execution requires new explicit approval.
