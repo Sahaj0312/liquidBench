@@ -170,8 +170,11 @@ reported as missing. Nothing is retried.
 8. **These are development tasks, not held out.** All five were in Milestone 6, and their
    earlier outcomes are known. Selection used a fixed hash rule and public metadata only,
    but the salt `diagnostic-v1` was chosen by the experimenter.
-9. **No analysis script yet.** The analysis above is predeclared in prose. A script that
-   implements exactly this analysis should be committed before Block 0 runs.
+9. **The analysis is fixed before inference.** `scripts/analyze_diagnostic.py` implements
+   exactly the analysis above. It rejects any attempt whose delivered context, config,
+   source or schedule differs from the frozen plan. It reports undefined-filter render
+   names as the renderer gives them, without classifying them. Usage:
+   `uv run python scripts/analyze_diagnostic.py runs/diagnostic-v1`.
 10. **A preparation bug was caught.** The first freeze counted chat-template tokens
     incorrectly (transformers 5 returns a mapping), which made every prompt count 2 and
     the reference/neutral match trivially true. It was fixed before commit, the plan was

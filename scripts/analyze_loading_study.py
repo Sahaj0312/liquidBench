@@ -56,7 +56,7 @@ def task_metadata(plan, root=ROOT / "tasks/dev"):
     return metadata
 
 
-def paired_counts(pairs):
+def paired_counts(pairs, comparisons=COMPARISONS):
     def counts(rows, left, right):
         out = dict.fromkeys(
             (
@@ -97,7 +97,7 @@ def paired_counts(pairs):
         return out
 
     reports = []
-    for left, right in COMPARISONS:
+    for left, right in comparisons:
         repeats = []
         for repetition in sorted({p["repetition"] for p in pairs}):
             rows = [p for p in pairs if p["repetition"] == repetition]

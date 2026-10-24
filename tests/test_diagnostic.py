@@ -1,7 +1,9 @@
 from collections import Counter
+import importlib.util
 import copy
 import json
 from pathlib import Path
+import sys
 from types import SimpleNamespace
 
 import pytest
@@ -55,7 +57,9 @@ def make_plan(tmp_path, tasks, bundle):
         task_id, prompt = task.manifest["id"], task.manifest["prompt"]
         if task_id not in SELECTED:
             continue
-        selections[task_id] = select_reference(prompt, index)
+        choice = select_reference(prompt, index)
+        # Mirrors prepare_diagnostic: pinned file metadata travels with the selection.
+        selections[task_id] = {**choice, **bundle.manifest["files"][choice["path"]]}
         reference = context_message(bundle.documents[selections[task_id]["path"]])
         neutral = context_message(f"Neutral records for {task_id}.")
         path = tmp_path / f"{task_id}.txt"
@@ -286,3 +290,144 @@ def test_frozen_plan_counts_and_controls_are_consistent(tasks):
         control = plan["controls"][task_id]
         assert sha256((ROOT / control["path"]).read_bytes()) == control["sha256"]
         assert control["message_tokens"] == plan["references"][task_id]["message_tokens"]
+
+
+def load_script(name):
+    spec = importlib.util.spec_from_file_location(name, ROOT / f"scripts/{name}.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    sys.modules[name] = module
+    return module
+
+
+def fake_study(tmp_path, plan, block, status, **changes):
+    """One block's summary plus a reader returning frozen-plan-consistent attempts."""
+    attempts = tmp_path / "study" / f"block-{block:02d}" / "attempts"
+    attempts.mkdir(parents=True)
+    (attempts.parent / "gate.json").write_text('{"passed": true}')
+    planned = [r for r in plan["order"] if r["block"] == block]
+    runs = [
+        {
+            **r,
+            "artifacts": r["condition"],
+            "status": status[r["condition"]],
+            "termination": "finish",
+        }
+        for r in planned
+    ]
+    summary = {"plan_sha256": fingerprint(plan), "planned": planned, "runs": runs}
+    (attempts / "summary.json").write_text(json.dumps(summary))
+    by_condition = {r["condition"]: r for r in planned}
+
+    def reader(directory):
+        item = by_condition[directory.name]
+        task_id, condition = item["task_id"], condition_of(directory)
+        accesses, exposures = [], []
+        if condition == "reference":
+            ref = plan["references"][task_id]
+            accesses = [
+                {
+                    "kind": "skill_reference",
+                    "path": ref["path"],
+                    "mode": "injected",
+                    "sha256": ref["sha256"],
+                    "message_sha256": "m",
+                    "message_bytes": 1,
+                }
+            ]
+        if condition == "neutral":
+            exposures = [
+                {"kind": "matched_neutral", "message_sha256": plan["controls"][task_id]["sha256"]}
+            ]
+        run = {
+            "task_id": task_id,
+            "task_digest": item["task_digest"],
+            "status": status[condition],
+            "termination": "finish",
+            "grade_passed": status[condition] == "passed",
+            "config": {**plan["config"], "image": plan["runtime_image_id"]},
+            "image_id": plan["runtime_image_id"],
+            "source": {"python_source_digest": plan["python_source_digest"]},
+            "initial_context_sha256": plan["measurements"][task_id][condition]["messages_sha256"],
+            "skill_accesses": accesses,
+            "context_exposures": exposures,
+            "changed_files": [],
+            "undefined_filter_renders": [],
+            "input_tokens": 1,
+            "output_tokens": 1,
+            "elapsed_seconds": 1.0,
+            "model_calls": 1,
+            "tool_errors": 0,
+            "protocol_errors": 0,
+            "length_stops": 0,
+            "action_counts": {},
+            "sha256": {},
+        }
+        return {**run, **changes.get(condition, {})}
+
+    def condition_of(directory):
+        return directory.name
+
+    return tmp_path / "study", reader
+
+
+def test_analysis_reports_missing_and_paired_outcomes(tmp_path, tasks, bundle):
+    load_script("analyze_runs")
+    load_script("analyze_loading_study")
+    analysis = load_script("analyze_diagnostic")
+    plan = make_plan(tmp_path, tasks, bundle)
+    report = analysis.compare(plan, tmp_path / "empty")
+    assert len(report["paired_outcomes"]) == 20
+    assert all(t == {"missing": 20} for t in report["totals"].values())
+
+    status = {
+        "original": "failed",
+        "clarified": "passed",
+        "reference": "passed",
+        "neutral": "failed",
+    }
+    root, reader = fake_study(
+        tmp_path, plan, 0, status, neutral={"changed_files": ["sections/other.liquid"]}
+    )
+    report = analysis.compare(plan, root, reader=reader)
+    task = plan["order"][0]["task_id"]
+    assert report["passes_per_task"][task] == {
+        "original": 0,
+        "clarified": 1,
+        "reference": 1,
+        "neutral": 0,
+    }
+    pooled = {
+        (r["left"], r["right"]): r["by_repetition"][0]["overall"]
+        for r in report["paired_win_tie_loss_pooled"]
+    }
+    assert pooled[("clarified", "original")]["wins"] == 1
+    assert pooled[("reference", "neutral")]["wins"] == 1
+    assert pooled[("neutral", "clarified")]["losses"] == 1
+    assert pooled[("clarified", "original")]["missing_pairs"] == 19
+    row = next(
+        p for p in report["paired_outcomes"] if p["task_id"] == task and p["repetition"] == 1
+    )
+    assert row["conditions"]["neutral"]["out_of_scope_edits"] == ["sections/other.liquid"]
+
+
+@pytest.mark.parametrize(
+    "condition,change",
+    [
+        ("reference", {"skill_accesses": []}),
+        ("clarified", {"skill_accesses": [{"path": "x", "mode": "injected", "sha256": "0"}]}),
+        ("neutral", {"context_exposures": [{"message_sha256": "0"}]}),
+        ("original", {"initial_context_sha256": "0"}),
+    ],
+)
+def test_analysis_rejects_undelivered_or_leaked_treatment(
+    tmp_path, tasks, bundle, condition, change
+):
+    load_script("analyze_runs")
+    load_script("analyze_loading_study")
+    analysis = load_script("analyze_diagnostic")
+    plan = make_plan(tmp_path, tasks, bundle)
+    status = dict.fromkeys(CONDITIONS, "failed")
+    root, reader = fake_study(tmp_path, plan, 0, status, **{condition: change})
+    with pytest.raises(ValueError, match="differs|reached"):
+        analysis.compare(plan, root, reader=reader)
