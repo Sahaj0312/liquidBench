@@ -35,3 +35,22 @@ def test_leak_guard_flags_heldout_family_or_prompt():
     with pytest.raises(ValueError, match="leaked"):
         assert_not_heldout(task.manifest["prompt"])
     assert_not_heldout("Repair snippets/newsletter-form.liquid so the label is escaped.")
+
+
+def test_extension_themes_are_disjoint_from_training_themes():
+    import sys
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    from generate_training_tasks import THEMES
+    from heldout_themes import HELDOUT_THEMES
+
+    generic = {"section", "labels", "list", "label", "script", "page", "block", "notice"}
+
+    def words(theme):
+        return set(theme.lower().replace("-", " ").split()) - generic
+
+    training = [words(t) for themes in THEMES.values() for t in themes]
+    for themes in HELDOUT_THEMES.values():
+        for theme in themes:
+            # One shared domain word ("product", "order") is fine; two means the same feature.
+            assert not any(len(words(theme) & t) >= 2 for t in training), theme

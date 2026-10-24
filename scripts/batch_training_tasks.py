@@ -15,9 +15,12 @@ import random
 import time
 
 from generate_training_tasks import BATCHES, INSTRUCTIONS, THEMES, pending_reservations
+from heldout_themes import HELDOUT_THEMES
 from liquidbench.claude_provider import PRICES, Ledger
 from liquidbench.heldout import verify_frozen
 from liquidbench.sandbox import Sandbox, image_id
+from liquidbench.sft import family_root
+from liquidbench.task import discover_tasks
 from liquidbench.training_tasks import SPEC_SCHEMA, Rejected, build, known_families, unique_family
 
 ANGLES = [
@@ -37,6 +40,12 @@ ANGLES = [
     "optional wrapper elements",
 ]
 MAX_TOKENS = 48000
+# Training tasks may be renamed on a family clash; held-out extension tasks are rejected
+# instead, and must also be dissimilar to every training and development prompt.
+SUITES = {
+    "train": {"themes": THEMES, "out": Path("tasks/train"), "split": "train"},
+    "heldout-ext": {"themes": HELDOUT_THEMES, "out": Path("tasks/heldout-ext"), "split": "heldout"},
+}
 
 
 def worst_case_usd(model, requests):
@@ -54,7 +63,8 @@ def submit(args):
     reserve = worst_case_usd(args.model, args.requests)
     ledger.require(reserve + sum(pending_reservations()))
     rng = random.Random(args.seed)
-    cells = list(itertools.product(sorted(THEMES), ["easy", "medium", "hard"]))
+    themes_by_category = SUITES[args.suite]["themes"]
+    cells = list(itertools.product(sorted(themes_by_category), ["easy", "medium", "hard"]))
     rng.shuffle(cells)
     plan = []
     for i, (category, difficulty) in enumerate(
@@ -62,7 +72,7 @@ def submit(args):
     ):
         themes = [
             f"{t} (angle: {rng.choice(ANGLES)})"
-            for t in rng.sample(THEMES[category], args.per_call)
+            for t in rng.sample(themes_by_category[category], args.per_call)
         ]
         plan.append(
             {
@@ -105,6 +115,7 @@ def submit(args):
                 "batch_id": batch.id,
                 "model": args.model,
                 "effort": args.effort,
+                "suite": args.suite,
                 "submitted_utc": datetime.now(timezone.utc).isoformat(),
                 "requests": plan,
                 "worst_case_usd": reserve,
@@ -135,13 +146,26 @@ def collect(args):
     ledger = Ledger(args.ledger, args.cap)
     plan = {p["custom_id"]: p for p in record["requests"]}
     image = image_id("liquidbench-runtime:0.1")
+    suite = SUITES[record.get("suite", "train")]
     heldout = verify_frozen()
+    if suite["split"] == "heldout":
+        # Extension tasks must not resemble anything a model was trained or tuned on.
+        compare = [
+            *heldout,
+            *(t for d in ("tasks/train", "tasks/dev") for t in discover_tasks(Path(d))),
+        ]
+    else:
+        compare = heldout
     log = Path("runs/training/authoring.jsonl")
     stamp = datetime.now(timezone.utc).date().isoformat()
     provenance = (
         f"Claude-authored training task ({record['model']}, batch {args.batch_id}, "
         f"{stamp}); kept only after container verification. Not development or "
         "held-out data."
+        if suite["split"] == "train"
+        else f"Claude-authored held-out extension task ({record['model']}, batch "
+        f"{args.batch_id}, {stamp}); kept only after container verification. Themes "
+        "disjoint from training; never shown to training-data generation."
     )
     counts = {"kept": 0, "rejected": 0, "unusable": 0}
     for result in client.messages.batches.results(args.batch_id):
@@ -167,16 +191,23 @@ def collect(args):
             print(f"{result.custom_id}: unusable ({exc})", flush=True)
             continue
         for spec in specs:
-            spec = unique_family(spec, known_families())
+            known = known_families()
+            if suite["split"] == "train":
+                spec = unique_family(spec, known)
             try:
+                if suite["split"] == "heldout" and family_root(spec.get("family", "")) in {
+                    family_root(f) for f in known
+                }:
+                    raise Rejected("family root matches an existing task")
                 root = build(
                     spec,
-                    Path("tasks/train"),
+                    suite["out"],
                     sandbox_factory=Sandbox,
                     image=image,
-                    heldout_tasks=heldout,
-                    known_families=known_families(),
+                    heldout_tasks=compare,
+                    known_families=known,
                     provenance=provenance,
+                    split=suite["split"],
                 )
                 verdict, reason = "kept", str(root)
             except Rejected as exc:
@@ -216,6 +247,7 @@ def main():
     s.add_argument("--model", default="claude-opus-5-5")
     s.add_argument("--effort", default="medium")
     s.add_argument("--seed", type=int, default=100)
+    s.add_argument("--suite", choices=sorted(SUITES), default="train")
     c = sub.add_parser("collect")
     c.add_argument("--batch-id", required=True)
     for p in (s, c):

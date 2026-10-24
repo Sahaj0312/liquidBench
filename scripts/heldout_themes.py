@@ -1,0 +1,87 @@
+"""Themes for the held-out extension, chosen disjoint from the training THEMES.
+
+None of these names a training theme, one of the 24 original held-out tasks or one
+of the 20 development tasks, so the extension measures transfer to unseen
+storefront features. `tests/test_heldout.py` rejects any theme sharing two or more
+non-generic words with a training theme. At build time every task's prompt must
+also be dissimilar to all training, development and held-out prompts.
+"""
+
+HELDOUT_THEMES = {
+    "liquid-syntax": [
+        "gift card balance notice",
+        "B2B quantity minimum",
+        "local currency notice",
+        "pre-sale access gate",
+        "returns window eligibility",
+        "sample request eligibility",
+        "engraving availability",
+        "rental period label",
+        "donation round-up prompt",
+        "student discount eligibility",
+        "seasonal closure notice",
+        "product compliance warning",
+        "made-to-order lead time",
+        "installment plan label",
+    ],
+    "rendering": [
+        "size chart rows",
+        "nutrition facts table",
+        "event schedule list",
+        "bundle contents list",
+        "color palette chips",
+        "tiered pricing table",
+        "care instructions list",
+        "allergen badges",
+        "review summary",
+        "order tracking timeline",
+        "product dimension list",
+        "volume discount ladder",
+        "warehouse availability list",
+        "gift registry items",
+    ],
+    "section-schema": [
+        "lookbook section",
+        "social feed section",
+        "pricing plans section",
+        "timeline section",
+        "press quotes section",
+        "before-after slider",
+        "size guide section",
+        "trust badges section",
+        "app download section",
+        "podcast episode section",
+        "event listing section",
+        "awards section",
+        "store events calendar",
+    ],
+    "theme-references": [
+        "cart drawer script",
+        "gift card page labels",
+        "order status labels",
+        "product reviews script",
+        "currency selector labels",
+        "back-to-top icon",
+        "cookie banner labels",
+        "lightbox stylesheet",
+        "contact page labels",
+        "size guide labels",
+        "quick view script",
+        "not-found page labels",
+        "blog comment labels",
+    ],
+    "theme-modification": [
+        "pricing table section",
+        "event banner section",
+        "press mentions section",
+        "how-it-works steps section",
+        "app promo section",
+        "lookbook grid section",
+        "milestones timeline section",
+        "trust badge row section",
+        "award list section",
+        "podcast embed section",
+        "featured collection tabs",
+        "promo grid section",
+    ],
+}

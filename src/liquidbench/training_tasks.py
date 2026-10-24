@@ -148,7 +148,17 @@ def unique_family(spec, known_families):
     return {**renamed, "family": f"{family}-{n}", "path": new}
 
 
-def build(spec, out_root, *, sandbox_factory, image, heldout_tasks, known_families, provenance):
+def build(
+    spec,
+    out_root,
+    *,
+    sandbox_factory,
+    image,
+    heldout_tasks,
+    known_families,
+    provenance,
+    split="train",
+):
     """Write a candidate task directory and return it, or raise Rejected (nothing kept)."""
     family = spec["family"]
     if not re.fullmatch(r"[a-z][a-z0-9-]{2,40}", family) or family in known_families:
@@ -234,7 +244,7 @@ def build(spec, out_root, *, sandbox_factory, image, heldout_tasks, known_famili
     if root.exists():
         raise Rejected("task directory exists")
     try:
-        write_task(root, spec, prompt, path, extra, cases, evaluator, provenance)
+        write_task(root, spec, prompt, path, extra, cases, evaluator, provenance, split)
         task = Task.load(root)
         for name, (files, expected) in validation_candidates(task).items():
             if grade(task, files, image)["passed"] != expected:
@@ -248,7 +258,7 @@ def build(spec, out_root, *, sandbox_factory, image, heldout_tasks, known_famili
     return root
 
 
-def write_task(root, spec, prompt, path, extra, cases, evaluator, provenance):
+def write_task(root, spec, prompt, path, extra, cases, evaluator, provenance, split="train"):
     def dump(p, value):
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n")
@@ -262,7 +272,7 @@ def write_task(root, spec, prompt, path, extra, cases, evaluator, provenance):
         {
             "id": spec["family"],
             "version": 1,
-            "split": "train",
+            "split": split,
             "category": spec["category"],
             "difficulty": spec["difficulty"],
             "family": spec["family"],
@@ -302,4 +312,9 @@ def known_families():
         t.manifest["family"]
         for split in ("dev", "heldout")
         for t in discover_tasks(ROOT / "tasks" / split)
-    } | {p.name for p in (ROOT / "tasks/train").glob("*") if p.is_dir()}
+    } | {
+        p.name
+        for d in ("train", "heldout-ext")
+        for p in (ROOT / "tasks" / d).glob("*")
+        if p.is_dir()
+    }

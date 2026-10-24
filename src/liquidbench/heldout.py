@@ -8,6 +8,8 @@ from .task import discover_tasks, fingerprint
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "docs/heldout/manifest.json"
 HELDOUT = ROOT / "tasks/heldout"
+EXTENSION = ROOT / "tasks/heldout-ext"
+EXTENSION_MANIFEST = ROOT / "docs/heldout/extension-manifest.json"
 
 
 def verify_frozen(root=HELDOUT, manifest=MANIFEST):
@@ -22,9 +24,11 @@ def verify_frozen(root=HELDOUT, manifest=MANIFEST):
     return tasks
 
 
-def assert_not_heldout(text, root=HELDOUT):
+def assert_not_heldout(text, roots=(HELDOUT, EXTENSION)):
     """Reject training/generation material that names a held-out family or prompt."""
-    for task in discover_tasks(Path(root)):
+    roots = [roots] if isinstance(roots, (str, Path)) else roots
+    tasks = [t for r in roots if Path(r).exists() for t in discover_tasks(Path(r))]
+    for task in tasks:
         family, prompt = task.manifest["family"], task.manifest["prompt"]
         if family in text or prompt[:80] in text:
             raise ValueError(f"Held-out material leaked: {family}")
