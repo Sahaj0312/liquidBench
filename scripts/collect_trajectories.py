@@ -41,6 +41,11 @@ def main():
     parser.add_argument("--tasks", nargs="*", help="task ids (default: all tasks/train)")
     parser.add_argument("--ledger", default="runs/training/ledger.jsonl")
     parser.add_argument("--out", default="runs/training/trajectories")
+    parser.add_argument(
+        "--only-missing",
+        action="store_true",
+        help="skip tasks that already have a kept trajectory from any teacher",
+    )
     args = parser.parse_args()
     ledger = Ledger(args.ledger, args.cap)
     config = load_config("configs/train-collect.json")
@@ -48,6 +53,13 @@ def main():
     tasks = discover_tasks(Path("tasks/train"))
     if args.tasks:
         tasks = [t for t in tasks if t.manifest["id"] in set(args.tasks)]
+    if args.only_missing:
+        done = {
+            json.loads(line)["task"]
+            for path in Path(args.out).glob("*/sft.jsonl")
+            for line in path.read_text().splitlines()
+        }
+        tasks = [t for t in tasks if t.manifest["id"] not in done]
     out = Path(args.out) / args.model
     out.mkdir(parents=True, exist_ok=True)
     kept_path = out / "sft.jsonl"
