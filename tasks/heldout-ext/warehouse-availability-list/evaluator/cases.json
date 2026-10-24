@@ -1,0 +1,345 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/warehouse-availability-list.liquid",
+    "tags": [
+      "li",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "warehouses": [
+        {
+          "name": "Reno",
+          "quantity": 5
+        },
+        {
+          "name": "Austin",
+          "quantity": 12
+        },
+        {
+          "name": "Newark",
+          "quantity": 2
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "warehouse-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "warehouse warehouse--first"
+              ]
+            ],
+            "children": [],
+            "text": "Reno: 5"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "warehouse"
+              ]
+            ],
+            "children": [],
+            "text": "Austin: 12"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "warehouse warehouse--last"
+              ]
+            ],
+            "children": [],
+            "text": "Newark: 2"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "warehouses": [
+        {
+          "name": "Reno",
+          "quantity": 7
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "warehouse-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "warehouse warehouse--first warehouse--last"
+              ]
+            ],
+            "children": [],
+            "text": "Reno: 7"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "warehouses": [
+        {
+          "name": "Reno",
+          "quantity": 1
+        },
+        {
+          "name": "Austin",
+          "quantity": 3
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "warehouse-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "warehouse warehouse--first"
+              ]
+            ],
+            "children": [],
+            "text": "Reno: 1"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "warehouse warehouse--last"
+              ]
+            ],
+            "children": [],
+            "text": "Austin: 3"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "warehouses": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "warehouses": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "warehouses": [
+        {
+          "name": "Dock <A> & \"B\"",
+          "quantity": 3
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "warehouse-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "warehouse warehouse--first warehouse--last"
+              ]
+            ],
+            "children": [],
+            "text": "Dock <A> & \"B\": 3"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "warehouses": [
+        {
+          "name": "Central Hub",
+          "quantity": 0
+        },
+        {
+          "name": "East & West",
+          "quantity": 0
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "warehouse-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "warehouse warehouse--first"
+              ]
+            ],
+            "children": [],
+            "text": "Central Hub: 0"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "warehouse warehouse--last"
+              ]
+            ],
+            "children": [],
+            "text": "East & West: 0"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "warehouses": [
+        {
+          "name": "A",
+          "quantity": 1
+        },
+        {
+          "name": "B",
+          "quantity": 2
+        },
+        {
+          "name": "C",
+          "quantity": 3
+        },
+        {
+          "name": "D",
+          "quantity": 4
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "warehouse-list"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "warehouse warehouse--first"
+              ]
+            ],
+            "children": [],
+            "text": "A: 1"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "warehouse"
+              ]
+            ],
+            "children": [],
+            "text": "B: 2"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "warehouse"
+              ]
+            ],
+            "children": [],
+            "text": "C: 3"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "warehouse warehouse--last"
+              ]
+            ],
+            "children": [],
+            "text": "D: 4"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

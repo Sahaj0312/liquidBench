@@ -1,0 +1,976 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/bundle-contents-list.liquid",
+    "tags": [
+      "li",
+      "p",
+      "span",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "items": [
+        {
+          "title": "Mug",
+          "quantity": 2,
+          "unit_price_cents": 1250
+        },
+        {
+          "title": "Tea",
+          "quantity": 1,
+          "unit_price_cents": 899
+        }
+      ],
+      "discount_percent": null
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "bundle"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "qty"
+                  ]
+                ],
+                "children": [],
+                "text": "2"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "title"
+                  ]
+                ],
+                "children": [],
+                "text": "Mug"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "line"
+                  ]
+                ],
+                "children": [],
+                "text": "$25.00"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "qty"
+                  ]
+                ],
+                "children": [],
+                "text": "1"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "title"
+                  ]
+                ],
+                "children": [],
+                "text": "Tea"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "line"
+                  ]
+                ],
+                "children": [],
+                "text": "$8.99"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-subtotal"
+          ]
+        ],
+        "children": [],
+        "text": "Subtotal: $33.99"
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-total"
+          ]
+        ],
+        "children": [],
+        "text": "Total: $33.99"
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "items": [
+        {
+          "title": "Mug",
+          "quantity": 2,
+          "unit_price_cents": 1250
+        },
+        {
+          "title": "Tea",
+          "quantity": 1,
+          "unit_price_cents": 899
+        }
+      ],
+      "discount_percent": 15
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "bundle"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "qty"
+                  ]
+                ],
+                "children": [],
+                "text": "2"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "title"
+                  ]
+                ],
+                "children": [],
+                "text": "Mug"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "line"
+                  ]
+                ],
+                "children": [],
+                "text": "$25.00"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "qty"
+                  ]
+                ],
+                "children": [],
+                "text": "1"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "title"
+                  ]
+                ],
+                "children": [],
+                "text": "Tea"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "line"
+                  ]
+                ],
+                "children": [],
+                "text": "$8.99"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-subtotal"
+          ]
+        ],
+        "children": [],
+        "text": "Subtotal: $33.99"
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-discount"
+          ]
+        ],
+        "children": [],
+        "text": "Savings (15%): -$5.09"
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-total"
+          ]
+        ],
+        "children": [],
+        "text": "Total: $28.90"
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "items": [
+        {
+          "title": "Pen",
+          "quantity": 3,
+          "unit_price_cents": 333
+        }
+      ],
+      "discount_percent": 10
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "bundle"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "qty"
+                  ]
+                ],
+                "children": [],
+                "text": "3"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "title"
+                  ]
+                ],
+                "children": [],
+                "text": "Pen"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "line"
+                  ]
+                ],
+                "children": [],
+                "text": "$9.99"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-subtotal"
+          ]
+        ],
+        "children": [],
+        "text": "Subtotal: $9.99"
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-discount"
+          ]
+        ],
+        "children": [],
+        "text": "Savings (10%): -$0.99"
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-total"
+          ]
+        ],
+        "children": [],
+        "text": "Total: $9.00"
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "items": [
+        {
+          "title": "Clip",
+          "quantity": 1,
+          "unit_price_cents": 5
+        }
+      ],
+      "discount_percent": 0
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "bundle"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "qty"
+                  ]
+                ],
+                "children": [],
+                "text": "1"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "title"
+                  ]
+                ],
+                "children": [],
+                "text": "Clip"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "line"
+                  ]
+                ],
+                "children": [],
+                "text": "$0.05"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-subtotal"
+          ]
+        ],
+        "children": [],
+        "text": "Subtotal: $0.05"
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-total"
+          ]
+        ],
+        "children": [],
+        "text": "Total: $0.05"
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "items": [
+        {
+          "title": "Clip",
+          "quantity": 1,
+          "unit_price_cents": 5
+        }
+      ],
+      "discount_percent": 1
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "bundle"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "qty"
+                  ]
+                ],
+                "children": [],
+                "text": "1"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "title"
+                  ]
+                ],
+                "children": [],
+                "text": "Clip"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "line"
+                  ]
+                ],
+                "children": [],
+                "text": "$0.05"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-subtotal"
+          ]
+        ],
+        "children": [],
+        "text": "Subtotal: $0.05"
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-discount"
+          ]
+        ],
+        "children": [],
+        "text": "Savings (1%): -$0.00"
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-total"
+          ]
+        ],
+        "children": [],
+        "text": "Total: $0.05"
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "items": [],
+      "discount_percent": 20
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-empty"
+          ]
+        ],
+        "children": [],
+        "text": "This bundle is empty"
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "items": [
+        {
+          "title": "Ghost",
+          "quantity": 0,
+          "unit_price_cents": 1000
+        }
+      ],
+      "discount_percent": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-empty"
+          ]
+        ],
+        "children": [],
+        "text": "This bundle is empty"
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "items": [
+        {
+          "title": "A",
+          "quantity": 0,
+          "unit_price_cents": 500
+        },
+        {
+          "title": "Bag",
+          "quantity": 4,
+          "unit_price_cents": 2505
+        }
+      ],
+      "discount_percent": 50
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "bundle"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "qty"
+                  ]
+                ],
+                "children": [],
+                "text": "4"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "title"
+                  ]
+                ],
+                "children": [],
+                "text": "Bag"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "line"
+                  ]
+                ],
+                "children": [],
+                "text": "$100.20"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-subtotal"
+          ]
+        ],
+        "children": [],
+        "text": "Subtotal: $100.20"
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-discount"
+          ]
+        ],
+        "children": [],
+        "text": "Savings (50%): -$50.10"
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-total"
+          ]
+        ],
+        "children": [],
+        "text": "Total: $50.10"
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "items": [
+        {
+          "title": "Salt & \"Pepper\" <Set>",
+          "quantity": 1,
+          "unit_price_cents": 1000
+        }
+      ],
+      "discount_percent": 100
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "bundle"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "qty"
+                  ]
+                ],
+                "children": [],
+                "text": "1"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "title"
+                  ]
+                ],
+                "children": [],
+                "text": "Salt & \"Pepper\" <Set>"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "line"
+                  ]
+                ],
+                "children": [],
+                "text": "$10.00"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-subtotal"
+          ]
+        ],
+        "children": [],
+        "text": "Subtotal: $10.00"
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-discount"
+          ]
+        ],
+        "children": [],
+        "text": "Savings (100%): -$10.00"
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-total"
+          ]
+        ],
+        "children": [],
+        "text": "Total: $0.00"
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "items": [
+        {
+          "title": "Card",
+          "quantity": 1,
+          "unit_price_cents": 110
+        },
+        {
+          "title": "Stamp",
+          "quantity": 3,
+          "unit_price_cents": 7
+        }
+      ],
+      "discount_percent": 33
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "bundle"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "qty"
+                  ]
+                ],
+                "children": [],
+                "text": "1"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "title"
+                  ]
+                ],
+                "children": [],
+                "text": "Card"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "line"
+                  ]
+                ],
+                "children": [],
+                "text": "$1.10"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "qty"
+                  ]
+                ],
+                "children": [],
+                "text": "3"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "title"
+                  ]
+                ],
+                "children": [],
+                "text": "Stamp"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "line"
+                  ]
+                ],
+                "children": [],
+                "text": "$0.21"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-subtotal"
+          ]
+        ],
+        "children": [],
+        "text": "Subtotal: $1.31"
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-discount"
+          ]
+        ],
+        "children": [],
+        "text": "Savings (33%): -$0.43"
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "bundle-total"
+          ]
+        ],
+        "children": [],
+        "text": "Total: $0.88"
+      }
+    ]
+  }
+]

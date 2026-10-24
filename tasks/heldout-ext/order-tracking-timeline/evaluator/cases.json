@@ -1,0 +1,574 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/order-tracking-timeline.liquid",
+    "tags": [
+      "h2",
+      "li",
+      "ol",
+      "p",
+      "section",
+      "span",
+      "time"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "title": "Your order",
+      "tracking_number": "1Z999",
+      "events": [
+        {
+          "label": "Ordered",
+          "date": "Mar 1",
+          "note": null,
+          "done": true
+        },
+        {
+          "label": "Shipped",
+          "date": "Mar 3",
+          "note": "Left warehouse",
+          "done": true
+        },
+        {
+          "label": "Delivered",
+          "date": null,
+          "note": null,
+          "done": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "timeline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Your order"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "tracking"
+              ]
+            ],
+            "children": [],
+            "text": "Tracking: 1Z999"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "step step--done"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Ordered"
+                  },
+                  {
+                    "tag": "time",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Mar 1"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "step step--current step--done"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Shipped"
+                  },
+                  {
+                    "tag": "time",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Mar 3"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Left warehouse"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "step step--pending"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Delivered"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "title": null,
+      "tracking_number": null,
+      "events": [
+        {
+          "label": "Ordered",
+          "date": "",
+          "note": "",
+          "done": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ol",
+        "attrs": [],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "step step--pending"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "Ordered"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "title": "Track",
+      "tracking_number": "ZZ1",
+      "events": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "title": "T",
+      "tracking_number": null,
+      "events": [
+        {
+          "label": "  ",
+          "date": "Mar 1",
+          "note": "x",
+          "done": true
+        }
+      ]
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "title": "   ",
+      "tracking_number": "  AB12 ",
+      "events": [
+        {
+          "label": "Packed",
+          "date": null,
+          "note": null,
+          "done": true
+        },
+        {
+          "label": " ",
+          "date": null,
+          "note": null,
+          "done": true
+        },
+        {
+          "label": "Out",
+          "date": null,
+          "note": null,
+          "done": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tracking"
+          ]
+        ],
+        "children": [],
+        "text": "Tracking: AB12"
+      },
+      {
+        "tag": "ol",
+        "attrs": [],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "step step--current step--done"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "Packed"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "step step--pending"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "Out"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "title": "Tom & \"Jerry\"",
+      "tracking_number": null,
+      "events": [
+        {
+          "label": "<b>Box</b>",
+          "date": "1 < 2",
+          "note": "A & B > C",
+          "done": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "timeline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Tom & \"Jerry\""
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "step step--current step--done"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "<b>Box</b>"
+                  },
+                  {
+                    "tag": "time",
+                    "attrs": [],
+                    "children": [],
+                    "text": "1 < 2"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [],
+                    "children": [],
+                    "text": "A & B > C"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "title": null,
+      "tracking_number": "X",
+      "events": [
+        {
+          "label": "A",
+          "date": null,
+          "note": null,
+          "done": false
+        },
+        {
+          "label": "B",
+          "date": null,
+          "note": null,
+          "done": true
+        },
+        {
+          "label": "C",
+          "date": null,
+          "note": null,
+          "done": false
+        },
+        {
+          "label": "D",
+          "date": null,
+          "note": null,
+          "done": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "tracking"
+          ]
+        ],
+        "children": [],
+        "text": "Tracking: X"
+      },
+      {
+        "tag": "ol",
+        "attrs": [],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "step step--pending"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "A"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "step step--done"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "B"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "step step--pending"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "C"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "step step--current step--done"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "span",
+                "attrs": [],
+                "children": [],
+                "text": "D"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "title": "Status",
+      "tracking_number": "",
+      "events": [
+        {
+          "label": " Shipped ",
+          "date": "  ",
+          "note": "  Fragile  ",
+          "done": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "timeline"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Status"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "step step--pending"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Shipped"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Fragile"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "title": null,
+      "tracking_number": "TN-5",
+      "events": []
+    },
+    "expected": []
+  }
+]

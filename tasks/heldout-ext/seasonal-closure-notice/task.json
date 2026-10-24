@@ -1,0 +1,15 @@
+{
+  "id": "seasonal-closure-notice",
+  "version": 1,
+  "split": "heldout",
+  "category": "liquid-syntax",
+  "difficulty": "easy",
+  "family": "seasonal-closure-notice",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/seasonal-closure-notice.liquid"
+  ],
+  "prompt": "Fix the snippet snippets/seasonal-closure-notice.liquid. It shows the dates on which the store is closed for the holidays.\n\nInput (a top-level variable, not under section.settings):\n- closure_dates: an array of strings, or null. It may be empty. Each entry is a non-null, non-empty string such as \"December 25\".\n\nOutput rules:\n- When closure_dates has at least one entry, output exactly:\n  <p class=\"closure-notice\">Closed: DATES</p>\n  DATES is every entry in input order, separated by a comma followed by one space (\", \").\n  - There is no separator before the first entry or after the last entry.\n  - A single entry has no separator.\n- HTML-escape the date text: & < > \" ' become &amp; &lt; &gt; &quot; &#39;.\n- Do not output any whitespace or newlines before or after the <p> element.\n- When closure_dates is null or empty, output nothing (an empty string). Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/seasonal-closure-notice.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

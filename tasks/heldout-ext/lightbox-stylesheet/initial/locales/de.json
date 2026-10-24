@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "lightbox": {
+      "dialog_label": "Bildbetrachter",
+      "close": "Bildbetrachter schließen",
+      "caption_hint": "Mit den Pfeiltasten durch die Bilder blättern"
+    }
+  }
+}

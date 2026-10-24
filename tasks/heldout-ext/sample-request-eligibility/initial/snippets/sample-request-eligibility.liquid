@@ -1,0 +1,17 @@
+{%- assign remaining = monthly_limit | minus: samples_used -%}
+{%- if requested < 1 -%}
+<p class="sample-error">Select at least one sample</p>
+{%- elsif requested >= 5 -%}
+<p class="sample-error">You can request at most 5 samples at a time</p>
+{%- elsif requested > remaining -%}
+<p class="sample-error">Only {{ remaining }} samples left this month</p>
+{%- else -%}
+<div class="sample-ok"><p>{{ requested }} samples of {{ fabric_name | default: "Assorted fabrics" }}</p>
+{%- if order_subtotal_cents > 5000 -%}
+<p class="sample-shipping">Free sample shipping</p>
+{%- else -%}
+{%- assign fee = requested | times: 50 | plus: 150 -%}
+<p class="sample-shipping">Sample shipping: ${{ fee | divided_by: 100 }}.{{ fee | modulo: 100 }}</p>
+{%- endif -%}
+</div>
+{%- endif -%}

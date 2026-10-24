@@ -1,0 +1,23 @@
+{%- assign title = section.settings.title | default: 'Upcoming event' -%}
+{%- assign cta_label = section.settings.button_label | default: '' -%}
+{%- assign cta_link = section.settings.button_link | default: '' -%}
+<section class="event-banner"><h2 class="event-banner__title">{{ title | escape }}</h2>
+{%- if cta_label != '' and cta_link != '' -%}
+<a class="event-banner__cta" href="{{ cta_link | escape }}">{{ cta_label | escape }}</a>
+{%- endif -%}
+</section>
+{%- comment -%} Settings are defined in the schema below. {%- endcomment -%}
+{% schema %}
+{
+  "name": "Event banner",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title" },
+    { "type": "checkbox", "id": "is_cancelled", "label": "Event cancelled", "default": false },
+    { "type": "checkbox", "id": "is_sold_out", "label": "Sold out", "default": false },
+    { "type": "number", "id": "days_until", "label": "Days until event" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Event banner" }]
+}
+{% endschema %}

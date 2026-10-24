@@ -1,0 +1,2 @@
+.currency-selector { display: flex; gap: 0.5rem; align-items: center; }
+.currency-selector__hint { font-size: 0.875rem; opacity: 0.8; }

@@ -1,0 +1,8 @@
+{
+  "localization": {
+    "currency": {
+      "label": "Devise",
+      "hint": "Les prix sont affichés dans la devise sélectionnée"
+    }
+  }
+}

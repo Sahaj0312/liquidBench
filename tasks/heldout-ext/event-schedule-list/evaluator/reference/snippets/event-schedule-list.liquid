@@ -1,0 +1,44 @@
+{%- assign count = 0 -%}
+{%- assign total = 0 -%}
+{%- assign cancelled = 0 -%}
+{%- for ev in events -%}
+  {%- if ev.cancelled -%}
+    {%- assign cancelled = cancelled | plus: 1 -%}
+  {%- else -%}
+    {%- assign count = count | plus: 1 -%}
+    {%- assign total = total | plus: ev.sessions -%}
+  {%- endif -%}
+{%- endfor -%}
+<p class="summary">
+{%- if count == 0 -%}
+  No upcoming events
+{%- else -%}
+  {{- count }} {% if count == 1 %}event{% else %}events{% endif %}, {{ total }} {% if total == 1 %}session{% else %}sessions{% endif -%}
+{%- endif -%}
+{%- if cancelled > 0 %} ({{ cancelled }} cancelled){% endif -%}
+</p>
+{%- if count > 0 -%}
+<ul class="schedule">
+  {%- for ev in events -%}
+    {%- unless ev.cancelled -%}
+      {%- assign nm = ev.name | default: "" | strip -%}
+      {%- if nm == "" -%}{%- assign nm = "Untitled event" -%}{%- endif -%}
+      <li><h3>{{ nm | escape }}</h3><span class="sessions">
+      {%- if ev.sessions == 0 -%}No sessions{%- elsif ev.sessions == 1 -%}1 session{%- else -%}{{ ev.sessions }} sessions{%- endif -%}
+      </span>
+      {%- unless ev.seats_left == nil -%}
+        {%- if ev.seats_left == 0 -%}
+          <span class="seats seats--full">Sold out</span>
+        {%- elsif ev.seats_left == 1 -%}
+          <span class="seats seats--low">Only 1 seat left</span>
+        {%- elsif ev.seats_left <= 5 -%}
+          <span class="seats seats--low">Only {{ ev.seats_left }} seats left</span>
+        {%- else -%}
+          <span class="seats">{{ ev.seats_left }} seats left</span>
+        {%- endif -%}
+      {%- endunless -%}
+      </li>
+    {%- endunless -%}
+  {%- endfor -%}
+</ul>
+{%- endif -%}

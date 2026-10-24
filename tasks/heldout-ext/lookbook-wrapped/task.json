@@ -1,0 +1,15 @@
+{
+  "id": "lookbook-wrapped",
+  "version": 1,
+  "split": "heldout",
+  "category": "section-schema",
+  "difficulty": "medium",
+  "family": "lookbook-wrapped",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/lookbook-wrapped.liquid"
+  ],
+  "prompt": "The section sections/lookbook-wrapped.liquid renders a lookbook grid. It has several optional wrapper elements:\n- a div.page-width wrapper that is output only when section.settings.full_width is false;\n- an <a> wrapper around each image, output only when block.settings.link is set;\n- a <figcaption>, output only when block.settings.caption is set.\n\nThe grid column count comes from section.settings.columns. The markup is correct, so do not change it. The {% schema %} JSON is outdated: it lacks the full_width and columns settings and uses wrong block setting types.\n\nReplace the schema JSON so that it is exactly the following, with keys in this order:\n\n1. \"name\": \"Lookbook\"\n2. \"tag\": \"section\"\n3. \"class\": \"section-lookbook\"\n4. \"settings\", in this order:\n   - {\"type\": \"text\", \"id\": \"title\", \"label\": \"Title\", \"default\": \"The lookbook\"}\n   - {\"type\": \"checkbox\", \"id\": \"full_width\", \"label\": \"Full width\", \"default\": false}. The default is the JSON boolean false, so the page-width wrapper is shown by default.\n   - {\"type\": \"range\", \"id\": \"columns\", \"label\": \"Columns\", \"min\": 1, \"max\": 4, \"step\": 1, \"default\": 3}. All numbers must be JSON integers.\n5. \"blocks\": one block type {\"type\": \"look\", \"name\": \"Look\", \"settings\": [...]}. Its settings are, in this order:\n   - {\"type\": \"image_picker\", \"id\": \"image\", \"label\": \"Image\"}\n   - {\"type\": \"url\", \"id\": \"link\", \"label\": \"Link\"}\n   - {\"type\": \"inline_richtext\", \"id\": \"caption\", \"label\": \"Caption\"}\n   None of these three settings has a default, so the optional link and caption wrappers are absent until the merchant fills them in.\n6. \"max_blocks\": 8 (an integer)\n7. \"presets\": [{\"name\": \"Lookbook\", \"blocks\": [{\"type\": \"look\"}, {\"type\": \"look\"}, {\"type\": \"look\"}]}]\n\nDo not add any other keys. The file must keep exactly one top-level schema block. Change only sections/lookbook-wrapped.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

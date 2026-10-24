@@ -1,0 +1,15 @@
+{
+  "id": "bundle-contents-list",
+  "version": 1,
+  "split": "heldout",
+  "category": "rendering",
+  "difficulty": "medium",
+  "family": "bundle-contents-list",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/bundle-contents-list.liquid"
+  ],
+  "prompt": "Rewrite snippets/bundle-contents-list.liquid so that it lists the contents of a product bundle with exact integer money arithmetic. All amounts are integer cents. Do not use floating-point division.\n\nInputs (all top-level variables, there is no section object):\n- items: array, never null, may be empty. Each element is an object with:\n  - title: string.\n  - quantity: integer >= 0.\n  - unit_price_cents: integer >= 0.\n- discount_percent: integer from 0 to 100, or null. Null means 0.\n\nRules:\n1. Items with quantity 0 are ignored completely. They produce no row and add nothing to any total.\n2. If no item has quantity > 0, including when items is empty, output exactly <p class=\"bundle-empty\">This bundle is empty</p> and nothing else.\n3. Otherwise compute the following values:\n   - line = quantity * unit_price_cents for each remaining item.\n   - subtotal = the sum of all lines.\n   - savings = floor(subtotal * discount_percent / 100). Compute this once on the subtotal, not per line, and round down. Do not round to nearest.\n   - total = subtotal - savings.\n4. Money format: a value of C cents is written as $ followed by the integer part (C divided by 100, rounded down), a dot, and the remainder (C modulo 100) as exactly two digits with zero padding. For example, 5 is $0.05, 110 is $1.10, 10020 is $100.20 and 0 is $0.00.\n5. Output these parts in order, with no whitespace between tags:\n   - <ul class=\"bundle\">.\n   - One row per remaining item in input order: <li><span class=\"qty\">QUANTITY</span><span class=\"title\">TITLE</span><span class=\"line\">LINE</span></li>. TITLE is HTML-escaped with the escape filter and LINE is money-formatted.\n   - </ul>.\n   - <p class=\"bundle-subtotal\">Subtotal: SUBTOTAL</p>.\n   - Only when discount_percent is greater than 0 (even if savings comes out to 0): <p class=\"bundle-discount\">Savings (P%): -SAVINGS</p>, where P is the integer discount_percent.\n   - <p class=\"bundle-total\">Total: TOTAL</p>.\n   All amounts are money-formatted.\n\nExample: one item {\"title\":\"Pen\",\"quantity\":3,\"unit_price_cents\":333} with discount_percent 10 gives line $9.99, Savings (10%): -$0.99 and Total: $9.00. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/bundle-contents-list.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

@@ -1,0 +1,28 @@
+{%- assign approved_count = 0 -%}
+{%- assign rating_sum = 0 -%}
+{%- for review in reviews -%}
+  {%- if review.status == "approved" -%}
+    {%- assign approved_count = approved_count | plus: 1 -%}
+    {%- assign rating_sum = rating_sum | plus: review.rating -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if approved_count == 0 -%}
+<p class="review-summary review-summary--empty">No reviews yet</p>
+{%- else -%}
+  {%- assign avg10 = rating_sum | times: 10 | divided_by: approved_count -%}
+  {%- assign avg_whole = avg10 | divided_by: 10 -%}
+  {%- assign avg_tenth = avg10 | modulo: 10 -%}
+<div class="review-summary"><p class="review-summary__count">{{ approved_count }} {% if approved_count == 1 %}review{% else %}reviews{% endif %}</p><p class="review-summary__average">Average: {{ avg_whole }}.{{ avg_tenth }}</p><ul>
+  {%- for review in reviews -%}
+    {%- if review.status == "approved" -%}
+      {%- assign display_name = review.author | default: "" | strip -%}
+      {%- if display_name == "" -%}{%- assign display_name = "Anonymous" -%}{%- endif -%}
+      {%- assign item_class = "review-summary__item" -%}
+      {%- if featured_author != nil and featured_author != "" and review.author == featured_author -%}
+        {%- assign item_class = "review-summary__item review-summary__item--featured" -%}
+      {%- endif -%}
+<li class="{{ item_class }}">{{ display_name | escape }} ({{ review.rating }}/5)</li>
+    {%- endif -%}
+  {%- endfor -%}
+</ul></div>
+{%- endif -%}

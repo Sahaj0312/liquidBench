@@ -1,0 +1,19 @@
+{
+  "cookie_banner": {
+    "title": "Nous utilisons des cookies",
+    "categories": {
+      "necessary": "Strictement nécessaires",
+      "analytics": "Statistiques",
+      "marketing": "Marketing"
+    },
+    "status": {
+      "always_on": "Toujours actif",
+      "optional_summary": "{{ number }} catégories facultatives"
+    },
+    "actions": {
+      "accept_all": "Tout accepter",
+      "reject_optional": "Refuser les facultatifs",
+      "save": "Enregistrer les préférences"
+    }
+  }
+}

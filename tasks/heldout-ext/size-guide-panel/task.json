@@ -1,0 +1,15 @@
+{
+  "id": "size-guide-panel",
+  "version": 1,
+  "split": "heldout",
+  "category": "section-schema",
+  "difficulty": "hard",
+  "family": "size-guide-panel",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/size-guide-panel.liquid"
+  ],
+  "prompt": "The section file sections/size-guide-panel.liquid renders a size table. It can optionally wrap the table in a panel element chosen by the merchant. Its markup is already correct. Do not change anything outside the {% schema %} block. Replace the schema JSON so that it is exactly the following, with keys and array items in the stated order.\n\nTop-level keys, in this order:\n1. \"name\": \"Size guide\".\n2. \"tag\": \"aside\". This is the element Shopify wraps the whole section in. It is not the merchant-selectable panel element.\n3. \"class\": \"section-size-guide\".\n4. \"settings\": an array with 6 items, in this order:\n   a. {\"type\":\"header\",\"content\":\"Layout\"}\n   b. checkbox, id \"show_wrapper\", label \"Wrap table in panel\", default true.\n   c. select, id \"wrapper_tag\", label \"Panel element\". Its options, in this order, are value \"div\" with label \"Div\", value \"section\" with label \"Section\", and value \"figure\" with label \"Figure\". Default \"div\". Key order: type, id, label, options, default.\n   d. {\"type\":\"header\",\"content\":\"Content\"}\n   e. text, id \"heading\", label \"Heading\", default \"Size guide\".\n   f. richtext, id \"note\", label \"Fit note\", with no default key.\n5. \"blocks\": one block type. Its type is \"size_row\" and its name is \"Size row\". Its settings, in order, are:\n   - text, id \"label\", label \"Size label\", default \"M\".\n   - text, id \"chest\", label \"Chest\", with no default.\n   - text, id \"waist\", label \"Waist\", with no default.\n6. \"max_blocks\": 12.\n7. \"presets\": one preset named \"Size guide\". Its \"blocks\" array holds three size_row blocks, in this order, with settings {\"label\":\"S\"}, {\"label\":\"M\"} and {\"label\":\"L\"}.\n\nSetting key order is type, id, label, then default where present. No other keys may appear anywhere. Change only sections/size-guide-panel.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

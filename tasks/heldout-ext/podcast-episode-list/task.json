@@ -1,0 +1,15 @@
+{
+  "id": "podcast-episode-list",
+  "version": 1,
+  "split": "heldout",
+  "category": "section-schema",
+  "difficulty": "medium",
+  "family": "podcast-episode-list",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/podcast-episode-list.liquid"
+  ],
+  "prompt": "The section sections/podcast-episode-list.liquid lists podcast episodes. The markup carries a current_season variable across loop iterations. When an episode block's season differs from the previous one, it closes the previous <ol>, prints a season heading and opens a new <ol>. Because this comparison is numeric, the season setting must be a number setting. The markup is correct and must not be changed. The {% schema %} JSON is incomplete. Replace the schema so the file ends in exactly one {% schema %}...{% endschema %} block whose JSON equals the following, with keys and array entries in this order:\n\nTop level: \"name\": \"Podcast episodes\", \"tag\": \"section\", \"class\": \"section-podcast\", \"max_blocks\": 20, then \"settings\", \"blocks\" and \"presets\".\n\nsettings, in this order:\n1. type \"text\", id \"title\", label \"Title\", default \"Latest episodes\".\n2. type \"text\", id \"season_prefix\", label \"Season prefix\", default \"Season\".\n3. type \"select\", id \"layout\", label \"Layout\", options [{\"value\": \"list\", \"label\": \"List\"}, {\"value\": \"grid\", \"label\": \"Grid\"}] in that order, default \"list\".\n\nblocks: exactly one block type. type \"episode\", name \"Episode\". Its settings, in this order:\n1. type \"text\", id \"episode_title\", label \"Episode title\", default \"New episode\".\n2. type \"number\", id \"season\", label \"Season number\", default 1. The default is the JSON number 1, not a string.\n3. type \"text\", id \"duration\", label \"Duration\", default \"30:00\".\n4. type \"url\", id \"audio_url\", label \"Audio link\". No default.\n5. type \"checkbox\", id \"explicit\", label \"Explicit content\", default false.\n\npresets: exactly one preset. name \"Podcast episodes\". blocks contains three entries, each {\"type\": \"episode\"}.\n\nDo not add any other keys. Change only sections/podcast-episode-list.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

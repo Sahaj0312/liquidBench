@@ -1,0 +1,9 @@
+{
+  "products": {
+    "reviews": {
+      "heading": "Customer reviews",
+      "verified": "Verified buyer",
+      "empty": "No reviews yet"
+    }
+  }
+}

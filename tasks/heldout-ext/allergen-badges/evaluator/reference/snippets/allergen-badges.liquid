@@ -1,0 +1,7 @@
+{%- if allergens and allergens.size > 0 -%}
+<ul class="allergen-badges" aria-label="{{ label | default: 'Allergens' | escape }}">
+{%- for allergen in allergens -%}
+<li class="allergen-badge" title="Contains {{ allergen | escape }}">{{ allergen | escape }}</li>
+{%- endfor -%}
+</ul>
+{%- endif -%}

@@ -1,0 +1,605 @@
+{
+  "plan_sha256": "49cfadffa327bdf2fdaa0ed10e856644e473ae9a46aa804ce966d0cd7f8b81d6",
+  "tasks": {
+    "breadcrumb-trail": {
+      "base": 624,
+      "base_skills": 714,
+      "tuned": 624,
+      "tuned_skills": 714
+    },
+    "card-sale-badge": {
+      "base": 656,
+      "base_skills": 746,
+      "tuned": 656,
+      "tuned_skills": 746
+    },
+    "cart-assets": {
+      "base": 597,
+      "base_skills": 687,
+      "tuned": 597,
+      "tuned_skills": 687
+    },
+    "cart-labels": {
+      "base": 600,
+      "base_skills": 690,
+      "tuned": 600,
+      "tuned_skills": 690
+    },
+    "collection-grid-schema": {
+      "base": 651,
+      "base_skills": 741,
+      "tuned": 651,
+      "tuned_skills": 741
+    },
+    "color-scheme-schema": {
+      "base": 621,
+      "base_skills": 711,
+      "tuned": 621,
+      "tuned_skills": 711
+    },
+    "discount-label": {
+      "base": 626,
+      "base_skills": 716,
+      "tuned": 626,
+      "tuned_skills": 716
+    },
+    "faq-details": {
+      "base": 685,
+      "base_skills": 775,
+      "tuned": 685,
+      "tuned_skills": 775
+    },
+    "footer-schema": {
+      "base": 614,
+      "base_skills": 704,
+      "tuned": 614,
+      "tuned_skills": 704
+    },
+    "gift-wrap-eligibility": {
+      "base": 647,
+      "base_skills": 737,
+      "tuned": 647,
+      "tuned_skills": 737
+    },
+    "grid-columns": {
+      "base": 656,
+      "base_skills": 746,
+      "tuned": 656,
+      "tuned_skills": 746
+    },
+    "hero-cta": {
+      "base": 657,
+      "base_skills": 747,
+      "tuned": 657,
+      "tuned_skills": 747
+    },
+    "initials-avatar": {
+      "base": 618,
+      "base_skills": 708,
+      "tuned": 618,
+      "tuned_skills": 708
+    },
+    "logo-asset": {
+      "base": 598,
+      "base_skills": 688,
+      "tuned": 598,
+      "tuned_skills": 688
+    },
+    "pagination-window": {
+      "base": 686,
+      "base_skills": 776,
+      "tuned": 686,
+      "tuned_skills": 776
+    },
+    "price-format": {
+      "base": 607,
+      "base_skills": 697,
+      "tuned": 607,
+      "tuned_skills": 697
+    },
+    "price-render": {
+      "base": 610,
+      "base_skills": 700,
+      "tuned": 610,
+      "tuned_skills": 700
+    },
+    "rating-stars": {
+      "base": 647,
+      "base_skills": 737,
+      "tuned": 647,
+      "tuned_skills": 737
+    },
+    "sale-countdown": {
+      "base": 696,
+      "base_skills": 786,
+      "tuned": 696,
+      "tuned_skills": 786
+    },
+    "size-label": {
+      "base": 599,
+      "base_skills": 689,
+      "tuned": 599,
+      "tuned_skills": 689
+    },
+    "slideshow-blocks-schema": {
+      "base": 695,
+      "base_skills": 785,
+      "tuned": 695,
+      "tuned_skills": 785
+    },
+    "stock-badge": {
+      "base": 615,
+      "base_skills": 705,
+      "tuned": 615,
+      "tuned_skills": 705
+    },
+    "store-hours": {
+      "base": 634,
+      "base_skills": 724,
+      "tuned": 634,
+      "tuned_skills": 724
+    },
+    "testimonials-schema": {
+      "base": 638,
+      "base_skills": 728,
+      "tuned": 638,
+      "tuned_skills": 728
+    },
+    "allergen-badges": {
+      "base": 861,
+      "base_skills": 951,
+      "tuned": 861,
+      "tuned_skills": 951
+    },
+    "app-download-banner": {
+      "base": 989,
+      "base_skills": 1079,
+      "tuned": 989,
+      "tuned_skills": 1079
+    },
+    "app-download-panel": {
+      "base": 884,
+      "base_skills": 974,
+      "tuned": 884,
+      "tuned_skills": 974
+    },
+    "app-promo-platforms": {
+      "base": 1218,
+      "base_skills": 1308,
+      "tuned": 1218,
+      "tuned_skills": 1308
+    },
+    "award-list-edges": {
+      "base": 1077,
+      "base_skills": 1167,
+      "tuned": 1077,
+      "tuned_skills": 1167
+    },
+    "award-list-tiers": {
+      "base": 1065,
+      "base_skills": 1155,
+      "tuned": 1065,
+      "tuned_skills": 1155
+    },
+    "awards-count-list": {
+      "base": 863,
+      "base_skills": 953,
+      "tuned": 863,
+      "tuned_skills": 953
+    },
+    "awards-showcase": {
+      "base": 1075,
+      "base_skills": 1165,
+      "tuned": 1075,
+      "tuned_skills": 1165
+    },
+    "b2b-quantity-minimum": {
+      "base": 1009,
+      "base_skills": 1099,
+      "tuned": 1009,
+      "tuned_skills": 1099
+    },
+    "back-to-top-icon": {
+      "base": 791,
+      "base_skills": 881,
+      "tuned": 791,
+      "tuned_skills": 881
+    },
+    "before-after-slider": {
+      "base": 886,
+      "base_skills": 976,
+      "tuned": 886,
+      "tuned_skills": 976
+    },
+    "blog-comment-labels": {
+      "base": 847,
+      "base_skills": 937,
+      "tuned": 847,
+      "tuned_skills": 937
+    },
+    "bundle-contents-list": {
+      "base": 1137,
+      "base_skills": 1227,
+      "tuned": 1137,
+      "tuned_skills": 1227
+    },
+    "cart-drawer-script": {
+      "base": 890,
+      "base_skills": 980,
+      "tuned": 890,
+      "tuned_skills": 980
+    },
+    "color-palette-chips": {
+      "base": 1208,
+      "base_skills": 1298,
+      "tuned": 1208,
+      "tuned_skills": 1298
+    },
+    "compliance-warning": {
+      "base": 959,
+      "base_skills": 1049,
+      "tuned": 959,
+      "tuned_skills": 1049
+    },
+    "contact-page-labels": {
+      "base": 900,
+      "base_skills": 990,
+      "tuned": 900,
+      "tuned_skills": 990
+    },
+    "cookie-consent-labels": {
+      "base": 885,
+      "base_skills": 975,
+      "tuned": 885,
+      "tuned_skills": 975
+    },
+    "currency-selector-labels": {
+      "base": 687,
+      "base_skills": 777,
+      "tuned": 687,
+      "tuned_skills": 777
+    },
+    "donation-round-up": {
+      "base": 1033,
+      "base_skills": 1123,
+      "tuned": 1033,
+      "tuned_skills": 1123
+    },
+    "engraving-availability": {
+      "base": 943,
+      "base_skills": 1033,
+      "tuned": 943,
+      "tuned_skills": 1033
+    },
+    "event-banner-status": {
+      "base": 1086,
+      "base_skills": 1176,
+      "tuned": 1086,
+      "tuned_skills": 1176
+    },
+    "event-listing-escaped": {
+      "base": 940,
+      "base_skills": 1030,
+      "tuned": 940,
+      "tuned_skills": 1030
+    },
+    "event-schedule-list": {
+      "base": 1108,
+      "base_skills": 1198,
+      "tuned": 1108,
+      "tuned_skills": 1198
+    },
+    "featured-collection-tabs": {
+      "base": 957,
+      "base_skills": 1047,
+      "tuned": 957,
+      "tuned_skills": 1047
+    },
+    "gift-card-balance-notice": {
+      "base": 1072,
+      "base_skills": 1162,
+      "tuned": 1072,
+      "tuned_skills": 1162
+    },
+    "gift-registry-items": {
+      "base": 1100,
+      "base_skills": 1190,
+      "tuned": 1100,
+      "tuned_skills": 1190
+    },
+    "how-it-works-trimmed": {
+      "base": 953,
+      "base_skills": 1043,
+      "tuned": 953,
+      "tuned_skills": 1043
+    },
+    "installment-plan-label": {
+      "base": 901,
+      "base_skills": 991,
+      "tuned": 901,
+      "tuned_skills": 991
+    },
+    "lightbox-stylesheet": {
+      "base": 798,
+      "base_skills": 888,
+      "tuned": 798,
+      "tuned_skills": 888
+    },
+    "local-currency-notice": {
+      "base": 879,
+      "base_skills": 969,
+      "tuned": 879,
+      "tuned_skills": 969
+    },
+    "lookbook-gallery": {
+      "base": 1009,
+      "base_skills": 1099,
+      "tuned": 1009,
+      "tuned_skills": 1099
+    },
+    "lookbook-grid": {
+      "base": 1146,
+      "base_skills": 1236,
+      "tuned": 1146,
+      "tuned_skills": 1236
+    },
+    "lookbook-grid-defaults": {
+      "base": 1051,
+      "base_skills": 1141,
+      "tuned": 1051,
+      "tuned_skills": 1141
+    },
+    "lookbook-tag-strip": {
+      "base": 912,
+      "base_skills": 1002,
+      "tuned": 912,
+      "tuned_skills": 1002
+    },
+    "lookbook-trimmed": {
+      "base": 906,
+      "base_skills": 996,
+      "tuned": 906,
+      "tuned_skills": 996
+    },
+    "lookbook-wrapped": {
+      "base": 1000,
+      "base_skills": 1090,
+      "tuned": 1000,
+      "tuned_skills": 1090
+    },
+    "made-to-order-lead-time": {
+      "base": 1003,
+      "base_skills": 1093,
+      "tuned": 1003,
+      "tuned_skills": 1093
+    },
+    "milestones-timeline": {
+      "base": 896,
+      "base_skills": 986,
+      "tuned": 896,
+      "tuned_skills": 986
+    },
+    "mto-lead-time": {
+      "base": 973,
+      "base_skills": 1063,
+      "tuned": 973,
+      "tuned_skills": 1063
+    },
+    "not-found-labels": {
+      "base": 884,
+      "base_skills": 974,
+      "tuned": 884,
+      "tuned_skills": 974
+    },
+    "order-status-labels": {
+      "base": 925,
+      "base_skills": 1015,
+      "tuned": 925,
+      "tuned_skills": 1015
+    },
+    "order-tracking-timeline": {
+      "base": 1051,
+      "base_skills": 1141,
+      "tuned": 1051,
+      "tuned_skills": 1141
+    },
+    "podcast-embed": {
+      "base": 1127,
+      "base_skills": 1217,
+      "tuned": 1127,
+      "tuned_skills": 1217
+    },
+    "podcast-embed-episodes": {
+      "base": 1048,
+      "base_skills": 1138,
+      "tuned": 1048,
+      "tuned_skills": 1138
+    },
+    "podcast-episode-list": {
+      "base": 943,
+      "base_skills": 1033,
+      "tuned": 943,
+      "tuned_skills": 1033
+    },
+    "podcast-season-embeds": {
+      "base": 929,
+      "base_skills": 1019,
+      "tuned": 929,
+      "tuned_skills": 1019
+    },
+    "presale-access-gate": {
+      "base": 973,
+      "base_skills": 1063,
+      "tuned": 973,
+      "tuned_skills": 1063
+    },
+    "press-mentions": {
+      "base": 1181,
+      "base_skills": 1271,
+      "tuned": 1181,
+      "tuned_skills": 1271
+    },
+    "press-quotes": {
+      "base": 1066,
+      "base_skills": 1156,
+      "tuned": 1066,
+      "tuned_skills": 1156
+    },
+    "pricing-plans-grid": {
+      "base": 940,
+      "base_skills": 1030,
+      "tuned": 940,
+      "tuned_skills": 1030
+    },
+    "pricing-table": {
+      "base": 1031,
+      "base_skills": 1121,
+      "tuned": 1031,
+      "tuned_skills": 1121
+    },
+    "product-dimension-list": {
+      "base": 1120,
+      "base_skills": 1210,
+      "tuned": 1120,
+      "tuned_skills": 1210
+    },
+    "product-reviews-script": {
+      "base": 805,
+      "base_skills": 895,
+      "tuned": 805,
+      "tuned_skills": 895
+    },
+    "promo-grid": {
+      "base": 1115,
+      "base_skills": 1205,
+      "tuned": 1115,
+      "tuned_skills": 1205
+    },
+    "quick-view-script": {
+      "base": 825,
+      "base_skills": 915,
+      "tuned": 825,
+      "tuned_skills": 915
+    },
+    "rental-period-label": {
+      "base": 766,
+      "base_skills": 856,
+      "tuned": 766,
+      "tuned_skills": 856
+    },
+    "returns-window-eligibility": {
+      "base": 978,
+      "base_skills": 1068,
+      "tuned": 978,
+      "tuned_skills": 1068
+    },
+    "review-rating-summary": {
+      "base": 981,
+      "base_skills": 1071,
+      "tuned": 981,
+      "tuned_skills": 1071
+    },
+    "review-summary": {
+      "base": 1081,
+      "base_skills": 1171,
+      "tuned": 1081,
+      "tuned_skills": 1171
+    },
+    "sample-request-eligibility": {
+      "base": 1007,
+      "base_skills": 1097,
+      "tuned": 1007,
+      "tuned_skills": 1097
+    },
+    "seasonal-closure-notice": {
+      "base": 764,
+      "base_skills": 854,
+      "tuned": 764,
+      "tuned_skills": 854
+    },
+    "size-chart-rows": {
+      "base": 1070,
+      "base_skills": 1160,
+      "tuned": 1070,
+      "tuned_skills": 1160
+    },
+    "size-guide-panel": {
+      "base": 967,
+      "base_skills": 1057,
+      "tuned": 967,
+      "tuned_skills": 1057
+    },
+    "size-guide-units": {
+      "base": 1019,
+      "base_skills": 1109,
+      "tuned": 1019,
+      "tuned_skills": 1109
+    },
+    "social-feed-counts": {
+      "base": 816,
+      "base_skills": 906,
+      "tuned": 816,
+      "tuned_skills": 906
+    },
+    "social-feed-grid": {
+      "base": 1012,
+      "base_skills": 1102,
+      "tuned": 1012,
+      "tuned_skills": 1102
+    },
+    "social-feed-section": {
+      "base": 917,
+      "base_skills": 1007,
+      "tuned": 917,
+      "tuned_skills": 1007
+    },
+    "social-feed-strip": {
+      "base": 832,
+      "base_skills": 922,
+      "tuned": 832,
+      "tuned_skills": 922
+    },
+    "social-feed-wall": {
+      "base": 915,
+      "base_skills": 1005,
+      "tuned": 915,
+      "tuned_skills": 1005
+    },
+    "store-events-calendar": {
+      "base": 866,
+      "base_skills": 956,
+      "tuned": 866,
+      "tuned_skills": 956
+    },
+    "timeline-wrapped": {
+      "base": 882,
+      "base_skills": 972,
+      "tuned": 882,
+      "tuned_skills": 972
+    },
+    "trust-badge-row": {
+      "base": 1061,
+      "base_skills": 1151,
+      "tuned": 1061,
+      "tuned_skills": 1151
+    },
+    "volume-discount-ladder": {
+      "base": 1174,
+      "base_skills": 1264,
+      "tuned": 1174,
+      "tuned_skills": 1264
+    },
+    "warehouse-availability": {
+      "base": 1007,
+      "base_skills": 1097,
+      "tuned": 1007,
+      "tuned_skills": 1097
+    },
+    "warehouse-availability-list": {
+      "base": 793,
+      "base_skills": 883,
+      "tuned": 793,
+      "tuned_skills": 883
+    }
+  }
+}

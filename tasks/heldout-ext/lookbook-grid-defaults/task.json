@@ -1,0 +1,15 @@
+{
+  "id": "lookbook-grid-defaults",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-modification",
+  "difficulty": "hard",
+  "family": "lookbook-grid-defaults",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/lookbook-grid-defaults.liquid"
+  ],
+  "prompt": "The section sections/lookbook-grid-defaults.liquid renders a lookbook grid. It works, but it breaks when merchants leave settings empty. Change the markup so that it applies the default values and rules below. Keep the existing {% schema %}...{% endschema %} block byte-for-byte unchanged.\n\nInputs (all are under the top-level object `section`):\n- section.settings.heading: string or null.\n- section.settings.columns: integer or null. It can be outside the range 2-4.\n- section.blocks: array (possibly empty) of objects. Each object has `settings` with:\n  - settings.image: string or null (image URL)\n  - settings.caption: string or null\n\nRules:\n1. Heading: strip leading and trailing whitespace from section.settings.heading. If the result is empty, or the value is null, use the text `Shop the look`. Output the heading HTML-escaped.\n2. Columns: if null, use 3. Otherwise clamp the value to the range 2-4: values below 2 become 2, and values above 4 become 4.\n3. Looks: process blocks in order. Strip settings.image. If the result is empty, or the value is null, skip the block entirely. A skipped block does not count toward numbering. Each rendered look gets a 1-based position N, counting only rendered looks.\n4. Caption: strip settings.caption. If the result is empty, or the value is null, use `Look N`, where N is the look's position. Output the caption HTML-escaped.\n5. Output the stripped image URL HTML-escaped in data-image.\n6. If no looks are rendered, output `<p class=\"lookbook__empty\">No looks yet</p>` in place of the list.\n\nExact output, with no whitespace or newlines between tags:\n`<section class=\"lookbook\"><h2 class=\"lookbook__heading\">HEADING</h2>LIST</section>`\n\nLIST is either the empty-state paragraph or:\n`<ul class=\"lookbook__grid lookbook__grid--COLUMNS\">ITEMS</ul>`\n\nEach item is:\n`<li class=\"lookbook__item\" data-index=\"N\"><figure data-image=\"IMAGE\"><figcaption>CAPTION</figcaption></figure></li>`\n\nHTML escaping means escaping & < > and \" as &amp; &lt; &gt; &quot;. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/lookbook-grid-defaults.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

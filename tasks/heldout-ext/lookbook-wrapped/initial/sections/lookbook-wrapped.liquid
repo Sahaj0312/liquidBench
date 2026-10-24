@@ -1,0 +1,41 @@
+<div class="lookbook">
+  {%- unless section.settings.full_width -%}<div class="page-width">{%- endunless -%}
+  {%- if section.settings.title != blank -%}
+    <h2 class="lookbook__title">{{ section.settings.title | escape }}</h2>
+  {%- endif -%}
+  <div class="lookbook__grid" style="--columns: {{ section.settings.columns }}">
+    {%- for block in section.blocks -%}
+      <figure class="lookbook__look" {{ block.shopify_attributes }}>
+        {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}">{%- endif -%}
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy' }}
+        {%- endif -%}
+        {%- if block.settings.link != blank -%}</a>{%- endif -%}
+        {%- if block.settings.caption != blank -%}
+          <figcaption>{{ block.settings.caption }}</figcaption>
+        {%- endif -%}
+      </figure>
+    {%- endfor -%}
+  </div>
+  {%- unless section.settings.full_width -%}</div>{%- endunless -%}
+</div>
+
+{% schema %}
+{
+  "name": "Lookbook",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title" }
+  ],
+  "blocks": [
+    {
+      "type": "look",
+      "name": "Look",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "link", "label": "Link" },
+        { "type": "richtext", "id": "caption", "label": "Caption" }
+      ]
+    }
+  ]
+}
+{% endschema %}

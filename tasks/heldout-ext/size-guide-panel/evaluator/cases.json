@@ -1,0 +1,109 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/size-guide-panel.liquid",
+    "body": "{%- assign s = section.settings -%}\n<div class=\"size-guide\">\n  {%- if s.heading != blank -%}\n    <h2 class=\"size-guide__heading\">{{ s.heading | escape }}</h2>\n  {%- endif -%}\n  {%- if s.show_wrapper -%}<{{ s.wrapper_tag }} class=\"size-guide__panel\">{%- endif -%}\n  <table class=\"size-guide__table\">\n    {%- for block in section.blocks -%}\n      <tr {{ block.shopify_attributes }}>\n        <th scope=\"row\">{{ block.settings.label | escape }}</th>\n        <td>{{ block.settings.chest | escape }}</td>\n        <td>{{ block.settings.waist | escape }}</td>\n      </tr>\n    {%- endfor -%}\n  </table>\n  {%- if s.show_wrapper -%}</{{ s.wrapper_tag }}>{%- endif -%}\n  {%- if s.note != blank -%}\n    <div class=\"size-guide__note\">{{ s.note }}</div>\n  {%- endif -%}\n</div>\n\n\n",
+    "expected": {
+      "name": "Size guide",
+      "tag": "aside",
+      "class": "section-size-guide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_wrapper",
+          "label": "Wrap table in panel",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "wrapper_tag",
+          "label": "Panel element",
+          "options": [
+            {
+              "value": "div",
+              "label": "Div"
+            },
+            {
+              "value": "section",
+              "label": "Section"
+            },
+            {
+              "value": "figure",
+              "label": "Figure"
+            }
+          ],
+          "default": "div"
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Size guide"
+        },
+        {
+          "type": "richtext",
+          "id": "note",
+          "label": "Fit note"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "size_row",
+          "name": "Size row",
+          "settings": [
+            {
+              "type": "text",
+              "id": "label",
+              "label": "Size label",
+              "default": "M"
+            },
+            {
+              "type": "text",
+              "id": "chest",
+              "label": "Chest"
+            },
+            {
+              "type": "text",
+              "id": "waist",
+              "label": "Waist"
+            }
+          ]
+        }
+      ],
+      "max_blocks": 12,
+      "presets": [
+        {
+          "name": "Size guide",
+          "blocks": [
+            {
+              "type": "size_row",
+              "settings": {
+                "label": "S"
+              }
+            },
+            {
+              "type": "size_row",
+              "settings": {
+                "label": "M"
+              }
+            },
+            {
+              "type": "size_row",
+              "settings": {
+                "label": "L"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

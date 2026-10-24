@@ -1,0 +1,15 @@
+{
+  "id": "engraving-availability",
+  "version": 1,
+  "split": "heldout",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "engraving-availability",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/engraving-availability.liquid"
+  ],
+  "prompt": "Fix snippets/engraving-availability.liquid so it renders the engraving option block for a product exactly as specified.\n\nInputs (all top-level variables; there is no section object):\n- product_title: string, never null.\n- engraving: object or null. When it is not null it always has all four keys:\n  - engraving.enabled: boolean.\n  - engraving.max_chars: integer or null.\n  - engraving.fonts: array of strings (may be empty).\n  - engraving.note: string or null.\n\nOutput rules. Do not output any whitespace or newlines before, after or between elements. All text interpolated from inputs (product_title, each font, the note) must be HTML-escaped with the escape filter.\n\n1. If engraving is null, or engraving.enabled is not true, output only:\n<p class=\"engraving-unavailable\">Engraving is not available for TITLE</p>\nwhere TITLE is the escaped product_title.\n\n2. Otherwise output a <div class=\"engraving\"> wrapper that contains, in this order:\n  a. Always: <h3>Engrave your TITLE</h3>\n  b. Only if max_chars is not null and greater than 0: <p class=\"engraving-limit\">Up to N characters</p> where N is max_chars; use the singular word \"character\" when N is exactly 1 (\"Up to 1 character\").\n  c. Only if fonts contains at least one entry: <ul class=\"engraving-fonts\"> containing one <li>FONT</li> per font in array order. If fonts is empty, the <ul> must not be output at all.\n  d. Only if the note, after stripping leading/trailing whitespace, is non-empty (null counts as empty): <p class=\"engraving-note\">NOTE</p> with the stripped, escaped note.\nThen close </div>. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/engraving-availability.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

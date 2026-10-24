@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-duplicate-class-single-tier",
+    "expected_pass": false,
+    "changes": {
+      "snippets/b2b-quantity-minimum.liquid": "{%- assign label = unit_label | default: \"units\" | escape -%}\n{%- if tiers.size > 0 -%}\n<div class=\"b2b-min\"><p class=\"b2b-min__note\">Minimum order: {{ tiers.first.min_qty }} {{ label }}</p><ul>\n{%- for tier in tiers -%}\n<li{% if forloop.first %} class=\"b2b-min__base\"{% endif %}{% if forloop.last %} class=\"b2b-min__top\"{% endif %}><span>\n{%- if forloop.last -%}\n{{ tier.min_qty }}+ {{ label }}\n{%- else -%}\n{%- assign next = tiers[forloop.index] -%}\n{%- assign upper = next.min_qty | minus: 1 -%}\n{%- if upper == tier.min_qty -%}{{ tier.min_qty }} {{ label }}{%- else -%}{{ tier.min_qty }}–{{ upper }} {{ label }}{%- endif -%}\n{%- endif -%}\n</span> <span>{{ tier.price | escape }}</span></li>\n{%- endfor -%}\n</ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-no-collapse-equal-range",
+    "expected_pass": false,
+    "changes": {
+      "snippets/b2b-quantity-minimum.liquid": "{%- assign label = unit_label | default: \"units\" | escape -%}\n{%- if tiers.size > 0 -%}\n<div class=\"b2b-min\"><p class=\"b2b-min__note\">Minimum order: {{ tiers.first.min_qty }} {{ label }}</p><ul>\n{%- for tier in tiers -%}\n<li{% if forloop.first and forloop.last %} class=\"b2b-min__base b2b-min__top\"{% elsif forloop.first %} class=\"b2b-min__base\"{% elsif forloop.last %} class=\"b2b-min__top\"{% endif %}><span>\n{%- if forloop.last -%}\n{{ tier.min_qty }}+ {{ label }}\n{%- else -%}\n{%- assign next = tiers[forloop.index] -%}\n{%- assign upper = next.min_qty | minus: 1 -%}\n{{ tier.min_qty }}–{{ upper }} {{ label }}\n{%- endif -%}\n</span> <span>{{ tier.price | escape }}</span></li>\n{%- endfor -%}\n</ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-next-tier-off-by-one",
+    "expected_pass": false,
+    "changes": {
+      "snippets/b2b-quantity-minimum.liquid": "{%- assign label = unit_label | default: \"units\" | escape -%}\n{%- if tiers.size > 0 -%}\n<div class=\"b2b-min\"><p class=\"b2b-min__note\">Minimum order: {{ tiers.first.min_qty }} {{ label }}</p><ul>\n{%- for tier in tiers -%}\n<li{% if forloop.first and forloop.last %} class=\"b2b-min__base b2b-min__top\"{% elsif forloop.first %} class=\"b2b-min__base\"{% elsif forloop.last %} class=\"b2b-min__top\"{% endif %}><span>\n{%- if forloop.last -%}\n{{ tier.min_qty }}+ {{ label }}\n{%- else -%}\n{%- assign next = tiers[forloop.index0] -%}\n{%- assign upper = next.min_qty | minus: 1 -%}\n{%- if upper == tier.min_qty -%}{{ tier.min_qty }} {{ label }}{%- else -%}{{ tier.min_qty }}–{{ upper }} {{ label }}{%- endif -%}\n{%- endif -%}\n</span> <span>{{ tier.price | escape }}</span></li>\n{%- endfor -%}\n</ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-label-not-escaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/b2b-quantity-minimum.liquid": "{%- assign label = unit_label | default: \"units\" -%}\n{%- if tiers.size > 0 -%}\n<div class=\"b2b-min\"><p class=\"b2b-min__note\">Minimum order: {{ tiers.first.min_qty }} {{ label }}</p><ul>\n{%- for tier in tiers -%}\n<li{% if forloop.first and forloop.last %} class=\"b2b-min__base b2b-min__top\"{% elsif forloop.first %} class=\"b2b-min__base\"{% elsif forloop.last %} class=\"b2b-min__top\"{% endif %}><span>\n{%- if forloop.last -%}\n{{ tier.min_qty }}+ {{ label }}\n{%- else -%}\n{%- assign next = tiers[forloop.index] -%}\n{%- assign upper = next.min_qty | minus: 1 -%}\n{%- if upper == tier.min_qty -%}{{ tier.min_qty }} {{ label }}{%- else -%}{{ tier.min_qty }}–{{ upper }} {{ label }}{%- endif -%}\n{%- endif -%}\n</span> <span>{{ tier.price | escape }}</span></li>\n{%- endfor -%}\n</ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-4-minimum-from-last-tier",
+    "expected_pass": false,
+    "changes": {
+      "snippets/b2b-quantity-minimum.liquid": "{%- assign label = unit_label | default: \"units\" | escape -%}\n{%- if tiers.size > 0 -%}\n<div class=\"b2b-min\"><p class=\"b2b-min__note\">Minimum order: {{ tiers.last.min_qty }} {{ label }}</p><ul>\n{%- for tier in tiers -%}\n<li{% if forloop.first and forloop.last %} class=\"b2b-min__base b2b-min__top\"{% elsif forloop.first %} class=\"b2b-min__base\"{% elsif forloop.last %} class=\"b2b-min__top\"{% endif %}><span>\n{%- if forloop.last -%}\n{{ tier.min_qty }}+ {{ label }}\n{%- else -%}\n{%- assign next = tiers[forloop.index] -%}\n{%- assign upper = next.min_qty | minus: 1 -%}\n{%- if upper == tier.min_qty -%}{{ tier.min_qty }} {{ label }}{%- else -%}{{ tier.min_qty }}–{{ upper }} {{ label }}{%- endif -%}\n{%- endif -%}\n</span> <span>{{ tier.price | escape }}</span></li>\n{%- endfor -%}\n</ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/b2b-quantity-minimum.liquid": "{% # theme-check-disable %}\n{%- assign label = unit_label | default: \"units\" | escape -%}\n{%- if tiers.size > 0 -%}\n<div class=\"b2b-min\"><p class=\"b2b-min__note\">Minimum order: {{ tiers.first.min_qty }} {{ label }}</p><ul>\n{%- for tier in tiers -%}\n<li{% if forloop.first and forloop.last %} class=\"b2b-min__base b2b-min__top\"{% elsif forloop.first %} class=\"b2b-min__base\"{% elsif forloop.last %} class=\"b2b-min__top\"{% endif %}><span>\n{%- if forloop.last -%}\n{{ tier.min_qty }}+ {{ label }}\n{%- else -%}\n{%- assign next = tiers[forloop.index] -%}\n{%- assign upper = next.min_qty | minus: 1 -%}\n{%- if upper == tier.min_qty -%}{{ tier.min_qty }} {{ label }}{%- else -%}{{ tier.min_qty }}–{{ upper }} {{ label }}{%- endif -%}\n{%- endif -%}\n</span> <span>{{ tier.price | escape }}</span></li>\n{%- endfor -%}\n</ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/b2b-quantity-minimum.liquid": null
+    }
+  }
+]

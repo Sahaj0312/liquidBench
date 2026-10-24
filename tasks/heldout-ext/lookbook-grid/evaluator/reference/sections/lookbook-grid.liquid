@@ -1,0 +1,40 @@
+<section class="lookbook">
+  {%- assign heading = section.settings.heading | strip -%}
+  {%- if heading != '' -%}
+    <h2 class="lookbook__heading">{{ heading | escape }}</h2>
+  {%- endif -%}
+  {%- assign limit = section.settings.max_looks | default: 6 -%}
+  {%- assign eligible = 0 -%}
+  {%- for block in section.blocks -%}
+    {%- assign title = block.settings.title | strip -%}
+    {%- if block.type == 'look' and block.settings.hidden != true and title != '' -%}
+      {%- assign eligible = eligible | plus: 1 -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if eligible == 0 -%}
+    <p class="lookbook__empty">No looks yet</p>
+  {%- else -%}
+    <ul class="lookbook__grid">
+      {%- assign shown = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- assign title = block.settings.title | strip -%}
+        {%- if block.type == 'look' and block.settings.hidden != true and title != '' and shown < limit -%}
+          {%- assign shown = shown | plus: 1 -%}
+          {%- assign number = shown | append: '' -%}
+          {%- if shown < 10 -%}{%- assign number = number | prepend: '0' -%}{%- endif -%}
+          {%- assign caption = block.settings.caption | strip -%}
+          <li class="lookbook__item"><figure><span class="lookbook__index">{{ number }}</span><figcaption><strong>{{ title | escape }}</strong>
+          {%- if caption != '' -%}<em>{{ caption | escape }}</em>{%- endif -%}
+          </figcaption></figure></li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+    {%- assign rest = eligible | minus: shown -%}
+    {%- if rest > 0 -%}
+      <p class="lookbook__more">+{{ rest }} more look{% if rest != 1 %}s{% endif %}</p>
+    {%- endif -%}
+  {%- endif -%}
+</section>
+{% schema %}
+{"name":"Lookbook grid","settings":[{"type":"text","id":"heading","label":"Heading"},{"type":"range","id":"max_looks","label":"Maximum looks","min":1,"max":12,"step":1,"default":6}],"blocks":[{"type":"look","name":"Look","settings":[{"type":"text","id":"title","label":"Title"},{"type":"text","id":"caption","label":"Caption"},{"type":"checkbox","id":"hidden","label":"Hide look","default":false}]},{"type":"spacer","name":"Spacer","settings":[]}],"presets":[{"name":"Lookbook grid"}]}
+{% endschema %}

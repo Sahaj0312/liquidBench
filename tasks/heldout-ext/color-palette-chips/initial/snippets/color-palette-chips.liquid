@@ -1,0 +1,9 @@
+<div class="palette">
+  <h3 class="palette__heading">{{ palette.heading }}</h3>
+  <ul class="palette__list">
+  {%- for chip in palette.chips -%}
+    <li><button type="button" class="palette__chip{% if chip.value == palette.selected %} is-selected{% endif %}" data-value="{{ chip.value }}" aria-label="{{ chip.name }}" style="background-color: {{ chip.hex }}"><span class="palette__name">{{ chip.name }}</span></button></li>
+  {%- endfor -%}
+  </ul>
+  <p class="palette__count">{{ palette.chips.size }} colors</p>
+</div>

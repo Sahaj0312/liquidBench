@@ -1,0 +1,507 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/not-found-labels.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidRawTag",
+          "name": "comment",
+          "markup": "",
+          "body": {
+            "type": "RawMarkup",
+            "kind": "text",
+            "value": "Inputs: missing_collection (boolean), search_term (string or nil), home_url (string)",
+            "nodes": [
+              {
+                "type": "TextNode",
+                "value": "Inputs: missing_collection (boolean), search_term (string or nil), home_url (string)"
+              }
+            ]
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-",
+          "delimiterWhitespaceStart": "-",
+          "delimiterWhitespaceEnd": "-"
+        },
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "page-not-found.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "div"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "not-found"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "HtmlVoidElement",
+              "name": "img",
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "src"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "String",
+                          "single": true,
+                          "value": "not-found-illustration.svg"
+                        },
+                        "filters": [
+                          {
+                            "type": "LiquidFilter",
+                            "name": "asset_url",
+                            "args": []
+                          }
+                        ]
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "alt"
+                    }
+                  ],
+                  "value": []
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "width"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "240"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "height"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "160"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "loading"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "lazy"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "LiquidTag",
+              "name": "if",
+              "markup": {
+                "type": "VariableLookup",
+                "name": "missing_collection",
+                "lookups": [],
+                "lookupModes": []
+              },
+              "children": [
+                {
+                  "type": "LiquidBranch",
+                  "name": null,
+                  "markup": "",
+                  "children": [
+                    {
+                      "type": "LiquidTag",
+                      "name": "assign",
+                      "markup": {
+                        "type": "AssignMarkup",
+                        "name": "heading",
+                        "value": {
+                          "type": "LiquidVariable",
+                          "expression": {
+                            "type": "String",
+                            "single": true,
+                            "value": "templates.not_found.collection_title"
+                          },
+                          "filters": [
+                            {
+                              "type": "LiquidFilter",
+                              "name": "t",
+                              "args": []
+                            }
+                          ]
+                        }
+                      },
+                      "whitespaceStart": "-",
+                      "whitespaceEnd": "-"
+                    }
+                  ],
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                },
+                {
+                  "type": "LiquidBranch",
+                  "name": "elsif",
+                  "markup": {
+                    "type": "Comparison",
+                    "comparator": "!=",
+                    "left": {
+                      "type": "VariableLookup",
+                      "name": "search_term",
+                      "lookups": [],
+                      "lookupModes": []
+                    },
+                    "right": {
+                      "type": "LiquidLiteral",
+                      "keyword": "blank",
+                      "value": ""
+                    }
+                  },
+                  "children": [
+                    {
+                      "type": "LiquidTag",
+                      "name": "assign",
+                      "markup": {
+                        "type": "AssignMarkup",
+                        "name": "heading",
+                        "value": {
+                          "type": "LiquidVariable",
+                          "expression": {
+                            "type": "String",
+                            "single": true,
+                            "value": "templates.not_found.search_title"
+                          },
+                          "filters": [
+                            {
+                              "type": "LiquidFilter",
+                              "name": "t",
+                              "args": [
+                                {
+                                  "type": "NamedArgument",
+                                  "name": "term",
+                                  "value": {
+                                    "type": "VariableLookup",
+                                    "name": "search_term",
+                                    "lookups": [],
+                                    "lookupModes": []
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "whitespaceStart": "-",
+                      "whitespaceEnd": "-"
+                    }
+                  ],
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-"
+                },
+                {
+                  "type": "LiquidBranch",
+                  "name": "else",
+                  "markup": "",
+                  "children": [
+                    {
+                      "type": "LiquidTag",
+                      "name": "assign",
+                      "markup": {
+                        "type": "AssignMarkup",
+                        "name": "heading",
+                        "value": {
+                          "type": "LiquidVariable",
+                          "expression": {
+                            "type": "String",
+                            "single": true,
+                            "value": "templates.not_found.title"
+                          },
+                          "filters": [
+                            {
+                              "type": "LiquidFilter",
+                              "name": "t",
+                              "args": []
+                            }
+                          ]
+                        }
+                      },
+                      "whitespaceStart": "-",
+                      "whitespaceEnd": "-"
+                    }
+                  ],
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-"
+                }
+              ],
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-",
+              "delimiterWhitespaceStart": "-",
+              "delimiterWhitespaceEnd": "-"
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "h1"
+                }
+              ],
+              "attributes": [],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "VariableLookup",
+                      "name": "heading",
+                      "lookups": [],
+                      "lookupModes": []
+                    },
+                    "filters": []
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "p"
+                }
+              ],
+              "attributes": [],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "templates.not_found.subtext"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "LiquidTag",
+              "name": "assign",
+              "markup": {
+                "type": "AssignMarkup",
+                "name": "back_label",
+                "value": {
+                  "type": "LiquidVariable",
+                  "expression": {
+                    "type": "String",
+                    "single": true,
+                    "value": "templates.not_found.back_home"
+                  },
+                  "filters": [
+                    {
+                      "type": "LiquidFilter",
+                      "name": "t",
+                      "args": []
+                    }
+                  ]
+                }
+              },
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-"
+            },
+            {
+              "type": "LiquidTag",
+              "name": "render",
+              "markup": {
+                "type": "RenderMarkup",
+                "snippet": {
+                  "type": "String",
+                  "single": true,
+                  "value": "not-found-link"
+                },
+                "variable": null,
+                "alias": null,
+                "args": [
+                  {
+                    "type": "NamedArgument",
+                    "name": "url",
+                    "value": {
+                      "type": "VariableLookup",
+                      "name": "home_url",
+                      "lookups": [],
+                      "lookupModes": []
+                    }
+                  },
+                  {
+                    "type": "NamedArgument",
+                    "name": "label",
+                    "value": {
+                      "type": "VariableLookup",
+                      "name": "back_label",
+                      "lookups": [],
+                      "lookupModes": []
+                    }
+                  }
+                ]
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "p"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "not-found__search"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidTag",
+                  "name": "render",
+                  "markup": {
+                    "type": "RenderMarkup",
+                    "snippet": {
+                      "type": "String",
+                      "single": true,
+                      "value": "icon-search"
+                    },
+                    "variable": null,
+                    "alias": null,
+                    "args": []
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                },
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "templates.not_found.search_hint"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

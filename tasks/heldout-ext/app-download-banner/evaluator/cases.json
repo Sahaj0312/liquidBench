@@ -1,0 +1,111 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/app-download-banner.liquid",
+    "body": "{%- liquid\n  assign heading = section.settings.heading | strip\n  assign description = section.settings.description | strip\n-%}\n<div class=\"app-download app-download--{{ section.settings.layout }}\" style=\"padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;\">\n  {%- if section.settings.qr_image != blank -%}\n    <div class=\"app-download__qr\">\n      {{- section.settings.qr_image | image_url: width: 300 | image_tag: loading: 'lazy', alt: heading -}}\n    </div>\n  {%- endif -%}\n  <div class=\"app-download__content\">\n    {%- if heading != blank -%}\n      <h2 class=\"app-download__heading\">{{- heading | escape -}}</h2>\n    {%- endif -%}\n    {%- if description != blank -%}\n      <p class=\"app-download__text\">{{- description | escape | newline_to_br -}}</p>\n    {%- endif -%}\n    {%- if section.blocks.size > 0 -%}\n      <ul class=\"app-download__features\">\n        {%- for block in section.blocks -%}\n          {%- assign feature_text = block.settings.text | strip -%}\n          {%- if feature_text != blank -%}\n            <li {{ block.shopify_attributes }}>{{- feature_text | escape -}}</li>\n          {%- endif -%}\n        {%- endfor -%}\n      </ul>\n    {%- endif -%}\n    <div class=\"app-download__stores\">\n      {%- if section.settings.app_store_url != blank -%}\n        <a class=\"app-download__store\" href=\"{{ section.settings.app_store_url }}\">App Store</a>\n      {%- endif -%}\n      {%- if section.settings.google_play_url != blank -%}\n        <a class=\"app-download__store\" href=\"{{ section.settings.google_play_url }}\">Google Play</a>\n      {%- endif -%}\n    </div>\n  </div>\n</div>\n\n\n",
+    "expected": {
+      "name": "App download",
+      "tag": "section",
+      "class": "app-download-section",
+      "disabled_on": {
+        "groups": [
+          "header",
+          "footer"
+        ]
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Get the app"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Shop faster with our mobile app."
+        },
+        {
+          "type": "image_picker",
+          "id": "qr_image",
+          "label": "QR code image"
+        },
+        {
+          "type": "url",
+          "id": "app_store_url",
+          "label": "App Store link"
+        },
+        {
+          "type": "url",
+          "id": "google_play_url",
+          "label": "Google Play link"
+        },
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Layout",
+          "options": [
+            {
+              "value": "image_first",
+              "label": "Image first"
+            },
+            {
+              "value": "text_first",
+              "label": "Text first"
+            }
+          ],
+          "default": "image_first"
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Top padding",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "default": 36
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Bottom padding",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "default": 36
+        }
+      ],
+      "blocks": [
+        {
+          "type": "feature",
+          "name": "Feature",
+          "settings": [
+            {
+              "type": "text",
+              "id": "text",
+              "label": "Feature text",
+              "default": "Exclusive app-only deals"
+            }
+          ]
+        }
+      ],
+      "max_blocks": 5,
+      "presets": [
+        {
+          "name": "App download",
+          "blocks": [
+            {
+              "type": "feature"
+            },
+            {
+              "type": "feature"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

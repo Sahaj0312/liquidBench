@@ -1,0 +1,36 @@
+{%- assign handles = section.settings.handles | split: ',' -%}
+<section class="social-feed">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="social-feed__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  {%- if handles.size > 0 -%}
+    <p class="social-feed__handles">{{ handles | join: section.settings.separator | escape }}</p>
+  {%- endif -%}
+  <ul class="social-feed__posts">
+    {%- for block in section.blocks limit: section.settings.post_limit -%}
+      <li class="social-feed__post" {{ block.shopify_attributes }}>
+        {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}">{%- endif -%}
+        <span>{{ block.settings.caption | escape }}</span>
+        {%- if block.settings.link != blank -%}</a>{%- endif -%}
+        <small>{{ block.settings.tags | split: ',' | join: ' · ' | escape }}</small>
+      </li>
+    {%- endfor -%}
+  </ul>
+</section>
+
+{% schema %}
+{
+  "name": "Social feed",
+  "tag": "section",
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading", "default": "Follow us"},
+    {"type": "text", "id": "handles", "label": "Handles"},
+    {"type": "text", "id": "separator", "label": "Separator", "default": ","}
+  ],
+  "blocks": [
+    {"type": "post", "name": "Post", "settings": [
+      {"type": "text", "id": "caption", "label": "Caption"}
+    ]}
+  ]
+}
+{% endschema %}

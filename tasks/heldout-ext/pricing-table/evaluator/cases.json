@@ -1,0 +1,652 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/pricing-table.liquid",
+    "tags": [
+      "div",
+      "h2",
+      "h3",
+      "li",
+      "p",
+      "ul"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Pricing table\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"title\", \"label\": \"Title\", \"default\": \"Pricing\" }\n  ],\n  \"presets\": [{ \"name\": \"Pricing table\" }]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Plans"
+        }
+      },
+      "plans": [
+        {
+          "name": "Basic",
+          "price": "$9",
+          "features": "Email support|1 user",
+          "highlighted": false
+        },
+        {
+          "name": "Pro",
+          "price": "$29",
+          "features": " Priority support | 5 users |",
+          "highlighted": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "pricing"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "pricing__title"
+              ]
+            ],
+            "children": [],
+            "text": "Plans"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "pricing__plans"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "pricing__plan"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Basic"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [
+                      [
+                        "class",
+                        "pricing__price"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "$9"
+                  },
+                  {
+                    "tag": "ul",
+                    "attrs": [
+                      [
+                        "class",
+                        "pricing__features"
+                      ]
+                    ],
+                    "children": [
+                      {
+                        "tag": "li",
+                        "attrs": [],
+                        "children": [],
+                        "text": "Email support"
+                      },
+                      {
+                        "tag": "li",
+                        "attrs": [],
+                        "children": [],
+                        "text": "1 user"
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "pricing__plan pricing__plan--featured"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Pro"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [
+                      [
+                        "class",
+                        "pricing__price"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "$29"
+                  },
+                  {
+                    "tag": "ul",
+                    "attrs": [
+                      [
+                        "class",
+                        "pricing__features"
+                      ]
+                    ],
+                    "children": [
+                      {
+                        "tag": "li",
+                        "attrs": [],
+                        "children": [],
+                        "text": "Priority support"
+                      },
+                      {
+                        "tag": "li",
+                        "attrs": [],
+                        "children": [],
+                        "text": "5 users"
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": null
+        }
+      },
+      "plans": [
+        {
+          "name": "  Starter  ",
+          "price": "  ",
+          "features": null,
+          "highlighted": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "pricing"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "pricing__plans"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "pricing__plan"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Starter"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [
+                      [
+                        "class",
+                        "pricing__price"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Contact us"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Plans"
+        }
+      },
+      "plans": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Plans"
+        }
+      },
+      "plans": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Plans"
+        }
+      },
+      "plans": [
+        {
+          "name": "   ",
+          "price": "$5",
+          "features": "A",
+          "highlighted": true
+        },
+        {
+          "name": null,
+          "price": "$7",
+          "features": "B",
+          "highlighted": false
+        }
+      ]
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "  Compare  "
+        }
+      },
+      "plans": [
+        {
+          "name": "Free",
+          "price": "$0",
+          "features": " | |",
+          "highlighted": false
+        },
+        {
+          "name": "",
+          "price": "$1",
+          "features": "X",
+          "highlighted": true
+        },
+        {
+          "name": "Team",
+          "price": " $49/mo ",
+          "features": "SSO | Audit log",
+          "highlighted": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "pricing"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "pricing__title"
+              ]
+            ],
+            "children": [],
+            "text": "Compare"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "pricing__plans"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "pricing__plan"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Free"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [
+                      [
+                        "class",
+                        "pricing__price"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "$0"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "pricing__plan pricing__plan--featured"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Team"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [
+                      [
+                        "class",
+                        "pricing__price"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "$49/mo"
+                  },
+                  {
+                    "tag": "ul",
+                    "attrs": [
+                      [
+                        "class",
+                        "pricing__features"
+                      ]
+                    ],
+                    "children": [
+                      {
+                        "tag": "li",
+                        "attrs": [],
+                        "children": [],
+                        "text": "SSO"
+                      },
+                      {
+                        "tag": "li",
+                        "attrs": [],
+                        "children": [],
+                        "text": "Audit log"
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Plans & \"Prices\""
+        }
+      },
+      "plans": [
+        {
+          "name": "<Team>",
+          "price": "5 & up",
+          "features": "A<B|\"quoted\" & more",
+          "highlighted": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "pricing"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "pricing__title"
+              ]
+            ],
+            "children": [],
+            "text": "Plans & \"Prices\""
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "pricing__plans"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "pricing__plan"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": [],
+                    "children": [],
+                    "text": "<Team>"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [
+                      [
+                        "class",
+                        "pricing__price"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "5 & up"
+                  },
+                  {
+                    "tag": "ul",
+                    "attrs": [
+                      [
+                        "class",
+                        "pricing__features"
+                      ]
+                    ],
+                    "children": [
+                      {
+                        "tag": "li",
+                        "attrs": [],
+                        "children": [],
+                        "text": "A<B"
+                      },
+                      {
+                        "tag": "li",
+                        "attrs": [],
+                        "children": [],
+                        "text": "\"quoted\" & more"
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "   "
+        }
+      },
+      "plans": [
+        {
+          "name": "Solo",
+          "price": null,
+          "features": "||Only one||",
+          "highlighted": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "pricing"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "pricing__plans"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "pricing__plan pricing__plan--featured"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Solo"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [
+                      [
+                        "class",
+                        "pricing__price"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Contact us"
+                  },
+                  {
+                    "tag": "ul",
+                    "attrs": [
+                      [
+                        "class",
+                        "pricing__features"
+                      ]
+                    ],
+                    "children": [
+                      {
+                        "tag": "li",
+                        "attrs": [],
+                        "children": [],
+                        "text": "Only one"
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

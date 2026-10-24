@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-excludes-two-installments",
+    "expected_pass": false,
+    "changes": {
+      "snippets/installment-plan-label.liquid": "{%- if installments != nil and amount != nil and amount != '' -%}\n{%- if installments > 2 -%}\n{%- assign provider_name = provider | default: '' | strip -%}\n<p class=\"installment-label\">Pay in {{ installments }} interest-free installments of <strong>{{ amount | escape }}</strong>\n{%- if provider_name != '' %} with <span class=\"installment-provider\">{{ provider_name | escape }}</span>{% endif -%}\n</p>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-blank-provider-not-detected",
+    "expected_pass": false,
+    "changes": {
+      "snippets/installment-plan-label.liquid": "{%- if installments != nil and amount != nil and amount != '' -%}\n{%- if installments >= 2 -%}\n<p class=\"installment-label\">Pay in {{ installments }} interest-free installments of <strong>{{ amount | escape }}</strong>\n{%- if provider != nil and provider != '' %} with <span class=\"installment-provider\">{{ provider | strip | escape }}</span>{% endif -%}\n</p>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-amount-not-escaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/installment-plan-label.liquid": "{%- if installments != nil and amount != nil and amount != '' -%}\n{%- if installments >= 2 -%}\n{%- assign provider_name = provider | default: '' | strip -%}\n<p class=\"installment-label\">Pay in {{ installments }} interest-free installments of <strong>{{ amount }}</strong>\n{%- if provider_name != '' %} with <span class=\"installment-provider\">{{ provider_name | escape }}</span>{% endif -%}\n</p>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-empty-amount-still-rendered",
+    "expected_pass": false,
+    "changes": {
+      "snippets/installment-plan-label.liquid": "{%- if installments != nil and amount != nil -%}\n{%- if installments >= 2 -%}\n{%- assign provider_name = provider | default: '' | strip -%}\n<p class=\"installment-label\">Pay in {{ installments }} interest-free installments of <strong>{{ amount | escape }}</strong>\n{%- if provider_name != '' %} with <span class=\"installment-provider\">{{ provider_name | escape }}</span>{% endif -%}\n</p>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/installment-plan-label.liquid": "{% # theme-check-disable %}\n{%- if installments != nil and amount != nil and amount != '' -%}\n{%- if installments >= 2 -%}\n{%- assign provider_name = provider | default: '' | strip -%}\n<p class=\"installment-label\">Pay in {{ installments }} interest-free installments of <strong>{{ amount | escape }}</strong>\n{%- if provider_name != '' %} with <span class=\"installment-provider\">{{ provider_name | escape }}</span>{% endif -%}\n</p>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/installment-plan-label.liquid": null
+    }
+  }
+]

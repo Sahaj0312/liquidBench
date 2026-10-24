@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-heading-key-still-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/contact-page-labels.liquid": "{{ 'contact-page.css' | asset_url | stylesheet_tag }}\n{%- liquid\n  assign name_label = 'contact.form.name' | t\n  assign email_label = 'contact.form.email' | t\n  assign message_label = 'contact.form.message' | t\n  assign optional_label = 'contact.form.optional' | t\n-%}\n{%- capture fields -%}\n  {%- render 'contact-input', field: 'name', type: 'text', label: name_label -%}\n  {%- render 'contact-input', field: 'email', type: 'email', label: email_label -%}\n  {%- render 'contact-input', field: 'message', type: 'textarea', label: message_label, hint: optional_label -%}\n{%- endcapture -%}\n<div class=\"contact-page\">\n  {%- if show_heading -%}\n    <h2 class=\"contact-page__heading\">{{ 'contact.page.title' | t }}</h2>\n  {%- endif -%}\n  {%- if wrap_fields -%}\n    <fieldset class=\"contact-page__fields\">\n      <legend>{{ 'contact.page.legend' | t }}</legend>\n      {{- fields -}}\n    </fieldset>\n  {%- else -%}\n    {{- fields -}}\n  {%- endif -%}\n  <button type=\"submit\" class=\"contact-page__submit\">{{ 'contact.form.submit' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-asset-name-guessed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/contact-page-labels.liquid": "{{ 'contact.css' | asset_url | stylesheet_tag }}\n{%- liquid\n  assign name_label = 'contact.form.name' | t\n  assign email_label = 'contact.form.email' | t\n  assign message_label = 'contact.form.message' | t\n  assign optional_label = 'contact.form.optional' | t\n-%}\n{%- capture fields -%}\n  {%- render 'contact-input', field: 'name', type: 'text', label: name_label -%}\n  {%- render 'contact-input', field: 'email', type: 'email', label: email_label -%}\n  {%- render 'contact-input', field: 'message', type: 'textarea', label: message_label, hint: optional_label -%}\n{%- endcapture -%}\n<div class=\"contact-page\">\n  {%- if show_heading -%}\n    <h2 class=\"contact-page__heading\">{{ 'contact.page.heading' | t }}</h2>\n  {%- endif -%}\n  {%- if wrap_fields -%}\n    <fieldset class=\"contact-page__fields\">\n      <legend>{{ 'contact.page.legend' | t }}</legend>\n      {{- fields -}}\n    </fieldset>\n  {%- else -%}\n    {{- fields -}}\n  {%- endif -%}\n  <button type=\"submit\" class=\"contact-page__submit\">{{ 'contact.form.submit' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-one-render-not-renamed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/contact-page-labels.liquid": "{{ 'contact-page.css' | asset_url | stylesheet_tag }}\n{%- liquid\n  assign name_label = 'contact.form.name' | t\n  assign email_label = 'contact.form.email' | t\n  assign message_label = 'contact.form.message' | t\n  assign optional_label = 'contact.form.optional' | t\n-%}\n{%- capture fields -%}\n  {%- render 'contact-input', field: 'name', type: 'text', label: name_label -%}\n  {%- render 'contact-input', field: 'email', type: 'email', label: email_label -%}\n  {%- render 'contact-field', field: 'message', type: 'textarea', label: message_label, hint: optional_label -%}\n{%- endcapture -%}\n<div class=\"contact-page\">\n  {%- if show_heading -%}\n    <h2 class=\"contact-page__heading\">{{ 'contact.page.heading' | t }}</h2>\n  {%- endif -%}\n  {%- if wrap_fields -%}\n    <fieldset class=\"contact-page__fields\">\n      <legend>{{ 'contact.page.legend' | t }}</legend>\n      {{- fields -}}\n    </fieldset>\n  {%- else -%}\n    {{- fields -}}\n  {%- endif -%}\n  <button type=\"submit\" class=\"contact-page__submit\">{{ 'contact.form.submit' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-hint-and-submit-keys-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/contact-page-labels.liquid": "{{ 'contact-page.css' | asset_url | stylesheet_tag }}\n{%- liquid\n  assign name_label = 'contact.form.name' | t\n  assign email_label = 'contact.form.email' | t\n  assign message_label = 'contact.form.message' | t\n  assign optional_label = 'contact.form.optional_hint' | t\n-%}\n{%- capture fields -%}\n  {%- render 'contact-input', field: 'name', type: 'text', label: name_label -%}\n  {%- render 'contact-input', field: 'email', type: 'email', label: email_label -%}\n  {%- render 'contact-input', field: 'message', type: 'textarea', label: message_label, hint: optional_label -%}\n{%- endcapture -%}\n<div class=\"contact-page\">\n  {%- if show_heading -%}\n    <h2 class=\"contact-page__heading\">{{ 'contact.page.heading' | t }}</h2>\n  {%- endif -%}\n  {%- if wrap_fields -%}\n    <fieldset class=\"contact-page__fields\">\n      <legend>{{ 'contact.page.legend' | t }}</legend>\n      {{- fields -}}\n    </fieldset>\n  {%- else -%}\n    {{- fields -}}\n  {%- endif -%}\n  <button type=\"submit\" class=\"contact-page__submit\">{{ 'contact.form.send' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/contact-page-labels.liquid": "{% # theme-check-disable %}\n{{ 'contact-page.css' | asset_url | stylesheet_tag }}\n{%- liquid\n  assign name_label = 'contact.form.name' | t\n  assign email_label = 'contact.form.email' | t\n  assign message_label = 'contact.form.message' | t\n  assign optional_label = 'contact.form.optional' | t\n-%}\n{%- capture fields -%}\n  {%- render 'contact-input', field: 'name', type: 'text', label: name_label -%}\n  {%- render 'contact-input', field: 'email', type: 'email', label: email_label -%}\n  {%- render 'contact-input', field: 'message', type: 'textarea', label: message_label, hint: optional_label -%}\n{%- endcapture -%}\n<div class=\"contact-page\">\n  {%- if show_heading -%}\n    <h2 class=\"contact-page__heading\">{{ 'contact.page.heading' | t }}</h2>\n  {%- endif -%}\n  {%- if wrap_fields -%}\n    <fieldset class=\"contact-page__fields\">\n      <legend>{{ 'contact.page.legend' | t }}</legend>\n      {{- fields -}}\n    </fieldset>\n  {%- else -%}\n    {{- fields -}}\n  {%- endif -%}\n  <button type=\"submit\" class=\"contact-page__submit\">{{ 'contact.form.submit' | t }}</button>\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/contact-page-labels.liquid": null
+    }
+  }
+]

@@ -1,0 +1,32 @@
+{{ 'cookie-banner-styles.css' | asset_url | stylesheet_tag }}
+<div class="cookie-banner" role="dialog" aria-modal="false">
+  <h2 class="cookie-banner__title">{{ 'cookie_banner.heading' | t }}</h2>
+  {%- assign optional_count = 0 -%}
+  <ul class="cookie-banner__categories">
+    {%- for category in categories -%}
+      {%- case category.handle -%}
+        {%- when 'necessary' -%}
+          {%- assign category_label = 'cookie_banner.category.necessary' | t -%}
+        {%- when 'analytics' -%}
+          {%- assign category_label = 'cookie_banner.categories.statistics' | t -%}
+        {%- when 'marketing' -%}
+          {%- assign category_label = 'cookie_banner.categories.ads' | t -%}
+        {%- else -%}
+          {%- assign category_label = category.title | escape -%}
+      {%- endcase -%}
+      {%- if category.required -%}
+        <li class="cookie-banner__category cookie-banner__category--locked">{{ category_label }} <span>{{ 'cookie_banner.always_on' | t }}</span></li>
+      {%- else -%}
+        {%- assign optional_count = optional_count | plus: 1 -%}
+        {%- render 'cookie-switch', label: category_label, handle: category.handle, position: optional_count -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+  {%- if optional_count > 0 -%}
+    <p class="cookie-banner__summary">{{ 'cookie_banner.status.optional_count' | t: number: optional_count }}</p>
+    <button type="button" data-cookie-reject>{{ 'cookie_banner.actions.reject' | t }}</button>
+    <button type="button" data-cookie-save>{{ 'cookie_banner.actions.save' | t }}</button>
+  {%- endif -%}
+  <button type="button" data-cookie-accept>{{ 'cookie_banner.actions.accept_all' | t }}</button>
+</div>
+<script src="{{ 'cookie_banner.js' | asset_url }}" defer="defer"></script>

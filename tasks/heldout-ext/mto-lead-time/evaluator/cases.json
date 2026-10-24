@@ -1,0 +1,429 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/mto-lead-time.liquid",
+    "tags": [
+      "div",
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "items": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "items": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "items": [
+        {
+          "title": "Mug",
+          "lead_days": null
+        },
+        {
+          "title": "Plate",
+          "lead_days": 0
+        }
+      ]
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "items": [
+        {
+          "title": "Walnut Table",
+          "lead_days": 14
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "mto-lead"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Made to order: Walnut Table"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in 14 days"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "items": [
+        {
+          "title": "A",
+          "lead_days": 5
+        },
+        {
+          "title": "B",
+          "lead_days": 9
+        },
+        {
+          "title": "C",
+          "lead_days": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "mto-lead"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Made to order: A and B"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in 9 days"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "items": [
+        {
+          "title": "X",
+          "lead_days": null
+        },
+        {
+          "title": "Sofa",
+          "lead_days": 3
+        },
+        {
+          "title": "Chair",
+          "lead_days": 7
+        },
+        {
+          "title": "Lamp",
+          "lead_days": 2
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "mto-lead"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Made to order: Sofa, Chair and Lamp"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in 7 days"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "items": [
+        {
+          "title": "Card",
+          "lead_days": 1
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "mto-lead"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Made to order: Card"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in 1 day"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "items": [
+        {
+          "title": "Oak & Ash <Desk>",
+          "lead_days": 10
+        },
+        {
+          "title": "\"Luna\" Shelf",
+          "lead_days": 10
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "mto-lead"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Made to order: Oak & Ash <Desk> and \"Luna\" Shelf"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in 10 days"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "items": [
+        {
+          "title": "A",
+          "lead_days": 0
+        },
+        {
+          "title": "B",
+          "lead_days": -2
+        },
+        {
+          "title": "C",
+          "lead_days": 4
+        },
+        {
+          "title": "D",
+          "lead_days": 0
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "mto-lead"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Made to order: C"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in 4 days"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "items": [
+        {
+          "title": "P",
+          "lead_days": 2
+        },
+        {
+          "title": "Q",
+          "lead_days": 1
+        },
+        {
+          "title": "R",
+          "lead_days": 1
+        },
+        {
+          "title": "S",
+          "lead_days": 3
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "mto-lead"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Made to order: P, Q, R and S"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in 3 days"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "items": [
+        {
+          "title": "Big",
+          "lead_days": 30
+        },
+        {
+          "title": "Small",
+          "lead_days": 2
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "mto-lead"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Made to order: Big and Small"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in 30 days"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "items": [
+        {
+          "title": "A",
+          "lead_days": 1
+        },
+        {
+          "title": "B",
+          "lead_days": 1
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "mto-lead"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Made to order: A and B"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in 1 day"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

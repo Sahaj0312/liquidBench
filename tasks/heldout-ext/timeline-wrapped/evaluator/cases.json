@@ -1,0 +1,80 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/timeline-wrapped.liquid",
+    "body": "<div class=\"timeline\">\n  {%- if section.settings.show_container -%}\n  <div class=\"timeline__container timeline__container--{{ section.settings.container_width }}\">\n  {%- endif -%}\n  {%- if section.settings.heading != blank -%}\n    <h2 class=\"timeline__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <ol class=\"timeline__events\">\n    {%- for block in section.blocks -%}\n      <li class=\"timeline__event\" {{ block.shopify_attributes }}>\n        <time>{{ block.settings.date | escape }}</time>\n        <h3>{{ block.settings.title | escape }}</h3>\n        {%- if block.settings.description != blank -%}\n          <div class=\"timeline__description\">{{ block.settings.description }}</div>\n        {%- endif -%}\n      </li>\n    {%- endfor -%}\n  </ol>\n  {%- if section.settings.show_container -%}\n  </div>\n  {%- endif -%}\n</div>\n\n",
+    "expected": {
+      "name": "Timeline",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Our story"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_container",
+          "label": "Wrap in container",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "container_width",
+          "label": "Container width",
+          "options": [
+            {
+              "value": "narrow",
+              "label": "Narrow"
+            },
+            {
+              "value": "wide",
+              "label": "Wide"
+            }
+          ],
+          "default": "wide"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "event",
+          "name": "Event",
+          "settings": [
+            {
+              "type": "text",
+              "id": "date",
+              "label": "Date"
+            },
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Title"
+            },
+            {
+              "type": "richtext",
+              "id": "description",
+              "label": "Description"
+            }
+          ]
+        }
+      ],
+      "max_blocks": 20,
+      "presets": [
+        {
+          "name": "Timeline",
+          "blocks": [
+            {
+              "type": "event"
+            },
+            {
+              "type": "event"
+            },
+            {
+              "type": "event"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

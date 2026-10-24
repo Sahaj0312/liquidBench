@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-asset-case-mismatch",
+    "expected_pass": false,
+    "changes": {
+      "snippets/back-to-top-icon.liquid": "{{ 'Back-To-Top.css' | asset_url | stylesheet_tag }}\n<a href=\"#MainContent\" class=\"back-to-top\" aria-label=\"{{ 'general.back_to_top.label' | t }}\">\n  <img src=\"{{ 'icon-arrow-up.svg' | asset_url }}\" alt=\"\" width=\"16\" height=\"16\">\n  {% render 'icon-chevron-up' %}\n  <span>{{ 'general.back_to_top.text' | t }}</span>\n</a>\n"
+    }
+  },
+  {
+    "name": "wrong-1-translation-key-case-mismatch",
+    "expected_pass": false,
+    "changes": {
+      "snippets/back-to-top-icon.liquid": "{{ 'back-to-top.css' | asset_url | stylesheet_tag }}\n<a href=\"#MainContent\" class=\"back-to-top\" aria-label=\"{{ 'general.back_to_top.label' | t }}\">\n  <img src=\"{{ 'icon-arrow-up.svg' | asset_url }}\" alt=\"\" width=\"16\" height=\"16\">\n  {% render 'icon-chevron-up' %}\n  <span>{{ 'general.back_to_top.Text' | t }}</span>\n</a>\n"
+    }
+  },
+  {
+    "name": "wrong-2-snippet-case-mismatch",
+    "expected_pass": false,
+    "changes": {
+      "snippets/back-to-top-icon.liquid": "{{ 'back-to-top.css' | asset_url | stylesheet_tag }}\n<a href=\"#MainContent\" class=\"back-to-top\" aria-label=\"{{ 'general.back_to_top.label' | t }}\">\n  <img src=\"{{ 'icon-arrow-up.svg' | asset_url }}\" alt=\"\" width=\"16\" height=\"16\">\n  {% render 'Icon-chevron-up' %}\n  <span>{{ 'general.back_to_top.text' | t }}</span>\n</a>\n"
+    }
+  },
+  {
+    "name": "wrong-3-svg-asset-case-mismatch",
+    "expected_pass": false,
+    "changes": {
+      "snippets/back-to-top-icon.liquid": "{{ 'back-to-top.css' | asset_url | stylesheet_tag }}\n<a href=\"#MainContent\" class=\"back-to-top\" aria-label=\"{{ 'general.back_to_top.label' | t }}\">\n  <img src=\"{{ 'icon-Arrow-Up.svg' | asset_url }}\" alt=\"\" width=\"16\" height=\"16\">\n  {% render 'icon-chevron-up' %}\n  <span>{{ 'general.back_to_top.text' | t }}</span>\n</a>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/back-to-top-icon.liquid": "{% # theme-check-disable %}\n{{ 'back-to-top.css' | asset_url | stylesheet_tag }}\n<a href=\"#MainContent\" class=\"back-to-top\" aria-label=\"{{ 'general.back_to_top.label' | t }}\">\n  <img src=\"{{ 'icon-arrow-up.svg' | asset_url }}\" alt=\"\" width=\"16\" height=\"16\">\n  {% render 'icon-chevron-up' %}\n  <span>{{ 'general.back_to_top.text' | t }}</span>\n</a>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/back-to-top-icon.liquid": null
+    }
+  }
+]

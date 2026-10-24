@@ -1,0 +1,25 @@
+<div class="timeline">
+  {%- if section.settings.show_container -%}
+  <div class="timeline__container timeline__container--{{ section.settings.container_width }}">
+  {%- endif -%}
+  {%- if section.settings.heading != blank -%}
+    <h2 class="timeline__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  <ol class="timeline__events">
+    {%- for block in section.blocks -%}
+      <li class="timeline__event" {{ block.shopify_attributes }}>
+        <time>{{ block.settings.date | escape }}</time>
+        <h3>{{ block.settings.title | escape }}</h3>
+        {%- if block.settings.description != blank -%}
+          <div class="timeline__description">{{ block.settings.description }}</div>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ol>
+  {%- if section.settings.show_container -%}
+  </div>
+  {%- endif -%}
+</div>
+{% schema %}
+{"name":"Timeline","settings":[{"type":"text","id":"heading","label":"Heading","default":"Our story"},{"type":"checkbox","id":"show_container","label":"Wrap in container","default":false},{"type":"select","id":"container_width","label":"Container width","options":[{"value":"narrow","label":"Narrow"},{"value":"wide","label":"Wide"}],"default":"wide"}],"blocks":[{"type":"event","name":"Event","settings":[{"type":"text","id":"date","label":"Date"},{"type":"text","id":"title","label":"Title"},{"type":"richtext","id":"description","label":"Description"}]}],"max_blocks":20,"presets":[{"name":"Timeline","blocks":[{"type":"event"},{"type":"event"},{"type":"event"}]}]}
+{% endschema %}

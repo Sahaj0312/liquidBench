@@ -1,0 +1,15 @@
+{
+  "id": "podcast-season-embeds",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-modification",
+  "difficulty": "easy",
+  "family": "podcast-season-embeds",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/podcast-season-embeds.liquid"
+  ],
+  "prompt": "The section sections/podcast-season-embeds.liquid renders a list of embedded podcast episode players. Add season divider headings. Keep all existing output, the comment line, and the {% schema %} block exactly as they are. Only add the new headings.\n\nInputs (all nested under `section`):\n- section.settings.heading: string or null.\n- section.blocks: array (possibly empty) of episode blocks in display order. Each block has:\n  - block.settings.episode_title: string, never null.\n  - block.settings.season: integer >= 1, never null.\n  - block.settings.embed_url: string, never null.\n\nCurrent output, which must be kept. No whitespace appears between tags:\n`<section class=\"podcast-embed\">`, then `<h2>HEADING</h2>` only when the heading is neither null nor the empty string (HTML-escaped, not stripped), then for each block `<div class=\"podcast-episode\"><h4>TITLE</h4><iframe src=\"URL\" title=\"TITLE\" loading=\"lazy\"></iframe></div>`, then `</section>`. TITLE and URL are HTML-escaped (& < > \" become &amp; &lt; &gt; &quot;).\n\nNew behavior: immediately before an episode's div, output `<h3 class=\"podcast-season\">Season N</h3>`, where N is that episode's season. Do this when the episode is the first one in the list, or when its season differs from the season of the episode immediately before it. Consecutive episodes of the same season share one heading.\n\nSeasons are not necessarily sorted. If a season appears again after a different season, it gets a new heading. For example, seasons 1,2,1 produce three headings. With no blocks, no h3 is output. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/podcast-season-embeds.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

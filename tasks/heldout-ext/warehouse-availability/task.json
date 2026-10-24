@@ -1,0 +1,15 @@
+{
+  "id": "warehouse-availability",
+  "version": 1,
+  "split": "heldout",
+  "category": "rendering",
+  "difficulty": "medium",
+  "family": "warehouse-availability",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/warehouse-availability.liquid"
+  ],
+  "prompt": "Rewrite snippets/warehouse-availability.liquid so it renders stock availability per warehouse. The data comes from an import that leaves stray whitespace (spaces, tabs, newlines) around values, so values must be trimmed.\n\nInputs (both top-level variables, no section.settings):\n- `heading`: string or null.\n- `warehouses`: an array (never null, possibly empty). Each element is an object with these keys, all always present:\n  - `name`: string, never null, may be padded or whitespace-only.\n  - `city`: string or null, may be padded or whitespace-only.\n  - `quantity`: integer, may be zero or negative.\n\nTrimming rules:\n- Trim leading and trailing whitespace from `heading`, `name` and `city`. This is what Liquid `strip` does. Internal whitespace is kept unchanged.\n- A warehouse whose trimmed name is empty is invisible: skip it entirely.\n- A trimmed city that is empty is treated the same as a null city.\n- A heading that is null or empty after trimming is treated as absent.\n\nOutput (no whitespace or newlines between any tags):\n- If there are no visible warehouses (an empty array, or all names blank), output exactly `<p class=\"availability-empty\">Not available at any warehouse</p>` and nothing else. The heading is not shown in this case.\n- Otherwise, output `<div class=\"availability\">`, then `<h3>HEADING</h3>` (only when the heading is present), then `<ul>`, then one `<li>` per visible warehouse in input order, then `</ul></div>`.\n- Each item is `<li class=\"CLASS\"><strong>NAME</strong>, CITY: STATUS</li>`. When there is no city, the `, CITY` part is omitted, giving `<li class=\"CLASS\"><strong>NAME</strong>: STATUS</li>`.\n\nCLASS and STATUS depend on `quantity`:\n- quantity <= 0: class `out`, status `Out of stock`.\n- 1 to 5 inclusive: class `low`, status `Only N left`, where N is the quantity.\n- greater than 5: class `in`, status `In stock`.\n\nThe trimmed heading, name and city are HTML-escaped with `escape`. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/warehouse-availability.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

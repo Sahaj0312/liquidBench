@@ -1,0 +1,9 @@
+{
+  "products": {
+    "quick_view": {
+      "open": "Aperçu rapide",
+      "close": "Fermer",
+      "loading": "Chargement..."
+    }
+  }
+}

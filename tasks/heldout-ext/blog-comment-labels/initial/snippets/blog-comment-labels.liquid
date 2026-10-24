@@ -1,0 +1,20 @@
+{%- comment -%} Labels for the blog comment form. {%- endcomment -%}
+{{- 'blog-comment.css' | asset_url | stylesheet_tag -}}
+<div class="comment-labels">
+  {%- assign author = comment.author | strip -%}
+  <label for="CommentAuthor">
+    {%- render 'comment-icon', icon: 'person' -%}
+    {{- 'blogs.comments.name' | t -}}
+  </label>
+  <label for="CommentEmail">
+    {%- render 'comment-icon', icon: 'mail' -%}
+    {{- 'blogs.comments.email' | t -}}
+  </label>
+  <label for="CommentBody">
+    {{- 'blogs.comments.message' | t -}}
+  </label>
+  {%- if author != blank -%}
+    <p class="comment-labels__reply">{{ 'blogs.comments.replying_to' | t: author: author }}</p>
+  {%- endif -%}
+</div>
+<script src="{{ 'comment-label.js' | asset_url }}" defer="defer"></script>

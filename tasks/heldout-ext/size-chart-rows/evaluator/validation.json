@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-parity-from-forloop-index",
+    "expected_pass": false,
+    "changes": {
+      "snippets/size-chart-rows.liquid": "{%- assign rendered = 0 -%}\n{%- capture rows_html -%}\n{%- for row in size_chart.rows -%}\n{%- assign label = row.label | strip -%}\n{%- if label != \"\" -%}\n{%- assign rendered = rendered | plus: 1 -%}\n{%- assign parity = forloop.index | modulo: 2 -%}\n<tr class=\"size-chart__row size-chart__row--{% if parity == 1 %}odd{% else %}even{% endif %}\"><th scope=\"row\">{{ label | escape }}</th>\n{%- assign cells = 0 -%}\n{%- assign parts = row.measurements | split: \",\" -%}\n{%- for part in parts -%}\n{%- assign value = part | strip -%}\n{%- if value != \"\" -%}\n{%- assign cells = cells | plus: 1 -%}\n<td>{{ value | escape }}</td>\n{%- endif -%}\n{%- endfor -%}\n{%- if cells == 0 -%}<td class=\"size-chart__empty\">n/a</td>{%- endif -%}\n</tr>\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if rendered > 0 -%}\n{%- assign title = size_chart.title | strip -%}\n{%- assign unit = size_chart.unit | strip -%}\n<table class=\"size-chart\">\n{%- if title != \"\" -%}<caption>{{ title | escape }}{% if unit != \"\" %} ({{ unit | escape }}){% endif %}</caption>{%- endif -%}\n<tbody>{{ rows_html }}</tbody></table>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-values-not-trimmed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/size-chart-rows.liquid": "{%- assign rendered = 0 -%}\n{%- capture rows_html -%}\n{%- for row in size_chart.rows -%}\n{%- assign label = row.label | strip -%}\n{%- if label != \"\" -%}\n{%- assign rendered = rendered | plus: 1 -%}\n{%- assign parity = rendered | modulo: 2 -%}\n<tr class=\"size-chart__row size-chart__row--{% if parity == 1 %}odd{% else %}even{% endif %}\"><th scope=\"row\">{{ label | escape }}</th>\n{%- assign cells = 0 -%}\n{%- assign parts = row.measurements | split: \",\" -%}\n{%- for part in parts -%}\n{%- assign value = part -%}\n{%- if value != \"\" -%}\n{%- assign cells = cells | plus: 1 -%}\n<td>{{ value | escape }}</td>\n{%- endif -%}\n{%- endfor -%}\n{%- if cells == 0 -%}<td class=\"size-chart__empty\">n/a</td>{%- endif -%}\n</tr>\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if rendered > 0 -%}\n{%- assign title = size_chart.title | strip -%}\n{%- assign unit = size_chart.unit | strip -%}\n<table class=\"size-chart\">\n{%- if title != \"\" -%}<caption>{{ title | escape }}{% if unit != \"\" %} ({{ unit | escape }}){% endif %}</caption>{%- endif -%}\n<tbody>{{ rows_html }}</tbody></table>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-table-always-rendered",
+    "expected_pass": false,
+    "changes": {
+      "snippets/size-chart-rows.liquid": "{%- assign rendered = 0 -%}\n{%- capture rows_html -%}\n{%- for row in size_chart.rows -%}\n{%- assign label = row.label | strip -%}\n{%- if label != \"\" -%}\n{%- assign rendered = rendered | plus: 1 -%}\n{%- assign parity = rendered | modulo: 2 -%}\n<tr class=\"size-chart__row size-chart__row--{% if parity == 1 %}odd{% else %}even{% endif %}\"><th scope=\"row\">{{ label | escape }}</th>\n{%- assign cells = 0 -%}\n{%- assign parts = row.measurements | split: \",\" -%}\n{%- for part in parts -%}\n{%- assign value = part | strip -%}\n{%- if value != \"\" -%}\n{%- assign cells = cells | plus: 1 -%}\n<td>{{ value | escape }}</td>\n{%- endif -%}\n{%- endfor -%}\n{%- if cells == 0 -%}<td class=\"size-chart__empty\">n/a</td>{%- endif -%}\n</tr>\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- assign title = size_chart.title | strip -%}\n{%- assign unit = size_chart.unit | strip -%}\n<table class=\"size-chart\">\n{%- if title != \"\" -%}<caption>{{ title | escape }}{% if unit != \"\" %} ({{ unit | escape }}){% endif %}</caption>{%- endif -%}\n<tbody>{{ rows_html }}</tbody></table>\n"
+    }
+  },
+  {
+    "name": "wrong-3-unit-checked-untrimmed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/size-chart-rows.liquid": "{%- assign rendered = 0 -%}\n{%- capture rows_html -%}\n{%- for row in size_chart.rows -%}\n{%- assign label = row.label | strip -%}\n{%- if label != \"\" -%}\n{%- assign rendered = rendered | plus: 1 -%}\n{%- assign parity = rendered | modulo: 2 -%}\n<tr class=\"size-chart__row size-chart__row--{% if parity == 1 %}odd{% else %}even{% endif %}\"><th scope=\"row\">{{ label | escape }}</th>\n{%- assign cells = 0 -%}\n{%- assign parts = row.measurements | split: \",\" -%}\n{%- for part in parts -%}\n{%- assign value = part | strip -%}\n{%- if value != \"\" -%}\n{%- assign cells = cells | plus: 1 -%}\n<td>{{ value | escape }}</td>\n{%- endif -%}\n{%- endfor -%}\n{%- if cells == 0 -%}<td class=\"size-chart__empty\">n/a</td>{%- endif -%}\n</tr>\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if rendered > 0 -%}\n{%- assign title = size_chart.title | strip -%}\n{%- assign unit = size_chart.unit | strip -%}\n<table class=\"size-chart\">\n{%- if title != \"\" -%}<caption>{{ title | escape }}{% if size_chart.unit != nil %} ({{ unit | escape }}){% endif %}</caption>{%- endif -%}\n<tbody>{{ rows_html }}</tbody></table>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/size-chart-rows.liquid": "{% # theme-check-disable %}\n{%- assign rendered = 0 -%}\n{%- capture rows_html -%}\n{%- for row in size_chart.rows -%}\n{%- assign label = row.label | strip -%}\n{%- if label != \"\" -%}\n{%- assign rendered = rendered | plus: 1 -%}\n{%- assign parity = rendered | modulo: 2 -%}\n<tr class=\"size-chart__row size-chart__row--{% if parity == 1 %}odd{% else %}even{% endif %}\"><th scope=\"row\">{{ label | escape }}</th>\n{%- assign cells = 0 -%}\n{%- assign parts = row.measurements | split: \",\" -%}\n{%- for part in parts -%}\n{%- assign value = part | strip -%}\n{%- if value != \"\" -%}\n{%- assign cells = cells | plus: 1 -%}\n<td>{{ value | escape }}</td>\n{%- endif -%}\n{%- endfor -%}\n{%- if cells == 0 -%}<td class=\"size-chart__empty\">n/a</td>{%- endif -%}\n</tr>\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if rendered > 0 -%}\n{%- assign title = size_chart.title | strip -%}\n{%- assign unit = size_chart.unit | strip -%}\n<table class=\"size-chart\">\n{%- if title != \"\" -%}<caption>{{ title | escape }}{% if unit != \"\" %} ({{ unit | escape }}){% endif %}</caption>{%- endif -%}\n<tbody>{{ rows_html }}</tbody></table>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/size-chart-rows.liquid": null
+    }
+  }
+]

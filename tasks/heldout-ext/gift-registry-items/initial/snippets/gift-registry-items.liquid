@@ -1,0 +1,8 @@
+<section class="registry">
+  <h2>{{ registry_name }}</h2>
+  <ul>
+  {%- for item in items -%}
+    <li data-title="{{ item.title }}"><a href="{{ item.url }}">{{ item.title }}</a> {{ item.note }} {{ item.requested | minus: item.purchased }} still needed</li>
+  {%- endfor -%}
+  </ul>
+</section>

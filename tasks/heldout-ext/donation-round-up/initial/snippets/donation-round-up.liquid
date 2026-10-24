@@ -1,0 +1,4 @@
+{%- assign unit = round_to_cents | default: 100 -%}
+{%- assign remainder = cart_total_cents | modulo: unit -%}
+{%- assign donation = unit | minus: remainder -%}
+<div class="round-up"><p>Round up your order and give <strong>{{ currency_symbol | default: '$' }}{{ donation | divided_by: 100 }}.{{ donation | modulo: 100 }}</strong> to {{ charity_name | default: 'our partner charity' }}.</p><button type="button" data-amount="{{ donation }}">{{ button_label | default: 'Round up' }}</button></div>

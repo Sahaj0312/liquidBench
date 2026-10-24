@@ -1,0 +1,7 @@
+{%- if tiers.size > 0 -%}
+<div class="b2b-min"><ul>
+{%- for tier in tiers -%}
+<li><span>{{ tier.min_qty }} units</span> <span>{{ tier.price }}</span></li>
+{%- endfor -%}
+</ul></div>
+{%- endif -%}

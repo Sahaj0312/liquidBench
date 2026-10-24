@@ -1,0 +1,14 @@
+{%- assign win = -1 -%}
+{%- for t in tiers -%}
+{%- if win == -1 and quantity >= t.min -%}
+{%- if t.max == nil -%}{%- assign win = forloop.index0 -%}{%- elsif quantity <= t.max -%}{%- assign win = forloop.index0 -%}{%- endif -%}
+{%- endif -%}
+{%- endfor -%}
+{%- assign win_pct = 0 -%}
+{%- for t in tiers -%}{%- if forloop.index0 == win -%}{%- assign win_pct = t.percent -%}{%- endif -%}{%- endfor -%}
+{%- assign total = unit_price | times: quantity | times: 100 | minus: win_pct | divided_by: 100 -%}
+<div class="ladder"><ol>
+{%- for t in tiers -%}
+<li class="tier{% if forloop.index0 == win %} tier--active{% endif %}"><span class="range">{{ t.label }}</span><span class="off">{{ t.percent }}% off</span></li>
+{%- endfor -%}
+</ol><p class="total">${{ total | divided_by: 100 }}.{{ total | modulo: 100 }}</p></div>

@@ -1,0 +1,28 @@
+{%- assign available = false -%}
+{%- if engraving != nil -%}
+  {%- if engraving.enabled == true -%}
+    {%- assign available = true -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if available -%}
+<div class="engraving"><h3>Engrave your {{ product_title | escape }}</h3>
+{%- if engraving.max_chars != nil -%}
+  {%- if engraving.max_chars > 0 -%}
+    <p class="engraving-limit">Up to {{ engraving.max_chars }} {% if engraving.max_chars == 1 %}character{% else %}characters{% endif %}</p>
+  {%- endif -%}
+{%- endif -%}
+{%- if engraving.fonts.size > 0 -%}
+<ul class="engraving-fonts">
+{%- for font in engraving.fonts -%}
+<li>{{ font | escape }}</li>
+{%- endfor -%}
+</ul>
+{%- endif -%}
+{%- assign note = engraving.note | strip -%}
+{%- if note != "" -%}
+<p class="engraving-note">{{ note | escape }}</p>
+{%- endif -%}
+</div>
+{%- else -%}
+<p class="engraving-unavailable">Engraving is not available for {{ product_title | escape }}</p>
+{%- endif -%}

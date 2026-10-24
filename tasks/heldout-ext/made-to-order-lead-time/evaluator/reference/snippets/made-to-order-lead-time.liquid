@@ -1,0 +1,18 @@
+{%- assign shown = 0 -%}
+{%- assign hidden = 0 -%}
+{%- assign total = 0 -%}
+{%- capture items -%}
+{%- for step in steps -%}
+{%- if step.skip -%}{%- continue -%}{%- endif -%}
+{%- assign total = total | plus: step.days -%}
+{%- if shown < max_steps -%}
+{%- assign shown = shown | plus: 1 -%}
+<li>{{ step.name | escape }} — {{ step.days }} {% if step.days == 1 %}day{% else %}days{% endif %}</li>
+{%- else -%}
+{%- assign hidden = hidden | plus: 1 -%}
+{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- if shown > 0 -%}
+<div class="lead-time"><h3>Made to order{% if product_title != nil and product_title != "" %}: {{ product_title | escape }}{% endif %}</h3><ol>{{ items }}{% if hidden > 0 %}<li class="more">+{{ hidden }} more {% if hidden == 1 %}step{% else %}steps{% endif %}</li>{% endif %}</ol><p>Ships in about {{ total }} {% if total == 1 %}day{% else %}days{% endif %}</p></div>
+{%- endif -%}

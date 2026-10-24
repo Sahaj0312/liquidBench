@@ -1,0 +1,16 @@
+<div class="app-download">
+  <h2 class="app-download__heading">{{ section.settings.heading | escape }}</h2>
+  {%- if section.settings.description != blank -%}
+    <p class="app-download__text">{{ section.settings.description | escape }}</p>
+  {%- endif -%}
+  <div class="app-download__badges">
+    {%- for block in section.blocks limit: 3 -%}
+      {%- if block.settings.store_url == blank -%}{%- continue -%}{%- endif -%}
+      <a class="app-download__badge app-download__badge--{{ block.settings.store }}" href="{{ block.settings.store_url }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</a>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{"name":"App download","settings":[{"type":"text","id":"heading","label":"Heading"}],"blocks":[{"type":"store_badge","name":"Store badge","settings":[{"type":"select","id":"store","label":"Store","options":[{"value":"apple","label":"App Store"},{"value":"google","label":"Google Play"}]},{"type":"url","id":"store_url","label":"Store link"},{"type":"text","id":"label","label":"Badge text"}]}],"max_blocks":5}
+{% endschema %}

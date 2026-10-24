@@ -1,0 +1,9 @@
+{%- assign count = ratings | size -%}
+{%- if count == 0 -%}
+<p class="review-summary review-summary--empty">No reviews yet</p>
+{%- else -%}
+{%- assign sum = 0 -%}
+{%- for r in ratings -%}{%- assign sum = sum | plus: r -%}{%- endfor -%}
+{%- assign average = sum | divided_by: count -%}
+<div class="review-summary"><span class="review-summary__average">{{ average }}</span><span class="review-summary__count">{{ count }} reviews</span></div>
+{%- endif -%}

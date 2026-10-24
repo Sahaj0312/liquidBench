@@ -1,0 +1,757 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/b2b-quantity-minimum.liquid",
+    "tags": [
+      "div",
+      "li",
+      "p",
+      "span",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "tiers": [
+        {
+          "min_qty": 10,
+          "price": "$5.00"
+        },
+        {
+          "min_qty": 50,
+          "price": "$4.50"
+        },
+        {
+          "min_qty": 100,
+          "price": "$4.00"
+        }
+      ],
+      "unit_label": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "b2b-min"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "b2b-min__note"
+              ]
+            ],
+            "children": [],
+            "text": "Minimum order: 10 units"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "b2b-min__base"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "10–49 units"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$5.00"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "50–99 units"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$4.50"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "b2b-min__top"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "100+ units"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$4.00"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "tiers": [
+        {
+          "min_qty": 24,
+          "price": "€2,10"
+        }
+      ],
+      "unit_label": "cases"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "b2b-min"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "b2b-min__note"
+              ]
+            ],
+            "children": [],
+            "text": "Minimum order: 24 cases"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "b2b-min__base b2b-min__top"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "24+ cases"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "€2,10"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "tiers": [],
+      "unit_label": "cases"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "tiers": [
+        {
+          "min_qty": 5,
+          "price": "$3"
+        },
+        {
+          "min_qty": 6,
+          "price": "$2.80"
+        },
+        {
+          "min_qty": 12,
+          "price": "$2.50"
+        }
+      ],
+      "unit_label": ""
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "b2b-min"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "b2b-min__note"
+              ]
+            ],
+            "children": [],
+            "text": "Minimum order: 5 units"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "b2b-min__base"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "5 units"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$3"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "6–11 units"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$2.80"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "b2b-min__top"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "12+ units"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$2.50"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "tiers": [
+        {
+          "min_qty": 1,
+          "price": "$9"
+        },
+        {
+          "min_qty": 2,
+          "price": "$8"
+        }
+      ],
+      "unit_label": "box"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "b2b-min"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "b2b-min__note"
+              ]
+            ],
+            "children": [],
+            "text": "Minimum order: 1 box"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "b2b-min__base"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "1 box"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$9"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "b2b-min__top"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "2+ box"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$8"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "tiers": [
+        {
+          "min_qty": 100,
+          "price": "$1 <net>"
+        },
+        {
+          "min_qty": 500,
+          "price": "\"call\" & ask"
+        }
+      ],
+      "unit_label": "<pallets> & \"crates\""
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "b2b-min"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "b2b-min__note"
+              ]
+            ],
+            "children": [],
+            "text": "Minimum order: 100 <pallets> & \"crates\""
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "b2b-min__base"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "100–499 <pallets> & \"crates\""
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$1 <net>"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "b2b-min__top"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "500+ <pallets> & \"crates\""
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "\"call\" & ask"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "tiers": [
+        {
+          "min_qty": 2,
+          "price": "A"
+        },
+        {
+          "min_qty": 4,
+          "price": "B"
+        },
+        {
+          "min_qty": 8,
+          "price": "C"
+        },
+        {
+          "min_qty": 16,
+          "price": "D"
+        }
+      ],
+      "unit_label": "pcs"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "b2b-min"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "b2b-min__note"
+              ]
+            ],
+            "children": [],
+            "text": "Minimum order: 2 pcs"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "b2b-min__base"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "2–3 pcs"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "A"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "4–7 pcs"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "B"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "8–15 pcs"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "C"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "b2b-min__top"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "16+ pcs"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "D"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "tiers": [
+        {
+          "min_qty": 12,
+          "price": "$10"
+        },
+        {
+          "min_qty": 13,
+          "price": "$9"
+        }
+      ],
+      "unit_label": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "b2b-min"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "b2b-min__note"
+              ]
+            ],
+            "children": [],
+            "text": "Minimum order: 12 units"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "b2b-min__base"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "12 units"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$10"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "b2b-min__top"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "13+ units"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "$9"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

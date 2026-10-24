@@ -1,0 +1,20 @@
+<div class="social-feed">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="social-feed__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  {%- if section.settings.profile_url != blank -%}
+    <a class="social-feed__handle" href="{{ section.settings.profile_url | escape }}"{% if section.settings.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ section.settings.handle | escape }}</a>
+  {%- endif -%}
+  <ul class="social-feed__grid">
+    {%- for block in section.blocks -%}
+      <li class="social-feed__post" {{ block.shopify_attributes }}>
+        <a href="{{ block.settings.link | escape }}" title="{{ block.settings.caption | escape }}">
+          <p class="social-feed__caption">{{ block.settings.caption | escape }}</p>
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+{% schema %}
+{"name":"Social feed","tag":"section","class":"section-social-feed","settings":[{"type":"text","id":"heading","label":"Heading","default":"Follow us"},{"type":"text","id":"handle","label":"Account handle","default":"@ourstore"},{"type":"url","id":"profile_url","label":"Profile link"},{"type":"checkbox","id":"open_in_new_tab","label":"Open profile in new tab","default":true}],"blocks":[{"type":"post","name":"Post","settings":[{"type":"textarea","id":"caption","label":"Caption","default":"Fresh drops & behind-the-scenes <3"},{"type":"url","id":"link","label":"Post link"}]}],"max_blocks":8,"presets":[{"name":"Social feed","blocks":[{"type":"post"},{"type":"post"}]}]}
+{% endschema %}

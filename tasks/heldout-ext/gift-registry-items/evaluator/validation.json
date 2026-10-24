@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-uses-escape-once",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-registry-items.liquid": "{%- assign name = registry_name | strip -%}\n<section class=\"registry\" aria-label=\"Gift registry{% if name != '' %}: {{ name | escape_once }}{% endif %}\">\n{%- if name != '' -%}<h2>{{ name | escape_once }}</h2>{%- endif -%}\n{%- if items.size == 0 -%}<p class=\"registry-empty\">No items yet</p>{%- else -%}<ul>\n{%- for item in items -%}\n{%- assign t = item.title | strip | escape_once -%}\n{%- assign u = item.url | strip -%}\n{%- assign n = item.note | strip -%}\n{%- assign remaining = item.requested | minus: item.purchased -%}\n<li data-title=\"{{ t }}\">\n{%- if u != '' -%}<a href=\"{{ u | escape_once }}\" title=\"{{ t }}\">{{ t }}</a>{%- else -%}<span>{{ t }}</span>{%- endif -%}\n{%- if n != '' -%}<p>{{ n | escape_once }}</p>{%- endif -%}\n{%- if remaining > 0 -%}<em>{{ remaining }} of {{ item.requested }} still needed</em>{%- else -%}<em>Fulfilled</em>{%- endif -%}\n</li>\n{%- endfor -%}\n</ul>{%- endif -%}\n</section>\n"
+    }
+  },
+  {
+    "name": "wrong-1-unescaped-href",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-registry-items.liquid": "{%- assign name = registry_name | strip -%}\n<section class=\"registry\" aria-label=\"Gift registry{% if name != '' %}: {{ name | escape }}{% endif %}\">\n{%- if name != '' -%}<h2>{{ name | escape }}</h2>{%- endif -%}\n{%- if items.size == 0 -%}<p class=\"registry-empty\">No items yet</p>{%- else -%}<ul>\n{%- for item in items -%}\n{%- assign t = item.title | strip | escape -%}\n{%- assign u = item.url | strip -%}\n{%- assign n = item.note | strip -%}\n{%- assign remaining = item.requested | minus: item.purchased -%}\n<li data-title=\"{{ t }}\">\n{%- if u != '' -%}<a href=\"{{ u }}\" title=\"{{ t }}\">{{ t }}</a>{%- else -%}<span>{{ t }}</span>{%- endif -%}\n{%- if n != '' -%}<p>{{ n | escape }}</p>{%- endif -%}\n{%- if remaining > 0 -%}<em>{{ remaining }} of {{ item.requested }} still needed</em>{%- else -%}<em>Fulfilled</em>{%- endif -%}\n</li>\n{%- endfor -%}\n</ul>{%- endif -%}\n</section>\n"
+    }
+  },
+  {
+    "name": "wrong-2-name-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-registry-items.liquid": "{%- assign name = registry_name | default: '' -%}\n<section class=\"registry\" aria-label=\"Gift registry{% if name != '' %}: {{ name | escape }}{% endif %}\">\n{%- if name != '' -%}<h2>{{ name | escape }}</h2>{%- endif -%}\n{%- if items.size == 0 -%}<p class=\"registry-empty\">No items yet</p>{%- else -%}<ul>\n{%- for item in items -%}\n{%- assign t = item.title | strip | escape -%}\n{%- assign u = item.url | strip -%}\n{%- assign n = item.note | strip -%}\n{%- assign remaining = item.requested | minus: item.purchased -%}\n<li data-title=\"{{ t }}\">\n{%- if u != '' -%}<a href=\"{{ u | escape }}\" title=\"{{ t }}\">{{ t }}</a>{%- else -%}<span>{{ t }}</span>{%- endif -%}\n{%- if n != '' -%}<p>{{ n | escape }}</p>{%- endif -%}\n{%- if remaining > 0 -%}<em>{{ remaining }} of {{ item.requested }} still needed</em>{%- else -%}<em>Fulfilled</em>{%- endif -%}\n</li>\n{%- endfor -%}\n</ul>{%- endif -%}\n</section>\n"
+    }
+  },
+  {
+    "name": "wrong-3-negative-remaining-shown",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-registry-items.liquid": "{%- assign name = registry_name | strip -%}\n<section class=\"registry\" aria-label=\"Gift registry{% if name != '' %}: {{ name | escape }}{% endif %}\">\n{%- if name != '' -%}<h2>{{ name | escape }}</h2>{%- endif -%}\n{%- if items.size == 0 -%}<p class=\"registry-empty\">No items yet</p>{%- else -%}<ul>\n{%- for item in items -%}\n{%- assign t = item.title | strip | escape -%}\n{%- assign u = item.url | strip -%}\n{%- assign n = item.note | strip -%}\n{%- assign remaining = item.requested | minus: item.purchased -%}\n<li data-title=\"{{ t }}\">\n{%- if u != '' -%}<a href=\"{{ u | escape }}\" title=\"{{ t }}\">{{ t }}</a>{%- else -%}<span>{{ t }}</span>{%- endif -%}\n{%- if n != '' -%}<p>{{ n | escape }}</p>{%- endif -%}\n{%- if remaining != 0 -%}<em>{{ remaining }} of {{ item.requested }} still needed</em>{%- else -%}<em>Fulfilled</em>{%- endif -%}\n</li>\n{%- endfor -%}\n</ul>{%- endif -%}\n</section>\n"
+    }
+  },
+  {
+    "name": "wrong-4-blank-note-rendered",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-registry-items.liquid": "{%- assign name = registry_name | strip -%}\n<section class=\"registry\" aria-label=\"Gift registry{% if name != '' %}: {{ name | escape }}{% endif %}\">\n{%- if name != '' -%}<h2>{{ name | escape }}</h2>{%- endif -%}\n{%- if items.size == 0 -%}<p class=\"registry-empty\">No items yet</p>{%- else -%}<ul>\n{%- for item in items -%}\n{%- assign t = item.title | strip | escape -%}\n{%- assign u = item.url | strip -%}\n{%- assign remaining = item.requested | minus: item.purchased -%}\n<li data-title=\"{{ t }}\">\n{%- if u != '' -%}<a href=\"{{ u | escape }}\" title=\"{{ t }}\">{{ t }}</a>{%- else -%}<span>{{ t }}</span>{%- endif -%}\n{%- if item.note != nil and item.note != '' -%}<p>{{ item.note | strip | escape }}</p>{%- endif -%}\n{%- if remaining > 0 -%}<em>{{ remaining }} of {{ item.requested }} still needed</em>{%- else -%}<em>Fulfilled</em>{%- endif -%}\n</li>\n{%- endfor -%}\n</ul>{%- endif -%}\n</section>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-registry-items.liquid": "{% # theme-check-disable %}\n{%- assign name = registry_name | strip -%}\n<section class=\"registry\" aria-label=\"Gift registry{% if name != '' %}: {{ name | escape }}{% endif %}\">\n{%- if name != '' -%}<h2>{{ name | escape }}</h2>{%- endif -%}\n{%- if items.size == 0 -%}<p class=\"registry-empty\">No items yet</p>{%- else -%}<ul>\n{%- for item in items -%}\n{%- assign t = item.title | strip | escape -%}\n{%- assign u = item.url | strip -%}\n{%- assign n = item.note | strip -%}\n{%- assign remaining = item.requested | minus: item.purchased -%}\n<li data-title=\"{{ t }}\">\n{%- if u != '' -%}<a href=\"{{ u | escape }}\" title=\"{{ t }}\">{{ t }}</a>{%- else -%}<span>{{ t }}</span>{%- endif -%}\n{%- if n != '' -%}<p>{{ n | escape }}</p>{%- endif -%}\n{%- if remaining > 0 -%}<em>{{ remaining }} of {{ item.requested }} still needed</em>{%- else -%}<em>Fulfilled</em>{%- endif -%}\n</li>\n{%- endfor -%}\n</ul>{%- endif -%}\n</section>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-registry-items.liquid": null
+    }
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-range-max-10",
+    "expected_pass": false,
+    "changes": {
+      "sections/store-events-calendar.liquid": "<div class=\"events-calendar\">\n  {%- if section.settings.heading != blank -%}\n    <h2 class=\"events-calendar__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <ol class=\"events-calendar__list\">\n    {%- for block in section.blocks limit: section.settings.max_events -%}\n      <li class=\"events-calendar__item{% if forloop.first %} events-calendar__item--first{% endif %}{% if forloop.last %} events-calendar__item--last{% endif %}\" {{ block.shopify_attributes }}>\n        <span class=\"events-calendar__date\">{{ block.settings.date | escape }}</span>\n        <span class=\"events-calendar__title\">{{ block.settings.title | escape }}</span>\n      </li>\n    {%- endfor -%}\n  </ol>\n</div>\n{% schema %}\n{\"name\":\"Events calendar\",\"tag\":\"section\",\"class\":\"section-events-calendar\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Upcoming events\"},{\"type\":\"range\",\"id\":\"max_events\",\"label\":\"Maximum events shown\",\"min\":1,\"max\":10,\"step\":1,\"default\":6}],\"blocks\":[{\"type\":\"event\",\"name\":\"Event\",\"settings\":[{\"type\":\"text\",\"id\":\"title\",\"label\":\"Event title\",\"default\":\"Store event\"},{\"type\":\"text\",\"id\":\"date\",\"label\":\"Date\",\"default\":\"January 1\"}]}],\"max_blocks\":12,\"presets\":[{\"name\":\"Events calendar\",\"blocks\":[{\"type\":\"event\"},{\"type\":\"event\"},{\"type\":\"event\"}]}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-missing-max-blocks",
+    "expected_pass": false,
+    "changes": {
+      "sections/store-events-calendar.liquid": "<div class=\"events-calendar\">\n  {%- if section.settings.heading != blank -%}\n    <h2 class=\"events-calendar__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <ol class=\"events-calendar__list\">\n    {%- for block in section.blocks limit: section.settings.max_events -%}\n      <li class=\"events-calendar__item{% if forloop.first %} events-calendar__item--first{% endif %}{% if forloop.last %} events-calendar__item--last{% endif %}\" {{ block.shopify_attributes }}>\n        <span class=\"events-calendar__date\">{{ block.settings.date | escape }}</span>\n        <span class=\"events-calendar__title\">{{ block.settings.title | escape }}</span>\n      </li>\n    {%- endfor -%}\n  </ol>\n</div>\n{% schema %}\n{\"name\":\"Events calendar\",\"tag\":\"section\",\"class\":\"section-events-calendar\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Upcoming events\"},{\"type\":\"range\",\"id\":\"max_events\",\"label\":\"Maximum events shown\",\"min\":1,\"max\":12,\"step\":1,\"default\":6}],\"blocks\":[{\"type\":\"event\",\"name\":\"Event\",\"settings\":[{\"type\":\"text\",\"id\":\"title\",\"label\":\"Event title\",\"default\":\"Store event\"},{\"type\":\"text\",\"id\":\"date\",\"label\":\"Date\",\"default\":\"January 1\"}]}],\"presets\":[{\"name\":\"Events calendar\",\"blocks\":[{\"type\":\"event\"},{\"type\":\"event\"},{\"type\":\"event\"}]}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-preset-two-blocks",
+    "expected_pass": false,
+    "changes": {
+      "sections/store-events-calendar.liquid": "<div class=\"events-calendar\">\n  {%- if section.settings.heading != blank -%}\n    <h2 class=\"events-calendar__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <ol class=\"events-calendar__list\">\n    {%- for block in section.blocks limit: section.settings.max_events -%}\n      <li class=\"events-calendar__item{% if forloop.first %} events-calendar__item--first{% endif %}{% if forloop.last %} events-calendar__item--last{% endif %}\" {{ block.shopify_attributes }}>\n        <span class=\"events-calendar__date\">{{ block.settings.date | escape }}</span>\n        <span class=\"events-calendar__title\">{{ block.settings.title | escape }}</span>\n      </li>\n    {%- endfor -%}\n  </ol>\n</div>\n{% schema %}\n{\"name\":\"Events calendar\",\"tag\":\"section\",\"class\":\"section-events-calendar\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Upcoming events\"},{\"type\":\"range\",\"id\":\"max_events\",\"label\":\"Maximum events shown\",\"min\":1,\"max\":12,\"step\":1,\"default\":6}],\"blocks\":[{\"type\":\"event\",\"name\":\"Event\",\"settings\":[{\"type\":\"text\",\"id\":\"title\",\"label\":\"Event title\",\"default\":\"Store event\"},{\"type\":\"text\",\"id\":\"date\",\"label\":\"Date\",\"default\":\"January 1\"}]}],\"max_blocks\":12,\"presets\":[{\"name\":\"Events calendar\",\"blocks\":[{\"type\":\"event\"},{\"type\":\"event\"}]}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-range-default-12",
+    "expected_pass": false,
+    "changes": {
+      "sections/store-events-calendar.liquid": "<div class=\"events-calendar\">\n  {%- if section.settings.heading != blank -%}\n    <h2 class=\"events-calendar__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <ol class=\"events-calendar__list\">\n    {%- for block in section.blocks limit: section.settings.max_events -%}\n      <li class=\"events-calendar__item{% if forloop.first %} events-calendar__item--first{% endif %}{% if forloop.last %} events-calendar__item--last{% endif %}\" {{ block.shopify_attributes }}>\n        <span class=\"events-calendar__date\">{{ block.settings.date | escape }}</span>\n        <span class=\"events-calendar__title\">{{ block.settings.title | escape }}</span>\n      </li>\n    {%- endfor -%}\n  </ol>\n</div>\n{% schema %}\n{\"name\":\"Events calendar\",\"tag\":\"section\",\"class\":\"section-events-calendar\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Upcoming events\"},{\"type\":\"range\",\"id\":\"max_events\",\"label\":\"Maximum events shown\",\"min\":1,\"max\":12,\"step\":1,\"default\":12}],\"blocks\":[{\"type\":\"event\",\"name\":\"Event\",\"settings\":[{\"type\":\"text\",\"id\":\"title\",\"label\":\"Event title\",\"default\":\"Store event\"},{\"type\":\"text\",\"id\":\"date\",\"label\":\"Date\",\"default\":\"January 1\"}]}],\"max_blocks\":12,\"presets\":[{\"name\":\"Events calendar\",\"blocks\":[{\"type\":\"event\"},{\"type\":\"event\"},{\"type\":\"event\"}]}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/store-events-calendar.liquid": "{% # theme-check-disable %}\n<div class=\"events-calendar\">\n  {%- if section.settings.heading != blank -%}\n    <h2 class=\"events-calendar__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <ol class=\"events-calendar__list\">\n    {%- for block in section.blocks limit: section.settings.max_events -%}\n      <li class=\"events-calendar__item{% if forloop.first %} events-calendar__item--first{% endif %}{% if forloop.last %} events-calendar__item--last{% endif %}\" {{ block.shopify_attributes }}>\n        <span class=\"events-calendar__date\">{{ block.settings.date | escape }}</span>\n        <span class=\"events-calendar__title\">{{ block.settings.title | escape }}</span>\n      </li>\n    {%- endfor -%}\n  </ol>\n</div>\n{% schema %}\n{\"name\":\"Events calendar\",\"tag\":\"section\",\"class\":\"section-events-calendar\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\",\"default\":\"Upcoming events\"},{\"type\":\"range\",\"id\":\"max_events\",\"label\":\"Maximum events shown\",\"min\":1,\"max\":12,\"step\":1,\"default\":6}],\"blocks\":[{\"type\":\"event\",\"name\":\"Event\",\"settings\":[{\"type\":\"text\",\"id\":\"title\",\"label\":\"Event title\",\"default\":\"Store event\"},{\"type\":\"text\",\"id\":\"date\",\"label\":\"Date\",\"default\":\"January 1\"}]}],\"max_blocks\":12,\"presets\":[{\"name\":\"Events calendar\",\"blocks\":[{\"type\":\"event\"},{\"type\":\"event\"},{\"type\":\"event\"}]}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/store-events-calendar.liquid": null
+    }
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/lookbook-gallery.liquid",
+    "body": "<div class=\"lookbook\">\n  {%- if section.settings.heading != blank -%}\n    <h2 class=\"lookbook__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <ul class=\"lookbook__grid\" style=\"--columns: {{ section.settings.columns }};\">\n    {%- for block in section.blocks -%}\n      <li class=\"lookbook__item\" {{ block.shopify_attributes }}>\n        <h3 class=\"lookbook__title\" title=\"{{ block.settings.title | escape }}\">{{ block.settings.title | escape }}</h3>\n        <p class=\"lookbook__caption\">{{ block.settings.caption | escape }}</p>\n        {%- if block.settings.link != blank -%}\n          <a class=\"lookbook__link\" href=\"{{ block.settings.link }}\" aria-label=\"{{ block.settings.button_label | escape }}\">{{ block.settings.button_label | escape }}</a>\n        {%- endif -%}\n      </li>\n    {%- endfor -%}\n  </ul>\n</div>\n\n\n",
+    "expected": {
+      "name": "Lookbook",
+      "tag": "section",
+      "class": "section-lookbook",
+      "max_blocks": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Shop the \"Weekend\" look"
+        },
+        {
+          "type": "range",
+          "id": "columns",
+          "label": "Columns",
+          "min": 2,
+          "max": 4,
+          "step": 1,
+          "default": 3
+        }
+      ],
+      "blocks": [
+        {
+          "type": "look",
+          "name": "Look",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+            },
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "Coats & Knits"
+            },
+            {
+              "type": "textarea",
+              "id": "caption",
+              "label": "Caption",
+              "default": "Layers <under> 20 degrees: \"breathable\" & light",
+              "info": "Plain text only; <b> & <i> are shown literally."
+            },
+            {
+              "type": "url",
+              "id": "link",
+              "label": "Link"
+            },
+            {
+              "type": "text",
+              "id": "button_label",
+              "label": "Button label",
+              "default": "Shop the look"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Lookbook",
+          "blocks": [
+            {
+              "type": "look"
+            },
+            {
+              "type": "look"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

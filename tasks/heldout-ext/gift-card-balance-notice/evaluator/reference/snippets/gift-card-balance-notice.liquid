@@ -1,0 +1,17 @@
+{%- unless balance_cents == nil -%}
+{%- if balance_cents <= 0 -%}
+<p class="gift-card-notice gift-card-notice--empty">This gift card has no remaining balance.</p>
+{%- else -%}
+{%- assign symbol = currency_symbol | default: '' | strip -%}
+{%- if symbol == '' -%}{%- assign symbol = '$' -%}{%- endif -%}
+{%- assign dollars = balance_cents | divided_by: 100 -%}
+{%- assign cents = balance_cents | modulo: 100 -%}
+{%- if cents < 10 -%}{%- assign cents = cents | prepend: '0' -%}{%- endif -%}
+{%- assign four = last_four | default: '' | strip -%}
+{%- assign expiry = expires_on | default: '' | strip -%}
+<div class="gift-card-notice"><p>Balance: {{ symbol | escape }}{{ dollars }}.{{ cents }}</p>
+{%- if four != '' -%}<p>Card ending in {{ four | escape }}</p>{%- endif -%}
+{%- if expiry != '' -%}<p>Expires {{ expiry | escape }}</p>{%- endif -%}
+</div>
+{%- endif -%}
+{%- endunless -%}

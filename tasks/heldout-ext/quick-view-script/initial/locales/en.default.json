@@ -1,0 +1,9 @@
+{
+  "products": {
+    "quick_view": {
+      "open": "Quick view",
+      "close": "Close",
+      "loading": "Loading..."
+    }
+  }
+}

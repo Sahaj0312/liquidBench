@@ -1,0 +1,775 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/order-status-labels.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "order-status.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "LiquidTag",
+          "name": "assign",
+          "markup": {
+            "type": "AssignMarkup",
+            "name": "current_reached",
+            "value": {
+              "type": "LiquidVariable",
+              "expression": {
+                "type": "LiquidLiteral",
+                "keyword": "false",
+                "value": false
+              },
+              "filters": []
+            }
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-"
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "section"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "order-status"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "h2"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "order-status__heading"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "order_status.heading"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "ol"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "order-status__steps"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidTag",
+                  "name": "for",
+                  "markup": {
+                    "type": "ForMarkup",
+                    "variableName": "step",
+                    "collection": {
+                      "type": "VariableLookup",
+                      "name": "steps",
+                      "lookups": [],
+                      "lookupModes": []
+                    },
+                    "reversed": false,
+                    "args": []
+                  },
+                  "children": [
+                    {
+                      "type": "LiquidBranch",
+                      "name": null,
+                      "markup": "",
+                      "children": [
+                        {
+                          "type": "LiquidTag",
+                          "name": "case",
+                          "markup": {
+                            "type": "VariableLookup",
+                            "name": "step",
+                            "lookups": [],
+                            "lookupModes": []
+                          },
+                          "children": [
+                            {
+                              "type": "LiquidBranch",
+                              "name": null,
+                              "markup": "",
+                              "children": [],
+                              "whitespaceStart": "",
+                              "whitespaceEnd": ""
+                            },
+                            {
+                              "type": "LiquidBranch",
+                              "name": "when",
+                              "markup": [
+                                {
+                                  "type": "String",
+                                  "single": true,
+                                  "value": "confirmed"
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "step_label",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "String",
+                                        "single": true,
+                                        "value": "order_status.steps.confirmed"
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "t",
+                                          "args": []
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                }
+                              ],
+                              "whitespaceStart": "-",
+                              "whitespaceEnd": "-"
+                            },
+                            {
+                              "type": "LiquidBranch",
+                              "name": "when",
+                              "markup": [
+                                {
+                                  "type": "String",
+                                  "single": true,
+                                  "value": "processing"
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "step_label",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "String",
+                                        "single": true,
+                                        "value": "order_status.steps.processing"
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "t",
+                                          "args": []
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                }
+                              ],
+                              "whitespaceStart": "-",
+                              "whitespaceEnd": "-"
+                            },
+                            {
+                              "type": "LiquidBranch",
+                              "name": "when",
+                              "markup": [
+                                {
+                                  "type": "String",
+                                  "single": true,
+                                  "value": "shipped"
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "step_label",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "String",
+                                        "single": true,
+                                        "value": "order_status.steps.shipped"
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "t",
+                                          "args": []
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                }
+                              ],
+                              "whitespaceStart": "-",
+                              "whitespaceEnd": "-"
+                            },
+                            {
+                              "type": "LiquidBranch",
+                              "name": "when",
+                              "markup": [
+                                {
+                                  "type": "String",
+                                  "single": true,
+                                  "value": "delivered"
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "step_label",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "String",
+                                        "single": true,
+                                        "value": "order_status.steps.delivered"
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "t",
+                                          "args": []
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                }
+                              ],
+                              "whitespaceStart": "-",
+                              "whitespaceEnd": "-"
+                            },
+                            {
+                              "type": "LiquidBranch",
+                              "name": "else",
+                              "markup": "",
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "step_label",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "VariableLookup",
+                                        "name": "step",
+                                        "lookups": [],
+                                        "lookupModes": []
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "escape",
+                                          "args": []
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                }
+                              ],
+                              "whitespaceStart": "-",
+                              "whitespaceEnd": "-"
+                            }
+                          ],
+                          "whitespaceStart": "-",
+                          "whitespaceEnd": "-",
+                          "delimiterWhitespaceStart": "-",
+                          "delimiterWhitespaceEnd": "-"
+                        },
+                        {
+                          "type": "LiquidTag",
+                          "name": "if",
+                          "markup": {
+                            "type": "VariableLookup",
+                            "name": "current_reached",
+                            "lookups": [],
+                            "lookupModes": []
+                          },
+                          "children": [
+                            {
+                              "type": "LiquidBranch",
+                              "name": null,
+                              "markup": "",
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "state_label",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "String",
+                                        "single": true,
+                                        "value": "order_status.states.upcoming"
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "t",
+                                          "args": []
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                },
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "icon_url",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "String",
+                                        "single": true,
+                                        "value": "icon-pending.svg"
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "asset_url",
+                                          "args": []
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                }
+                              ],
+                              "whitespaceStart": "",
+                              "whitespaceEnd": ""
+                            },
+                            {
+                              "type": "LiquidBranch",
+                              "name": "elsif",
+                              "markup": {
+                                "type": "Comparison",
+                                "comparator": "==",
+                                "left": {
+                                  "type": "VariableLookup",
+                                  "name": "step",
+                                  "lookups": [],
+                                  "lookupModes": []
+                                },
+                                "right": {
+                                  "type": "VariableLookup",
+                                  "name": "current_step",
+                                  "lookups": [],
+                                  "lookupModes": []
+                                }
+                              },
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "state_label",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "String",
+                                        "single": true,
+                                        "value": "order_status.states.current"
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "t",
+                                          "args": []
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                },
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "icon_url",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "String",
+                                        "single": true,
+                                        "value": "icon-current.svg"
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "asset_url",
+                                          "args": []
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                },
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "current_reached",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "LiquidLiteral",
+                                        "keyword": "true",
+                                        "value": true
+                                      },
+                                      "filters": []
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                }
+                              ],
+                              "whitespaceStart": "-",
+                              "whitespaceEnd": "-"
+                            },
+                            {
+                              "type": "LiquidBranch",
+                              "name": "else",
+                              "markup": "",
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "state_label",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "String",
+                                        "single": true,
+                                        "value": "order_status.states.complete"
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "t",
+                                          "args": []
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                },
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "icon_url",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "String",
+                                        "single": true,
+                                        "value": "icon-check.svg"
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "asset_url",
+                                          "args": []
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                }
+                              ],
+                              "whitespaceStart": "-",
+                              "whitespaceEnd": "-"
+                            }
+                          ],
+                          "whitespaceStart": "-",
+                          "whitespaceEnd": "-",
+                          "delimiterWhitespaceStart": "-",
+                          "delimiterWhitespaceEnd": "-"
+                        },
+                        {
+                          "type": "LiquidTag",
+                          "name": "render",
+                          "markup": {
+                            "type": "RenderMarkup",
+                            "snippet": {
+                              "type": "String",
+                              "single": true,
+                              "value": "order-status-step"
+                            },
+                            "variable": null,
+                            "alias": null,
+                            "args": [
+                              {
+                                "type": "NamedArgument",
+                                "name": "label",
+                                "value": {
+                                  "type": "VariableLookup",
+                                  "name": "step_label",
+                                  "lookups": [],
+                                  "lookupModes": []
+                                }
+                              },
+                              {
+                                "type": "NamedArgument",
+                                "name": "state",
+                                "value": {
+                                  "type": "VariableLookup",
+                                  "name": "state_label",
+                                  "lookups": [],
+                                  "lookupModes": []
+                                }
+                              },
+                              {
+                                "type": "NamedArgument",
+                                "name": "icon_url",
+                                "value": {
+                                  "type": "VariableLookup",
+                                  "name": "icon_url",
+                                  "lookups": [],
+                                  "lookupModes": []
+                                }
+                              },
+                              {
+                                "type": "NamedArgument",
+                                "name": "number",
+                                "value": {
+                                  "type": "VariableLookup",
+                                  "name": "forloop",
+                                  "lookups": [
+                                    {
+                                      "type": "String",
+                                      "value": "index"
+                                    }
+                                  ],
+                                  "lookupModes": [
+                                    "bareword"
+                                  ]
+                                }
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "-",
+                          "whitespaceEnd": "-"
+                        }
+                      ],
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ],
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-",
+                  "delimiterWhitespaceStart": "-",
+                  "delimiterWhitespaceEnd": "-"
+                }
+              ]
+            },
+            {
+              "type": "LiquidTag",
+              "name": "unless",
+              "markup": {
+                "type": "VariableLookup",
+                "name": "current_reached",
+                "lookups": [],
+                "lookupModes": []
+              },
+              "children": [
+                {
+                  "type": "LiquidBranch",
+                  "name": null,
+                  "markup": "",
+                  "children": [
+                    {
+                      "type": "HtmlElement",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "p"
+                        }
+                      ],
+                      "attributes": [
+                        {
+                          "type": "AttrDoubleQuoted",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "class"
+                            }
+                          ],
+                          "value": [
+                            {
+                              "type": "TextNode",
+                              "value": "order-status__message"
+                            }
+                          ]
+                        }
+                      ],
+                      "children": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "String",
+                              "single": true,
+                              "value": "order_status.messages.all_complete"
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "t",
+                                "args": []
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ],
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-",
+              "delimiterWhitespaceStart": "-",
+              "delimiterWhitespaceEnd": "-"
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

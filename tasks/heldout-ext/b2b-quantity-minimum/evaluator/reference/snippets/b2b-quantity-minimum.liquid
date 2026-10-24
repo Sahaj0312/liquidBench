@@ -1,0 +1,16 @@
+{%- assign label = unit_label | default: "units" | escape -%}
+{%- if tiers.size > 0 -%}
+<div class="b2b-min"><p class="b2b-min__note">Minimum order: {{ tiers.first.min_qty }} {{ label }}</p><ul>
+{%- for tier in tiers -%}
+<li{% if forloop.first and forloop.last %} class="b2b-min__base b2b-min__top"{% elsif forloop.first %} class="b2b-min__base"{% elsif forloop.last %} class="b2b-min__top"{% endif %}><span>
+{%- if forloop.last -%}
+{{ tier.min_qty }}+ {{ label }}
+{%- else -%}
+{%- assign next = tiers[forloop.index] -%}
+{%- assign upper = next.min_qty | minus: 1 -%}
+{%- if upper == tier.min_qty -%}{{ tier.min_qty }} {{ label }}{%- else -%}{{ tier.min_qty }}–{{ upper }} {{ label }}{%- endif -%}
+{%- endif -%}
+</span> <span>{{ tier.price | escape }}</span></li>
+{%- endfor -%}
+</ul></div>
+{%- endif -%}

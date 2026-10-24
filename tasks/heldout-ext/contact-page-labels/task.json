@@ -1,0 +1,15 @@
+{
+  "id": "contact-page-labels",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-references",
+  "difficulty": "hard",
+  "family": "contact-page-labels",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/contact-page-labels.liquid"
+  ],
+  "prompt": "The snippet snippets/contact-page-labels.liquid renders the contact page form chrome. Theme Check reports several broken references: missing assets, missing translation keys and a missing snippet. Fix every literal operand so it points to files and keys that exist in this theme. Use read_file on assets/, locales/en.default.json, locales/fr.json and snippets/ to find the real names. Do not add or remove any reference. Do not change the markup, the conditional logic or the variable names.\n\nInputs. All of these are top-level variables passed to the snippet:\n- show_heading (boolean)\n- wrap_fields (boolean)\n\nRequired behavior. Keep it exactly as the starter implements it:\n1. Load the contact page stylesheet with asset_url | stylesheet_tag. The real file is the CSS file in assets/ dedicated to the contact page.\n2. Translate the field labels for name, email and message, plus the '(optional)' hint. Use the keys under contact.form in locales/en.default.json.\n3. Inside <div class=\"contact-page\">, output the optional elements as follows:\n   - When show_heading is true, output <h2 class=\"contact-page__heading\"> containing the translated page heading (contact.page.*).\n   - Output three fields in this order: name, email, message. Render each one through the existing field snippet in snippets/, using the parameters the starter already passes (field, type, label and, for the message field only, hint).\n   - When wrap_fields is true, wrap the three fields in <fieldset class=\"contact-page__fields\">. The fieldset starts with a <legend> containing the translated legend (contact.page.*). When wrap_fields is false, output the fields without any wrapper.\n   - Finish with a submit button whose text is the translated submit label (contact.form.*).\n\nAfter your edit, Theme Check must report no MissingAsset, TranslationKeyExists or MissingTemplate errors for this file. Change only snippets/contact-page-labels.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

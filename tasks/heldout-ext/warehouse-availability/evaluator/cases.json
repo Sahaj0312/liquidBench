@@ -1,0 +1,550 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/warehouse-availability.liquid",
+    "tags": [
+      "div",
+      "h3",
+      "li",
+      "p",
+      "strong",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "heading": "Pick up today",
+      "warehouses": [
+        {
+          "name": "Main Depot",
+          "city": "Austin",
+          "quantity": 12
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "availability"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Pick up today"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "in"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Main Depot"
+                  }
+                ],
+                "text": ", Austin: In stock"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "heading": null,
+      "warehouses": [
+        {
+          "name": "  North Hub \n",
+          "city": "\t Denver  ",
+          "quantity": 3
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "availability"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "low"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "North Hub"
+                  }
+                ],
+                "text": ", Denver: Only 3 left"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "heading": "",
+      "warehouses": [
+        {
+          "name": "A",
+          "city": null,
+          "quantity": 5
+        },
+        {
+          "name": "B",
+          "city": null,
+          "quantity": 6
+        },
+        {
+          "name": "C",
+          "city": null,
+          "quantity": 0
+        },
+        {
+          "name": "D",
+          "city": null,
+          "quantity": -2
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "availability"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "low"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "A"
+                  }
+                ],
+                "text": ": Only 5 left"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "in"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "B"
+                  }
+                ],
+                "text": ": In stock"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "out"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "C"
+                  }
+                ],
+                "text": ": Out of stock"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "out"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "D"
+                  }
+                ],
+                "text": ": Out of stock"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "heading": "Stock",
+      "warehouses": [
+        {
+          "name": "Dock 7",
+          "city": "   ",
+          "quantity": 1
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "availability"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Stock"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "low"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Dock 7"
+                  }
+                ],
+                "text": ": Only 1 left"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "heading": "Stores",
+      "warehouses": [
+        {
+          "name": "West",
+          "city": "Reno",
+          "quantity": 8
+        },
+        {
+          "name": "  \t ",
+          "city": "Ghost",
+          "quantity": 50
+        },
+        {
+          "name": "South",
+          "city": null,
+          "quantity": 0
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "availability"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Stores"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "in"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "West"
+                  }
+                ],
+                "text": ", Reno: In stock"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "out"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "South"
+                  }
+                ],
+                "text": ": Out of stock"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "heading": "Stores",
+      "warehouses": [
+        {
+          "name": "   ",
+          "city": "Reno",
+          "quantity": 8
+        },
+        {
+          "name": "",
+          "city": null,
+          "quantity": 2
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "availability-empty"
+          ]
+        ],
+        "children": [],
+        "text": "Not available at any warehouse"
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "heading": "Stores",
+      "warehouses": []
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "availability-empty"
+          ]
+        ],
+        "children": [],
+        "text": "Not available at any warehouse"
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "heading": " Stock & <Pickup> ",
+      "warehouses": [
+        {
+          "name": "R&D <Lab>",
+          "city": " \"Old\" Town ",
+          "quantity": 9
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "availability"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Stock & <Pickup>"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "in"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "R&D <Lab>"
+                  }
+                ],
+                "text": ", \"Old\" Town: In stock"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "heading": "   ",
+      "warehouses": [
+        {
+          "name": "  East   Yard  ",
+          "city": "Salem",
+          "quantity": 4
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "availability"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "low"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "East   Yard"
+                  }
+                ],
+                "text": ", Salem: Only 4 left"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

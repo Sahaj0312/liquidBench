@@ -1,0 +1,15 @@
+{
+  "id": "presale-access-gate",
+  "version": 1,
+  "split": "heldout",
+  "category": "liquid-syntax",
+  "difficulty": "hard",
+  "family": "presale-access-gate",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/presale-access-gate.liquid"
+  ],
+  "prompt": "Fix snippets/presale-access-gate.liquid, which renders a pre-sale access message. Defaults must be applied correctly.\n\nInputs (all top-level variables, none under section.settings):\n- presale_label: string or null.\n- gate_enabled: boolean or null.\n- min_orders: integer or null. 0 is a valid value.\n- customer_orders: integer or null. null means a guest who is not logged in. 0 is a logged-in customer with no orders.\n- customer_tags: array of strings, never null, may be empty.\n- vip_tag: string or null.\n\nDefaults and normalization:\n- LABEL: strip leading and trailing whitespace from presale_label. If the result is empty, or presale_label is null, use \"Early Access\".\n- Gate: if gate_enabled is null, treat it as true. An explicit false must stay false.\n- Required orders: if min_orders is null, use 1. An explicit 0 stays 0.\n- VIP tag: if vip_tag is null or the empty string, use \"vip\". The VIP tag is not stripped.\n\nOutput rules (first matching rule wins; LABEL is always passed through the escape filter):\n1. Gate is false: output <div class=\"presale presale--open\"><p>LABEL is open to everyone</p></div>\n2. customer_orders is null: output <div class=\"presale presale--locked\"><p>Log in to access LABEL</p></div>\n3. customer_tags contains an element exactly equal to the VIP tag (case-sensitive, whole tag, not substring), or customer_orders is greater than or equal to the required orders: output <div class=\"presale presale--granted\"><p>Welcome to LABEL</p></div>\n4. Otherwise let N = required orders minus customer_orders. Output <div class=\"presale presale--locked\"><p>Place N more order to unlock LABEL</p></div>. Use \"order\" when N is 1 and \"orders\" otherwise.\n\nOutput nothing else: no whitespace or newlines before, after or between elements. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/presale-access-gate.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

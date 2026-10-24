@@ -1,0 +1,15 @@
+<div class="podcast-embed">
+{%- assign heading = section.settings.heading | default: '' | strip -%}
+{%- if heading != '' -%}
+<h2>{{ heading | escape }}</h2>
+{%- endif -%}
+<ul>
+{%- for block in section.blocks -%}
+<li>{{ block.settings.title | escape }}</li>
+{%- endfor -%}
+</ul>
+</div>
+
+{% schema %}
+{"name":"Podcast episodes","settings":[{"type":"text","id":"heading","label":"Heading"}],"blocks":[{"type":"episode","name":"Episode","settings":[{"type":"text","id":"title","label":"Title"},{"type":"number","id":"season","label":"Season","default":1},{"type":"number","id":"minutes","label":"Minutes"}]}],"presets":[{"name":"Podcast episodes"}]}
+{% endschema %}

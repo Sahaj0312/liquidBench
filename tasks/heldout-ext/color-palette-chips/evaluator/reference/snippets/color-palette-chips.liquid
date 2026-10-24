@@ -1,0 +1,28 @@
+{%- assign count = 0 -%}
+{%- assign selected_done = false -%}
+{%- assign wanted = palette.selected | strip -%}
+{%- capture items -%}
+{%- for chip in palette.chips -%}
+{%- assign name = chip.name | strip -%}
+{%- if name != "" -%}
+{%- assign count = count | plus: 1 -%}
+{%- assign value = chip.value | strip -%}
+{%- if value == "" -%}
+{%- assign value = name | downcase | replace: " ", "-" -%}
+{%- endif -%}
+{%- assign hex = chip.hex | strip -%}
+{%- assign is_selected = false -%}
+{%- if selected_done == false and wanted != "" and value == wanted -%}
+{%- assign is_selected = true -%}
+{%- assign selected_done = true -%}
+{%- endif -%}
+<li><button type="button" class="palette__chip{% if hex == "" %} palette__chip--empty{% endif %}{% if is_selected %} is-selected{% endif %}" data-value="{{ value | escape }}" aria-label="{{ name | escape }}" aria-pressed="{{ is_selected }}"{% if hex != "" %} style="background-color: {{ hex | escape }}"{% endif %}><span class="palette__name">{{ name | escape }}</span></button></li>
+{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- if count > 0 -%}
+{%- assign heading = palette.heading | strip -%}
+<div class="palette">
+{%- if heading != "" -%}<h3 class="palette__heading">{{ heading | escape }}</h3>{%- endif -%}
+<ul class="palette__list">{{ items }}</ul><p class="palette__count">{{ count }} {% if count == 1 %}color{% else %}colors{% endif %}</p></div>
+{%- endif -%}

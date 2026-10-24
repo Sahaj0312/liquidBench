@@ -1,0 +1,376 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/sample-request-eligibility.liquid",
+    "tags": [
+      "div",
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "requested": 0,
+      "samples_used": 0,
+      "monthly_limit": 10,
+      "order_subtotal_cents": 0,
+      "fabric_name": "Linen"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "sample-error"
+          ]
+        ],
+        "children": [],
+        "text": "Select at least one sample"
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "requested": -2,
+      "samples_used": 0,
+      "monthly_limit": 10,
+      "order_subtotal_cents": 0,
+      "fabric_name": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "sample-error"
+          ]
+        ],
+        "children": [],
+        "text": "Select at least one sample"
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "requested": 6,
+      "samples_used": 0,
+      "monthly_limit": 10,
+      "order_subtotal_cents": 0,
+      "fabric_name": "Linen"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "sample-error"
+          ]
+        ],
+        "children": [],
+        "text": "You can request at most 5 samples at a time"
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "requested": 6,
+      "samples_used": 100,
+      "monthly_limit": 10,
+      "order_subtotal_cents": 9000,
+      "fabric_name": "Linen"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "sample-error"
+          ]
+        ],
+        "children": [],
+        "text": "You can request at most 5 samples at a time"
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "requested": 5,
+      "samples_used": 5,
+      "monthly_limit": 10,
+      "order_subtotal_cents": 5000,
+      "fabric_name": "Velvet"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "sample-ok"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "5 samples of Velvet"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "sample-shipping"
+              ]
+            ],
+            "children": [],
+            "text": "Free sample shipping"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "requested": 3,
+      "samples_used": 8,
+      "monthly_limit": 10,
+      "order_subtotal_cents": 0,
+      "fabric_name": "Linen"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "sample-error"
+          ]
+        ],
+        "children": [],
+        "text": "Only 2 samples left this month"
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "requested": 2,
+      "samples_used": 9,
+      "monthly_limit": 10,
+      "order_subtotal_cents": 0,
+      "fabric_name": "Linen"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "sample-error"
+          ]
+        ],
+        "children": [],
+        "text": "Only 1 sample left this month"
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "requested": 1,
+      "samples_used": 12,
+      "monthly_limit": 10,
+      "order_subtotal_cents": 0,
+      "fabric_name": "Linen"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "sample-error"
+          ]
+        ],
+        "children": [],
+        "text": "Only 0 samples left this month"
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "requested": 1,
+      "samples_used": 0,
+      "monthly_limit": 3,
+      "order_subtotal_cents": 4999,
+      "fabric_name": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "sample-ok"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "1 sample of Assorted fabrics"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "sample-shipping"
+              ]
+            ],
+            "children": [],
+            "text": "Sample shipping: $2.00"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "requested": 2,
+      "samples_used": 1,
+      "monthly_limit": 3,
+      "order_subtotal_cents": 4999,
+      "fabric_name": "  Wool & Silk <Blend>  "
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "sample-ok"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "2 samples of Wool & Silk <Blend>"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "sample-shipping"
+              ]
+            ],
+            "children": [],
+            "text": "Sample shipping: $2.50"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "requested": 4,
+      "samples_used": 0,
+      "monthly_limit": 10,
+      "order_subtotal_cents": 10000,
+      "fabric_name": "   "
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "sample-ok"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "4 samples of Assorted fabrics"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "sample-shipping"
+              ]
+            ],
+            "children": [],
+            "text": "Free sample shipping"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "requested": 3,
+      "samples_used": 0,
+      "monthly_limit": 5,
+      "order_subtotal_cents": 120,
+      "fabric_name": "\"Herringbone\""
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "sample-ok"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "3 samples of \"Herringbone\""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "sample-shipping"
+              ]
+            ],
+            "children": [],
+            "text": "Sample shipping: $3.00"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

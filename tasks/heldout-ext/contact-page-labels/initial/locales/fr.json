@@ -1,0 +1,15 @@
+{
+  "contact": {
+    "page": {
+      "heading": "Contactez-nous",
+      "legend": "Vos coordonnées"
+    },
+    "form": {
+      "name": "Nom",
+      "email": "E-mail",
+      "message": "Message",
+      "optional": "(facultatif)",
+      "submit": "Envoyer le message"
+    }
+  }
+}

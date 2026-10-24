@@ -1,0 +1,9 @@
+{
+  "products": {
+    "reviews": {
+      "heading": "Avis clients",
+      "verified": "Acheteur vérifié",
+      "empty": "Aucun avis pour le moment"
+    }
+  }
+}

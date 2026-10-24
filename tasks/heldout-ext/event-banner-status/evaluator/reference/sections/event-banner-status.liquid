@@ -1,0 +1,52 @@
+{%- assign title = section.settings.title | default: 'Upcoming event' -%}
+{%- assign cta_label = section.settings.button_label | default: '' -%}
+{%- assign cta_link = section.settings.button_link | default: '' -%}
+{%- assign days = section.settings.days_until -%}
+{%- assign badge_text = '' -%}
+{%- assign badge_mod = '' -%}
+{%- assign cta_allowed = true -%}
+{%- if section.settings.is_cancelled -%}
+  {%- assign badge_text = 'Cancelled' -%}
+  {%- assign badge_mod = 'cancelled' -%}
+  {%- assign cta_allowed = false -%}
+{%- elsif days != nil and days < 0 -%}
+  {%- assign badge_text = 'Ended' -%}
+  {%- assign badge_mod = 'ended' -%}
+  {%- assign cta_allowed = false -%}
+{%- elsif section.settings.is_sold_out -%}
+  {%- assign badge_text = 'Sold out' -%}
+  {%- assign badge_mod = 'sold-out' -%}
+  {%- assign cta_allowed = false -%}
+{%- elsif days != nil -%}
+  {%- assign badge_mod = 'soon' -%}
+  {%- if days == 0 -%}
+    {%- assign badge_text = 'Today' -%}
+  {%- elsif days == 1 -%}
+    {%- assign badge_text = 'Tomorrow' -%}
+  {%- elsif days <= 7 -%}
+    {%- assign badge_text = 'In ' | append: days | append: ' days' -%}
+  {%- endif -%}
+{%- endif -%}
+<section class="event-banner"><h2 class="event-banner__title">{{ title | escape }}</h2>
+{%- if badge_text != '' -%}
+<span class="event-banner__badge event-banner__badge--{{ badge_mod }}">{{ badge_text }}</span>
+{%- endif -%}
+{%- if cta_allowed and cta_label != '' and cta_link != '' -%}
+<a class="event-banner__cta" href="{{ cta_link | escape }}">{{ cta_label | escape }}</a>
+{%- endif -%}
+</section>
+{%- comment -%} Settings are defined in the schema below. {%- endcomment -%}
+{% schema %}
+{
+  "name": "Event banner",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title" },
+    { "type": "checkbox", "id": "is_cancelled", "label": "Event cancelled", "default": false },
+    { "type": "checkbox", "id": "is_sold_out", "label": "Sold out", "default": false },
+    { "type": "number", "id": "days_until", "label": "Days until event" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Event banner" }]
+}
+{% endschema %}

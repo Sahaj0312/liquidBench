@@ -1,0 +1,15 @@
+{
+  "id": "sample-request-eligibility",
+  "version": 1,
+  "split": "heldout",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "sample-request-eligibility",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/sample-request-eligibility.liquid"
+  ],
+  "prompt": "Fix snippets/sample-request-eligibility.liquid, which tells a customer whether their fabric sample request can be fulfilled.\n\nInputs (all top-level variables; there is no section object):\n- requested: integer, never null. Number of samples requested.\n- samples_used: integer, never null. Samples the customer already received this month.\n- monthly_limit: integer, never null. Samples allowed per month.\n- order_subtotal_cents: integer, never null.\n- fabric_name: string or null.\n\nOutput exactly one result, with no whitespace or newlines before, after or between elements. Evaluate the rules in this order; the first matching rule wins:\n\n1. requested is less than 1: <p class=\"sample-error\">Select at least one sample</p>\n2. requested is greater than 5 (exactly 5 is allowed): <p class=\"sample-error\">You can request at most 5 samples at a time</p>\n3. Let REMAINING = monthly_limit minus samples_used, but use 0 if that is negative. If requested is greater than REMAINING (equal is allowed): <p class=\"sample-error\">Only REMAINING samples left this month</p>, using the word \"sample\" instead of \"samples\" when REMAINING is exactly 1 (0 uses \"samples\").\n4. Otherwise output:\n<div class=\"sample-ok\"><p>N samples of FABRIC</p>SHIPPING</div>\n  - N is requested; use \"sample\" when N is exactly 1.\n  - FABRIC is fabric_name with leading/trailing whitespace stripped and HTML-escaped with the escape filter; if fabric_name is null or blank after stripping, use Assorted fabrics.\n  - SHIPPING: if order_subtotal_cents is 5000 or more: <p class=\"sample-shipping\">Free sample shipping</p>. Otherwise the fee in cents is 150 plus 50 times requested, shown as <p class=\"sample-shipping\">Sample shipping: $D.CC</p> where D is the whole dollars and CC is always exactly two digits of cents (e.g. 200 cents is $2.00, 250 cents is $2.50). Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/sample-request-eligibility.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

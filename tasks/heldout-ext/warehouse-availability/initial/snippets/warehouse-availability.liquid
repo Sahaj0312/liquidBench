@@ -1,0 +1,7 @@
+<div class="availability">
+{%- if heading -%}<h3>{{ heading }}</h3>{%- endif -%}
+<ul>
+{%- for w in warehouses -%}
+<li class="{% if w.quantity > 0 %}in{% else %}out{% endif %}"><strong>{{ w.name }}</strong>{% if w.city %}, {{ w.city }}{% endif %}: {% if w.quantity > 0 %}In stock{% else %}Out of stock{% endif %}</li>
+{%- endfor -%}
+</ul></div>

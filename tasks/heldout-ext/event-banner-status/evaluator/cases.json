@@ -1,0 +1,733 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/event-banner-status.liquid",
+    "tags": [
+      "a",
+      "h2",
+      "section",
+      "span"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Event banner\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"title\", \"label\": \"Title\" },\n    { \"type\": \"checkbox\", \"id\": \"is_cancelled\", \"label\": \"Event cancelled\", \"default\": false },\n    { \"type\": \"checkbox\", \"id\": \"is_sold_out\", \"label\": \"Sold out\", \"default\": false },\n    { \"type\": \"number\", \"id\": \"days_until\", \"label\": \"Days until event\" },\n    { \"type\": \"text\", \"id\": \"button_label\", \"label\": \"Button label\" },\n    { \"type\": \"url\", \"id\": \"button_link\", \"label\": \"Button link\" }\n  ],\n  \"presets\": [{ \"name\": \"Event banner\" }]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Summer Fest",
+          "is_cancelled": false,
+          "is_sold_out": false,
+          "days_until": 3,
+          "button_label": "Get tickets",
+          "button_link": "/tickets"
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "event-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "event-banner__title"
+              ]
+            ],
+            "children": [],
+            "text": "Summer Fest"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "event-banner__badge event-banner__badge--soon"
+              ]
+            ],
+            "children": [],
+            "text": "In 3 days"
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "event-banner__cta"
+              ],
+              [
+                "href",
+                "/tickets"
+              ]
+            ],
+            "children": [],
+            "text": "Get tickets"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Jazz Night",
+          "is_cancelled": true,
+          "is_sold_out": true,
+          "days_until": 2,
+          "button_label": "Book",
+          "button_link": "/book"
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "event-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "event-banner__title"
+              ]
+            ],
+            "children": [],
+            "text": "Jazz Night"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "event-banner__badge event-banner__badge--cancelled"
+              ]
+            ],
+            "children": [],
+            "text": "Cancelled"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Food Market",
+          "is_cancelled": false,
+          "is_sold_out": true,
+          "days_until": -1,
+          "button_label": "Visit",
+          "button_link": "/visit"
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "event-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "event-banner__title"
+              ]
+            ],
+            "children": [],
+            "text": "Food Market"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "event-banner__badge event-banner__badge--ended"
+              ]
+            ],
+            "children": [],
+            "text": "Ended"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Comedy Club",
+          "is_cancelled": false,
+          "is_sold_out": true,
+          "days_until": 5,
+          "button_label": "Get tickets",
+          "button_link": "/comedy"
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "event-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "event-banner__title"
+              ]
+            ],
+            "children": [],
+            "text": "Comedy Club"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "event-banner__badge event-banner__badge--sold-out"
+              ]
+            ],
+            "children": [],
+            "text": "Sold out"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Open Day",
+          "is_cancelled": false,
+          "is_sold_out": false,
+          "days_until": 0,
+          "button_label": "RSVP",
+          "button_link": "/rsvp"
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "event-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "event-banner__title"
+              ]
+            ],
+            "children": [],
+            "text": "Open Day"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "event-banner__badge event-banner__badge--soon"
+              ]
+            ],
+            "children": [],
+            "text": "Today"
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "event-banner__cta"
+              ],
+              [
+                "href",
+                "/rsvp"
+              ]
+            ],
+            "children": [],
+            "text": "RSVP"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Workshop",
+          "is_cancelled": false,
+          "is_sold_out": false,
+          "days_until": 1,
+          "button_label": "Join",
+          "button_link": "/join"
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "event-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "event-banner__title"
+              ]
+            ],
+            "children": [],
+            "text": "Workshop"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "event-banner__badge event-banner__badge--soon"
+              ]
+            ],
+            "children": [],
+            "text": "Tomorrow"
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "event-banner__cta"
+              ],
+              [
+                "href",
+                "/join"
+              ]
+            ],
+            "children": [],
+            "text": "Join"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Gala",
+          "is_cancelled": false,
+          "is_sold_out": false,
+          "days_until": 7,
+          "button_label": "Reserve",
+          "button_link": "/reserve"
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "event-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "event-banner__title"
+              ]
+            ],
+            "children": [],
+            "text": "Gala"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "event-banner__badge event-banner__badge--soon"
+              ]
+            ],
+            "children": [],
+            "text": "In 7 days"
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "event-banner__cta"
+              ],
+              [
+                "href",
+                "/reserve"
+              ]
+            ],
+            "children": [],
+            "text": "Reserve"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Expo",
+          "is_cancelled": false,
+          "is_sold_out": false,
+          "days_until": 8,
+          "button_label": "Register",
+          "button_link": "/register"
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "event-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "event-banner__title"
+              ]
+            ],
+            "children": [],
+            "text": "Expo"
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "event-banner__cta"
+              ],
+              [
+                "href",
+                "/register"
+              ]
+            ],
+            "children": [],
+            "text": "Register"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": null,
+          "is_cancelled": false,
+          "is_sold_out": false,
+          "days_until": null,
+          "button_label": "Buy",
+          "button_link": ""
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "event-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "event-banner__title"
+              ]
+            ],
+            "children": [],
+            "text": "Upcoming event"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Rock & Roll <Live> \"2024\"",
+          "is_cancelled": false,
+          "is_sold_out": false,
+          "days_until": null,
+          "button_label": "Tickets & more",
+          "button_link": "/t?a=1&b=2"
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "event-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "event-banner__title"
+              ]
+            ],
+            "children": [],
+            "text": "Rock & Roll <Live> \"2024\""
+          },
+          {
+            "tag": "a",
+            "attrs": [
+              [
+                "class",
+                "event-banner__cta"
+              ],
+              [
+                "href",
+                "/t?a=1&b=2"
+              ]
+            ],
+            "children": [],
+            "text": "Tickets & more"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "",
+          "is_cancelled": true,
+          "is_sold_out": false,
+          "days_until": -3,
+          "button_label": "Go",
+          "button_link": "/go"
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "event-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "event-banner__title"
+              ]
+            ],
+            "children": [],
+            "text": "Upcoming event"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "event-banner__badge event-banner__badge--cancelled"
+              ]
+            ],
+            "children": [],
+            "text": "Cancelled"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Theatre",
+          "is_cancelled": false,
+          "is_sold_out": true,
+          "days_until": null,
+          "button_label": null,
+          "button_link": null
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "event-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "event-banner__title"
+              ]
+            ],
+            "children": [],
+            "text": "Theatre"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "event-banner__badge event-banner__badge--sold-out"
+              ]
+            ],
+            "children": [],
+            "text": "Sold out"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-12",
+    "variables": {
+      "section": {
+        "settings": {
+          "title": "Fair",
+          "is_cancelled": false,
+          "is_sold_out": false,
+          "days_until": -1,
+          "button_label": null,
+          "button_link": "/x"
+        }
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "event-banner"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "event-banner__title"
+              ]
+            ],
+            "children": [],
+            "text": "Fair"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "event-banner__badge event-banner__badge--ended"
+              ]
+            ],
+            "children": [],
+            "text": "Ended"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,1633 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/lookbook-grid.liquid",
+    "tags": [
+      "em",
+      "figcaption",
+      "figure",
+      "h2",
+      "li",
+      "p",
+      "section",
+      "span",
+      "strong",
+      "ul"
+    ],
+    "schema_block": "{% schema %}\n{\"name\":\"Lookbook grid\",\"settings\":[{\"type\":\"text\",\"id\":\"heading\",\"label\":\"Heading\"},{\"type\":\"range\",\"id\":\"max_looks\",\"label\":\"Maximum looks\",\"min\":1,\"max\":12,\"step\":1,\"default\":6}],\"blocks\":[{\"type\":\"look\",\"name\":\"Look\",\"settings\":[{\"type\":\"text\",\"id\":\"title\",\"label\":\"Title\"},{\"type\":\"text\",\"id\":\"caption\",\"label\":\"Caption\"},{\"type\":\"checkbox\",\"id\":\"hidden\",\"label\":\"Hide look\",\"default\":false}]},{\"type\":\"spacer\",\"name\":\"Spacer\",\"settings\":[]}],\"presets\":[{\"name\":\"Lookbook grid\"}]}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Spring Edit",
+          "max_looks": 6
+        },
+        "blocks": [
+          {
+            "type": "look",
+            "settings": {
+              "title": "Linen Set",
+              "caption": "Breezy layers",
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "Denim",
+              "caption": null,
+              "hidden": false
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "lookbook"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "lookbook__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Spring Edit"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "lookbook__grid"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "01"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "Linen Set"
+                          },
+                          {
+                            "tag": "em",
+                            "attrs": [],
+                            "children": [],
+                            "text": "Breezy layers"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "02"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "Denim"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null,
+          "max_looks": null
+        },
+        "blocks": []
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "lookbook"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "lookbook__empty"
+              ]
+            ],
+            "children": [],
+            "text": "No looks yet"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "  ",
+          "max_looks": 2
+        },
+        "blocks": [
+          {
+            "type": "look",
+            "settings": {
+              "title": "Secret",
+              "caption": "x",
+              "hidden": true
+            }
+          },
+          {
+            "type": "spacer",
+            "settings": {
+              "title": null,
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "Coat",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "  ",
+              "caption": "Orphan",
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "Boots",
+              "caption": "",
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "Scarf",
+              "caption": null,
+              "hidden": false
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "lookbook"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "lookbook__grid"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "01"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "Coat"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "02"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "Boots"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "lookbook__more"
+              ]
+            ],
+            "children": [],
+            "text": "+1 more look"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Tom & Jerry's \"Best\" <Looks>",
+          "max_looks": 6
+        },
+        "blocks": [
+          {
+            "type": "look",
+            "settings": {
+              "title": "<b>Bold</b>",
+              "caption": "Cotton & \"Silk\"",
+              "hidden": false
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "lookbook"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "lookbook__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Tom & Jerry's \"Best\" <Looks>"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "lookbook__grid"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "01"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "<b>Bold</b>"
+                          },
+                          {
+                            "tag": "em",
+                            "attrs": [],
+                            "children": [],
+                            "text": "Cotton & \"Silk\""
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Fall",
+          "max_looks": 4
+        },
+        "blocks": [
+          {
+            "type": "look",
+            "settings": {
+              "title": "Hidden One",
+              "caption": null,
+              "hidden": true
+            }
+          },
+          {
+            "type": "spacer",
+            "settings": {
+              "title": "Gap",
+              "caption": null,
+              "hidden": false
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "lookbook"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "lookbook__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Fall"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "lookbook__empty"
+              ]
+            ],
+            "children": [],
+            "text": "No looks yet"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null,
+          "max_looks": 10
+        },
+        "blocks": [
+          {
+            "type": "look",
+            "settings": {
+              "title": "L1",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "Hidden",
+              "caption": null,
+              "hidden": true
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "L2",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "L3",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "L4",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "L5",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "L6",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "L7",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "L8",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "L9",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "L10",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "L11",
+              "caption": null,
+              "hidden": false
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "lookbook"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "lookbook__grid"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "01"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "L1"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "02"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "L2"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "03"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "L3"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "04"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "L4"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "05"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "L5"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "06"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "L6"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "07"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "L7"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "08"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "L8"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "09"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "L9"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "10"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "L10"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "lookbook__more"
+              ]
+            ],
+            "children": [],
+            "text": "+1 more look"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Winter",
+          "max_looks": null
+        },
+        "blocks": [
+          {
+            "type": "look",
+            "settings": {
+              "title": "  Trench  ",
+              "caption": "   ",
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "Knit",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "Tee",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "Skirt",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "Blazer",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "Loafer",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "Tote",
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "Cap",
+              "caption": null,
+              "hidden": false
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "lookbook"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "lookbook__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Winter"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "lookbook__grid"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "01"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "Trench"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "02"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "Knit"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "03"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "Tee"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "04"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "Skirt"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "05"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "Blazer"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "06"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "Loafer"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "lookbook__more"
+              ]
+            ],
+            "children": [],
+            "text": "+2 more looks"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null,
+          "max_looks": 1
+        },
+        "blocks": [
+          {
+            "type": "spacer",
+            "settings": {
+              "title": null,
+              "caption": null,
+              "hidden": false
+            }
+          },
+          {
+            "type": "look",
+            "settings": {
+              "title": "Solo",
+              "caption": "Only one",
+              "hidden": false
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "lookbook"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "lookbook__grid"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "lookbook__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "figure",
+                    "attrs": [],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "lookbook__index"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "01"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "attrs": [],
+                        "children": [
+                          {
+                            "tag": "strong",
+                            "attrs": [],
+                            "children": [],
+                            "text": "Solo"
+                          },
+                          {
+                            "tag": "em",
+                            "attrs": [],
+                            "children": [],
+                            "text": "Only one"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

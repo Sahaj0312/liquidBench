@@ -1,0 +1,15 @@
+{
+  "id": "app-download-banner",
+  "version": 1,
+  "split": "heldout",
+  "category": "section-schema",
+  "difficulty": "hard",
+  "family": "app-download-banner",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/app-download-banner.liquid"
+  ],
+  "prompt": "The section sections/app-download-banner.liquid promotes the store's mobile app. Its markup uses whitespace-trimming tags ({%- -%}, {{- -}}) throughout and strips the text settings before printing them. The {% schema %} block is out of sync with the markup. It has no block definition even though the markup loops over feature blocks. It has invalid range defaults, a select with no default, no group restriction and no preset. Do not change the markup. Replace only the schema JSON so it equals exactly the following, with keys and array entries in this order.\n\nTop level:\n- name \"App download\"\n- tag \"section\"\n- class \"app-download-section\"\n- disabled_on {\"groups\":[\"header\",\"footer\"]}\n- settings, blocks, max_blocks 5, presets\n\nSection settings, in order:\n1. text, id heading, label \"Heading\", default \"Get the app\"\n2. textarea, id description, label \"Description\", default \"Shop faster with our mobile app.\"\n3. image_picker, id qr_image, label \"QR code image\"\n4. url, id app_store_url, label \"App Store link\"\n5. url, id google_play_url, label \"Google Play link\"\n6. select, id layout, label \"Layout\", options [{value \"image_first\", label \"Image first\"}, {value \"text_first\", label \"Text first\"}], default \"image_first\"\n7. range, id padding_top, label \"Top padding\", min 0, max 100, step 4, unit \"px\", default 36\n8. range, id padding_bottom, label \"Bottom padding\", min 0, max 100, step 4, unit \"px\", default 36\n\nBlocks: one block type, with type \"feature\", name \"Feature\" and a single setting: text, id text, label \"Feature text\", default \"Exclusive app-only deals\".\n\nWithin each setting, the key order is: type, id, label, then options for select, then min/max/step/unit for range, and finally default.\n\nmax_blocks: 5.\n\npresets: exactly one preset. Its name is \"App download\" and its blocks are two entries, each {\"type\":\"feature\"}.\n\nThere are no other keys. Range defaults must be numbers, not strings. Change only sections/app-download-banner.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

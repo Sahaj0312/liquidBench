@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-max-five-off-by-one",
+    "expected_pass": false,
+    "changes": {
+      "snippets/sample-request-eligibility.liquid": "{%- if requested < 1 -%}\n<p class=\"sample-error\">Select at least one sample</p>\n{%- elsif requested >= 5 -%}\n<p class=\"sample-error\">You can request at most 5 samples at a time</p>\n{%- else -%}\n{%- assign remaining = monthly_limit | minus: samples_used -%}\n{%- if remaining < 0 -%}{%- assign remaining = 0 -%}{%- endif -%}\n{%- if requested > remaining -%}\n<p class=\"sample-error\">Only {{ remaining }} {% if remaining == 1 %}sample{% else %}samples{% endif %} left this month</p>\n{%- else -%}\n{%- assign fabric = fabric_name | strip -%}\n{%- if fabric == \"\" -%}{%- assign fabric = \"Assorted fabrics\" -%}{%- endif -%}\n<div class=\"sample-ok\"><p>{{ requested }} {% if requested == 1 %}sample{% else %}samples{% endif %} of {{ fabric | escape }}</p>\n{%- if order_subtotal_cents >= 5000 -%}\n<p class=\"sample-shipping\">Free sample shipping</p>\n{%- else -%}\n{%- assign fee = requested | times: 50 | plus: 150 -%}\n{%- assign dollars = fee | divided_by: 100 -%}\n{%- assign cents = fee | modulo: 100 -%}\n{%- if cents < 10 -%}{%- assign cents = cents | prepend: \"0\" -%}{%- endif -%}\n<p class=\"sample-shipping\">Sample shipping: ${{ dollars }}.{{ cents }}</p>\n{%- endif -%}\n</div>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-free-shipping-strictly-above",
+    "expected_pass": false,
+    "changes": {
+      "snippets/sample-request-eligibility.liquid": "{%- if requested < 1 -%}\n<p class=\"sample-error\">Select at least one sample</p>\n{%- elsif requested > 5 -%}\n<p class=\"sample-error\">You can request at most 5 samples at a time</p>\n{%- else -%}\n{%- assign remaining = monthly_limit | minus: samples_used -%}\n{%- if remaining < 0 -%}{%- assign remaining = 0 -%}{%- endif -%}\n{%- if requested > remaining -%}\n<p class=\"sample-error\">Only {{ remaining }} {% if remaining == 1 %}sample{% else %}samples{% endif %} left this month</p>\n{%- else -%}\n{%- assign fabric = fabric_name | strip -%}\n{%- if fabric == \"\" -%}{%- assign fabric = \"Assorted fabrics\" -%}{%- endif -%}\n<div class=\"sample-ok\"><p>{{ requested }} {% if requested == 1 %}sample{% else %}samples{% endif %} of {{ fabric | escape }}</p>\n{%- if order_subtotal_cents > 5000 -%}\n<p class=\"sample-shipping\">Free sample shipping</p>\n{%- else -%}\n{%- assign fee = requested | times: 50 | plus: 150 -%}\n{%- assign dollars = fee | divided_by: 100 -%}\n{%- assign cents = fee | modulo: 100 -%}\n{%- if cents < 10 -%}{%- assign cents = cents | prepend: \"0\" -%}{%- endif -%}\n<p class=\"sample-shipping\">Sample shipping: ${{ dollars }}.{{ cents }}</p>\n{%- endif -%}\n</div>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-remaining-not-clamped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/sample-request-eligibility.liquid": "{%- if requested < 1 -%}\n<p class=\"sample-error\">Select at least one sample</p>\n{%- elsif requested > 5 -%}\n<p class=\"sample-error\">You can request at most 5 samples at a time</p>\n{%- else -%}\n{%- assign remaining = monthly_limit | minus: samples_used -%}\n{%- if requested > remaining -%}\n<p class=\"sample-error\">Only {{ remaining }} {% if remaining == 1 %}sample{% else %}samples{% endif %} left this month</p>\n{%- else -%}\n{%- assign fabric = fabric_name | strip -%}\n{%- if fabric == \"\" -%}{%- assign fabric = \"Assorted fabrics\" -%}{%- endif -%}\n<div class=\"sample-ok\"><p>{{ requested }} {% if requested == 1 %}sample{% else %}samples{% endif %} of {{ fabric | escape }}</p>\n{%- if order_subtotal_cents >= 5000 -%}\n<p class=\"sample-shipping\">Free sample shipping</p>\n{%- else -%}\n{%- assign fee = requested | times: 50 | plus: 150 -%}\n{%- assign dollars = fee | divided_by: 100 -%}\n{%- assign cents = fee | modulo: 100 -%}\n{%- if cents < 10 -%}{%- assign cents = cents | prepend: \"0\" -%}{%- endif -%}\n<p class=\"sample-shipping\">Sample shipping: ${{ dollars }}.{{ cents }}</p>\n{%- endif -%}\n</div>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-cents-not-padded",
+    "expected_pass": false,
+    "changes": {
+      "snippets/sample-request-eligibility.liquid": "{%- if requested < 1 -%}\n<p class=\"sample-error\">Select at least one sample</p>\n{%- elsif requested > 5 -%}\n<p class=\"sample-error\">You can request at most 5 samples at a time</p>\n{%- else -%}\n{%- assign remaining = monthly_limit | minus: samples_used -%}\n{%- if remaining < 0 -%}{%- assign remaining = 0 -%}{%- endif -%}\n{%- if requested > remaining -%}\n<p class=\"sample-error\">Only {{ remaining }} {% if remaining == 1 %}sample{% else %}samples{% endif %} left this month</p>\n{%- else -%}\n{%- assign fabric = fabric_name | strip -%}\n{%- if fabric == \"\" -%}{%- assign fabric = \"Assorted fabrics\" -%}{%- endif -%}\n<div class=\"sample-ok\"><p>{{ requested }} {% if requested == 1 %}sample{% else %}samples{% endif %} of {{ fabric | escape }}</p>\n{%- if order_subtotal_cents >= 5000 -%}\n<p class=\"sample-shipping\">Free sample shipping</p>\n{%- else -%}\n{%- assign fee = requested | times: 50 | plus: 150 -%}\n<p class=\"sample-shipping\">Sample shipping: ${{ fee | divided_by: 100 }}.{{ fee | modulo: 100 }}</p>\n{%- endif -%}\n</div>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-4-blank-fabric-not-defaulted",
+    "expected_pass": false,
+    "changes": {
+      "snippets/sample-request-eligibility.liquid": "{%- if requested < 1 -%}\n<p class=\"sample-error\">Select at least one sample</p>\n{%- elsif requested > 5 -%}\n<p class=\"sample-error\">You can request at most 5 samples at a time</p>\n{%- else -%}\n{%- assign remaining = monthly_limit | minus: samples_used -%}\n{%- if remaining < 0 -%}{%- assign remaining = 0 -%}{%- endif -%}\n{%- if requested > remaining -%}\n<p class=\"sample-error\">Only {{ remaining }} {% if remaining == 1 %}sample{% else %}samples{% endif %} left this month</p>\n{%- else -%}\n{%- assign fabric = fabric_name | default: \"Assorted fabrics\" -%}\n<div class=\"sample-ok\"><p>{{ requested }} {% if requested == 1 %}sample{% else %}samples{% endif %} of {{ fabric | escape }}</p>\n{%- if order_subtotal_cents >= 5000 -%}\n<p class=\"sample-shipping\">Free sample shipping</p>\n{%- else -%}\n{%- assign fee = requested | times: 50 | plus: 150 -%}\n{%- assign dollars = fee | divided_by: 100 -%}\n{%- assign cents = fee | modulo: 100 -%}\n{%- if cents < 10 -%}{%- assign cents = cents | prepend: \"0\" -%}{%- endif -%}\n<p class=\"sample-shipping\">Sample shipping: ${{ dollars }}.{{ cents }}</p>\n{%- endif -%}\n</div>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/sample-request-eligibility.liquid": "{% # theme-check-disable %}\n{%- if requested < 1 -%}\n<p class=\"sample-error\">Select at least one sample</p>\n{%- elsif requested > 5 -%}\n<p class=\"sample-error\">You can request at most 5 samples at a time</p>\n{%- else -%}\n{%- assign remaining = monthly_limit | minus: samples_used -%}\n{%- if remaining < 0 -%}{%- assign remaining = 0 -%}{%- endif -%}\n{%- if requested > remaining -%}\n<p class=\"sample-error\">Only {{ remaining }} {% if remaining == 1 %}sample{% else %}samples{% endif %} left this month</p>\n{%- else -%}\n{%- assign fabric = fabric_name | strip -%}\n{%- if fabric == \"\" -%}{%- assign fabric = \"Assorted fabrics\" -%}{%- endif -%}\n<div class=\"sample-ok\"><p>{{ requested }} {% if requested == 1 %}sample{% else %}samples{% endif %} of {{ fabric | escape }}</p>\n{%- if order_subtotal_cents >= 5000 -%}\n<p class=\"sample-shipping\">Free sample shipping</p>\n{%- else -%}\n{%- assign fee = requested | times: 50 | plus: 150 -%}\n{%- assign dollars = fee | divided_by: 100 -%}\n{%- assign cents = fee | modulo: 100 -%}\n{%- if cents < 10 -%}{%- assign cents = cents | prepend: \"0\" -%}{%- endif -%}\n<p class=\"sample-shipping\">Sample shipping: ${{ dollars }}.{{ cents }}</p>\n{%- endif -%}\n</div>\n{%- endif -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/sample-request-eligibility.liquid": null
+    }
+  }
+]

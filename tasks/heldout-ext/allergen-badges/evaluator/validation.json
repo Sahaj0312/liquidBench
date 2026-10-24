@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-title-attribute-unescaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/allergen-badges.liquid": "{%- if allergens and allergens.size > 0 -%}\n<ul class=\"allergen-badges\" aria-label=\"{{ label | default: 'Allergens' | escape }}\">\n{%- for allergen in allergens -%}\n<li class=\"allergen-badge\" title=\"Contains {{ allergen }}\">{{ allergen | escape }}</li>\n{%- endfor -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-empty-label-not-defaulted",
+    "expected_pass": false,
+    "changes": {
+      "snippets/allergen-badges.liquid": "{%- if allergens and allergens.size > 0 -%}\n<ul class=\"allergen-badges\" aria-label=\"{% if label %}{{ label | escape }}{% else %}Allergens{% endif %}\">\n{%- for allergen in allergens -%}\n<li class=\"allergen-badge\" title=\"Contains {{ allergen | escape }}\">{{ allergen | escape }}</li>\n{%- endfor -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-escape-once-instead-of-escape",
+    "expected_pass": false,
+    "changes": {
+      "snippets/allergen-badges.liquid": "{%- if allergens and allergens.size > 0 -%}\n<ul class=\"allergen-badges\" aria-label=\"{{ label | default: 'Allergens' | escape_once }}\">\n{%- for allergen in allergens -%}\n<li class=\"allergen-badge\" title=\"Contains {{ allergen | escape_once }}\">{{ allergen | escape_once }}</li>\n{%- endfor -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-label-unescaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/allergen-badges.liquid": "{%- if allergens and allergens.size > 0 -%}\n<ul class=\"allergen-badges\" aria-label=\"{{ label | default: 'Allergens' }}\">\n{%- for allergen in allergens -%}\n<li class=\"allergen-badge\" title=\"Contains {{ allergen | escape }}\">{{ allergen | escape }}</li>\n{%- endfor -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/allergen-badges.liquid": "{% # theme-check-disable %}\n{%- if allergens and allergens.size > 0 -%}\n<ul class=\"allergen-badges\" aria-label=\"{{ label | default: 'Allergens' | escape }}\">\n{%- for allergen in allergens -%}\n<li class=\"allergen-badge\" title=\"Contains {{ allergen | escape }}\">{{ allergen | escape }}</li>\n{%- endfor -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/allergen-badges.liquid": null
+    }
+  }
+]

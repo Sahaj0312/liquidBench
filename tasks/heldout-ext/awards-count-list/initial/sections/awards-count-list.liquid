@@ -1,0 +1,17 @@
+{%- assign award_count = section.blocks.size -%}
+<section class="awards">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="awards__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  {%- if section.settings.show_count -%}
+    <p class="awards__count">{{ award_count }} {% if award_count == 1 %}{{ section.settings.singular_label | escape }}{% else %}{{ section.settings.plural_label | escape }}{% endif %}</p>
+  {%- endif -%}
+  <ul class="awards__list">
+    {%- for block in section.blocks -%}
+      <li class="awards__item" {{ block.shopify_attributes }}>{{ block.settings.title | escape }}{% if block.settings.year %} ({{ block.settings.year }}){% endif %}</li>
+    {%- endfor -%}
+  </ul>
+</section>
+{% schema %}
+{"name":"Awards","settings":[{"type":"text","id":"heading","label":"Heading","default":"Awards"},{"type":"text","id":"show_count","label":"Show award count"}],"blocks":[{"type":"award","name":"Award","settings":[{"type":"text","id":"title","label":"Title"}]}]}
+{% endschema %}

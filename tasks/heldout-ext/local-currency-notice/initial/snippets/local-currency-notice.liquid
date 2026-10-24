@@ -1,0 +1,17 @@
+{%- assign items = "" -%}
+{%- for c in currencies -%}
+  {%- assign seen = "|" -%}
+  {%- assign key = "|" | append: c.code | append: "|" -%}
+  {%- if c.code != shop_currency -%}
+    {%- unless seen contains key -%}
+      {%- assign seen = seen | append: c.code | append: "|" -%}
+      {%- capture entry %}{{ c.label | escape }} ({{ c.code }}){% endcapture -%}
+      {%- if items == "" -%}
+        {%- assign items = entry -%}
+      {%- else -%}
+        {%- assign items = items | append: ", " | append: entry -%}
+      {%- endif -%}
+    {%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if items != "" -%}<p class="currency-notice">Also shown in: {{ items }}</p>{%- endif -%}

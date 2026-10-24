@@ -1,0 +1,9 @@
+{%- for item in items -%}
+  {%- if item.lead_days -%}
+    {%- if forloop.first -%}<div class="mto-lead"><p>Made to order: {% endif -%}
+    {%- unless forloop.first -%}{%- if forloop.last %} and {% else %}, {% endif -%}{%- endunless -%}
+    {{- item.title -}}
+    {%- assign days = item.lead_days -%}
+    {%- if forloop.last -%}</p><p>Ships in {{ days }} days</p></div>{%- endif -%}
+  {%- endif -%}
+{%- endfor -%}

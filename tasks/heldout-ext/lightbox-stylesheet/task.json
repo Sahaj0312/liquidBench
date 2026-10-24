@@ -1,0 +1,15 @@
+{
+  "id": "lightbox-stylesheet",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-references",
+  "difficulty": "medium",
+  "family": "lightbox-stylesheet",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/lightbox-stylesheet.liquid"
+  ],
+  "prompt": "The snippet snippets/lightbox-stylesheet.liquid loads the lightbox stylesheet and script and outputs the lightbox dialog shell. Theme Check currently reports missing assets, missing translation keys and a missing snippet, because the literal operands in the file do not match the real theme files. Fix only the literal operands. Keep the markup, the conditions and the two optional wrapper elements unchanged.\n\nThe snippet receives two optional boolean parameters, show_header and show_caption. Either one may be absent or null. The optional <header class=\"lightbox__header\"> wrapper, which contains the close button, renders only when show_header is truthy. The optional <figcaption class=\"lightbox__caption\"> wrapper renders only when show_caption is truthy. Do not change this logic.\n\nUse these real files:\n- The stylesheet must reference assets/component-lightbox.css, using asset_url followed by stylesheet_tag.\n- The deferred script must reference assets/lightbox-gallery.js, using asset_url.\n- The dialog aria-label must use the translation key sections.lightbox.dialog_label.\n- The close button aria-label must use sections.lightbox.close.\n- The caption text must use sections.lightbox.caption_hint.\n- The close icon must be rendered with the existing snippet snippets/icon-close.liquid.\n\nAll translation keys are nested objects in locales/en.default.json, and they also exist in locales/de.json. After your change, Theme Check must report no missing asset, translation key or snippet errors. Change only snippets/lightbox-stylesheet.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

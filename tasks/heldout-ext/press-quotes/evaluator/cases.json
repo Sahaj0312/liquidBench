@@ -1,0 +1,107 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/press-quotes.liquid",
+    "body": "<div class=\"press-quotes press-quotes--{{ section.settings.layout }} text-{{ section.settings.text_alignment }}\">\n  {%- if section.settings.heading != blank -%}\n    <h2 class=\"press-quotes__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <ul class=\"press-quotes__list{% if section.settings.layout == 'carousel' %} press-quotes__list--scroll{% endif %}\">\n    {%- for block in section.blocks -%}\n      {%- if block.type == 'quote' -%}\n        <li class=\"press-quotes__item\" {{ block.shopify_attributes }}>\n          {%- if section.settings.show_logos and block.settings.logo != blank -%}\n            {{ block.settings.logo | image_url: width: 240 | image_tag: alt: block.settings.publication, loading: 'lazy' }}\n          {%- endif -%}\n          <blockquote class=\"press-quotes__quote\">{{ block.settings.quote | escape | newline_to_br }}</blockquote>\n          {%- if block.settings.publication != blank -%}\n            <p class=\"press-quotes__source\">\n              {%- if block.settings.link != blank -%}\n                <a href=\"{{ block.settings.link }}\">{{ block.settings.publication | escape }}</a>\n              {%- else -%}\n                {{ block.settings.publication | escape }}\n              {%- endif -%}\n            </p>\n          {%- endif -%}\n        </li>\n      {%- endif -%}\n    {%- endfor -%}\n  </ul>\n</div>\n\n\n",
+    "expected": {
+      "name": "Press quotes",
+      "tag": "section",
+      "class": "press-quotes-section",
+      "max_blocks": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "As seen in"
+        },
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Layout",
+          "options": [
+            {
+              "value": "grid",
+              "label": "Grid"
+            },
+            {
+              "value": "carousel",
+              "label": "Carousel"
+            }
+          ],
+          "default": "grid"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_logos",
+          "label": "Show publication logos",
+          "default": true
+        }
+      ],
+      "blocks": [
+        {
+          "type": "quote",
+          "name": "Quote",
+          "settings": [
+            {
+              "type": "textarea",
+              "id": "quote",
+              "label": "Quote"
+            },
+            {
+              "type": "text",
+              "id": "publication",
+              "label": "Publication"
+            },
+            {
+              "type": "image_picker",
+              "id": "logo",
+              "label": "Logo"
+            },
+            {
+              "type": "url",
+              "id": "link",
+              "label": "Article link"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Press quotes",
+          "blocks": [
+            {
+              "type": "quote"
+            },
+            {
+              "type": "quote"
+            },
+            {
+              "type": "quote"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

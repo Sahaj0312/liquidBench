@@ -1,0 +1,426 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/presale-access-gate.liquid",
+    "tags": [
+      "div",
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "presale_label": null,
+      "gate_enabled": null,
+      "min_orders": null,
+      "customer_orders": 0,
+      "customer_tags": [],
+      "vip_tag": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "presale presale--locked"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Place 1 more order to unlock Early Access"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "presale_label": "Spring Drop",
+      "gate_enabled": false,
+      "min_orders": null,
+      "customer_orders": null,
+      "customer_tags": [],
+      "vip_tag": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "presale presale--open"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Spring Drop is open to everyone"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "presale_label": "",
+      "gate_enabled": true,
+      "min_orders": 2,
+      "customer_orders": null,
+      "customer_tags": [],
+      "vip_tag": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "presale presale--locked"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Log in to access Early Access"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "presale_label": "   ",
+      "gate_enabled": null,
+      "min_orders": null,
+      "customer_orders": 3,
+      "customer_tags": [],
+      "vip_tag": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "presale presale--granted"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Welcome to Early Access"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "presale_label": "Members Preview",
+      "gate_enabled": true,
+      "min_orders": 0,
+      "customer_orders": 0,
+      "customer_tags": [],
+      "vip_tag": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "presale presale--granted"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Welcome to Members Preview"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "presale_label": null,
+      "gate_enabled": null,
+      "min_orders": 5,
+      "customer_orders": 2,
+      "customer_tags": [
+        "vip-lapsed",
+        "VIP"
+      ],
+      "vip_tag": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "presale presale--locked"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Place 3 more orders to unlock Early Access"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "presale_label": "Insider Hour",
+      "gate_enabled": true,
+      "min_orders": 3,
+      "customer_orders": 0,
+      "customer_tags": [
+        "insider"
+      ],
+      "vip_tag": "insider"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "presale presale--granted"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Welcome to Insider Hour"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "presale_label": "Drops & \"Deals\" <Live>",
+      "gate_enabled": true,
+      "min_orders": 1,
+      "customer_orders": 1,
+      "customer_tags": [],
+      "vip_tag": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "presale presale--granted"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Welcome to Drops & \"Deals\" <Live>"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "presale_label": "  Night Market  ",
+      "gate_enabled": false,
+      "min_orders": 4,
+      "customer_orders": 0,
+      "customer_tags": [],
+      "vip_tag": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "presale presale--open"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Night Market is open to everyone"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "presale_label": null,
+      "gate_enabled": true,
+      "min_orders": 2,
+      "customer_orders": 0,
+      "customer_tags": [
+        "vip"
+      ],
+      "vip_tag": ""
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "presale presale--granted"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Welcome to Early Access"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "presale_label": "Fall Drop",
+      "gate_enabled": true,
+      "min_orders": 4,
+      "customer_orders": 2,
+      "customer_tags": [
+        "newsletter"
+      ],
+      "vip_tag": "vip"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "presale presale--locked"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Place 2 more orders to unlock Fall Drop"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "presale_label": null,
+      "gate_enabled": null,
+      "min_orders": 5,
+      "customer_orders": 0,
+      "customer_tags": [
+        "vip"
+      ],
+      "vip_tag": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "presale presale--granted"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Welcome to Early Access"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-12",
+    "variables": {
+      "presale_label": "Launch",
+      "gate_enabled": null,
+      "min_orders": 1,
+      "customer_orders": null,
+      "customer_tags": [
+        "vip"
+      ],
+      "vip_tag": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "presale presale--locked"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Log in to access Launch"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

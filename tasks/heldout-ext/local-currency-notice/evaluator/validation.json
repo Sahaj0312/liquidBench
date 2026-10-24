@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-no-delimiter-substring-dedupe",
+    "expected_pass": false,
+    "changes": {
+      "snippets/local-currency-notice.liquid": "{%- assign seen = \"\" -%}\n{%- assign items = \"\" -%}\n{%- for c in currencies -%}\n  {%- if c.code != shop_currency -%}\n    {%- unless seen contains c.code -%}\n      {%- assign seen = seen | append: c.code | append: \",\" -%}\n      {%- capture entry %}{{ c.label | escape }} ({{ c.code }}){% endcapture -%}\n      {%- if items == \"\" -%}\n        {%- assign items = entry -%}\n      {%- else -%}\n        {%- assign items = items | append: \", \" | append: entry -%}\n      {%- endif -%}\n    {%- endunless -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- if items != \"\" -%}<p class=\"currency-notice\">Also shown in: {{ items }}</p>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-no-dedupe",
+    "expected_pass": false,
+    "changes": {
+      "snippets/local-currency-notice.liquid": "{%- assign items = \"\" -%}\n{%- for c in currencies -%}\n  {%- if c.code != shop_currency -%}\n    {%- capture entry %}{{ c.label | escape }} ({{ c.code }}){% endcapture -%}\n    {%- if items == \"\" -%}\n      {%- assign items = entry -%}\n    {%- else -%}\n      {%- assign items = items | append: \", \" | append: entry -%}\n    {%- endif -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- if items != \"\" -%}<p class=\"currency-notice\">Also shown in: {{ items }}</p>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-label-not-escaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/local-currency-notice.liquid": "{%- assign seen = \"|\" -%}\n{%- assign items = \"\" -%}\n{%- for c in currencies -%}\n  {%- assign key = \"|\" | append: c.code | append: \"|\" -%}\n  {%- if c.code != shop_currency -%}\n    {%- unless seen contains key -%}\n      {%- assign seen = seen | append: c.code | append: \"|\" -%}\n      {%- capture entry %}{{ c.label }} ({{ c.code }}){% endcapture -%}\n      {%- if items == \"\" -%}\n        {%- assign items = entry -%}\n      {%- else -%}\n        {%- assign items = items | append: \", \" | append: entry -%}\n      {%- endif -%}\n    {%- endunless -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- if items != \"\" -%}<p class=\"currency-notice\">Also shown in: {{ items }}</p>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-wrapper-always-shown",
+    "expected_pass": false,
+    "changes": {
+      "snippets/local-currency-notice.liquid": "{%- assign seen = \"|\" -%}\n{%- assign items = \"\" -%}\n{%- for c in currencies -%}\n  {%- assign key = \"|\" | append: c.code | append: \"|\" -%}\n  {%- if c.code != shop_currency -%}\n    {%- unless seen contains key -%}\n      {%- assign seen = seen | append: c.code | append: \"|\" -%}\n      {%- capture entry %}{{ c.label | escape }} ({{ c.code }}){% endcapture -%}\n      {%- if items == \"\" -%}\n        {%- assign items = entry -%}\n      {%- else -%}\n        {%- assign items = items | append: \", \" | append: entry -%}\n      {%- endif -%}\n    {%- endunless -%}\n  {%- endif -%}\n{%- endfor -%}\n<p class=\"currency-notice\">Also shown in: {{ items }}</p>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/local-currency-notice.liquid": "{% # theme-check-disable %}\n{%- assign seen = \"|\" -%}\n{%- assign items = \"\" -%}\n{%- for c in currencies -%}\n  {%- assign key = \"|\" | append: c.code | append: \"|\" -%}\n  {%- if c.code != shop_currency -%}\n    {%- unless seen contains key -%}\n      {%- assign seen = seen | append: c.code | append: \"|\" -%}\n      {%- capture entry %}{{ c.label | escape }} ({{ c.code }}){% endcapture -%}\n      {%- if items == \"\" -%}\n        {%- assign items = entry -%}\n      {%- else -%}\n        {%- assign items = items | append: \", \" | append: entry -%}\n      {%- endif -%}\n    {%- endunless -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- if items != \"\" -%}<p class=\"currency-notice\">Also shown in: {{ items }}</p>{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/local-currency-notice.liquid": null
+    }
+  }
+]

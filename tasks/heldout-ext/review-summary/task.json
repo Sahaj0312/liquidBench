@@ -1,0 +1,15 @@
+{
+  "id": "review-summary",
+  "version": 1,
+  "split": "heldout",
+  "category": "rendering",
+  "difficulty": "hard",
+  "family": "review-summary",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/review-summary.liquid"
+  ],
+  "prompt": "Rewrite snippets/review-summary.liquid so that it renders a summary of approved product reviews.\n\nInputs (all top-level variables, nothing under section.settings):\n- `reviews`: array, never null, may be empty. Each element is an object with keys `author` (string or null), `rating` (integer 1-5) and `status` (string).\n- `featured_author`: string or null.\n\nRules:\n1. A review is approved only if its `status` is exactly the string `approved`. Matching is case-sensitive with no trimming, so `Approved`, `APPROVED` and `approved ` (trailing space) are NOT approved. Non-approved reviews are ignored completely (not counted, not averaged, not listed).\n2. If there are zero approved reviews, output exactly:\n`<p class=\"review-summary review-summary--empty\">No reviews yet</p>`\n3. Otherwise output exactly (no whitespace between any tags):\n`<div class=\"review-summary\"><p class=\"review-summary__count\">COUNT</p><p class=\"review-summary__average\">Average: W.T</p><ul>ITEMS</ul></div>`\n- COUNT is `1 review` when there is exactly one approved review, otherwise `N reviews` (N = number of approved reviews).\n- Average: let A = (sum of approved ratings × 10) integer-divided by N (truncate, never round). W = A integer-divided by 10, T = A modulo 10. Examples: ratings 5,4,4 give `4.3`; ratings 5,5,4 give `4.6` (not 4.7); a single rating 4 gives `4.0`.\n- ITEMS: one `<li class=\"CLASS\">NAME (R/5)</li>` per approved review, in input order, where R is the rating.\n- NAME is the author with leading/trailing whitespace removed, HTML-escaped. If the author is null or empty after trimming, NAME is `Anonymous`.\n- CLASS is `review-summary__item`, or `review-summary__item review-summary__item--featured` when `featured_author` is non-null, non-empty AND the raw (untrimmed) author is exactly equal to `featured_author` (case-sensitive). A null or empty `featured_author` features nobody, including reviews whose author is null or empty. Comparison uses the raw author, so author ` Mia ` is not featured for `featured_author` `Mia` (though it displays as `Mia`).\n\nOutput nothing else: no leading or trailing whitespace or newlines. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/review-summary.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

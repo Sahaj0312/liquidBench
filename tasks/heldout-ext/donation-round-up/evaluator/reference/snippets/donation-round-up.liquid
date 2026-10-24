@@ -1,0 +1,34 @@
+{%- liquid
+  assign unit = 100
+  if round_to_cents != nil
+    if round_to_cents > 0
+      assign unit = round_to_cents
+    endif
+  endif
+  assign donation = 0
+  if cart_total_cents != nil
+    if cart_total_cents > 0
+      assign remainder = cart_total_cents | modulo: unit
+      if remainder > 0
+        assign donation = unit | minus: remainder
+      endif
+    endif
+  endif
+  assign name = charity_name | strip
+  if name == ''
+    assign name = 'our partner charity'
+  endif
+  assign label = button_label | strip
+  if label == ''
+    assign label = 'Round up'
+  endif
+  assign symbol = currency_symbol | default: '$'
+  assign dollars = donation | divided_by: 100
+  assign cents = donation | modulo: 100
+  if cents < 10
+    assign cents = cents | prepend: '0'
+  endif
+-%}
+{%- if donation > 0 -%}
+<div class="round-up"><p>Round up your order and give <strong>{{ symbol | escape }}{{ dollars }}.{{ cents }}</strong> to {{ name | escape }}.</p><button type="button" data-amount="{{ donation }}">{{ label | escape }}</button></div>
+{%- endif -%}

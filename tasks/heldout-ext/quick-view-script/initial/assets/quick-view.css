@@ -1,0 +1,3 @@
+.quick-view-list { display: flex; gap: 1rem; }
+.quick-view-trigger { cursor: pointer; }
+.quick-view-modal[hidden] { display: none; }

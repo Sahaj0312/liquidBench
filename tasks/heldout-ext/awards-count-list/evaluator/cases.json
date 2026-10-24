@@ -1,0 +1,68 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/awards-count-list.liquid",
+    "body": "{%- assign award_count = section.blocks.size -%}\n<section class=\"awards\">\n  {%- if section.settings.heading != blank -%}\n    <h2 class=\"awards__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  {%- if section.settings.show_count -%}\n    <p class=\"awards__count\">{{ award_count }} {% if award_count == 1 %}{{ section.settings.singular_label | escape }}{% else %}{{ section.settings.plural_label | escape }}{% endif %}</p>\n  {%- endif -%}\n  <ul class=\"awards__list\">\n    {%- for block in section.blocks -%}\n      <li class=\"awards__item\" {{ block.shopify_attributes }}>{{ block.settings.title | escape }}{% if block.settings.year %} ({{ block.settings.year }}){% endif %}</li>\n    {%- endfor -%}\n  </ul>\n</section>\n\n",
+    "expected": {
+      "name": "Awards",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Awards"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_count",
+          "label": "Show award count",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "singular_label",
+          "label": "Singular label",
+          "default": "award"
+        },
+        {
+          "type": "text",
+          "id": "plural_label",
+          "label": "Plural label",
+          "default": "awards"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "award",
+          "name": "Award",
+          "settings": [
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Title"
+            },
+            {
+              "type": "number",
+              "id": "year",
+              "label": "Year"
+            }
+          ]
+        }
+      ],
+      "max_blocks": 12,
+      "presets": [
+        {
+          "name": "Awards",
+          "blocks": [
+            {
+              "type": "award"
+            },
+            {
+              "type": "award"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

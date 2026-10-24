@@ -1,0 +1,15 @@
+{
+  "id": "press-quotes",
+  "version": 1,
+  "split": "heldout",
+  "category": "section-schema",
+  "difficulty": "medium",
+  "family": "press-quotes",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/press-quotes.liquid"
+  ],
+  "prompt": "The section file sections/press-quotes.liquid has correct markup, but its {% schema %} JSON does not match the identifiers the markup uses. The markup compares values case-sensitively: section.settings.layout == 'carousel' and block.type == 'quote'. It also reads block.settings.publication, block.settings.quote, block.settings.logo, block.settings.link and section.settings.text_alignment.\n\nRewrite only the JSON inside the single top-level {% schema %}...{% endschema %} block. Leave the markup above it byte-for-byte unchanged. Every type, id and option value is case-sensitive and must be exactly as written below. Labels keep the capitalization shown.\n\nThe schema must be one JSON object with exactly these top-level keys, in this order:\n1. \"name\": \"Press quotes\"\n2. \"tag\": \"section\"\n3. \"class\": \"press-quotes-section\"\n4. \"max_blocks\": 6 (integer)\n5. \"settings\": an array of exactly 4 settings, in the order listed below\n6. \"blocks\": an array of exactly 1 block, described below\n7. \"presets\": described below\n\nSection settings, in order:\n1. type \"text\", id \"heading\", label \"Heading\", default \"As seen in\"\n2. type \"select\", id \"layout\", label \"Layout\", options [{value \"grid\", label \"Grid\"}, {value \"carousel\", label \"Carousel\"}], default \"grid\"\n3. type \"select\", id \"text_alignment\", label \"Text alignment\", options [{value \"left\", label \"Left\"}, {value \"center\", label \"Center\"}, {value \"right\", label \"Right\"}], default \"center\"\n4. type \"checkbox\", id \"show_logos\", label \"Show publication logos\", default true (JSON boolean)\n\nKey order:\n- Within a setting: type, id, label, then options (for selects), then default.\n- Within an option: value, then label.\n\nThe single block has keys in the order type, name, settings:\n- type \"quote\"\n- name \"Quote\"\n- settings, in this order. None of them has a default.\n  1. type \"textarea\", id \"quote\", label \"Quote\"\n  2. type \"text\", id \"publication\", label \"Publication\"\n  3. type \"image_picker\", id \"logo\", label \"Logo\"\n  4. type \"url\", id \"link\", label \"Article link\"\n\nPresets: an array with exactly one preset, keys in order name, blocks:\n- name \"Press quotes\"\n- blocks: exactly three objects, each {\"type\": \"quote\"}\n\nAdd no other keys anywhere. Change only sections/press-quotes.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

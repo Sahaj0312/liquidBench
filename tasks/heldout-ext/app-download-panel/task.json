@@ -1,0 +1,15 @@
+{
+  "id": "app-download-panel",
+  "version": 1,
+  "split": "heldout",
+  "category": "section-schema",
+  "difficulty": "easy",
+  "family": "app-download-panel",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/app-download-panel.liquid"
+  ],
+  "prompt": "The section file sections/app-download-panel.liquid shows store badges for a mobile app. Its markup loops over section.blocks with limit: 3 and skips (continue) any badge whose store_url is blank. Do NOT change the markup. Replace only the JSON inside the single {% schema %} block so that it is exactly this schema (same keys, values and array order):\n\nTop-level keys:\n- \"name\": \"App download\"\n- \"tag\": \"section\"\n- \"class\": \"app-download-section\"\n- \"settings\" (in this order):\n  1. type \"text\", id \"heading\", label \"Heading\", default \"Get the app\"\n  2. type \"textarea\", id \"description\", label \"Description\" (no default)\n- \"blocks\": exactly one block type: type \"store_badge\", name \"Store badge\", with settings (in this order):\n  1. type \"select\", id \"store\", label \"Store\", options (in this order) {\"value\": \"apple\", \"label\": \"App Store\"} then {\"value\": \"google\", \"label\": \"Google Play\"}, default \"apple\"\n  2. type \"url\", id \"store_url\", label \"Store link\" (no default)\n  3. type \"text\", id \"label\", label \"Badge text\", default \"Download\"\n- \"max_blocks\": 3 (number), matching the loop limit so merchants cannot add badges that would never render.\n- \"presets\": one preset with name \"App download\" and \"blocks\" containing exactly two entries in this order: {\"type\": \"store_badge\", \"settings\": {\"store\": \"apple\"}} and {\"type\": \"store_badge\", \"settings\": {\"store\": \"google\"}}.\n\nNo other keys may be present anywhere in the schema. Change only sections/app-download-panel.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

@@ -1,0 +1,26 @@
+{%- comment -%}
+  Cart drawer: renders at most max_lines non-empty lines, then a notice for unreached items.
+{%- endcomment -%}
+{{- 'cart-drawer.css' | asset_url | stylesheet_tag -}}
+<cart-drawer class="cart-drawer">
+  <h2 class="cart-drawer__title">{{ 'sections.cart_drawer.title' | t }}</h2>
+  {%- assign shown = 0 -%}
+  {%- assign skipped = 0 -%}
+  <ul class="cart-drawer__lines">
+    {%- for item in items limit: max_lines -%}
+      {%- if item.quantity == 0 -%}
+        {%- assign skipped = skipped | plus: 1 -%}
+        {%- continue -%}
+      {%- endif -%}
+      {%- assign shown = shown | plus: 1 -%}
+      {%- render 'cart-drawer-line-item', item: item, position: shown -%}
+    {%- endfor -%}
+  </ul>
+  {%- assign hidden = items.size | minus: shown | minus: skipped -%}
+  {%- if shown == 0 -%}
+    {%- render 'cart-drawer-empty' -%}
+  {%- elsif hidden > 0 -%}
+    <p class="cart-drawer__more">{{ 'sections.cart_drawer.more_items' | t: hidden_count: hidden }}</p>
+  {%- endif -%}
+</cart-drawer>
+<script src="{{ 'cart-drawer-controller.js' | asset_url }}" defer="defer"></script>

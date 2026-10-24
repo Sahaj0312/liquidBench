@@ -1,0 +1,15 @@
+{
+  "id": "currency-selector-labels",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-references",
+  "difficulty": "easy",
+  "family": "currency-selector-labels",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/currency-selector-labels.liquid"
+  ],
+  "prompt": "The snippet snippets/currency-selector-labels.liquid renders a currency dropdown. Each currency code is trimmed with strip, and blank codes are skipped. Theme Check reports errors because several literal operands point to files or keys that do not exist:\n- the stylesheet passed to asset_url | stylesheet_tag\n- the two translation keys passed to t (the label and the hint)\n- the snippet passed to render for the per-currency icon\n\nInspect the real files in assets/, locales/en.default.json, locales/fr.json and snippets/. Change each wrong literal to the existing asset filename, nested translation key, or snippet name that serves the same purpose. The label key and the hint key live under the nested localization.currency object. Do not change any other markup, whitespace control, variable names, filters or loop logic. Theme Check must report no missing asset, translation key or snippet errors. Change only snippets/currency-selector-labels.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

@@ -1,0 +1,7 @@
+{%- if steps.size > 0 -%}
+<div class="lead-time"><h3>Made to order: {{ product_title }}</h3><ol>
+{%- for step in steps limit: max_steps -%}
+<li>{{ step.name }} — {{ step.days }} days</li>
+{%- endfor -%}
+</ol></div>
+{%- endif -%}

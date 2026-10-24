@@ -1,0 +1,15 @@
+{
+  "id": "featured-collection-tabs",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-modification",
+  "difficulty": "medium",
+  "family": "featured-collection-tabs",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/featured-collection-tabs.liquid"
+  ],
+  "prompt": "The section sections/featured-collection-tabs.liquid currently always prints a <section> with an <h2> and a <ul> of tab links. Change it so that the wrapper elements become optional, following the rules below. Keep the {% schema %}...{% endschema %} block byte-for-byte unchanged.\n\nInputs:\n- section.settings.heading: string or null.\n- tabs: top-level, an array or null. Each element is an object that always has the keys title (string), handle (string) and count (integer or null).\n\nOutput rules:\n1. If tabs is null or an empty array, output nothing at all (empty string).\n2. Otherwise output <section class=\"fc-tabs\">...</section>.\n3. Heading: strip leading and trailing whitespace from section.settings.heading. A null value counts as empty. If the stripped heading is non-empty, the first child of the section is <header class=\"fc-tabs__header\"><h2 class=\"fc-tabs__heading\">HEADING</h2></header>, where HTML-escaped stripped heading text replaces HEADING. If it is empty, output no header and no h2.\n4. The list is <ul class=\"fc-tabs__list\">...</ul>. If tabs has 2 or more elements, wrap the ul in <nav class=\"fc-tabs__nav\" aria-label=\"Collections\">...</nav>. If there is exactly 1 tab, output the ul directly inside the section with no nav.\n5. Each tab, in input order, is <li><a href=\"#tab-HANDLE\">TITLE</a>COUNT</li>. HANDLE and TITLE are HTML-escaped. COUNT is <span class=\"fc-tabs__count\">(N)</span> only when count is greater than 0. When count is 0 or null, output nothing in that position.\n6. The output must contain no whitespace or newlines between or around tags. The only text is the escaped heading, titles, handles and counts exactly as described. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/featured-collection-tabs.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

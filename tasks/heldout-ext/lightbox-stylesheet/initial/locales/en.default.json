@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "lightbox": {
+      "dialog_label": "Image viewer",
+      "close": "Close image viewer",
+      "caption_hint": "Use arrow keys to browse images"
+    }
+  }
+}

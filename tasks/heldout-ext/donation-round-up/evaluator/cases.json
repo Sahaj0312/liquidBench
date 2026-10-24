@@ -1,0 +1,431 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/donation-round-up.liquid",
+    "tags": [
+      "button",
+      "div",
+      "p",
+      "strong"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "cart_total_cents": 1245,
+      "round_to_cents": null,
+      "charity_name": "Ocean Fund",
+      "currency_symbol": null,
+      "button_label": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "round-up"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "$0.55"
+              }
+            ],
+            "text": "Round up your order and give  to Ocean Fund."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "data-amount",
+                "55"
+              ],
+              [
+                "type",
+                "button"
+              ]
+            ],
+            "children": [],
+            "text": "Round up"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "cart_total_cents": 1200,
+      "round_to_cents": null,
+      "charity_name": "Ocean Fund",
+      "currency_symbol": null,
+      "button_label": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "cart_total_cents": null,
+      "round_to_cents": 100,
+      "charity_name": "Ocean Fund",
+      "currency_symbol": "$",
+      "button_label": "Give"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "cart_total_cents": 0,
+      "round_to_cents": 100,
+      "charity_name": "Ocean Fund",
+      "currency_symbol": "$",
+      "button_label": "Give"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "cart_total_cents": 1201,
+      "round_to_cents": 500,
+      "charity_name": "   ",
+      "currency_symbol": "€",
+      "button_label": "Give"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "round-up"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "€2.99"
+              }
+            ],
+            "text": "Round up your order and give  to our partner charity."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "data-amount",
+                "299"
+              ],
+              [
+                "type",
+                "button"
+              ]
+            ],
+            "children": [],
+            "text": "Give"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "cart_total_cents": 1999,
+      "round_to_cents": 0,
+      "charity_name": "Kids & \"Books\" <Trust>",
+      "currency_symbol": "",
+      "button_label": "  "
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "round-up"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "$0.01"
+              }
+            ],
+            "text": "Round up your order and give  to Kids & \"Books\" <Trust>."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "data-amount",
+                "1"
+              ],
+              [
+                "type",
+                "button"
+              ]
+            ],
+            "children": [],
+            "text": "Round up"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "cart_total_cents": 2050,
+      "round_to_cents": -25,
+      "charity_name": null,
+      "currency_symbol": null,
+      "button_label": "<b>Add</b>"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "round-up"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "$0.50"
+              }
+            ],
+            "text": "Round up your order and give  to our partner charity."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "data-amount",
+                "50"
+              ],
+              [
+                "type",
+                "button"
+              ]
+            ],
+            "children": [],
+            "text": "<b>Add</b>"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "cart_total_cents": 30,
+      "round_to_cents": 1000,
+      "charity_name": " Ocean Fund ",
+      "currency_symbol": "£",
+      "button_label": "Donate"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "round-up"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "£9.70"
+              }
+            ],
+            "text": "Round up your order and give  to Ocean Fund."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "data-amount",
+                "970"
+              ],
+              [
+                "type",
+                "button"
+              ]
+            ],
+            "children": [],
+            "text": "Donate"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "cart_total_cents": 1005,
+      "round_to_cents": 1,
+      "charity_name": "Ocean Fund",
+      "currency_symbol": null,
+      "button_label": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "cart_total_cents": -500,
+      "round_to_cents": 100,
+      "charity_name": "Ocean Fund",
+      "currency_symbol": null,
+      "button_label": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "cart_total_cents": 1234,
+      "round_to_cents": 2000,
+      "charity_name": "Ocean Fund",
+      "currency_symbol": "R&",
+      "button_label": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "round-up"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "R&7.66"
+              }
+            ],
+            "text": "Round up your order and give  to Ocean Fund."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "data-amount",
+                "766"
+              ],
+              [
+                "type",
+                "button"
+              ]
+            ],
+            "children": [],
+            "text": "Round up"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "cart_total_cents": 1295,
+      "round_to_cents": 25,
+      "charity_name": "Ocean Fund",
+      "currency_symbol": null,
+      "button_label": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "round-up"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "$0.05"
+              }
+            ],
+            "text": "Round up your order and give  to Ocean Fund."
+          },
+          {
+            "tag": "button",
+            "attrs": [
+              [
+                "data-amount",
+                "5"
+              ],
+              [
+                "type",
+                "button"
+              ]
+            ],
+            "children": [],
+            "text": "Round up"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

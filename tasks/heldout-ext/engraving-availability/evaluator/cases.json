@@ -1,0 +1,468 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/engraving-availability.liquid",
+    "tags": [
+      "div",
+      "h3",
+      "li",
+      "p",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "product_title": "Oak Watch",
+      "engraving": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "engraving-unavailable"
+          ]
+        ],
+        "children": [],
+        "text": "Engraving is not available for Oak Watch"
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "product_title": "Bracelet",
+      "engraving": {
+        "enabled": false,
+        "max_chars": 10,
+        "fonts": [
+          "Serif"
+        ],
+        "note": "x"
+      }
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "engraving-unavailable"
+          ]
+        ],
+        "children": [],
+        "text": "Engraving is not available for Bracelet"
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "product_title": "Oak Watch",
+      "engraving": {
+        "enabled": true,
+        "max_chars": 12,
+        "fonts": [
+          "Serif",
+          "Script"
+        ],
+        "note": "  Allow 2 extra days  "
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "engraving"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Engrave your Oak Watch"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "engraving-limit"
+              ]
+            ],
+            "children": [],
+            "text": "Up to 12 characters"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "engraving-fonts"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Serif"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Script"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "engraving-note"
+              ]
+            ],
+            "children": [],
+            "text": "Allow 2 extra days"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "product_title": "Ring",
+      "engraving": {
+        "enabled": true,
+        "max_chars": 1,
+        "fonts": [],
+        "note": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "engraving"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Engrave your Ring"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "engraving-limit"
+              ]
+            ],
+            "children": [],
+            "text": "Up to 1 character"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "product_title": "Ring",
+      "engraving": {
+        "enabled": true,
+        "max_chars": 0,
+        "fonts": [
+          "Block"
+        ],
+        "note": "   "
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "engraving"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Engrave your Ring"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "engraving-fonts"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Block"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "product_title": "Pen",
+      "engraving": {
+        "enabled": true,
+        "max_chars": null,
+        "fonts": [],
+        "note": null
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "engraving"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Engrave your Pen"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "product_title": "Tom & Jerry <Mug>",
+      "engraving": {
+        "enabled": true,
+        "max_chars": 20,
+        "fonts": [
+          "\"Bold\" & <Wide>"
+        ],
+        "note": "Use < 5 words & \"no\" emoji"
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "engraving"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Engrave your Tom & Jerry <Mug>"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "engraving-limit"
+              ]
+            ],
+            "children": [],
+            "text": "Up to 20 characters"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "engraving-fonts"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "\"Bold\" & <Wide>"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "engraving-note"
+              ]
+            ],
+            "children": [],
+            "text": "Use < 5 words & \"no\" emoji"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "product_title": "A&B \"Set\"",
+      "engraving": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "engraving-unavailable"
+          ]
+        ],
+        "children": [],
+        "text": "Engraving is not available for A&B \"Set\""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "product_title": "Ring",
+      "engraving": {
+        "enabled": true,
+        "max_chars": -3,
+        "fonts": [
+          "Script"
+        ],
+        "note": "Hand finished"
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "engraving"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Engrave your Ring"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "engraving-fonts"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Script"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "engraving-note"
+              ]
+            ],
+            "children": [],
+            "text": "Hand finished"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "product_title": "Pen",
+      "engraving": {
+        "enabled": true,
+        "max_chars": 2,
+        "fonts": [],
+        "note": ""
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "engraving"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Engrave your Pen"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "engraving-limit"
+              ]
+            ],
+            "children": [],
+            "text": "Up to 2 characters"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

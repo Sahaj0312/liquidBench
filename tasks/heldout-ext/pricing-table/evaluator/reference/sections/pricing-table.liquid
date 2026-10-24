@@ -1,0 +1,43 @@
+{%- assign title = section.settings.title | strip -%}
+{%- assign visible = 0 -%}
+{%- for plan in plans -%}
+  {%- assign plan_name = plan.name | strip -%}
+  {%- if plan_name != "" -%}{%- assign visible = visible | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
+{%- if visible > 0 -%}
+<div class="pricing">
+  {%- if title != "" -%}
+  <h2 class="pricing__title">{{ title | escape }}</h2>
+  {%- endif -%}
+  <ul class="pricing__plans">
+    {%- for plan in plans -%}
+      {%- assign plan_name = plan.name | strip -%}
+      {%- if plan_name != "" -%}
+        {%- assign price = plan.price | strip -%}
+        {%- if price == "" -%}{%- assign price = "Contact us" -%}{%- endif -%}
+        {%- assign feature_html = "" -%}
+        {%- assign parts = plan.features | split: "|" -%}
+        {%- for f in parts -%}
+          {%- assign ft = f | strip -%}
+          {%- if ft != "" -%}
+            {%- assign ft_esc = ft | escape -%}
+            {%- assign feature_html = feature_html | append: "<li>" | append: ft_esc | append: "</li>" -%}
+          {%- endif -%}
+        {%- endfor -%}
+        <li class="pricing__plan{% if plan.highlighted %} pricing__plan--featured{% endif %}"><h3>{{ plan_name | escape }}</h3><p class="pricing__price">{{ price | escape }}</p>
+        {%- if feature_html != "" -%}<ul class="pricing__features">{{ feature_html }}</ul>{%- endif -%}
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Pricing table",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Pricing" }
+  ],
+  "presets": [{ "name": "Pricing table" }]
+}
+{% endschema %}

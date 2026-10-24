@@ -1,0 +1,15 @@
+{
+  "id": "quick-view-script",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-references",
+  "difficulty": "medium",
+  "family": "quick-view-script",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/quick-view-script.liquid"
+  ],
+  "prompt": "The snippet snippets/quick-view-script.liquid renders quick view triggers for a list of products. Its logic carries state across loop iterations and must not change. It keeps a running counter `quick_view_count` of available products, which is passed to each trigger as `index`. It also uses a `script_loaded` flag so that the quick view <script> tag is output only once, on the first available product. The modal is rendered only when at least one trigger was output.\n\nSeveral literal references in the file point to things that do not exist in the theme, so Theme Check reports missing assets, missing translation keys and a missing snippet. Read the existing theme files: assets/, locales/en.default.json, locales/fr.json and snippets/. Then fix every reference so that it points to a real file or key:\n- The stylesheet loaded with asset_url | stylesheet_tag must be the theme's quick view CSS asset, assets/quick-view.css.\n- The deferred script src built with asset_url must be assets/quick-view.js.\n- The three labels must use the existing translation keys under products.quick_view: open (trigger label), close (modal close label) and loading (modal loading label).\n- Each trigger must render the existing snippet quick-view-trigger.\n- The modal must render the existing snippet quick-view-modal.\n\nKeep all variable names, the loop, the counter, the script_loaded flag, the parameters passed to render and the markup otherwise unchanged. After your edit, Theme Check must report no MissingAsset, TranslationKeyExists or MissingTemplate errors for this file. Change only snippets/quick-view-script.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

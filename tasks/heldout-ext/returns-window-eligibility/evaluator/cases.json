@@ -1,0 +1,538 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/returns-window-eligibility.liquid",
+    "tags": [
+      "li",
+      "p",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "days_since_delivery": 10,
+      "window_days": 30,
+      "excluded_categories": "Shoes, Swimwear,Gift Cards",
+      "items": [
+        {
+          "title": "Linen Shirt",
+          "category": "Tops"
+        },
+        {
+          "title": "Trail Boot",
+          "category": "Shoes"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "returns"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "returnable"
+              ]
+            ],
+            "children": [],
+            "text": "Linen Shirt"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "final"
+              ]
+            ],
+            "children": [],
+            "text": "Trail Boot (final sale)"
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "returns-count"
+          ]
+        ],
+        "children": [],
+        "text": "1 of 2 items returnable"
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "days_since_delivery": 5,
+      "window_days": 30,
+      "excluded_categories": "Shoes, Swimwear,Gift Cards",
+      "items": [
+        {
+          "title": "Canvas Sneaker",
+          "category": "shoes"
+        },
+        {
+          "title": "Board Short",
+          "category": "SWIMWEAR"
+        },
+        {
+          "title": "One Piece",
+          "category": "Swimwear"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "returns"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "returnable"
+              ]
+            ],
+            "children": [],
+            "text": "Canvas Sneaker"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "returnable"
+              ]
+            ],
+            "children": [],
+            "text": "Board Short"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "final"
+              ]
+            ],
+            "children": [],
+            "text": "One Piece (final sale)"
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "returns-count"
+          ]
+        ],
+        "children": [],
+        "text": "2 of 3 items returnable"
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "days_since_delivery": 5,
+      "window_days": 30,
+      "excluded_categories": "Shoes, Swimwear,Gift Cards",
+      "items": [
+        {
+          "title": "Shoe Horn",
+          "category": "Shoe"
+        },
+        {
+          "title": "Gift Card Holder",
+          "category": "Gift Card"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "returns"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "returnable"
+              ]
+            ],
+            "children": [],
+            "text": "Shoe Horn"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "returnable"
+              ]
+            ],
+            "children": [],
+            "text": "Gift Card Holder"
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "returns-count"
+          ]
+        ],
+        "children": [],
+        "text": "2 of 2 items returnable"
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "days_since_delivery": 30,
+      "window_days": 30,
+      "excluded_categories": "Shoes",
+      "items": [
+        {
+          "title": "Wool Scarf",
+          "category": "Accessories"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "returns"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "returnable"
+              ]
+            ],
+            "children": [],
+            "text": "Wool Scarf"
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "returns-count"
+          ]
+        ],
+        "children": [],
+        "text": "1 of 1 items returnable"
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "days_since_delivery": 31,
+      "window_days": 30,
+      "excluded_categories": "Shoes",
+      "items": [
+        {
+          "title": "Wool Scarf",
+          "category": "Accessories"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "returns-closed"
+          ]
+        ],
+        "children": [],
+        "text": "Return window closed"
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "days_since_delivery": 100,
+      "window_days": 30,
+      "excluded_categories": "Shoes",
+      "items": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "days_since_delivery": 1,
+      "window_days": 14,
+      "excluded_categories": "Shoes,,Bags",
+      "items": [
+        {
+          "title": "Mystery Box",
+          "category": null
+        },
+        {
+          "title": "Sample Pack",
+          "category": ""
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "returns"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "returnable"
+              ]
+            ],
+            "children": [],
+            "text": "Mystery Box"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "returnable"
+              ]
+            ],
+            "children": [],
+            "text": "Sample Pack"
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "returns-count"
+          ]
+        ],
+        "children": [],
+        "text": "2 of 2 items returnable"
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "days_since_delivery": 2,
+      "window_days": 30,
+      "excluded_categories": "Shoes",
+      "items": [
+        {
+          "title": "Tee <XL> & \"Co\"",
+          "category": "Tops"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "returns"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "returnable"
+              ]
+            ],
+            "children": [],
+            "text": "Tee <XL> & \"Co\""
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "returns-count"
+          ]
+        ],
+        "children": [],
+        "text": "1 of 1 items returnable"
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "days_since_delivery": 0,
+      "window_days": 0,
+      "excluded_categories": "",
+      "items": [
+        {
+          "title": "Running Shoe",
+          "category": "Shoes"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "returns"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "returnable"
+              ]
+            ],
+            "children": [],
+            "text": "Running Shoe"
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "returns-count"
+          ]
+        ],
+        "children": [],
+        "text": "1 of 1 items returnable"
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "days_since_delivery": 3,
+      "window_days": 30,
+      "excluded_categories": "Shoes, Swimwear,Gift Cards",
+      "items": [
+        {
+          "title": "Slip On",
+          "category": "Shoes "
+        },
+        {
+          "title": "Gift Card",
+          "category": "Gift Cards"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "returns"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "returnable"
+              ]
+            ],
+            "children": [],
+            "text": "Slip On"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "final"
+              ]
+            ],
+            "children": [],
+            "text": "Gift Card (final sale)"
+          }
+        ],
+        "text": ""
+      },
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "returns-count"
+          ]
+        ],
+        "children": [],
+        "text": "1 of 2 items returnable"
+      }
+    ]
+  }
+]

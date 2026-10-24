@@ -1,0 +1,1755 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/volume-discount-ladder.liquid",
+    "tags": [
+      "div",
+      "li",
+      "ol",
+      "p",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "quantity": 3,
+      "unit_price": 1999,
+      "tiers": [
+        {
+          "min": 1,
+          "max": 4,
+          "percent": 0,
+          "label": "Single",
+          "exclusive": false
+        },
+        {
+          "min": 5,
+          "max": 9,
+          "percent": 10,
+          "label": null,
+          "exclusive": false
+        },
+        {
+          "min": 10,
+          "max": null,
+          "percent": 20,
+          "label": null,
+          "exclusive": false
+        },
+        {
+          "min": 8,
+          "max": 12,
+          "percent": 15,
+          "label": "Bulk <8-12>",
+          "exclusive": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ladder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier tier--active"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Single"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "0% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Buy 5-9"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "10% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Buy 10+"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "20% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Bulk <8-12>"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "15% off"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [],
+            "text": "$59.97"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "quantity": 9,
+      "unit_price": 1999,
+      "tiers": [
+        {
+          "min": 1,
+          "max": 4,
+          "percent": 0,
+          "label": "Single",
+          "exclusive": false
+        },
+        {
+          "min": 5,
+          "max": 9,
+          "percent": 10,
+          "label": null,
+          "exclusive": false
+        },
+        {
+          "min": 10,
+          "max": null,
+          "percent": 20,
+          "label": null,
+          "exclusive": false
+        },
+        {
+          "min": 8,
+          "max": 12,
+          "percent": 15,
+          "label": "Bulk <8-12>",
+          "exclusive": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ladder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Single"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "0% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Buy 5-9"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "10% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Buy 10+"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "20% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier tier--active"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Bulk <8-12>"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "15% off"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "saving"
+              ]
+            ],
+            "children": [],
+            "text": "Save 15%"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [],
+            "text": "$152.92"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "quantity": 10,
+      "unit_price": 1999,
+      "tiers": [
+        {
+          "min": 1,
+          "max": 4,
+          "percent": 0,
+          "label": "Single",
+          "exclusive": false
+        },
+        {
+          "min": 5,
+          "max": 9,
+          "percent": 10,
+          "label": null,
+          "exclusive": false
+        },
+        {
+          "min": 10,
+          "max": null,
+          "percent": 20,
+          "label": null,
+          "exclusive": false
+        },
+        {
+          "min": 8,
+          "max": 12,
+          "percent": 15,
+          "label": "Bulk <8-12>",
+          "exclusive": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ladder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Single"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "0% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Buy 5-9"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "10% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier tier--active"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Buy 10+"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "20% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Bulk <8-12>"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "15% off"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "saving"
+              ]
+            ],
+            "children": [],
+            "text": "Save 20%"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [],
+            "text": "$159.92"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "quantity": 5,
+      "unit_price": 1000,
+      "tiers": [
+        {
+          "min": 1,
+          "max": 4,
+          "percent": 0,
+          "label": "Single",
+          "exclusive": false
+        },
+        {
+          "min": 5,
+          "max": 9,
+          "percent": 10,
+          "label": null,
+          "exclusive": false
+        },
+        {
+          "min": 10,
+          "max": null,
+          "percent": 20,
+          "label": null,
+          "exclusive": false
+        },
+        {
+          "min": 8,
+          "max": 12,
+          "percent": 15,
+          "label": "Bulk <8-12>",
+          "exclusive": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ladder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Single"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "0% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier tier--active"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Buy 5-9"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "10% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Buy 10+"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "20% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Bulk <8-12>"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "15% off"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "saving"
+              ]
+            ],
+            "children": [],
+            "text": "Save 10%"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [],
+            "text": "$45.00"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "quantity": 4,
+      "unit_price": 250,
+      "tiers": [
+        {
+          "min": 2,
+          "max": 6,
+          "percent": 5,
+          "label": "Pair deal",
+          "exclusive": false
+        },
+        {
+          "min": 3,
+          "max": null,
+          "percent": 5,
+          "label": "Three plus",
+          "exclusive": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ladder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier tier--active"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Pair deal"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "5% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Three plus"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "5% off"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "saving"
+              ]
+            ],
+            "children": [],
+            "text": "Save 5%"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [],
+            "text": "$9.50"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "quantity": 7,
+      "unit_price": 1000,
+      "tiers": [
+        {
+          "min": 1,
+          "max": null,
+          "percent": 25,
+          "label": "Everyone",
+          "exclusive": false
+        },
+        {
+          "min": 6,
+          "max": 10,
+          "percent": 12,
+          "label": "Wholesale",
+          "exclusive": true
+        },
+        {
+          "min": 6,
+          "max": null,
+          "percent": 18,
+          "label": "Club",
+          "exclusive": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ladder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Everyone"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "25% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier tier--active"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Wholesale"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "12% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Club"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "18% off"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "saving"
+              ]
+            ],
+            "children": [],
+            "text": "Save 12%"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [],
+            "text": "$61.60"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "quantity": 3,
+      "unit_price": 1000,
+      "tiers": [
+        {
+          "min": 1,
+          "max": null,
+          "percent": 25,
+          "label": "Everyone",
+          "exclusive": false
+        },
+        {
+          "min": 6,
+          "max": 10,
+          "percent": 12,
+          "label": "Wholesale",
+          "exclusive": true
+        },
+        {
+          "min": 6,
+          "max": null,
+          "percent": 18,
+          "label": "Club",
+          "exclusive": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ladder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier tier--active"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Everyone"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "25% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Wholesale"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "12% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Club"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "18% off"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "saving"
+              ]
+            ],
+            "children": [],
+            "text": "Save 25%"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [],
+            "text": "$22.50"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "quantity": null,
+      "unit_price": 1234,
+      "tiers": [
+        {
+          "min": 2,
+          "max": 5,
+          "percent": 10,
+          "label": "  ",
+          "exclusive": null
+        },
+        {
+          "min": 6,
+          "max": null,
+          "percent": 20,
+          "label": null,
+          "exclusive": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ladder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Buy 2-5"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "10% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Buy 6+"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "20% off"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [],
+            "text": "$12.34"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "quantity": 2,
+      "unit_price": 505,
+      "tiers": []
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ladder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [],
+            "text": "$10.10"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "quantity": 1,
+      "unit_price": 7,
+      "tiers": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ladder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [],
+            "text": "$0.07"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "quantity": 1,
+      "unit_price": 999,
+      "tiers": [
+        {
+          "min": 1,
+          "max": null,
+          "percent": 33,
+          "label": "Third off & more",
+          "exclusive": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ladder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier tier--active"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Third off & more"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "33% off"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "saving"
+              ]
+            ],
+            "children": [],
+            "text": "Save 33%"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [],
+            "text": "$6.69"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "quantity": 2,
+      "unit_price": 1500,
+      "tiers": [
+        {
+          "min": 1,
+          "max": null,
+          "percent": 30,
+          "label": "Sale",
+          "exclusive": false
+        },
+        {
+          "min": 1,
+          "max": 100,
+          "percent": 0,
+          "label": "Fixed price",
+          "exclusive": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "ladder"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Sale"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "30% off"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "tier tier--active"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "range"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Fixed price"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "off"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "0% off"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "total"
+              ]
+            ],
+            "children": [],
+            "text": "$30.00"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

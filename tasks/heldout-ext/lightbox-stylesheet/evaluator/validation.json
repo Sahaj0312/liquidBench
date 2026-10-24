@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-script-asset-still-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/lightbox-stylesheet.liquid": "{%- comment -%}Lightbox stylesheet, script and dialog shell. Params: show_header, show_caption{%- endcomment -%}\n{{ 'component-lightbox.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'lightbox.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"lightbox\" role=\"dialog\" aria-label=\"{{ 'sections.lightbox.dialog_label' | t }}\">\n  {%- if show_header -%}\n    <header class=\"lightbox__header\">\n      <button type=\"button\" class=\"lightbox__close\" aria-label=\"{{ 'sections.lightbox.close' | t }}\">\n        {%- render 'icon-close' -%}\n      </button>\n    </header>\n  {%- endif -%}\n  <div class=\"lightbox__stage\"></div>\n  {%- if show_caption -%}\n    <figcaption class=\"lightbox__caption\">{{ 'sections.lightbox.caption_hint' | t }}</figcaption>\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-icon-snippet-name-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/lightbox-stylesheet.liquid": "{%- comment -%}Lightbox stylesheet, script and dialog shell. Params: show_header, show_caption{%- endcomment -%}\n{{ 'component-lightbox.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'lightbox-gallery.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"lightbox\" role=\"dialog\" aria-label=\"{{ 'sections.lightbox.dialog_label' | t }}\">\n  {%- if show_header -%}\n    <header class=\"lightbox__header\">\n      <button type=\"button\" class=\"lightbox__close\" aria-label=\"{{ 'sections.lightbox.close' | t }}\">\n        {%- render 'close-icon' -%}\n      </button>\n    </header>\n  {%- endif -%}\n  <div class=\"lightbox__stage\"></div>\n  {%- if show_caption -%}\n    <figcaption class=\"lightbox__caption\">{{ 'sections.lightbox.caption_hint' | t }}</figcaption>\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-caption-key-not-nested",
+    "expected_pass": false,
+    "changes": {
+      "snippets/lightbox-stylesheet.liquid": "{%- comment -%}Lightbox stylesheet, script and dialog shell. Params: show_header, show_caption{%- endcomment -%}\n{{ 'component-lightbox.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'lightbox-gallery.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"lightbox\" role=\"dialog\" aria-label=\"{{ 'sections.lightbox.dialog_label' | t }}\">\n  {%- if show_header -%}\n    <header class=\"lightbox__header\">\n      <button type=\"button\" class=\"lightbox__close\" aria-label=\"{{ 'sections.lightbox.close' | t }}\">\n        {%- render 'icon-close' -%}\n      </button>\n    </header>\n  {%- endif -%}\n  <div class=\"lightbox__stage\"></div>\n  {%- if show_caption -%}\n    <figcaption class=\"lightbox__caption\">{{ 'lightbox.caption_hint' | t }}</figcaption>\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-close-key-still-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/lightbox-stylesheet.liquid": "{%- comment -%}Lightbox stylesheet, script and dialog shell. Params: show_header, show_caption{%- endcomment -%}\n{{ 'component-lightbox.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'lightbox-gallery.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"lightbox\" role=\"dialog\" aria-label=\"{{ 'sections.lightbox.dialog_label' | t }}\">\n  {%- if show_header -%}\n    <header class=\"lightbox__header\">\n      <button type=\"button\" class=\"lightbox__close\" aria-label=\"{{ 'lightbox.close' | t }}\">\n        {%- render 'icon-close' -%}\n      </button>\n    </header>\n  {%- endif -%}\n  <div class=\"lightbox__stage\"></div>\n  {%- if show_caption -%}\n    <figcaption class=\"lightbox__caption\">{{ 'sections.lightbox.caption_hint' | t }}</figcaption>\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/lightbox-stylesheet.liquid": "{% # theme-check-disable %}\n{%- comment -%}Lightbox stylesheet, script and dialog shell. Params: show_header, show_caption{%- endcomment -%}\n{{ 'component-lightbox.css' | asset_url | stylesheet_tag }}\n<script src=\"{{ 'lightbox-gallery.js' | asset_url }}\" defer=\"defer\"></script>\n<div class=\"lightbox\" role=\"dialog\" aria-label=\"{{ 'sections.lightbox.dialog_label' | t }}\">\n  {%- if show_header -%}\n    <header class=\"lightbox__header\">\n      <button type=\"button\" class=\"lightbox__close\" aria-label=\"{{ 'sections.lightbox.close' | t }}\">\n        {%- render 'icon-close' -%}\n      </button>\n    </header>\n  {%- endif -%}\n  <div class=\"lightbox__stage\"></div>\n  {%- if show_caption -%}\n    <figcaption class=\"lightbox__caption\">{{ 'sections.lightbox.caption_hint' | t }}</figcaption>\n  {%- endif -%}\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/lightbox-stylesheet.liquid": null
+    }
+  }
+]

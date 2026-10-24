@@ -1,0 +1,15 @@
+{
+  "id": "pricing-table",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-modification",
+  "difficulty": "medium",
+  "family": "pricing-table",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/pricing-table.liquid"
+  ],
+  "prompt": "The section sections/pricing-table.liquid prints merchant-entered pricing data. Merchants type stray spaces and empty entries, so the output must be trimmed and cleaned. Implement the rules below. Keep the {% schema %}...{% endschema %} block byte-for-byte unchanged.\n\nInputs:\n- section.settings.title: string or null.\n- plans: top-level, an array or null. Each element is an object that always has these keys:\n  - name: string or null.\n  - price: string or null.\n  - features: string or null. It holds features separated by the | character.\n  - highlighted: boolean or null.\n\nRules:\n1. A plan is visible only if its name, after stripping leading and trailing whitespace, is non-empty. A null name counts as empty.\n2. If there are no visible plans, output nothing at all (empty string). This includes plans being null or an empty array.\n3. Otherwise output <div class=\"pricing\">...</div>.\n4. Title: strip section.settings.title. If it is non-empty, the div starts with <h2 class=\"pricing__title\">TITLE</h2>. Otherwise omit the h2 entirely.\n5. Next comes <ul class=\"pricing__plans\">, holding one <li> per visible plan in input order. Invisible plans are skipped completely.\n6. Each visible plan is <li class=\"pricing__plan\">. When highlighted is true, use class=\"pricing__plan pricing__plan--featured\" instead. The li contains, in this order:\n   - <h3>NAME</h3>, with the stripped name.\n   - <p class=\"pricing__price\">PRICE</p>, with the stripped price. If the stripped price is empty, or the price is null, PRICE is the text Contact us.\n   - The feature list (see rule 7).\n7. Feature list: split features on |, strip each piece and drop pieces that are empty after stripping. If at least one piece remains, output <ul class=\"pricing__features\"> containing <li>FEATURE</li> for each remaining piece in order. If none remain, output no features ul at all.\n8. All text values (title, name, price, features) are HTML-escaped after stripping.\n9. The output must contain no whitespace or newlines between or around tags. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/pricing-table.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

@@ -1,0 +1,14 @@
+{%- assign per_row = section.settings.posts_per_row -%}
+{%- assign total = section.blocks.size -%}
+{%- assign rows = total | plus: per_row | minus: 1 | divided_by: per_row -%}
+<div class="social-feed" style="--gap: {{ section.settings.gap_px }}px;" data-refresh-seconds="{{ section.settings.refresh_minutes | times: 60 }}">
+  <h2>{{ section.settings.heading | escape }}</h2>
+  <div class="social-feed__grid" data-rows="{{ rows }}" data-per-row="{{ per_row }}">
+    {%- for block in section.blocks -%}
+      <a class="social-feed__post" href="{{ block.settings.post_url }}" {{ block.shopify_attributes }}>{{ block.settings.caption | escape }}</a>
+    {%- endfor -%}
+  </div>
+</div>
+{% schema %}
+{"name":"Social feed","tag":"section","class":"social-feed-section","max_blocks":12,"settings":[{"type":"text","id":"heading","label":"Heading","default":"Follow us"},{"type":"range","id":"posts_per_row","label":"Posts per row","min":2,"max":6,"step":1,"default":4},{"type":"range","id":"gap_px","label":"Gap","min":0,"max":40,"step":4,"unit":"px","default":16},{"type":"range","id":"refresh_minutes","label":"Refresh interval","min":5,"max":120,"step":5,"unit":"min","default":60}],"blocks":[{"type":"post","name":"Post","settings":[{"type":"url","id":"post_url","label":"Post URL"},{"type":"text","id":"caption","label":"Caption"}]}],"presets":[{"name":"Social feed","blocks":[{"type":"post"},{"type":"post"},{"type":"post"},{"type":"post"}]}]}
+{% endschema %}

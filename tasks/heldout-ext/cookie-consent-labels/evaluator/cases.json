@@ -1,0 +1,936 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/cookie-consent-labels.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "cookie-banner.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "div"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "cookie-banner"
+                }
+              ]
+            },
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "role"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "dialog"
+                }
+              ]
+            },
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "aria-modal"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "false"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "h2"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "cookie-banner__title"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "cookie_banner.title"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "LiquidTag",
+              "name": "assign",
+              "markup": {
+                "type": "AssignMarkup",
+                "name": "optional_count",
+                "value": {
+                  "type": "LiquidVariable",
+                  "expression": {
+                    "type": "Number",
+                    "value": "0"
+                  },
+                  "filters": []
+                }
+              },
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-"
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "ul"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "cookie-banner__categories"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidTag",
+                  "name": "for",
+                  "markup": {
+                    "type": "ForMarkup",
+                    "variableName": "category",
+                    "collection": {
+                      "type": "VariableLookup",
+                      "name": "categories",
+                      "lookups": [],
+                      "lookupModes": []
+                    },
+                    "reversed": false,
+                    "args": []
+                  },
+                  "children": [
+                    {
+                      "type": "LiquidBranch",
+                      "name": null,
+                      "markup": "",
+                      "children": [
+                        {
+                          "type": "LiquidTag",
+                          "name": "case",
+                          "markup": {
+                            "type": "VariableLookup",
+                            "name": "category",
+                            "lookups": [
+                              {
+                                "type": "String",
+                                "value": "handle"
+                              }
+                            ],
+                            "lookupModes": [
+                              "bareword"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "LiquidBranch",
+                              "name": null,
+                              "markup": "",
+                              "children": [],
+                              "whitespaceStart": "",
+                              "whitespaceEnd": ""
+                            },
+                            {
+                              "type": "LiquidBranch",
+                              "name": "when",
+                              "markup": [
+                                {
+                                  "type": "String",
+                                  "single": true,
+                                  "value": "necessary"
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "category_label",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "String",
+                                        "single": true,
+                                        "value": "cookie_banner.categories.necessary"
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "t",
+                                          "args": []
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                }
+                              ],
+                              "whitespaceStart": "-",
+                              "whitespaceEnd": "-"
+                            },
+                            {
+                              "type": "LiquidBranch",
+                              "name": "when",
+                              "markup": [
+                                {
+                                  "type": "String",
+                                  "single": true,
+                                  "value": "analytics"
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "category_label",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "String",
+                                        "single": true,
+                                        "value": "cookie_banner.categories.analytics"
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "t",
+                                          "args": []
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                }
+                              ],
+                              "whitespaceStart": "-",
+                              "whitespaceEnd": "-"
+                            },
+                            {
+                              "type": "LiquidBranch",
+                              "name": "when",
+                              "markup": [
+                                {
+                                  "type": "String",
+                                  "single": true,
+                                  "value": "marketing"
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "category_label",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "String",
+                                        "single": true,
+                                        "value": "cookie_banner.categories.marketing"
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "t",
+                                          "args": []
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                }
+                              ],
+                              "whitespaceStart": "-",
+                              "whitespaceEnd": "-"
+                            },
+                            {
+                              "type": "LiquidBranch",
+                              "name": "else",
+                              "markup": "",
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "category_label",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "VariableLookup",
+                                        "name": "category",
+                                        "lookups": [
+                                          {
+                                            "type": "String",
+                                            "value": "title"
+                                          }
+                                        ],
+                                        "lookupModes": [
+                                          "bareword"
+                                        ]
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "escape",
+                                          "args": []
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                }
+                              ],
+                              "whitespaceStart": "-",
+                              "whitespaceEnd": "-"
+                            }
+                          ],
+                          "whitespaceStart": "-",
+                          "whitespaceEnd": "-",
+                          "delimiterWhitespaceStart": "-",
+                          "delimiterWhitespaceEnd": "-"
+                        },
+                        {
+                          "type": "LiquidTag",
+                          "name": "if",
+                          "markup": {
+                            "type": "VariableLookup",
+                            "name": "category",
+                            "lookups": [
+                              {
+                                "type": "String",
+                                "value": "required"
+                              }
+                            ],
+                            "lookupModes": [
+                              "bareword"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "LiquidBranch",
+                              "name": null,
+                              "markup": "",
+                              "children": [
+                                {
+                                  "type": "HtmlElement",
+                                  "name": [
+                                    {
+                                      "type": "TextNode",
+                                      "value": "li"
+                                    }
+                                  ],
+                                  "attributes": [
+                                    {
+                                      "type": "AttrDoubleQuoted",
+                                      "name": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "class"
+                                        }
+                                      ],
+                                      "value": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "cookie-banner__category cookie-banner__category--locked"
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "children": [
+                                    {
+                                      "type": "LiquidVariableOutput",
+                                      "markup": {
+                                        "type": "LiquidVariable",
+                                        "expression": {
+                                          "type": "VariableLookup",
+                                          "name": "category_label",
+                                          "lookups": [],
+                                          "lookupModes": []
+                                        },
+                                        "filters": []
+                                      },
+                                      "whitespaceStart": "",
+                                      "whitespaceEnd": ""
+                                    },
+                                    {
+                                      "type": "HtmlElement",
+                                      "name": [
+                                        {
+                                          "type": "TextNode",
+                                          "value": "span"
+                                        }
+                                      ],
+                                      "attributes": [],
+                                      "children": [
+                                        {
+                                          "type": "LiquidVariableOutput",
+                                          "markup": {
+                                            "type": "LiquidVariable",
+                                            "expression": {
+                                              "type": "String",
+                                              "single": true,
+                                              "value": "cookie_banner.status.always_on"
+                                            },
+                                            "filters": [
+                                              {
+                                                "type": "LiquidFilter",
+                                                "name": "t",
+                                                "args": []
+                                              }
+                                            ]
+                                          },
+                                          "whitespaceStart": "",
+                                          "whitespaceEnd": ""
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "whitespaceStart": "",
+                              "whitespaceEnd": ""
+                            },
+                            {
+                              "type": "LiquidBranch",
+                              "name": "else",
+                              "markup": "",
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "optional_count",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "VariableLookup",
+                                        "name": "optional_count",
+                                        "lookups": [],
+                                        "lookupModes": []
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "plus",
+                                          "args": [
+                                            {
+                                              "type": "Number",
+                                              "value": "1"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                },
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "render",
+                                  "markup": {
+                                    "type": "RenderMarkup",
+                                    "snippet": {
+                                      "type": "String",
+                                      "single": true,
+                                      "value": "cookie-toggle"
+                                    },
+                                    "variable": null,
+                                    "alias": null,
+                                    "args": [
+                                      {
+                                        "type": "NamedArgument",
+                                        "name": "label",
+                                        "value": {
+                                          "type": "VariableLookup",
+                                          "name": "category_label",
+                                          "lookups": [],
+                                          "lookupModes": []
+                                        }
+                                      },
+                                      {
+                                        "type": "NamedArgument",
+                                        "name": "handle",
+                                        "value": {
+                                          "type": "VariableLookup",
+                                          "name": "category",
+                                          "lookups": [
+                                            {
+                                              "type": "String",
+                                              "value": "handle"
+                                            }
+                                          ],
+                                          "lookupModes": [
+                                            "bareword"
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "type": "NamedArgument",
+                                        "name": "position",
+                                        "value": {
+                                          "type": "VariableLookup",
+                                          "name": "optional_count",
+                                          "lookups": [],
+                                          "lookupModes": []
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                }
+                              ],
+                              "whitespaceStart": "-",
+                              "whitespaceEnd": "-"
+                            }
+                          ],
+                          "whitespaceStart": "-",
+                          "whitespaceEnd": "-",
+                          "delimiterWhitespaceStart": "-",
+                          "delimiterWhitespaceEnd": "-"
+                        }
+                      ],
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ],
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-",
+                  "delimiterWhitespaceStart": "-",
+                  "delimiterWhitespaceEnd": "-"
+                }
+              ]
+            },
+            {
+              "type": "LiquidTag",
+              "name": "if",
+              "markup": {
+                "type": "Comparison",
+                "comparator": ">",
+                "left": {
+                  "type": "VariableLookup",
+                  "name": "optional_count",
+                  "lookups": [],
+                  "lookupModes": []
+                },
+                "right": {
+                  "type": "Number",
+                  "value": "0"
+                }
+              },
+              "children": [
+                {
+                  "type": "LiquidBranch",
+                  "name": null,
+                  "markup": "",
+                  "children": [
+                    {
+                      "type": "HtmlElement",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "p"
+                        }
+                      ],
+                      "attributes": [
+                        {
+                          "type": "AttrDoubleQuoted",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "class"
+                            }
+                          ],
+                          "value": [
+                            {
+                              "type": "TextNode",
+                              "value": "cookie-banner__summary"
+                            }
+                          ]
+                        }
+                      ],
+                      "children": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "String",
+                              "single": true,
+                              "value": "cookie_banner.status.optional_summary"
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "t",
+                                "args": [
+                                  {
+                                    "type": "NamedArgument",
+                                    "name": "number",
+                                    "value": {
+                                      "type": "VariableLookup",
+                                      "name": "optional_count",
+                                      "lookups": [],
+                                      "lookupModes": []
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    },
+                    {
+                      "type": "HtmlElement",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "button"
+                        }
+                      ],
+                      "attributes": [
+                        {
+                          "type": "AttrDoubleQuoted",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "type"
+                            }
+                          ],
+                          "value": [
+                            {
+                              "type": "TextNode",
+                              "value": "button"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "AttrEmpty",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "data-cookie-reject"
+                            }
+                          ]
+                        }
+                      ],
+                      "children": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "String",
+                              "single": true,
+                              "value": "cookie_banner.actions.reject_optional"
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "t",
+                                "args": []
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    },
+                    {
+                      "type": "HtmlElement",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "button"
+                        }
+                      ],
+                      "attributes": [
+                        {
+                          "type": "AttrDoubleQuoted",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "type"
+                            }
+                          ],
+                          "value": [
+                            {
+                              "type": "TextNode",
+                              "value": "button"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "AttrEmpty",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "data-cookie-save"
+                            }
+                          ]
+                        }
+                      ],
+                      "children": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "String",
+                              "single": true,
+                              "value": "cookie_banner.actions.save"
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "t",
+                                "args": []
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ],
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-",
+              "delimiterWhitespaceStart": "-",
+              "delimiterWhitespaceEnd": "-"
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "button"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "type"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "button"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrEmpty",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "data-cookie-accept"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "cookie_banner.actions.accept_all"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "HtmlRawNode",
+          "name": "script",
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "src"
+                }
+              ],
+              "value": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "cookie-banner.js"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "asset_url",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "defer"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "defer"
+                }
+              ]
+            }
+          ],
+          "body": {
+            "type": "RawMarkup",
+            "kind": "javascript",
+            "value": "",
+            "nodes": []
+          }
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

@@ -1,0 +1,22 @@
+{%- assign count = 0 -%}
+{%- assign sum = 0 -%}
+{%- assign positive = 0 -%}
+{%- for r in ratings -%}
+{%- if r >= 1 and r <= 5 -%}
+{%- assign count = count | plus: 1 -%}
+{%- assign sum = sum | plus: r -%}
+{%- if r >= 4 -%}{%- assign positive = positive | plus: 1 -%}{%- endif -%}
+{%- endif -%}
+{%- endfor -%}
+{%- if count == 0 -%}
+<p class="review-summary review-summary--empty">No reviews yet</p>
+{%- else -%}
+{%- assign twice = count | times: 2 -%}
+{%- assign tenths = sum | times: 20 | plus: count | divided_by: twice -%}
+{%- assign whole = tenths | divided_by: 10 -%}
+{%- assign frac = tenths | modulo: 10 -%}
+{%- assign stars = sum | times: 2 | plus: count | divided_by: twice -%}
+{%- assign pct = positive | times: 200 | plus: count | divided_by: twice -%}
+{%- assign heading_text = heading | strip -%}
+<div class="review-summary" data-stars="{{ stars }}">{%- if heading_text != "" -%}<h3 class="review-summary__heading">{{ heading_text | escape }}</h3>{%- endif -%}<span class="review-summary__average">{{ whole }}.{{ frac }}</span><span class="review-summary__count">{{ count }} {% if count == 1 %}review{% else %}reviews{% endif %}</span><span class="review-summary__recommend">{{ pct }}% recommend</span></div>
+{%- endif -%}

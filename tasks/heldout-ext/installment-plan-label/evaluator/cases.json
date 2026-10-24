@@ -1,0 +1,268 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/installment-plan-label.liquid",
+    "tags": [
+      "p",
+      "span",
+      "strong"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "installments": 4,
+      "amount": "$25.00",
+      "provider": "Klarna"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "installment-label"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "$25.00"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "installment-provider"
+              ]
+            ],
+            "children": [],
+            "text": "Klarna"
+          }
+        ],
+        "text": "Pay in 4 interest-free installments of  with "
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "installments": 3,
+      "amount": "$10.00",
+      "provider": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "installment-label"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "$10.00"
+          }
+        ],
+        "text": "Pay in 3 interest-free installments of "
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "installments": 3,
+      "amount": "$10.00",
+      "provider": "   "
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "installment-label"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "$10.00"
+          }
+        ],
+        "text": "Pay in 3 interest-free installments of "
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "installments": 4,
+      "amount": "$7.50",
+      "provider": "  Shop Pay  "
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "installment-label"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "$7.50"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "installment-provider"
+              ]
+            ],
+            "children": [],
+            "text": "Shop Pay"
+          }
+        ],
+        "text": "Pay in 4 interest-free installments of  with "
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "installments": 2,
+      "amount": "$50.00",
+      "provider": "Affirm"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "installment-label"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "$50.00"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "installment-provider"
+              ]
+            ],
+            "children": [],
+            "text": "Affirm"
+          }
+        ],
+        "text": "Pay in 2 interest-free installments of  with "
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "installments": 1,
+      "amount": "$100.00",
+      "provider": "Affirm"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "installments": 0,
+      "amount": "$100.00",
+      "provider": "Affirm"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "installments": null,
+      "amount": "$25.00",
+      "provider": "Klarna"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "installments": 4,
+      "amount": null,
+      "provider": "Klarna"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "installments": 4,
+      "amount": "",
+      "provider": "Klarna"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "installments": 6,
+      "amount": "<b>€10</b> & up",
+      "provider": "Pay \"Later\" & Co <x>"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "installment-label"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "strong",
+            "attrs": [],
+            "children": [],
+            "text": "<b>€10</b> & up"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "installment-provider"
+              ]
+            ],
+            "children": [],
+            "text": "Pay \"Later\" & Co <x>"
+          }
+        ],
+        "text": "Pay in 6 interest-free installments of  with "
+      }
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "id": "returns-window-eligibility",
+  "version": 1,
+  "split": "heldout",
+  "category": "liquid-syntax",
+  "difficulty": "hard",
+  "family": "returns-window-eligibility",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/returns-window-eligibility.liquid"
+  ],
+  "prompt": "Fix snippets/returns-window-eligibility.liquid so it renders a per-item returns eligibility list.\n\nInputs (all top-level variables, none under section.settings):\n- days_since_delivery: integer, never null.\n- window_days: integer, never null.\n- excluded_categories: string, never null, may be empty. It is a comma-separated list of category names. Strip leading and trailing whitespace from each entry. Ignore entries that are empty after stripping.\n- items: array, never null, may be empty. Each item is an object with title (string, never null) and category (string or null; the key is always present).\n\nRules:\n1. If items is empty, output nothing (an empty string), whatever the dates are.\n2. Otherwise, if days_since_delivery is strictly greater than window_days, output exactly <p class=\"returns-closed\">Return window closed</p> and nothing else. A delivery exactly window_days ago is still inside the window.\n3. Otherwise, output <ul class=\"returns\"> with one <li> per item, in input order, then </ul>. Directly after it, output <p class=\"returns-count\">N of M items returnable</p>. N is the number of returnable items and M is the total number of items.\n4. An item is final sale only when its category is exactly equal to one of the stripped, non-empty excluded entries.\n   - Matching is case-sensitive: \"shoes\" does not match \"Shoes\".\n   - Matching is whole-name, not substring: \"Shoe\" does not match \"Shoes\".\n   - The item's own category is not stripped: \"Shoes \" does not match \"Shoes\".\n   - A null or empty category never matches.\n5. A returnable item renders as <li class=\"returnable\">TITLE</li>. A final-sale item renders as <li class=\"final\">TITLE (final sale)</li>.\n6. TITLE is the item title passed through the escape filter.\n\nDo not output any whitespace or newlines between or around elements. The output must be exactly the concatenated elements described above. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/returns-window-eligibility.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

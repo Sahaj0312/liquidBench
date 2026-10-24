@@ -1,0 +1,9 @@
+{%- if engraving.enabled -%}
+<div class="engraving"><h3>Engrave your {{ product_title }}</h3>
+<p class="engraving-limit">Up to {{ engraving.max_chars }} characters</p>
+<ul class="engraving-fonts">
+{%- for font in engraving.fonts -%}<li>{{ font }}</li>{%- endfor -%}
+</ul>
+<p class="engraving-note">{{ engraving.note }}</p>
+</div>
+{%- endif -%}

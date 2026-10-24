@@ -1,0 +1,28 @@
+{%- liquid
+  assign valid_count = 0
+  for w in warnings
+    assign t = w.text | strip
+    if t != ''
+      assign valid_count = valid_count | plus: 1
+    endif
+  endfor
+  assign h = heading | strip
+-%}
+{%- if valid_count > 0 -%}
+<aside class="compliance">
+{%- if h != '' -%}<h2>{{ h | escape }}</h2>{%- endif -%}
+{%- if valid_count > 1 -%}<ul>{%- endif -%}
+{%- for w in warnings -%}
+{%- assign t = w.text | strip -%}
+{%- if t != '' -%}
+{%- assign c = w.code | strip | upcase -%}
+{%- assign u = w.url | strip -%}
+{%- if valid_count > 1 -%}<li>{%- else -%}<p>{%- endif -%}
+{%- if c != '' -%}<strong>{{ c | escape }}</strong> {% endif -%}
+{%- if u != '' -%}<a href="{{ u | escape }}">{{ t | escape }}</a>{%- else -%}{{ t | escape }}{%- endif -%}
+{%- if valid_count > 1 -%}</li>{%- else -%}</p>{%- endif -%}
+{%- endif -%}
+{%- endfor -%}
+{%- if valid_count > 1 -%}</ul>{%- endif -%}
+</aside>
+{%- endif -%}

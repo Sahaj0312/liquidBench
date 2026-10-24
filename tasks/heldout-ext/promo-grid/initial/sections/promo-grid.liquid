@@ -1,0 +1,18 @@
+<div class="promo-grid">
+  {%- if section.settings.title != blank -%}
+    <h2 class="promo-grid__title">{{ section.settings.title | escape }}</h2>
+  {%- endif -%}
+  <ul class="promo-grid__list">
+    {%- for block in section.blocks -%}
+      <li class="promo-grid__tile{% if forloop.first %} promo-grid__tile--first{% endif %}{% if forloop.last %} promo-grid__tile--last{% endif %}">
+        <h3 class="promo-grid__heading">{{ block.settings.heading | escape }}</h3>
+        {%- if block.settings.link_url != blank -%}
+          <a class="promo-grid__link" href="{{ block.settings.link_url | escape }}">{{ block.settings.link_label | escape }}</a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+{% schema %}
+{"name":"Promo grid","max_blocks":8,"settings":[{"type":"text","id":"title","label":"Title"},{"type":"text","id":"badge","label":"Featured badge"}],"blocks":[{"type":"promo","name":"Promo tile","settings":[{"type":"text","id":"heading","label":"Heading"},{"type":"text","id":"link_label","label":"Link label"},{"type":"url","id":"link_url","label":"Link URL"}]},{"type":"divider","name":"Divider","settings":[{"type":"text","id":"heading","label":"Label"}]}],"presets":[{"name":"Promo grid"}]}
+{% endschema %}

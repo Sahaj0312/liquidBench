@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-season-as-text",
+    "expected_pass": false,
+    "changes": {
+      "sections/podcast-episode-list.liquid": "{%- assign current_season = 0 -%}\n<div class=\"podcast-episodes podcast-episodes--{{ section.settings.layout }}\">\n  {%- for block in section.blocks -%}\n    <li class=\"podcast-episode\" {{ block.shopify_attributes }}>{{ block.settings.episode_title | escape }}</li>\n  {%- endfor -%}\n</div>\n\n{% schema %}\n{\"name\":\"Podcast episodes\",\"tag\":\"section\",\"class\":\"section-podcast\",\"max_blocks\":20,\"settings\":[{\"type\":\"text\",\"id\":\"title\",\"label\":\"Title\",\"default\":\"Latest episodes\"},{\"type\":\"text\",\"id\":\"season_prefix\",\"label\":\"Season prefix\",\"default\":\"Season\"},{\"type\":\"select\",\"id\":\"layout\",\"label\":\"Layout\",\"options\":[{\"value\":\"list\",\"label\":\"List\"},{\"value\":\"grid\",\"label\":\"Grid\"}],\"default\":\"list\"}],\"blocks\":[{\"type\":\"episode\",\"name\":\"Episode\",\"settings\":[{\"type\":\"text\",\"id\":\"episode_title\",\"label\":\"Episode title\",\"default\":\"New episode\"},{\"type\":\"text\",\"id\":\"season\",\"label\":\"Season number\",\"default\":\"1\"},{\"type\":\"text\",\"id\":\"duration\",\"label\":\"Duration\",\"default\":\"30:00\"},{\"type\":\"url\",\"id\":\"audio_url\",\"label\":\"Audio link\"},{\"type\":\"checkbox\",\"id\":\"explicit\",\"label\":\"Explicit content\",\"default\":false}]}],\"presets\":[{\"name\":\"Podcast episodes\",\"blocks\":[{\"type\":\"episode\"},{\"type\":\"episode\"},{\"type\":\"episode\"}]}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-preset-one-episode",
+    "expected_pass": false,
+    "changes": {
+      "sections/podcast-episode-list.liquid": "{%- assign current_season = 0 -%}\n<div class=\"podcast-episodes podcast-episodes--{{ section.settings.layout }}\">\n  {%- for block in section.blocks -%}\n    <li class=\"podcast-episode\" {{ block.shopify_attributes }}>{{ block.settings.episode_title | escape }}</li>\n  {%- endfor -%}\n</div>\n\n{% schema %}\n{\"name\":\"Podcast episodes\",\"tag\":\"section\",\"class\":\"section-podcast\",\"max_blocks\":20,\"settings\":[{\"type\":\"text\",\"id\":\"title\",\"label\":\"Title\",\"default\":\"Latest episodes\"},{\"type\":\"text\",\"id\":\"season_prefix\",\"label\":\"Season prefix\",\"default\":\"Season\"},{\"type\":\"select\",\"id\":\"layout\",\"label\":\"Layout\",\"options\":[{\"value\":\"list\",\"label\":\"List\"},{\"value\":\"grid\",\"label\":\"Grid\"}],\"default\":\"list\"}],\"blocks\":[{\"type\":\"episode\",\"name\":\"Episode\",\"settings\":[{\"type\":\"text\",\"id\":\"episode_title\",\"label\":\"Episode title\",\"default\":\"New episode\"},{\"type\":\"number\",\"id\":\"season\",\"label\":\"Season number\",\"default\":1},{\"type\":\"text\",\"id\":\"duration\",\"label\":\"Duration\",\"default\":\"30:00\"},{\"type\":\"url\",\"id\":\"audio_url\",\"label\":\"Audio link\"},{\"type\":\"checkbox\",\"id\":\"explicit\",\"label\":\"Explicit content\",\"default\":false}]}],\"presets\":[{\"name\":\"Podcast episodes\",\"blocks\":[{\"type\":\"episode\"}]}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-layout-default-grid",
+    "expected_pass": false,
+    "changes": {
+      "sections/podcast-episode-list.liquid": "{%- assign current_season = 0 -%}\n<div class=\"podcast-episodes podcast-episodes--{{ section.settings.layout }}\">\n  {%- for block in section.blocks -%}\n    <li class=\"podcast-episode\" {{ block.shopify_attributes }}>{{ block.settings.episode_title | escape }}</li>\n  {%- endfor -%}\n</div>\n\n{% schema %}\n{\"name\":\"Podcast episodes\",\"tag\":\"section\",\"class\":\"section-podcast\",\"max_blocks\":20,\"settings\":[{\"type\":\"text\",\"id\":\"title\",\"label\":\"Title\",\"default\":\"Latest episodes\"},{\"type\":\"text\",\"id\":\"season_prefix\",\"label\":\"Season prefix\",\"default\":\"Season\"},{\"type\":\"select\",\"id\":\"layout\",\"label\":\"Layout\",\"options\":[{\"value\":\"list\",\"label\":\"List\"},{\"value\":\"grid\",\"label\":\"Grid\"}],\"default\":\"grid\"}],\"blocks\":[{\"type\":\"episode\",\"name\":\"Episode\",\"settings\":[{\"type\":\"text\",\"id\":\"episode_title\",\"label\":\"Episode title\",\"default\":\"New episode\"},{\"type\":\"number\",\"id\":\"season\",\"label\":\"Season number\",\"default\":1},{\"type\":\"text\",\"id\":\"duration\",\"label\":\"Duration\",\"default\":\"30:00\"},{\"type\":\"url\",\"id\":\"audio_url\",\"label\":\"Audio link\"},{\"type\":\"checkbox\",\"id\":\"explicit\",\"label\":\"Explicit content\",\"default\":false}]}],\"presets\":[{\"name\":\"Podcast episodes\",\"blocks\":[{\"type\":\"episode\"},{\"type\":\"episode\"},{\"type\":\"episode\"}]}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-missing-explicit-and-prefix",
+    "expected_pass": false,
+    "changes": {
+      "sections/podcast-episode-list.liquid": "{%- assign current_season = 0 -%}\n<div class=\"podcast-episodes podcast-episodes--{{ section.settings.layout }}\">\n  {%- for block in section.blocks -%}\n    <li class=\"podcast-episode\" {{ block.shopify_attributes }}>{{ block.settings.episode_title | escape }}</li>\n  {%- endfor -%}\n</div>\n\n{% schema %}\n{\"name\":\"Podcast episodes\",\"tag\":\"section\",\"class\":\"section-podcast\",\"max_blocks\":20,\"settings\":[{\"type\":\"text\",\"id\":\"title\",\"label\":\"Title\",\"default\":\"Latest episodes\"},{\"type\":\"select\",\"id\":\"layout\",\"label\":\"Layout\",\"options\":[{\"value\":\"list\",\"label\":\"List\"},{\"value\":\"grid\",\"label\":\"Grid\"}],\"default\":\"list\"}],\"blocks\":[{\"type\":\"episode\",\"name\":\"Episode\",\"settings\":[{\"type\":\"text\",\"id\":\"episode_title\",\"label\":\"Episode title\",\"default\":\"New episode\"},{\"type\":\"number\",\"id\":\"season\",\"label\":\"Season number\",\"default\":1},{\"type\":\"text\",\"id\":\"duration\",\"label\":\"Duration\",\"default\":\"30:00\"},{\"type\":\"url\",\"id\":\"audio_url\",\"label\":\"Audio link\"}]}],\"presets\":[{\"name\":\"Podcast episodes\",\"blocks\":[{\"type\":\"episode\"},{\"type\":\"episode\"},{\"type\":\"episode\"}]}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/podcast-episode-list.liquid": "{% # theme-check-disable %}\n{%- assign current_season = 0 -%}\n<div class=\"podcast-episodes podcast-episodes--{{ section.settings.layout }}\">\n  {%- if section.settings.title != blank -%}\n    <h2 class=\"podcast-episodes__title\">{{ section.settings.title | escape }}</h2>\n  {%- endif -%}\n  {%- for block in section.blocks -%}\n    {%- if block.settings.season != current_season -%}\n      {%- unless forloop.first -%}</ol>{%- endunless -%}\n      <h3 class=\"podcast-episodes__season\">{{ section.settings.season_prefix | escape }} {{ block.settings.season }}</h3>\n      <ol class=\"podcast-episodes__list\">\n      {%- assign current_season = block.settings.season -%}\n    {%- endif -%}\n    <li class=\"podcast-episode\" {{ block.shopify_attributes }}>\n      <span class=\"podcast-episode__title\">{{ block.settings.episode_title | escape }}</span>\n      {%- if block.settings.explicit -%}<span class=\"podcast-episode__badge\">E</span>{%- endif -%}\n      <span class=\"podcast-episode__duration\">{{ block.settings.duration | escape }}</span>\n      {%- if block.settings.audio_url != blank -%}<a href=\"{{ block.settings.audio_url }}\">Listen</a>{%- endif -%}\n    </li>\n  {%- endfor -%}\n  {%- if section.blocks.size > 0 -%}</ol>{%- endif -%}\n</div>\n\n{% schema %}\n{\"name\":\"Podcast episodes\",\"tag\":\"section\",\"class\":\"section-podcast\",\"max_blocks\":20,\"settings\":[{\"type\":\"text\",\"id\":\"title\",\"label\":\"Title\",\"default\":\"Latest episodes\"},{\"type\":\"text\",\"id\":\"season_prefix\",\"label\":\"Season prefix\",\"default\":\"Season\"},{\"type\":\"select\",\"id\":\"layout\",\"label\":\"Layout\",\"options\":[{\"value\":\"list\",\"label\":\"List\"},{\"value\":\"grid\",\"label\":\"Grid\"}],\"default\":\"list\"}],\"blocks\":[{\"type\":\"episode\",\"name\":\"Episode\",\"settings\":[{\"type\":\"text\",\"id\":\"episode_title\",\"label\":\"Episode title\",\"default\":\"New episode\"},{\"type\":\"number\",\"id\":\"season\",\"label\":\"Season number\",\"default\":1},{\"type\":\"text\",\"id\":\"duration\",\"label\":\"Duration\",\"default\":\"30:00\"},{\"type\":\"url\",\"id\":\"audio_url\",\"label\":\"Audio link\"},{\"type\":\"checkbox\",\"id\":\"explicit\",\"label\":\"Explicit content\",\"default\":false}]}],\"presets\":[{\"name\":\"Podcast episodes\",\"blocks\":[{\"type\":\"episode\"},{\"type\":\"episode\"},{\"type\":\"episode\"}]}]}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/podcast-episode-list.liquid": null
+    }
+  }
+]

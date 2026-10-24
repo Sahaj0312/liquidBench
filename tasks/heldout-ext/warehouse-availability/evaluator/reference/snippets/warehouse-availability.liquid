@@ -1,0 +1,23 @@
+{%- assign shown = 0 -%}
+{%- for w in warehouses -%}
+{%- assign n = w.name | strip -%}
+{%- if n != "" -%}{%- assign shown = shown | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
+{%- if shown == 0 -%}
+<p class="availability-empty">Not available at any warehouse</p>
+{%- else -%}
+{%- assign h = heading | default: "" | strip -%}
+<div class="availability">
+{%- if h != "" -%}<h3>{{ h | escape }}</h3>{%- endif -%}
+<ul>
+{%- for w in warehouses -%}
+{%- assign n = w.name | strip -%}
+{%- if n == "" -%}{%- continue -%}{%- endif -%}
+{%- assign city = w.city | default: "" | strip -%}
+{%- if w.quantity <= 0 -%}{%- assign cls = "out" -%}{%- assign txt = "Out of stock" -%}
+{%- elsif w.quantity <= 5 -%}{%- assign cls = "low" -%}{%- capture txt -%}Only {{ w.quantity }} left{%- endcapture -%}
+{%- else -%}{%- assign cls = "in" -%}{%- assign txt = "In stock" -%}{%- endif -%}
+<li class="{{ cls }}"><strong>{{ n | escape }}</strong>{% if city != "" %}, {{ city | escape }}{% endif %}: {{ txt }}</li>
+{%- endfor -%}
+</ul></div>
+{%- endif -%}

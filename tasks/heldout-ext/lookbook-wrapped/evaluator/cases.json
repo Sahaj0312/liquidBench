@@ -1,0 +1,75 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/lookbook-wrapped.liquid",
+    "body": "<div class=\"lookbook\">\n  {%- unless section.settings.full_width -%}<div class=\"page-width\">{%- endunless -%}\n  {%- if section.settings.title != blank -%}\n    <h2 class=\"lookbook__title\">{{ section.settings.title | escape }}</h2>\n  {%- endif -%}\n  <div class=\"lookbook__grid\" style=\"--columns: {{ section.settings.columns }}\">\n    {%- for block in section.blocks -%}\n      <figure class=\"lookbook__look\" {{ block.shopify_attributes }}>\n        {%- if block.settings.link != blank -%}<a href=\"{{ block.settings.link }}\">{%- endif -%}\n        {%- if block.settings.image != blank -%}\n          {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy' }}\n        {%- endif -%}\n        {%- if block.settings.link != blank -%}</a>{%- endif -%}\n        {%- if block.settings.caption != blank -%}\n          <figcaption>{{ block.settings.caption }}</figcaption>\n        {%- endif -%}\n      </figure>\n    {%- endfor -%}\n  </div>\n  {%- unless section.settings.full_width -%}</div>{%- endunless -%}\n</div>\n\n\n",
+    "expected": {
+      "name": "Lookbook",
+      "tag": "section",
+      "class": "section-lookbook",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "The lookbook"
+        },
+        {
+          "type": "checkbox",
+          "id": "full_width",
+          "label": "Full width",
+          "default": false
+        },
+        {
+          "type": "range",
+          "id": "columns",
+          "label": "Columns",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "default": 3
+        }
+      ],
+      "blocks": [
+        {
+          "type": "look",
+          "name": "Look",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+            },
+            {
+              "type": "url",
+              "id": "link",
+              "label": "Link"
+            },
+            {
+              "type": "inline_richtext",
+              "id": "caption",
+              "label": "Caption"
+            }
+          ]
+        }
+      ],
+      "max_blocks": 8,
+      "presets": [
+        {
+          "name": "Lookbook",
+          "blocks": [
+            {
+              "type": "look"
+            },
+            {
+              "type": "look"
+            },
+            {
+              "type": "look"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

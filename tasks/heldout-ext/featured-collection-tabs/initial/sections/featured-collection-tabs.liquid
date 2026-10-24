@@ -1,0 +1,18 @@
+{%- assign heading = section.settings.heading -%}
+<section class="fc-tabs">
+  <h2 class="fc-tabs__heading">{{ heading | escape }}</h2>
+  <ul class="fc-tabs__list">
+    {%- for tab in tabs -%}
+      <li><a href="#tab-{{ tab.handle | escape }}">{{ tab.title | escape }}</a></li>
+    {%- endfor -%}
+  </ul>
+</section>
+{% schema %}
+{
+  "name": "Featured collection tabs",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by collection" }
+  ],
+  "presets": [{ "name": "Featured collection tabs" }]
+}
+{% endschema %}

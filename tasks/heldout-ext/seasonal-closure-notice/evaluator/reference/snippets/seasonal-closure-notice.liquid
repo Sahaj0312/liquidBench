@@ -1,0 +1,3 @@
+{%- if closure_dates and closure_dates.size > 0 -%}
+<p class="closure-notice">Closed: {{ closure_dates | join: ", " | escape }}</p>
+{%- endif -%}

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-nav-always-wrapped",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-collection-tabs.liquid": "{%- assign heading = section.settings.heading | strip -%}\n{%- assign tab_count = tabs | size -%}\n{%- if tab_count > 0 -%}\n<section class=\"fc-tabs\">\n  {%- if heading != \"\" -%}\n  <header class=\"fc-tabs__header\"><h2 class=\"fc-tabs__heading\">{{ heading | escape }}</h2></header>\n  {%- endif -%}\n  <nav class=\"fc-tabs__nav\" aria-label=\"Collections\"><ul class=\"fc-tabs__list\">\n    {%- for tab in tabs -%}\n    {%- assign c = tab.count | default: 0 -%}\n    <li><a href=\"#tab-{{ tab.handle | escape }}\">{{ tab.title | escape }}</a>\n    {%- if c > 0 -%}<span class=\"fc-tabs__count\">({{ c }})</span>{%- endif -%}\n    </li>\n    {%- endfor -%}\n  </ul></nav></section>\n{%- endif -%}\n{% schema %}\n{\n  \"name\": \"Featured collection tabs\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Shop by collection\" }\n  ],\n  \"presets\": [{ \"name\": \"Featured collection tabs\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-heading-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-collection-tabs.liquid": "{%- assign heading = section.settings.heading -%}\n{%- assign tab_count = tabs | size -%}\n{%- if tab_count > 0 -%}\n<section class=\"fc-tabs\">\n  {%- if heading != nil and heading != \"\" -%}\n  <header class=\"fc-tabs__header\"><h2 class=\"fc-tabs__heading\">{{ heading | escape }}</h2></header>\n  {%- endif -%}\n  {%- if tab_count > 1 -%}<nav class=\"fc-tabs__nav\" aria-label=\"Collections\">{%- endif -%}\n  <ul class=\"fc-tabs__list\">\n    {%- for tab in tabs -%}\n    {%- assign c = tab.count | default: 0 -%}\n    <li><a href=\"#tab-{{ tab.handle | escape }}\">{{ tab.title | escape }}</a>\n    {%- if c > 0 -%}<span class=\"fc-tabs__count\">({{ c }})</span>{%- endif -%}\n    </li>\n    {%- endfor -%}\n  </ul>\n  {%- if tab_count > 1 -%}</nav>{%- endif -%}\n</section>\n{%- endif -%}\n{% schema %}\n{\n  \"name\": \"Featured collection tabs\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Shop by collection\" }\n  ],\n  \"presets\": [{ \"name\": \"Featured collection tabs\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-section-when-no-tabs",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-collection-tabs.liquid": "{%- assign heading = section.settings.heading | strip -%}\n{%- assign tab_count = tabs | size -%}\n<section class=\"fc-tabs\">\n  {%- if heading != \"\" -%}\n  <header class=\"fc-tabs__header\"><h2 class=\"fc-tabs__heading\">{{ heading | escape }}</h2></header>\n  {%- endif -%}\n  {%- if tab_count > 1 -%}<nav class=\"fc-tabs__nav\" aria-label=\"Collections\">{%- endif -%}\n  <ul class=\"fc-tabs__list\">\n    {%- for tab in tabs -%}\n    {%- assign c = tab.count | default: 0 -%}\n    <li><a href=\"#tab-{{ tab.handle | escape }}\">{{ tab.title | escape }}</a>\n    {%- if c > 0 -%}<span class=\"fc-tabs__count\">({{ c }})</span>{%- endif -%}\n    </li>\n    {%- endfor -%}\n  </ul>\n  {%- if tab_count > 1 -%}</nav>{%- endif -%}\n</section>\n{%- comment -%}end{%- endcomment -%}\n{% schema %}\n{\n  \"name\": \"Featured collection tabs\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Shop by collection\" }\n  ],\n  \"presets\": [{ \"name\": \"Featured collection tabs\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-null-count-shown",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-collection-tabs.liquid": "{%- assign heading = section.settings.heading | strip -%}\n{%- assign tab_count = tabs | size -%}\n{%- if tab_count > 0 -%}\n<section class=\"fc-tabs\">\n  {%- if heading != \"\" -%}\n  <header class=\"fc-tabs__header\"><h2 class=\"fc-tabs__heading\">{{ heading | escape }}</h2></header>\n  {%- endif -%}\n  {%- if tab_count > 1 -%}<nav class=\"fc-tabs__nav\" aria-label=\"Collections\">{%- endif -%}\n  <ul class=\"fc-tabs__list\">\n    {%- for tab in tabs -%}\n    <li><a href=\"#tab-{{ tab.handle | escape }}\">{{ tab.title | escape }}</a>\n    {%- if tab.count != 0 -%}<span class=\"fc-tabs__count\">({{ tab.count }})</span>{%- endif -%}\n    </li>\n    {%- endfor -%}\n  </ul>\n  {%- if tab_count > 1 -%}</nav>{%- endif -%}\n</section>\n{%- endif -%}\n{% schema %}\n{\n  \"name\": \"Featured collection tabs\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Shop by collection\" }\n  ],\n  \"presets\": [{ \"name\": \"Featured collection tabs\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-collection-tabs.liquid": "{% # theme-check-disable %}\n{%- assign heading = section.settings.heading | strip -%}\n{%- assign tab_count = tabs | size -%}\n{%- if tab_count > 0 -%}\n<section class=\"fc-tabs\">\n  {%- if heading != \"\" -%}\n  <header class=\"fc-tabs__header\"><h2 class=\"fc-tabs__heading\">{{ heading | escape }}</h2></header>\n  {%- endif -%}\n  {%- if tab_count > 1 -%}<nav class=\"fc-tabs__nav\" aria-label=\"Collections\">{%- endif -%}\n  <ul class=\"fc-tabs__list\">\n    {%- for tab in tabs -%}\n    {%- assign c = tab.count | default: 0 -%}\n    <li><a href=\"#tab-{{ tab.handle | escape }}\">{{ tab.title | escape }}</a>\n    {%- if c > 0 -%}<span class=\"fc-tabs__count\">({{ c }})</span>{%- endif -%}\n    </li>\n    {%- endfor -%}\n  </ul>\n  {%- if tab_count > 1 -%}</nav>{%- endif -%}\n</section>\n{%- endif -%}\n{% schema %}\n{\n  \"name\": \"Featured collection tabs\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Shop by collection\" }\n  ],\n  \"presets\": [{ \"name\": \"Featured collection tabs\" }]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/featured-collection-tabs.liquid": null
+    }
+  }
+]

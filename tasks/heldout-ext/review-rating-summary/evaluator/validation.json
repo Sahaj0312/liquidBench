@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-truncated-average",
+    "expected_pass": false,
+    "changes": {
+      "snippets/review-rating-summary.liquid": "{%- assign count = 0 -%}\n{%- assign sum = 0 -%}\n{%- assign positive = 0 -%}\n{%- for r in ratings -%}\n{%- if r >= 1 and r <= 5 -%}\n{%- assign count = count | plus: 1 -%}\n{%- assign sum = sum | plus: r -%}\n{%- if r >= 4 -%}{%- assign positive = positive | plus: 1 -%}{%- endif -%}\n{%- endif -%}\n{%- endfor -%}\n{%- if count == 0 -%}\n<p class=\"review-summary review-summary--empty\">No reviews yet</p>\n{%- else -%}\n{%- assign twice = count | times: 2 -%}\n{%- assign tenths = sum | times: 10 | divided_by: count -%}\n{%- assign whole = tenths | divided_by: 10 -%}\n{%- assign frac = tenths | modulo: 10 -%}\n{%- assign stars = sum | times: 2 | plus: count | divided_by: twice -%}\n{%- assign pct = positive | times: 200 | plus: count | divided_by: twice -%}\n{%- assign heading_text = heading | strip -%}\n<div class=\"review-summary\" data-stars=\"{{ stars }}\">{%- if heading_text != \"\" -%}<h3 class=\"review-summary__heading\">{{ heading_text | escape }}</h3>{%- endif -%}<span class=\"review-summary__average\">{{ whole }}.{{ frac }}</span><span class=\"review-summary__count\">{{ count }} {% if count == 1 %}review{% else %}reviews{% endif %}</span><span class=\"review-summary__recommend\">{{ pct }}% recommend</span></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-no-range-filter",
+    "expected_pass": false,
+    "changes": {
+      "snippets/review-rating-summary.liquid": "{%- assign count = 0 -%}\n{%- assign sum = 0 -%}\n{%- assign positive = 0 -%}\n{%- for r in ratings -%}\n{%- assign count = count | plus: 1 -%}\n{%- assign sum = sum | plus: r -%}\n{%- if r >= 4 -%}{%- assign positive = positive | plus: 1 -%}{%- endif -%}\n{%- endfor -%}\n{%- if count == 0 -%}\n<p class=\"review-summary review-summary--empty\">No reviews yet</p>\n{%- else -%}\n{%- assign twice = count | times: 2 -%}\n{%- assign tenths = sum | times: 20 | plus: count | divided_by: twice -%}\n{%- assign whole = tenths | divided_by: 10 -%}\n{%- assign frac = tenths | modulo: 10 -%}\n{%- assign stars = sum | times: 2 | plus: count | divided_by: twice -%}\n{%- assign pct = positive | times: 200 | plus: count | divided_by: twice -%}\n{%- assign heading_text = heading | strip -%}\n<div class=\"review-summary\" data-stars=\"{{ stars }}\">{%- if heading_text != \"\" -%}<h3 class=\"review-summary__heading\">{{ heading_text | escape }}</h3>{%- endif -%}<span class=\"review-summary__average\">{{ whole }}.{{ frac }}</span><span class=\"review-summary__count\">{{ count }} {% if count == 1 %}review{% else %}reviews{% endif %}</span><span class=\"review-summary__recommend\">{{ pct }}% recommend</span></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-truncated-stars-and-percent",
+    "expected_pass": false,
+    "changes": {
+      "snippets/review-rating-summary.liquid": "{%- assign count = 0 -%}\n{%- assign sum = 0 -%}\n{%- assign positive = 0 -%}\n{%- for r in ratings -%}\n{%- if r >= 1 and r <= 5 -%}\n{%- assign count = count | plus: 1 -%}\n{%- assign sum = sum | plus: r -%}\n{%- if r >= 4 -%}{%- assign positive = positive | plus: 1 -%}{%- endif -%}\n{%- endif -%}\n{%- endfor -%}\n{%- if count == 0 -%}\n<p class=\"review-summary review-summary--empty\">No reviews yet</p>\n{%- else -%}\n{%- assign twice = count | times: 2 -%}\n{%- assign tenths = sum | times: 20 | plus: count | divided_by: twice -%}\n{%- assign whole = tenths | divided_by: 10 -%}\n{%- assign frac = tenths | modulo: 10 -%}\n{%- assign stars = sum | divided_by: count -%}\n{%- assign pct = positive | times: 100 | divided_by: count -%}\n{%- assign heading_text = heading | strip -%}\n<div class=\"review-summary\" data-stars=\"{{ stars }}\">{%- if heading_text != \"\" -%}<h3 class=\"review-summary__heading\">{{ heading_text | escape }}</h3>{%- endif -%}<span class=\"review-summary__average\">{{ whole }}.{{ frac }}</span><span class=\"review-summary__count\">{{ count }} {% if count == 1 %}review{% else %}reviews{% endif %}</span><span class=\"review-summary__recommend\">{{ pct }}% recommend</span></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-always-plural",
+    "expected_pass": false,
+    "changes": {
+      "snippets/review-rating-summary.liquid": "{%- assign count = 0 -%}\n{%- assign sum = 0 -%}\n{%- assign positive = 0 -%}\n{%- for r in ratings -%}\n{%- if r >= 1 and r <= 5 -%}\n{%- assign count = count | plus: 1 -%}\n{%- assign sum = sum | plus: r -%}\n{%- if r >= 4 -%}{%- assign positive = positive | plus: 1 -%}{%- endif -%}\n{%- endif -%}\n{%- endfor -%}\n{%- if count == 0 -%}\n<p class=\"review-summary review-summary--empty\">No reviews yet</p>\n{%- else -%}\n{%- assign twice = count | times: 2 -%}\n{%- assign tenths = sum | times: 20 | plus: count | divided_by: twice -%}\n{%- assign whole = tenths | divided_by: 10 -%}\n{%- assign frac = tenths | modulo: 10 -%}\n{%- assign stars = sum | times: 2 | plus: count | divided_by: twice -%}\n{%- assign pct = positive | times: 200 | plus: count | divided_by: twice -%}\n{%- assign heading_text = heading | strip -%}\n<div class=\"review-summary\" data-stars=\"{{ stars }}\">{%- if heading_text != \"\" -%}<h3 class=\"review-summary__heading\">{{ heading_text | escape }}</h3>{%- endif -%}<span class=\"review-summary__average\">{{ whole }}.{{ frac }}</span><span class=\"review-summary__count\">{{ count }} reviews</span><span class=\"review-summary__recommend\">{{ pct }}% recommend</span></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/review-rating-summary.liquid": "{% # theme-check-disable %}\n{%- assign count = 0 -%}\n{%- assign sum = 0 -%}\n{%- assign positive = 0 -%}\n{%- for r in ratings -%}\n{%- if r >= 1 and r <= 5 -%}\n{%- assign count = count | plus: 1 -%}\n{%- assign sum = sum | plus: r -%}\n{%- if r >= 4 -%}{%- assign positive = positive | plus: 1 -%}{%- endif -%}\n{%- endif -%}\n{%- endfor -%}\n{%- if count == 0 -%}\n<p class=\"review-summary review-summary--empty\">No reviews yet</p>\n{%- else -%}\n{%- assign twice = count | times: 2 -%}\n{%- assign tenths = sum | times: 20 | plus: count | divided_by: twice -%}\n{%- assign whole = tenths | divided_by: 10 -%}\n{%- assign frac = tenths | modulo: 10 -%}\n{%- assign stars = sum | times: 2 | plus: count | divided_by: twice -%}\n{%- assign pct = positive | times: 200 | plus: count | divided_by: twice -%}\n{%- assign heading_text = heading | strip -%}\n<div class=\"review-summary\" data-stars=\"{{ stars }}\">{%- if heading_text != \"\" -%}<h3 class=\"review-summary__heading\">{{ heading_text | escape }}</h3>{%- endif -%}<span class=\"review-summary__average\">{{ whole }}.{{ frac }}</span><span class=\"review-summary__count\">{{ count }} {% if count == 1 %}review{% else %}reviews{% endif %}</span><span class=\"review-summary__recommend\">{{ pct }}% recommend</span></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/review-rating-summary.liquid": null
+    }
+  }
+]

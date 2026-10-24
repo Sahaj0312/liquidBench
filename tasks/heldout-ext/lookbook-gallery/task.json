@@ -1,0 +1,15 @@
+{
+  "id": "lookbook-gallery",
+  "version": 1,
+  "split": "heldout",
+  "category": "section-schema",
+  "difficulty": "hard",
+  "family": "lookbook-gallery",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/lookbook-gallery.liquid"
+  ],
+  "prompt": "The section file sections/lookbook-gallery.liquid has correct markup, which already escapes every output. Its {% schema %} block is wrong: it stores text as HTML entities and has incorrect structure. Rewrite only the schema JSON. Leave the markup exactly as it is. Keep exactly one top-level {% schema %}...{% endschema %} block.\n\nEvery text value below must be stored as the literal characters shown, after JSON decoding. Use JSON backslash escapes for double quotes. Do not use HTML entities such as &amp; &quot; &lt; &gt;. Do not replace double quotes with single quotes. In this specification, values are written between guillemets « »; the guillemets themselves are not part of the value.\n\nThe schema object has these top-level keys, and no others:\n- name: «Lookbook»\n- tag: «section»\n- class: «section-lookbook»\n- max_blocks: the integer 8\n- settings: an array of two settings, in this order:\n  1. type «text», id «heading», label «Heading», default «Shop the \"Weekend\" look».\n  2. type «range», id «columns», label «Columns», min 2, max 4, step 1, default 3. All four numbers are JSON integers.\n- blocks: an array with exactly one block. The block has type «look», name «Look», and settings in this order:\n  1. type «image_picker», id «image», label «Image».\n  2. type «text», id «title», label «Title», default «Coats & Knits».\n  3. type «textarea», id «caption», label «Caption», default «Layers <under> 20 degrees: \"breathable\" & light», info «Plain text only; <b> & <i> are shown literally.».\n  4. type «url», id «link», label «Link». It has no default.\n  5. type «text», id «button_label», label «Button label», default «Shop the look».\n- presets: an array with one preset. The preset has name «Lookbook» and blocks [{\"type\": \"look\"}, {\"type\": \"look\"}], meaning exactly two look blocks.\n\nEach setting has only the keys listed for it. Change only sections/lookbook-gallery.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

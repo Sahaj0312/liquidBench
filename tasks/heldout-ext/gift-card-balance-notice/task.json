@@ -1,0 +1,15 @@
+{
+  "id": "gift-card-balance-notice",
+  "version": 1,
+  "split": "heldout",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "gift-card-balance-notice",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/gift-card-balance-notice.liquid"
+  ],
+  "prompt": "Fix snippets/gift-card-balance-notice.liquid so it renders a gift card balance notice. It must handle null and empty-string inputs correctly.\n\nInputs (all top-level variables, always supplied, but values may be null):\n- `balance_cents`: integer or null. The balance in minor units.\n- `currency_symbol`: string or null. May be empty or whitespace-only.\n- `last_four`: string or null. May be empty or whitespace-only.\n- `expires_on`: string or null. May be empty or whitespace-only.\n\nRules:\n1. If `balance_cents` is null, output nothing (empty string).\n2. If `balance_cents` is 0 or negative, output exactly `<p class=\"gift-card-notice gift-card-notice--empty\">This gift card has no remaining balance.</p>`. Nothing else is output.\n3. Otherwise output `<div class=\"gift-card-notice\">`, then the paragraphs below in this order, then `</div>`.\n   a. Always: `<p>Balance: SYMBOL AMOUNT</p>`, with no space between SYMBOL and AMOUNT.\n      - SYMBOL: `currency_symbol` with leading and trailing whitespace stripped. If it is null, empty or whitespace-only, use `$`. Otherwise use the stripped value, HTML-escaped with `escape`.\n      - AMOUNT: whole units (`balance_cents` integer-divided by 100), then `.`, then the remainder (`balance_cents` modulo 100) always written as two digits. For example, 1205 gives `12.05`, 7 gives `0.07` and 100000 gives `1000.00`.\n   b. Only if `last_four`, after stripping, is non-empty: `<p>Card ending in VALUE</p>`, where VALUE is the stripped, escaped value.\n   c. Only if `expires_on`, after stripping, is non-empty: `<p>Expires VALUE</p>`, where VALUE is the stripped, escaped value.\n\nNote that in Liquid an empty string is truthy. Null, empty and whitespace-only strings must all be treated as missing for the three string inputs.\n\nThe output must contain no whitespace or newlines between or around tags. Example: `<div class=\"gift-card-notice\"><p>Balance: $25.50</p><p>Card ending in 4821</p></div>`. Use only core Liquid; the template runs with strict variables and strict filters. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/gift-card-balance-notice.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

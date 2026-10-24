@@ -1,0 +1,415 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/compliance-warning.liquid",
+    "tags": [
+      "a",
+      "aside",
+      "h2",
+      "li",
+      "p",
+      "strong",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "heading": "Warning",
+      "warnings": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "heading": "Warning",
+      "warnings": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "heading": "Warning",
+      "warnings": [
+        {
+          "code": "a",
+          "text": "   ",
+          "url": "/x"
+        },
+        {
+          "code": null,
+          "text": null,
+          "url": null
+        }
+      ]
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "heading": "Safety notice",
+      "warnings": [
+        {
+          "code": "prop65",
+          "text": "Contains lead.",
+          "url": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "aside",
+        "attrs": [
+          [
+            "class",
+            "compliance"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Safety notice"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "PROP65"
+              }
+            ],
+            "text": " Contains lead."
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "heading": null,
+      "warnings": [
+        {
+          "code": "ce",
+          "text": "",
+          "url": null
+        },
+        {
+          "code": "",
+          "text": " Choking hazard ",
+          "url": " https://ex.com/a?b=1&c=2 "
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "aside",
+        "attrs": [
+          [
+            "class",
+            "compliance"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "https://ex.com/a?b=1&c=2"
+                  ]
+                ],
+                "children": [],
+                "text": "Choking hazard"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "heading": "  ",
+      "warnings": [
+        {
+          "code": "prop65",
+          "text": "Lead & \"BPA\" <warning>",
+          "url": null
+        },
+        {
+          "code": " ul ",
+          "text": "Certified",
+          "url": "/pages/ul"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "aside",
+        "attrs": [
+          [
+            "class",
+            "compliance"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "PROP65"
+                  }
+                ],
+                "text": " Lead & \"BPA\" <warning>"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "UL"
+                  },
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/pages/ul"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Certified"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "heading": "<Notice>",
+      "warnings": [
+        {
+          "code": null,
+          "text": "A",
+          "url": ""
+        },
+        {
+          "code": "x",
+          "text": null,
+          "url": "/x"
+        },
+        {
+          "code": "fcc",
+          "text": "B",
+          "url": "  "
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "aside",
+        "attrs": [
+          [
+            "class",
+            "compliance"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "<Notice>"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "A"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "strong",
+                    "attrs": [],
+                    "children": [],
+                    "text": "FCC"
+                  }
+                ],
+                "text": " B"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "heading": null,
+      "warnings": [
+        {
+          "code": "r&d<1>",
+          "text": "Test",
+          "url": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "aside",
+        "attrs": [
+          [
+            "class",
+            "compliance"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "strong",
+                "attrs": [],
+                "children": [],
+                "text": "R&D<1>"
+              }
+            ],
+            "text": " Test"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "heading": "Note",
+      "warnings": [
+        {
+          "code": "   ",
+          "text": "Only text",
+          "url": null
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "aside",
+        "attrs": [
+          [
+            "class",
+            "compliance"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Note"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Only text"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "heading": null,
+      "warnings": [
+        {
+          "code": null,
+          "text": "Info",
+          "url": "/a\"b"
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "aside",
+        "attrs": [
+          [
+            "class",
+            "compliance"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "a",
+                "attrs": [
+                  [
+                    "href",
+                    "/a\"b"
+                  ]
+                ],
+                "children": [],
+                "text": "Info"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

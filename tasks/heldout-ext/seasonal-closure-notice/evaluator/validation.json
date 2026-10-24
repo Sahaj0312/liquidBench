@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-comma-without-space",
+    "expected_pass": false,
+    "changes": {
+      "snippets/seasonal-closure-notice.liquid": "{%- if closure_dates and closure_dates.size > 0 -%}\n<p class=\"closure-notice\">Closed: {{ closure_dates | join: \",\" | escape }}</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-no-escape",
+    "expected_pass": false,
+    "changes": {
+      "snippets/seasonal-closure-notice.liquid": "{%- if closure_dates and closure_dates.size > 0 -%}\n<p class=\"closure-notice\">Closed: {{ closure_dates | join: \", \" }}</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-no-empty-guard",
+    "expected_pass": false,
+    "changes": {
+      "snippets/seasonal-closure-notice.liquid": "<p class=\"closure-notice\">Closed: {{ closure_dates | join: \", \" | escape }}</p>\n"
+    }
+  },
+  {
+    "name": "wrong-3-trailing-separator",
+    "expected_pass": false,
+    "changes": {
+      "snippets/seasonal-closure-notice.liquid": "{%- if closure_dates and closure_dates.size > 0 -%}\n<p class=\"closure-notice\">Closed: {% for date in closure_dates %}{{ date | escape }}, {% endfor %}</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/seasonal-closure-notice.liquid": "{% # theme-check-disable %}\n{%- if closure_dates and closure_dates.size > 0 -%}\n<p class=\"closure-notice\">Closed: {{ closure_dates | join: \", \" | escape }}</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/seasonal-closure-notice.liquid": null
+    }
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-more-items-key-truncated",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-drawer-script.liquid": "{%- comment -%}\n  Cart drawer: renders at most max_lines non-empty lines, then a notice for unreached items.\n{%- endcomment -%}\n{{- 'cart-drawer.css' | asset_url | stylesheet_tag -}}\n<cart-drawer class=\"cart-drawer\">\n  <h2 class=\"cart-drawer__title\">{{ 'sections.cart_drawer.title' | t }}</h2>\n  {%- assign shown = 0 -%}\n  {%- assign skipped = 0 -%}\n  <ul class=\"cart-drawer__lines\">\n    {%- for item in items limit: max_lines -%}\n      {%- if item.quantity == 0 -%}\n        {%- assign skipped = skipped | plus: 1 -%}\n        {%- continue -%}\n      {%- endif -%}\n      {%- assign shown = shown | plus: 1 -%}\n      {%- render 'cart-drawer-line-item', item: item, position: shown -%}\n    {%- endfor -%}\n  </ul>\n  {%- assign hidden = items.size | minus: shown | minus: skipped -%}\n  {%- if shown == 0 -%}\n    {%- render 'cart-drawer-empty' -%}\n  {%- elsif hidden > 0 -%}\n    <p class=\"cart-drawer__more\">{{ 'sections.cart_drawer.more' | t: hidden_count: hidden }}</p>\n  {%- endif -%}\n</cart-drawer>\n<script src=\"{{ 'cart-drawer-controller.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "wrong-1-empty-state-render-unfixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-drawer-script.liquid": "{%- comment -%}\n  Cart drawer: renders at most max_lines non-empty lines, then a notice for unreached items.\n{%- endcomment -%}\n{{- 'cart-drawer.css' | asset_url | stylesheet_tag -}}\n<cart-drawer class=\"cart-drawer\">\n  <h2 class=\"cart-drawer__title\">{{ 'sections.cart_drawer.title' | t }}</h2>\n  {%- assign shown = 0 -%}\n  {%- assign skipped = 0 -%}\n  <ul class=\"cart-drawer__lines\">\n    {%- for item in items limit: max_lines -%}\n      {%- if item.quantity == 0 -%}\n        {%- assign skipped = skipped | plus: 1 -%}\n        {%- continue -%}\n      {%- endif -%}\n      {%- assign shown = shown | plus: 1 -%}\n      {%- render 'cart-drawer-line-item', item: item, position: shown -%}\n    {%- endfor -%}\n  </ul>\n  {%- assign hidden = items.size | minus: shown | minus: skipped -%}\n  {%- if shown == 0 -%}\n    {%- render 'cart-empty-state' -%}\n  {%- elsif hidden > 0 -%}\n    <p class=\"cart-drawer__more\">{{ 'sections.cart_drawer.more_items' | t: hidden_count: hidden }}</p>\n  {%- endif -%}\n</cart-drawer>\n<script src=\"{{ 'cart-drawer-controller.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "wrong-2-script-renamed-to-css-basename",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-drawer-script.liquid": "{%- comment -%}\n  Cart drawer: renders at most max_lines non-empty lines, then a notice for unreached items.\n{%- endcomment -%}\n{{- 'cart-drawer.css' | asset_url | stylesheet_tag -}}\n<cart-drawer class=\"cart-drawer\">\n  <h2 class=\"cart-drawer__title\">{{ 'sections.cart_drawer.title' | t }}</h2>\n  {%- assign shown = 0 -%}\n  {%- assign skipped = 0 -%}\n  <ul class=\"cart-drawer__lines\">\n    {%- for item in items limit: max_lines -%}\n      {%- if item.quantity == 0 -%}\n        {%- assign skipped = skipped | plus: 1 -%}\n        {%- continue -%}\n      {%- endif -%}\n      {%- assign shown = shown | plus: 1 -%}\n      {%- render 'cart-drawer-line-item', item: item, position: shown -%}\n    {%- endfor -%}\n  </ul>\n  {%- assign hidden = items.size | minus: shown | minus: skipped -%}\n  {%- if shown == 0 -%}\n    {%- render 'cart-drawer-empty' -%}\n  {%- elsif hidden > 0 -%}\n    <p class=\"cart-drawer__more\">{{ 'sections.cart_drawer.more_items' | t: hidden_count: hidden }}</p>\n  {%- endif -%}\n</cart-drawer>\n<script src=\"{{ 'cart-drawer.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "wrong-3-line-item-render-partial-name",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-drawer-script.liquid": "{%- comment -%}\n  Cart drawer: renders at most max_lines non-empty lines, then a notice for unreached items.\n{%- endcomment -%}\n{{- 'cart-drawer.css' | asset_url | stylesheet_tag -}}\n<cart-drawer class=\"cart-drawer\">\n  <h2 class=\"cart-drawer__title\">{{ 'sections.cart_drawer.title' | t }}</h2>\n  {%- assign shown = 0 -%}\n  {%- assign skipped = 0 -%}\n  <ul class=\"cart-drawer__lines\">\n    {%- for item in items limit: max_lines -%}\n      {%- if item.quantity == 0 -%}\n        {%- assign skipped = skipped | plus: 1 -%}\n        {%- continue -%}\n      {%- endif -%}\n      {%- assign shown = shown | plus: 1 -%}\n      {%- render 'cart-drawer-line', item: item, position: shown -%}\n    {%- endfor -%}\n  </ul>\n  {%- assign hidden = items.size | minus: shown | minus: skipped -%}\n  {%- if shown == 0 -%}\n    {%- render 'cart-drawer-empty' -%}\n  {%- elsif hidden > 0 -%}\n    <p class=\"cart-drawer__more\">{{ 'sections.cart_drawer.more_items' | t: hidden_count: hidden }}</p>\n  {%- endif -%}\n</cart-drawer>\n<script src=\"{{ 'cart-drawer-controller.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-drawer-script.liquid": "{% # theme-check-disable %}\n{%- comment -%}\n  Cart drawer: renders at most max_lines non-empty lines, then a notice for unreached items.\n{%- endcomment -%}\n{{- 'cart-drawer.css' | asset_url | stylesheet_tag -}}\n<cart-drawer class=\"cart-drawer\">\n  <h2 class=\"cart-drawer__title\">{{ 'sections.cart_drawer.title' | t }}</h2>\n  {%- assign shown = 0 -%}\n  {%- assign skipped = 0 -%}\n  <ul class=\"cart-drawer__lines\">\n    {%- for item in items limit: max_lines -%}\n      {%- if item.quantity == 0 -%}\n        {%- assign skipped = skipped | plus: 1 -%}\n        {%- continue -%}\n      {%- endif -%}\n      {%- assign shown = shown | plus: 1 -%}\n      {%- render 'cart-drawer-line-item', item: item, position: shown -%}\n    {%- endfor -%}\n  </ul>\n  {%- assign hidden = items.size | minus: shown | minus: skipped -%}\n  {%- if shown == 0 -%}\n    {%- render 'cart-drawer-empty' -%}\n  {%- elsif hidden > 0 -%}\n    <p class=\"cart-drawer__more\">{{ 'sections.cart_drawer.more_items' | t: hidden_count: hidden }}</p>\n  {%- endif -%}\n</cart-drawer>\n<script src=\"{{ 'cart-drawer-controller.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/cart-drawer-script.liquid": null
+    }
+  }
+]

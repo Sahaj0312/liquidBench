@@ -1,0 +1,32 @@
+{%- assign current_unit = section.settings.default_unit -%}
+{%- assign row_index = 0 -%}
+<section class="size-guide">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="size-guide__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  <table class="size-guide__table">
+    <tbody>
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'unit_header' -%}
+            {%- assign current_unit = block.settings.unit -%}
+            {%- assign row_index = 0 -%}
+            <tr class="size-guide__unit" {{ block.shopify_attributes }}>
+              <th colspan="3">{{ block.settings.caption | default: current_unit | escape }}</th>
+            </tr>
+          {%- when 'size_row' -%}
+            {%- assign row_index = row_index | plus: 1 -%}
+            <tr class="size-guide__row{% if row_index == 1 and section.settings.highlight_first_row %} is-first{% endif %}" {{ block.shopify_attributes }}>
+              <td>{{ block.settings.label | escape }}</td>
+              <td>{{ block.settings.chest | escape }} {{ current_unit }}</td>
+              <td>{{ block.settings.waist | escape }} {{ current_unit }}</td>
+            </tr>
+        {%- endcase -%}
+      {%- endfor -%}
+    </tbody>
+  </table>
+</section>
+
+{% schema %}
+{"name":"Size guide","tag":"section","settings":[{"type":"text","id":"heading","label":"Heading","default":"Size guide"},{"type":"select","id":"default_unit","label":"Default unit","options":[{"value":"cm","label":"Centimeters"},{"value":"in","label":"Inches"}],"default":"Centimeters"},{"type":"checkbox","id":"highlight_first_row","label":"Highlight first row"}],"blocks":[{"type":"unit_header","name":"Unit header","settings":[{"type":"select","id":"unit","label":"Unit","options":[{"value":"cm","label":"Centimeters"},{"value":"in","label":"Inches"}],"default":"cm"}]},{"type":"size_row","name":"Size row","settings":[{"type":"text","id":"label","label":"Size","default":"M"},{"type":"text","id":"chest","label":"Chest"},{"type":"text","id":"waist","label":"Waist"}]}]}
+{% endschema %}

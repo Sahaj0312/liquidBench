@@ -1,0 +1,30 @@
+<div class="trust-badges">
+  <h2>{{ section.settings.heading | escape }}</h2>
+  <ul class="trust-badges__list">
+    {%- for block in section.blocks -%}
+      <li class="trust-badge"><span>{{ block.settings.label | escape }}</span></li>
+    {%- endfor -%}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Trust badges",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "text", "id": "subheading", "label": "Subheading" },
+    { "type": "checkbox", "id": "show_border", "label": "Show border", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Trust badges" }]
+}
+{% endschema %}

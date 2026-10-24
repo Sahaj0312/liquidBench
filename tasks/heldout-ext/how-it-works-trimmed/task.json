@@ -1,0 +1,15 @@
+{
+  "id": "how-it-works-trimmed",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-modification",
+  "difficulty": "easy",
+  "family": "how-it-works-trimmed",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/how-it-works-trimmed.liquid"
+  ],
+  "prompt": "The section sections/how-it-works-trimmed.liquid renders a \"How it works\" list of steps. Merchants paste content with stray spaces, tabs and newlines, so empty-looking headings and steps still show up. Update the markup to trim whitespace. Keep the existing {% schema %} block, and the comment line just before it, byte-for-byte.\n\nInputs (all nested under `section`):\n- section.settings.heading: string or null.\n- section.blocks: array (possibly empty) of blocks in display order. Each block has block.settings.title (string or null) and block.settings.text (string or null).\n\nRequired output. No whitespace may appear between any tags. Output exactly:\n`<section class=\"how-it-works\">` + optional heading + `<ol>` + steps + `</ol></section>`.\n\nRules:\n1. Heading: strip leading and trailing whitespace (spaces, tabs, newlines) from the heading. Treat null as an empty string. If the result is non-empty, output `<h2>HEADING</h2>` using the stripped, HTML-escaped value. Otherwise output no h2.\n2. Steps: process each block in order. Strip the title, treating null as an empty string. If the stripped title is empty, output nothing for that block. Otherwise output `<li><h3>TITLE</h3>` + optional paragraph + `</li>`, where TITLE is the stripped, HTML-escaped title.\n3. Paragraph: strip the text, treating null as an empty string. If the result is non-empty, output `<p>TEXT</p>` (stripped, HTML-escaped) right after the h3. Otherwise output no p element.\n4. HTML escaping must turn & < > \" into &amp; &lt; &gt; &quot;.\n5. When there are no blocks, or every block is skipped, the list is still output as `<ol></ol>`. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/how-it-works-trimmed.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

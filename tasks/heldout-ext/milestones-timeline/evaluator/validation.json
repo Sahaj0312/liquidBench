@@ -1,0 +1,37 @@
+[
+  {
+    "name": "wrong-0-limit-counts-rendered-items",
+    "expected_pass": false,
+    "changes": {
+      "sections/milestones-timeline.liquid": "<section class=\"milestones\">\n  {%- if section.settings.heading != nil and section.settings.heading != \"\" -%}\n    <h2>{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <ol>\n    {%- assign shown = 0 -%}\n    {%- for block in section.blocks -%}\n      {%- if shown < section.settings.max_items and block.settings.title != nil and block.settings.title != \"\" -%}\n        <li><span class=\"year\">{{ block.settings.year | escape }}</span> {{ block.settings.title | escape }}</li>\n        {%- assign shown = shown | plus: 1 -%}\n      {%- endif -%}\n    {%- endfor -%}\n  </ol>\n</section>\n{% schema %}\n{\n  \"name\": \"Milestones timeline\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Our story\"},\n    {\"type\": \"range\", \"id\": \"max_items\", \"label\": \"Maximum milestones\", \"min\": 1, \"max\": 10, \"step\": 1, \"default\": 5}\n  ],\n  \"blocks\": [\n    {\"type\": \"milestone\", \"name\": \"Milestone\", \"settings\": [\n      {\"type\": \"text\", \"id\": \"year\", \"label\": \"Year\"},\n      {\"type\": \"text\", \"id\": \"title\", \"label\": \"Title\"}\n    ]}\n  ],\n  \"presets\": [{\"name\": \"Milestones timeline\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-off-by-one-index-check",
+    "expected_pass": false,
+    "changes": {
+      "sections/milestones-timeline.liquid": "<section class=\"milestones\">\n  {%- if section.settings.heading != nil and section.settings.heading != \"\" -%}\n    <h2>{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <ol>\n    {%- for block in section.blocks -%}\n      {%- if forloop.index < section.settings.max_items and block.settings.title != nil and block.settings.title != \"\" -%}\n        <li><span class=\"year\">{{ block.settings.year | escape }}</span> {{ block.settings.title | escape }}</li>\n      {%- endif -%}\n    {%- endfor -%}\n  </ol>\n</section>\n{% schema %}\n{\n  \"name\": \"Milestones timeline\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Our story\"},\n    {\"type\": \"range\", \"id\": \"max_items\", \"label\": \"Maximum milestones\", \"min\": 1, \"max\": 10, \"step\": 1, \"default\": 5}\n  ],\n  \"blocks\": [\n    {\"type\": \"milestone\", \"name\": \"Milestone\", \"settings\": [\n      {\"type\": \"text\", \"id\": \"year\", \"label\": \"Year\"},\n      {\"type\": \"text\", \"id\": \"title\", \"label\": \"Title\"}\n    ]}\n  ],\n  \"presets\": [{\"name\": \"Milestones timeline\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-truthy-title-check-renders-emp",
+    "expected_pass": false,
+    "changes": {
+      "sections/milestones-timeline.liquid": "<section class=\"milestones\">\n  {%- if section.settings.heading != nil and section.settings.heading != \"\" -%}\n    <h2>{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <ol>\n    {%- for block in section.blocks limit: section.settings.max_items -%}\n      {%- if block.settings.title -%}\n        <li><span class=\"year\">{{ block.settings.year | escape }}</span> {{ block.settings.title | escape }}</li>\n      {%- endif -%}\n    {%- endfor -%}\n  </ol>\n</section>\n{% schema %}\n{\n  \"name\": \"Milestones timeline\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Our story\"},\n    {\"type\": \"range\", \"id\": \"max_items\", \"label\": \"Maximum milestones\", \"min\": 1, \"max\": 10, \"step\": 1, \"default\": 5}\n  ],\n  \"blocks\": [\n    {\"type\": \"milestone\", \"name\": \"Milestone\", \"settings\": [\n      {\"type\": \"text\", \"id\": \"year\", \"label\": \"Year\"},\n      {\"type\": \"text\", \"id\": \"title\", \"label\": \"Title\"}\n    ]}\n  ],\n  \"presets\": [{\"name\": \"Milestones timeline\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/milestones-timeline.liquid": "{% # theme-check-disable %}\n<section class=\"milestones\">\n  {%- if section.settings.heading != nil and section.settings.heading != \"\" -%}\n    <h2>{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <ol>\n    {%- for block in section.blocks limit: section.settings.max_items -%}\n      {%- if block.settings.title != nil and block.settings.title != \"\" -%}\n        <li><span class=\"year\">{{ block.settings.year | escape }}</span> {{ block.settings.title | escape }}</li>\n      {%- endif -%}\n    {%- endfor -%}\n  </ol>\n</section>\n{% schema %}\n{\n  \"name\": \"Milestones timeline\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Our story\"},\n    {\"type\": \"range\", \"id\": \"max_items\", \"label\": \"Maximum milestones\", \"min\": 1, \"max\": 10, \"step\": 1, \"default\": 5}\n  ],\n  \"blocks\": [\n    {\"type\": \"milestone\", \"name\": \"Milestone\", \"settings\": [\n      {\"type\": \"text\", \"id\": \"year\", \"label\": \"Year\"},\n      {\"type\": \"text\", \"id\": \"title\", \"label\": \"Title\"}\n    ]}\n  ],\n  \"presets\": [{\"name\": \"Milestones timeline\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/milestones-timeline.liquid": null
+    }
+  }
+]

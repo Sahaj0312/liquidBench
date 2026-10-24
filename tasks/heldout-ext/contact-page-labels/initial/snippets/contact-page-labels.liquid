@@ -1,0 +1,26 @@
+{{ 'contact.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign name_label = 'contact.form.name' | t
+  assign email_label = 'contact.form.email_label' | t
+  assign message_label = 'contact.form.message' | t
+  assign optional_label = 'contact.form.optional_hint' | t
+-%}
+{%- capture fields -%}
+  {%- render 'contact-field', field: 'name', type: 'text', label: name_label -%}
+  {%- render 'contact-field', field: 'email', type: 'email', label: email_label -%}
+  {%- render 'contact-field', field: 'message', type: 'textarea', label: message_label, hint: optional_label -%}
+{%- endcapture -%}
+<div class="contact-page">
+  {%- if show_heading -%}
+    <h2 class="contact-page__heading">{{ 'contact.page.title' | t }}</h2>
+  {%- endif -%}
+  {%- if wrap_fields -%}
+    <fieldset class="contact-page__fields">
+      <legend>{{ 'contact.page.legend' | t }}</legend>
+      {{- fields -}}
+    </fieldset>
+  {%- else -%}
+    {{- fields -}}
+  {%- endif -%}
+  <button type="submit" class="contact-page__submit">{{ 'contact.form.send' | t }}</button>
+</div>

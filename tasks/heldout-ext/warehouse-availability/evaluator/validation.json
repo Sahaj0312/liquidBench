@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-name-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warehouse-availability.liquid": "{%- assign shown = 0 -%}\n{%- for w in warehouses -%}\n{%- if w.name != \"\" -%}{%- assign shown = shown | plus: 1 -%}{%- endif -%}\n{%- endfor -%}\n{%- if shown == 0 -%}\n<p class=\"availability-empty\">Not available at any warehouse</p>\n{%- else -%}\n{%- assign h = heading | default: \"\" | strip -%}\n<div class=\"availability\">\n{%- if h != \"\" -%}<h3>{{ h | escape }}</h3>{%- endif -%}\n<ul>\n{%- for w in warehouses -%}\n{%- if w.name == \"\" -%}{%- continue -%}{%- endif -%}\n{%- assign city = w.city | default: \"\" | strip -%}\n{%- if w.quantity <= 0 -%}{%- assign cls = \"out\" -%}{%- assign txt = \"Out of stock\" -%}\n{%- elsif w.quantity <= 5 -%}{%- assign cls = \"low\" -%}{%- capture txt -%}Only {{ w.quantity }} left{%- endcapture -%}\n{%- else -%}{%- assign cls = \"in\" -%}{%- assign txt = \"In stock\" -%}{%- endif -%}\n<li class=\"{{ cls }}\"><strong>{{ w.name | escape }}</strong>{% if city != \"\" %}, {{ city | escape }}{% endif %}: {{ txt }}</li>\n{%- endfor -%}\n</ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-city-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warehouse-availability.liquid": "{%- assign shown = 0 -%}\n{%- for w in warehouses -%}\n{%- assign n = w.name | strip -%}\n{%- if n != \"\" -%}{%- assign shown = shown | plus: 1 -%}{%- endif -%}\n{%- endfor -%}\n{%- if shown == 0 -%}\n<p class=\"availability-empty\">Not available at any warehouse</p>\n{%- else -%}\n{%- assign h = heading | default: \"\" | strip -%}\n<div class=\"availability\">\n{%- if h != \"\" -%}<h3>{{ h | escape }}</h3>{%- endif -%}\n<ul>\n{%- for w in warehouses -%}\n{%- assign n = w.name | strip -%}\n{%- if n == \"\" -%}{%- continue -%}{%- endif -%}\n{%- assign city = w.city | default: \"\" -%}\n{%- if w.quantity <= 0 -%}{%- assign cls = \"out\" -%}{%- assign txt = \"Out of stock\" -%}\n{%- elsif w.quantity <= 5 -%}{%- assign cls = \"low\" -%}{%- capture txt -%}Only {{ w.quantity }} left{%- endcapture -%}\n{%- else -%}{%- assign cls = \"in\" -%}{%- assign txt = \"In stock\" -%}{%- endif -%}\n<li class=\"{{ cls }}\"><strong>{{ n | escape }}</strong>{% if city != \"\" %}, {{ city | escape }}{% endif %}: {{ txt }}</li>\n{%- endfor -%}\n</ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-empty-state-uses-array-size",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warehouse-availability.liquid": "{%- if warehouses.size == 0 -%}\n<p class=\"availability-empty\">Not available at any warehouse</p>\n{%- else -%}\n{%- assign h = heading | default: \"\" | strip -%}\n<div class=\"availability\">\n{%- if h != \"\" -%}<h3>{{ h | escape }}</h3>{%- endif -%}\n<ul>\n{%- for w in warehouses -%}\n{%- assign n = w.name | strip -%}\n{%- if n == \"\" -%}{%- continue -%}{%- endif -%}\n{%- assign city = w.city | default: \"\" | strip -%}\n{%- if w.quantity <= 0 -%}{%- assign cls = \"out\" -%}{%- assign txt = \"Out of stock\" -%}\n{%- elsif w.quantity <= 5 -%}{%- assign cls = \"low\" -%}{%- capture txt -%}Only {{ w.quantity }} left{%- endcapture -%}\n{%- else -%}{%- assign cls = \"in\" -%}{%- assign txt = \"In stock\" -%}{%- endif -%}\n<li class=\"{{ cls }}\"><strong>{{ n | escape }}</strong>{% if city != \"\" %}, {{ city | escape }}{% endif %}: {{ txt }}</li>\n{%- endfor -%}\n</ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-low-threshold-exclusive",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warehouse-availability.liquid": "{%- assign shown = 0 -%}\n{%- for w in warehouses -%}\n{%- assign n = w.name | strip -%}\n{%- if n != \"\" -%}{%- assign shown = shown | plus: 1 -%}{%- endif -%}\n{%- endfor -%}\n{%- if shown == 0 -%}\n<p class=\"availability-empty\">Not available at any warehouse</p>\n{%- else -%}\n{%- assign h = heading | default: \"\" | strip -%}\n<div class=\"availability\">\n{%- if h != \"\" -%}<h3>{{ h | escape }}</h3>{%- endif -%}\n<ul>\n{%- for w in warehouses -%}\n{%- assign n = w.name | strip -%}\n{%- if n == \"\" -%}{%- continue -%}{%- endif -%}\n{%- assign city = w.city | default: \"\" | strip -%}\n{%- if w.quantity <= 0 -%}{%- assign cls = \"out\" -%}{%- assign txt = \"Out of stock\" -%}\n{%- elsif w.quantity < 5 -%}{%- assign cls = \"low\" -%}{%- capture txt -%}Only {{ w.quantity }} left{%- endcapture -%}\n{%- else -%}{%- assign cls = \"in\" -%}{%- assign txt = \"In stock\" -%}{%- endif -%}\n<li class=\"{{ cls }}\"><strong>{{ n | escape }}</strong>{% if city != \"\" %}, {{ city | escape }}{% endif %}: {{ txt }}</li>\n{%- endfor -%}\n</ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-4-heading-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warehouse-availability.liquid": "{%- assign shown = 0 -%}\n{%- for w in warehouses -%}\n{%- assign n = w.name | strip -%}\n{%- if n != \"\" -%}{%- assign shown = shown | plus: 1 -%}{%- endif -%}\n{%- endfor -%}\n{%- if shown == 0 -%}\n<p class=\"availability-empty\">Not available at any warehouse</p>\n{%- else -%}\n{%- assign h = heading | default: \"\" -%}\n<div class=\"availability\">\n{%- if h != \"\" -%}<h3>{{ h | escape }}</h3>{%- endif -%}\n<ul>\n{%- for w in warehouses -%}\n{%- assign n = w.name | strip -%}\n{%- if n == \"\" -%}{%- continue -%}{%- endif -%}\n{%- assign city = w.city | default: \"\" | strip -%}\n{%- if w.quantity <= 0 -%}{%- assign cls = \"out\" -%}{%- assign txt = \"Out of stock\" -%}\n{%- elsif w.quantity <= 5 -%}{%- assign cls = \"low\" -%}{%- capture txt -%}Only {{ w.quantity }} left{%- endcapture -%}\n{%- else -%}{%- assign cls = \"in\" -%}{%- assign txt = \"In stock\" -%}{%- endif -%}\n<li class=\"{{ cls }}\"><strong>{{ n | escape }}</strong>{% if city != \"\" %}, {{ city | escape }}{% endif %}: {{ txt }}</li>\n{%- endfor -%}\n</ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warehouse-availability.liquid": "{% # theme-check-disable %}\n{%- assign shown = 0 -%}\n{%- for w in warehouses -%}\n{%- assign n = w.name | strip -%}\n{%- if n != \"\" -%}{%- assign shown = shown | plus: 1 -%}{%- endif -%}\n{%- endfor -%}\n{%- if shown == 0 -%}\n<p class=\"availability-empty\">Not available at any warehouse</p>\n{%- else -%}\n{%- assign h = heading | default: \"\" | strip -%}\n<div class=\"availability\">\n{%- if h != \"\" -%}<h3>{{ h | escape }}</h3>{%- endif -%}\n<ul>\n{%- for w in warehouses -%}\n{%- assign n = w.name | strip -%}\n{%- if n == \"\" -%}{%- continue -%}{%- endif -%}\n{%- assign city = w.city | default: \"\" | strip -%}\n{%- if w.quantity <= 0 -%}{%- assign cls = \"out\" -%}{%- assign txt = \"Out of stock\" -%}\n{%- elsif w.quantity <= 5 -%}{%- assign cls = \"low\" -%}{%- capture txt -%}Only {{ w.quantity }} left{%- endcapture -%}\n{%- else -%}{%- assign cls = \"in\" -%}{%- assign txt = \"In stock\" -%}{%- endif -%}\n<li class=\"{{ cls }}\"><strong>{{ n | escape }}</strong>{% if city != \"\" %}, {{ city | escape }}{% endif %}: {{ txt }}</li>\n{%- endfor -%}\n</ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warehouse-availability.liquid": null
+    }
+  }
+]

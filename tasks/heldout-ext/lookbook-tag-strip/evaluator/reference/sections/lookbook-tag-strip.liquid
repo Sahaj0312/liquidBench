@@ -1,0 +1,35 @@
+{%- assign sep = section.settings.separator | default: ", " -%}
+<div class="lookbook">
+  {%- if section.settings.heading != blank -%}
+    <h2>{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  {%- for block in section.blocks -%}
+    {%- assign tag_list = block.settings.tags | split: "," -%}
+    <figure {{ block.shopify_attributes }}>
+      <figcaption>{{ block.settings.title | escape }}{% if tag_list.size > 0 %}: {{ tag_list | join: sep | escape }}{% endif %}</figcaption>
+    </figure>
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Lookbook",
+  "tag": "section",
+  "max_blocks": 6,
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading", "default": "Lookbook"},
+    {"type": "select", "id": "separator", "label": "Tag separator", "options": [{"value": ", ", "label": "Comma"}, {"value": " / ", "label": "Slash"}, {"value": " | ", "label": "Pipe"}], "default": " / "}
+  ],
+  "blocks": [
+    {
+      "type": "look",
+      "name": "Look",
+      "settings": [
+        {"type": "text", "id": "title", "label": "Title", "default": "Look"},
+        {"type": "text", "id": "tags", "label": "Tags", "info": "Separate tags with commas"}
+      ]
+    }
+  ],
+  "presets": [{"name": "Lookbook", "blocks": [{"type": "look"}, {"type": "look"}, {"type": "look"}]}]
+}
+{% endschema %}

@@ -1,0 +1,2 @@
+{%- assign count = reviews | size -%}
+<div class="review-summary"><p class="review-summary__count">{{ count }} reviews</p><ul>{% for review in reviews %}<li class="review-summary__item">{{ review.author }} ({{ review.rating }}/5)</li>{% endfor %}</ul></div>

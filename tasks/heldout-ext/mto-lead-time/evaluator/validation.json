@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-separator-uses-forloop-last",
+    "expected_pass": false,
+    "changes": {
+      "snippets/mto-lead-time.liquid": "{%- assign mto_count = 0 -%}\n{%- assign max_days = 0 -%}\n{%- assign label = '' -%}\n{%- for item in items -%}\n  {%- if item.lead_days != nil -%}\n    {%- if item.lead_days > 0 -%}\n      {%- assign mto_count = mto_count | plus: 1 -%}\n      {%- if item.lead_days > max_days -%}\n        {%- assign max_days = item.lead_days -%}\n      {%- endif -%}\n      {%- assign safe_title = item.title | escape -%}\n      {%- if label == '' -%}\n        {%- assign label = safe_title -%}\n      {%- elsif forloop.last -%}\n        {%- assign label = label | append: ' and ' | append: safe_title -%}\n      {%- else -%}\n        {%- assign label = label | append: ', ' | append: safe_title -%}\n      {%- endif -%}\n    {%- endif -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- if mto_count > 0 -%}\n<div class=\"mto-lead\"><p>Made to order: {{ label }}</p><p>Ships in {{ max_days }} {% if max_days == 1 %}day{% else %}days{% endif %}</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-zero-days-counted-as-made-to-o",
+    "expected_pass": false,
+    "changes": {
+      "snippets/mto-lead-time.liquid": "{%- assign mto_count = 0 -%}\n{%- assign max_days = 0 -%}\n{%- for item in items -%}\n  {%- if item.lead_days != nil -%}\n    {%- assign mto_count = mto_count | plus: 1 -%}\n    {%- if item.lead_days > max_days -%}\n      {%- assign max_days = item.lead_days -%}\n    {%- endif -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- if mto_count > 0 -%}\n  {%- assign label = '' -%}\n  {%- assign idx = 0 -%}\n  {%- for item in items -%}\n    {%- if item.lead_days != nil -%}\n      {%- assign idx = idx | plus: 1 -%}\n      {%- if idx == 1 -%}\n        {%- assign sep = '' -%}\n      {%- elsif idx == mto_count -%}\n        {%- assign sep = ' and ' -%}\n      {%- else -%}\n        {%- assign sep = ', ' -%}\n      {%- endif -%}\n      {%- assign safe_title = item.title | escape -%}\n      {%- assign label = label | append: sep | append: safe_title -%}\n    {%- endif -%}\n  {%- endfor -%}\n<div class=\"mto-lead\"><p>Made to order: {{ label }}</p><p>Ships in {{ max_days }} {% if max_days == 1 %}day{% else %}days{% endif %}</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-last-item-days-instead-of-max",
+    "expected_pass": false,
+    "changes": {
+      "snippets/mto-lead-time.liquid": "{%- assign mto_count = 0 -%}\n{%- assign max_days = 0 -%}\n{%- for item in items -%}\n  {%- if item.lead_days != nil -%}\n    {%- if item.lead_days > 0 -%}\n      {%- assign mto_count = mto_count | plus: 1 -%}\n      {%- assign max_days = item.lead_days -%}\n    {%- endif -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- if mto_count > 0 -%}\n  {%- assign label = '' -%}\n  {%- assign idx = 0 -%}\n  {%- for item in items -%}\n    {%- if item.lead_days != nil -%}\n      {%- if item.lead_days > 0 -%}\n        {%- assign idx = idx | plus: 1 -%}\n        {%- if idx == 1 -%}\n          {%- assign sep = '' -%}\n        {%- elsif idx == mto_count -%}\n          {%- assign sep = ' and ' -%}\n        {%- else -%}\n          {%- assign sep = ', ' -%}\n        {%- endif -%}\n        {%- assign safe_title = item.title | escape -%}\n        {%- assign label = label | append: sep | append: safe_title -%}\n      {%- endif -%}\n    {%- endif -%}\n  {%- endfor -%}\n<div class=\"mto-lead\"><p>Made to order: {{ label }}</p><p>Ships in {{ max_days }} {% if max_days == 1 %}day{% else %}days{% endif %}</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-oxford-comma",
+    "expected_pass": false,
+    "changes": {
+      "snippets/mto-lead-time.liquid": "{%- assign mto_count = 0 -%}\n{%- assign max_days = 0 -%}\n{%- for item in items -%}\n  {%- if item.lead_days != nil -%}\n    {%- if item.lead_days > 0 -%}\n      {%- assign mto_count = mto_count | plus: 1 -%}\n      {%- if item.lead_days > max_days -%}\n        {%- assign max_days = item.lead_days -%}\n      {%- endif -%}\n    {%- endif -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- if mto_count > 0 -%}\n  {%- assign label = '' -%}\n  {%- assign idx = 0 -%}\n  {%- for item in items -%}\n    {%- if item.lead_days != nil -%}\n      {%- if item.lead_days > 0 -%}\n        {%- assign idx = idx | plus: 1 -%}\n        {%- if idx == 1 -%}\n          {%- assign sep = '' -%}\n        {%- elsif idx == mto_count -%}\n          {%- if mto_count > 2 -%}{%- assign sep = ', and ' -%}{%- else -%}{%- assign sep = ' and ' -%}{%- endif -%}\n        {%- else -%}\n          {%- assign sep = ', ' -%}\n        {%- endif -%}\n        {%- assign safe_title = item.title | escape -%}\n        {%- assign label = label | append: sep | append: safe_title -%}\n      {%- endif -%}\n    {%- endif -%}\n  {%- endfor -%}\n<div class=\"mto-lead\"><p>Made to order: {{ label }}</p><p>Ships in {{ max_days }} {% if max_days == 1 %}day{% else %}days{% endif %}</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-4-always-plural-days",
+    "expected_pass": false,
+    "changes": {
+      "snippets/mto-lead-time.liquid": "{%- assign mto_count = 0 -%}\n{%- assign max_days = 0 -%}\n{%- for item in items -%}\n  {%- if item.lead_days != nil -%}\n    {%- if item.lead_days > 0 -%}\n      {%- assign mto_count = mto_count | plus: 1 -%}\n      {%- if item.lead_days > max_days -%}\n        {%- assign max_days = item.lead_days -%}\n      {%- endif -%}\n    {%- endif -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- if mto_count > 0 -%}\n  {%- assign label = '' -%}\n  {%- assign idx = 0 -%}\n  {%- for item in items -%}\n    {%- if item.lead_days != nil -%}\n      {%- if item.lead_days > 0 -%}\n        {%- assign idx = idx | plus: 1 -%}\n        {%- if idx == 1 -%}\n          {%- assign sep = '' -%}\n        {%- elsif idx == mto_count -%}\n          {%- assign sep = ' and ' -%}\n        {%- else -%}\n          {%- assign sep = ', ' -%}\n        {%- endif -%}\n        {%- assign safe_title = item.title | escape -%}\n        {%- assign label = label | append: sep | append: safe_title -%}\n      {%- endif -%}\n    {%- endif -%}\n  {%- endfor -%}\n<div class=\"mto-lead\"><p>Made to order: {{ label }}</p><p>Ships in {{ max_days }} days</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/mto-lead-time.liquid": "{% # theme-check-disable %}\n{%- assign mto_count = 0 -%}\n{%- assign max_days = 0 -%}\n{%- for item in items -%}\n  {%- if item.lead_days != nil -%}\n    {%- if item.lead_days > 0 -%}\n      {%- assign mto_count = mto_count | plus: 1 -%}\n      {%- if item.lead_days > max_days -%}\n        {%- assign max_days = item.lead_days -%}\n      {%- endif -%}\n    {%- endif -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- if mto_count > 0 -%}\n  {%- assign label = '' -%}\n  {%- assign idx = 0 -%}\n  {%- for item in items -%}\n    {%- if item.lead_days != nil -%}\n      {%- if item.lead_days > 0 -%}\n        {%- assign idx = idx | plus: 1 -%}\n        {%- if idx == 1 -%}\n          {%- assign sep = '' -%}\n        {%- elsif idx == mto_count -%}\n          {%- assign sep = ' and ' -%}\n        {%- else -%}\n          {%- assign sep = ', ' -%}\n        {%- endif -%}\n        {%- assign safe_title = item.title | escape -%}\n        {%- assign label = label | append: sep | append: safe_title -%}\n      {%- endif -%}\n    {%- endif -%}\n  {%- endfor -%}\n<div class=\"mto-lead\"><p>Made to order: {{ label }}</p><p>Ships in {{ max_days }} {% if max_days == 1 %}day{% else %}days{% endif %}</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/mto-lead-time.liquid": null
+    }
+  }
+]

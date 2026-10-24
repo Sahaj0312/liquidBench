@@ -1,0 +1,24 @@
+{%- comment -%} Quick view: renders triggers for available products and loads the script once. {%- endcomment -%}
+{%- liquid
+  assign quick_view_count = 0
+  assign script_loaded = false
+  assign open_label = 'products.quickview.open' | t
+  assign close_label = 'products.quick_view.close' | t
+  assign loading_label = 'products.quick_view.loading_text' | t
+-%}
+{{ 'quick-view-styles.css' | asset_url | stylesheet_tag }}
+<div class="quick-view-list">
+  {%- for product in products -%}
+    {%- if product.available -%}
+      {%- assign quick_view_count = quick_view_count | plus: 1 -%}
+      {%- render 'quick-view-trigger', product: product, index: quick_view_count, label: open_label -%}
+      {%- unless script_loaded -%}
+        <script src="{{ 'quickview.js' | asset_url }}" defer="defer"></script>
+        {%- assign script_loaded = true -%}
+      {%- endunless -%}
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+{%- if quick_view_count > 0 -%}
+  {%- render 'quick-view-modals', close_label: close_label, loading_label: loading_label -%}
+{%- endif -%}

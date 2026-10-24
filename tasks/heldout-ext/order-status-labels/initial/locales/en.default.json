@@ -1,0 +1,19 @@
+{
+  "order_status": {
+    "heading": "Order status",
+    "steps": {
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered"
+    },
+    "states": {
+      "complete": "Complete",
+      "current": "In progress",
+      "upcoming": "Upcoming"
+    },
+    "messages": {
+      "all_complete": "All steps are complete"
+    }
+  }
+}

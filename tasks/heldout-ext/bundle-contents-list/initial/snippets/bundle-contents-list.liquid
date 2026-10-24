@@ -1,0 +1,9 @@
+{%- assign subtotal = 0 -%}
+<ul class="bundle">
+{%- for item in items -%}
+{%- assign line = item.quantity | times: item.unit_price_cents -%}
+{%- assign subtotal = subtotal | plus: line -%}
+<li><span class="qty">{{ item.quantity }}</span><span class="title">{{ item.title }}</span><span class="line">${{ line | divided_by: 100.0 }}</span></li>
+{%- endfor -%}
+</ul>
+<p class="bundle-total">Total: ${{ subtotal | divided_by: 100.0 }}</p>

@@ -1,0 +1,13 @@
+{%- assign heading = section.settings.heading | default: "" -%}
+<section class="podcast-embed">
+  {%- if heading != "" -%}
+  <h2>{{ heading | escape }}</h2>
+  {%- endif -%}
+  {%- for block in section.blocks -%}
+    <div class="podcast-episode"><h4>{{ block.settings.episode_title | escape }}</h4><iframe src="{{ block.settings.embed_url | escape }}" title="{{ block.settings.episode_title | escape }}" loading="lazy"></iframe></div>
+  {%- endfor -%}
+</section>
+{%- comment -%} Podcast player list. {%- endcomment -%}
+{% schema %}
+{"name":"Podcast embed","settings":[{"type":"text","id":"heading","label":"Heading"}],"blocks":[{"type":"episode","name":"Episode","settings":[{"type":"text","id":"episode_title","label":"Episode title"},{"type":"number","id":"season","label":"Season","default":1},{"type":"url","id":"embed_url","label":"Embed URL"}]}],"presets":[{"name":"Podcast embed"}]}
+{% endschema %}

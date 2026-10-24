@@ -1,0 +1,36 @@
+<section class="event-listing">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="event-listing__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  <ul class="event-listing__list">
+    {%- for block in section.blocks -%}
+      <li class="event-listing__item" {{ block.shopify_attributes }}>
+        <h3 title="{{ block.settings.title | escape }}">{{ block.settings.title | escape }}</h3>
+        <p class="event-listing__date">{{ block.settings.date_label | escape }}</p>
+        {%- if block.settings.link != blank -%}
+          <a href="{{ block.settings.link }}" aria-label="{{ block.settings.link_label | escape }}">{{ block.settings.link_label | escape }}</a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</section>
+
+{% schema %}
+{
+  "name": "Events",
+  "settings": [
+    { "type": "richtext", "id": "heading", "label": "Heading" }
+  ],
+  "blocks": [
+    {
+      "type": "event",
+      "name": "Event",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "date_label", "label": "Date" },
+        { "type": "text", "id": "link", "label": "Link" }
+      ]
+    }
+  ]
+}
+{% endschema %}

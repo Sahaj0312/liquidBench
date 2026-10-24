@@ -1,0 +1,9 @@
+{%- assign field_id = 'ContactForm-' | append: field -%}
+<div class="contact-input">
+  <label for="{{ field_id }}">{{ label | escape }}{% if hint != blank %} <span class="contact-input__hint">{{ hint | escape }}</span>{% endif %}</label>
+  {%- if type == 'textarea' -%}
+    <textarea id="{{ field_id }}" name="contact[{{ field }}]"></textarea>
+  {%- else -%}
+    <input type="{{ type }}" id="{{ field_id }}" name="contact[{{ field }}]">
+  {%- endif -%}
+</div>

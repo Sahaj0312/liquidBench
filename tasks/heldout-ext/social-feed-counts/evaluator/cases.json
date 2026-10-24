@@ -1,0 +1,52 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/social-feed-counts.liquid",
+    "body": "{%- liquid\n  assign count = section.settings.posts_count\n  if count == 1\n    assign noun = section.settings.label_singular\n  else\n    assign noun = section.settings.label_plural\n  endif\n-%}\n<div class=\"social-feed\">\n  <h2>{{ section.settings.heading | escape }}</h2>\n  {%- if section.settings.show_count -%}\n    <p class=\"social-feed__count\">Showing {{ count }} {{ noun | escape }}</p>\n  {%- endif -%}\n  <ul class=\"social-feed__grid\" data-limit=\"{{ count }}\"></ul>\n</div>\n\n\n",
+    "expected": {
+      "name": "Social feed",
+      "tag": "section",
+      "class": "social-feed",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Follow us"
+        },
+        {
+          "type": "range",
+          "id": "posts_count",
+          "label": "Number of posts",
+          "min": 1,
+          "max": 12,
+          "step": 1,
+          "default": 6
+        },
+        {
+          "type": "text",
+          "id": "label_singular",
+          "label": "Label for one post",
+          "default": "post"
+        },
+        {
+          "type": "text",
+          "id": "label_plural",
+          "label": "Label for several posts",
+          "default": "posts"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_count",
+          "label": "Show post count",
+          "default": true
+        }
+      ],
+      "presets": [
+        {
+          "name": "Social feed"
+        }
+      ]
+    }
+  }
+]

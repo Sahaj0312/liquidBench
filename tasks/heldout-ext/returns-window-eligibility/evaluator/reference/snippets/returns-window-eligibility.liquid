@@ -1,0 +1,25 @@
+{%- if items.size > 0 -%}
+  {%- if days_since_delivery > window_days -%}
+    <p class="returns-closed">Return window closed</p>
+  {%- else -%}
+    {%- assign excluded = excluded_categories | split: "," -%}
+    {%- assign returnable_count = 0 -%}
+    <ul class="returns">
+    {%- for item in items -%}
+      {%- assign blocked = false -%}
+      {%- for entry in excluded -%}
+        {%- assign name = entry | strip -%}
+        {%- if name != "" and name == item.category -%}
+          {%- assign blocked = true -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if blocked -%}
+        <li class="final">{{ item.title | escape }} (final sale)</li>
+      {%- else -%}
+        {%- assign returnable_count = returnable_count | plus: 1 -%}
+        <li class="returnable">{{ item.title | escape }}</li>
+      {%- endif -%}
+    {%- endfor -%}
+    </ul><p class="returns-count">{{ returnable_count }} of {{ items.size }} items returnable</p>
+  {%- endif -%}
+{%- endif -%}

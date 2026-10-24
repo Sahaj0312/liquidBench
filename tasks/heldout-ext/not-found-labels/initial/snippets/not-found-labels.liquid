@@ -1,0 +1,17 @@
+{%- comment -%}Inputs: missing_collection (boolean), search_term (string or nil), home_url (string){%- endcomment -%}
+{{ 'not-found.css' | asset_url | stylesheet_tag }}
+<div class="not-found">
+  <img src="{{ 'not-found-illustration.png' | asset_url }}" alt="" width="240" height="160" loading="lazy">
+  {%- if missing_collection -%}
+    {%- assign heading = 'templates.not_found.collection' | t -%}
+  {%- elsif search_term != blank -%}
+    {%- assign heading = 'templates.not_found.search_results' | t: term: search_term -%}
+  {%- else -%}
+    {%- assign heading = 'templates.404.title' | t -%}
+  {%- endif -%}
+  <h1>{{ heading }}</h1>
+  <p>{{ 'templates.not_found.subtext' | t }}</p>
+  {%- assign back_label = 'templates.not_found.back_to_home' | t -%}
+  {% render 'not-found-button', url: home_url, label: back_label %}
+  <p class="not-found__search">{% render 'icon-magnifier' %}{{ 'not_found.search_hint' | t }}</p>
+</div>

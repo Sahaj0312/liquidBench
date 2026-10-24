@@ -1,0 +1,50 @@
+<div class="lookbook lookbook--{{ section.settings.layout }}" style="--columns: {{ section.settings.columns }};">
+  {%- assign heading = section.settings.heading | strip -%}
+  {%- if heading != blank -%}
+    <h2 class="lookbook__heading">{{ heading | escape }}</h2>
+  {%- endif -%}
+  {%- for block in section.blocks -%}
+    {%- assign title = block.settings.title | strip -%}
+    {%- assign notes = block.settings.notes | strip -%}
+    <figure class="lookbook__look" {{ block.shopify_attributes }}>
+      {%- if block.settings.image != blank -%}
+        {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+      {%- endif -%}
+      {%- if title != blank or notes != blank -%}
+        <figcaption>
+          {%- if title != blank -%}<strong>{{ title | escape }}</strong>{%- endif -%}
+          {%- if notes != blank -%}<p>{{ notes | escape }}</p>{%- endif -%}
+          {%- if block.settings.product != blank -%}<a href="{{ block.settings.product.url }}">{{ block.settings.product.title | escape }}</a>{%- endif -%}
+        </figcaption>
+      {%- endif -%}
+    </figure>
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Lookbook",
+  "tag": "section",
+  "class": "lookbook-section",
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading", "default": "Lookbook"},
+    {"type": "select", "id": "layout", "label": "Layout", "options": [
+      {"value": "grid", "label": "Grid"},
+      {"value": "stacked", "label": "Stacked"}
+    ], "default": "grid"},
+    {"type": "range", "id": "columns", "label": "Columns", "min": 2, "max": 4, "step": 1, "default": 3}
+  ],
+  "blocks": [
+    {"type": "look", "name": "Look", "settings": [
+      {"type": "image_picker", "id": "image", "label": "Image"},
+      {"type": "text", "id": "title", "label": "Title"},
+      {"type": "textarea", "id": "notes", "label": "Notes", "info": "Leading and trailing spaces are removed"},
+      {"type": "product", "id": "product", "label": "Featured product"}
+    ]}
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {"name": "Lookbook", "blocks": [{"type": "look"}, {"type": "look"}, {"type": "look"}]}
+  ]
+}
+{% endschema %}

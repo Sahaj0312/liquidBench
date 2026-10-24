@@ -1,0 +1,10 @@
+{%- assign embed_id = section.settings.embed_id | default: '' | strip -%}
+{%- assign heading = section.settings.heading | default: '' | strip -%}
+{%- if embed_id != '' -%}
+<div class="podcast-embed">
+{%- if heading != '' -%}<h2 class="podcast-embed__heading">{{ heading | escape }}</h2>{%- endif -%}
+<iframe class="podcast-embed__player" src="https://player.example.com/e/{{ embed_id | escape }}" title="{{ heading | default: 'Podcast player' | escape }}"></iframe></div>
+{%- endif -%}
+{% schema %}
+{"name":"Podcast embed","settings":[{"type":"text","id":"embed_id","label":"Episode embed ID"},{"type":"text","id":"heading","label":"Heading"},{"type":"number","id":"duration_seconds","label":"Duration (seconds)"},{"type":"number","id":"start_seconds","label":"Start at (seconds)"}],"presets":[{"name":"Podcast embed"}]}
+{% endschema %}

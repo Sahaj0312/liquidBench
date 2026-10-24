@@ -39,3 +39,27 @@ enforces this.
    old results kept.
 4. Run each model condition once under the same frozen configuration, and report all
    outcomes, including failures and missing attempts.
+
+## Extension (76 Claude-authored tasks)
+
+`tasks/heldout-ext/` adds 76 tasks, frozen in [`extension-manifest.json`](extension-manifest.json) with suite digest `9be3e37bf3db8d21…`. Together with the original 24, the held-out set is 100 tasks.
+
+**How the tasks were made**
+- **Authoring:** Opus 5.5 wrote them in two batches (`msgbatch_011GuAnNWgWbYBxKtCbR8jSd`, `msgbatch_01Mz3BgK22rvg7gF6vTB5ngb`). Themes come from [`scripts/heldout_themes.py`](../../scripts/heldout_themes.py) and do not overlap the training themes.
+- **Verification:** every task passed container verification, using the same checks as the training tasks.
+- **Leak checks:** a family-root check plus a prompt-similarity check against all training, development and original held-out tasks. 156 tasks were authored; 78 were rejected, mostly for reusing a family root.
+- **Ambiguity audit:** two Opus 5.5 passes; the first without extended thinking, the second with adaptive thinking. Two tasks were removed for contradicting their own files: `cookie-banner-labels` and `size-guide-labels`. Verdicts and reasons are in [`audit.json`](audit.json). No task was edited.
+
+**Category mix:**
+
+| Domain | Tasks |
+| --- | --- |
+| Section schema | 22 |
+| Theme modification | 16 |
+| Liquid syntax | 14 |
+| Rendering | 13 |
+| Theme references | 11 |
+
+**Theme clusters.** Authoring reused themes, so some extension tasks are near-duplicates of each other. [`theme-clusters.json`](theme-clusters.json) groups the 76 tasks into 34 theme clusters and marks one primary task per cluster. The primary test uses the original 24 plus these 34, 58 tasks in all. Every task still runs in every arm; see Addition 1 in [`analysis-plan.md`](analysis-plan.md).
+
+**Run plan.** [`experiments/heldout-plan.json`](../../experiments/heldout-plan.json) fixes 800 attempts: 100 tasks × 4 arms × 2 repetitions. Initial prompt token counts are in [`initial-counts.json`](initial-counts.json).

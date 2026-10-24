@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-counts-null-values",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-dimension-list.liquid": "{%- assign total = dimensions.size -%}\n{%- if total > 0 -%}\n  {%- assign cap = total -%}\n  {%- if limit != nil and limit < total -%}{%- assign cap = limit -%}{%- endif -%}\n  {%- assign shown = 0 -%}\n  <div class=\"dims\"><p class=\"dims-count\">{{ total }} measurement{% if total != 1 %}s{% endif %}</p><ul>\n  {%- for d in dimensions -%}\n    {%- if d.value != nil and shown < cap -%}\n      {%- assign shown = shown | plus: 1 -%}\n      {%- if d.value == 1 -%}\n        {%- assign u = d.unit -%}\n      {%- elsif d.unit_plural != nil -%}\n        {%- assign u = d.unit_plural -%}\n      {%- else -%}\n        {%- assign u = d.unit | append: 's' -%}\n      {%- endif -%}\n      <li>{{ d.label | escape }}: {{ d.value }} {{ u | escape }}</li>\n    {%- endif -%}\n  {%- endfor -%}\n  {%- assign rest = total | minus: shown -%}\n  {%- if rest > 0 -%}<li class=\"dims-more\">and {{ rest }} more dimension{% if rest != 1 %}s{% endif %}</li>{%- endif -%}\n  </ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-zero-is-singular",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-dimension-list.liquid": "{%- assign total = 0 -%}\n{%- for d in dimensions -%}\n  {%- if d.value != nil -%}{%- assign total = total | plus: 1 -%}{%- endif -%}\n{%- endfor -%}\n{%- if total > 0 -%}\n  {%- assign cap = total -%}\n  {%- if limit != nil and limit < total -%}{%- assign cap = limit -%}{%- endif -%}\n  {%- assign shown = 0 -%}\n  <div class=\"dims\"><p class=\"dims-count\">{{ total }} measurement{% if total != 1 %}s{% endif %}</p><ul>\n  {%- for d in dimensions -%}\n    {%- if d.value != nil and shown < cap -%}\n      {%- assign shown = shown | plus: 1 -%}\n      {%- if d.value <= 1 -%}\n        {%- assign u = d.unit -%}\n      {%- elsif d.unit_plural != nil -%}\n        {%- assign u = d.unit_plural -%}\n      {%- else -%}\n        {%- assign u = d.unit | append: 's' -%}\n      {%- endif -%}\n      <li>{{ d.label | escape }}: {{ d.value }} {{ u | escape }}</li>\n    {%- endif -%}\n  {%- endfor -%}\n  {%- assign rest = total | minus: shown -%}\n  {%- if rest > 0 -%}<li class=\"dims-more\">and {{ rest }} more dimension{% if rest != 1 %}s{% endif %}</li>{%- endif -%}\n  </ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-ignores-unit-plural",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-dimension-list.liquid": "{%- assign total = 0 -%}\n{%- for d in dimensions -%}\n  {%- if d.value != nil -%}{%- assign total = total | plus: 1 -%}{%- endif -%}\n{%- endfor -%}\n{%- if total > 0 -%}\n  {%- assign cap = total -%}\n  {%- if limit != nil and limit < total -%}{%- assign cap = limit -%}{%- endif -%}\n  {%- assign shown = 0 -%}\n  <div class=\"dims\"><p class=\"dims-count\">{{ total }} measurement{% if total != 1 %}s{% endif %}</p><ul>\n  {%- for d in dimensions -%}\n    {%- if d.value != nil and shown < cap -%}\n      {%- assign shown = shown | plus: 1 -%}\n      {%- if d.value == 1 -%}\n        {%- assign u = d.unit -%}\n      {%- else -%}\n        {%- assign u = d.unit | append: 's' -%}\n      {%- endif -%}\n      <li>{{ d.label | escape }}: {{ d.value }} {{ u | escape }}</li>\n    {%- endif -%}\n  {%- endfor -%}\n  {%- assign rest = total | minus: shown -%}\n  {%- if rest > 0 -%}<li class=\"dims-more\">and {{ rest }} more dimension{% if rest != 1 %}s{% endif %}</li>{%- endif -%}\n  </ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-limit-by-array-index",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-dimension-list.liquid": "{%- assign total = 0 -%}\n{%- for d in dimensions -%}\n  {%- if d.value != nil -%}{%- assign total = total | plus: 1 -%}{%- endif -%}\n{%- endfor -%}\n{%- if total > 0 -%}\n  {%- assign cap = total -%}\n  {%- if limit != nil and limit < total -%}{%- assign cap = limit -%}{%- endif -%}\n  {%- assign shown = 0 -%}\n  <div class=\"dims\"><p class=\"dims-count\">{{ total }} measurement{% if total != 1 %}s{% endif %}</p><ul>\n  {%- for d in dimensions -%}\n    {%- if d.value != nil and forloop.index <= cap -%}\n      {%- assign shown = shown | plus: 1 -%}\n      {%- if d.value == 1 -%}\n        {%- assign u = d.unit -%}\n      {%- elsif d.unit_plural != nil -%}\n        {%- assign u = d.unit_plural -%}\n      {%- else -%}\n        {%- assign u = d.unit | append: 's' -%}\n      {%- endif -%}\n      <li>{{ d.label | escape }}: {{ d.value }} {{ u | escape }}</li>\n    {%- endif -%}\n  {%- endfor -%}\n  {%- assign rest = total | minus: shown -%}\n  {%- if rest > 0 -%}<li class=\"dims-more\">and {{ rest }} more dimension{% if rest != 1 %}s{% endif %}</li>{%- endif -%}\n  </ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-4-more-always-plural",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-dimension-list.liquid": "{%- assign total = 0 -%}\n{%- for d in dimensions -%}\n  {%- if d.value != nil -%}{%- assign total = total | plus: 1 -%}{%- endif -%}\n{%- endfor -%}\n{%- if total > 0 -%}\n  {%- assign cap = total -%}\n  {%- if limit != nil and limit < total -%}{%- assign cap = limit -%}{%- endif -%}\n  {%- assign shown = 0 -%}\n  <div class=\"dims\"><p class=\"dims-count\">{{ total }} measurement{% if total != 1 %}s{% endif %}</p><ul>\n  {%- for d in dimensions -%}\n    {%- if d.value != nil and shown < cap -%}\n      {%- assign shown = shown | plus: 1 -%}\n      {%- if d.value == 1 -%}\n        {%- assign u = d.unit -%}\n      {%- elsif d.unit_plural != nil -%}\n        {%- assign u = d.unit_plural -%}\n      {%- else -%}\n        {%- assign u = d.unit | append: 's' -%}\n      {%- endif -%}\n      <li>{{ d.label | escape }}: {{ d.value }} {{ u | escape }}</li>\n    {%- endif -%}\n  {%- endfor -%}\n  {%- assign rest = total | minus: shown -%}\n  {%- if rest > 0 -%}<li class=\"dims-more\">and {{ rest }} more dimensions</li>{%- endif -%}\n  </ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-dimension-list.liquid": "{% # theme-check-disable %}\n{%- assign total = 0 -%}\n{%- for d in dimensions -%}\n  {%- if d.value != nil -%}{%- assign total = total | plus: 1 -%}{%- endif -%}\n{%- endfor -%}\n{%- if total > 0 -%}\n  {%- assign cap = total -%}\n  {%- if limit != nil and limit < total -%}{%- assign cap = limit -%}{%- endif -%}\n  {%- assign shown = 0 -%}\n  <div class=\"dims\"><p class=\"dims-count\">{{ total }} measurement{% if total != 1 %}s{% endif %}</p><ul>\n  {%- for d in dimensions -%}\n    {%- if d.value != nil and shown < cap -%}\n      {%- assign shown = shown | plus: 1 -%}\n      {%- if d.value == 1 -%}\n        {%- assign u = d.unit -%}\n      {%- elsif d.unit_plural != nil -%}\n        {%- assign u = d.unit_plural -%}\n      {%- else -%}\n        {%- assign u = d.unit | append: 's' -%}\n      {%- endif -%}\n      <li>{{ d.label | escape }}: {{ d.value }} {{ u | escape }}</li>\n    {%- endif -%}\n  {%- endfor -%}\n  {%- assign rest = total | minus: shown -%}\n  {%- if rest > 0 -%}<li class=\"dims-more\">and {{ rest }} more dimension{% if rest != 1 %}s{% endif %}</li>{%- endif -%}\n  </ul></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-dimension-list.liquid": null
+    }
+  }
+]

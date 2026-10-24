@@ -1,0 +1,13 @@
+{%- if days_since_delivery >= window_days -%}
+  <p class="returns-closed">Return window closed</p>
+{%- else -%}
+  <ul class="returns">
+  {%- for item in items -%}
+    {%- if excluded_categories contains item.category -%}
+      <li class="final">{{ item.title }} (final sale)</li>
+    {%- else -%}
+      <li class="returnable">{{ item.title }}</li>
+    {%- endif -%}
+  {%- endfor -%}
+  </ul>
+{%- endif -%}

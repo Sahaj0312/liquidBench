@@ -1,0 +1,12 @@
+{
+  "templates": {
+    "not_found": {
+      "title": "Page introuvable",
+      "collection_title": "Collection introuvable",
+      "search_title": "Aucun résultat pour « {{ term }} »",
+      "subtext": "La page que vous recherchez n'existe pas.",
+      "back_home": "Continuer vos achats",
+      "search_hint": "Essayez de rechercher dans notre catalogue"
+    }
+  }
+}

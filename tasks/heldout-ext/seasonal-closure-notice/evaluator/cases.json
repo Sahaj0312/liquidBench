@@ -1,0 +1,157 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/seasonal-closure-notice.liquid",
+    "tags": [
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "closure_dates": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "closure_dates": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "closure_dates": [
+        "December 25"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "closure-notice"
+          ]
+        ],
+        "children": [],
+        "text": "Closed: December 25"
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "closure_dates": [
+        "December 24",
+        "December 25"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "closure-notice"
+          ]
+        ],
+        "children": [],
+        "text": "Closed: December 24, December 25"
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "closure_dates": [
+        "December 24",
+        "December 25",
+        "January 1"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "closure-notice"
+          ]
+        ],
+        "children": [],
+        "text": "Closed: December 24, December 25, January 1"
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "closure_dates": [
+        "Nov 28",
+        "Dec 24",
+        "Dec 25",
+        "Jan 1"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "closure-notice"
+          ]
+        ],
+        "children": [],
+        "text": "Closed: Nov 28, Dec 24, Dec 25, Jan 1"
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "closure_dates": [
+        "Dec 24 & 25",
+        "<Jan 1>"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "closure-notice"
+          ]
+        ],
+        "children": [],
+        "text": "Closed: Dec 24 & 25, <Jan 1>"
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "closure_dates": [
+        "\"Boxing\" Day",
+        "New Year's Day"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "closure-notice"
+          ]
+        ],
+        "children": [],
+        "text": "Closed: \"Boxing\" Day, New Year's Day"
+      }
+    ]
+  }
+]

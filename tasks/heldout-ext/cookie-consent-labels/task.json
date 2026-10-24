@@ -1,0 +1,15 @@
+{
+  "id": "cookie-consent-labels",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-references",
+  "difficulty": "hard",
+  "family": "cookie-consent-labels",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/cookie-consent-labels.liquid"
+  ],
+  "prompt": "The snippet snippets/cookie-consent-labels.liquid renders the storefront cookie banner. It currently points at assets, translation keys and a snippet that do not exist, so Theme Check reports MissingAsset, TranslationKeyExists and MissingTemplate errors. Fix every wrong literal operand so that each one points at the real file or key listed below. Keep the markup, the loop, the case/when mapping, the running optional_count counter (incremented once per non-required category and passed as position to the toggle snippet) and the summary block that only appears when optional_count > 0 exactly as they are. Do not build translation keys or file names dynamically; every operand must stay a string literal.\n\nInputs (read only, for context): top-level `categories` is an array of objects with `handle` (string), `title` (string) and `required` (boolean).\n\nFiles that exist:\n- assets/cookie-banner.css (the stylesheet loaded with asset_url | stylesheet_tag at the top)\n- assets/cookie-banner.js (the script loaded with asset_url at the bottom, keep defer)\n- snippets/cookie-toggle.liquid (rendered for every optional category with label, handle and position)\n- locales/en.default.json and locales/fr.json with these keys: cookie_banner.title (banner heading), cookie_banner.categories.necessary, cookie_banner.categories.analytics, cookie_banner.categories.marketing (category labels for the handles necessary, analytics, marketing), cookie_banner.status.always_on (badge for required categories), cookie_banner.status.optional_summary (summary text, takes a `number` argument), cookie_banner.actions.reject_optional, cookie_banner.actions.save, cookie_banner.actions.accept_all (button labels).\n\nEach usage must point at the key with the matching meaning. After your edit Theme Check must report no missing asset, missing translation key or missing snippet errors for this file. Change only snippets/cookie-consent-labels.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

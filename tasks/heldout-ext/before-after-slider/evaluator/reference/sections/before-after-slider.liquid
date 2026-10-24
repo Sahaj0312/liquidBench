@@ -1,0 +1,39 @@
+<div class="before-after" style="--start: {{ section.settings.start_position }}%; --divider: {{ section.settings.divider_width }}px;">
+  {% if section.settings.heading != blank %}
+    <h2 class="before-after__heading">{{ section.settings.heading | escape }}</h2>
+  {% endif %}
+  <div class="before-after__frame">
+    <div class="before-after__pane before-after__pane--before">
+      {% if section.settings.before_image %}
+        {{ section.settings.before_image | image_url: width: 1600 | image_tag: loading: 'lazy' }}
+      {% endif %}
+      <span class="before-after__label">{{ section.settings.before_label | escape }}</span>
+    </div>
+    <div class="before-after__pane before-after__pane--after">
+      {% if section.settings.after_image %}
+        {{ section.settings.after_image | image_url: width: 1600 | image_tag: loading: 'lazy' }}
+      {% endif %}
+      <span class="before-after__label">{{ section.settings.after_label | escape }}</span>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Before/after slider",
+  "tag": "section",
+  "class": "section-before-after",
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading"},
+    {"type": "image_picker", "id": "before_image", "label": "Before image"},
+    {"type": "image_picker", "id": "after_image", "label": "After image"},
+    {"type": "text", "id": "before_label", "label": "Before label", "default": "Before"},
+    {"type": "text", "id": "after_label", "label": "After label", "default": "After"},
+    {"type": "range", "id": "start_position", "label": "Starting position", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 50},
+    {"type": "range", "id": "divider_width", "label": "Divider width", "min": 1, "max": 10, "step": 1, "unit": "px", "default": 2}
+  ],
+  "presets": [
+    {"name": "Before/after slider"}
+  ]
+}
+{% endschema %}

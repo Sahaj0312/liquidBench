@@ -1,0 +1,8 @@
+{%- if installments != nil and amount != nil and amount != '' -%}
+{%- if installments >= 2 -%}
+{%- assign provider_name = provider | default: '' | strip -%}
+<p class="installment-label">Pay in {{ installments }} interest-free installments of <strong>{{ amount | escape }}</strong>
+{%- if provider_name != '' %} with <span class="installment-provider">{{ provider_name | escape }}</span>{% endif -%}
+</p>
+{%- endif -%}
+{%- endif -%}

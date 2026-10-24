@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-script-asset-still-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-reviews-script.liquid": "{%- comment -%} Product reviews: lists reviews, accumulates rating and verified count, loads the script once. {%- endcomment -%}\n{%- liquid\n  assign rating_total = 0\n  assign verified_count = 0\n  assign script_loaded = false\n  assign heading = 'products.reviews.heading' | t\n  assign verified_label = 'products.reviews.verified' | t\n  assign empty_label = 'products.reviews.empty' | t\n-%}\n{{ 'product-reviews.css' | asset_url | stylesheet_tag }}\n<section class=\"product-reviews\">\n  <h2 class=\"product-reviews__heading\">{{ heading }}</h2>\n  {%- for review in reviews -%}\n    {%- assign rating_total = rating_total | plus: review.rating -%}\n    {%- if review.verified -%}\n      {%- assign verified_count = verified_count | plus: 1 -%}\n    {%- endif -%}\n    {%- unless script_loaded -%}\n      <script src=\"{{ 'reviews.js' | asset_url }}\" defer=\"defer\"></script>\n      {%- assign script_loaded = true -%}\n    {%- endunless -%}\n    {%- render 'review-card', review: review, position: forloop.index, verified_label: verified_label -%}\n  {%- else -%}\n    <p class=\"product-reviews__empty\">{{ empty_label }}</p>\n  {%- endfor -%}\n  {%- if reviews.size > 0 -%}\n    {%- assign average = rating_total | times: 1.0 | divided_by: reviews.size | round: 1 -%}\n    {%- render 'review-stars', rating: average, verified_count: verified_count -%}\n  {%- endif -%}\n</section>\n"
+    }
+  },
+  {
+    "name": "wrong-1-empty-key-singular-namespace",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-reviews-script.liquid": "{%- comment -%} Product reviews: lists reviews, accumulates rating and verified count, loads the script once. {%- endcomment -%}\n{%- liquid\n  assign rating_total = 0\n  assign verified_count = 0\n  assign script_loaded = false\n  assign heading = 'products.reviews.heading' | t\n  assign verified_label = 'products.reviews.verified' | t\n  assign empty_label = 'products.review.empty' | t\n-%}\n{{ 'product-reviews.css' | asset_url | stylesheet_tag }}\n<section class=\"product-reviews\">\n  <h2 class=\"product-reviews__heading\">{{ heading }}</h2>\n  {%- for review in reviews -%}\n    {%- assign rating_total = rating_total | plus: review.rating -%}\n    {%- if review.verified -%}\n      {%- assign verified_count = verified_count | plus: 1 -%}\n    {%- endif -%}\n    {%- unless script_loaded -%}\n      <script src=\"{{ 'product-reviews.js' | asset_url }}\" defer=\"defer\"></script>\n      {%- assign script_loaded = true -%}\n    {%- endunless -%}\n    {%- render 'review-card', review: review, position: forloop.index, verified_label: verified_label -%}\n  {%- else -%}\n    <p class=\"product-reviews__empty\">{{ empty_label }}</p>\n  {%- endfor -%}\n  {%- if reviews.size > 0 -%}\n    {%- assign average = rating_total | times: 1.0 | divided_by: reviews.size | round: 1 -%}\n    {%- render 'review-stars', rating: average, verified_count: verified_count -%}\n  {%- endif -%}\n</section>\n"
+    }
+  },
+  {
+    "name": "wrong-2-stars-snippet-still-singular",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-reviews-script.liquid": "{%- comment -%} Product reviews: lists reviews, accumulates rating and verified count, loads the script once. {%- endcomment -%}\n{%- liquid\n  assign rating_total = 0\n  assign verified_count = 0\n  assign script_loaded = false\n  assign heading = 'products.reviews.heading' | t\n  assign verified_label = 'products.reviews.verified' | t\n  assign empty_label = 'products.reviews.empty' | t\n-%}\n{{ 'product-reviews.css' | asset_url | stylesheet_tag }}\n<section class=\"product-reviews\">\n  <h2 class=\"product-reviews__heading\">{{ heading }}</h2>\n  {%- for review in reviews -%}\n    {%- assign rating_total = rating_total | plus: review.rating -%}\n    {%- if review.verified -%}\n      {%- assign verified_count = verified_count | plus: 1 -%}\n    {%- endif -%}\n    {%- unless script_loaded -%}\n      <script src=\"{{ 'product-reviews.js' | asset_url }}\" defer=\"defer\"></script>\n      {%- assign script_loaded = true -%}\n    {%- endunless -%}\n    {%- render 'review-card', review: review, position: forloop.index, verified_label: verified_label -%}\n  {%- else -%}\n    <p class=\"product-reviews__empty\">{{ empty_label }}</p>\n  {%- endfor -%}\n  {%- if reviews.size > 0 -%}\n    {%- assign average = rating_total | times: 1.0 | divided_by: reviews.size | round: 1 -%}\n    {%- render 'review-star', rating: average, verified_count: verified_count -%}\n  {%- endif -%}\n</section>\n"
+    }
+  },
+  {
+    "name": "wrong-3-card-snippet-and-verified-key-",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-reviews-script.liquid": "{%- comment -%} Product reviews: lists reviews, accumulates rating and verified count, loads the script once. {%- endcomment -%}\n{%- liquid\n  assign rating_total = 0\n  assign verified_count = 0\n  assign script_loaded = false\n  assign heading = 'products.reviews.heading' | t\n  assign verified_label = 'products.reviews.verified_buyer' | t\n  assign empty_label = 'products.reviews.empty' | t\n-%}\n{{ 'product-reviews.css' | asset_url | stylesheet_tag }}\n<section class=\"product-reviews\">\n  <h2 class=\"product-reviews__heading\">{{ heading }}</h2>\n  {%- for review in reviews -%}\n    {%- assign rating_total = rating_total | plus: review.rating -%}\n    {%- if review.verified -%}\n      {%- assign verified_count = verified_count | plus: 1 -%}\n    {%- endif -%}\n    {%- unless script_loaded -%}\n      <script src=\"{{ 'product-reviews.js' | asset_url }}\" defer=\"defer\"></script>\n      {%- assign script_loaded = true -%}\n    {%- endunless -%}\n    {%- render 'reviews-card', review: review, position: forloop.index, verified_label: verified_label -%}\n  {%- else -%}\n    <p class=\"product-reviews__empty\">{{ empty_label }}</p>\n  {%- endfor -%}\n  {%- if reviews.size > 0 -%}\n    {%- assign average = rating_total | times: 1.0 | divided_by: reviews.size | round: 1 -%}\n    {%- render 'review-stars', rating: average, verified_count: verified_count -%}\n  {%- endif -%}\n</section>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-reviews-script.liquid": "{% # theme-check-disable %}\n{%- comment -%} Product reviews: lists reviews, accumulates rating and verified count, loads the script once. {%- endcomment -%}\n{%- liquid\n  assign rating_total = 0\n  assign verified_count = 0\n  assign script_loaded = false\n  assign heading = 'products.reviews.heading' | t\n  assign verified_label = 'products.reviews.verified' | t\n  assign empty_label = 'products.reviews.empty' | t\n-%}\n{{ 'product-reviews.css' | asset_url | stylesheet_tag }}\n<section class=\"product-reviews\">\n  <h2 class=\"product-reviews__heading\">{{ heading }}</h2>\n  {%- for review in reviews -%}\n    {%- assign rating_total = rating_total | plus: review.rating -%}\n    {%- if review.verified -%}\n      {%- assign verified_count = verified_count | plus: 1 -%}\n    {%- endif -%}\n    {%- unless script_loaded -%}\n      <script src=\"{{ 'product-reviews.js' | asset_url }}\" defer=\"defer\"></script>\n      {%- assign script_loaded = true -%}\n    {%- endunless -%}\n    {%- render 'review-card', review: review, position: forloop.index, verified_label: verified_label -%}\n  {%- else -%}\n    <p class=\"product-reviews__empty\">{{ empty_label }}</p>\n  {%- endfor -%}\n  {%- if reviews.size > 0 -%}\n    {%- assign average = rating_total | times: 1.0 | divided_by: reviews.size | round: 1 -%}\n    {%- render 'review-stars', rating: average, verified_count: verified_count -%}\n  {%- endif -%}\n</section>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/product-reviews-script.liquid": null
+    }
+  }
+]

@@ -1,0 +1,14 @@
+{%- comment -%} Currency selector with trimmed labels {%- endcomment -%}
+{{ 'currency_selector.css' | asset_url | stylesheet_tag }}
+<div class="currency-selector">
+  <label for="CurrencySelect">{{- 'localization.currency_label' | t | strip -}}</label>
+  <select id="CurrencySelect" name="currency">
+    {%- for code in currency_codes -%}
+      {%- assign trimmed_code = code | strip -%}
+      {%- if trimmed_code != blank -%}
+        <option value="{{ trimmed_code }}">{%- render 'currency-flag', code: trimmed_code -%} {{ trimmed_code }}</option>
+      {%- endif -%}
+    {%- endfor -%}
+  </select>
+  <p class="currency-selector__hint">{{- 'localization.currency_hint' | t | strip -}}</p>
+</div>

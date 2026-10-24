@@ -1,0 +1,237 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/back-to-top-icon.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "back-to-top.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "a"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "href"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "#MainContent"
+                }
+              ]
+            },
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "back-to-top"
+                }
+              ]
+            },
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "aria-label"
+                }
+              ],
+              "value": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "general.back_to_top.label"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "HtmlVoidElement",
+              "name": "img",
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "src"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "String",
+                          "single": true,
+                          "value": "icon-arrow-up.svg"
+                        },
+                        "filters": [
+                          {
+                            "type": "LiquidFilter",
+                            "name": "asset_url",
+                            "args": []
+                          }
+                        ]
+                      },
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "alt"
+                    }
+                  ],
+                  "value": []
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "width"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "16"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "height"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "16"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "LiquidTag",
+              "name": "render",
+              "markup": {
+                "type": "RenderMarkup",
+                "snippet": {
+                  "type": "String",
+                  "single": true,
+                  "value": "icon-chevron-up"
+                },
+                "variable": null,
+                "alias": null,
+                "args": []
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "span"
+                }
+              ],
+              "attributes": [],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "general.back_to_top.text"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

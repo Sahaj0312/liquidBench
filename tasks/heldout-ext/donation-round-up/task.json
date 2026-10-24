@@ -1,0 +1,15 @@
+{
+  "id": "donation-round-up",
+  "version": 1,
+  "split": "heldout",
+  "category": "liquid-syntax",
+  "difficulty": "hard",
+  "family": "donation-round-up",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/donation-round-up.liquid"
+  ],
+  "prompt": "Fix snippets/donation-round-up.liquid. It renders a cart prompt that offers to round the order total up to the next multiple of a step amount and donate the difference. Several inputs need correct default values.\n\nInputs. All are top-level variables; none are under section.settings. Every variable is always supplied, but its value may be null.\n- cart_total_cents: integer or null. The cart total in cents.\n- round_to_cents: integer or null. The rounding step in cents.\n- charity_name: string or null.\n- currency_symbol: string or null.\n- button_label: string or null.\n\nRules:\n1. Step. Use round_to_cents when it is a positive integer. If it is null, 0 or negative, use 100.\n2. Donation. If cart_total_cents is null, 0 or negative, output nothing at all. Otherwise compute remainder = cart_total_cents modulo step.\n   - If the remainder is 0, output nothing.\n   - Otherwise the donation is step minus remainder, in cents.\n3. Charity. Strip leading and trailing whitespace from charity_name. If the result is null or empty, use the text: our partner charity\n4. Button label. Strip leading and trailing whitespace from button_label. If the result is null or empty, use the text: Round up\n5. Currency symbol. If currency_symbol is null or the empty string, use $. Otherwise use it exactly as given, without stripping.\n6. Amount format. Format the donation as SYMBOL + whole units + '.' + cents, where:\n   - whole units = donation integer-divided by 100, with no padding;\n   - cents = donation modulo 100, always two digits (zero-padded, e.g. 0.05, 0.50, 9.70).\n7. Escaping. HTML-escape the symbol, the charity name and the label.\n\nOutput. Exactly one line with no whitespace between tags and no leading or trailing whitespace:\n<div class=\"round-up\"><p>Round up your order and give <strong>AMOUNT</strong> to CHARITY.</p><button type=\"button\" data-amount=\"DONATION\">LABEL</button></div>\nIn this template, DONATION is the donation as a plain integer number of cents. When nothing is output, the result is the empty string. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/donation-round-up.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

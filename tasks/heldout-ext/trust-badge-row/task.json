@@ -1,0 +1,15 @@
+{
+  "id": "trust-badge-row",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-modification",
+  "difficulty": "hard",
+  "family": "trust-badge-row",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/trust-badge-row.liquid"
+  ],
+  "prompt": "The section sections/trust-badge-row.liquid currently always prints a wrapper, an <h2> and a <ul> of every block label. Its schema already defines all the settings used below. Rewrite the markup so that wrapper elements appear only when they have content. Keep the {% schema %} block byte-for-byte unchanged.\n\nInputs. The only top-level variable is `section`. All keys are always present.\n- section.settings.heading: string or null.\n- section.settings.subheading: string or null.\n- section.settings.show_border: boolean, never null.\n- section.blocks: array, possibly empty. Each element is {\"settings\": {\"label\": string or null, \"url\": string or null}}.\n\nRules. Text is stripped of leading and trailing whitespace before it is tested or printed. Null counts as empty.\n1. A badge is visible when its stripped label is non-empty. At most the first 4 visible badges are rendered, in block order. Blocks with empty labels are skipped and do not count toward the limit.\n2. Let N be the number of rendered badges, which is min(visible badges, 4).\n3. If the stripped heading, the stripped subheading and N are all empty or 0, output nothing at all (empty string). This applies even when show_border is true.\n4. Otherwise, output <div class=\"trust-badges\">. When show_border is true, the class attribute is exactly \"trust-badges trust-badges--bordered\". Inside the div, in this order:\n   a. Only if the stripped heading or the stripped subheading is non-empty, a <header class=\"trust-badges__header\">. It contains <h2>HEADING</h2> if the heading is non-empty, then <p>SUBHEADING</p> if the subheading is non-empty.\n   b. Only if N > 0, a <ul class=\"trust-badges__list\" data-count=\"N\">. It contains one <li class=\"trust-badge\"> per rendered badge. If that badge's stripped url is non-empty, the li contains <a href=\"URL\">LABEL</a>. Otherwise it contains <span>LABEL</span>.\n5. All printed text and the href value use the stripped value passed through HTML escaping (& < > \" become &amp; &lt; &gt; &quot;).\n6. The output must contain no whitespace or newlines between tags or around text. Use whitespace control. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/trust-badge-row.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

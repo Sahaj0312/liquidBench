@@ -1,0 +1,5 @@
+<div class="dims"><p class="dims-count">{{ dimensions.size }} measurements</p><ul>
+{%- for d in dimensions -%}
+<li>{{ d.label }}: {{ d.value }} {{ d.unit }}s</li>
+{%- endfor -%}
+</ul></div>

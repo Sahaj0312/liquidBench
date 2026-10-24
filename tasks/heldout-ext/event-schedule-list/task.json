@@ -1,0 +1,15 @@
+{
+  "id": "event-schedule-list",
+  "version": 1,
+  "split": "heldout",
+  "category": "rendering",
+  "difficulty": "hard",
+  "family": "event-schedule-list",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/event-schedule-list.liquid"
+  ],
+  "prompt": "Rewrite snippets/event-schedule-list.liquid so it renders a workshop schedule with correct counts and pluralization.\n\nInputs. There is one top-level variable, `events`. There is no section object.\n- `events`: array, never null, may be empty. Each object has:\n  - `name`: string or null.\n  - `sessions`: integer, 0 or greater.\n  - `seats_left`: integer 0 or greater, or null.\n  - `cancelled`: boolean.\n\nCounting. Events with cancelled true are excluded from the list and from the event and session totals. Count them separately as K.\n- E = number of non-cancelled events.\n- S = sum of `sessions` over non-cancelled events.\n\nOutput. Produce the following with no whitespace between or around any tags.\n\n1. Always output exactly one summary paragraph: `<p class=\"summary\">TEXT</p>`.\n   - If E is 0, TEXT is `No upcoming events`.\n   - Otherwise TEXT is `E event` (when E is 1) or `E events`, then `, `, then `S session` (when S is 1) or `S sessions`. Zero takes the plural, e.g. `2 events, 0 sessions`.\n   - In both cases, if K > 0, append ` (K cancelled)` to TEXT, e.g. `No upcoming events (2 cancelled)` or `1 event, 1 session (1 cancelled)`.\n\n2. If E > 0, follow the summary with `<ul class=\"schedule\">`, one `<li>` per non-cancelled event in input order, then `</ul>`. If E is 0, output no ul.\n\n3. Each li is `<li><h3>NAME</h3><span class=\"sessions\">SESSIONS</span>SEATS</li>`.\n   - NAME: the name trimmed of leading and trailing whitespace and HTML-escaped. If the name is null or blank after trimming, NAME is `Untitled event`.\n   - SESSIONS:\n     - `No sessions` when sessions is 0;\n     - `1 session` when it is 1;\n     - otherwise `N sessions`.\n   - SEATS:\n     - nothing when seats_left is null;\n     - `<span class=\"seats seats--full\">Sold out</span>` when it is 0;\n     - `<span class=\"seats seats--low\">Only 1 seat left</span>` when it is 1;\n     - `<span class=\"seats seats--low\">Only N seats left</span>` when it is 2 to 5 inclusive;\n     - `<span class=\"seats\">N seats left</span>` when it is greater than 5. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/event-schedule-list.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

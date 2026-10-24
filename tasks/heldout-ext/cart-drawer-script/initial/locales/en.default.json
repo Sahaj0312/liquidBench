@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "cart_drawer": {
+      "title": "Your cart",
+      "empty": "Your cart is empty",
+      "more_items": "{{ hidden_count }} more items in your cart",
+      "quantity": "Qty"
+    }
+  }
+}

@@ -1,0 +1,679 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/milestones-timeline.liquid",
+    "tags": [
+      "h2",
+      "li",
+      "ol",
+      "section",
+      "span"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Milestones timeline\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Our story\"},\n    {\"type\": \"range\", \"id\": \"max_items\", \"label\": \"Maximum milestones\", \"min\": 1, \"max\": 10, \"step\": 1, \"default\": 5}\n  ],\n  \"blocks\": [\n    {\"type\": \"milestone\", \"name\": \"Milestone\", \"settings\": [\n      {\"type\": \"text\", \"id\": \"year\", \"label\": \"Year\"},\n      {\"type\": \"text\", \"id\": \"title\", \"label\": \"Title\"}\n    ]}\n  ],\n  \"presets\": [{\"name\": \"Milestones timeline\"}]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Our story",
+          "max_items": 5
+        },
+        "blocks": [
+          {
+            "settings": {
+              "year": "2008",
+              "title": "Founded in a garage"
+            }
+          },
+          {
+            "settings": {
+              "year": "2012",
+              "title": "First store"
+            }
+          },
+          {
+            "settings": {
+              "year": "2020",
+              "title": "Went global"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "milestones"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Our story"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "year"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "2008"
+                  }
+                ],
+                "text": " Founded in a garage"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "year"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "2012"
+                  }
+                ],
+                "text": " First store"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "year"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "2020"
+                  }
+                ],
+                "text": " Went global"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null,
+          "max_items": 2
+        },
+        "blocks": [
+          {
+            "settings": {
+              "year": "2001",
+              "title": "Alpha"
+            }
+          },
+          {
+            "settings": {
+              "year": "2002",
+              "title": "Beta"
+            }
+          },
+          {
+            "settings": {
+              "year": "2003",
+              "title": "Gamma"
+            }
+          },
+          {
+            "settings": {
+              "year": "2004",
+              "title": "Delta"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "milestones"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "year"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "2001"
+                  }
+                ],
+                "text": " Alpha"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "year"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "2002"
+                  }
+                ],
+                "text": " Beta"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "",
+          "max_items": 3
+        },
+        "blocks": [
+          {
+            "settings": {
+              "year": "2010",
+              "title": "Founded"
+            }
+          },
+          {
+            "settings": {
+              "year": "2012",
+              "title": ""
+            }
+          },
+          {
+            "settings": {
+              "year": "2014",
+              "title": "First store"
+            }
+          },
+          {
+            "settings": {
+              "year": "2016",
+              "title": "Online shop"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "milestones"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "year"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "2010"
+                  }
+                ],
+                "text": " Founded"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "year"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "2014"
+                  }
+                ],
+                "text": " First store"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Timeline",
+          "max_items": 1
+        },
+        "blocks": [
+          {
+            "settings": {
+              "year": "1999",
+              "title": null
+            }
+          },
+          {
+            "settings": {
+              "year": "2000",
+              "title": "Y2K launch"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "milestones"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Timeline"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "History",
+          "max_items": 4
+        },
+        "blocks": []
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "milestones"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "History"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Tom & Jerry's \"Firsts\"",
+          "max_items": 2
+        },
+        "blocks": [
+          {
+            "settings": {
+              "year": "<1990",
+              "title": "<b>Launch</b> & more"
+            }
+          },
+          {
+            "settings": {
+              "year": "1995",
+              "title": "Second"
+            }
+          },
+          {
+            "settings": {
+              "year": "1996",
+              "title": "Third"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "milestones"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Tom & Jerry's \"Firsts\""
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "year"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "<1990"
+                  }
+                ],
+                "text": " <b>Launch</b> & more"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "year"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "1995"
+                  }
+                ],
+                "text": " Second"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null,
+          "max_items": 10
+        },
+        "blocks": [
+          {
+            "settings": {
+              "year": "1980",
+              "title": "Workshop opens"
+            }
+          },
+          {
+            "settings": {
+              "year": "1985",
+              "title": "Second workshop"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "milestones"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "year"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "1980"
+                  }
+                ],
+                "text": " Workshop opens"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "year"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "1985"
+                  }
+                ],
+                "text": " Second workshop"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Funding",
+          "max_items": 3
+        },
+        "blocks": [
+          {
+            "settings": {
+              "year": "2015",
+              "title": "Seed"
+            }
+          },
+          {
+            "settings": {
+              "year": "2017",
+              "title": null
+            }
+          },
+          {
+            "settings": {
+              "year": "2018",
+              "title": "Series A"
+            }
+          },
+          {
+            "settings": {
+              "year": "2019",
+              "title": "IPO"
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "milestones"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Funding"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "year"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "2015"
+                  }
+                ],
+                "text": " Seed"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "year"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "2018"
+                  }
+                ],
+                "text": " Series A"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

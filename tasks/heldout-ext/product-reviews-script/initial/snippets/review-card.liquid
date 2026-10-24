@@ -1,0 +1,5 @@
+<article class="review-card" data-position="{{ position }}">
+  <h3 class="review-card__author">{{ review.author | escape }}</h3>
+  {%- if review.verified -%}<span class="review-card__verified">{{ verified_label }}</span>{%- endif -%}
+  <div class="review-card__body">{{ review.body | escape }}</div>
+</article>

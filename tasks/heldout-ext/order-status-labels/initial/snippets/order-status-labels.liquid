@@ -1,0 +1,36 @@
+{{ 'order-status.min.css' | asset_url | stylesheet_tag }}
+{%- assign current_reached = false -%}
+<section class="order-status">
+  <h2 class="order-status__heading">{{ 'order_status.title' | t }}</h2>
+  <ol class="order-status__steps">
+    {%- for step in steps -%}
+      {%- case step -%}
+        {%- when 'confirmed' -%}
+          {%- assign step_label = 'order_status.steps.confirmed' | t -%}
+        {%- when 'processing' -%}
+          {%- assign step_label = 'order_status.step.processing' | t -%}
+        {%- when 'shipped' -%}
+          {%- assign step_label = 'order_status.steps.in_transit' | t -%}
+        {%- when 'delivered' -%}
+          {%- assign step_label = 'order_status.steps.delivered' | t -%}
+        {%- else -%}
+          {%- assign step_label = step | escape -%}
+      {%- endcase -%}
+      {%- if current_reached -%}
+        {%- assign state_label = 'order_status.states.pending' | t -%}
+        {%- assign icon_url = 'icon-pending.svg' | asset_url -%}
+      {%- elsif step == current_step -%}
+        {%- assign state_label = 'order_status.states.current' | t -%}
+        {%- assign icon_url = 'icon-active.svg' | asset_url -%}
+        {%- assign current_reached = true -%}
+      {%- else -%}
+        {%- assign state_label = 'order_status.states.complete' | t -%}
+        {%- assign icon_url = 'icon-tick.svg' | asset_url -%}
+      {%- endif -%}
+      {%- render 'order-step', label: step_label, state: state_label, icon_url: icon_url, number: forloop.index -%}
+    {%- endfor -%}
+  </ol>
+  {%- unless current_reached -%}
+    <p class="order-status__message">{{ 'order_status.messages.complete' | t }}</p>
+  {%- endunless -%}
+</section>

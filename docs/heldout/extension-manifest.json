@@ -1,0 +1,478 @@
+{
+  "schema_version": 1,
+  "split": "heldout",
+  "suite": "extension",
+  "frozen_utc": "2026-10-24T23:53:15.405986+00:00",
+  "purpose": "Final-model evaluation only. Never shown to training-data generation, prompt development or model selection.",
+  "categories": {
+    "rendering": 13,
+    "section-schema": 22,
+    "theme-modification": 16,
+    "liquid-syntax": 14,
+    "theme-references": 11
+  },
+  "difficulties": {
+    "easy": 19,
+    "hard": 34,
+    "medium": 23
+  },
+  "tasks": {
+    "allergen-badges": {
+      "family": "allergen-badges",
+      "category": "rendering",
+      "difficulty": "easy",
+      "digest": "f817961143e266cfd9fe47f00d29351d927b7fafc878dae4917b6225ca6c251d"
+    },
+    "app-download-banner": {
+      "family": "app-download-banner",
+      "category": "section-schema",
+      "difficulty": "hard",
+      "digest": "86e2f72779238f2770a52a43e85c85b222859ef8b556b79a73d3e238158496ba"
+    },
+    "app-download-panel": {
+      "family": "app-download-panel",
+      "category": "section-schema",
+      "difficulty": "easy",
+      "digest": "1316e6a6e52ca367f02ae2b93a22b617aa6d677c58e1d9417021d91bb6850902"
+    },
+    "app-promo-platforms": {
+      "family": "app-promo-platforms",
+      "category": "theme-modification",
+      "difficulty": "hard",
+      "digest": "8c575cfda1f2842fa842256c6a5d12bb289c7dc9cef26e8c0d679b1d71ebfa12"
+    },
+    "award-list-edges": {
+      "family": "award-list-edges",
+      "category": "theme-modification",
+      "difficulty": "medium",
+      "digest": "75f7f07c37dbab0b1d455c429fe5e1b72fe40e77e6867d1a68d5daedb7d748ad"
+    },
+    "award-list-tiers": {
+      "family": "award-list-tiers",
+      "category": "theme-modification",
+      "difficulty": "hard",
+      "digest": "b37c468f1aeac163e66f415c69fdb6cf91cd53cbc2f471f1acf0d39fa3ea9264"
+    },
+    "awards-count-list": {
+      "family": "awards-count-list",
+      "category": "section-schema",
+      "difficulty": "easy",
+      "digest": "be48477e918fef4d75185c5c689de48b35c7c3fc79312fd06fa8aedd7da09f85"
+    },
+    "awards-showcase": {
+      "family": "awards-showcase",
+      "category": "section-schema",
+      "difficulty": "hard",
+      "digest": "ae329c29bca662b497210b32dc7e278105d301dc79b93af22e59b98c0708bb0e"
+    },
+    "b2b-quantity-minimum": {
+      "family": "b2b-quantity-minimum",
+      "category": "liquid-syntax",
+      "difficulty": "medium",
+      "digest": "9892224b1089bd4ed699ba0ab1e6a9990d3e0a4def4657b06397fbd285ba77fe"
+    },
+    "back-to-top-icon": {
+      "family": "back-to-top-icon",
+      "category": "theme-references",
+      "difficulty": "easy",
+      "digest": "3cec1a02b8d594baaec380179ce06660482a1ae5c61ad1747d35495f1c3ffebb"
+    },
+    "before-after-slider": {
+      "family": "before-after-slider",
+      "category": "section-schema",
+      "difficulty": "easy",
+      "digest": "3fb713c6be5dd222e48b5b9a4702ea3e3969cb38d91ff5711ffb2166a50b830d"
+    },
+    "blog-comment-labels": {
+      "family": "blog-comment-labels",
+      "category": "theme-references",
+      "difficulty": "hard",
+      "digest": "e54afa2311f73c56330c3c391796562788f85c7e1e560966a3974d9e1f55086c"
+    },
+    "bundle-contents-list": {
+      "family": "bundle-contents-list",
+      "category": "rendering",
+      "difficulty": "medium",
+      "digest": "2af2843c434976aa220c8621ac0d2ede8fc213a2543807142d3b2feef87bc3c2"
+    },
+    "cart-drawer-script": {
+      "family": "cart-drawer-script",
+      "category": "theme-references",
+      "difficulty": "hard",
+      "digest": "69d50cd9dfaeca01e008d77619d5bd7e99d60d11171149a61d1d1e1ab6070777"
+    },
+    "color-palette-chips": {
+      "family": "color-palette-chips",
+      "category": "rendering",
+      "difficulty": "hard",
+      "digest": "b1fcb224764b5a07b0cc968a4000b0f0693421d6e02c2781ceb77d776782ea13"
+    },
+    "compliance-warning": {
+      "family": "compliance-warning",
+      "category": "liquid-syntax",
+      "difficulty": "hard",
+      "digest": "32d00f8c679992490766c3535fa800f39220c5107da61e972b58ed1ad7575bf9"
+    },
+    "contact-page-labels": {
+      "family": "contact-page-labels",
+      "category": "theme-references",
+      "difficulty": "hard",
+      "digest": "f9684451f92e3b53fdd30241b20885e89e8529318828aaf81ad4c73737d26e82"
+    },
+    "cookie-consent-labels": {
+      "family": "cookie-consent-labels",
+      "category": "theme-references",
+      "difficulty": "hard",
+      "digest": "c2ea51afd157d41aae3df912f96f388ee9f1efd8d50605abf907b9d1ea47c431"
+    },
+    "currency-selector-labels": {
+      "family": "currency-selector-labels",
+      "category": "theme-references",
+      "difficulty": "easy",
+      "digest": "1d57cb155dba6f7c7fe2006a4aa06de4977e91ffc101ed1f2d67361c6143ebce"
+    },
+    "donation-round-up": {
+      "family": "donation-round-up",
+      "category": "liquid-syntax",
+      "difficulty": "hard",
+      "digest": "8ce7e862ce75774a1a179c37bfaa45c6cf289a0e52b9e10cf69cf2aefa9ffd98"
+    },
+    "engraving-availability": {
+      "family": "engraving-availability",
+      "category": "liquid-syntax",
+      "difficulty": "medium",
+      "digest": "f3f9d06781ee821f380ff5dbe2601577c01c6970fe82d2b721fe1ed07fd6b044"
+    },
+    "event-banner-status": {
+      "family": "event-banner-status",
+      "category": "theme-modification",
+      "difficulty": "medium",
+      "digest": "73d3044ec4bef3b29cc3e40352ea6ac84fb6553b890b0a2986856c38c89aecae"
+    },
+    "event-listing-escaped": {
+      "family": "event-listing-escaped",
+      "category": "section-schema",
+      "difficulty": "medium",
+      "digest": "f3249f74ce3f824b0eefca13fa0cfae735ee323be7a0c9efd356668a0543e01f"
+    },
+    "event-schedule-list": {
+      "family": "event-schedule-list",
+      "category": "rendering",
+      "difficulty": "hard",
+      "digest": "b3478f1c4e89ea74aacbe8c409c3a5e118fec7d6fcab341da5b9c8c8b3faf71d"
+    },
+    "featured-collection-tabs": {
+      "family": "featured-collection-tabs",
+      "category": "theme-modification",
+      "difficulty": "medium",
+      "digest": "993c90f44160a8a2516b64b251be0fd4729f69606880228bd80491c488ce3ed3"
+    },
+    "gift-card-balance-notice": {
+      "family": "gift-card-balance-notice",
+      "category": "liquid-syntax",
+      "difficulty": "medium",
+      "digest": "b14cd59bb2964a7ac900d4ff6f604ef8baa5224c93a462a4b2a7cf74903cb42c"
+    },
+    "gift-registry-items": {
+      "family": "gift-registry-items",
+      "category": "rendering",
+      "difficulty": "hard",
+      "digest": "ede395aaba570898ef2fdbf1fffdcb460180fba8a59d32f7de4a118e7249baed"
+    },
+    "how-it-works-trimmed": {
+      "family": "how-it-works-trimmed",
+      "category": "theme-modification",
+      "difficulty": "easy",
+      "digest": "b7a32e9b2f97d6d417a806845a23a1b9e67f629a78c888de3b4bda65898ee2eb"
+    },
+    "installment-plan-label": {
+      "family": "installment-plan-label",
+      "category": "liquid-syntax",
+      "difficulty": "easy",
+      "digest": "f1918fdc80ec060f34869f345e16cf3fd14a8ef1685130402cf0d5b84604b3a4"
+    },
+    "lightbox-stylesheet": {
+      "family": "lightbox-stylesheet",
+      "category": "theme-references",
+      "difficulty": "medium",
+      "digest": "6aa26f4d0be82bde42ece5169410efefba1851c26c1654f5016e7751354f4208"
+    },
+    "local-currency-notice": {
+      "family": "local-currency-notice",
+      "category": "liquid-syntax",
+      "difficulty": "easy",
+      "digest": "329436260fe594294721e33d225e640c133b9dd41eaf005cf598a38922abf67b"
+    },
+    "lookbook-gallery": {
+      "family": "lookbook-gallery",
+      "category": "section-schema",
+      "difficulty": "hard",
+      "digest": "5de2450034c52badd4077e82b31c47224f69787d6306186d16e92893819326ef"
+    },
+    "lookbook-grid": {
+      "family": "lookbook-grid",
+      "category": "theme-modification",
+      "difficulty": "hard",
+      "digest": "4fa521cfd7a43cea357c20f9ce868f2fb8370c83ee01d798a1a3f7a27dd4ecd0"
+    },
+    "lookbook-grid-defaults": {
+      "family": "lookbook-grid-defaults",
+      "category": "theme-modification",
+      "difficulty": "hard",
+      "digest": "1bfc10e638eda64799b05ab66ba72324a68bd535e00979df611c13afd14e6bbb"
+    },
+    "lookbook-tag-strip": {
+      "family": "lookbook-tag-strip",
+      "category": "section-schema",
+      "difficulty": "medium",
+      "digest": "9baf22f76a638421e9deaf983ae93c7e17e5a51a34996239635e678490ad2e8a"
+    },
+    "lookbook-trimmed": {
+      "family": "lookbook-trimmed",
+      "category": "section-schema",
+      "difficulty": "medium",
+      "digest": "fe134ce018c54c299ede64066ea4c95953ca13446d377d1b6c922fb95593c9da"
+    },
+    "lookbook-wrapped": {
+      "family": "lookbook-wrapped",
+      "category": "section-schema",
+      "difficulty": "medium",
+      "digest": "a1788f11f9a5205bd9566c4a8f5ccaf146bec2d34ca2b49e2a9237eefccbccb7"
+    },
+    "made-to-order-lead-time": {
+      "family": "made-to-order-lead-time",
+      "category": "liquid-syntax",
+      "difficulty": "medium",
+      "digest": "ad3834c1a9bb325b98c79bf014e40abfe652ca9e8ca52fb6cbd4239e2b04b6b9"
+    },
+    "milestones-timeline": {
+      "family": "milestones-timeline",
+      "category": "theme-modification",
+      "difficulty": "easy",
+      "digest": "464d10f2b1394e2c44545d538f0dbe4e1e3e3d6aee896d2f1cbf97962805d3a5"
+    },
+    "mto-lead-time": {
+      "family": "mto-lead-time",
+      "category": "liquid-syntax",
+      "difficulty": "hard",
+      "digest": "aa89bdcb0273bb23a286b9b7a05f383f4f6ecc1c7c3caa900b70fea1dc8237dc"
+    },
+    "not-found-labels": {
+      "family": "not-found-labels",
+      "category": "theme-references",
+      "difficulty": "hard",
+      "digest": "cf46bef2e311cbd1ab488c02c85256153003aa57bb626692e735d3f235a806d3"
+    },
+    "order-status-labels": {
+      "family": "order-status-labels",
+      "category": "theme-references",
+      "difficulty": "hard",
+      "digest": "05100608fee96f11562f7efab1248608f122a0531adff184bb8ffcea8a82232f"
+    },
+    "order-tracking-timeline": {
+      "family": "order-tracking-timeline",
+      "category": "rendering",
+      "difficulty": "hard",
+      "digest": "517051c6bad72fa3226ec696cbcd46dbd2b4dea8c078f993f40ab62dd125f67b"
+    },
+    "podcast-embed": {
+      "family": "podcast-embed",
+      "category": "theme-modification",
+      "difficulty": "hard",
+      "digest": "65900b3ec8faa07717a714a5ace9556a653c8b94f6689ec267b02c8e3c4daac4"
+    },
+    "podcast-embed-episodes": {
+      "family": "podcast-embed-episodes",
+      "category": "theme-modification",
+      "difficulty": "hard",
+      "digest": "f451c62c73d5eac7847e6d1c40e1415c6b0af579e088ac9c5fece50225eab379"
+    },
+    "podcast-episode-list": {
+      "family": "podcast-episode-list",
+      "category": "section-schema",
+      "difficulty": "medium",
+      "digest": "50a03d50d203226f22da74bf6bed70be3bb3661604fcdd063685c62b06aec559"
+    },
+    "podcast-season-embeds": {
+      "family": "podcast-season-embeds",
+      "category": "theme-modification",
+      "difficulty": "easy",
+      "digest": "e95b5b5af514f03a8ff8d2cae1a22c3c79c1593a2a1e5104031af678a76b55cf"
+    },
+    "presale-access-gate": {
+      "family": "presale-access-gate",
+      "category": "liquid-syntax",
+      "difficulty": "hard",
+      "digest": "726706f0f58229c4ebece6e482b774aefa1b392700ee53ec31430f693bedcbb7"
+    },
+    "press-mentions": {
+      "family": "press-mentions",
+      "category": "theme-modification",
+      "difficulty": "medium",
+      "digest": "ef6213f9965bc9aeadda5c2c1f42210e5a21c75cbfdd35a7dd3a44708aa235b3"
+    },
+    "press-quotes": {
+      "family": "press-quotes",
+      "category": "section-schema",
+      "difficulty": "medium",
+      "digest": "24226973b85fdf8904e4c7f3bf49e21bc9fc0098532b0eb2704a2a860367a534"
+    },
+    "pricing-plans-grid": {
+      "family": "pricing-plans-grid",
+      "category": "section-schema",
+      "difficulty": "hard",
+      "digest": "9058d054b7b294bb5ad7bd91ddc5fff9ad6ca858b7fbc5be327a1e747db79674"
+    },
+    "pricing-table": {
+      "family": "pricing-table",
+      "category": "theme-modification",
+      "difficulty": "medium",
+      "digest": "415f3c9975311c1702f6b957832c453fd5c1f82d274afa222625ecc728cd49af"
+    },
+    "product-dimension-list": {
+      "family": "product-dimension-list",
+      "category": "rendering",
+      "difficulty": "hard",
+      "digest": "f0fa4a3273d2cafcc3c34e556cca443cd83102f53d69fe91445b86fc4aed1937"
+    },
+    "product-reviews-script": {
+      "family": "product-reviews-script",
+      "category": "theme-references",
+      "difficulty": "medium",
+      "digest": "d007099f8f51dfc8fd561418e2db9f78cc12fbdcfae5dece512eaacd7297fab9"
+    },
+    "promo-grid": {
+      "family": "promo-grid",
+      "category": "theme-modification",
+      "difficulty": "hard",
+      "digest": "d60c8d5d2c508c3147be81094ee841b0399b0458fb66027a4a630a68e4df2e30"
+    },
+    "quick-view-script": {
+      "family": "quick-view-script",
+      "category": "theme-references",
+      "difficulty": "medium",
+      "digest": "e456af7eea01da830a05ffbd85be5b667724370795762b43717abda133f62b8e"
+    },
+    "rental-period-label": {
+      "family": "rental-period-label",
+      "category": "liquid-syntax",
+      "difficulty": "easy",
+      "digest": "2d23ff9c892be4fe7768963945e53989e5b58be68132c078958a5c898b24c59a"
+    },
+    "returns-window-eligibility": {
+      "family": "returns-window-eligibility",
+      "category": "liquid-syntax",
+      "difficulty": "hard",
+      "digest": "cae1b580878c4432b24a44dbe172c614c6517d8e3a2abc51c713fefd81aeaad2"
+    },
+    "review-rating-summary": {
+      "family": "review-rating-summary",
+      "category": "rendering",
+      "difficulty": "medium",
+      "digest": "99d198cf7c21225bc5cc9e20d33309be0f6fb06bcb298e96257c226ebab6c21f"
+    },
+    "review-summary": {
+      "family": "review-summary",
+      "category": "rendering",
+      "difficulty": "hard",
+      "digest": "d5360cbb249f5441ba620404f6fc42954f53945f05fdb6a8fc5f9ccce5080930"
+    },
+    "sample-request-eligibility": {
+      "family": "sample-request-eligibility",
+      "category": "liquid-syntax",
+      "difficulty": "medium",
+      "digest": "e1b493a864b3f2a08fe01e7bd854b60f985279ea545fab9b861d1b3cd2209f69"
+    },
+    "seasonal-closure-notice": {
+      "family": "seasonal-closure-notice",
+      "category": "liquid-syntax",
+      "difficulty": "easy",
+      "digest": "dcdc8b573ddf587a150bd442ad2e6eea60678dfcc7d95ac2229c112913b9de46"
+    },
+    "size-chart-rows": {
+      "family": "size-chart-rows",
+      "category": "rendering",
+      "difficulty": "hard",
+      "digest": "f494fb77de0cb22c4e62d14cac79c29b9cbb66a0a02f864eaf2be7e1e1e8e736"
+    },
+    "size-guide-panel": {
+      "family": "size-guide-panel",
+      "category": "section-schema",
+      "difficulty": "hard",
+      "digest": "f70251bff5df987f20bee00354b80f1ff1cc45fe2fe14be463ddfecf4b37d4b8"
+    },
+    "size-guide-units": {
+      "family": "size-guide-units",
+      "category": "section-schema",
+      "difficulty": "hard",
+      "digest": "54f8e8528853854b12ff384bb35e52fcc45673e92cce52a19d0ed304a6356405"
+    },
+    "social-feed-counts": {
+      "family": "social-feed-counts",
+      "category": "section-schema",
+      "difficulty": "easy",
+      "digest": "11f45b8c3851ccc2f5cc6aa9657128b45e0f0cf8fa0f65f0f0b2c0780c71294f"
+    },
+    "social-feed-grid": {
+      "family": "social-feed-grid",
+      "category": "section-schema",
+      "difficulty": "hard",
+      "digest": "cfd0dd23f696f0abdb98d3708d62bd93c51cda68e2ca4fd41dfb6f7955ce9249"
+    },
+    "social-feed-section": {
+      "family": "social-feed-section",
+      "category": "section-schema",
+      "difficulty": "easy",
+      "digest": "3646c20b645cef1087d03e6dd2250639a2ae155d3f76eaa2c6048b2d7fa556c9"
+    },
+    "social-feed-strip": {
+      "family": "social-feed-strip",
+      "category": "section-schema",
+      "difficulty": "easy",
+      "digest": "87721580d0a6120d854924b257afcf5a3a7dbe03452e50e38e1734f70ee4668a"
+    },
+    "social-feed-wall": {
+      "family": "social-feed-wall",
+      "category": "section-schema",
+      "difficulty": "medium",
+      "digest": "3dd28c7fe1c5d0f2dc55461d6f1150bb1c1458f7a21e9840e9e15f21067e5396"
+    },
+    "store-events-calendar": {
+      "family": "store-events-calendar",
+      "category": "section-schema",
+      "difficulty": "easy",
+      "digest": "913d6e023f28ad7231b41ca2e0f5ed3b53ddbcf170b1a5d5935de843a65590c0"
+    },
+    "timeline-wrapped": {
+      "family": "timeline-wrapped",
+      "category": "section-schema",
+      "difficulty": "easy",
+      "digest": "6870af2b1a233329a59a87443d816136b27bc639dd7698b2cfa26851b52a0401"
+    },
+    "trust-badge-row": {
+      "family": "trust-badge-row",
+      "category": "theme-modification",
+      "difficulty": "hard",
+      "digest": "e7e1d169582def9a32544542113bf4f9111a45fcfe994f159014dda94db9b676"
+    },
+    "volume-discount-ladder": {
+      "family": "volume-discount-ladder",
+      "category": "rendering",
+      "difficulty": "hard",
+      "digest": "bc50b850579b16a39bac86e1c2406ac296078d0a94c01030ba0430594535150c"
+    },
+    "warehouse-availability": {
+      "family": "warehouse-availability",
+      "category": "rendering",
+      "difficulty": "medium",
+      "digest": "c99a42cadf2623b5e7e3cc6248ebe074751df7a03030cd50359836505d090703"
+    },
+    "warehouse-availability-list": {
+      "family": "warehouse-availability-list",
+      "category": "rendering",
+      "difficulty": "easy",
+      "digest": "1187c08b1836106ed46b4b65d60727b43fb2fcb06a0f562707fb68b0c72b99df"
+    }
+  },
+  "suite_digest": "9be3e37bf3db8d21facc88c94547cbbfabcd75288c68e64eb4780f01612bfa68"
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/event-listing-escaped.liquid",
+    "body": "<section class=\"event-listing\">\n  {%- if section.settings.heading != blank -%}\n    <h2 class=\"event-listing__heading\">{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  <ul class=\"event-listing__list\">\n    {%- for block in section.blocks -%}\n      <li class=\"event-listing__item\" {{ block.shopify_attributes }}>\n        <h3 title=\"{{ block.settings.title | escape }}\">{{ block.settings.title | escape }}</h3>\n        <p class=\"event-listing__date\">{{ block.settings.date_label | escape }}</p>\n        {%- if block.settings.link != blank -%}\n          <a href=\"{{ block.settings.link }}\" aria-label=\"{{ block.settings.link_label | escape }}\">{{ block.settings.link_label | escape }}</a>\n        {%- endif -%}\n      </li>\n    {%- endfor -%}\n  </ul>\n</section>\n\n\n",
+    "expected": {
+      "name": "Event listing",
+      "tag": "section",
+      "class": "section-event-listing",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Events & \"Pop-ups\""
+        }
+      ],
+      "blocks": [
+        {
+          "type": "event",
+          "name": "Event",
+          "settings": [
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Event title",
+              "default": "Makers' Market"
+            },
+            {
+              "type": "text",
+              "id": "date_label",
+              "label": "Date",
+              "default": "May 4 & 5"
+            },
+            {
+              "type": "url",
+              "id": "link",
+              "label": "Event link"
+            },
+            {
+              "type": "text",
+              "id": "link_label",
+              "label": "Link label",
+              "default": "Get tickets"
+            }
+          ]
+        }
+      ],
+      "max_blocks": 12,
+      "presets": [
+        {
+          "name": "Event listing",
+          "blocks": [
+            {
+              "type": "event"
+            },
+            {
+              "type": "event"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

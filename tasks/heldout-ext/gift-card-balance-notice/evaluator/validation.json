@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-default-before-strip-symbol",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-card-balance-notice.liquid": "{%- unless balance_cents == nil -%}\n{%- if balance_cents <= 0 -%}\n<p class=\"gift-card-notice gift-card-notice--empty\">This gift card has no remaining balance.</p>\n{%- else -%}\n{%- assign symbol = currency_symbol | default: '$' | strip -%}\n{%- assign dollars = balance_cents | divided_by: 100 -%}\n{%- assign cents = balance_cents | modulo: 100 -%}\n{%- if cents < 10 -%}{%- assign cents = cents | prepend: '0' -%}{%- endif -%}\n{%- assign four = last_four | default: '' | strip -%}\n{%- assign expiry = expires_on | default: '' | strip -%}\n<div class=\"gift-card-notice\"><p>Balance: {{ symbol | escape }}{{ dollars }}.{{ cents }}</p>\n{%- if four != '' -%}<p>Card ending in {{ four | escape }}</p>{%- endif -%}\n{%- if expiry != '' -%}<p>Expires {{ expiry | escape }}</p>{%- endif -%}\n</div>\n{%- endif -%}\n{%- endunless -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-cents-not-padded",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-card-balance-notice.liquid": "{%- unless balance_cents == nil -%}\n{%- if balance_cents <= 0 -%}\n<p class=\"gift-card-notice gift-card-notice--empty\">This gift card has no remaining balance.</p>\n{%- else -%}\n{%- assign symbol = currency_symbol | default: '' | strip -%}\n{%- if symbol == '' -%}{%- assign symbol = '$' -%}{%- endif -%}\n{%- assign dollars = balance_cents | divided_by: 100 -%}\n{%- assign cents = balance_cents | modulo: 100 -%}\n{%- assign four = last_four | default: '' | strip -%}\n{%- assign expiry = expires_on | default: '' | strip -%}\n<div class=\"gift-card-notice\"><p>Balance: {{ symbol | escape }}{{ dollars }}.{{ cents }}</p>\n{%- if four != '' -%}<p>Card ending in {{ four | escape }}</p>{%- endif -%}\n{%- if expiry != '' -%}<p>Expires {{ expiry | escape }}</p>{%- endif -%}\n</div>\n{%- endif -%}\n{%- endunless -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-null-balance-treated-as-empty",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-card-balance-notice.liquid": "{%- assign bal = balance_cents | default: 0 -%}\n{%- if bal <= 0 -%}\n<p class=\"gift-card-notice gift-card-notice--empty\">This gift card has no remaining balance.</p>\n{%- else -%}\n{%- assign symbol = currency_symbol | default: '' | strip -%}\n{%- if symbol == '' -%}{%- assign symbol = '$' -%}{%- endif -%}\n{%- assign dollars = bal | divided_by: 100 -%}\n{%- assign cents = bal | modulo: 100 -%}\n{%- if cents < 10 -%}{%- assign cents = cents | prepend: '0' -%}{%- endif -%}\n{%- assign four = last_four | default: '' | strip -%}\n{%- assign expiry = expires_on | default: '' | strip -%}\n<div class=\"gift-card-notice\"><p>Balance: {{ symbol | escape }}{{ dollars }}.{{ cents }}</p>\n{%- if four != '' -%}<p>Card ending in {{ four | escape }}</p>{%- endif -%}\n{%- if expiry != '' -%}<p>Expires {{ expiry | escape }}</p>{%- endif -%}\n</div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-truthy-empty-strings",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-card-balance-notice.liquid": "{%- unless balance_cents == nil -%}\n{%- if balance_cents <= 0 -%}\n<p class=\"gift-card-notice gift-card-notice--empty\">This gift card has no remaining balance.</p>\n{%- else -%}\n{%- assign symbol = currency_symbol | default: '' | strip -%}\n{%- if symbol == '' -%}{%- assign symbol = '$' -%}{%- endif -%}\n{%- assign dollars = balance_cents | divided_by: 100 -%}\n{%- assign cents = balance_cents | modulo: 100 -%}\n{%- if cents < 10 -%}{%- assign cents = cents | prepend: '0' -%}{%- endif -%}\n<div class=\"gift-card-notice\"><p>Balance: {{ symbol | escape }}{{ dollars }}.{{ cents }}</p>\n{%- if last_four -%}<p>Card ending in {{ last_four | strip | escape }}</p>{%- endif -%}\n{%- if expires_on -%}<p>Expires {{ expires_on | strip | escape }}</p>{%- endif -%}\n</div>\n{%- endif -%}\n{%- endunless -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-card-balance-notice.liquid": "{% # theme-check-disable %}\n{%- unless balance_cents == nil -%}\n{%- if balance_cents <= 0 -%}\n<p class=\"gift-card-notice gift-card-notice--empty\">This gift card has no remaining balance.</p>\n{%- else -%}\n{%- assign symbol = currency_symbol | default: '' | strip -%}\n{%- if symbol == '' -%}{%- assign symbol = '$' -%}{%- endif -%}\n{%- assign dollars = balance_cents | divided_by: 100 -%}\n{%- assign cents = balance_cents | modulo: 100 -%}\n{%- if cents < 10 -%}{%- assign cents = cents | prepend: '0' -%}{%- endif -%}\n{%- assign four = last_four | default: '' | strip -%}\n{%- assign expiry = expires_on | default: '' | strip -%}\n<div class=\"gift-card-notice\"><p>Balance: {{ symbol | escape }}{{ dollars }}.{{ cents }}</p>\n{%- if four != '' -%}<p>Card ending in {{ four | escape }}</p>{%- endif -%}\n{%- if expiry != '' -%}<p>Expires {{ expiry | escape }}</p>{%- endif -%}\n</div>\n{%- endif -%}\n{%- endunless -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/gift-card-balance-notice.liquid": null
+    }
+  }
+]

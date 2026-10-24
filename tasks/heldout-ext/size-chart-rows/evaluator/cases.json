@@ -1,0 +1,787 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/size-chart-rows.liquid",
+    "tags": [
+      "caption",
+      "table",
+      "tbody",
+      "td",
+      "th",
+      "tr"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "size_chart": {
+        "title": "Shirts",
+        "unit": "cm",
+        "rows": [
+          {
+            "label": "S",
+            "measurements": "86, 71"
+          },
+          {
+            "label": "M",
+            "measurements": "91,73"
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "size-chart"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "caption",
+            "attrs": [],
+            "children": [],
+            "text": "Shirts (cm)"
+          },
+          {
+            "tag": "tbody",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "tr",
+                "attrs": [
+                  [
+                    "class",
+                    "size-chart__row size-chart__row--odd"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "th",
+                    "attrs": [
+                      [
+                        "scope",
+                        "row"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "S"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [],
+                    "children": [],
+                    "text": "86"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [],
+                    "children": [],
+                    "text": "71"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "tr",
+                "attrs": [
+                  [
+                    "class",
+                    "size-chart__row size-chart__row--even"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "th",
+                    "attrs": [
+                      [
+                        "scope",
+                        "row"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "M"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [],
+                    "children": [],
+                    "text": "91"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [],
+                    "children": [],
+                    "text": "73"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "size_chart": {
+        "title": "  Pants  ",
+        "unit": " in ",
+        "rows": [
+          {
+            "label": "  32  ",
+            "measurements": " 30 ,  , 31.5 ,"
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "size-chart"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "caption",
+            "attrs": [],
+            "children": [],
+            "text": "Pants (in)"
+          },
+          {
+            "tag": "tbody",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "tr",
+                "attrs": [
+                  [
+                    "class",
+                    "size-chart__row size-chart__row--odd"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "th",
+                    "attrs": [
+                      [
+                        "scope",
+                        "row"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "32"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [],
+                    "children": [],
+                    "text": "30"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [],
+                    "children": [],
+                    "text": "31.5"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "size_chart": {
+        "title": "Kids",
+        "unit": "cm",
+        "rows": [
+          {
+            "label": "XS",
+            "measurements": "110"
+          },
+          {
+            "label": "   ",
+            "measurements": "116"
+          },
+          {
+            "label": "S",
+            "measurements": "122"
+          },
+          {
+            "label": "M",
+            "measurements": "128"
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "size-chart"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "caption",
+            "attrs": [],
+            "children": [],
+            "text": "Kids (cm)"
+          },
+          {
+            "tag": "tbody",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "tr",
+                "attrs": [
+                  [
+                    "class",
+                    "size-chart__row size-chart__row--odd"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "th",
+                    "attrs": [
+                      [
+                        "scope",
+                        "row"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "XS"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [],
+                    "children": [],
+                    "text": "110"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "tr",
+                "attrs": [
+                  [
+                    "class",
+                    "size-chart__row size-chart__row--even"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "th",
+                    "attrs": [
+                      [
+                        "scope",
+                        "row"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "S"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [],
+                    "children": [],
+                    "text": "122"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "tr",
+                "attrs": [
+                  [
+                    "class",
+                    "size-chart__row size-chart__row--odd"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "th",
+                    "attrs": [
+                      [
+                        "scope",
+                        "row"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "M"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [],
+                    "children": [],
+                    "text": "128"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "size_chart": {
+        "title": "Empty",
+        "unit": "cm",
+        "rows": [
+          {
+            "label": "  ",
+            "measurements": "1"
+          },
+          {
+            "label": null,
+            "measurements": "2"
+          },
+          {
+            "label": "",
+            "measurements": null
+          }
+        ]
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "size_chart": {
+        "title": "Shoes",
+        "unit": "EU",
+        "rows": []
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "size_chart": {
+        "title": null,
+        "unit": "cm",
+        "rows": [
+          {
+            "label": "L",
+            "measurements": null
+          },
+          {
+            "label": "XL",
+            "measurements": " , ,"
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "size-chart"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "tbody",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "tr",
+                "attrs": [
+                  [
+                    "class",
+                    "size-chart__row size-chart__row--odd"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "th",
+                    "attrs": [
+                      [
+                        "scope",
+                        "row"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "L"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [
+                      [
+                        "class",
+                        "size-chart__empty"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "n/a"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "tr",
+                "attrs": [
+                  [
+                    "class",
+                    "size-chart__row size-chart__row--even"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "th",
+                    "attrs": [
+                      [
+                        "scope",
+                        "row"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "XL"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [
+                      [
+                        "class",
+                        "size-chart__empty"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "n/a"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "size_chart": {
+        "title": "Tops & \"Tees\"",
+        "unit": "<cm>",
+        "rows": [
+          {
+            "label": "<XL>",
+            "measurements": "A&B, \"C\""
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "size-chart"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "caption",
+            "attrs": [],
+            "children": [],
+            "text": "Tops & \"Tees\" (<cm>)"
+          },
+          {
+            "tag": "tbody",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "tr",
+                "attrs": [
+                  [
+                    "class",
+                    "size-chart__row size-chart__row--odd"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "th",
+                    "attrs": [
+                      [
+                        "scope",
+                        "row"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "<XL>"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [],
+                    "children": [],
+                    "text": "A&B"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [],
+                    "children": [],
+                    "text": "\"C\""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "size_chart": {
+        "title": "Dresses",
+        "unit": null,
+        "rows": [
+          {
+            "label": "6",
+            "measurements": "82,66"
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "size-chart"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "caption",
+            "attrs": [],
+            "children": [],
+            "text": "Dresses"
+          },
+          {
+            "tag": "tbody",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "tr",
+                "attrs": [
+                  [
+                    "class",
+                    "size-chart__row size-chart__row--odd"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "th",
+                    "attrs": [
+                      [
+                        "scope",
+                        "row"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "6"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [],
+                    "children": [],
+                    "text": "82"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [],
+                    "children": [],
+                    "text": "66"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "size_chart": {
+        "title": "Dresses",
+        "unit": "   ",
+        "rows": [
+          {
+            "label": "6",
+            "measurements": "82,66"
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "size-chart"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "caption",
+            "attrs": [],
+            "children": [],
+            "text": "Dresses"
+          },
+          {
+            "tag": "tbody",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "tr",
+                "attrs": [
+                  [
+                    "class",
+                    "size-chart__row size-chart__row--odd"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "th",
+                    "attrs": [
+                      [
+                        "scope",
+                        "row"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "6"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [],
+                    "children": [],
+                    "text": "82"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [],
+                    "children": [],
+                    "text": "66"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "size_chart": {
+        "title": "   ",
+        "unit": "cm",
+        "rows": [
+          {
+            "label": "One Size",
+            "measurements": "  free  "
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "table",
+        "attrs": [
+          [
+            "class",
+            "size-chart"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "tbody",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "tr",
+                "attrs": [
+                  [
+                    "class",
+                    "size-chart__row size-chart__row--odd"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "th",
+                    "attrs": [
+                      [
+                        "scope",
+                        "row"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "One Size"
+                  },
+                  {
+                    "tag": "td",
+                    "attrs": [],
+                    "children": [],
+                    "text": "free"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

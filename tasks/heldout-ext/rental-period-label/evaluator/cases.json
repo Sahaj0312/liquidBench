@@ -1,0 +1,195 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/rental-period-label.liquid",
+    "tags": [
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "periods": []
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "periods": [
+        "June 3"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "rental-period"
+          ]
+        ],
+        "children": [],
+        "text": "June 3 only"
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "periods": [
+        "June 3",
+        "June 4"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "rental-period"
+          ]
+        ],
+        "children": [],
+        "text": "From June 3 to June 4"
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "periods": [
+        "Mon",
+        "Tue",
+        "Wed"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "rental-period"
+          ]
+        ],
+        "children": [],
+        "text": "From Mon to Wed"
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "periods": [
+        "Week 1",
+        "Week 2",
+        "Week 3",
+        "Week 4",
+        "Week 5"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "rental-period"
+          ]
+        ],
+        "children": [],
+        "text": "From Week 1 to Week 5"
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "periods": [
+        "Sat & Sun",
+        "Mon"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "rental-period"
+          ]
+        ],
+        "children": [],
+        "text": "From Sat & Sun to Mon"
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "periods": [
+        "<Start>"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "rental-period"
+          ]
+        ],
+        "children": [],
+        "text": "<Start> only"
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "periods": [
+        "Day \"A\"",
+        "Day <B>",
+        "Day & C"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "rental-period"
+          ]
+        ],
+        "children": [],
+        "text": "From Day \"A\" to Day & C"
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "periods": [
+        "Fri",
+        "Fri"
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "rental-period"
+          ]
+        ],
+        "children": [],
+        "text": "From Fri to Fri"
+      }
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+{%- assign shown = 0 -%}
+{%- assign current = -1 -%}
+{%- for e in events -%}
+  {%- assign l = e.label | strip -%}
+  {%- if l != "" -%}
+    {%- assign shown = shown | plus: 1 -%}
+    {%- if e.done -%}{%- assign current = forloop.index0 -%}{%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if shown > 0 -%}
+  {%- assign t = title | default: "" | strip -%}
+  {%- assign tn = tracking_number | default: "" | strip -%}
+  {%- if t != "" -%}<section class="timeline"><h2>{{ t | escape }}</h2>{%- endif -%}
+  {%- if tn != "" -%}<p class="tracking">Tracking: {{ tn | escape }}</p>{%- endif -%}
+  <ol>
+  {%- for e in events -%}
+    {%- assign l = e.label | strip -%}
+    {%- if l != "" -%}
+      {%- assign d = e.date | default: "" | strip -%}
+      {%- assign n = e.note | default: "" | strip -%}
+      <li class="step {% if e.done %}step--done{% else %}step--pending{% endif %}{% if forloop.index0 == current %} step--current{% endif %}"><span>{{ l | escape }}</span>
+      {%- if d != "" -%}<time>{{ d | escape }}</time>{%- endif -%}
+      {%- if n != "" -%}<p>{{ n | escape }}</p>{%- endif -%}
+      </li>
+    {%- endif -%}
+  {%- endfor -%}
+  </ol>
+  {%- if t != "" -%}</section>{%- endif -%}
+{%- endif -%}

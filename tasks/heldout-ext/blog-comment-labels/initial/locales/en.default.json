@@ -1,0 +1,12 @@
+{
+  "blogs": {
+    "article": {
+      "comment_form": {
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "replying_to": "Replying to {{ author }}"
+      }
+    }
+  }
+}

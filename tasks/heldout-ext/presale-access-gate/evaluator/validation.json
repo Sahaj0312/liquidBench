@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-default-overrides-false-gate",
+    "expected_pass": false,
+    "changes": {
+      "snippets/presale-access-gate.liquid": "{%- assign label = presale_label | strip | default: \"Early Access\" -%}\n{%- assign gate = gate_enabled | default: true -%}\n{%- assign needed = min_orders | default: 1 -%}\n{%- assign tag = vip_tag | default: \"vip\" -%}\n{%- if gate == false -%}\n<div class=\"presale presale--open\"><p>{{ label | escape }} is open to everyone</p></div>\n{%- elsif customer_orders == nil -%}\n<div class=\"presale presale--locked\"><p>Log in to access {{ label | escape }}</p></div>\n{%- elsif customer_tags contains tag or customer_orders >= needed -%}\n<div class=\"presale presale--granted\"><p>Welcome to {{ label | escape }}</p></div>\n{%- else -%}\n{%- assign remaining = needed | minus: customer_orders -%}\n<div class=\"presale presale--locked\"><p>Place {{ remaining }} more {% if remaining == 1 %}order{% else %}orders{% endif %} to unlock {{ label | escape }}</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-label-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/presale-access-gate.liquid": "{%- assign label = presale_label | default: \"Early Access\" -%}\n{%- assign gate = gate_enabled | default: true, allow_false: true -%}\n{%- assign needed = min_orders | default: 1 -%}\n{%- assign tag = vip_tag | default: \"vip\" -%}\n{%- if gate == false -%}\n<div class=\"presale presale--open\"><p>{{ label | escape }} is open to everyone</p></div>\n{%- elsif customer_orders == nil -%}\n<div class=\"presale presale--locked\"><p>Log in to access {{ label | escape }}</p></div>\n{%- elsif customer_tags contains tag or customer_orders >= needed -%}\n<div class=\"presale presale--granted\"><p>Welcome to {{ label | escape }}</p></div>\n{%- else -%}\n{%- assign remaining = needed | minus: customer_orders -%}\n<div class=\"presale presale--locked\"><p>Place {{ remaining }} more {% if remaining == 1 %}order{% else %}orders{% endif %} to unlock {{ label | escape }}</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-tag-substring-match",
+    "expected_pass": false,
+    "changes": {
+      "snippets/presale-access-gate.liquid": "{%- assign label = presale_label | strip | default: \"Early Access\" -%}\n{%- assign gate = gate_enabled | default: true, allow_false: true -%}\n{%- assign needed = min_orders | default: 1 -%}\n{%- assign tag = vip_tag | default: \"vip\" -%}\n{%- assign tag_list = customer_tags | join: \",\" -%}\n{%- if gate == false -%}\n<div class=\"presale presale--open\"><p>{{ label | escape }} is open to everyone</p></div>\n{%- elsif customer_orders == nil -%}\n<div class=\"presale presale--locked\"><p>Log in to access {{ label | escape }}</p></div>\n{%- elsif tag_list contains tag or customer_orders >= needed -%}\n<div class=\"presale presale--granted\"><p>Welcome to {{ label | escape }}</p></div>\n{%- else -%}\n{%- assign remaining = needed | minus: customer_orders -%}\n<div class=\"presale presale--locked\"><p>Place {{ remaining }} more {% if remaining == 1 %}order{% else %}orders{% endif %} to unlock {{ label | escape }}</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-vip-tag-no-default",
+    "expected_pass": false,
+    "changes": {
+      "snippets/presale-access-gate.liquid": "{%- assign label = presale_label | strip | default: \"Early Access\" -%}\n{%- assign gate = gate_enabled | default: true, allow_false: true -%}\n{%- assign needed = min_orders | default: 1 -%}\n{%- if gate == false -%}\n<div class=\"presale presale--open\"><p>{{ label | escape }} is open to everyone</p></div>\n{%- elsif customer_orders == nil -%}\n<div class=\"presale presale--locked\"><p>Log in to access {{ label | escape }}</p></div>\n{%- elsif customer_tags contains vip_tag or customer_orders >= needed -%}\n<div class=\"presale presale--granted\"><p>Welcome to {{ label | escape }}</p></div>\n{%- else -%}\n{%- assign remaining = needed | minus: customer_orders -%}\n<div class=\"presale presale--locked\"><p>Place {{ remaining }} more {% if remaining == 1 %}order{% else %}orders{% endif %} to unlock {{ label | escape }}</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/presale-access-gate.liquid": "{% # theme-check-disable %}\n{%- assign label = presale_label | strip | default: \"Early Access\" -%}\n{%- assign gate = gate_enabled | default: true, allow_false: true -%}\n{%- assign needed = min_orders | default: 1 -%}\n{%- assign tag = vip_tag | default: \"vip\" -%}\n{%- if gate == false -%}\n<div class=\"presale presale--open\"><p>{{ label | escape }} is open to everyone</p></div>\n{%- elsif customer_orders == nil -%}\n<div class=\"presale presale--locked\"><p>Log in to access {{ label | escape }}</p></div>\n{%- elsif customer_tags contains tag or customer_orders >= needed -%}\n<div class=\"presale presale--granted\"><p>Welcome to {{ label | escape }}</p></div>\n{%- else -%}\n{%- assign remaining = needed | minus: customer_orders -%}\n<div class=\"presale presale--locked\"><p>Place {{ remaining }} more {% if remaining == 1 %}order{% else %}orders{% endif %} to unlock {{ label | escape }}</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/presale-access-gate.liquid": null
+    }
+  }
+]

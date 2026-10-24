@@ -1,0 +1,16 @@
+{%- comment -%}Lightbox stylesheet, script and dialog shell. Params: show_header, show_caption{%- endcomment -%}
+{{ 'lightbox.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'lightbox.js' | asset_url }}" defer="defer"></script>
+<div class="lightbox" role="dialog" aria-label="{{ 'sections.lightbox.dialog_label' | t }}">
+  {%- if show_header -%}
+    <header class="lightbox__header">
+      <button type="button" class="lightbox__close" aria-label="{{ 'lightbox.close' | t }}">
+        {%- render 'close-icon' -%}
+      </button>
+    </header>
+  {%- endif -%}
+  <div class="lightbox__stage"></div>
+  {%- if show_caption -%}
+    <figcaption class="lightbox__caption">{{ 'sections.lightbox.caption' | t }}</figcaption>
+  {%- endif -%}
+</div>

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "wrong-0-elsif-drops-last-on-single",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warehouse-availability-list.liquid": "{%- if warehouses and warehouses.size > 0 -%}\n<ul class=\"warehouse-list\">\n{%- for w in warehouses -%}\n<li class=\"warehouse{% if forloop.first %} warehouse--first{% elsif forloop.last %} warehouse--last{% endif %}\">{{ w.name | escape }}: {{ w.quantity }}</li>\n{%- endfor -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-no-escape",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warehouse-availability-list.liquid": "{%- if warehouses and warehouses.size > 0 -%}\n<ul class=\"warehouse-list\">\n{%- for w in warehouses -%}\n<li class=\"warehouse{% if forloop.first %} warehouse--first{% endif %}{% if forloop.last %} warehouse--last{% endif %}\">{{ w.name }}: {{ w.quantity }}</li>\n{%- endfor -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-empty-array-renders-ul",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warehouse-availability-list.liquid": "{%- if warehouses -%}\n<ul class=\"warehouse-list\">\n{%- for w in warehouses -%}\n<li class=\"warehouse{% if forloop.first %} warehouse--first{% endif %}{% if forloop.last %} warehouse--last{% endif %}\">{{ w.name | escape }}: {{ w.quantity }}</li>\n{%- endfor -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warehouse-availability-list.liquid": "{% # theme-check-disable %}\n{%- if warehouses and warehouses.size > 0 -%}\n<ul class=\"warehouse-list\">\n{%- for w in warehouses -%}\n<li class=\"warehouse{% if forloop.first %} warehouse--first{% endif %}{% if forloop.last %} warehouse--last{% endif %}\">{{ w.name | escape }}: {{ w.quantity }}</li>\n{%- endfor -%}\n</ul>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/warehouse-availability-list.liquid": null
+    }
+  }
+]

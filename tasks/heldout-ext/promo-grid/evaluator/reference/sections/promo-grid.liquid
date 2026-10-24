@@ -1,0 +1,39 @@
+{%- assign total = 0 -%}
+{%- for block in section.blocks -%}
+  {%- assign heading = block.settings.heading | strip -%}
+  {%- if block.type == 'promo' and heading != '' -%}
+    {%- assign total = total | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if total > 0 -%}
+  {%- assign title = section.settings.title | strip -%}
+  {%- assign badge = section.settings.badge | strip -%}
+  {%- assign is_odd = total | modulo: 2 -%}
+  <div class="promo-grid">
+    {%- if title != '' -%}<h2 class="promo-grid__title">{{ title | escape }}</h2>{%- endif -%}
+    <ul class="promo-grid__list">
+      {%- assign position = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- assign heading = block.settings.heading | strip -%}
+        {%- if block.type == 'promo' and heading != '' -%}
+          {%- assign position = position | plus: 1 -%}
+          {%- assign classes = 'promo-grid__tile' -%}
+          {%- if position == 1 -%}{%- assign classes = classes | append: ' promo-grid__tile--first' -%}{%- endif -%}
+          {%- if position == total -%}
+            {%- assign classes = classes | append: ' promo-grid__tile--last' -%}
+            {%- if is_odd == 1 and total >= 3 -%}{%- assign classes = classes | append: ' promo-grid__tile--wide' -%}{%- endif -%}
+          {%- endif -%}
+          {%- assign label = block.settings.link_label | strip -%}
+          {%- assign url = block.settings.link_url | strip -%}
+          <li class="{{ classes }}">
+            {%- if position == 1 and badge != '' -%}<span class="promo-grid__badge">{{ badge | escape }}</span>{%- endif -%}
+            <h3 class="promo-grid__heading">{{ heading | escape }}</h3>
+            {%- if label != '' and url != '' -%}<a class="promo-grid__link" href="{{ url | escape }}">{{ label | escape }}</a>{%- endif -%}
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul></div>
+{%- endif -%}
+{% schema %}
+{"name":"Promo grid","max_blocks":8,"settings":[{"type":"text","id":"title","label":"Title"},{"type":"text","id":"badge","label":"Featured badge"}],"blocks":[{"type":"promo","name":"Promo tile","settings":[{"type":"text","id":"heading","label":"Heading"},{"type":"text","id":"link_label","label":"Link label"},{"type":"url","id":"link_url","label":"Link URL"}]},{"type":"divider","name":"Divider","settings":[{"type":"text","id":"heading","label":"Label"}]}],"presets":[{"name":"Promo grid"}]}
+{% endschema %}

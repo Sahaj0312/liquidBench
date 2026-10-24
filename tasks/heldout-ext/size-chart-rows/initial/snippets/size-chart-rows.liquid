@@ -1,0 +1,12 @@
+<table class="size-chart">
+  <caption>{{ size_chart.title }} ({{ size_chart.unit }})</caption>
+  <tbody>
+  {%- for row in size_chart.rows -%}
+    <tr class="size-chart__row size-chart__row--{% cycle 'odd', 'even' %}">
+      <th scope="row">{{ row.label }}</th>
+      {%- assign parts = row.measurements | split: "," -%}
+      {%- for part in parts -%}<td>{{ part }}</td>{%- endfor -%}
+    </tr>
+  {%- endfor -%}
+  </tbody>
+</table>

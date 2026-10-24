@@ -1,0 +1,15 @@
+{
+  "id": "social-feed-grid",
+  "version": 1,
+  "split": "heldout",
+  "category": "section-schema",
+  "difficulty": "hard",
+  "family": "social-feed-grid",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/social-feed-grid.liquid"
+  ],
+  "prompt": "The section sections/social-feed-grid.liquid renders a grid of social posts. It computes rows as ceil(blocks / posts_per_row) using integer arithmetic, and the refresh interval in seconds as refresh_minutes * 60. Its current schema is invalid. Theme Check rejects it because a range default is not on a step, and a range has more than 101 steps. It also lacks block limits and preset blocks.\n\nRules:\n- Keep the markup above {% schema %} byte-for-byte.\n- Replace only the schema JSON.\n- The file must end with exactly one {% schema %}...{% endschema %} block.\n\nThe schema must be exactly the following, with keys and array items in this order.\n\nTop-level keys:\n- \"name\": \"Social feed\"\n- \"tag\": \"section\"\n- \"class\": \"social-feed-section\"\n- \"max_blocks\": 12. This is the maximum posts_per_row (6) times 2 rows.\n- \"settings\"\n- \"blocks\"\n- \"presets\"\n\nsettings, in order:\n1. type \"text\", id \"heading\", label \"Heading\", default \"Follow us\".\n2. type \"range\", id \"posts_per_row\", label \"Posts per row\", min 2, max 6, step 1, default 4.\n3. type \"range\", id \"gap_px\", label \"Gap\", min 0, max 40, step 4, unit \"px\", default 16.\n4. type \"range\", id \"refresh_minutes\", label \"Refresh interval\", min 5, max 120, step 5, unit \"min\".\n   - Its default is the midpoint of min and max ((5+120)/2 = 62.5), rounded DOWN to the nearest valid step value. That gives 60.\n\nKey order within each setting: type, id, label, then min, max, step, unit, default (each only where present).\n\nblocks: one block type with keys type \"post\", name \"Post\", settings:\n- type \"url\", id \"post_url\", label \"Post URL\" (no default)\n- type \"text\", id \"caption\", label \"Caption\" (no default)\n\npresets: one preset, name \"Social feed\", blocks holding exactly 4 entries of {\"type\":\"post\"}. That is one full row at the default posts_per_row.\n\nNo other keys anywhere. Change only sections/social-feed-grid.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

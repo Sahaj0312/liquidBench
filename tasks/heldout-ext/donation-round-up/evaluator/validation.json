@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-negative-step-not-defaulted",
+    "expected_pass": false,
+    "changes": {
+      "snippets/donation-round-up.liquid": "{%- liquid\n  assign unit = 100\n  if round_to_cents != nil and round_to_cents != 0\n    assign unit = round_to_cents\n  endif\n  assign donation = 0\n  if cart_total_cents != nil\n    if cart_total_cents > 0\n      assign remainder = cart_total_cents | modulo: unit\n      if remainder > 0\n        assign donation = unit | minus: remainder\n      endif\n    endif\n  endif\n  assign name = charity_name | strip\n  if name == ''\n    assign name = 'our partner charity'\n  endif\n  assign label = button_label | strip\n  if label == ''\n    assign label = 'Round up'\n  endif\n  assign symbol = currency_symbol | default: '$'\n  assign dollars = donation | divided_by: 100\n  assign cents = donation | modulo: 100\n  if cents < 10\n    assign cents = cents | prepend: '0'\n  endif\n-%}\n{%- if donation > 0 -%}\n<div class=\"round-up\"><p>Round up your order and give <strong>{{ symbol | escape }}{{ dollars }}.{{ cents }}</strong> to {{ name | escape }}.</p><button type=\"button\" data-amount=\"{{ donation }}\">{{ label | escape }}</button></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-cents-not-padded",
+    "expected_pass": false,
+    "changes": {
+      "snippets/donation-round-up.liquid": "{%- liquid\n  assign unit = 100\n  if round_to_cents != nil\n    if round_to_cents > 0\n      assign unit = round_to_cents\n    endif\n  endif\n  assign donation = 0\n  if cart_total_cents != nil\n    if cart_total_cents > 0\n      assign remainder = cart_total_cents | modulo: unit\n      if remainder > 0\n        assign donation = unit | minus: remainder\n      endif\n    endif\n  endif\n  assign name = charity_name | strip\n  if name == ''\n    assign name = 'our partner charity'\n  endif\n  assign label = button_label | strip\n  if label == ''\n    assign label = 'Round up'\n  endif\n  assign symbol = currency_symbol | default: '$'\n  assign dollars = donation | divided_by: 100\n  assign cents = donation | modulo: 100\n-%}\n{%- if donation > 0 -%}\n<div class=\"round-up\"><p>Round up your order and give <strong>{{ symbol | escape }}{{ dollars }}.{{ cents }}</strong> to {{ name | escape }}.</p><button type=\"button\" data-amount=\"{{ donation }}\">{{ label | escape }}</button></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-charity-default-without-strip",
+    "expected_pass": false,
+    "changes": {
+      "snippets/donation-round-up.liquid": "{%- liquid\n  assign unit = 100\n  if round_to_cents != nil\n    if round_to_cents > 0\n      assign unit = round_to_cents\n    endif\n  endif\n  assign donation = 0\n  if cart_total_cents != nil\n    if cart_total_cents > 0\n      assign remainder = cart_total_cents | modulo: unit\n      if remainder > 0\n        assign donation = unit | minus: remainder\n      endif\n    endif\n  endif\n  assign name = charity_name | default: 'our partner charity'\n  assign label = button_label | strip\n  if label == ''\n    assign label = 'Round up'\n  endif\n  assign symbol = currency_symbol | default: '$'\n  assign dollars = donation | divided_by: 100\n  assign cents = donation | modulo: 100\n  if cents < 10\n    assign cents = cents | prepend: '0'\n  endif\n-%}\n{%- if donation > 0 -%}\n<div class=\"round-up\"><p>Round up your order and give <strong>{{ symbol | escape }}{{ dollars }}.{{ cents }}</strong> to {{ name | escape }}.</p><button type=\"button\" data-amount=\"{{ donation }}\">{{ label | escape }}</button></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-exact-multiple-donates-full-st",
+    "expected_pass": false,
+    "changes": {
+      "snippets/donation-round-up.liquid": "{%- liquid\n  assign unit = 100\n  if round_to_cents != nil\n    if round_to_cents > 0\n      assign unit = round_to_cents\n    endif\n  endif\n  assign donation = 0\n  if cart_total_cents != nil\n    if cart_total_cents > 0\n      assign remainder = cart_total_cents | modulo: unit\n      assign donation = unit | minus: remainder\n    endif\n  endif\n  assign name = charity_name | strip\n  if name == ''\n    assign name = 'our partner charity'\n  endif\n  assign label = button_label | strip\n  if label == ''\n    assign label = 'Round up'\n  endif\n  assign symbol = currency_symbol | default: '$'\n  assign dollars = donation | divided_by: 100\n  assign cents = donation | modulo: 100\n  if cents < 10\n    assign cents = cents | prepend: '0'\n  endif\n-%}\n{%- if donation > 0 -%}\n<div class=\"round-up\"><p>Round up your order and give <strong>{{ symbol | escape }}{{ dollars }}.{{ cents }}</strong> to {{ name | escape }}.</p><button type=\"button\" data-amount=\"{{ donation }}\">{{ label | escape }}</button></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/donation-round-up.liquid": "{% # theme-check-disable %}\n{%- liquid\n  assign unit = 100\n  if round_to_cents != nil\n    if round_to_cents > 0\n      assign unit = round_to_cents\n    endif\n  endif\n  assign donation = 0\n  if cart_total_cents != nil\n    if cart_total_cents > 0\n      assign remainder = cart_total_cents | modulo: unit\n      if remainder > 0\n        assign donation = unit | minus: remainder\n      endif\n    endif\n  endif\n  assign name = charity_name | strip\n  if name == ''\n    assign name = 'our partner charity'\n  endif\n  assign label = button_label | strip\n  if label == ''\n    assign label = 'Round up'\n  endif\n  assign symbol = currency_symbol | default: '$'\n  assign dollars = donation | divided_by: 100\n  assign cents = donation | modulo: 100\n  if cents < 10\n    assign cents = cents | prepend: '0'\n  endif\n-%}\n{%- if donation > 0 -%}\n<div class=\"round-up\"><p>Round up your order and give <strong>{{ symbol | escape }}{{ dollars }}.{{ cents }}</strong> to {{ name | escape }}.</p><button type=\"button\" data-amount=\"{{ donation }}\">{{ label | escape }}</button></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/donation-round-up.liquid": null
+    }
+  }
+]

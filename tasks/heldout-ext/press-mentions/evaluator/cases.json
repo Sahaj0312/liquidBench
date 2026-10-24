@@ -1,0 +1,1128 @@
+[
+  {
+    "id": "contract",
+    "path": "sections/press-mentions.liquid",
+    "tags": [
+      "blockquote",
+      "cite",
+      "h2",
+      "li",
+      "p",
+      "section",
+      "span",
+      "ul"
+    ],
+    "schema_block": "{% schema %}\n{\n  \"name\": \"Press mentions\",\n  \"settings\": [\n    { \"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"As seen in\" }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"mention\",\n      \"name\": \"Mention\",\n      \"settings\": [\n        { \"type\": \"text\", \"id\": \"outlet\", \"label\": \"Outlet\" },\n        { \"type\": \"textarea\", \"id\": \"quote\", \"label\": \"Quote\" },\n        { \"type\": \"number\", \"id\": \"score\", \"label\": \"Review score (0-100)\" }\n      ]\n    }\n  ],\n  \"presets\": [{ \"name\": \"Press mentions\" }]\n}\n{% endschema %}"
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "As seen in"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "outlet": "Vogue",
+              "quote": "Stunning.",
+              "score": 94
+            }
+          },
+          {
+            "settings": {
+              "outlet": "Wired",
+              "quote": "Clever design",
+              "score": 81
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "press-mentions"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__heading"
+              ]
+            ],
+            "children": [],
+            "text": "As seen in"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "press-mentions__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "blockquote",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Stunning."
+                  },
+                  {
+                    "tag": "cite",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Vogue"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "press-mentions__rating"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "4.5 / 5"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "press-mentions__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "blockquote",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Clever design"
+                  },
+                  {
+                    "tag": "cite",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Wired"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "press-mentions__rating"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "4.0 / 5"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__average"
+              ]
+            ],
+            "children": [],
+            "text": "Average score: 88/100 from 2 reviews"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null
+        },
+        "blocks": [
+          {
+            "settings": {
+              "outlet": "Elle",
+              "quote": "A must-have.",
+              "score": 95
+            }
+          },
+          {
+            "settings": {
+              "outlet": "Glamour",
+              "quote": "Soft and light.",
+              "score": 45
+            }
+          },
+          {
+            "settings": {
+              "outlet": "Allure",
+              "quote": "Decent value.",
+              "score": 44
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "press-mentions"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "press-mentions__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "blockquote",
+                    "attrs": [],
+                    "children": [],
+                    "text": "A must-have."
+                  },
+                  {
+                    "tag": "cite",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Elle"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "press-mentions__rating"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "5.0 / 5"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "press-mentions__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "blockquote",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Soft and light."
+                  },
+                  {
+                    "tag": "cite",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Glamour"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "press-mentions__rating"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "2.5 / 5"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "press-mentions__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "blockquote",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Decent value."
+                  },
+                  {
+                    "tag": "cite",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Allure"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "press-mentions__rating"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "2.0 / 5"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__average"
+              ]
+            ],
+            "children": [],
+            "text": "Average score: 61/100 from 3 reviews"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "In the press"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "outlet": "GQ",
+              "quote": "Bold.",
+              "score": 0
+            }
+          },
+          {
+            "settings": {
+              "outlet": "Forbes",
+              "quote": "Worth it.",
+              "score": null
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "press-mentions"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__heading"
+              ]
+            ],
+            "children": [],
+            "text": "In the press"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "press-mentions__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "blockquote",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Bold."
+                  },
+                  {
+                    "tag": "cite",
+                    "attrs": [],
+                    "children": [],
+                    "text": "GQ"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "press-mentions__rating"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "0.0 / 5"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "press-mentions__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "blockquote",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Worth it."
+                  },
+                  {
+                    "tag": "cite",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Forbes"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__average"
+              ]
+            ],
+            "children": [],
+            "text": "Average score: 0/100 from 1 review"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Press"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "outlet": "Time",
+              "quote": "Iconic.",
+              "score": null
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "press-mentions"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Press"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "press-mentions__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "blockquote",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Iconic."
+                  },
+                  {
+                    "tag": "cite",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Time"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "   "
+        },
+        "blocks": []
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "press-mentions"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__list"
+              ]
+            ],
+            "children": [],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Fish & \"Chips\" <News>"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "outlet": "B&Q <Weekly>",
+              "quote": "\"Best\" buy & more",
+              "score": 100
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "press-mentions"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Fish & \"Chips\" <News>"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "press-mentions__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "blockquote",
+                    "attrs": [],
+                    "children": [],
+                    "text": "\"Best\" buy & more"
+                  },
+                  {
+                    "tag": "cite",
+                    "attrs": [],
+                    "children": [],
+                    "text": "B&Q <Weekly>"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "press-mentions__rating"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "5.0 / 5"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__average"
+              ]
+            ],
+            "children": [],
+            "text": "Average score: 100/100 from 1 review"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "Reviews"
+        },
+        "blocks": [
+          {
+            "settings": {
+              "outlet": "Mojo",
+              "quote": "Not for us.",
+              "score": 5
+            }
+          },
+          {
+            "settings": {
+              "outlet": "Byte",
+              "quote": "Skip it.",
+              "score": 4
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "press-mentions"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Reviews"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "press-mentions__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "blockquote",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Not for us."
+                  },
+                  {
+                    "tag": "cite",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Mojo"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "press-mentions__rating"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "0.5 / 5"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "press-mentions__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "blockquote",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Skip it."
+                  },
+                  {
+                    "tag": "cite",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Byte"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "press-mentions__rating"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "0.0 / 5"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__average"
+              ]
+            ],
+            "children": [],
+            "text": "Average score: 5/100 from 2 reviews"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": null
+        },
+        "blocks": [
+          {
+            "settings": {
+              "outlet": "Vox",
+              "quote": "Solid.",
+              "score": 50
+            }
+          },
+          {
+            "settings": {
+              "outlet": "Slate",
+              "quote": "Fine.",
+              "score": 51
+            }
+          },
+          {
+            "settings": {
+              "outlet": "Quartz",
+              "quote": "Unrated.",
+              "score": null
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "press-mentions"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "press-mentions__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "blockquote",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Solid."
+                  },
+                  {
+                    "tag": "cite",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Vox"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "press-mentions__rating"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "2.5 / 5"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "press-mentions__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "blockquote",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Fine."
+                  },
+                  {
+                    "tag": "cite",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Slate"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "press-mentions__rating"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "2.5 / 5"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "press-mentions__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "blockquote",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Unrated."
+                  },
+                  {
+                    "tag": "cite",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Quartz"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__average"
+              ]
+            ],
+            "children": [],
+            "text": "Average score: 51/100 from 2 reviews"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "section": {
+        "settings": {
+          "heading": "  Featured  "
+        },
+        "blocks": [
+          {
+            "settings": {
+              "outlet": "Monocle",
+              "quote": "Refined.",
+              "score": 99
+            }
+          },
+          {
+            "settings": {
+              "outlet": "Kinfolk",
+              "quote": "Calm.",
+              "score": null
+            }
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "class",
+            "press-mentions"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Featured"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "press-mentions__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "blockquote",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Refined."
+                  },
+                  {
+                    "tag": "cite",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Monocle"
+                  },
+                  {
+                    "tag": "span",
+                    "attrs": [
+                      [
+                        "class",
+                        "press-mentions__rating"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "5.0 / 5"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "press-mentions__item"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "blockquote",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Calm."
+                  },
+                  {
+                    "tag": "cite",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Kinfolk"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "press-mentions__average"
+              ]
+            ],
+            "children": [],
+            "text": "Average score: 99/100 from 1 review"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

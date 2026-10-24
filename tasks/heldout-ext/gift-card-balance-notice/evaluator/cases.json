@@ -1,0 +1,268 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/gift-card-balance-notice.liquid",
+    "tags": [
+      "div",
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "balance_cents": 2550,
+      "currency_symbol": "$",
+      "last_four": "4821",
+      "expires_on": "2026-12-31"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "gift-card-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Balance: $25.50"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Card ending in 4821"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Expires 2026-12-31"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "balance_cents": null,
+      "currency_symbol": "$",
+      "last_four": "4821",
+      "expires_on": "2026-12-31"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "balance_cents": 0,
+      "currency_symbol": "$",
+      "last_four": "4821",
+      "expires_on": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "gift-card-notice gift-card-notice--empty"
+          ]
+        ],
+        "children": [],
+        "text": "This gift card has no remaining balance."
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "balance_cents": -100,
+      "currency_symbol": null,
+      "last_four": null,
+      "expires_on": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "gift-card-notice gift-card-notice--empty"
+          ]
+        ],
+        "children": [],
+        "text": "This gift card has no remaining balance."
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "balance_cents": 1205,
+      "currency_symbol": null,
+      "last_four": null,
+      "expires_on": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "gift-card-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Balance: $12.05"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "balance_cents": 7,
+      "currency_symbol": "",
+      "last_four": "",
+      "expires_on": ""
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "gift-card-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Balance: $0.07"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "balance_cents": 100000,
+      "currency_symbol": "  ",
+      "last_four": "  ",
+      "expires_on": "   "
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "gift-card-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Balance: $1000.00"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "balance_cents": 999,
+      "currency_symbol": " € ",
+      "last_four": " 0042 ",
+      "expires_on": "\"Dec 31\" & <soon>"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "gift-card-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Balance: €9.99"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Card ending in 0042"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Expires \"Dec 31\" & <soon>"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "balance_cents": 5000,
+      "currency_symbol": "<£>",
+      "last_four": "12&3",
+      "expires_on": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "gift-card-notice"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Balance: <£>50.00"
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Card ending in 12&3"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

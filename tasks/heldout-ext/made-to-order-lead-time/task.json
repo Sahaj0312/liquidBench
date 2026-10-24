@@ -1,0 +1,15 @@
+{
+  "id": "made-to-order-lead-time",
+  "version": 1,
+  "split": "heldout",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "made-to-order-lead-time",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/made-to-order-lead-time.liquid"
+  ],
+  "prompt": "Fix and finish the snippet snippets/made-to-order-lead-time.liquid. It renders the production steps for a made-to-order product.\n\nInputs (all top-level variables, there is no section object):\n- product_title: string or null.\n- steps: array, possibly empty. Each item is an object with name (string, never null), days (integer >= 0, never null) and skip (boolean, never null).\n- max_steps: integer >= 0.\n\nRules:\n1. Go through steps in their given order. Ignore every step whose skip is true. Ignored steps are never displayed, never counted as hidden and never added to the total.\n2. The first max_steps non-skipped steps are displayed. The remaining non-skipped steps are hidden. Count them as K.\n3. TOTAL is the sum of days over all non-skipped steps, both displayed and hidden.\n4. If no step is displayed, output nothing at all (empty string). This happens when max_steps is 0, when steps is empty, or when every step is skipped.\n5. Otherwise output exactly this, with no whitespace or newlines between tags:\n<div class=\"lead-time\"><h3>HEADING</h3><ol>ITEMS MORE</ol><p>Ships in about TOTAL UNIT</p></div>\n- HEADING is `Made to order: ` followed by the HTML-escaped product_title. If product_title is null or the empty string, HEADING is just `Made to order`, with no colon.\n- ITEMS: one <li>NAME — D UNIT</li> per displayed step, in order. NAME is the HTML-escaped name. The separator is a space, an em dash (—) and a space. D is days.\n- MORE is output only when K > 0: <li class=\"more\">+K more steps</li>. Use `step` instead of `steps` when K is 1.\n- UNIT is `day` when the number is exactly 1 and `days` otherwise. This applies to both D and TOTAL.\n\nEscape with the core escape filter, so & < > \" ' become &amp; &lt; &gt; &quot; &#39;. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/made-to-order-lead-time.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

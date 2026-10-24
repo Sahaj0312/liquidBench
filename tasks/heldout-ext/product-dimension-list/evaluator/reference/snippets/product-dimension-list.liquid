@@ -1,0 +1,26 @@
+{%- assign total = 0 -%}
+{%- for d in dimensions -%}
+  {%- if d.value != nil -%}{%- assign total = total | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
+{%- if total > 0 -%}
+  {%- assign cap = total -%}
+  {%- if limit != nil and limit < total -%}{%- assign cap = limit -%}{%- endif -%}
+  {%- assign shown = 0 -%}
+  <div class="dims"><p class="dims-count">{{ total }} measurement{% if total != 1 %}s{% endif %}</p><ul>
+  {%- for d in dimensions -%}
+    {%- if d.value != nil and shown < cap -%}
+      {%- assign shown = shown | plus: 1 -%}
+      {%- if d.value == 1 -%}
+        {%- assign u = d.unit -%}
+      {%- elsif d.unit_plural != nil -%}
+        {%- assign u = d.unit_plural -%}
+      {%- else -%}
+        {%- assign u = d.unit | append: 's' -%}
+      {%- endif -%}
+      <li>{{ d.label | escape }}: {{ d.value }} {{ u | escape }}</li>
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign rest = total | minus: shown -%}
+  {%- if rest > 0 -%}<li class="dims-more">and {{ rest }} more dimension{% if rest != 1 %}s{% endif %}</li>{%- endif -%}
+  </ul></div>
+{%- endif -%}

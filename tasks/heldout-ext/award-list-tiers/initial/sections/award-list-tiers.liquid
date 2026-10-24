@@ -1,0 +1,14 @@
+<div class="award-list">
+{%- if section.settings.heading != nil and section.settings.heading != '' -%}
+<h2>{{ section.settings.heading | escape }}</h2>
+{%- endif -%}
+<ul class="awards">
+{%- for block in section.blocks -%}
+<li>{{ block.settings.name | escape }} ({{ block.settings.year }})</li>
+{%- endfor -%}
+</ul>
+</div>
+
+{% schema %}
+{"name":"Award list","settings":[{"type":"text","id":"heading","label":"Heading"},{"type":"number","id":"limit","label":"Maximum awards shown (0 = all)","default":0},{"type":"number","id":"from_year","label":"Earliest year"}],"blocks":[{"type":"award","name":"Award","settings":[{"type":"text","id":"name","label":"Name"},{"type":"number","id":"year","label":"Year","default":2024},{"type":"number","id":"place","label":"Place"}]}],"presets":[{"name":"Award list"}]}
+{% endschema %}

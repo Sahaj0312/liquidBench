@@ -1,0 +1,15 @@
+{
+  "id": "cart-drawer-script",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-references",
+  "difficulty": "hard",
+  "family": "cart-drawer-script",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/cart-drawer-script.liquid"
+  ],
+  "prompt": "The snippet snippets/cart-drawer-script.liquid renders the cart drawer: a title, at most max_lines lines from items (lines whose quantity is 0 are skipped with continue and counted in skipped), an empty state when no line was shown, otherwise a 'more items' notice when some items were not reached by the limited loop, and finally the drawer controller script. Theme Check reports errors because several literal operands reference assets, translation keys and snippets that do not exist in this theme. Read the provided theme files (assets/, locales/en.default.json, locales/fr.json, snippets/) and fix every broken reference so that each points to the existing file or key with the same purpose.\n\nReferences to check and fix where broken:\n1. The stylesheet loaded with asset_url | stylesheet_tag must be the cart drawer CSS asset.\n2. The script src loaded with asset_url must be the cart drawer controller JavaScript asset.\n3. The render inside the loop must render the theme's cart drawer line item snippet, keeping the arguments item: item, position: shown.\n4. The render used when no line is shown must render the theme's cart drawer empty state snippet (no arguments).\n5. The title t key must be the cart drawer title key.\n6. The 'more items' t key must be the cart drawer more-items key; keep the argument hidden_count: hidden (the translation interpolates hidden_count).\n\nConstraints: change only these literal strings. The loop (for item in items limit: max_lines), the continue for zero-quantity lines, the shown/skipped/hidden arithmetic, the if/elsif ordering, all markup and every whitespace-control dash must remain byte-for-byte unchanged. Do not remove any reference to silence an error and do not create or edit other files. When finished, Theme Check must report no MissingAsset, TranslationKeyExists or MissingTemplate errors for the snippet. Change only snippets/cart-drawer-script.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "allergen-badges",
+  "version": 1,
+  "split": "heldout",
+  "category": "rendering",
+  "difficulty": "easy",
+  "family": "allergen-badges",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/allergen-badges.liquid"
+  ],
+  "prompt": "Fix snippets/allergen-badges.liquid so it renders a list of allergen badges with every piece of text safely escaped, both in element text and in attribute values.\n\nInputs (top-level variables only, nothing under section.settings):\n- `allergens`: array of strings, or null. Strings are never null and must be output as given (no stripping, no case changes).\n- `label`: string or null; the accessible name of the list.\n\nOutput rules:\n- If `allergens` is null or an empty array, output nothing (empty string).\n- Otherwise output exactly, with no whitespace or newlines between any tags:\n  `<ul class=\"allergen-badges\" aria-label=\"LABEL\">ITEMS</ul>`\n  LABEL is `label` when it is a non-empty string, and the literal text `Allergens` when `label` is null or the empty string. LABEL is HTML-escaped.\n- ITEMS is one element per allergen, in input order: `<li class=\"allergen-badge\" title=\"Contains NAME\">NAME</li>` where NAME is the allergen string HTML-escaped in both places.\n- HTML escaping means Liquid `escape`: & < > \" ' become &amp; &lt; &gt; &quot; &#39;. Apply it to the raw value exactly once, so text that already contains an entity such as `&amp;` must have its ampersand escaped again (`&amp;amp;`).\n- No leading or trailing whitespace in the output. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/allergen-badges.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

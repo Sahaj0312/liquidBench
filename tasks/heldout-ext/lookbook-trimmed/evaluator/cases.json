@@ -1,0 +1,91 @@
+[
+  {
+    "id": "schema-contract",
+    "path": "sections/lookbook-trimmed.liquid",
+    "body": "<div class=\"lookbook lookbook--{{ section.settings.layout }}\" style=\"--columns: {{ section.settings.columns }};\">\n  {%- assign heading = section.settings.heading | strip -%}\n  {%- if heading != blank -%}\n    <h2 class=\"lookbook__heading\">{{ heading | escape }}</h2>\n  {%- endif -%}\n  {%- for block in section.blocks -%}\n    {%- assign title = block.settings.title | strip -%}\n    {%- assign notes = block.settings.notes | strip -%}\n    <figure class=\"lookbook__look\" {{ block.shopify_attributes }}>\n      {%- if block.settings.image != blank -%}\n        {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy' }}\n      {%- endif -%}\n      {%- if title != blank or notes != blank -%}\n        <figcaption>\n          {%- if title != blank -%}<strong>{{ title | escape }}</strong>{%- endif -%}\n          {%- if notes != blank -%}<p>{{ notes | escape }}</p>{%- endif -%}\n          {%- if block.settings.product != blank -%}<a href=\"{{ block.settings.product.url }}\">{{ block.settings.product.title | escape }}</a>{%- endif -%}\n        </figcaption>\n      {%- endif -%}\n    </figure>\n  {%- endfor -%}\n</div>\n\n\n",
+    "expected": {
+      "name": "Lookbook",
+      "tag": "section",
+      "class": "lookbook-section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Lookbook"
+        },
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Layout",
+          "options": [
+            {
+              "value": "grid",
+              "label": "Grid"
+            },
+            {
+              "value": "stacked",
+              "label": "Stacked"
+            }
+          ],
+          "default": "grid"
+        },
+        {
+          "type": "range",
+          "id": "columns",
+          "label": "Columns",
+          "min": 2,
+          "max": 4,
+          "step": 1,
+          "default": 3
+        }
+      ],
+      "blocks": [
+        {
+          "type": "look",
+          "name": "Look",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+            },
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Title"
+            },
+            {
+              "type": "textarea",
+              "id": "notes",
+              "label": "Notes",
+              "info": "Leading and trailing spaces are removed"
+            },
+            {
+              "type": "product",
+              "id": "product",
+              "label": "Featured product"
+            }
+          ]
+        }
+      ],
+      "max_blocks": 8,
+      "presets": [
+        {
+          "name": "Lookbook",
+          "blocks": [
+            {
+              "type": "look"
+            },
+            {
+              "type": "look"
+            },
+            {
+              "type": "look"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

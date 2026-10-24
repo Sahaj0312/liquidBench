@@ -1,0 +1,37 @@
+[
+  {
+    "name": "wrong-0-reply-key-wrong-namespace",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-comment-labels.liquid": "{%- comment -%} Labels for the blog comment form. {%- endcomment -%}\n{{- 'blog-comments.css' | asset_url | stylesheet_tag -}}\n<div class=\"comment-labels\">\n  {%- assign author = comment.author | strip -%}\n  <label for=\"CommentAuthor\">\n    {%- render 'icon-comment', icon: 'person' -%}\n    {{- 'blogs.article.comment_form.name' | t -}}\n  </label>\n  <label for=\"CommentEmail\">\n    {%- render 'icon-comment', icon: 'mail' -%}\n    {{- 'blogs.article.comment_form.email' | t -}}\n  </label>\n  <label for=\"CommentBody\">\n    {{- 'blogs.article.comment_form.message' | t -}}\n  </label>\n  {%- if author != blank -%}\n    <p class=\"comment-labels__reply\">{{ 'blogs.article.comments.replying_to' | t: author: author }}</p>\n  {%- endif -%}\n</div>\n<script src=\"{{ 'blog-comments.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "wrong-1-script-asset-left-broken",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-comment-labels.liquid": "{%- comment -%} Labels for the blog comment form. {%- endcomment -%}\n{{- 'blog-comments.css' | asset_url | stylesheet_tag -}}\n<div class=\"comment-labels\">\n  {%- assign author = comment.author | strip -%}\n  <label for=\"CommentAuthor\">\n    {%- render 'icon-comment', icon: 'person' -%}\n    {{- 'blogs.article.comment_form.name' | t -}}\n  </label>\n  <label for=\"CommentEmail\">\n    {%- render 'icon-comment', icon: 'mail' -%}\n    {{- 'blogs.article.comment_form.email' | t -}}\n  </label>\n  <label for=\"CommentBody\">\n    {{- 'blogs.article.comment_form.message' | t -}}\n  </label>\n  {%- if author != blank -%}\n    <p class=\"comment-labels__reply\">{{ 'blogs.article.comment_form.replying_to' | t: author: author }}</p>\n  {%- endif -%}\n</div>\n<script src=\"{{ 'blog-comment.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "wrong-2-second-icon-render-unfixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-comment-labels.liquid": "{%- comment -%} Labels for the blog comment form. {%- endcomment -%}\n{{- 'blog-comments.css' | asset_url | stylesheet_tag -}}\n<div class=\"comment-labels\">\n  {%- assign author = comment.author | strip -%}\n  <label for=\"CommentAuthor\">\n    {%- render 'icon-comment', icon: 'person' -%}\n    {{- 'blogs.article.comment_form.name' | t -}}\n  </label>\n  <label for=\"CommentEmail\">\n    {%- render 'comment-icon', icon: 'mail' -%}\n    {{- 'blogs.article.comment_form.email' | t -}}\n  </label>\n  <label for=\"CommentBody\">\n    {{- 'blogs.article.comment_form.message' | t -}}\n  </label>\n  {%- if author != blank -%}\n    <p class=\"comment-labels__reply\">{{ 'blogs.article.comment_form.replying_to' | t: author: author }}</p>\n  {%- endif -%}\n</div>\n<script src=\"{{ 'blog-comments.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-comment-labels.liquid": "{% # theme-check-disable %}\n{%- comment -%} Labels for the blog comment form. {%- endcomment -%}\n{{- 'blog-comments.css' | asset_url | stylesheet_tag -}}\n<div class=\"comment-labels\">\n  {%- assign author = comment.author | strip -%}\n  <label for=\"CommentAuthor\">\n    {%- render 'icon-comment', icon: 'person' -%}\n    {{- 'blogs.article.comment_form.name' | t -}}\n  </label>\n  <label for=\"CommentEmail\">\n    {%- render 'icon-comment', icon: 'mail' -%}\n    {{- 'blogs.article.comment_form.email' | t -}}\n  </label>\n  <label for=\"CommentBody\">\n    {{- 'blogs.article.comment_form.message' | t -}}\n  </label>\n  {%- if author != blank -%}\n    <p class=\"comment-labels__reply\">{{ 'blogs.article.comment_form.replying_to' | t: author: author }}</p>\n  {%- endif -%}\n</div>\n<script src=\"{{ 'blog-comments.js' | asset_url }}\" defer=\"defer\"></script>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/blog-comment-labels.liquid": null
+    }
+  }
+]

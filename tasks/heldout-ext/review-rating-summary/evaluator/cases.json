@@ -1,0 +1,674 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/review-rating-summary.liquid",
+    "tags": [
+      "div",
+      "h3",
+      "p",
+      "span"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "ratings": [
+        5,
+        4,
+        4
+      ],
+      "heading": "Customer reviews"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ],
+          [
+            "data-stars",
+            "4"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "review-summary__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Customer reviews"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "4.3"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "3 reviews"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__recommend"
+              ]
+            ],
+            "children": [],
+            "text": "100% recommend"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "ratings": [
+        5
+      ],
+      "heading": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ],
+          [
+            "data-stars",
+            "5"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "5.0"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 review"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__recommend"
+              ]
+            ],
+            "children": [],
+            "text": "100% recommend"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "ratings": [],
+      "heading": "Reviews"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "review-summary review-summary--empty"
+          ]
+        ],
+        "children": [],
+        "text": "No reviews yet"
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "ratings": null,
+      "heading": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "review-summary review-summary--empty"
+          ]
+        ],
+        "children": [],
+        "text": "No reviews yet"
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "ratings": [
+        0,
+        6,
+        7
+      ],
+      "heading": "  "
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "review-summary review-summary--empty"
+          ]
+        ],
+        "children": [],
+        "text": "No reviews yet"
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "ratings": [
+        1,
+        2
+      ],
+      "heading": "Fans say <great> & \"fun\""
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ],
+          [
+            "data-stars",
+            "2"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "review-summary__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Fans say <great> & \"fun\""
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "1.5"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "2 reviews"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__recommend"
+              ]
+            ],
+            "children": [],
+            "text": "0% recommend"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "ratings": [
+        5,
+        4,
+        3
+      ],
+      "heading": "   "
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ],
+          [
+            "data-stars",
+            "4"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "4.0"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "3 reviews"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__recommend"
+              ]
+            ],
+            "children": [],
+            "text": "67% recommend"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "ratings": [
+        1,
+        1,
+        2
+      ],
+      "heading": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ],
+          [
+            "data-stars",
+            "1"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "1.3"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "3 reviews"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__recommend"
+              ]
+            ],
+            "children": [],
+            "text": "0% recommend"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "ratings": [
+        2,
+        3
+      ],
+      "heading": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ],
+          [
+            "data-stars",
+            "3"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "2.5"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "2 reviews"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__recommend"
+              ]
+            ],
+            "children": [],
+            "text": "0% recommend"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "ratings": [
+        4,
+        5,
+        1,
+        2,
+        0,
+        9,
+        3,
+        3
+      ],
+      "heading": " Top picks "
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ],
+          [
+            "data-stars",
+            "3"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "review-summary__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Top picks"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "3.0"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "6 reviews"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__recommend"
+              ]
+            ],
+            "children": [],
+            "text": "33% recommend"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "ratings": [
+        5,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "heading": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ],
+          [
+            "data-stars",
+            "2"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "1.5"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "8 reviews"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__recommend"
+              ]
+            ],
+            "children": [],
+            "text": "13% recommend"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-11",
+    "variables": {
+      "ratings": [
+        1,
+        2,
+        2,
+        2
+      ],
+      "heading": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ],
+          [
+            "data-stars",
+            "2"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "1.8"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "4 reviews"
+          },
+          {
+            "tag": "span",
+            "attrs": [
+              [
+                "class",
+                "review-summary__recommend"
+              ]
+            ],
+            "children": [],
+            "text": "0% recommend"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "id": "not-found-labels",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-references",
+  "difficulty": "hard",
+  "family": "not-found-labels",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/not-found-labels.liquid"
+  ],
+  "prompt": "The snippet snippets/not-found-labels.liquid renders the heading block of the 404 page. Its logic and markup are correct, but every literal operand it references is out of date. Theme Check reports missing assets, missing translation keys and missing snippets.\n\nFix only the literal operands so that each one resolves to a file or key that exists in the supplied theme files. Read assets/, snippets/ and locales/en.default.json, and use locales/fr.json to confirm the meaning of each key. Do not change the control flow, variables, markup or attributes.\n\nInputs (all top-level; the snippet is rendered with these parameters):\n- missing_collection: boolean.\n- search_term: string or nil.\n- home_url: string.\n\nHeading precedence (the rules overlap, and the first matching rule wins):\n1. If missing_collection is true, the heading uses the collection-not-found title, even when search_term is present.\n2. Otherwise, if search_term is not blank, the heading uses the 'no results' title, interpolated with term: search_term.\n3. Otherwise, the heading uses the generic page-not-found title.\n\nAll keys live under templates.not_found in the locale files. The required mapping is:\n- stylesheet: the 404 page CSS asset.\n- illustration: the SVG illustration asset.\n- the three headings: collection_title, search_title and title, matched to rules 1, 2 and 3 respectively.\n- the paragraph: the subtext key.\n- the back link label: the back_home key, passed as label to the existing link snippet together with url: home_url.\n- the search hint: the search_hint key, preceded by the search icon snippet.\n\nSnippet names must be given without the .liquid extension. After the fix, Theme Check must report no MissingAsset, TranslationKeyExists or MissingTemplate errors. Change only snippets/not-found-labels.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

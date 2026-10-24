@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-separator-values-trimmed",
+    "expected_pass": false,
+    "changes": {
+      "sections/lookbook-tag-strip.liquid": "{%- assign sep = section.settings.separator | default: \", \" -%}\n<div class=\"lookbook\">\n  {%- if section.settings.heading != blank -%}\n    <h2>{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  {%- for block in section.blocks -%}\n    {%- assign tag_list = block.settings.tags | split: \",\" -%}\n    <figure {{ block.shopify_attributes }}>\n      <figcaption>{{ block.settings.title | escape }}{% if tag_list.size > 0 %}: {{ tag_list | join: sep | escape }}{% endif %}</figcaption>\n    </figure>\n  {%- endfor -%}\n</div>\n\n{% schema %}\n{\n  \"name\": \"Lookbook\",\n  \"tag\": \"section\",\n  \"max_blocks\": 6,\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Lookbook\"},\n    {\"type\": \"select\", \"id\": \"separator\", \"label\": \"Tag separator\", \"options\": [{\"value\": \",\", \"label\": \"Comma\"}, {\"value\": \"/\", \"label\": \"Slash\"}, {\"value\": \"|\", \"label\": \"Pipe\"}], \"default\": \"/\"}\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"look\",\n      \"name\": \"Look\",\n      \"settings\": [\n        {\"type\": \"text\", \"id\": \"title\", \"label\": \"Title\", \"default\": \"Look\"},\n        {\"type\": \"text\", \"id\": \"tags\", \"label\": \"Tags\", \"info\": \"Separate tags with commas\"}\n      ]\n    }\n  ],\n  \"presets\": [{\"name\": \"Lookbook\", \"blocks\": [{\"type\": \"look\"}, {\"type\": \"look\"}, {\"type\": \"look\"}]}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-1-default-comma",
+    "expected_pass": false,
+    "changes": {
+      "sections/lookbook-tag-strip.liquid": "{%- assign sep = section.settings.separator | default: \", \" -%}\n<div class=\"lookbook\">\n  {%- if section.settings.heading != blank -%}\n    <h2>{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  {%- for block in section.blocks -%}\n    {%- assign tag_list = block.settings.tags | split: \",\" -%}\n    <figure {{ block.shopify_attributes }}>\n      <figcaption>{{ block.settings.title | escape }}{% if tag_list.size > 0 %}: {{ tag_list | join: sep | escape }}{% endif %}</figcaption>\n    </figure>\n  {%- endfor -%}\n</div>\n\n{% schema %}\n{\n  \"name\": \"Lookbook\",\n  \"tag\": \"section\",\n  \"max_blocks\": 6,\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Lookbook\"},\n    {\"type\": \"select\", \"id\": \"separator\", \"label\": \"Tag separator\", \"options\": [{\"value\": \", \", \"label\": \"Comma\"}, {\"value\": \" / \", \"label\": \"Slash\"}, {\"value\": \" | \", \"label\": \"Pipe\"}], \"default\": \", \"}\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"look\",\n      \"name\": \"Look\",\n      \"settings\": [\n        {\"type\": \"text\", \"id\": \"title\", \"label\": \"Title\", \"default\": \"Look\"},\n        {\"type\": \"text\", \"id\": \"tags\", \"label\": \"Tags\", \"info\": \"Separate tags with commas\"}\n      ]\n    }\n  ],\n  \"presets\": [{\"name\": \"Lookbook\", \"blocks\": [{\"type\": \"look\"}, {\"type\": \"look\"}, {\"type\": \"look\"}]}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-2-tags-still-textarea",
+    "expected_pass": false,
+    "changes": {
+      "sections/lookbook-tag-strip.liquid": "{%- assign sep = section.settings.separator | default: \", \" -%}\n<div class=\"lookbook\">\n  {%- if section.settings.heading != blank -%}\n    <h2>{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  {%- for block in section.blocks -%}\n    {%- assign tag_list = block.settings.tags | split: \",\" -%}\n    <figure {{ block.shopify_attributes }}>\n      <figcaption>{{ block.settings.title | escape }}{% if tag_list.size > 0 %}: {{ tag_list | join: sep | escape }}{% endif %}</figcaption>\n    </figure>\n  {%- endfor -%}\n</div>\n\n{% schema %}\n{\n  \"name\": \"Lookbook\",\n  \"tag\": \"section\",\n  \"max_blocks\": 6,\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Lookbook\"},\n    {\"type\": \"select\", \"id\": \"separator\", \"label\": \"Tag separator\", \"options\": [{\"value\": \", \", \"label\": \"Comma\"}, {\"value\": \" / \", \"label\": \"Slash\"}, {\"value\": \" | \", \"label\": \"Pipe\"}], \"default\": \" / \"}\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"look\",\n      \"name\": \"Look\",\n      \"settings\": [\n        {\"type\": \"text\", \"id\": \"title\", \"label\": \"Title\", \"default\": \"Look\"},\n        {\"type\": \"textarea\", \"id\": \"tags\", \"label\": \"Tags\", \"info\": \"Separate tags with commas\"}\n      ]\n    }\n  ],\n  \"presets\": [{\"name\": \"Lookbook\", \"blocks\": [{\"type\": \"look\"}, {\"type\": \"look\"}, {\"type\": \"look\"}]}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "wrong-3-preset-no-blocks-no-max",
+    "expected_pass": false,
+    "changes": {
+      "sections/lookbook-tag-strip.liquid": "{%- assign sep = section.settings.separator | default: \", \" -%}\n<div class=\"lookbook\">\n  {%- if section.settings.heading != blank -%}\n    <h2>{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  {%- for block in section.blocks -%}\n    {%- assign tag_list = block.settings.tags | split: \",\" -%}\n    <figure {{ block.shopify_attributes }}>\n      <figcaption>{{ block.settings.title | escape }}{% if tag_list.size > 0 %}: {{ tag_list | join: sep | escape }}{% endif %}</figcaption>\n    </figure>\n  {%- endfor -%}\n</div>\n\n{% schema %}\n{\n  \"name\": \"Lookbook\",\n  \"tag\": \"section\",\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Lookbook\"},\n    {\"type\": \"select\", \"id\": \"separator\", \"label\": \"Tag separator\", \"options\": [{\"value\": \", \", \"label\": \"Comma\"}, {\"value\": \" / \", \"label\": \"Slash\"}, {\"value\": \" | \", \"label\": \"Pipe\"}], \"default\": \" / \"}\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"look\",\n      \"name\": \"Look\",\n      \"settings\": [\n        {\"type\": \"text\", \"id\": \"title\", \"label\": \"Title\", \"default\": \"Look\"},\n        {\"type\": \"text\", \"id\": \"tags\", \"label\": \"Tags\", \"info\": \"Separate tags with commas\"}\n      ]\n    }\n  ],\n  \"presets\": [{\"name\": \"Lookbook\"}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "sections/lookbook-tag-strip.liquid": "{% # theme-check-disable %}\n{%- assign sep = section.settings.separator | default: \", \" -%}\n<div class=\"lookbook\">\n  {%- if section.settings.heading != blank -%}\n    <h2>{{ section.settings.heading | escape }}</h2>\n  {%- endif -%}\n  {%- for block in section.blocks -%}\n    {%- assign tag_list = block.settings.tags | split: \",\" -%}\n    <figure {{ block.shopify_attributes }}>\n      <figcaption>{{ block.settings.title | escape }}{% if tag_list.size > 0 %}: {{ tag_list | join: sep | escape }}{% endif %}</figcaption>\n    </figure>\n  {%- endfor -%}\n</div>\n\n{% schema %}\n{\n  \"name\": \"Lookbook\",\n  \"tag\": \"section\",\n  \"max_blocks\": 6,\n  \"settings\": [\n    {\"type\": \"text\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"Lookbook\"},\n    {\"type\": \"select\", \"id\": \"separator\", \"label\": \"Tag separator\", \"options\": [{\"value\": \", \", \"label\": \"Comma\"}, {\"value\": \" / \", \"label\": \"Slash\"}, {\"value\": \" | \", \"label\": \"Pipe\"}], \"default\": \" / \"}\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"look\",\n      \"name\": \"Look\",\n      \"settings\": [\n        {\"type\": \"text\", \"id\": \"title\", \"label\": \"Title\", \"default\": \"Look\"},\n        {\"type\": \"text\", \"id\": \"tags\", \"label\": \"Tags\", \"info\": \"Separate tags with commas\"}\n      ]\n    }\n  ],\n  \"presets\": [{\"name\": \"Lookbook\", \"blocks\": [{\"type\": \"look\"}, {\"type\": \"look\"}, {\"type\": \"look\"}]}]\n}\n{% endschema %}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "sections/lookbook-tag-strip.liquid": null
+    }
+  }
+]

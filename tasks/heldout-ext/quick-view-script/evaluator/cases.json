@@ -1,0 +1,520 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/quick-view-script.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidRawTag",
+          "name": "comment",
+          "markup": "",
+          "body": {
+            "type": "RawMarkup",
+            "kind": "text",
+            "value": " Quick view: renders triggers for available products and loads the script once. ",
+            "nodes": [
+              {
+                "type": "TextNode",
+                "value": "Quick view: renders triggers for available products and loads the script once."
+              }
+            ]
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-",
+          "delimiterWhitespaceStart": "-",
+          "delimiterWhitespaceEnd": "-"
+        },
+        {
+          "type": "LiquidTag",
+          "name": "liquid",
+          "markup": [
+            {
+              "type": "LiquidTag",
+              "name": "assign",
+              "markup": {
+                "type": "AssignMarkup",
+                "name": "quick_view_count",
+                "value": {
+                  "type": "LiquidVariable",
+                  "expression": {
+                    "type": "Number",
+                    "value": "0"
+                  },
+                  "filters": []
+                }
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            },
+            {
+              "type": "LiquidTag",
+              "name": "assign",
+              "markup": {
+                "type": "AssignMarkup",
+                "name": "script_loaded",
+                "value": {
+                  "type": "LiquidVariable",
+                  "expression": {
+                    "type": "LiquidLiteral",
+                    "keyword": "false",
+                    "value": false
+                  },
+                  "filters": []
+                }
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            },
+            {
+              "type": "LiquidTag",
+              "name": "assign",
+              "markup": {
+                "type": "AssignMarkup",
+                "name": "open_label",
+                "value": {
+                  "type": "LiquidVariable",
+                  "expression": {
+                    "type": "String",
+                    "single": true,
+                    "value": "products.quick_view.open"
+                  },
+                  "filters": [
+                    {
+                      "type": "LiquidFilter",
+                      "name": "t",
+                      "args": []
+                    }
+                  ]
+                }
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            },
+            {
+              "type": "LiquidTag",
+              "name": "assign",
+              "markup": {
+                "type": "AssignMarkup",
+                "name": "close_label",
+                "value": {
+                  "type": "LiquidVariable",
+                  "expression": {
+                    "type": "String",
+                    "single": true,
+                    "value": "products.quick_view.close"
+                  },
+                  "filters": [
+                    {
+                      "type": "LiquidFilter",
+                      "name": "t",
+                      "args": []
+                    }
+                  ]
+                }
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            },
+            {
+              "type": "LiquidTag",
+              "name": "assign",
+              "markup": {
+                "type": "AssignMarkup",
+                "name": "loading_label",
+                "value": {
+                  "type": "LiquidVariable",
+                  "expression": {
+                    "type": "String",
+                    "single": true,
+                    "value": "products.quick_view.loading"
+                  },
+                  "filters": [
+                    {
+                      "type": "LiquidFilter",
+                      "name": "t",
+                      "args": []
+                    }
+                  ]
+                }
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            }
+          ],
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-"
+        },
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "quick-view.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "div"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "quick-view-list"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "LiquidTag",
+              "name": "for",
+              "markup": {
+                "type": "ForMarkup",
+                "variableName": "product",
+                "collection": {
+                  "type": "VariableLookup",
+                  "name": "products",
+                  "lookups": [],
+                  "lookupModes": []
+                },
+                "reversed": false,
+                "args": []
+              },
+              "children": [
+                {
+                  "type": "LiquidBranch",
+                  "name": null,
+                  "markup": "",
+                  "children": [
+                    {
+                      "type": "LiquidTag",
+                      "name": "if",
+                      "markup": {
+                        "type": "VariableLookup",
+                        "name": "product",
+                        "lookups": [
+                          {
+                            "type": "String",
+                            "value": "available"
+                          }
+                        ],
+                        "lookupModes": [
+                          "bareword"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "LiquidBranch",
+                          "name": null,
+                          "markup": "",
+                          "children": [
+                            {
+                              "type": "LiquidTag",
+                              "name": "assign",
+                              "markup": {
+                                "type": "AssignMarkup",
+                                "name": "quick_view_count",
+                                "value": {
+                                  "type": "LiquidVariable",
+                                  "expression": {
+                                    "type": "VariableLookup",
+                                    "name": "quick_view_count",
+                                    "lookups": [],
+                                    "lookupModes": []
+                                  },
+                                  "filters": [
+                                    {
+                                      "type": "LiquidFilter",
+                                      "name": "plus",
+                                      "args": [
+                                        {
+                                          "type": "Number",
+                                          "value": "1"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              },
+                              "whitespaceStart": "-",
+                              "whitespaceEnd": "-"
+                            },
+                            {
+                              "type": "LiquidTag",
+                              "name": "render",
+                              "markup": {
+                                "type": "RenderMarkup",
+                                "snippet": {
+                                  "type": "String",
+                                  "single": true,
+                                  "value": "quick-view-trigger"
+                                },
+                                "variable": null,
+                                "alias": null,
+                                "args": [
+                                  {
+                                    "type": "NamedArgument",
+                                    "name": "product",
+                                    "value": {
+                                      "type": "VariableLookup",
+                                      "name": "product",
+                                      "lookups": [],
+                                      "lookupModes": []
+                                    }
+                                  },
+                                  {
+                                    "type": "NamedArgument",
+                                    "name": "index",
+                                    "value": {
+                                      "type": "VariableLookup",
+                                      "name": "quick_view_count",
+                                      "lookups": [],
+                                      "lookupModes": []
+                                    }
+                                  },
+                                  {
+                                    "type": "NamedArgument",
+                                    "name": "label",
+                                    "value": {
+                                      "type": "VariableLookup",
+                                      "name": "open_label",
+                                      "lookups": [],
+                                      "lookupModes": []
+                                    }
+                                  }
+                                ]
+                              },
+                              "whitespaceStart": "-",
+                              "whitespaceEnd": "-"
+                            },
+                            {
+                              "type": "LiquidTag",
+                              "name": "unless",
+                              "markup": {
+                                "type": "VariableLookup",
+                                "name": "script_loaded",
+                                "lookups": [],
+                                "lookupModes": []
+                              },
+                              "children": [
+                                {
+                                  "type": "LiquidBranch",
+                                  "name": null,
+                                  "markup": "",
+                                  "children": [
+                                    {
+                                      "type": "HtmlRawNode",
+                                      "name": "script",
+                                      "attributes": [
+                                        {
+                                          "type": "AttrDoubleQuoted",
+                                          "name": [
+                                            {
+                                              "type": "TextNode",
+                                              "value": "src"
+                                            }
+                                          ],
+                                          "value": [
+                                            {
+                                              "type": "LiquidVariableOutput",
+                                              "markup": {
+                                                "type": "LiquidVariable",
+                                                "expression": {
+                                                  "type": "String",
+                                                  "single": true,
+                                                  "value": "quick-view.js"
+                                                },
+                                                "filters": [
+                                                  {
+                                                    "type": "LiquidFilter",
+                                                    "name": "asset_url",
+                                                    "args": []
+                                                  }
+                                                ]
+                                              },
+                                              "whitespaceStart": "",
+                                              "whitespaceEnd": ""
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "AttrDoubleQuoted",
+                                          "name": [
+                                            {
+                                              "type": "TextNode",
+                                              "value": "defer"
+                                            }
+                                          ],
+                                          "value": [
+                                            {
+                                              "type": "TextNode",
+                                              "value": "defer"
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "body": {
+                                        "type": "RawMarkup",
+                                        "kind": "javascript",
+                                        "value": "",
+                                        "nodes": []
+                                      }
+                                    },
+                                    {
+                                      "type": "LiquidTag",
+                                      "name": "assign",
+                                      "markup": {
+                                        "type": "AssignMarkup",
+                                        "name": "script_loaded",
+                                        "value": {
+                                          "type": "LiquidVariable",
+                                          "expression": {
+                                            "type": "LiquidLiteral",
+                                            "keyword": "true",
+                                            "value": true
+                                          },
+                                          "filters": []
+                                        }
+                                      },
+                                      "whitespaceStart": "-",
+                                      "whitespaceEnd": "-"
+                                    }
+                                  ],
+                                  "whitespaceStart": "",
+                                  "whitespaceEnd": ""
+                                }
+                              ],
+                              "whitespaceStart": "-",
+                              "whitespaceEnd": "-",
+                              "delimiterWhitespaceStart": "-",
+                              "delimiterWhitespaceEnd": "-"
+                            }
+                          ],
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ],
+                      "whitespaceStart": "-",
+                      "whitespaceEnd": "-",
+                      "delimiterWhitespaceStart": "-",
+                      "delimiterWhitespaceEnd": "-"
+                    }
+                  ],
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ],
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-",
+              "delimiterWhitespaceStart": "-",
+              "delimiterWhitespaceEnd": "-"
+            }
+          ]
+        },
+        {
+          "type": "LiquidTag",
+          "name": "if",
+          "markup": {
+            "type": "Comparison",
+            "comparator": ">",
+            "left": {
+              "type": "VariableLookup",
+              "name": "quick_view_count",
+              "lookups": [],
+              "lookupModes": []
+            },
+            "right": {
+              "type": "Number",
+              "value": "0"
+            }
+          },
+          "children": [
+            {
+              "type": "LiquidBranch",
+              "name": null,
+              "markup": "",
+              "children": [
+                {
+                  "type": "LiquidTag",
+                  "name": "render",
+                  "markup": {
+                    "type": "RenderMarkup",
+                    "snippet": {
+                      "type": "String",
+                      "single": true,
+                      "value": "quick-view-modal"
+                    },
+                    "variable": null,
+                    "alias": null,
+                    "args": [
+                      {
+                        "type": "NamedArgument",
+                        "name": "close_label",
+                        "value": {
+                          "type": "VariableLookup",
+                          "name": "close_label",
+                          "lookups": [],
+                          "lookupModes": []
+                        }
+                      },
+                      {
+                        "type": "NamedArgument",
+                        "name": "loading_label",
+                        "value": {
+                          "type": "VariableLookup",
+                          "name": "loading_label",
+                          "lookups": [],
+                          "lookupModes": []
+                        }
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-"
+                }
+              ],
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            }
+          ],
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-",
+          "delimiterWhitespaceStart": "-",
+          "delimiterWhitespaceEnd": "-"
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

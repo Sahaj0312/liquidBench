@@ -1,0 +1,15 @@
+{
+  "id": "local-currency-notice",
+  "version": 1,
+  "split": "heldout",
+  "category": "liquid-syntax",
+  "difficulty": "easy",
+  "family": "local-currency-notice",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/local-currency-notice.liquid"
+  ],
+  "prompt": "Fix snippets/local-currency-notice.liquid. It shows shoppers which other currencies prices are also displayed in. Right now duplicate currency entries appear more than once.\n\nInputs (all top-level variables, none under section.settings):\n- `currencies`: array of objects, never null, may be empty. Each object has `code` (string of 2-4 uppercase letters, never null, e.g. \"EUR\") and `label` (non-empty string, never null, may contain < > & \" characters).\n- `shop_currency`: string, never null, the store's own currency code, e.g. \"USD\".\n\nBehavior:\n- Walk `currencies` in array order.\n- Skip any entry whose `code` equals `shop_currency` (exact match).\n- Skip any entry whose `code` exactly equals the code of an entry already included earlier. Only the first occurrence of a code is kept, together with its own label. Matching is on the whole code: a code that is merely a prefix or substring of an earlier code (e.g. \"AU\" after \"AUD\") is a different code and must be included.\n- Each included entry becomes the text `LABEL (CODE)`, where LABEL is the HTML-escaped label and CODE is the code.\n- Join included entries with `, ` (comma and one space).\n\nOutput, exactly and with no whitespace or newlines before, after or inside the element other than the text shown:\n`<p class=\"currency-notice\">Also shown in: ENTRIES</p>`\n\nIf no entry is included (empty array, or every entry skipped), output nothing at all (empty string). Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/local-currency-notice.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

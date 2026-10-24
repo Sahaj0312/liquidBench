@@ -1,0 +1,32 @@
+{%- assign subtotal = 0 -%}
+{%- assign count = 0 -%}
+{%- capture rows -%}
+{%- for item in items -%}
+{%- if item.quantity > 0 -%}
+{%- assign line = item.quantity | times: item.unit_price_cents -%}
+{%- assign subtotal = subtotal | plus: line -%}
+{%- assign count = count | plus: 1 -%}
+{%- assign ld = line | divided_by: 100 -%}
+{%- assign lc = line | modulo: 100 -%}
+<li><span class="qty">{{ item.quantity }}</span><span class="title">{{ item.title | escape }}</span><span class="line">${{ ld }}.{% if lc < 10 %}0{% endif %}{{ lc }}</span></li>
+{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- if count == 0 -%}
+<p class="bundle-empty">This bundle is empty</p>
+{%- else -%}
+{%- assign pct = discount_percent | default: 0 -%}
+{%- assign savings = subtotal | times: pct | divided_by: 100 -%}
+{%- assign total = subtotal | minus: savings -%}
+{%- assign sd = subtotal | divided_by: 100 -%}
+{%- assign sc = subtotal | modulo: 100 -%}
+{%- assign vd = savings | divided_by: 100 -%}
+{%- assign vc = savings | modulo: 100 -%}
+{%- assign td = total | divided_by: 100 -%}
+{%- assign tc = total | modulo: 100 -%}
+<ul class="bundle">{{ rows }}</ul><p class="bundle-subtotal">Subtotal: ${{ sd }}.{% if sc < 10 %}0{% endif %}{{ sc }}</p>
+{%- if pct > 0 -%}
+<p class="bundle-discount">Savings ({{ pct }}%): -${{ vd }}.{% if vc < 10 %}0{% endif %}{{ vc }}</p>
+{%- endif -%}
+<p class="bundle-total">Total: ${{ td }}.{% if tc < 10 %}0{% endif %}{{ tc }}</p>
+{%- endif -%}

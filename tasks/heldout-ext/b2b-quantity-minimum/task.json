@@ -1,0 +1,15 @@
+{
+  "id": "b2b-quantity-minimum",
+  "version": 1,
+  "split": "heldout",
+  "category": "liquid-syntax",
+  "difficulty": "medium",
+  "family": "b2b-quantity-minimum",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/b2b-quantity-minimum.liquid"
+  ],
+  "prompt": "Rewrite the snippet snippets/b2b-quantity-minimum.liquid so that it renders a wholesale quantity-tier table.\n\nInputs (all top-level variables, there is no section object):\n- tiers: array, possibly empty. Each item is an object with min_qty (integer >= 1, never null) and price (string, never null). Tiers are already sorted by ascending min_qty, and the values are distinct.\n- unit_label: string or null.\n\nRules:\n- LABEL is the HTML-escaped unit_label. If unit_label is null or the empty string, LABEL is `units`.\n- If tiers is empty, output nothing (empty string).\n- Otherwise output exactly this, with no whitespace or newlines between tags:\n<div class=\"b2b-min\"><p class=\"b2b-min__note\">Minimum order: FIRSTMIN LABEL</p><ul>ROWS</ul></div>\n  FIRSTMIN is the min_qty of the first tier.\n- ROWS contains one row per tier, in order: <liCLASS><span>RANGE</span> <span>PRICE</span></li>\n  - There is a single space between the two spans.\n  - PRICE is the HTML-escaped price.\n- CLASS is set as follows:\n  - If the tier is both first and last (only one tier), CLASS is ` class=\"b2b-min__base b2b-min__top\"`.\n  - Otherwise the first tier gets ` class=\"b2b-min__base\"` and the last tier gets ` class=\"b2b-min__top\"`.\n  - Middle tiers have no class attribute at all.\n- RANGE is computed as follows:\n  - For the last tier, RANGE is `MIN+ LABEL` (for example `100+ units`).\n  - For every other tier, let UPPER be the next tier's min_qty minus 1. If UPPER equals this tier's min_qty, RANGE is `MIN LABEL`. Otherwise RANGE is `MIN–UPPER LABEL`, using an en dash (–) with no spaces around it, for example `10–49 units`.\n- Escape with the core escape filter, so & < > \" ' become &amp; &lt; &gt; &quot; &#39;. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/b2b-quantity-minimum.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

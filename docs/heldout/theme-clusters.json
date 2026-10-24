@@ -1,0 +1,613 @@
+{
+  "rule": "Authoring sampled each held-out theme in several requests (with different angles), so\nthe extension holds several tasks about the same storefront feature. Such tasks are\nnot independent, and the paired McNemar test assumes they are. This step groups\nthemes into clusters (themes sharing a non-generic word stem, transitively), assigns\neach task to the theme of its request that its family name and prompt match best,\nand marks the earliest-authored task per cluster as primary. Every task still runs;\nthe primary test uses the primary tasks plus the original suite. Run after the\nambiguity audit and before freezing; no model has attempted any of these tasks.\nuv run python scripts/cluster_heldout_ext.py [--dry-run]\n",
+  "decisions": [
+    {
+      "task": "featured-collection-tabs",
+      "theme": "featured collection tabs",
+      "theme_tie": false,
+      "cluster": "featured collection tabs",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "returns-window-eligibility",
+      "theme": "returns window eligibility",
+      "theme_tie": false,
+      "cluster": "returns window eligibility | sample request eligibility | student discount eligibility | volume discount ladder",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "pricing-table",
+      "theme": "pricing table section",
+      "theme_tie": false,
+      "cluster": "installment plan label | pricing plans section | pricing table section | tiered pricing table",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "presale-access-gate",
+      "theme": "pre-sale access gate",
+      "theme_tie": false,
+      "cluster": "pre-sale access gate",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "social-feed-wall",
+      "theme": "social feed section",
+      "theme_tie": false,
+      "cluster": "social feed section",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "pricing-plans-grid",
+      "theme": "pricing plans section",
+      "theme_tie": false,
+      "cluster": "installment plan label | pricing plans section | pricing table section | tiered pricing table",
+      "primary": false,
+      "same_cluster_as": "pricing-table"
+    },
+    {
+      "task": "lookbook-trimmed",
+      "theme": "lookbook section",
+      "theme_tie": false,
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "app-download-banner",
+      "theme": "app download section",
+      "theme_tie": false,
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary": false,
+      "same_cluster_as": "lookbook-trimmed"
+    },
+    {
+      "task": "blog-comment-labels",
+      "theme": "blog comment labels",
+      "theme_tie": false,
+      "cluster": "blog comment labels",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "order-tracking-timeline",
+      "theme": "order tracking timeline",
+      "theme_tie": false,
+      "cluster": "made-to-order lead time | milestones timeline section | order status labels | order tracking timeline | timeline section",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "cart-drawer-script",
+      "theme": "cart drawer script",
+      "theme_tie": false,
+      "cluster": "cart drawer script",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "event-schedule-list",
+      "theme": "event schedule list",
+      "theme_tie": false,
+      "cluster": "cookie banner labels | event banner section | event listing section | event schedule list | store events calendar",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "trust-badge-row",
+      "theme": "trust badge row section",
+      "theme_tie": false,
+      "cluster": "allergen badges | trust badge row section | trust badges section",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "app-promo-platforms",
+      "theme": "app promo section",
+      "theme_tie": false,
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary": false,
+      "same_cluster_as": "lookbook-trimmed"
+    },
+    {
+      "task": "made-to-order-lead-time",
+      "theme": "made-to-order lead time",
+      "theme_tie": false,
+      "cluster": "made-to-order lead time | milestones timeline section | order status labels | order tracking timeline | timeline section",
+      "primary": false,
+      "same_cluster_as": "order-tracking-timeline"
+    },
+    {
+      "task": "before-after-slider",
+      "theme": "before-after slider",
+      "theme_tie": false,
+      "cluster": "before-after slider",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "b2b-quantity-minimum",
+      "theme": "B2B quantity minimum",
+      "theme_tie": false,
+      "cluster": "B2B quantity minimum",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "social-feed-grid",
+      "theme": "social feed section",
+      "theme_tie": false,
+      "cluster": "social feed section",
+      "primary": false,
+      "same_cluster_as": "social-feed-wall"
+    },
+    {
+      "task": "contact-page-labels",
+      "theme": "contact page labels",
+      "theme_tie": false,
+      "cluster": "contact page labels",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "seasonal-closure-notice",
+      "theme": "seasonal closure notice",
+      "theme_tie": false,
+      "cluster": "seasonal closure notice",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "currency-selector-labels",
+      "theme": "currency selector labels",
+      "theme_tie": false,
+      "cluster": "currency selector labels | local currency notice",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "press-mentions",
+      "theme": "press mentions section",
+      "theme_tie": false,
+      "cluster": "press mentions section | press quotes section",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "mto-lead-time",
+      "theme": "made-to-order lead time",
+      "theme_tie": false,
+      "cluster": "made-to-order lead time | milestones timeline section | order status labels | order tracking timeline | timeline section",
+      "primary": false,
+      "same_cluster_as": "order-tracking-timeline"
+    },
+    {
+      "task": "podcast-embed-episodes",
+      "theme": "podcast embed section",
+      "theme_tie": false,
+      "cluster": "podcast embed section | podcast episode section",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "warehouse-availability-list",
+      "theme": "warehouse availability list",
+      "theme_tie": false,
+      "cluster": "engraving availability | warehouse availability list",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "milestones-timeline",
+      "theme": "milestones timeline section",
+      "theme_tie": false,
+      "cluster": "made-to-order lead time | milestones timeline section | order status labels | order tracking timeline | timeline section",
+      "primary": false,
+      "same_cluster_as": "order-tracking-timeline"
+    },
+    {
+      "task": "award-list-tiers",
+      "theme": "award list section",
+      "theme_tie": false,
+      "cluster": "award list section | awards section",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "review-rating-summary",
+      "theme": "review summary",
+      "theme_tie": false,
+      "cluster": "product reviews script | review summary",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "bundle-contents-list",
+      "theme": "bundle contents list",
+      "theme_tie": false,
+      "cluster": "bundle contents list",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "cookie-consent-labels",
+      "theme": "cookie banner labels",
+      "theme_tie": false,
+      "cluster": "cookie banner labels | event banner section | event listing section | event schedule list | store events calendar",
+      "primary": false,
+      "same_cluster_as": "event-schedule-list"
+    },
+    {
+      "task": "back-to-top-icon",
+      "theme": "back-to-top icon",
+      "theme_tie": false,
+      "cluster": "back-to-top icon",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "order-status-labels",
+      "theme": "order status labels",
+      "theme_tie": false,
+      "cluster": "made-to-order lead time | milestones timeline section | order status labels | order tracking timeline | timeline section",
+      "primary": false,
+      "same_cluster_as": "order-tracking-timeline"
+    },
+    {
+      "task": "donation-round-up",
+      "theme": "donation round-up prompt",
+      "theme_tie": false,
+      "cluster": "donation round-up prompt",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "product-dimension-list",
+      "theme": "product dimension list",
+      "theme_tie": false,
+      "cluster": "product dimension list",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "compliance-warning",
+      "theme": "product compliance warning",
+      "theme_tie": false,
+      "cluster": "product compliance warning",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "gift-registry-items",
+      "theme": "gift registry items",
+      "theme_tie": false,
+      "cluster": "gift card balance notice | gift card page labels | gift registry items",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "not-found-labels",
+      "theme": "not-found page labels",
+      "theme_tie": false,
+      "cluster": "not-found page labels",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "rental-period-label",
+      "theme": "rental period label",
+      "theme_tie": false,
+      "cluster": "rental period label",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "installment-plan-label",
+      "theme": "installment plan label",
+      "theme_tie": false,
+      "cluster": "installment plan label | pricing plans section | pricing table section | tiered pricing table",
+      "primary": false,
+      "same_cluster_as": "pricing-table"
+    },
+    {
+      "task": "size-guide-panel",
+      "theme": "size guide section",
+      "theme_tie": false,
+      "cluster": "size chart rows | size guide labels | size guide section",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "awards-showcase",
+      "theme": "awards section",
+      "theme_tie": false,
+      "cluster": "award list section | awards section",
+      "primary": false,
+      "same_cluster_as": "award-list-tiers"
+    },
+    {
+      "task": "local-currency-notice",
+      "theme": "local currency notice",
+      "theme_tie": false,
+      "cluster": "currency selector labels | local currency notice",
+      "primary": false,
+      "same_cluster_as": "currency-selector-labels"
+    },
+    {
+      "task": "social-feed-strip",
+      "theme": "social feed section",
+      "theme_tie": false,
+      "cluster": "social feed section",
+      "primary": false,
+      "same_cluster_as": "social-feed-wall"
+    },
+    {
+      "task": "how-it-works-trimmed",
+      "theme": "how-it-works steps section",
+      "theme_tie": false,
+      "cluster": "how-it-works steps section",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "app-download-panel",
+      "theme": "app download section",
+      "theme_tie": false,
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary": false,
+      "same_cluster_as": "lookbook-trimmed"
+    },
+    {
+      "task": "podcast-season-embeds",
+      "theme": "podcast embed section",
+      "theme_tie": false,
+      "cluster": "podcast embed section | podcast episode section",
+      "primary": false,
+      "same_cluster_as": "podcast-embed-episodes"
+    },
+    {
+      "task": "podcast-embed",
+      "theme": "podcast embed section",
+      "theme_tie": false,
+      "cluster": "podcast embed section | podcast episode section",
+      "primary": false,
+      "same_cluster_as": "podcast-embed-episodes"
+    },
+    {
+      "task": "volume-discount-ladder",
+      "theme": "volume discount ladder",
+      "theme_tie": false,
+      "cluster": "returns window eligibility | sample request eligibility | student discount eligibility | volume discount ladder",
+      "primary": false,
+      "same_cluster_as": "returns-window-eligibility"
+    },
+    {
+      "task": "awards-count-list",
+      "theme": "awards section",
+      "theme_tie": false,
+      "cluster": "award list section | awards section",
+      "primary": false,
+      "same_cluster_as": "award-list-tiers"
+    },
+    {
+      "task": "timeline-wrapped",
+      "theme": "timeline section",
+      "theme_tie": false,
+      "cluster": "made-to-order lead time | milestones timeline section | order status labels | order tracking timeline | timeline section",
+      "primary": false,
+      "same_cluster_as": "order-tracking-timeline"
+    },
+    {
+      "task": "size-chart-rows",
+      "theme": "size chart rows",
+      "theme_tie": false,
+      "cluster": "size chart rows | size guide labels | size guide section",
+      "primary": false,
+      "same_cluster_as": "size-guide-panel"
+    },
+    {
+      "task": "press-quotes",
+      "theme": "press quotes section",
+      "theme_tie": false,
+      "cluster": "press mentions section | press quotes section",
+      "primary": false,
+      "same_cluster_as": "press-mentions"
+    },
+    {
+      "task": "gift-card-balance-notice",
+      "theme": "gift card balance notice",
+      "theme_tie": false,
+      "cluster": "gift card balance notice | gift card page labels | gift registry items",
+      "primary": false,
+      "same_cluster_as": "gift-registry-items"
+    },
+    {
+      "task": "color-palette-chips",
+      "theme": "color palette chips",
+      "theme_tie": false,
+      "cluster": "color palette chips",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "warehouse-availability",
+      "theme": "warehouse availability list",
+      "theme_tie": false,
+      "cluster": "engraving availability | warehouse availability list",
+      "primary": false,
+      "same_cluster_as": "warehouse-availability-list"
+    },
+    {
+      "task": "store-events-calendar",
+      "theme": "store events calendar",
+      "theme_tie": false,
+      "cluster": "cookie banner labels | event banner section | event listing section | event schedule list | store events calendar",
+      "primary": false,
+      "same_cluster_as": "event-schedule-list"
+    },
+    {
+      "task": "social-feed-counts",
+      "theme": "social feed section",
+      "theme_tie": false,
+      "cluster": "social feed section",
+      "primary": false,
+      "same_cluster_as": "social-feed-wall"
+    },
+    {
+      "task": "social-feed-section",
+      "theme": "social feed section",
+      "theme_tie": false,
+      "cluster": "social feed section",
+      "primary": false,
+      "same_cluster_as": "social-feed-wall"
+    },
+    {
+      "task": "review-summary",
+      "theme": "review summary",
+      "theme_tie": false,
+      "cluster": "product reviews script | review summary",
+      "primary": false,
+      "same_cluster_as": "review-rating-summary"
+    },
+    {
+      "task": "engraving-availability",
+      "theme": "engraving availability",
+      "theme_tie": false,
+      "cluster": "engraving availability | warehouse availability list",
+      "primary": false,
+      "same_cluster_as": "warehouse-availability-list"
+    },
+    {
+      "task": "sample-request-eligibility",
+      "theme": "sample request eligibility",
+      "theme_tie": false,
+      "cluster": "returns window eligibility | sample request eligibility | student discount eligibility | volume discount ladder",
+      "primary": false,
+      "same_cluster_as": "returns-window-eligibility"
+    },
+    {
+      "task": "size-guide-units",
+      "theme": "size guide section",
+      "theme_tie": false,
+      "cluster": "size chart rows | size guide labels | size guide section",
+      "primary": false,
+      "same_cluster_as": "size-guide-panel"
+    },
+    {
+      "task": "lookbook-gallery",
+      "theme": "lookbook section",
+      "theme_tie": false,
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary": false,
+      "same_cluster_as": "lookbook-trimmed"
+    },
+    {
+      "task": "quick-view-script",
+      "theme": "quick view script",
+      "theme_tie": false,
+      "cluster": "quick view script",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "product-reviews-script",
+      "theme": "product reviews script",
+      "theme_tie": false,
+      "cluster": "product reviews script | review summary",
+      "primary": false,
+      "same_cluster_as": "review-rating-summary"
+    },
+    {
+      "task": "lookbook-tag-strip",
+      "theme": "lookbook section",
+      "theme_tie": false,
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary": false,
+      "same_cluster_as": "lookbook-trimmed"
+    },
+    {
+      "task": "lookbook-grid-defaults",
+      "theme": "lookbook grid section",
+      "theme_tie": false,
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary": false,
+      "same_cluster_as": "lookbook-trimmed"
+    },
+    {
+      "task": "event-listing-escaped",
+      "theme": "event listing section",
+      "theme_tie": false,
+      "cluster": "cookie banner labels | event banner section | event listing section | event schedule list | store events calendar",
+      "primary": false,
+      "same_cluster_as": "event-schedule-list"
+    },
+    {
+      "task": "lookbook-wrapped",
+      "theme": "lookbook section",
+      "theme_tie": false,
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary": false,
+      "same_cluster_as": "lookbook-trimmed"
+    },
+    {
+      "task": "podcast-episode-list",
+      "theme": "podcast episode section",
+      "theme_tie": false,
+      "cluster": "podcast embed section | podcast episode section",
+      "primary": false,
+      "same_cluster_as": "podcast-embed-episodes"
+    },
+    {
+      "task": "lightbox-stylesheet",
+      "theme": "lightbox stylesheet",
+      "theme_tie": false,
+      "cluster": "lightbox stylesheet",
+      "primary": true,
+      "same_cluster_as": null
+    },
+    {
+      "task": "lookbook-grid",
+      "theme": "lookbook grid section",
+      "theme_tie": false,
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary": false,
+      "same_cluster_as": "lookbook-trimmed"
+    },
+    {
+      "task": "promo-grid",
+      "theme": "promo grid section",
+      "theme_tie": false,
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary": false,
+      "same_cluster_as": "lookbook-trimmed"
+    },
+    {
+      "task": "event-banner-status",
+      "theme": "event banner section",
+      "theme_tie": false,
+      "cluster": "cookie banner labels | event banner section | event listing section | event schedule list | store events calendar",
+      "primary": false,
+      "same_cluster_as": "event-schedule-list"
+    },
+    {
+      "task": "award-list-edges",
+      "theme": "award list section",
+      "theme_tie": false,
+      "cluster": "award list section | awards section",
+      "primary": false,
+      "same_cluster_as": "award-list-tiers"
+    },
+    {
+      "task": "allergen-badges",
+      "theme": "allergen badges",
+      "theme_tie": false,
+      "cluster": "allergen badges | trust badge row section | trust badges section",
+      "primary": false,
+      "same_cluster_as": "trust-badge-row"
+    }
+  ]
+}

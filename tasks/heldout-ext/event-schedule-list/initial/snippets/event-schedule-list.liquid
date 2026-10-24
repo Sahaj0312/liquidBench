@@ -1,0 +1,6 @@
+<p class="summary">{{ events.size }} events</p>
+<ul class="schedule">
+  {%- for ev in events -%}
+    <li><h3>{{ ev.name }}</h3><span class="sessions">{{ ev.sessions }} sessions</span><span class="seats">{{ ev.seats_left }} seats left</span></li>
+  {%- endfor -%}
+</ul>

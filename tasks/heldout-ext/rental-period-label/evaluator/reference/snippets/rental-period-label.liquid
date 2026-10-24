@@ -1,0 +1,6 @@
+{%- assign count = periods | size -%}
+{%- if count == 1 -%}
+<p class="rental-period">{{ periods.first | escape }} only</p>
+{%- elsif count > 1 -%}
+<p class="rental-period">From {{ periods.first | escape }} to {{ periods.last | escape }}</p>
+{%- endif -%}

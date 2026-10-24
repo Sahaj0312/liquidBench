@@ -1,0 +1,6 @@
+{{ 'back-to-top.css' | asset_url | stylesheet_tag }}
+<a href="#MainContent" class="back-to-top" aria-label="{{ 'general.back_to_top.label' | t }}">
+  <img src="{{ 'icon-arrow-up.svg' | asset_url }}" alt="" width="16" height="16">
+  {% render 'icon-chevron-up' %}
+  <span>{{ 'general.back_to_top.text' | t }}</span>
+</a>

@@ -1,0 +1,4 @@
+<section class="lookbook"><h2 class="lookbook__heading">{{ section.settings.heading | escape }}</h2><ul class="lookbook__grid lookbook__grid--{{ section.settings.columns }}">{%- for block in section.blocks -%}<li class="lookbook__item"><figure data-image="{{ block.settings.image }}"><figcaption>{{ block.settings.caption | escape }}</figcaption></figure></li>{%- endfor -%}</ul></section>
+{% schema %}
+{"name":"Lookbook grid","settings":[{"type":"text","id":"heading","label":"Heading","default":"Shop the look"},{"type":"range","id":"columns","label":"Columns","min":2,"max":4,"step":1,"default":3}],"blocks":[{"type":"look","name":"Look","settings":[{"type":"text","id":"image","label":"Image URL"},{"type":"text","id":"caption","label":"Caption"}]}],"presets":[{"name":"Lookbook grid"}]}
+{% endschema %}

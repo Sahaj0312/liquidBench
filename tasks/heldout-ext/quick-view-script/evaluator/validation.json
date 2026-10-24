@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-script-asset-still-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quick-view-script.liquid": "{%- comment -%} Quick view: renders triggers for available products and loads the script once. {%- endcomment -%}\n{%- liquid\n  assign quick_view_count = 0\n  assign script_loaded = false\n  assign open_label = 'products.quick_view.open' | t\n  assign close_label = 'products.quick_view.close' | t\n  assign loading_label = 'products.quick_view.loading' | t\n-%}\n{{ 'quick-view.css' | asset_url | stylesheet_tag }}\n<div class=\"quick-view-list\">\n  {%- for product in products -%}\n    {%- if product.available -%}\n      {%- assign quick_view_count = quick_view_count | plus: 1 -%}\n      {%- render 'quick-view-trigger', product: product, index: quick_view_count, label: open_label -%}\n      {%- unless script_loaded -%}\n        <script src=\"{{ 'quickview.js' | asset_url }}\" defer=\"defer\"></script>\n        {%- assign script_loaded = true -%}\n      {%- endunless -%}\n    {%- endif -%}\n  {%- endfor -%}\n</div>\n{%- if quick_view_count > 0 -%}\n  {%- render 'quick-view-modal', close_label: close_label, loading_label: loading_label -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-loading-key-still-wrong",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quick-view-script.liquid": "{%- comment -%} Quick view: renders triggers for available products and loads the script once. {%- endcomment -%}\n{%- liquid\n  assign quick_view_count = 0\n  assign script_loaded = false\n  assign open_label = 'products.quick_view.open' | t\n  assign close_label = 'products.quick_view.close' | t\n  assign loading_label = 'products.quick_view.loading_text' | t\n-%}\n{{ 'quick-view.css' | asset_url | stylesheet_tag }}\n<div class=\"quick-view-list\">\n  {%- for product in products -%}\n    {%- if product.available -%}\n      {%- assign quick_view_count = quick_view_count | plus: 1 -%}\n      {%- render 'quick-view-trigger', product: product, index: quick_view_count, label: open_label -%}\n      {%- unless script_loaded -%}\n        <script src=\"{{ 'quick-view.js' | asset_url }}\" defer=\"defer\"></script>\n        {%- assign script_loaded = true -%}\n      {%- endunless -%}\n    {%- endif -%}\n  {%- endfor -%}\n</div>\n{%- if quick_view_count > 0 -%}\n  {%- render 'quick-view-modal', close_label: close_label, loading_label: loading_label -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-modal-snippet-still-plural",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quick-view-script.liquid": "{%- comment -%} Quick view: renders triggers for available products and loads the script once. {%- endcomment -%}\n{%- liquid\n  assign quick_view_count = 0\n  assign script_loaded = false\n  assign open_label = 'products.quick_view.open' | t\n  assign close_label = 'products.quick_view.close' | t\n  assign loading_label = 'products.quick_view.loading' | t\n-%}\n{{ 'quick-view.css' | asset_url | stylesheet_tag }}\n<div class=\"quick-view-list\">\n  {%- for product in products -%}\n    {%- if product.available -%}\n      {%- assign quick_view_count = quick_view_count | plus: 1 -%}\n      {%- render 'quick-view-trigger', product: product, index: quick_view_count, label: open_label -%}\n      {%- unless script_loaded -%}\n        <script src=\"{{ 'quick-view.js' | asset_url }}\" defer=\"defer\"></script>\n        {%- assign script_loaded = true -%}\n      {%- endunless -%}\n    {%- endif -%}\n  {%- endfor -%}\n</div>\n{%- if quick_view_count > 0 -%}\n  {%- render 'quick-view-modals', close_label: close_label, loading_label: loading_label -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-open-key-wrong-namespace",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quick-view-script.liquid": "{%- comment -%} Quick view: renders triggers for available products and loads the script once. {%- endcomment -%}\n{%- liquid\n  assign quick_view_count = 0\n  assign script_loaded = false\n  assign open_label = 'quick_view.open' | t\n  assign close_label = 'products.quick_view.close' | t\n  assign loading_label = 'products.quick_view.loading' | t\n-%}\n{{ 'quick_view.css' | asset_url | stylesheet_tag }}\n<div class=\"quick-view-list\">\n  {%- for product in products -%}\n    {%- if product.available -%}\n      {%- assign quick_view_count = quick_view_count | plus: 1 -%}\n      {%- render 'quick-view-trigger', product: product, index: quick_view_count, label: open_label -%}\n      {%- unless script_loaded -%}\n        <script src=\"{{ 'quick-view.js' | asset_url }}\" defer=\"defer\"></script>\n        {%- assign script_loaded = true -%}\n      {%- endunless -%}\n    {%- endif -%}\n  {%- endfor -%}\n</div>\n{%- if quick_view_count > 0 -%}\n  {%- render 'quick-view-modal', close_label: close_label, loading_label: loading_label -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quick-view-script.liquid": "{% # theme-check-disable %}\n{%- comment -%} Quick view: renders triggers for available products and loads the script once. {%- endcomment -%}\n{%- liquid\n  assign quick_view_count = 0\n  assign script_loaded = false\n  assign open_label = 'products.quick_view.open' | t\n  assign close_label = 'products.quick_view.close' | t\n  assign loading_label = 'products.quick_view.loading' | t\n-%}\n{{ 'quick-view.css' | asset_url | stylesheet_tag }}\n<div class=\"quick-view-list\">\n  {%- for product in products -%}\n    {%- if product.available -%}\n      {%- assign quick_view_count = quick_view_count | plus: 1 -%}\n      {%- render 'quick-view-trigger', product: product, index: quick_view_count, label: open_label -%}\n      {%- unless script_loaded -%}\n        <script src=\"{{ 'quick-view.js' | asset_url }}\" defer=\"defer\"></script>\n        {%- assign script_loaded = true -%}\n      {%- endunless -%}\n    {%- endif -%}\n  {%- endfor -%}\n</div>\n{%- if quick_view_count > 0 -%}\n  {%- render 'quick-view-modal', close_label: close_label, loading_label: loading_label -%}\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/quick-view-script.liquid": null
+    }
+  }
+]

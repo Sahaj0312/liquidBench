@@ -1,0 +1,25 @@
+{%- assign current_season = 0 -%}
+<div class="podcast-episodes podcast-episodes--{{ section.settings.layout }}">
+  {%- if section.settings.title != blank -%}
+    <h2 class="podcast-episodes__title">{{ section.settings.title | escape }}</h2>
+  {%- endif -%}
+  {%- for block in section.blocks -%}
+    {%- if block.settings.season != current_season -%}
+      {%- unless forloop.first -%}</ol>{%- endunless -%}
+      <h3 class="podcast-episodes__season">{{ section.settings.season_prefix | escape }} {{ block.settings.season }}</h3>
+      <ol class="podcast-episodes__list">
+      {%- assign current_season = block.settings.season -%}
+    {%- endif -%}
+    <li class="podcast-episode" {{ block.shopify_attributes }}>
+      <span class="podcast-episode__title">{{ block.settings.episode_title | escape }}</span>
+      {%- if block.settings.explicit -%}<span class="podcast-episode__badge">E</span>{%- endif -%}
+      <span class="podcast-episode__duration">{{ block.settings.duration | escape }}</span>
+      {%- if block.settings.audio_url != blank -%}<a href="{{ block.settings.audio_url }}">Listen</a>{%- endif -%}
+    </li>
+  {%- endfor -%}
+  {%- if section.blocks.size > 0 -%}</ol>{%- endif -%}
+</div>
+
+{% schema %}
+{"name":"Podcast episodes","settings":[{"type":"text","id":"title","label":"Title"},{"type":"select","id":"layout","label":"Layout","options":[{"value":"list","label":"List"},{"value":"grid","label":"Grid"}]}],"blocks":[{"type":"episode","name":"Episode","settings":[{"type":"text","id":"episode_title","label":"Episode title"},{"type":"text","id":"season","label":"Season number"},{"type":"text","id":"duration","label":"Duration"}]}]}
+{% endschema %}

@@ -1,0 +1,7 @@
+{%- if balance_cents -%}
+<div class="gift-card-notice">
+  <p>Balance: {{ currency_symbol }}{{ balance_cents | divided_by: 100 }}.{{ balance_cents | modulo: 100 }}</p>
+  {%- if last_four -%}<p>Card ending in {{ last_four }}</p>{%- endif -%}
+  {%- if expires_on -%}<p>Expires {{ expires_on }}</p>{%- endif -%}
+</div>
+{%- endif -%}

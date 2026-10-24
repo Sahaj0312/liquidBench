@@ -1,0 +1,15 @@
+{
+  "id": "installment-plan-label",
+  "version": 1,
+  "split": "heldout",
+  "category": "liquid-syntax",
+  "difficulty": "easy",
+  "family": "installment-plan-label",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/installment-plan-label.liquid"
+  ],
+  "prompt": "Fix the snippet snippets/installment-plan-label.liquid. It renders a buy-now-pay-later label under a product price.\n\nInputs (all top-level variables, always supplied):\n- installments: integer or null. The number of installments.\n- amount: string or null. The already-formatted price of one installment, for example \"$25.00\".\n- provider: string or null. The name of the payment provider.\n\nRules:\n1. Output nothing (an empty string) when installments is null, when installments is less than 2, when amount is null, or when amount is exactly the empty string \"\".\n2. Otherwise output exactly one paragraph, all on one line with no whitespace before or after it:\n<p class=\"installment-label\">Pay in N interest-free installments of <strong>AMOUNT</strong></p>\nN is the installments value. AMOUNT is the amount value, HTML-escaped and not otherwise changed.\n3. The provider part is an optional wrapper. Strip leading and trailing whitespace from provider. If the stripped value is non-empty, insert the following text directly after </strong> and before </p>:\n with <span class=\"installment-provider\">PROVIDER</span>\nThe text starts with one space. PROVIDER is the stripped provider, HTML-escaped. If provider is null, empty or only whitespace, leave out the text, the leading space and the span.\n\nExample: installments 4, amount \"$25.00\", provider \"Klarna\" outputs\n<p class=\"installment-label\">Pay in 4 interest-free installments of <strong>$25.00</strong> with <span class=\"installment-provider\">Klarna</span></p> Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/installment-plan-label.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

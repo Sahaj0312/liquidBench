@@ -1,0 +1,36 @@
+<div class="podcast-embed">
+{%- assign heading = section.settings.heading | default: '' | strip -%}
+{%- if heading != '' -%}
+<h2>{{ heading | escape }}</h2>
+{%- endif -%}
+{%- if section.blocks.size == 0 -%}
+<p>No episodes yet.</p>
+{%- else -%}
+{%- assign prev_season = 0 -%}
+{%- assign ep = 0 -%}
+{%- assign total = 0 -%}
+{%- for block in section.blocks -%}
+{%- if block.settings.season != prev_season -%}
+{%- if prev_season != 0 -%}
+</ol>
+{%- endif -%}
+<h3>Season {{ block.settings.season }}</h3><ol>
+{%- assign prev_season = block.settings.season -%}
+{%- assign ep = 0 -%}
+{%- endif -%}
+{%- assign ep = ep | plus: 1 -%}
+{%- assign title = block.settings.title | default: '' | strip -%}
+{%- if title == '' -%}{%- assign title = 'Untitled' -%}{%- endif -%}
+{%- assign minutes = block.settings.minutes | default: 0 -%}
+<li>E{{ ep }}: {{ title | escape }}
+{%- if minutes > 0 %} ({{ minutes }} min){% endif -%}
+</li>
+{%- if minutes > 0 -%}{%- assign total = total | plus: minutes -%}{%- endif -%}
+{%- endfor -%}
+</ol><p>Total: {{ total }} min</p>
+{%- endif -%}
+</div>
+
+{% schema %}
+{"name":"Podcast episodes","settings":[{"type":"text","id":"heading","label":"Heading"}],"blocks":[{"type":"episode","name":"Episode","settings":[{"type":"text","id":"title","label":"Title"},{"type":"number","id":"season","label":"Season","default":1},{"type":"number","id":"minutes","label":"Minutes"}]}],"presets":[{"name":"Podcast episodes"}]}
+{% endschema %}

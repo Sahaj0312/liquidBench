@@ -1,0 +1,471 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/made-to-order-lead-time.liquid",
+    "tags": [
+      "div",
+      "h3",
+      "li",
+      "ol",
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "product_title": "Oak Table",
+      "steps": [
+        {
+          "name": "Cut",
+          "days": 3,
+          "skip": false
+        },
+        {
+          "name": "Sand",
+          "days": 1,
+          "skip": false
+        },
+        {
+          "name": "Finish",
+          "days": 2,
+          "skip": false
+        }
+      ],
+      "max_steps": 5
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "lead-time"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Made to order: Oak Table"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Cut — 3 days"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Sand — 1 day"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Finish — 2 days"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in about 6 days"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "product_title": null,
+      "steps": [
+        {
+          "name": "Design",
+          "days": 2,
+          "skip": false
+        },
+        {
+          "name": "Approve",
+          "days": 1,
+          "skip": true
+        },
+        {
+          "name": "Build",
+          "days": 5,
+          "skip": false
+        },
+        {
+          "name": "Paint",
+          "days": 2,
+          "skip": false
+        },
+        {
+          "name": "Pack",
+          "days": 1,
+          "skip": false
+        }
+      ],
+      "max_steps": 2
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "lead-time"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Made to order"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Design — 2 days"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Build — 5 days"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "more"
+                  ]
+                ],
+                "children": [],
+                "text": "+2 more steps"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in about 10 days"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "product_title": "",
+      "steps": [
+        {
+          "name": "A",
+          "days": 1,
+          "skip": false
+        },
+        {
+          "name": "B",
+          "days": 0,
+          "skip": false
+        }
+      ],
+      "max_steps": 1
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "lead-time"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Made to order"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "A — 1 day"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "more"
+                  ]
+                ],
+                "children": [],
+                "text": "+1 more step"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in about 1 day"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "product_title": "Chair",
+      "steps": [
+        {
+          "name": "Cut",
+          "days": 3,
+          "skip": false
+        }
+      ],
+      "max_steps": 0
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "product_title": "Chair",
+      "steps": [],
+      "max_steps": 3
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "product_title": "Chair",
+      "steps": [
+        {
+          "name": "Cut",
+          "days": 3,
+          "skip": true
+        },
+        {
+          "name": "Glue",
+          "days": 1,
+          "skip": true
+        }
+      ],
+      "max_steps": 3
+    },
+    "expected": []
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "product_title": "Tom & Jerry's \"Bench\" <XL>",
+      "steps": [
+        {
+          "name": "Glue <fast> & clamp",
+          "days": 0,
+          "skip": false
+        }
+      ],
+      "max_steps": 2
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "lead-time"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Made to order: Tom & Jerry's \"Bench\" <XL>"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Glue <fast> & clamp — 0 days"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in about 0 days"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "product_title": "Gate",
+      "steps": [
+        {
+          "name": "Rush",
+          "days": 10,
+          "skip": true
+        },
+        {
+          "name": "Weld",
+          "days": 4,
+          "skip": false
+        }
+      ],
+      "max_steps": 1
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "lead-time"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Made to order: Gate"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Weld — 4 days"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in about 4 days"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "product_title": "Shelf",
+      "steps": [
+        {
+          "name": "X",
+          "days": 2,
+          "skip": false
+        },
+        {
+          "name": "Y",
+          "days": 3,
+          "skip": false
+        },
+        {
+          "name": "Z",
+          "days": 7,
+          "skip": true
+        }
+      ],
+      "max_steps": 2
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "lead-time"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [],
+            "children": [],
+            "text": "Made to order: Shelf"
+          },
+          {
+            "tag": "ol",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "X — 2 days"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Y — 3 days"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [],
+            "children": [],
+            "text": "Ships in about 5 days"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

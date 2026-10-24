@@ -1,0 +1,5 @@
+<ul class="warehouse-list">
+  {%- for w in warehouses %}
+  <li class="warehouse">{{ w.name }}: {{ w.quantity }}</li>
+  {%- endfor %}
+</ul>

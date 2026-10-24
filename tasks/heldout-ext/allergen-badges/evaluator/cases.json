@@ -1,0 +1,352 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/allergen-badges.liquid",
+    "tags": [
+      "li",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "allergens": [
+        "Milk",
+        "Eggs"
+      ],
+      "label": "Contains"
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "aria-label",
+            "Contains"
+          ],
+          [
+            "class",
+            "allergen-badges"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "allergen-badge"
+              ],
+              [
+                "title",
+                "Contains Milk"
+              ]
+            ],
+            "children": [],
+            "text": "Milk"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "allergen-badge"
+              ],
+              [
+                "title",
+                "Contains Eggs"
+              ]
+            ],
+            "children": [],
+            "text": "Eggs"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "allergens": [
+        "Soy"
+      ],
+      "label": null
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "aria-label",
+            "Allergens"
+          ],
+          [
+            "class",
+            "allergen-badges"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "allergen-badge"
+              ],
+              [
+                "title",
+                "Contains Soy"
+              ]
+            ],
+            "children": [],
+            "text": "Soy"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "allergens": [
+        "Wheat"
+      ],
+      "label": ""
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "aria-label",
+            "Allergens"
+          ],
+          [
+            "class",
+            "allergen-badges"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "allergen-badge"
+              ],
+              [
+                "title",
+                "Contains Wheat"
+              ]
+            ],
+            "children": [],
+            "text": "Wheat"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "allergens": [],
+      "label": "Allergy info"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "allergens": null,
+      "label": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "allergens": [
+        "Tree nuts \"almond\" & <cashew>"
+      ],
+      "label": "Allergens"
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "aria-label",
+            "Allergens"
+          ],
+          [
+            "class",
+            "allergen-badges"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "allergen-badge"
+              ],
+              [
+                "title",
+                "Contains Tree nuts \"almond\" & <cashew>"
+              ]
+            ],
+            "children": [],
+            "text": "Tree nuts \"almond\" & <cashew>"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "allergens": [
+        "Sesame"
+      ],
+      "label": "Kid's \"safe\" list"
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "aria-label",
+            "Kid's \"safe\" list"
+          ],
+          [
+            "class",
+            "allergen-badges"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "allergen-badge"
+              ],
+              [
+                "title",
+                "Contains Sesame"
+              ]
+            ],
+            "children": [],
+            "text": "Sesame"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "allergens": [
+        "Fish &amp; Shellfish",
+        "Peanuts"
+      ],
+      "label": "A & B"
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "aria-label",
+            "A & B"
+          ],
+          [
+            "class",
+            "allergen-badges"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "allergen-badge"
+              ],
+              [
+                "title",
+                "Contains Fish &amp; Shellfish"
+              ]
+            ],
+            "children": [],
+            "text": "Fish &amp; Shellfish"
+          },
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "allergen-badge"
+              ],
+              [
+                "title",
+                "Contains Peanuts"
+              ]
+            ],
+            "children": [],
+            "text": "Peanuts"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "allergens": [
+        "Mustard's seed"
+      ],
+      "label": "<b>Warning</b>"
+    },
+    "expected": [
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "aria-label",
+            "<b>Warning</b>"
+          ],
+          [
+            "class",
+            "allergen-badges"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [
+              [
+                "class",
+                "allergen-badge"
+              ],
+              [
+                "title",
+                "Contains Mustard's seed"
+              ]
+            ],
+            "children": [],
+            "text": "Mustard's seed"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

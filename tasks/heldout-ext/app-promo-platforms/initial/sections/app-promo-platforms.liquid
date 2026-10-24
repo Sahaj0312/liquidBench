@@ -1,0 +1,45 @@
+<div class="app-promo">
+  <h2>{{ section.settings.heading | escape }}</h2>
+  <ul class="app-promo__features">
+    {%- for block in section.blocks -%}
+      <li>{{ block.settings.text | escape }}</li>
+    {%- endfor -%}
+  </ul>
+  <div class="app-promo__stores">
+    <a class="app-promo__store app-promo__store--ios" href="{{ section.settings.ios_url | escape }}">App Store</a>
+    <a class="app-promo__store app-promo__store--android" href="{{ section.settings.android_url | escape }}">Google Play</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "App promo",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" },
+    {
+      "type": "select",
+      "id": "platform",
+      "label": "Platform",
+      "options": [
+        { "value": "all", "label": "All" },
+        { "value": "ios", "label": "iOS" },
+        { "value": "android", "label": "Android" }
+      ],
+      "default": "all"
+    },
+    { "type": "url", "id": "ios_url", "label": "App Store URL" },
+    { "type": "url", "id": "android_url", "label": "Google Play URL" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text" },
+        { "type": "text", "id": "platforms", "label": "Platforms (comma-separated)" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "App promo" }]
+}
+{% endschema %}

@@ -1,0 +1,15 @@
+{
+  "id": "order-status-labels",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-references",
+  "difficulty": "hard",
+  "family": "order-status-labels",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/order-status-labels.liquid"
+  ],
+  "prompt": "The snippet snippets/order-status-labels.liquid renders an order progress tracker. Its literal operands point at assets, translation keys and a snippet that do not exist, so Theme Check reports MissingAsset, TranslationKeyExists and MissingTemplate errors. Fix every wrong literal operand so each one points at the real file or key listed below. Keep the markup and the loop logic exactly as they are: a current_reached flag starts false; while iterating `steps`, a step after the current step is upcoming, the step equal to `current_step` is current (and sets current_reached to true for all later iterations), and steps before it are complete. Each state has its own icon. The closing message is shown only when current_reached is still false after the loop. Every operand must stay a string literal (no dynamically built keys or file names).\n\nInputs (read only, for context): top-level `steps` is an array of strings (step handles such as confirmed, processing, shipped, delivered); top-level `current_step` is a string or null.\n\nFiles that exist:\n- assets/order-status.css (stylesheet loaded at the top with asset_url | stylesheet_tag)\n- assets/icon-check.svg (icon for complete steps), assets/icon-current.svg (icon for the current step), assets/icon-pending.svg (icon for upcoming steps)\n- snippets/order-status-step.liquid (rendered once per step with label, state, icon_url and number)\n- locales/en.default.json and locales/de.json with keys: order_status.heading (tracker heading), order_status.steps.confirmed, order_status.steps.processing, order_status.steps.shipped, order_status.steps.delivered (labels for the step handles of the same name), order_status.states.complete, order_status.states.current, order_status.states.upcoming (state labels), order_status.messages.all_complete (message shown when no current step was reached).\n\nEach usage must point at the key or file with the matching meaning. After your edit Theme Check must report no missing asset, missing translation key or missing snippet errors for this file. Change only snippets/order-status-labels.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

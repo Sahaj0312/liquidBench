@@ -1,0 +1,15 @@
+{
+  "id": "review-rating-summary",
+  "version": 1,
+  "split": "heldout",
+  "category": "rendering",
+  "difficulty": "medium",
+  "family": "review-rating-summary",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/review-rating-summary.liquid"
+  ],
+  "prompt": "Rewrite snippets/review-rating-summary.liquid so it renders a review summary computed with integer arithmetic only. The current file is incomplete and produces wrong averages.\n\nInputs (both top-level variables, nothing under section.settings):\n- ratings: array of integers, or null. Only values from 1 to 5 inclusive are valid. Ignore every other value, such as 0, 6 or 9. A null or empty array means there are no ratings.\n- heading: string or null.\n\nRules (all counts and sums use valid ratings only):\n- count = number of valid ratings, sum = their total, positive = number of valid ratings equal to 4 or 5.\n- If count is 0, output exactly: <p class=\"review-summary review-summary--empty\">No reviews yet</p> (the heading is never shown in this case).\n- Otherwise compute, rounding half up and always from the exact values (never from another rounded value):\n  * average to one decimal place = sum/count rounded half up to the nearest tenth. Display it as <whole>.<tenth>, always with exactly one decimal digit (e.g. 5.0, 1.8).\n  * stars = sum/count rounded half up to the nearest integer.\n  * percent = 100*positive/count rounded half up to the nearest integer.\n- Output, on one line with no whitespace between tags:\n<div class=\"review-summary\" data-stars=\"STARS\">[HEADING]<span class=\"review-summary__average\">AVG</span><span class=\"review-summary__count\">COUNT reviews</span><span class=\"review-summary__recommend\">PERCENT% recommend</span></div>\n  * Use the word \"review\" when count is 1 and \"reviews\" otherwise, with one space between the number and the word.\n  * [HEADING]: strip leading and trailing whitespace from heading. If the result is non-empty, output <h3 class=\"review-summary__heading\">TEXT</h3> with TEXT HTML-escaped. If heading is null or blank, output nothing in that position.\n- Produce no other output or whitespace. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/review-rating-summary.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

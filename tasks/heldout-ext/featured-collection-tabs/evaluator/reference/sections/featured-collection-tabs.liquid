@@ -1,0 +1,28 @@
+{%- assign heading = section.settings.heading | strip -%}
+{%- assign tab_count = tabs | size -%}
+{%- if tab_count > 0 -%}
+<section class="fc-tabs">
+  {%- if heading != "" -%}
+  <header class="fc-tabs__header"><h2 class="fc-tabs__heading">{{ heading | escape }}</h2></header>
+  {%- endif -%}
+  {%- if tab_count > 1 -%}<nav class="fc-tabs__nav" aria-label="Collections">{%- endif -%}
+  <ul class="fc-tabs__list">
+    {%- for tab in tabs -%}
+    {%- assign c = tab.count | default: 0 -%}
+    <li><a href="#tab-{{ tab.handle | escape }}">{{ tab.title | escape }}</a>
+    {%- if c > 0 -%}<span class="fc-tabs__count">({{ c }})</span>{%- endif -%}
+    </li>
+    {%- endfor -%}
+  </ul>
+  {%- if tab_count > 1 -%}</nav>{%- endif -%}
+</section>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Featured collection tabs",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by collection" }
+  ],
+  "presets": [{ "name": "Featured collection tabs" }]
+}
+{% endschema %}

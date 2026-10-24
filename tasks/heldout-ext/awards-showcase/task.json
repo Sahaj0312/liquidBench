@@ -1,0 +1,15 @@
+{
+  "id": "awards-showcase",
+  "version": 1,
+  "split": "heldout",
+  "category": "section-schema",
+  "difficulty": "hard",
+  "family": "awards-showcase",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/awards-showcase.liquid"
+  ],
+  "prompt": "The section file sections/awards-showcase.liquid lists awards in a grid. It uses CSS variables for the column count, the logo width and the gap. Its markup is already correct. Do not change anything outside the {% schema %} block.\n\nThe current schema is broken in three ways:\n- The range defaults do not fall on valid steps.\n- max_blocks is missing.\n- The preset is wrong.\n\nReplace the schema JSON so that it is exactly the following, with keys and array items in the stated order.\n\nTop-level keys, in this order: \"name\", \"tag\", \"class\", \"settings\", \"blocks\", \"max_blocks\", \"presets\".\n- \"name\": \"Awards\"\n- \"tag\": \"section\"\n- \"class\": \"section-awards\"\n\n\"settings\" holds 4 items, in this order:\n1. text, id \"heading\", label \"Awards & recognition\" is NOT the label. The label is \"Heading\" and the default is \"Awards & recognition\". Key order: type, id, label, default.\n2. range, id \"columns\", label \"Columns\", min 1, max 6, step 1, default 3. There is no unit key.\n3. range, id \"logo_width\", label \"Logo width\", min 40, max 200, step 8, unit \"px\".\n4. range, id \"gap\", label \"Gap\", min 0, max 100, step 4, unit \"px\".\n\nRange key order is type, id, label, min, max, step, unit (only when present), default. All range numbers are JSON integers.\n\nDefaults for logo_width and gap:\n- A valid value for a range is min + k*step for a non-negative integer k, not exceeding max.\n- The logo_width default is the largest valid value that does not exceed 100. Round down; do not round to the nearest step.\n- The gap default is the largest valid value that does not exceed 30.\n\n\"blocks\": one block type. Its type is \"award\" and its name is \"Award\". Its settings, in order, are:\n- text, id \"title\", label \"Award title\", default \"Best in show\".\n- text, id \"issuer\", label \"Issuer\", with no default.\n- number, id \"year\", label \"Year\", with no default.\n\n\"max_blocks\" equals the columns range max multiplied by 2.\n\n\"presets\": one preset named \"Awards\". Its \"blocks\" array contains exactly as many items as the columns default. Each item is {\"type\":\"award\"} with no settings key.\n\nNo other keys may appear anywhere. Change only sections/awards-showcase.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

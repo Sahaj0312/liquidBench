@@ -1,0 +1,15 @@
+{
+  "id": "gift-registry-items",
+  "version": 1,
+  "split": "heldout",
+  "category": "rendering",
+  "difficulty": "hard",
+  "family": "gift-registry-items",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/gift-registry-items.liquid"
+  ],
+  "prompt": "Rewrite snippets/gift-registry-items.liquid so it renders a gift registry with correct HTML escaping in both text and attributes.\n\nInputs (all top-level variables; there is no section object):\n- `registry_name`: string, or null.\n- `items`: array, never null, possibly empty. Every element is an object that always has all five keys:\n  - `title`: string, never null.\n  - `url`: string, or null.\n  - `note`: string, or null.\n  - `requested`: integer >= 0.\n  - `purchased`: integer >= 0. It may be larger than `requested`.\n\nEscaping: every piece of text placed in the output must use the `escape` filter exactly once, whether it goes into element content or an attribute value. This means an input that already contains an entity such as `&amp;` is escaped again and becomes `&amp;amp;`. Do not use `escape_once`.\n\nOutput (no whitespace or newlines between or around tags):\n1. NAME is `registry_name` with leading and trailing whitespace stripped. A null name counts as empty.\n2. Open the section:\n   - If NAME is non-empty: `<section class=\"registry\" aria-label=\"Gift registry: NAME\">` followed by `<h2>NAME</h2>`.\n   - If NAME is empty: `<section class=\"registry\" aria-label=\"Gift registry\">` with no h2.\n3. Body:\n   - If `items` is empty, output `<p class=\"registry-empty\">No items yet</p>`.\n   - Otherwise, output `<ul>`, then one `<li>` per item in the original order, then `</ul>`.\n4. Each item is `<li data-title=\"T\">LINK NOTE STATUS</li>`, where:\n   - T is `title` stripped of leading and trailing whitespace, then escaped.\n   - LINK: let U be `url` stripped (null counts as empty).\n     - If U is non-empty, LINK is `<a href=\"U\" title=\"T\">T</a>` with U escaped.\n     - Otherwise, LINK is `<span>T</span>`.\n   - NOTE: let N be `note` stripped (null counts as empty).\n     - If N is non-empty, NOTE is `<p>N</p>` with N escaped.\n     - Otherwise, NOTE is omitted.\n   - STATUS: let R = requested - purchased.\n     - If R > 0, STATUS is `<em>R of REQUESTED still needed</em>`.\n     - Otherwise (R is 0 or negative), STATUS is `<em>Fulfilled</em>`.\n5. Close with `</section>`. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/gift-registry-items.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

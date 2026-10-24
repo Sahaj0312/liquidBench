@@ -1,0 +1,15 @@
+{
+  "id": "before-after-slider",
+  "version": 1,
+  "split": "heldout",
+  "category": "section-schema",
+  "difficulty": "easy",
+  "family": "before-after-slider",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/before-after-slider.liquid"
+  ],
+  "prompt": "The section sections/before-after-slider.liquid has incomplete schema. Do not change the markup. Replace the schema JSON so that it is exactly as specified below. Some general rules overlap with specific rules. Where they conflict, the specific rule takes priority.\n\nTop level:\n- name \"Before/after slider\"\n- tag \"section\"\n- class \"section-before-after\"\n- presets: exactly one preset, {\"name\": \"Before/after slider\"}, with no other preset keys.\n- No blocks key and no other top-level keys.\n\nsettings, in this exact order:\n1. text, id \"heading\", label \"Heading\".\n2. image_picker, id \"before_image\", label \"Before image\".\n3. image_picker, id \"after_image\", label \"After image\".\n4. text, id \"before_label\", label \"Before label\".\n5. text, id \"after_label\", label \"After label\".\n6. range, id \"start_position\", label \"Starting position\".\n7. range, id \"divider_width\", label \"Divider width\".\n\nGeneral rules:\n- Every text setting has a default. The default is its label with the trailing \" label\" removed, so before_label defaults to \"Before\" and after_label defaults to \"After\".\n- Every range setting has min 0, max 100, step 5, unit \"%\" and default 50. All of these are numbers except unit.\n- image_picker settings have only type, id and label.\n\nSpecific rules (these take priority):\n- The heading setting has no default key at all. Do not use an empty string.\n- divider_width has min 1, max 10, step 1, unit \"px\" and default 2.\n\nSetting objects contain only the keys described here: type, id, label, plus default/min/max/step/unit where applicable. Change only sections/before-after-slider.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

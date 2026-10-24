@@ -1,0 +1,225 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/local-currency-notice.liquid",
+    "tags": [
+      "p"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "currencies": [
+        {
+          "code": "EUR",
+          "label": "Euro"
+        },
+        {
+          "code": "GBP",
+          "label": "Pound sterling"
+        }
+      ],
+      "shop_currency": "USD"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "currency-notice"
+          ]
+        ],
+        "children": [],
+        "text": "Also shown in: Euro (EUR), Pound sterling (GBP)"
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "currencies": [],
+      "shop_currency": "USD"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "currencies": [
+        {
+          "code": "USD",
+          "label": "US dollar"
+        }
+      ],
+      "shop_currency": "USD"
+    },
+    "expected": []
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "currencies": [
+        {
+          "code": "EUR",
+          "label": "Euro"
+        },
+        {
+          "code": "EUR",
+          "label": "Euro (again)"
+        },
+        {
+          "code": "JPY",
+          "label": "Yen"
+        }
+      ],
+      "shop_currency": "USD"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "currency-notice"
+          ]
+        ],
+        "children": [],
+        "text": "Also shown in: Euro (EUR), Yen (JPY)"
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "currencies": [
+        {
+          "code": "AUD",
+          "label": "Dollars & \"Cents\" <AU>"
+        }
+      ],
+      "shop_currency": "USD"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "currency-notice"
+          ]
+        ],
+        "children": [],
+        "text": "Also shown in: Dollars & \"Cents\" <AU> (AUD)"
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "currencies": [
+        {
+          "code": "AUD",
+          "label": "Australian dollar"
+        },
+        {
+          "code": "AU",
+          "label": "Test unit"
+        }
+      ],
+      "shop_currency": "USD"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "currency-notice"
+          ]
+        ],
+        "children": [],
+        "text": "Also shown in: Australian dollar (AUD), Test unit (AU)"
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "currencies": [
+        {
+          "code": "CAD",
+          "label": "Canadian dollar"
+        },
+        {
+          "code": "USD",
+          "label": "US dollar"
+        },
+        {
+          "code": "CAD",
+          "label": "Loonie"
+        },
+        {
+          "code": "MXN",
+          "label": "Peso"
+        }
+      ],
+      "shop_currency": "USD"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "currency-notice"
+          ]
+        ],
+        "children": [],
+        "text": "Also shown in: Canadian dollar (CAD), Peso (MXN)"
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "currencies": [
+        {
+          "code": "SEK",
+          "label": "Krona"
+        }
+      ],
+      "shop_currency": "EUR"
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "currency-notice"
+          ]
+        ],
+        "children": [],
+        "text": "Also shown in: Krona (SEK)"
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "currencies": [
+        {
+          "code": "EUR",
+          "label": "Euro"
+        },
+        {
+          "code": "EUR",
+          "label": "Euro"
+        }
+      ],
+      "shop_currency": "EUR"
+    },
+    "expected": []
+  }
+]

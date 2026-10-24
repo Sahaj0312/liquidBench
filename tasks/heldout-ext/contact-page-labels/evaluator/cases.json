@@ -1,0 +1,597 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/contact-page-labels.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "contact-page.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "",
+          "whitespaceEnd": ""
+        },
+        {
+          "type": "LiquidTag",
+          "name": "liquid",
+          "markup": [
+            {
+              "type": "LiquidTag",
+              "name": "assign",
+              "markup": {
+                "type": "AssignMarkup",
+                "name": "name_label",
+                "value": {
+                  "type": "LiquidVariable",
+                  "expression": {
+                    "type": "String",
+                    "single": true,
+                    "value": "contact.form.name"
+                  },
+                  "filters": [
+                    {
+                      "type": "LiquidFilter",
+                      "name": "t",
+                      "args": []
+                    }
+                  ]
+                }
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            },
+            {
+              "type": "LiquidTag",
+              "name": "assign",
+              "markup": {
+                "type": "AssignMarkup",
+                "name": "email_label",
+                "value": {
+                  "type": "LiquidVariable",
+                  "expression": {
+                    "type": "String",
+                    "single": true,
+                    "value": "contact.form.email"
+                  },
+                  "filters": [
+                    {
+                      "type": "LiquidFilter",
+                      "name": "t",
+                      "args": []
+                    }
+                  ]
+                }
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            },
+            {
+              "type": "LiquidTag",
+              "name": "assign",
+              "markup": {
+                "type": "AssignMarkup",
+                "name": "message_label",
+                "value": {
+                  "type": "LiquidVariable",
+                  "expression": {
+                    "type": "String",
+                    "single": true,
+                    "value": "contact.form.message"
+                  },
+                  "filters": [
+                    {
+                      "type": "LiquidFilter",
+                      "name": "t",
+                      "args": []
+                    }
+                  ]
+                }
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            },
+            {
+              "type": "LiquidTag",
+              "name": "assign",
+              "markup": {
+                "type": "AssignMarkup",
+                "name": "optional_label",
+                "value": {
+                  "type": "LiquidVariable",
+                  "expression": {
+                    "type": "String",
+                    "single": true,
+                    "value": "contact.form.optional"
+                  },
+                  "filters": [
+                    {
+                      "type": "LiquidFilter",
+                      "name": "t",
+                      "args": []
+                    }
+                  ]
+                }
+              },
+              "whitespaceStart": "",
+              "whitespaceEnd": ""
+            }
+          ],
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-"
+        },
+        {
+          "type": "LiquidTag",
+          "name": "capture",
+          "markup": {
+            "type": "VariableLookup",
+            "name": "fields",
+            "lookups": [],
+            "lookupModes": []
+          },
+          "children": [
+            {
+              "type": "LiquidTag",
+              "name": "render",
+              "markup": {
+                "type": "RenderMarkup",
+                "snippet": {
+                  "type": "String",
+                  "single": true,
+                  "value": "contact-input"
+                },
+                "variable": null,
+                "alias": null,
+                "args": [
+                  {
+                    "type": "NamedArgument",
+                    "name": "field",
+                    "value": {
+                      "type": "String",
+                      "single": true,
+                      "value": "name"
+                    }
+                  },
+                  {
+                    "type": "NamedArgument",
+                    "name": "type",
+                    "value": {
+                      "type": "String",
+                      "single": true,
+                      "value": "text"
+                    }
+                  },
+                  {
+                    "type": "NamedArgument",
+                    "name": "label",
+                    "value": {
+                      "type": "VariableLookup",
+                      "name": "name_label",
+                      "lookups": [],
+                      "lookupModes": []
+                    }
+                  }
+                ]
+              },
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-"
+            },
+            {
+              "type": "LiquidTag",
+              "name": "render",
+              "markup": {
+                "type": "RenderMarkup",
+                "snippet": {
+                  "type": "String",
+                  "single": true,
+                  "value": "contact-input"
+                },
+                "variable": null,
+                "alias": null,
+                "args": [
+                  {
+                    "type": "NamedArgument",
+                    "name": "field",
+                    "value": {
+                      "type": "String",
+                      "single": true,
+                      "value": "email"
+                    }
+                  },
+                  {
+                    "type": "NamedArgument",
+                    "name": "type",
+                    "value": {
+                      "type": "String",
+                      "single": true,
+                      "value": "email"
+                    }
+                  },
+                  {
+                    "type": "NamedArgument",
+                    "name": "label",
+                    "value": {
+                      "type": "VariableLookup",
+                      "name": "email_label",
+                      "lookups": [],
+                      "lookupModes": []
+                    }
+                  }
+                ]
+              },
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-"
+            },
+            {
+              "type": "LiquidTag",
+              "name": "render",
+              "markup": {
+                "type": "RenderMarkup",
+                "snippet": {
+                  "type": "String",
+                  "single": true,
+                  "value": "contact-input"
+                },
+                "variable": null,
+                "alias": null,
+                "args": [
+                  {
+                    "type": "NamedArgument",
+                    "name": "field",
+                    "value": {
+                      "type": "String",
+                      "single": true,
+                      "value": "message"
+                    }
+                  },
+                  {
+                    "type": "NamedArgument",
+                    "name": "type",
+                    "value": {
+                      "type": "String",
+                      "single": true,
+                      "value": "textarea"
+                    }
+                  },
+                  {
+                    "type": "NamedArgument",
+                    "name": "label",
+                    "value": {
+                      "type": "VariableLookup",
+                      "name": "message_label",
+                      "lookups": [],
+                      "lookupModes": []
+                    }
+                  },
+                  {
+                    "type": "NamedArgument",
+                    "name": "hint",
+                    "value": {
+                      "type": "VariableLookup",
+                      "name": "optional_label",
+                      "lookups": [],
+                      "lookupModes": []
+                    }
+                  }
+                ]
+              },
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-"
+            }
+          ],
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-",
+          "delimiterWhitespaceStart": "-",
+          "delimiterWhitespaceEnd": "-"
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "div"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "contact-page"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "LiquidTag",
+              "name": "if",
+              "markup": {
+                "type": "VariableLookup",
+                "name": "show_heading",
+                "lookups": [],
+                "lookupModes": []
+              },
+              "children": [
+                {
+                  "type": "LiquidBranch",
+                  "name": null,
+                  "markup": "",
+                  "children": [
+                    {
+                      "type": "HtmlElement",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "h2"
+                        }
+                      ],
+                      "attributes": [
+                        {
+                          "type": "AttrDoubleQuoted",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "class"
+                            }
+                          ],
+                          "value": [
+                            {
+                              "type": "TextNode",
+                              "value": "contact-page__heading"
+                            }
+                          ]
+                        }
+                      ],
+                      "children": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "String",
+                              "single": true,
+                              "value": "contact.page.heading"
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "t",
+                                "args": []
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ],
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-",
+              "delimiterWhitespaceStart": "-",
+              "delimiterWhitespaceEnd": "-"
+            },
+            {
+              "type": "LiquidTag",
+              "name": "if",
+              "markup": {
+                "type": "VariableLookup",
+                "name": "wrap_fields",
+                "lookups": [],
+                "lookupModes": []
+              },
+              "children": [
+                {
+                  "type": "LiquidBranch",
+                  "name": null,
+                  "markup": "",
+                  "children": [
+                    {
+                      "type": "HtmlElement",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "fieldset"
+                        }
+                      ],
+                      "attributes": [
+                        {
+                          "type": "AttrDoubleQuoted",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "class"
+                            }
+                          ],
+                          "value": [
+                            {
+                              "type": "TextNode",
+                              "value": "contact-page__fields"
+                            }
+                          ]
+                        }
+                      ],
+                      "children": [
+                        {
+                          "type": "HtmlElement",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "legend"
+                            }
+                          ],
+                          "attributes": [],
+                          "children": [
+                            {
+                              "type": "LiquidVariableOutput",
+                              "markup": {
+                                "type": "LiquidVariable",
+                                "expression": {
+                                  "type": "String",
+                                  "single": true,
+                                  "value": "contact.page.legend"
+                                },
+                                "filters": [
+                                  {
+                                    "type": "LiquidFilter",
+                                    "name": "t",
+                                    "args": []
+                                  }
+                                ]
+                              },
+                              "whitespaceStart": "",
+                              "whitespaceEnd": ""
+                            }
+                          ]
+                        },
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "VariableLookup",
+                              "name": "fields",
+                              "lookups": [],
+                              "lookupModes": []
+                            },
+                            "filters": []
+                          },
+                          "whitespaceStart": "-",
+                          "whitespaceEnd": "-"
+                        }
+                      ]
+                    }
+                  ],
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                },
+                {
+                  "type": "LiquidBranch",
+                  "name": "else",
+                  "markup": "",
+                  "children": [
+                    {
+                      "type": "LiquidVariableOutput",
+                      "markup": {
+                        "type": "LiquidVariable",
+                        "expression": {
+                          "type": "VariableLookup",
+                          "name": "fields",
+                          "lookups": [],
+                          "lookupModes": []
+                        },
+                        "filters": []
+                      },
+                      "whitespaceStart": "-",
+                      "whitespaceEnd": "-"
+                    }
+                  ],
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-"
+                }
+              ],
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-",
+              "delimiterWhitespaceStart": "-",
+              "delimiterWhitespaceEnd": "-"
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "button"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "type"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "submit"
+                    }
+                  ]
+                },
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "contact-page__submit"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "contact.form.submit"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

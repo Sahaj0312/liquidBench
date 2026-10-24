@@ -1,0 +1,627 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/cart-drawer-script.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidRawTag",
+          "name": "comment",
+          "markup": "",
+          "body": {
+            "type": "RawMarkup",
+            "kind": "text",
+            "value": "\n  Cart drawer: renders at most max_lines non-empty lines, then a notice for unreached items.\n",
+            "nodes": [
+              {
+                "type": "TextNode",
+                "value": "Cart drawer: renders at most max_lines non-empty lines, then a notice for unreached items."
+              }
+            ]
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-",
+          "delimiterWhitespaceStart": "-",
+          "delimiterWhitespaceEnd": "-"
+        },
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "cart-drawer.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-"
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "cart-drawer"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "cart-drawer"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "h2"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "cart-drawer__title"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "sections.cart_drawer.title"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "LiquidTag",
+              "name": "assign",
+              "markup": {
+                "type": "AssignMarkup",
+                "name": "shown",
+                "value": {
+                  "type": "LiquidVariable",
+                  "expression": {
+                    "type": "Number",
+                    "value": "0"
+                  },
+                  "filters": []
+                }
+              },
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-"
+            },
+            {
+              "type": "LiquidTag",
+              "name": "assign",
+              "markup": {
+                "type": "AssignMarkup",
+                "name": "skipped",
+                "value": {
+                  "type": "LiquidVariable",
+                  "expression": {
+                    "type": "Number",
+                    "value": "0"
+                  },
+                  "filters": []
+                }
+              },
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-"
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "ul"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "class"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "cart-drawer__lines"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidTag",
+                  "name": "for",
+                  "markup": {
+                    "type": "ForMarkup",
+                    "variableName": "item",
+                    "collection": {
+                      "type": "VariableLookup",
+                      "name": "items",
+                      "lookups": [],
+                      "lookupModes": []
+                    },
+                    "reversed": false,
+                    "args": [
+                      {
+                        "type": "NamedArgument",
+                        "name": "limit",
+                        "value": {
+                          "type": "VariableLookup",
+                          "name": "max_lines",
+                          "lookups": [],
+                          "lookupModes": []
+                        }
+                      }
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "LiquidBranch",
+                      "name": null,
+                      "markup": "",
+                      "children": [
+                        {
+                          "type": "LiquidTag",
+                          "name": "if",
+                          "markup": {
+                            "type": "Comparison",
+                            "comparator": "==",
+                            "left": {
+                              "type": "VariableLookup",
+                              "name": "item",
+                              "lookups": [
+                                {
+                                  "type": "String",
+                                  "value": "quantity"
+                                }
+                              ],
+                              "lookupModes": [
+                                "bareword"
+                              ]
+                            },
+                            "right": {
+                              "type": "Number",
+                              "value": "0"
+                            }
+                          },
+                          "children": [
+                            {
+                              "type": "LiquidBranch",
+                              "name": null,
+                              "markup": "",
+                              "children": [
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "assign",
+                                  "markup": {
+                                    "type": "AssignMarkup",
+                                    "name": "skipped",
+                                    "value": {
+                                      "type": "LiquidVariable",
+                                      "expression": {
+                                        "type": "VariableLookup",
+                                        "name": "skipped",
+                                        "lookups": [],
+                                        "lookupModes": []
+                                      },
+                                      "filters": [
+                                        {
+                                          "type": "LiquidFilter",
+                                          "name": "plus",
+                                          "args": [
+                                            {
+                                              "type": "Number",
+                                              "value": "1"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                },
+                                {
+                                  "type": "LiquidTag",
+                                  "name": "continue",
+                                  "markup": "",
+                                  "whitespaceStart": "-",
+                                  "whitespaceEnd": "-"
+                                }
+                              ],
+                              "whitespaceStart": "",
+                              "whitespaceEnd": ""
+                            }
+                          ],
+                          "whitespaceStart": "-",
+                          "whitespaceEnd": "-",
+                          "delimiterWhitespaceStart": "-",
+                          "delimiterWhitespaceEnd": "-"
+                        },
+                        {
+                          "type": "LiquidTag",
+                          "name": "assign",
+                          "markup": {
+                            "type": "AssignMarkup",
+                            "name": "shown",
+                            "value": {
+                              "type": "LiquidVariable",
+                              "expression": {
+                                "type": "VariableLookup",
+                                "name": "shown",
+                                "lookups": [],
+                                "lookupModes": []
+                              },
+                              "filters": [
+                                {
+                                  "type": "LiquidFilter",
+                                  "name": "plus",
+                                  "args": [
+                                    {
+                                      "type": "Number",
+                                      "value": "1"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "whitespaceStart": "-",
+                          "whitespaceEnd": "-"
+                        },
+                        {
+                          "type": "LiquidTag",
+                          "name": "render",
+                          "markup": {
+                            "type": "RenderMarkup",
+                            "snippet": {
+                              "type": "String",
+                              "single": true,
+                              "value": "cart-drawer-line-item"
+                            },
+                            "variable": null,
+                            "alias": null,
+                            "args": [
+                              {
+                                "type": "NamedArgument",
+                                "name": "item",
+                                "value": {
+                                  "type": "VariableLookup",
+                                  "name": "item",
+                                  "lookups": [],
+                                  "lookupModes": []
+                                }
+                              },
+                              {
+                                "type": "NamedArgument",
+                                "name": "position",
+                                "value": {
+                                  "type": "VariableLookup",
+                                  "name": "shown",
+                                  "lookups": [],
+                                  "lookupModes": []
+                                }
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "-",
+                          "whitespaceEnd": "-"
+                        }
+                      ],
+                      "whitespaceStart": "",
+                      "whitespaceEnd": ""
+                    }
+                  ],
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-",
+                  "delimiterWhitespaceStart": "-",
+                  "delimiterWhitespaceEnd": "-"
+                }
+              ]
+            },
+            {
+              "type": "LiquidTag",
+              "name": "assign",
+              "markup": {
+                "type": "AssignMarkup",
+                "name": "hidden",
+                "value": {
+                  "type": "LiquidVariable",
+                  "expression": {
+                    "type": "VariableLookup",
+                    "name": "items",
+                    "lookups": [
+                      {
+                        "type": "String",
+                        "value": "size"
+                      }
+                    ],
+                    "lookupModes": [
+                      "bareword"
+                    ]
+                  },
+                  "filters": [
+                    {
+                      "type": "LiquidFilter",
+                      "name": "minus",
+                      "args": [
+                        {
+                          "type": "VariableLookup",
+                          "name": "shown",
+                          "lookups": [],
+                          "lookupModes": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "LiquidFilter",
+                      "name": "minus",
+                      "args": [
+                        {
+                          "type": "VariableLookup",
+                          "name": "skipped",
+                          "lookups": [],
+                          "lookupModes": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-"
+            },
+            {
+              "type": "LiquidTag",
+              "name": "if",
+              "markup": {
+                "type": "Comparison",
+                "comparator": "==",
+                "left": {
+                  "type": "VariableLookup",
+                  "name": "shown",
+                  "lookups": [],
+                  "lookupModes": []
+                },
+                "right": {
+                  "type": "Number",
+                  "value": "0"
+                }
+              },
+              "children": [
+                {
+                  "type": "LiquidBranch",
+                  "name": null,
+                  "markup": "",
+                  "children": [
+                    {
+                      "type": "LiquidTag",
+                      "name": "render",
+                      "markup": {
+                        "type": "RenderMarkup",
+                        "snippet": {
+                          "type": "String",
+                          "single": true,
+                          "value": "cart-drawer-empty"
+                        },
+                        "variable": null,
+                        "alias": null,
+                        "args": []
+                      },
+                      "whitespaceStart": "-",
+                      "whitespaceEnd": "-"
+                    }
+                  ],
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                },
+                {
+                  "type": "LiquidBranch",
+                  "name": "elsif",
+                  "markup": {
+                    "type": "Comparison",
+                    "comparator": ">",
+                    "left": {
+                      "type": "VariableLookup",
+                      "name": "hidden",
+                      "lookups": [],
+                      "lookupModes": []
+                    },
+                    "right": {
+                      "type": "Number",
+                      "value": "0"
+                    }
+                  },
+                  "children": [
+                    {
+                      "type": "HtmlElement",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "p"
+                        }
+                      ],
+                      "attributes": [
+                        {
+                          "type": "AttrDoubleQuoted",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "class"
+                            }
+                          ],
+                          "value": [
+                            {
+                              "type": "TextNode",
+                              "value": "cart-drawer__more"
+                            }
+                          ]
+                        }
+                      ],
+                      "children": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "String",
+                              "single": true,
+                              "value": "sections.cart_drawer.more_items"
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "t",
+                                "args": [
+                                  {
+                                    "type": "NamedArgument",
+                                    "name": "hidden_count",
+                                    "value": {
+                                      "type": "VariableLookup",
+                                      "name": "hidden",
+                                      "lookups": [],
+                                      "lookupModes": []
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-"
+                }
+              ],
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-",
+              "delimiterWhitespaceStart": "-",
+              "delimiterWhitespaceEnd": "-"
+            }
+          ]
+        },
+        {
+          "type": "HtmlRawNode",
+          "name": "script",
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "src"
+                }
+              ],
+              "value": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "cart-drawer-controller.js"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "asset_url",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "defer"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "defer"
+                }
+              ]
+            }
+          ],
+          "body": {
+            "type": "RawMarkup",
+            "kind": "javascript",
+            "value": "",
+            "nodes": []
+          }
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

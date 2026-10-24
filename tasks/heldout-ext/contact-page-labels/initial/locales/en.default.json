@@ -1,0 +1,15 @@
+{
+  "contact": {
+    "page": {
+      "heading": "Get in touch",
+      "legend": "Your details"
+    },
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "optional": "(optional)",
+      "submit": "Send message"
+    }
+  }
+}

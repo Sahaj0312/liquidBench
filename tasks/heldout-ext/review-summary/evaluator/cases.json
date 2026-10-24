@@ -1,0 +1,798 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/review-summary.liquid",
+    "tags": [
+      "div",
+      "li",
+      "p",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "reviews": [],
+      "featured_author": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "review-summary review-summary--empty"
+          ]
+        ],
+        "children": [],
+        "text": "No reviews yet"
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "reviews": [
+        {
+          "author": "Ana",
+          "rating": 5,
+          "status": "Approved"
+        },
+        {
+          "author": "Ben",
+          "rating": 4,
+          "status": "APPROVED"
+        },
+        {
+          "author": "Cal",
+          "rating": 3,
+          "status": "approved "
+        }
+      ],
+      "featured_author": null
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "review-summary review-summary--empty"
+          ]
+        ],
+        "children": [],
+        "text": "No reviews yet"
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "reviews": [
+        {
+          "author": "Mia",
+          "rating": 4,
+          "status": "approved"
+        }
+      ],
+      "featured_author": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 review"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "Average: 4.0"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "review-summary__item"
+                  ]
+                ],
+                "children": [],
+                "text": "Mia (4/5)"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "reviews": [
+        {
+          "author": "Ana",
+          "rating": 5,
+          "status": "approved"
+        },
+        {
+          "author": "Ben",
+          "rating": 3,
+          "status": "Approved"
+        },
+        {
+          "author": "Cal",
+          "rating": 4,
+          "status": "approved"
+        },
+        {
+          "author": "Dee",
+          "rating": 4,
+          "status": "approved"
+        }
+      ],
+      "featured_author": "cal"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "3 reviews"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "Average: 4.3"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "review-summary__item"
+                  ]
+                ],
+                "children": [],
+                "text": "Ana (5/5)"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "review-summary__item"
+                  ]
+                ],
+                "children": [],
+                "text": "Cal (4/5)"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "review-summary__item"
+                  ]
+                ],
+                "children": [],
+                "text": "Dee (4/5)"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "reviews": [
+        {
+          "author": "Ana",
+          "rating": 5,
+          "status": "approved"
+        },
+        {
+          "author": "Ben",
+          "rating": 3,
+          "status": "Approved"
+        },
+        {
+          "author": "Cal",
+          "rating": 4,
+          "status": "approved"
+        },
+        {
+          "author": "Dee",
+          "rating": 4,
+          "status": "approved"
+        }
+      ],
+      "featured_author": "Cal"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "3 reviews"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "Average: 4.3"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "review-summary__item"
+                  ]
+                ],
+                "children": [],
+                "text": "Ana (5/5)"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "review-summary__item review-summary__item--featured"
+                  ]
+                ],
+                "children": [],
+                "text": "Cal (4/5)"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "review-summary__item"
+                  ]
+                ],
+                "children": [],
+                "text": "Dee (4/5)"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "reviews": [
+        {
+          "author": null,
+          "rating": 2,
+          "status": "approved"
+        },
+        {
+          "author": "   ",
+          "rating": 3,
+          "status": "approved"
+        }
+      ],
+      "featured_author": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "2 reviews"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "Average: 2.5"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "review-summary__item"
+                  ]
+                ],
+                "children": [],
+                "text": "Anonymous (2/5)"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "review-summary__item"
+                  ]
+                ],
+                "children": [],
+                "text": "Anonymous (3/5)"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "reviews": [
+        {
+          "author": "<b>\"Jo\" & Co</b>",
+          "rating": 5,
+          "status": "approved"
+        }
+      ],
+      "featured_author": "<b>\"Jo\" & Co</b>"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 review"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "Average: 5.0"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "review-summary__item review-summary__item--featured"
+                  ]
+                ],
+                "children": [],
+                "text": "<b>\"Jo\" & Co</b> (5/5)"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "reviews": [
+        {
+          "author": "A",
+          "rating": 5,
+          "status": "approved"
+        },
+        {
+          "author": "B",
+          "rating": 5,
+          "status": "approved"
+        },
+        {
+          "author": "C",
+          "rating": 4,
+          "status": "approved"
+        }
+      ],
+      "featured_author": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "3 reviews"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "Average: 4.6"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "review-summary__item"
+                  ]
+                ],
+                "children": [],
+                "text": "A (5/5)"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "review-summary__item"
+                  ]
+                ],
+                "children": [],
+                "text": "B (5/5)"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "review-summary__item"
+                  ]
+                ],
+                "children": [],
+                "text": "C (4/5)"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "reviews": [
+        {
+          "author": "",
+          "rating": 1,
+          "status": "approved"
+        }
+      ],
+      "featured_author": ""
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 review"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "Average: 1.0"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "review-summary__item"
+                  ]
+                ],
+                "children": [],
+                "text": "Anonymous (1/5)"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "reviews": [
+        {
+          "author": " Mia ",
+          "rating": 3,
+          "status": "approved"
+        }
+      ],
+      "featured_author": "Mia"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 review"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "Average: 3.0"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "review-summary__item"
+                  ]
+                ],
+                "children": [],
+                "text": "Mia (3/5)"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-10",
+    "variables": {
+      "reviews": [
+        {
+          "author": "Ana",
+          "rating": 2,
+          "status": "pending"
+        },
+        {
+          "author": "Ana",
+          "rating": 4,
+          "status": "approved"
+        }
+      ],
+      "featured_author": "Ana"
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "review-summary"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 review"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "review-summary__average"
+              ]
+            ],
+            "children": [],
+            "text": "Average: 4.0"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "review-summary__item review-summary__item--featured"
+                  ]
+                ],
+                "children": [],
+                "text": "Ana (4/5)"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

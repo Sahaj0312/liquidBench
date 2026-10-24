@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-total-only-displayed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/made-to-order-lead-time.liquid": "{%- assign shown = 0 -%}\n{%- assign hidden = 0 -%}\n{%- assign total = 0 -%}\n{%- capture items -%}\n{%- for step in steps -%}\n{%- if step.skip -%}{%- continue -%}{%- endif -%}\n{%- if shown < max_steps -%}\n{%- assign shown = shown | plus: 1 -%}\n{%- assign total = total | plus: step.days -%}\n<li>{{ step.name | escape }} — {{ step.days }} {% if step.days == 1 %}day{% else %}days{% endif %}</li>\n{%- else -%}\n{%- assign hidden = hidden | plus: 1 -%}\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if shown > 0 -%}\n<div class=\"lead-time\"><h3>Made to order{% if product_title != nil and product_title != \"\" %}: {{ product_title | escape }}{% endif %}</h3><ol>{{ items }}{% if hidden > 0 %}<li class=\"more\">+{{ hidden }} more {% if hidden == 1 %}step{% else %}steps{% endif %}</li>{% endif %}</ol><p>Ships in about {{ total }} {% if total == 1 %}day{% else %}days{% endif %}</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-skipped-days-counted",
+    "expected_pass": false,
+    "changes": {
+      "snippets/made-to-order-lead-time.liquid": "{%- assign shown = 0 -%}\n{%- assign hidden = 0 -%}\n{%- assign total = 0 -%}\n{%- capture items -%}\n{%- for step in steps -%}\n{%- assign total = total | plus: step.days -%}\n{%- if step.skip -%}{%- continue -%}{%- endif -%}\n{%- if shown < max_steps -%}\n{%- assign shown = shown | plus: 1 -%}\n<li>{{ step.name | escape }} — {{ step.days }} {% if step.days == 1 %}day{% else %}days{% endif %}</li>\n{%- else -%}\n{%- assign hidden = hidden | plus: 1 -%}\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if shown > 0 -%}\n<div class=\"lead-time\"><h3>Made to order{% if product_title != nil and product_title != \"\" %}: {{ product_title | escape }}{% endif %}</h3><ol>{{ items }}{% if hidden > 0 %}<li class=\"more\">+{{ hidden }} more {% if hidden == 1 %}step{% else %}steps{% endif %}</li>{% endif %}</ol><p>Ships in about {{ total }} {% if total == 1 %}day{% else %}days{% endif %}</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-limit-before-skip",
+    "expected_pass": false,
+    "changes": {
+      "snippets/made-to-order-lead-time.liquid": "{%- assign shown = 0 -%}\n{%- assign total = 0 -%}\n{%- capture items -%}\n{%- for step in steps limit: max_steps -%}\n{%- if step.skip -%}{%- continue -%}{%- endif -%}\n{%- assign total = total | plus: step.days -%}\n{%- assign shown = shown | plus: 1 -%}\n<li>{{ step.name | escape }} — {{ step.days }} {% if step.days == 1 %}day{% else %}days{% endif %}</li>\n{%- endfor -%}\n{%- endcapture -%}\n{%- if shown > 0 -%}\n<div class=\"lead-time\"><h3>Made to order{% if product_title != nil and product_title != \"\" %}: {{ product_title | escape }}{% endif %}</h3><ol>{{ items }}</ol><p>Ships in about {{ total }} {% if total == 1 %}day{% else %}days{% endif %}</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-more-always-plural",
+    "expected_pass": false,
+    "changes": {
+      "snippets/made-to-order-lead-time.liquid": "{%- assign shown = 0 -%}\n{%- assign hidden = 0 -%}\n{%- assign total = 0 -%}\n{%- capture items -%}\n{%- for step in steps -%}\n{%- if step.skip -%}{%- continue -%}{%- endif -%}\n{%- assign total = total | plus: step.days -%}\n{%- if shown < max_steps -%}\n{%- assign shown = shown | plus: 1 -%}\n<li>{{ step.name | escape }} — {{ step.days }} {% if step.days == 1 %}day{% else %}days{% endif %}</li>\n{%- else -%}\n{%- assign hidden = hidden | plus: 1 -%}\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if shown > 0 -%}\n<div class=\"lead-time\"><h3>Made to order{% if product_title != nil and product_title != \"\" %}: {{ product_title | escape }}{% endif %}</h3><ol>{{ items }}{% if hidden > 0 %}<li class=\"more\">+{{ hidden }} more steps</li>{% endif %}</ol><p>Ships in about {{ total }} {% if total == 1 %}day{% else %}days{% endif %}</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-4-title-colon-always",
+    "expected_pass": false,
+    "changes": {
+      "snippets/made-to-order-lead-time.liquid": "{%- assign shown = 0 -%}\n{%- assign hidden = 0 -%}\n{%- assign total = 0 -%}\n{%- capture items -%}\n{%- for step in steps -%}\n{%- if step.skip -%}{%- continue -%}{%- endif -%}\n{%- assign total = total | plus: step.days -%}\n{%- if shown < max_steps -%}\n{%- assign shown = shown | plus: 1 -%}\n<li>{{ step.name | escape }} — {{ step.days }} {% if step.days == 1 %}day{% else %}days{% endif %}</li>\n{%- else -%}\n{%- assign hidden = hidden | plus: 1 -%}\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if shown > 0 -%}\n<div class=\"lead-time\"><h3>Made to order: {{ product_title | escape }}</h3><ol>{{ items }}{% if hidden > 0 %}<li class=\"more\">+{{ hidden }} more {% if hidden == 1 %}step{% else %}steps{% endif %}</li>{% endif %}</ol><p>Ships in about {{ total }} {% if total == 1 %}day{% else %}days{% endif %}</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/made-to-order-lead-time.liquid": "{% # theme-check-disable %}\n{%- assign shown = 0 -%}\n{%- assign hidden = 0 -%}\n{%- assign total = 0 -%}\n{%- capture items -%}\n{%- for step in steps -%}\n{%- if step.skip -%}{%- continue -%}{%- endif -%}\n{%- assign total = total | plus: step.days -%}\n{%- if shown < max_steps -%}\n{%- assign shown = shown | plus: 1 -%}\n<li>{{ step.name | escape }} — {{ step.days }} {% if step.days == 1 %}day{% else %}days{% endif %}</li>\n{%- else -%}\n{%- assign hidden = hidden | plus: 1 -%}\n{%- endif -%}\n{%- endfor -%}\n{%- endcapture -%}\n{%- if shown > 0 -%}\n<div class=\"lead-time\"><h3>Made to order{% if product_title != nil and product_title != \"\" %}: {{ product_title | escape }}{% endif %}</h3><ol>{{ items }}{% if hidden > 0 %}<li class=\"more\">+{{ hidden }} more {% if hidden == 1 %}step{% else %}steps{% endif %}</li>{% endif %}</ol><p>Ships in about {{ total }} {% if total == 1 %}day{% else %}days{% endif %}</p></div>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/made-to-order-lead-time.liquid": null
+    }
+  }
+]

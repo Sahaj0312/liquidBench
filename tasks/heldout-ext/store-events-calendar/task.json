@@ -1,0 +1,15 @@
+{
+  "id": "store-events-calendar",
+  "version": 1,
+  "split": "heldout",
+  "category": "section-schema",
+  "difficulty": "easy",
+  "family": "store-events-calendar",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/store-events-calendar.liquid"
+  ],
+  "prompt": "The section sections/store-events-calendar.liquid renders a list of store events. Its markup marks the first rendered event with the class events-calendar__item--first and the last one with events-calendar__item--last. It shows at most section.settings.max_events events. The schema is incomplete: the max_events setting it relies on does not exist, there is no block limit, and the preset adds no events, so the first/last styling cannot be previewed. Do not change the markup. Replace only the JSON inside the single {% schema %} block so that it is exactly the following, with keys and array items in this order:\n- \"name\": \"Events calendar\"\n- \"tag\": \"section\"\n- \"class\": \"section-events-calendar\"\n- \"settings\", in this order:\n  1. type \"text\", id \"heading\", label \"Heading\", default \"Upcoming events\"\n  2. type \"range\", id \"max_events\", label \"Maximum events shown\", min 1, max 12, step 1, default 6. All four are JSON numbers.\n- \"blocks\": one block type, with type \"event\" and name \"Event\". Its settings, in this order:\n  1. type \"text\", id \"title\", label \"Event title\", default \"Store event\"\n  2. type \"text\", id \"date\", label \"Date\", default \"January 1\"\n- \"max_blocks\": 12 (a number)\n- \"presets\": one preset with name \"Events calendar\" and blocks set to exactly three entries, each {\"type\": \"event\"}. Three events let the merchant see a first, a middle and a last item.\nAdd no other keys. Change only sections/store-events-calendar.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

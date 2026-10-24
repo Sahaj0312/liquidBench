@@ -1,0 +1,33 @@
+{%- assign mto_count = 0 -%}
+{%- assign max_days = 0 -%}
+{%- for item in items -%}
+  {%- if item.lead_days != nil -%}
+    {%- if item.lead_days > 0 -%}
+      {%- assign mto_count = mto_count | plus: 1 -%}
+      {%- if item.lead_days > max_days -%}
+        {%- assign max_days = item.lead_days -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if mto_count > 0 -%}
+  {%- assign label = '' -%}
+  {%- assign idx = 0 -%}
+  {%- for item in items -%}
+    {%- if item.lead_days != nil -%}
+      {%- if item.lead_days > 0 -%}
+        {%- assign idx = idx | plus: 1 -%}
+        {%- if idx == 1 -%}
+          {%- assign sep = '' -%}
+        {%- elsif idx == mto_count -%}
+          {%- assign sep = ' and ' -%}
+        {%- else -%}
+          {%- assign sep = ', ' -%}
+        {%- endif -%}
+        {%- assign safe_title = item.title | escape -%}
+        {%- assign label = label | append: sep | append: safe_title -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+<div class="mto-lead"><p>Made to order: {{ label }}</p><p>Ships in {{ max_days }} {% if max_days == 1 %}day{% else %}days{% endif %}</p></div>
+{%- endif -%}

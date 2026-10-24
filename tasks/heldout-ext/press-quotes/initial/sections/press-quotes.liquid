@@ -1,0 +1,71 @@
+<div class="press-quotes press-quotes--{{ section.settings.layout }} text-{{ section.settings.text_alignment }}">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="press-quotes__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  <ul class="press-quotes__list{% if section.settings.layout == 'carousel' %} press-quotes__list--scroll{% endif %}">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'quote' -%}
+        <li class="press-quotes__item" {{ block.shopify_attributes }}>
+          {%- if section.settings.show_logos and block.settings.logo != blank -%}
+            {{ block.settings.logo | image_url: width: 240 | image_tag: alt: block.settings.publication, loading: 'lazy' }}
+          {%- endif -%}
+          <blockquote class="press-quotes__quote">{{ block.settings.quote | escape | newline_to_br }}</blockquote>
+          {%- if block.settings.publication != blank -%}
+            <p class="press-quotes__source">
+              {%- if block.settings.link != blank -%}
+                <a href="{{ block.settings.link }}">{{ block.settings.publication | escape }}</a>
+              {%- else -%}
+                {{ block.settings.publication | escape }}
+              {%- endif -%}
+            </p>
+          {%- endif -%}
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Press quotes",
+  "tag": "section",
+  "class": "press-quotes-section",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "As seen in" },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "Grid", "label": "Grid" },
+        { "value": "Carousel", "label": "Carousel" }
+      ],
+      "default": "Grid"
+    },
+    { "type": "checkbox", "id": "show_logos", "label": "Show publication logos", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "Quote",
+      "name": "Quote",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "text", "id": "publicationName", "label": "Publication" },
+        { "type": "image_picker", "id": "logo", "label": "Logo" },
+        { "type": "url", "id": "link", "label": "Article link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Press quotes",
+      "blocks": [
+        { "type": "Quote" },
+        { "type": "Quote" },
+        { "type": "Quote" }
+      ]
+    }
+  ]
+}
+{% endschema %}

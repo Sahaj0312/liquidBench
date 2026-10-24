@@ -1,0 +1,15 @@
+{
+  "id": "podcast-embed-episodes",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-modification",
+  "difficulty": "hard",
+  "family": "podcast-embed-episodes",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/podcast-embed-episodes.liquid"
+  ],
+  "prompt": "The section sections/podcast-embed-episodes.liquid currently prints an optional heading and a flat <ul> of episode titles. Rewrite the markup so that episodes are grouped by season and numbered within each group. Keep the {% schema %}...{% endschema %} block byte-for-byte unchanged.\n\nInputs. Nothing is top-level except `section`:\n- section.settings.heading: string or null.\n- section.blocks: an array, possibly empty. Each block has:\n  - block.settings.title: string or null.\n  - block.settings.season: integer >= 1, never null.\n  - block.settings.minutes: null, 0 or a positive integer.\n\nOutput. Emit no whitespace between tags.\n1. The outer element is <div class=\"podcast-embed\">...</div>.\n2. Heading: strip the heading. Treat null as empty. If the result is not empty, output <h2>HEADING</h2> first, with HEADING HTML-escaped. This matches the current behaviour.\n3. If section.blocks is empty, output <p>No episodes yet.</p> after the optional heading and nothing else. There is no list and no total in this case.\n4. Otherwise walk the blocks in order and track the season of the previous block.\n   - A new group starts whenever a block's season differs from the previous block's season. The first block always starts a group.\n   - Groups depend only on consecutive blocks. If a season appears again after a different season, it starts a new group.\n   - Each group is <h3>Season N</h3><ol>...</ol>. Close a group's </ol> before the next group's <h3>.\n5. Each episode is <li>E{k}: TITLE{suffix}</li>.\n   - k is the 1-based position of the episode within its current group. It restarts at 1 for every group.\n   - TITLE is the stripped title, HTML-escaped. A null title, or one that is empty or whitespace-only after stripping, becomes Untitled.\n   - suffix is ' (M min)' (note the leading space) only when minutes is a positive integer. If minutes is null or 0, there is no suffix.\n6. After the last </ol>, output <p>Total: X min</p>. X is the sum of all positive minutes values, or 0 if there are none. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/podcast-embed-episodes.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

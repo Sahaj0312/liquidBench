@@ -1,0 +1,15 @@
+{
+  "id": "back-to-top-icon",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-references",
+  "difficulty": "easy",
+  "family": "back-to-top-icon",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/back-to-top-icon.liquid"
+  ],
+  "prompt": "The snippet snippets/back-to-top-icon.liquid renders a 'back to top' link, but Theme Check reports broken references. Every literal operand that refers to a theme file or translation was written with the wrong letter case. Shopify asset filenames, snippet names and translation keys are matched exactly and case-sensitively, so 'Back-To-Top.css' does not resolve to 'back-to-top.css'.\n\nFix the snippet so that:\n1. The stylesheet loaded with asset_url | stylesheet_tag is the existing asset in assets/ that styles the back-to-top link.\n2. The image src uses asset_url with the existing up-arrow SVG in assets/.\n3. The aria-label uses the t filter with the existing translation key for the link's accessible label. The visible <span> text uses the t filter with the existing key for the short link text. Both keys live under the nested 'general' > 'back_to_top' object in locales/en.default.json and locales/fr.json.\n4. The render tag renders the existing chevron icon snippet in snippets/.\n\nRead the files under assets/, locales/ and snippets/ to find the exact names, and copy each one exactly, including its case. Keep the markup structure, attributes and order unchanged and change only the four kinds of literal operands. When you are done, Theme Check must report no missing asset, missing translation key or missing snippet errors. Change only snippets/back-to-top-icon.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "reference-contract-v1"
+}

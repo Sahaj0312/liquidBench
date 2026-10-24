@@ -1,0 +1,14 @@
+<section class="how-it-works">
+  {%- if section.settings.heading -%}
+  <h2>{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  <ol>
+  {%- for block in section.blocks -%}
+    <li><h3>{{ block.settings.title | escape }}</h3><p>{{ block.settings.text | escape }}</p></li>
+  {%- endfor -%}
+  </ol>
+</section>
+{%- comment -%} Step list for the how-it-works banner. {%- endcomment -%}
+{% schema %}
+{"name":"How it works","settings":[{"type":"text","id":"heading","label":"Heading"}],"blocks":[{"type":"step","name":"Step","settings":[{"type":"text","id":"title","label":"Title"},{"type":"textarea","id":"text","label":"Text"}]}],"presets":[{"name":"How it works"}]}
+{% endschema %}

@@ -1,0 +1,3 @@
+.cart-drawer { position: fixed; inset: 0 0 0 auto; width: 24rem; }
+.cart-drawer__lines { list-style: none; margin: 0; padding: 0; }
+.cart-drawer__more { font-size: 0.875rem; }

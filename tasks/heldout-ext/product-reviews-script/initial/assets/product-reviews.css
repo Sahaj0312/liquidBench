@@ -1,0 +1,3 @@
+.product-reviews { display: grid; gap: 1rem; }
+.review-card--expanded .review-card__body { max-height: none; }
+.review-stars { color: #f5a623; }

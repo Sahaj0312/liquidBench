@@ -1,0 +1,15 @@
+{
+  "id": "milestones-timeline",
+  "version": 1,
+  "split": "heldout",
+  "category": "theme-modification",
+  "difficulty": "easy",
+  "family": "milestones-timeline",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/milestones-timeline.liquid"
+  ],
+  "prompt": "The section sections/milestones-timeline.liquid renders a company timeline. Its schema already has a `max_items` range setting, but the markup ignores it and renders every milestone block. Wire it up. Do not change the schema block in any way.\n\nInputs:\n- section.settings.heading: string, may be null or \"\".\n- section.settings.max_items: integer from 1 to 10, never null.\n- section.blocks: array, may be empty. Each block has block.settings.year (string, never null) and block.settings.title (string, may be null or \"\").\n\nRequired output, with no whitespace between tags:\n- `<section class=\"milestones\">` ... `</section>`.\n- If heading is neither null nor \"\", output `<h2>HEADING</h2>` first, with the heading HTML-escaped. Otherwise output no h2.\n- Next, always output `<ol>` ... `</ol>`, even when it ends up empty.\n- The new rule: consider only the first max_items blocks, counted by position in section.blocks. Ignore all later blocks.\n- Among the considered blocks, skip any block whose title is null or \"\". Skipped blocks still count toward max_items. Do not pull in later blocks to make up the number.\n- For each remaining block, in order, output `<li><span class=\"year\">YEAR</span> TITLE</li>`. There is exactly one space between `</span>` and the title. Year and title are both HTML-escaped with the standard escape filter.\n\nExample: with max_items 3 and titles [\"Founded\", \"\", \"First store\", \"Online shop\"], only Founded and First store are rendered. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Preserve the entire schema block byte-for-byte. Change only sections/milestones-timeline.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

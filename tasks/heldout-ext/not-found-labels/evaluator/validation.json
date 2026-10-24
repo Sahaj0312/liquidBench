@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-snippet-name-with-extension",
+    "expected_pass": false,
+    "changes": {
+      "snippets/not-found-labels.liquid": "{%- comment -%}Inputs: missing_collection (boolean), search_term (string or nil), home_url (string){%- endcomment -%}\n{{ 'page-not-found.css' | asset_url | stylesheet_tag }}\n<div class=\"not-found\">\n  <img src=\"{{ 'not-found-illustration.svg' | asset_url }}\" alt=\"\" width=\"240\" height=\"160\" loading=\"lazy\">\n  {%- if missing_collection -%}\n    {%- assign heading = 'templates.not_found.collection_title' | t -%}\n  {%- elsif search_term != blank -%}\n    {%- assign heading = 'templates.not_found.search_title' | t: term: search_term -%}\n  {%- else -%}\n    {%- assign heading = 'templates.not_found.title' | t -%}\n  {%- endif -%}\n  <h1>{{ heading }}</h1>\n  <p>{{ 'templates.not_found.subtext' | t }}</p>\n  {%- assign back_label = 'templates.not_found.back_home' | t -%}\n  {% render 'not-found-link.liquid', url: home_url, label: back_label %}\n  <p class=\"not-found__search\">{% render 'icon-search' %}{{ 'templates.not_found.search_hint' | t }}</p>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-back-key-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/not-found-labels.liquid": "{%- comment -%}Inputs: missing_collection (boolean), search_term (string or nil), home_url (string){%- endcomment -%}\n{{ 'page-not-found.css' | asset_url | stylesheet_tag }}\n<div class=\"not-found\">\n  <img src=\"{{ 'not-found-illustration.svg' | asset_url }}\" alt=\"\" width=\"240\" height=\"160\" loading=\"lazy\">\n  {%- if missing_collection -%}\n    {%- assign heading = 'templates.not_found.collection_title' | t -%}\n  {%- elsif search_term != blank -%}\n    {%- assign heading = 'templates.not_found.search_title' | t: term: search_term -%}\n  {%- else -%}\n    {%- assign heading = 'templates.not_found.title' | t -%}\n  {%- endif -%}\n  <h1>{{ heading }}</h1>\n  <p>{{ 'templates.not_found.subtext' | t }}</p>\n  {%- assign back_label = 'templates.not_found.back_to_home' | t -%}\n  {% render 'not-found-link', url: home_url, label: back_label %}\n  <p class=\"not-found__search\">{% render 'icon-search' %}{{ 'templates.not_found.search_hint' | t }}</p>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-illustration-wrong-extension",
+    "expected_pass": false,
+    "changes": {
+      "snippets/not-found-labels.liquid": "{%- comment -%}Inputs: missing_collection (boolean), search_term (string or nil), home_url (string){%- endcomment -%}\n{{ 'page-not-found.css' | asset_url | stylesheet_tag }}\n<div class=\"not-found\">\n  <img src=\"{{ 'not-found-illustration.png' | asset_url }}\" alt=\"\" width=\"240\" height=\"160\" loading=\"lazy\">\n  {%- if missing_collection -%}\n    {%- assign heading = 'templates.not_found.collection_title' | t -%}\n  {%- elsif search_term != blank -%}\n    {%- assign heading = 'templates.not_found.search_title' | t: term: search_term -%}\n  {%- else -%}\n    {%- assign heading = 'templates.not_found.title' | t -%}\n  {%- endif -%}\n  <h1>{{ heading }}</h1>\n  <p>{{ 'templates.not_found.subtext' | t }}</p>\n  {%- assign back_label = 'templates.not_found.back_home' | t -%}\n  {% render 'not-found-link', url: home_url, label: back_label %}\n  <p class=\"not-found__search\">{% render 'icon-search' %}{{ 'templates.not_found.search_hint' | t }}</p>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-3-search-hint-missing-namespace",
+    "expected_pass": false,
+    "changes": {
+      "snippets/not-found-labels.liquid": "{%- comment -%}Inputs: missing_collection (boolean), search_term (string or nil), home_url (string){%- endcomment -%}\n{{ 'page-not-found.css' | asset_url | stylesheet_tag }}\n<div class=\"not-found\">\n  <img src=\"{{ 'not-found-illustration.svg' | asset_url }}\" alt=\"\" width=\"240\" height=\"160\" loading=\"lazy\">\n  {%- if missing_collection -%}\n    {%- assign heading = 'templates.not_found.collection_title' | t -%}\n  {%- elsif search_term != blank -%}\n    {%- assign heading = 'templates.not_found.search_title' | t: term: search_term -%}\n  {%- else -%}\n    {%- assign heading = 'templates.not_found.title' | t -%}\n  {%- endif -%}\n  <h1>{{ heading }}</h1>\n  <p>{{ 'templates.not_found.subtext' | t }}</p>\n  {%- assign back_label = 'templates.not_found.back_home' | t -%}\n  {% render 'not-found-link', url: home_url, label: back_label %}\n  <p class=\"not-found__search\">{% render 'icon-search' %}{{ 'not_found.search_hint' | t }}</p>\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/not-found-labels.liquid": "{% # theme-check-disable %}\n{%- comment -%}Inputs: missing_collection (boolean), search_term (string or nil), home_url (string){%- endcomment -%}\n{{ 'page-not-found.css' | asset_url | stylesheet_tag }}\n<div class=\"not-found\">\n  <img src=\"{{ 'not-found-illustration.svg' | asset_url }}\" alt=\"\" width=\"240\" height=\"160\" loading=\"lazy\">\n  {%- if missing_collection -%}\n    {%- assign heading = 'templates.not_found.collection_title' | t -%}\n  {%- elsif search_term != blank -%}\n    {%- assign heading = 'templates.not_found.search_title' | t: term: search_term -%}\n  {%- else -%}\n    {%- assign heading = 'templates.not_found.title' | t -%}\n  {%- endif -%}\n  <h1>{{ heading }}</h1>\n  <p>{{ 'templates.not_found.subtext' | t }}</p>\n  {%- assign back_label = 'templates.not_found.back_home' | t -%}\n  {% render 'not-found-link', url: home_url, label: back_label %}\n  <p class=\"not-found__search\">{% render 'icon-search' %}{{ 'templates.not_found.search_hint' | t }}</p>\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/not-found-labels.liquid": null
+    }
+  }
+]

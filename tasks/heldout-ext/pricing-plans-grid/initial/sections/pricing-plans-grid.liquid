@@ -1,0 +1,30 @@
+<section class="pricing-plans pricing-plans--cols-{{ section.settings.columns }}">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="pricing-plans__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  <ul class="pricing-plans__list">
+    {%- for block in section.blocks -%}
+      {%- assign plan_name = block.settings.plan_name | escape -%}
+      <li class="pricing-plans__plan{% if block.settings.featured %} pricing-plans__plan--featured{% endif %}" {{ block.shopify_attributes }}>
+        <h3 class="pricing-plans__name">{{ plan_name }}</h3>
+        <p class="pricing-plans__price">{{ block.settings.price | escape }}<span class="pricing-plans__period">/{{ block.settings.period | escape }}</span></p>
+        {%- assign features = block.settings.features | newline_to_br | split: '<br />' -%}
+        <ul class="pricing-plans__features">
+          {%- for feature in features -%}
+            {%- assign feature_text = feature | strip -%}
+            {%- if feature_text != blank -%}
+              <li>{{ feature_text | escape }}</li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+        {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+          <a class="pricing-plans__cta" href="{{ block.settings.button_link | escape }}" aria-label="{{ block.settings.button_label | escape }}: {{ plan_name }}">{{ block.settings.button_label | escape }}</a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</section>
+
+{% schema %}
+{"name":"Pricing","tag":"section","settings":[{"type":"text","id":"title","label":"Heading","default":"Choose your plan"},{"type":"number","id":"columns","label":"Columns","default":3}],"blocks":[{"type":"plan","name":"Plan","settings":[{"type":"text","id":"name","label":"Plan name"},{"type":"text","id":"price","label":"Price"},{"type":"select","id":"period","label":"Billing period","options":[{"value":"month","label":"Month"},{"value":"year","label":"Year"}],"default":"monthly"},{"type":"checkbox","id":"featured","label":"Highlight this plan","default":"false"}]}]}
+{% endschema %}

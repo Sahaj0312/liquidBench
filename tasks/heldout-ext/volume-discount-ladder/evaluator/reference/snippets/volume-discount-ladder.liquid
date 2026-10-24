@@ -1,0 +1,37 @@
+{%- assign qty = quantity | default: 1 -%}
+{%- assign tier_count = tiers | size -%}
+{%- assign win = -1 -%}
+{%- assign win_pct = 0 -%}
+{%- assign win_excl = false -%}
+{%- for t in tiers -%}
+{%- assign matches = false -%}
+{%- if qty >= t.min -%}
+{%- if t.max == nil -%}{%- assign matches = true -%}{%- elsif qty <= t.max -%}{%- assign matches = true -%}{%- endif -%}
+{%- endif -%}
+{%- if matches -%}
+{%- if t.exclusive == true -%}
+{%- unless win_excl -%}{%- assign win = forloop.index0 -%}{%- assign win_pct = t.percent -%}{%- assign win_excl = true -%}{%- endunless -%}
+{%- elsif win_excl == false -%}
+{%- if win == -1 or t.percent > win_pct -%}{%- assign win = forloop.index0 -%}{%- assign win_pct = t.percent -%}{%- endif -%}
+{%- endif -%}
+{%- endif -%}
+{%- endfor -%}
+{%- assign keep = 100 | minus: win_pct -%}
+{%- assign total = unit_price | times: qty | times: keep | divided_by: 100 -%}
+{%- assign dollars = total | divided_by: 100 -%}
+{%- assign cents = total | modulo: 100 -%}
+{%- if cents < 10 -%}{%- assign cents = cents | prepend: "0" -%}{%- endif -%}
+<div class="ladder">
+{%- if tier_count > 0 -%}
+<ol>
+{%- for t in tiers -%}
+{%- assign label = t.label | strip -%}
+{%- if label == "" -%}
+{%- if t.max == nil -%}{%- assign label = "Buy " | append: t.min | append: "+" -%}{%- else -%}{%- assign label = "Buy " | append: t.min | append: "-" | append: t.max -%}{%- endif -%}
+{%- endif -%}
+<li class="tier{% if forloop.index0 == win %} tier--active{% endif %}"><span class="range">{{ label | escape }}</span><span class="off">{{ t.percent }}% off</span></li>
+{%- endfor -%}
+</ol>
+{%- endif -%}
+{%- if win_pct > 0 -%}<p class="saving">Save {{ win_pct }}%</p>{%- endif -%}
+<p class="total">${{ dollars }}.{{ cents }}</p></div>

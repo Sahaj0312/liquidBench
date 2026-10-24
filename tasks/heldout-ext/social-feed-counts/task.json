@@ -1,0 +1,15 @@
+{
+  "id": "social-feed-counts",
+  "version": 1,
+  "split": "heldout",
+  "category": "section-schema",
+  "difficulty": "easy",
+  "family": "social-feed-counts",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_01Mz3BgK22rvg7gF6vTB5ngb, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "sections/social-feed-counts.liquid"
+  ],
+  "prompt": "The section file sections/social-feed-counts.liquid shows a grid of social media posts. Above the grid it prints a count line such as \"Showing 1 post\" or \"Showing 6 posts\", choosing between a singular and a plural label set by the merchant. The markup is already correct and must not be changed. Its {% schema %} block uses the wrong setting ids and has an incomplete range setting. Replace the schema JSON so it is exactly the following, with keys and array items in this order.\n\nTop-level keys:\n- name: \"Social feed\"\n- tag: \"section\"\n- class: \"social-feed\"\n- settings, presets (described below)\n\nSettings (5 items, in this order):\n1. type \"text\", id \"heading\", label \"Heading\", default \"Follow us\".\n2. type \"range\", id \"posts_count\", label \"Number of posts\", min 1, max 12, step 1, default 6. These are numbers, not strings. The minimum must be 1 so the singular label can be shown.\n3. type \"text\", id \"label_singular\", label \"Label for one post\", default \"post\".\n4. type \"text\", id \"label_plural\", label \"Label for several posts\", default \"posts\".\n5. type \"checkbox\", id \"show_count\", label \"Show post count\", default true.\n\npresets: a single preset with name \"Social feed\".\n\nDo not add blocks or any other keys. Change only sections/social-feed-counts.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "schema-contract-v1"
+}

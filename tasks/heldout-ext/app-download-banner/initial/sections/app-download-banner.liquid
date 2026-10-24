@@ -1,0 +1,41 @@
+{%- liquid
+  assign heading = section.settings.heading | strip
+  assign description = section.settings.description | strip
+-%}
+<div class="app-download app-download--{{ section.settings.layout }}" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  {%- if section.settings.qr_image != blank -%}
+    <div class="app-download__qr">
+      {{- section.settings.qr_image | image_url: width: 300 | image_tag: loading: 'lazy', alt: heading -}}
+    </div>
+  {%- endif -%}
+  <div class="app-download__content">
+    {%- if heading != blank -%}
+      <h2 class="app-download__heading">{{- heading | escape -}}</h2>
+    {%- endif -%}
+    {%- if description != blank -%}
+      <p class="app-download__text">{{- description | escape | newline_to_br -}}</p>
+    {%- endif -%}
+    {%- if section.blocks.size > 0 -%}
+      <ul class="app-download__features">
+        {%- for block in section.blocks -%}
+          {%- assign feature_text = block.settings.text | strip -%}
+          {%- if feature_text != blank -%}
+            <li {{ block.shopify_attributes }}>{{- feature_text | escape -}}</li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+    <div class="app-download__stores">
+      {%- if section.settings.app_store_url != blank -%}
+        <a class="app-download__store" href="{{ section.settings.app_store_url }}">App Store</a>
+      {%- endif -%}
+      {%- if section.settings.google_play_url != blank -%}
+        <a class="app-download__store" href="{{ section.settings.google_play_url }}">Google Play</a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{"name":"App banner","tag":"section","class":"app-download-section","settings":[{"type":"text","id":"heading","label":"Heading","default":"Get the app"},{"type":"text","id":"description","label":"Description"},{"type":"image_picker","id":"qr_image","label":"QR code image"},{"type":"url","id":"app_store_url","label":"App Store link"},{"type":"url","id":"google_play_url","label":"Google Play link"},{"type":"select","id":"layout","label":"Layout","options":[{"value":"image_first","label":"Image first"},{"value":"text_first","label":"Text first"}]},{"type":"range","id":"padding_top","label":"Top padding","min":0,"max":100,"step":4,"unit":"px","default":35},{"type":"range","id":"padding_bottom","label":"Bottom padding","min":0,"max":100,"step":4,"unit":"px","default":"36"}]}
+{% endschema %}

@@ -1,0 +1,48 @@
+<section class="press-mentions">
+  {%- assign heading = section.settings.heading | strip -%}
+  {%- if heading != "" -%}
+    <h2 class="press-mentions__heading">{{ heading | escape }}</h2>
+  {%- endif -%}
+  {%- assign rated_count = 0 -%}
+  {%- assign score_sum = 0 -%}
+  <ul class="press-mentions__list">
+    {%- for block in section.blocks -%}
+      <li class="press-mentions__item"><blockquote>{{ block.settings.quote | escape }}</blockquote><cite>{{ block.settings.outlet | escape }}</cite>
+      {%- if block.settings.score != nil -%}
+        {%- assign rated_count = rated_count | plus: 1 -%}
+        {%- assign score_sum = score_sum | plus: block.settings.score -%}
+        {%- assign halves = block.settings.score | plus: 5 | divided_by: 10 -%}
+        {%- assign whole = halves | divided_by: 2 -%}
+        {%- assign fraction = halves | modulo: 2 | times: 5 -%}
+        <span class="press-mentions__rating">{{ whole }}.{{ fraction }} / 5</span>
+      {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+  {%- if rated_count > 0 -%}
+    {%- assign numerator = score_sum | times: 2 | plus: rated_count -%}
+    {%- assign denominator = rated_count | times: 2 -%}
+    {%- assign average = numerator | divided_by: denominator -%}
+    <p class="press-mentions__average">Average score: {{ average }}/100 from {{ rated_count }} {% if rated_count == 1 %}review{% else %}reviews{% endif %}</p>
+  {%- endif -%}
+</section>
+{% schema %}
+{
+  "name": "Press mentions",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "As seen in" }
+  ],
+  "blocks": [
+    {
+      "type": "mention",
+      "name": "Mention",
+      "settings": [
+        { "type": "text", "id": "outlet", "label": "Outlet" },
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "number", "id": "score", "label": "Review score (0-100)" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Press mentions" }]
+}
+{% endschema %}

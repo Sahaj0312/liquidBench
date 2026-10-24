@@ -1,0 +1,1094 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/color-palette-chips.liquid",
+    "tags": [
+      "button",
+      "div",
+      "h3",
+      "li",
+      "p",
+      "span",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "palette": {
+        "heading": "Colors",
+        "selected": "navy",
+        "chips": [
+          {
+            "name": "Navy",
+            "hex": "#001f3f",
+            "value": "navy"
+          },
+          {
+            "name": "Coral",
+            "hex": "#ff7f50",
+            "value": null
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "palette"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "palette__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Colors"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "palette__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "button",
+                    "attrs": [
+                      [
+                        "aria-label",
+                        "Navy"
+                      ],
+                      [
+                        "aria-pressed",
+                        "true"
+                      ],
+                      [
+                        "class",
+                        "is-selected palette__chip"
+                      ],
+                      [
+                        "data-value",
+                        "navy"
+                      ],
+                      [
+                        "style",
+                        "background-color: #001f3f"
+                      ],
+                      [
+                        "type",
+                        "button"
+                      ]
+                    ],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "palette__name"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "Navy"
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "button",
+                    "attrs": [
+                      [
+                        "aria-label",
+                        "Coral"
+                      ],
+                      [
+                        "aria-pressed",
+                        "false"
+                      ],
+                      [
+                        "class",
+                        "palette__chip"
+                      ],
+                      [
+                        "data-value",
+                        "coral"
+                      ],
+                      [
+                        "style",
+                        "background-color: #ff7f50"
+                      ],
+                      [
+                        "type",
+                        "button"
+                      ]
+                    ],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "palette__name"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "Coral"
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "palette__count"
+              ]
+            ],
+            "children": [],
+            "text": "2 colors"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "palette": {
+        "heading": "Tom & Jerry's \"Picks\"",
+        "selected": null,
+        "chips": [
+          {
+            "name": "Rose <Gold>",
+            "hex": "#fff\" onclick=\"x",
+            "value": "rose\"gold"
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "palette"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "palette__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Tom & Jerry's \"Picks\""
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "palette__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "button",
+                    "attrs": [
+                      [
+                        "aria-label",
+                        "Rose <Gold>"
+                      ],
+                      [
+                        "aria-pressed",
+                        "false"
+                      ],
+                      [
+                        "class",
+                        "palette__chip"
+                      ],
+                      [
+                        "data-value",
+                        "rose\"gold"
+                      ],
+                      [
+                        "style",
+                        "background-color: #fff\" onclick=\"x"
+                      ],
+                      [
+                        "type",
+                        "button"
+                      ]
+                    ],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "palette__name"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "Rose <Gold>"
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "palette__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 color"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "palette": {
+        "heading": null,
+        "selected": "r&amp;d-red",
+        "chips": [
+          {
+            "name": "R&amp;D Red",
+            "hex": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "palette"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "palette__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "button",
+                    "attrs": [
+                      [
+                        "aria-label",
+                        "R&amp;D Red"
+                      ],
+                      [
+                        "aria-pressed",
+                        "true"
+                      ],
+                      [
+                        "class",
+                        "is-selected palette__chip palette__chip--empty"
+                      ],
+                      [
+                        "data-value",
+                        "r&amp;d-red"
+                      ],
+                      [
+                        "type",
+                        "button"
+                      ]
+                    ],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "palette__name"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "R&amp;D Red"
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "palette__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 color"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "palette": {
+        "heading": "",
+        "selected": " sand ",
+        "chips": [
+          {
+            "name": "Sand",
+            "hex": "#c2b280",
+            "value": "sand"
+          },
+          {
+            "name": "Desert Sand",
+            "hex": "#edc9af",
+            "value": "sand"
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "palette"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "palette__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "button",
+                    "attrs": [
+                      [
+                        "aria-label",
+                        "Sand"
+                      ],
+                      [
+                        "aria-pressed",
+                        "true"
+                      ],
+                      [
+                        "class",
+                        "is-selected palette__chip"
+                      ],
+                      [
+                        "data-value",
+                        "sand"
+                      ],
+                      [
+                        "style",
+                        "background-color: #c2b280"
+                      ],
+                      [
+                        "type",
+                        "button"
+                      ]
+                    ],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "palette__name"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "Sand"
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "button",
+                    "attrs": [
+                      [
+                        "aria-label",
+                        "Desert Sand"
+                      ],
+                      [
+                        "aria-pressed",
+                        "false"
+                      ],
+                      [
+                        "class",
+                        "palette__chip"
+                      ],
+                      [
+                        "data-value",
+                        "sand"
+                      ],
+                      [
+                        "style",
+                        "background-color: #edc9af"
+                      ],
+                      [
+                        "type",
+                        "button"
+                      ]
+                    ],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "palette__name"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "Desert Sand"
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "palette__count"
+              ]
+            ],
+            "children": [],
+            "text": "2 colors"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "palette": {
+        "heading": "Mono",
+        "selected": "black",
+        "chips": [
+          {
+            "name": "  ",
+            "hex": "#000",
+            "value": "black"
+          },
+          {
+            "name": null,
+            "hex": "#111",
+            "value": "black"
+          },
+          {
+            "name": "Black",
+            "hex": "#000000",
+            "value": "black"
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "palette"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "palette__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Mono"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "palette__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "button",
+                    "attrs": [
+                      [
+                        "aria-label",
+                        "Black"
+                      ],
+                      [
+                        "aria-pressed",
+                        "true"
+                      ],
+                      [
+                        "class",
+                        "is-selected palette__chip"
+                      ],
+                      [
+                        "data-value",
+                        "black"
+                      ],
+                      [
+                        "style",
+                        "background-color: #000000"
+                      ],
+                      [
+                        "type",
+                        "button"
+                      ]
+                    ],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "palette__name"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "Black"
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "palette__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 color"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "palette": {
+        "heading": "Hidden",
+        "selected": null,
+        "chips": [
+          {
+            "name": "   ",
+            "hex": "#123456",
+            "value": "x"
+          },
+          {
+            "name": null,
+            "hex": null,
+            "value": null
+          }
+        ]
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "palette": {
+        "heading": "None",
+        "selected": "red",
+        "chips": []
+      }
+    },
+    "expected": []
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "palette": {
+        "heading": "Ocean",
+        "selected": "Sea--Green",
+        "chips": [
+          {
+            "name": "  Sea  Green ",
+            "hex": "  ",
+            "value": "   "
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "palette"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "palette__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Ocean"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "palette__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "button",
+                    "attrs": [
+                      [
+                        "aria-label",
+                        "Sea  Green"
+                      ],
+                      [
+                        "aria-pressed",
+                        "false"
+                      ],
+                      [
+                        "class",
+                        "palette__chip palette__chip--empty"
+                      ],
+                      [
+                        "data-value",
+                        "sea--green"
+                      ],
+                      [
+                        "type",
+                        "button"
+                      ]
+                    ],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "palette__name"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "Sea  Green"
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "palette__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 color"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "palette": {
+        "heading": null,
+        "selected": "sky-&-sea",
+        "chips": [
+          {
+            "name": "Sky & Sea",
+            "hex": "#87ceeb",
+            "value": null
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "palette"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "palette__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "button",
+                    "attrs": [
+                      [
+                        "aria-label",
+                        "Sky & Sea"
+                      ],
+                      [
+                        "aria-pressed",
+                        "true"
+                      ],
+                      [
+                        "class",
+                        "is-selected palette__chip"
+                      ],
+                      [
+                        "data-value",
+                        "sky-&-sea"
+                      ],
+                      [
+                        "style",
+                        "background-color: #87ceeb"
+                      ],
+                      [
+                        "type",
+                        "button"
+                      ]
+                    ],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "palette__name"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "Sky & Sea"
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "palette__count"
+              ]
+            ],
+            "children": [],
+            "text": "1 color"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "palette": {
+        "heading": "Brights",
+        "selected": "lime",
+        "chips": [
+          {
+            "name": "Red",
+            "hex": "#f00",
+            "value": "red"
+          },
+          {
+            "name": "Blue",
+            "hex": "#00f",
+            "value": null
+          }
+        ]
+      }
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "palette"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h3",
+            "attrs": [
+              [
+                "class",
+                "palette__heading"
+              ]
+            ],
+            "children": [],
+            "text": "Brights"
+          },
+          {
+            "tag": "ul",
+            "attrs": [
+              [
+                "class",
+                "palette__list"
+              ]
+            ],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "button",
+                    "attrs": [
+                      [
+                        "aria-label",
+                        "Red"
+                      ],
+                      [
+                        "aria-pressed",
+                        "false"
+                      ],
+                      [
+                        "class",
+                        "palette__chip"
+                      ],
+                      [
+                        "data-value",
+                        "red"
+                      ],
+                      [
+                        "style",
+                        "background-color: #f00"
+                      ],
+                      [
+                        "type",
+                        "button"
+                      ]
+                    ],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "palette__name"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "Red"
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [
+                  {
+                    "tag": "button",
+                    "attrs": [
+                      [
+                        "aria-label",
+                        "Blue"
+                      ],
+                      [
+                        "aria-pressed",
+                        "false"
+                      ],
+                      [
+                        "class",
+                        "palette__chip"
+                      ],
+                      [
+                        "data-value",
+                        "blue"
+                      ],
+                      [
+                        "style",
+                        "background-color: #00f"
+                      ],
+                      [
+                        "type",
+                        "button"
+                      ]
+                    ],
+                    "children": [
+                      {
+                        "tag": "span",
+                        "attrs": [
+                          [
+                            "class",
+                            "palette__name"
+                          ]
+                        ],
+                        "children": [],
+                        "text": "Blue"
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "palette__count"
+              ]
+            ],
+            "children": [],
+            "text": "2 colors"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

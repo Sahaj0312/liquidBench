@@ -1,0 +1,7 @@
+{%- if warehouses and warehouses.size > 0 -%}
+<ul class="warehouse-list">
+{%- for w in warehouses -%}
+<li class="warehouse{% if forloop.first %} warehouse--first{% endif %}{% if forloop.last %} warehouse--last{% endif %}">{{ w.name | escape }}: {{ w.quantity }}</li>
+{%- endfor -%}
+</ul>
+{%- endif -%}

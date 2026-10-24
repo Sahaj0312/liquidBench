@@ -1,0 +1,44 @@
+[
+  {
+    "name": "wrong-0-list-decided-by-raw-size",
+    "expected_pass": false,
+    "changes": {
+      "snippets/compliance-warning.liquid": "{%- liquid\n  assign valid_count = 0\n  for w in warnings\n    assign t = w.text | strip\n    if t != ''\n      assign valid_count = valid_count | plus: 1\n    endif\n  endfor\n  assign h = heading | strip\n-%}\n{%- if valid_count > 0 -%}\n<aside class=\"compliance\">\n{%- if h != '' -%}<h2>{{ h | escape }}</h2>{%- endif -%}\n{%- if warnings.size > 1 -%}<ul>{%- endif -%}\n{%- for w in warnings -%}\n{%- assign t = w.text | strip -%}\n{%- if t != '' -%}\n{%- assign c = w.code | strip | upcase -%}\n{%- assign u = w.url | strip -%}\n{%- if warnings.size > 1 -%}<li>{%- else -%}<p>{%- endif -%}\n{%- if c != '' -%}<strong>{{ c | escape }}</strong> {% endif -%}\n{%- if u != '' -%}<a href=\"{{ u | escape }}\">{{ t | escape }}</a>{%- else -%}{{ t | escape }}{%- endif -%}\n{%- if warnings.size > 1 -%}</li>{%- else -%}</p>{%- endif -%}\n{%- endif -%}\n{%- endfor -%}\n{%- if warnings.size > 1 -%}</ul>{%- endif -%}\n</aside>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-heading-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/compliance-warning.liquid": "{%- liquid\n  assign valid_count = 0\n  for w in warnings\n    assign t = w.text | strip\n    if t != ''\n      assign valid_count = valid_count | plus: 1\n    endif\n  endfor\n-%}\n{%- if valid_count > 0 -%}\n<aside class=\"compliance\">\n{%- if heading != nil and heading != '' -%}<h2>{{ heading | escape }}</h2>{%- endif -%}\n{%- if valid_count > 1 -%}<ul>{%- endif -%}\n{%- for w in warnings -%}\n{%- assign t = w.text | strip -%}\n{%- if t != '' -%}\n{%- assign c = w.code | strip | upcase -%}\n{%- assign u = w.url | strip -%}\n{%- if valid_count > 1 -%}<li>{%- else -%}<p>{%- endif -%}\n{%- if c != '' -%}<strong>{{ c | escape }}</strong> {% endif -%}\n{%- if u != '' -%}<a href=\"{{ u | escape }}\">{{ t | escape }}</a>{%- else -%}{{ t | escape }}{%- endif -%}\n{%- if valid_count > 1 -%}</li>{%- else -%}</p>{%- endif -%}\n{%- endif -%}\n{%- endfor -%}\n{%- if valid_count > 1 -%}</ul>{%- endif -%}\n</aside>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-blank-url-still-linked",
+    "expected_pass": false,
+    "changes": {
+      "snippets/compliance-warning.liquid": "{%- liquid\n  assign valid_count = 0\n  for w in warnings\n    assign t = w.text | strip\n    if t != ''\n      assign valid_count = valid_count | plus: 1\n    endif\n  endfor\n  assign h = heading | strip\n-%}\n{%- if valid_count > 0 -%}\n<aside class=\"compliance\">\n{%- if h != '' -%}<h2>{{ h | escape }}</h2>{%- endif -%}\n{%- if valid_count > 1 -%}<ul>{%- endif -%}\n{%- for w in warnings -%}\n{%- assign t = w.text | strip -%}\n{%- if t != '' -%}\n{%- assign c = w.code | strip | upcase -%}\n{%- if valid_count > 1 -%}<li>{%- else -%}<p>{%- endif -%}\n{%- if c != '' -%}<strong>{{ c | escape }}</strong> {% endif -%}\n{%- if w.url != nil and w.url != '' -%}<a href=\"{{ w.url | strip | escape }}\">{{ t | escape }}</a>{%- else -%}{{ t | escape }}{%- endif -%}\n{%- if valid_count > 1 -%}</li>{%- else -%}</p>{%- endif -%}\n{%- endif -%}\n{%- endfor -%}\n{%- if valid_count > 1 -%}</ul>{%- endif -%}\n</aside>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-invalid-items-rendered",
+    "expected_pass": false,
+    "changes": {
+      "snippets/compliance-warning.liquid": "{%- liquid\n  assign valid_count = 0\n  for w in warnings\n    assign t = w.text | strip\n    if t != ''\n      assign valid_count = valid_count | plus: 1\n    endif\n  endfor\n  assign h = heading | strip\n-%}\n{%- if valid_count > 0 -%}\n<aside class=\"compliance\">\n{%- if h != '' -%}<h2>{{ h | escape }}</h2>{%- endif -%}\n{%- if valid_count > 1 -%}<ul>{%- endif -%}\n{%- for w in warnings -%}\n{%- assign t = w.text | strip -%}\n{%- assign c = w.code | strip | upcase -%}\n{%- assign u = w.url | strip -%}\n{%- if valid_count > 1 -%}<li>{%- else -%}<p>{%- endif -%}\n{%- if c != '' -%}<strong>{{ c | escape }}</strong> {% endif -%}\n{%- if u != '' -%}<a href=\"{{ u | escape }}\">{{ t | escape }}</a>{%- else -%}{{ t | escape }}{%- endif -%}\n{%- if valid_count > 1 -%}</li>{%- else -%}</p>{%- endif -%}\n{%- endfor -%}\n{%- if valid_count > 1 -%}</ul>{%- endif -%}\n</aside>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/compliance-warning.liquid": "{% # theme-check-disable %}\n{%- liquid\n  assign valid_count = 0\n  for w in warnings\n    assign t = w.text | strip\n    if t != ''\n      assign valid_count = valid_count | plus: 1\n    endif\n  endfor\n  assign h = heading | strip\n-%}\n{%- if valid_count > 0 -%}\n<aside class=\"compliance\">\n{%- if h != '' -%}<h2>{{ h | escape }}</h2>{%- endif -%}\n{%- if valid_count > 1 -%}<ul>{%- endif -%}\n{%- for w in warnings -%}\n{%- assign t = w.text | strip -%}\n{%- if t != '' -%}\n{%- assign c = w.code | strip | upcase -%}\n{%- assign u = w.url | strip -%}\n{%- if valid_count > 1 -%}<li>{%- else -%}<p>{%- endif -%}\n{%- if c != '' -%}<strong>{{ c | escape }}</strong> {% endif -%}\n{%- if u != '' -%}<a href=\"{{ u | escape }}\">{{ t | escape }}</a>{%- else -%}{{ t | escape }}{%- endif -%}\n{%- if valid_count > 1 -%}</li>{%- else -%}</p>{%- endif -%}\n{%- endif -%}\n{%- endfor -%}\n{%- if valid_count > 1 -%}</ul>{%- endif -%}\n</aside>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/compliance-warning.liquid": null
+    }
+  }
+]

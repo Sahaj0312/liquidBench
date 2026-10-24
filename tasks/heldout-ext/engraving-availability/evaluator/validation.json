@@ -1,0 +1,51 @@
+[
+  {
+    "name": "wrong-0-always-renders-font-list",
+    "expected_pass": false,
+    "changes": {
+      "snippets/engraving-availability.liquid": "{%- assign available = false -%}\n{%- if engraving != nil -%}\n  {%- if engraving.enabled == true -%}\n    {%- assign available = true -%}\n  {%- endif -%}\n{%- endif -%}\n{%- if available -%}\n<div class=\"engraving\"><h3>Engrave your {{ product_title | escape }}</h3>\n{%- if engraving.max_chars != nil -%}\n  {%- if engraving.max_chars > 0 -%}\n    <p class=\"engraving-limit\">Up to {{ engraving.max_chars }} {% if engraving.max_chars == 1 %}character{% else %}characters{% endif %}</p>\n  {%- endif -%}\n{%- endif -%}\n<ul class=\"engraving-fonts\">\n{%- for font in engraving.fonts -%}\n<li>{{ font | escape }}</li>\n{%- endfor -%}\n</ul>\n{%- assign note = engraving.note | strip -%}\n{%- if note != \"\" -%}\n<p class=\"engraving-note\">{{ note | escape }}</p>\n{%- endif -%}\n</div>\n{%- else -%}\n<p class=\"engraving-unavailable\">Engraving is not available for {{ product_title | escape }}</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-1-note-not-stripped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/engraving-availability.liquid": "{%- assign available = false -%}\n{%- if engraving != nil -%}\n  {%- if engraving.enabled == true -%}\n    {%- assign available = true -%}\n  {%- endif -%}\n{%- endif -%}\n{%- if available -%}\n<div class=\"engraving\"><h3>Engrave your {{ product_title | escape }}</h3>\n{%- if engraving.max_chars != nil -%}\n  {%- if engraving.max_chars > 0 -%}\n    <p class=\"engraving-limit\">Up to {{ engraving.max_chars }} {% if engraving.max_chars == 1 %}character{% else %}characters{% endif %}</p>\n  {%- endif -%}\n{%- endif -%}\n{%- if engraving.fonts.size > 0 -%}\n<ul class=\"engraving-fonts\">\n{%- for font in engraving.fonts -%}\n<li>{{ font | escape }}</li>\n{%- endfor -%}\n</ul>\n{%- endif -%}\n{%- if engraving.note != nil and engraving.note != \"\" -%}\n<p class=\"engraving-note\">{{ engraving.note | escape }}</p>\n{%- endif -%}\n</div>\n{%- else -%}\n<p class=\"engraving-unavailable\">Engraving is not available for {{ product_title | escape }}</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-2-no-singular-character",
+    "expected_pass": false,
+    "changes": {
+      "snippets/engraving-availability.liquid": "{%- assign available = false -%}\n{%- if engraving != nil -%}\n  {%- if engraving.enabled == true -%}\n    {%- assign available = true -%}\n  {%- endif -%}\n{%- endif -%}\n{%- if available -%}\n<div class=\"engraving\"><h3>Engrave your {{ product_title | escape }}</h3>\n{%- if engraving.max_chars != nil -%}\n  {%- if engraving.max_chars > 0 -%}\n    <p class=\"engraving-limit\">Up to {{ engraving.max_chars }} characters</p>\n  {%- endif -%}\n{%- endif -%}\n{%- if engraving.fonts.size > 0 -%}\n<ul class=\"engraving-fonts\">\n{%- for font in engraving.fonts -%}\n<li>{{ font | escape }}</li>\n{%- endfor -%}\n</ul>\n{%- endif -%}\n{%- assign note = engraving.note | strip -%}\n{%- if note != \"\" -%}\n<p class=\"engraving-note\">{{ note | escape }}</p>\n{%- endif -%}\n</div>\n{%- else -%}\n<p class=\"engraving-unavailable\">Engraving is not available for {{ product_title | escape }}</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-3-limit-shown-for-zero-and-negat",
+    "expected_pass": false,
+    "changes": {
+      "snippets/engraving-availability.liquid": "{%- assign available = false -%}\n{%- if engraving != nil -%}\n  {%- if engraving.enabled == true -%}\n    {%- assign available = true -%}\n  {%- endif -%}\n{%- endif -%}\n{%- if available -%}\n<div class=\"engraving\"><h3>Engrave your {{ product_title | escape }}</h3>\n{%- if engraving.max_chars != nil -%}\n    <p class=\"engraving-limit\">Up to {{ engraving.max_chars }} {% if engraving.max_chars == 1 %}character{% else %}characters{% endif %}</p>\n{%- endif -%}\n{%- if engraving.fonts.size > 0 -%}\n<ul class=\"engraving-fonts\">\n{%- for font in engraving.fonts -%}\n<li>{{ font | escape }}</li>\n{%- endfor -%}\n</ul>\n{%- endif -%}\n{%- assign note = engraving.note | strip -%}\n{%- if note != \"\" -%}\n<p class=\"engraving-note\">{{ note | escape }}</p>\n{%- endif -%}\n</div>\n{%- else -%}\n<p class=\"engraving-unavailable\">Engraving is not available for {{ product_title | escape }}</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "wrong-4-title-not-escaped",
+    "expected_pass": false,
+    "changes": {
+      "snippets/engraving-availability.liquid": "{%- assign available = false -%}\n{%- if engraving != nil -%}\n  {%- if engraving.enabled == true -%}\n    {%- assign available = true -%}\n  {%- endif -%}\n{%- endif -%}\n{%- if available -%}\n<div class=\"engraving\"><h3>Engrave your {{ product_title }}</h3>\n{%- if engraving.max_chars != nil -%}\n  {%- if engraving.max_chars > 0 -%}\n    <p class=\"engraving-limit\">Up to {{ engraving.max_chars }} {% if engraving.max_chars == 1 %}character{% else %}characters{% endif %}</p>\n  {%- endif -%}\n{%- endif -%}\n{%- if engraving.fonts.size > 0 -%}\n<ul class=\"engraving-fonts\">\n{%- for font in engraving.fonts -%}\n<li>{{ font | escape }}</li>\n{%- endfor -%}\n</ul>\n{%- endif -%}\n{%- assign note = engraving.note | strip -%}\n{%- if note != \"\" -%}\n<p class=\"engraving-note\">{{ note | escape }}</p>\n{%- endif -%}\n</div>\n{%- else -%}\n<p class=\"engraving-unavailable\">Engraving is not available for {{ product_title }}</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/engraving-availability.liquid": "{% # theme-check-disable %}\n{%- assign available = false -%}\n{%- if engraving != nil -%}\n  {%- if engraving.enabled == true -%}\n    {%- assign available = true -%}\n  {%- endif -%}\n{%- endif -%}\n{%- if available -%}\n<div class=\"engraving\"><h3>Engrave your {{ product_title | escape }}</h3>\n{%- if engraving.max_chars != nil -%}\n  {%- if engraving.max_chars > 0 -%}\n    <p class=\"engraving-limit\">Up to {{ engraving.max_chars }} {% if engraving.max_chars == 1 %}character{% else %}characters{% endif %}</p>\n  {%- endif -%}\n{%- endif -%}\n{%- if engraving.fonts.size > 0 -%}\n<ul class=\"engraving-fonts\">\n{%- for font in engraving.fonts -%}\n<li>{{ font | escape }}</li>\n{%- endfor -%}\n</ul>\n{%- endif -%}\n{%- assign note = engraving.note | strip -%}\n{%- if note != \"\" -%}\n<p class=\"engraving-note\">{{ note | escape }}</p>\n{%- endif -%}\n</div>\n{%- else -%}\n<p class=\"engraving-unavailable\">Engraving is not available for {{ product_title | escape }}</p>\n{%- endif -%}\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/engraving-availability.liquid": null
+    }
+  }
+]

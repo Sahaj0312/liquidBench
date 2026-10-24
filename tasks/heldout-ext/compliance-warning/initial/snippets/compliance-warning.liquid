@@ -1,0 +1,8 @@
+<aside class="compliance">
+<h2>{{ heading }}</h2>
+<ul>
+{%- for w in warnings -%}
+<li><strong>{{ w.code | upcase }}</strong> <a href="{{ w.url }}">{{ w.text }}</a></li>
+{%- endfor -%}
+</ul>
+</aside>

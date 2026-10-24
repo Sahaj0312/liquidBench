@@ -1,0 +1,467 @@
+[
+  {
+    "id": "reference-contract",
+    "path": "snippets/blog-comment-labels.liquid",
+    "expected_ast": {
+      "type": "Document",
+      "children": [
+        {
+          "type": "LiquidRawTag",
+          "name": "comment",
+          "markup": "",
+          "body": {
+            "type": "RawMarkup",
+            "kind": "text",
+            "value": " Labels for the blog comment form. ",
+            "nodes": [
+              {
+                "type": "TextNode",
+                "value": "Labels for the blog comment form."
+              }
+            ]
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-",
+          "delimiterWhitespaceStart": "-",
+          "delimiterWhitespaceEnd": "-"
+        },
+        {
+          "type": "LiquidVariableOutput",
+          "markup": {
+            "type": "LiquidVariable",
+            "expression": {
+              "type": "String",
+              "single": true,
+              "value": "blog-comments.css"
+            },
+            "filters": [
+              {
+                "type": "LiquidFilter",
+                "name": "asset_url",
+                "args": []
+              },
+              {
+                "type": "LiquidFilter",
+                "name": "stylesheet_tag",
+                "args": []
+              }
+            ]
+          },
+          "whitespaceStart": "-",
+          "whitespaceEnd": "-"
+        },
+        {
+          "type": "HtmlElement",
+          "name": [
+            {
+              "type": "TextNode",
+              "value": "div"
+            }
+          ],
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "class"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "comment-labels"
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "type": "LiquidTag",
+              "name": "assign",
+              "markup": {
+                "type": "AssignMarkup",
+                "name": "author",
+                "value": {
+                  "type": "LiquidVariable",
+                  "expression": {
+                    "type": "VariableLookup",
+                    "name": "comment",
+                    "lookups": [
+                      {
+                        "type": "String",
+                        "value": "author"
+                      }
+                    ],
+                    "lookupModes": [
+                      "bareword"
+                    ]
+                  },
+                  "filters": [
+                    {
+                      "type": "LiquidFilter",
+                      "name": "strip",
+                      "args": []
+                    }
+                  ]
+                }
+              },
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-"
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "label"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "for"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "CommentAuthor"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidTag",
+                  "name": "render",
+                  "markup": {
+                    "type": "RenderMarkup",
+                    "snippet": {
+                      "type": "String",
+                      "single": true,
+                      "value": "icon-comment"
+                    },
+                    "variable": null,
+                    "alias": null,
+                    "args": [
+                      {
+                        "type": "NamedArgument",
+                        "name": "icon",
+                        "value": {
+                          "type": "String",
+                          "single": true,
+                          "value": "person"
+                        }
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-"
+                },
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "blogs.article.comment_form.name"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-"
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "label"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "for"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "CommentEmail"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidTag",
+                  "name": "render",
+                  "markup": {
+                    "type": "RenderMarkup",
+                    "snippet": {
+                      "type": "String",
+                      "single": true,
+                      "value": "icon-comment"
+                    },
+                    "variable": null,
+                    "alias": null,
+                    "args": [
+                      {
+                        "type": "NamedArgument",
+                        "name": "icon",
+                        "value": {
+                          "type": "String",
+                          "single": true,
+                          "value": "mail"
+                        }
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-"
+                },
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "blogs.article.comment_form.email"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-"
+                }
+              ]
+            },
+            {
+              "type": "HtmlElement",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "label"
+                }
+              ],
+              "attributes": [
+                {
+                  "type": "AttrDoubleQuoted",
+                  "name": [
+                    {
+                      "type": "TextNode",
+                      "value": "for"
+                    }
+                  ],
+                  "value": [
+                    {
+                      "type": "TextNode",
+                      "value": "CommentBody"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "blogs.article.comment_form.message"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "t",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "-",
+                  "whitespaceEnd": "-"
+                }
+              ]
+            },
+            {
+              "type": "LiquidTag",
+              "name": "if",
+              "markup": {
+                "type": "Comparison",
+                "comparator": "!=",
+                "left": {
+                  "type": "VariableLookup",
+                  "name": "author",
+                  "lookups": [],
+                  "lookupModes": []
+                },
+                "right": {
+                  "type": "LiquidLiteral",
+                  "keyword": "blank",
+                  "value": ""
+                }
+              },
+              "children": [
+                {
+                  "type": "LiquidBranch",
+                  "name": null,
+                  "markup": "",
+                  "children": [
+                    {
+                      "type": "HtmlElement",
+                      "name": [
+                        {
+                          "type": "TextNode",
+                          "value": "p"
+                        }
+                      ],
+                      "attributes": [
+                        {
+                          "type": "AttrDoubleQuoted",
+                          "name": [
+                            {
+                              "type": "TextNode",
+                              "value": "class"
+                            }
+                          ],
+                          "value": [
+                            {
+                              "type": "TextNode",
+                              "value": "comment-labels__reply"
+                            }
+                          ]
+                        }
+                      ],
+                      "children": [
+                        {
+                          "type": "LiquidVariableOutput",
+                          "markup": {
+                            "type": "LiquidVariable",
+                            "expression": {
+                              "type": "String",
+                              "single": true,
+                              "value": "blogs.article.comment_form.replying_to"
+                            },
+                            "filters": [
+                              {
+                                "type": "LiquidFilter",
+                                "name": "t",
+                                "args": [
+                                  {
+                                    "type": "NamedArgument",
+                                    "name": "author",
+                                    "value": {
+                                      "type": "VariableLookup",
+                                      "name": "author",
+                                      "lookups": [],
+                                      "lookupModes": []
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "whitespaceStart": "",
+                          "whitespaceEnd": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ],
+              "whitespaceStart": "-",
+              "whitespaceEnd": "-",
+              "delimiterWhitespaceStart": "-",
+              "delimiterWhitespaceEnd": "-"
+            }
+          ]
+        },
+        {
+          "type": "HtmlRawNode",
+          "name": "script",
+          "attributes": [
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "src"
+                }
+              ],
+              "value": [
+                {
+                  "type": "LiquidVariableOutput",
+                  "markup": {
+                    "type": "LiquidVariable",
+                    "expression": {
+                      "type": "String",
+                      "single": true,
+                      "value": "blog-comments.js"
+                    },
+                    "filters": [
+                      {
+                        "type": "LiquidFilter",
+                        "name": "asset_url",
+                        "args": []
+                      }
+                    ]
+                  },
+                  "whitespaceStart": "",
+                  "whitespaceEnd": ""
+                }
+              ]
+            },
+            {
+              "type": "AttrDoubleQuoted",
+              "name": [
+                {
+                  "type": "TextNode",
+                  "value": "defer"
+                }
+              ],
+              "value": [
+                {
+                  "type": "TextNode",
+                  "value": "defer"
+                }
+              ]
+            }
+          ],
+          "body": {
+            "type": "RawMarkup",
+            "kind": "javascript",
+            "value": "",
+            "nodes": []
+          }
+        }
+      ],
+      "name": "#document"
+    }
+  }
+]

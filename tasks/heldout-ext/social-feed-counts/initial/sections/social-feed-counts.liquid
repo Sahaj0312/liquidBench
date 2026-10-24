@@ -1,0 +1,29 @@
+{%- liquid
+  assign count = section.settings.posts_count
+  if count == 1
+    assign noun = section.settings.label_singular
+  else
+    assign noun = section.settings.label_plural
+  endif
+-%}
+<div class="social-feed">
+  <h2>{{ section.settings.heading | escape }}</h2>
+  {%- if section.settings.show_count -%}
+    <p class="social-feed__count">Showing {{ count }} {{ noun | escape }}</p>
+  {%- endif -%}
+  <ul class="social-feed__grid" data-limit="{{ count }}"></ul>
+</div>
+
+{% schema %}
+{
+  "name": "Social feed",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Follow us" },
+    { "type": "range", "id": "posts_count", "label": "Number of posts", "min": 3, "max": 12, "step": 3, "default": 6 },
+    { "type": "text", "id": "post_label", "label": "Post label", "default": "posts" },
+    { "type": "checkbox", "id": "show_count", "label": "Show post count", "default": true }
+  ],
+  "presets": [{ "name": "Social feed" }]
+}
+{% endschema %}

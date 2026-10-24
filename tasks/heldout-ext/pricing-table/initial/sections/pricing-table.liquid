@@ -1,0 +1,26 @@
+<div class="pricing">
+  <h2 class="pricing__title">{{ section.settings.title | escape }}</h2>
+  <ul class="pricing__plans">
+    {%- for plan in plans -%}
+      <li class="pricing__plan{% if plan.highlighted %} pricing__plan--featured{% endif %}">
+        <h3>{{ plan.name | escape }}</h3>
+        <p class="pricing__price">{{ plan.price | escape }}</p>
+        <ul class="pricing__features">
+          {%- assign parts = plan.features | split: "|" -%}
+          {%- for f in parts -%}
+            <li>{{ f | escape }}</li>
+          {%- endfor -%}
+        </ul>
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+{% schema %}
+{
+  "name": "Pricing table",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Pricing" }
+  ],
+  "presets": [{ "name": "Pricing table" }]
+}
+{% endschema %}

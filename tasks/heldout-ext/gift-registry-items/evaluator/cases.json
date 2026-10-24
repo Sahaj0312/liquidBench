@@ -1,0 +1,608 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/gift-registry-items.liquid",
+    "tags": [
+      "a",
+      "em",
+      "h2",
+      "li",
+      "p",
+      "section",
+      "span",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "registry_name": null,
+      "items": []
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "aria-label",
+            "Gift registry"
+          ],
+          [
+            "class",
+            "registry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "registry-empty"
+              ]
+            ],
+            "children": [],
+            "text": "No items yet"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "registry_name": "   ",
+      "items": []
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "aria-label",
+            "Gift registry"
+          ],
+          [
+            "class",
+            "registry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "registry-empty"
+              ]
+            ],
+            "children": [],
+            "text": "No items yet"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "registry_name": "Sam & Alex <2025>",
+      "items": [
+        {
+          "title": "Toaster",
+          "url": "https://shop.test/p?id=1&ref=reg",
+          "note": null,
+          "requested": 1,
+          "purchased": 0
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "aria-label",
+            "Gift registry: Sam & Alex <2025>"
+          ],
+          [
+            "class",
+            "registry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Sam & Alex <2025>"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "data-title",
+                    "Toaster"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "https://shop.test/p?id=1&ref=reg"
+                      ],
+                      [
+                        "title",
+                        "Toaster"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Toaster"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "1 of 1 still needed"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "registry_name": "Lee",
+      "items": [
+        {
+          "title": "  The \"Big\" Pan  ",
+          "url": null,
+          "note": "Size 12\" & up",
+          "requested": 3,
+          "purchased": 1
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "aria-label",
+            "Gift registry: Lee"
+          ],
+          [
+            "class",
+            "registry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Lee"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "data-title",
+                    "The \"Big\" Pan"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "The \"Big\" Pan"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Size 12\" & up"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "2 of 3 still needed"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "registry_name": null,
+      "items": [
+        {
+          "title": "Salt &amp; Pepper Set",
+          "url": "",
+          "note": "  ",
+          "requested": 2,
+          "purchased": 2
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "aria-label",
+            "Gift registry"
+          ],
+          [
+            "class",
+            "registry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "data-title",
+                    "Salt &amp; Pepper Set"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Salt &amp; Pepper Set"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Fulfilled"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "registry_name": "Jo",
+      "items": [
+        {
+          "title": "Mugs",
+          "url": "  ",
+          "note": null,
+          "requested": 2,
+          "purchased": 3
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "aria-label",
+            "Gift registry: Jo"
+          ],
+          [
+            "class",
+            "registry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Jo"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "data-title",
+                    "Mugs"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Mugs"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Fulfilled"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "registry_name": null,
+      "items": [
+        {
+          "title": "Lamp",
+          "url": "  /products/lamp  ",
+          "note": "<b>warm</b> light",
+          "requested": 4,
+          "purchased": 0
+        },
+        {
+          "title": "Rug",
+          "url": null,
+          "note": null,
+          "requested": 1,
+          "purchased": 1
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "aria-label",
+            "Gift registry"
+          ],
+          [
+            "class",
+            "registry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "data-title",
+                    "Lamp"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/products/lamp"
+                      ],
+                      [
+                        "title",
+                        "Lamp"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "Lamp"
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": [],
+                    "children": [],
+                    "text": "<b>warm</b> light"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "4 of 4 still needed"
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "data-title",
+                    "Rug"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "span",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Rug"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Fulfilled"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "registry_name": "Pat",
+      "items": [
+        {
+          "title": "<script>alert(1)</script>",
+          "url": "/search?q=\"x\"<y>",
+          "note": null,
+          "requested": 0,
+          "purchased": 0
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "aria-label",
+            "Gift registry: Pat"
+          ],
+          [
+            "class",
+            "registry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Pat"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "data-title",
+                    "<script>alert(1)</script>"
+                  ]
+                ],
+                "children": [
+                  {
+                    "tag": "a",
+                    "attrs": [
+                      [
+                        "href",
+                        "/search?q=\"x\"<y>"
+                      ],
+                      [
+                        "title",
+                        "<script>alert(1)</script>"
+                      ]
+                    ],
+                    "children": [],
+                    "text": "<script>alert(1)</script>"
+                  },
+                  {
+                    "tag": "em",
+                    "attrs": [],
+                    "children": [],
+                    "text": "Fulfilled"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "registry_name": "  Kim  ",
+      "items": []
+    },
+    "expected": [
+      {
+        "tag": "section",
+        "attrs": [
+          [
+            "aria-label",
+            "Gift registry: Kim"
+          ],
+          [
+            "class",
+            "registry"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "h2",
+            "attrs": [],
+            "children": [],
+            "text": "Kim"
+          },
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "registry-empty"
+              ]
+            ],
+            "children": [],
+            "text": "No items yet"
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

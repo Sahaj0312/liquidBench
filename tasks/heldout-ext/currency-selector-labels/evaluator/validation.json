@@ -1,0 +1,37 @@
+[
+  {
+    "name": "wrong-0-render-name-not-fixed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/currency-selector-labels.liquid": "{%- comment -%} Currency selector with trimmed labels {%- endcomment -%}\n{{ 'currency-selector.css' | asset_url | stylesheet_tag }}\n<div class=\"currency-selector\">\n  <label for=\"CurrencySelect\">{{- 'localization.currency.label' | t | strip -}}</label>\n  <select id=\"CurrencySelect\" name=\"currency\">\n    {%- for code in currency_codes -%}\n      {%- assign trimmed_code = code | strip -%}\n      {%- if trimmed_code != blank -%}\n        <option value=\"{{ trimmed_code }}\">{%- render 'currency-flag', code: trimmed_code -%} {{ trimmed_code }}</option>\n      {%- endif -%}\n    {%- endfor -%}\n  </select>\n  <p class=\"currency-selector__hint\">{{- 'localization.currency.hint' | t | strip -}}</p>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-1-hint-key-left-flat",
+    "expected_pass": false,
+    "changes": {
+      "snippets/currency-selector-labels.liquid": "{%- comment -%} Currency selector with trimmed labels {%- endcomment -%}\n{{ 'currency-selector.css' | asset_url | stylesheet_tag }}\n<div class=\"currency-selector\">\n  <label for=\"CurrencySelect\">{{- 'localization.currency.label' | t | strip -}}</label>\n  <select id=\"CurrencySelect\" name=\"currency\">\n    {%- for code in currency_codes -%}\n      {%- assign trimmed_code = code | strip -%}\n      {%- if trimmed_code != blank -%}\n        <option value=\"{{ trimmed_code }}\">{%- render 'currency-icon', code: trimmed_code -%} {{ trimmed_code }}</option>\n      {%- endif -%}\n    {%- endfor -%}\n  </select>\n  <p class=\"currency-selector__hint\">{{- 'localization.currency_hint' | t | strip -}}</p>\n</div>\n"
+    }
+  },
+  {
+    "name": "wrong-2-minified-asset-guess",
+    "expected_pass": false,
+    "changes": {
+      "snippets/currency-selector-labels.liquid": "{%- comment -%} Currency selector with trimmed labels {%- endcomment -%}\n{{ 'currency-selector.min.css' | asset_url | stylesheet_tag }}\n<div class=\"currency-selector\">\n  <label for=\"CurrencySelect\">{{- 'localization.currency.label' | t | strip -}}</label>\n  <select id=\"CurrencySelect\" name=\"currency\">\n    {%- for code in currency_codes -%}\n      {%- assign trimmed_code = code | strip -%}\n      {%- if trimmed_code != blank -%}\n        <option value=\"{{ trimmed_code }}\">{%- render 'currency-icon', code: trimmed_code -%} {{ trimmed_code }}</option>\n      {%- endif -%}\n    {%- endfor -%}\n  </select>\n  <p class=\"currency-selector__hint\">{{- 'localization.currency.hint' | t | strip -}}</p>\n</div>\n"
+    }
+  },
+  {
+    "name": "suppressed",
+    "expected_pass": false,
+    "changes": {
+      "snippets/currency-selector-labels.liquid": "{% # theme-check-disable %}\n{%- comment -%} Currency selector with trimmed labels {%- endcomment -%}\n{{ 'currency-selector.css' | asset_url | stylesheet_tag }}\n<div class=\"currency-selector\">\n  <label for=\"CurrencySelect\">{{- 'localization.currency.label' | t | strip -}}</label>\n  <select id=\"CurrencySelect\" name=\"currency\">\n    {%- for code in currency_codes -%}\n      {%- assign trimmed_code = code | strip -%}\n      {%- if trimmed_code != blank -%}\n        <option value=\"{{ trimmed_code }}\">{%- render 'currency-icon', code: trimmed_code -%} {{ trimmed_code }}</option>\n      {%- endif -%}\n    {%- endfor -%}\n  </select>\n  <p class=\"currency-selector__hint\">{{- 'localization.currency.hint' | t | strip -}}</p>\n</div>\n"
+    }
+  },
+  {
+    "name": "deleted-target",
+    "expected_pass": false,
+    "changes": {
+      "snippets/currency-selector-labels.liquid": null
+    }
+  }
+]

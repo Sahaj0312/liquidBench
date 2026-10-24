@@ -1,0 +1,557 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/product-dimension-list.liquid",
+    "tags": [
+      "div",
+      "li",
+      "p",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "dimensions": [],
+      "limit": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "dimensions": [
+        {
+          "label": "Width",
+          "value": null,
+          "unit": "inch",
+          "unit_plural": "inches"
+        }
+      ],
+      "limit": null
+    },
+    "expected": []
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "dimensions": [
+        {
+          "label": "Height",
+          "value": 1,
+          "unit": "foot",
+          "unit_plural": "feet"
+        }
+      ],
+      "limit": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "dims"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "dims-count"
+              ]
+            ],
+            "children": [],
+            "text": "1 measurement"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Height: 1 foot"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "dimensions": [
+        {
+          "label": "Depth",
+          "value": 0,
+          "unit": "meter",
+          "unit_plural": null
+        },
+        {
+          "label": "Width",
+          "value": 2,
+          "unit": "inch",
+          "unit_plural": "inches"
+        }
+      ],
+      "limit": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "dims"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "dims-count"
+              ]
+            ],
+            "children": [],
+            "text": "2 measurements"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Depth: 0 meters"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Width: 2 inches"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "dimensions": [
+        {
+          "label": "Arm height",
+          "value": null,
+          "unit": "inch",
+          "unit_plural": "inches"
+        },
+        {
+          "label": "Seat width",
+          "value": 3,
+          "unit": "inch",
+          "unit_plural": "inches"
+        },
+        {
+          "label": "Leg height",
+          "value": 1,
+          "unit": "inch",
+          "unit_plural": "inches"
+        },
+        {
+          "label": "Length",
+          "value": 5,
+          "unit": "meter",
+          "unit_plural": null
+        }
+      ],
+      "limit": 2
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "dims"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "dims-count"
+              ]
+            ],
+            "children": [],
+            "text": "3 measurements"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Seat width: 3 inches"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Leg height: 1 inch"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "dims-more"
+                  ]
+                ],
+                "children": [],
+                "text": "and 1 more dimension"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "dimensions": [
+        {
+          "label": "Width",
+          "value": 10,
+          "unit": "centimeter",
+          "unit_plural": null
+        },
+        {
+          "label": "Height",
+          "value": 20,
+          "unit": "centimeter",
+          "unit_plural": null
+        },
+        {
+          "label": "Depth",
+          "value": 1,
+          "unit": "centimeter",
+          "unit_plural": null
+        }
+      ],
+      "limit": 1
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "dims"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "dims-count"
+              ]
+            ],
+            "children": [],
+            "text": "3 measurements"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Width: 10 centimeters"
+              },
+              {
+                "tag": "li",
+                "attrs": [
+                  [
+                    "class",
+                    "dims-more"
+                  ]
+                ],
+                "children": [],
+                "text": "and 2 more dimensions"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "dimensions": [
+        {
+          "label": "Weight",
+          "value": 1,
+          "unit": "pound",
+          "unit_plural": null
+        },
+        {
+          "label": "Capacity",
+          "value": 12,
+          "unit": "liter",
+          "unit_plural": null
+        }
+      ],
+      "limit": 5
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "dims"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "dims-count"
+              ]
+            ],
+            "children": [],
+            "text": "2 measurements"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Weight: 1 pound"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Capacity: 12 liters"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "dimensions": [
+        {
+          "label": "Width <outer> & \"trim\"",
+          "value": 4,
+          "unit": "inch",
+          "unit_plural": "inches"
+        },
+        {
+          "label": "Height",
+          "value": 2,
+          "unit": "ft",
+          "unit_plural": "ft & in"
+        }
+      ],
+      "limit": 2
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "dims"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "dims-count"
+              ]
+            ],
+            "children": [],
+            "text": "2 measurements"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Width <outer> & \"trim\": 4 inches"
+              },
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Height: 2 ft & in"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-08",
+    "variables": {
+      "dimensions": [
+        {
+          "label": "Bolt",
+          "value": 1,
+          "unit": "M6 & washer",
+          "unit_plural": null
+        }
+      ],
+      "limit": null
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "dims"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "dims-count"
+              ]
+            ],
+            "children": [],
+            "text": "1 measurement"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Bolt: 1 M6 & washer"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-09",
+    "variables": {
+      "dimensions": [
+        {
+          "label": "Screen",
+          "value": null,
+          "unit": "inch",
+          "unit_plural": "inches"
+        },
+        {
+          "label": "Diagonal",
+          "value": 7,
+          "unit": "inch",
+          "unit_plural": "inches"
+        },
+        {
+          "label": "Bezel",
+          "value": null,
+          "unit": "mm",
+          "unit_plural": null
+        }
+      ],
+      "limit": 1
+    },
+    "expected": [
+      {
+        "tag": "div",
+        "attrs": [
+          [
+            "class",
+            "dims"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "p",
+            "attrs": [
+              [
+                "class",
+                "dims-count"
+              ]
+            ],
+            "children": [],
+            "text": "1 measurement"
+          },
+          {
+            "tag": "ul",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "li",
+                "attrs": [],
+                "children": [],
+                "text": "Diagonal: 7 inches"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

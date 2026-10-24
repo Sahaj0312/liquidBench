@@ -1,0 +1,12 @@
+{
+  "templates": {
+    "not_found": {
+      "title": "Page not found",
+      "collection_title": "Collection not found",
+      "search_title": "No results for \"{{ term }}\"",
+      "subtext": "The page you were looking for does not exist.",
+      "back_home": "Continue shopping",
+      "search_hint": "Try searching our catalog"
+    }
+  }
+}

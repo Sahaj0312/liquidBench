@@ -1,0 +1,17 @@
+{%- assign name = registry_name | strip -%}
+<section class="registry" aria-label="Gift registry{% if name != '' %}: {{ name | escape }}{% endif %}">
+{%- if name != '' -%}<h2>{{ name | escape }}</h2>{%- endif -%}
+{%- if items.size == 0 -%}<p class="registry-empty">No items yet</p>{%- else -%}<ul>
+{%- for item in items -%}
+{%- assign t = item.title | strip | escape -%}
+{%- assign u = item.url | strip -%}
+{%- assign n = item.note | strip -%}
+{%- assign remaining = item.requested | minus: item.purchased -%}
+<li data-title="{{ t }}">
+{%- if u != '' -%}<a href="{{ u | escape }}" title="{{ t }}">{{ t }}</a>{%- else -%}<span>{{ t }}</span>{%- endif -%}
+{%- if n != '' -%}<p>{{ n | escape }}</p>{%- endif -%}
+{%- if remaining > 0 -%}<em>{{ remaining }} of {{ item.requested }} still needed</em>{%- else -%}<em>Fulfilled</em>{%- endif -%}
+</li>
+{%- endfor -%}
+</ul>{%- endif -%}
+</section>

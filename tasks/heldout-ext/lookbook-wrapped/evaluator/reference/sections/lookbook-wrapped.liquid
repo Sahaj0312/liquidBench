@@ -1,0 +1,49 @@
+<div class="lookbook">
+  {%- unless section.settings.full_width -%}<div class="page-width">{%- endunless -%}
+  {%- if section.settings.title != blank -%}
+    <h2 class="lookbook__title">{{ section.settings.title | escape }}</h2>
+  {%- endif -%}
+  <div class="lookbook__grid" style="--columns: {{ section.settings.columns }}">
+    {%- for block in section.blocks -%}
+      <figure class="lookbook__look" {{ block.shopify_attributes }}>
+        {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}">{%- endif -%}
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy' }}
+        {%- endif -%}
+        {%- if block.settings.link != blank -%}</a>{%- endif -%}
+        {%- if block.settings.caption != blank -%}
+          <figcaption>{{ block.settings.caption }}</figcaption>
+        {%- endif -%}
+      </figure>
+    {%- endfor -%}
+  </div>
+  {%- unless section.settings.full_width -%}</div>{%- endunless -%}
+</div>
+
+{% schema %}
+{
+  "name": "Lookbook",
+  "tag": "section",
+  "class": "section-lookbook",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "The lookbook" },
+    { "type": "checkbox", "id": "full_width", "label": "Full width", "default": false },
+    { "type": "range", "id": "columns", "label": "Columns", "min": 1, "max": 4, "step": 1, "default": 3 }
+  ],
+  "blocks": [
+    {
+      "type": "look",
+      "name": "Look",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "inline_richtext", "id": "caption", "label": "Caption" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    { "name": "Lookbook", "blocks": [ { "type": "look" }, { "type": "look" }, { "type": "look" } ] }
+  ]
+}
+{% endschema %}

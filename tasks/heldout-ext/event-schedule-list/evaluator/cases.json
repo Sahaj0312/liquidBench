@@ -1,0 +1,681 @@
+[
+  {
+    "id": "contract",
+    "path": "snippets/event-schedule-list.liquid",
+    "tags": [
+      "h3",
+      "li",
+      "p",
+      "span",
+      "ul"
+    ]
+  },
+  {
+    "id": "case-00",
+    "variables": {
+      "events": [
+        {
+          "name": "Pottery Basics",
+          "sessions": 3,
+          "seats_left": 12,
+          "cancelled": false
+        },
+        {
+          "name": "Glaze Lab",
+          "sessions": 1,
+          "seats_left": 1,
+          "cancelled": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "summary"
+          ]
+        ],
+        "children": [],
+        "text": "2 events, 4 sessions"
+      },
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "schedule"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Pottery Basics"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "sessions"
+                  ]
+                ],
+                "children": [],
+                "text": "3 sessions"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "seats"
+                  ]
+                ],
+                "children": [],
+                "text": "12 seats left"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Glaze Lab"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "sessions"
+                  ]
+                ],
+                "children": [],
+                "text": "1 session"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "seats seats--low"
+                  ]
+                ],
+                "children": [],
+                "text": "Only 1 seat left"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-01",
+    "variables": {
+      "events": []
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "summary"
+          ]
+        ],
+        "children": [],
+        "text": "No upcoming events"
+      }
+    ]
+  },
+  {
+    "id": "case-02",
+    "variables": {
+      "events": [
+        {
+          "name": "A",
+          "sessions": 2,
+          "seats_left": null,
+          "cancelled": true
+        },
+        {
+          "name": "B",
+          "sessions": 1,
+          "seats_left": 0,
+          "cancelled": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "summary"
+          ]
+        ],
+        "children": [],
+        "text": "No upcoming events (2 cancelled)"
+      }
+    ]
+  },
+  {
+    "id": "case-03",
+    "variables": {
+      "events": [
+        {
+          "name": "Wheel Throwing",
+          "sessions": 1,
+          "seats_left": null,
+          "cancelled": false
+        },
+        {
+          "name": "Raku Night",
+          "sessions": 4,
+          "seats_left": 3,
+          "cancelled": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "summary"
+          ]
+        ],
+        "children": [],
+        "text": "1 event, 1 session (1 cancelled)"
+      },
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "schedule"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Wheel Throwing"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "sessions"
+                  ]
+                ],
+                "children": [],
+                "text": "1 session"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-04",
+    "variables": {
+      "events": [
+        {
+          "name": "TBA Workshop",
+          "sessions": 0,
+          "seats_left": 0,
+          "cancelled": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "summary"
+          ]
+        ],
+        "children": [],
+        "text": "1 event, 0 sessions"
+      },
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "schedule"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "TBA Workshop"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "sessions"
+                  ]
+                ],
+                "children": [],
+                "text": "No sessions"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "seats seats--full"
+                  ]
+                ],
+                "children": [],
+                "text": "Sold out"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-05",
+    "variables": {
+      "events": [
+        {
+          "name": "Five",
+          "sessions": 2,
+          "seats_left": 5,
+          "cancelled": false
+        },
+        {
+          "name": "Six",
+          "sessions": 2,
+          "seats_left": 6,
+          "cancelled": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "summary"
+          ]
+        ],
+        "children": [],
+        "text": "2 events, 4 sessions"
+      },
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "schedule"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Five"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "sessions"
+                  ]
+                ],
+                "children": [],
+                "text": "2 sessions"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "seats seats--low"
+                  ]
+                ],
+                "children": [],
+                "text": "Only 5 seats left"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Six"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "sessions"
+                  ]
+                ],
+                "children": [],
+                "text": "2 sessions"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "seats"
+                  ]
+                ],
+                "children": [],
+                "text": "6 seats left"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-06",
+    "variables": {
+      "events": [
+        {
+          "name": null,
+          "sessions": 1,
+          "seats_left": 2,
+          "cancelled": false
+        },
+        {
+          "name": "   ",
+          "sessions": 1,
+          "seats_left": null,
+          "cancelled": false
+        },
+        {
+          "name": " Clay & \"Kiln\" <Intro> ",
+          "sessions": 2,
+          "seats_left": null,
+          "cancelled": false
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "summary"
+          ]
+        ],
+        "children": [],
+        "text": "3 events, 4 sessions"
+      },
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "schedule"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Untitled event"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "sessions"
+                  ]
+                ],
+                "children": [],
+                "text": "1 session"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "seats seats--low"
+                  ]
+                ],
+                "children": [],
+                "text": "Only 2 seats left"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Untitled event"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "sessions"
+                  ]
+                ],
+                "children": [],
+                "text": "1 session"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Clay & \"Kiln\" <Intro>"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "sessions"
+                  ]
+                ],
+                "children": [],
+                "text": "2 sessions"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "case-07",
+    "variables": {
+      "events": [
+        {
+          "name": "Alpha",
+          "sessions": 1,
+          "seats_left": null,
+          "cancelled": false
+        },
+        {
+          "name": "Beta",
+          "sessions": 3,
+          "seats_left": null,
+          "cancelled": true
+        },
+        {
+          "name": "Gamma",
+          "sessions": 0,
+          "seats_left": 20,
+          "cancelled": false
+        },
+        {
+          "name": "Delta",
+          "sessions": 2,
+          "seats_left": null,
+          "cancelled": true
+        }
+      ]
+    },
+    "expected": [
+      {
+        "tag": "p",
+        "attrs": [
+          [
+            "class",
+            "summary"
+          ]
+        ],
+        "children": [],
+        "text": "2 events, 1 session (2 cancelled)"
+      },
+      {
+        "tag": "ul",
+        "attrs": [
+          [
+            "class",
+            "schedule"
+          ]
+        ],
+        "children": [
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Alpha"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "sessions"
+                  ]
+                ],
+                "children": [],
+                "text": "1 session"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "li",
+            "attrs": [],
+            "children": [
+              {
+                "tag": "h3",
+                "attrs": [],
+                "children": [],
+                "text": "Gamma"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "sessions"
+                  ]
+                ],
+                "children": [],
+                "text": "No sessions"
+              },
+              {
+                "tag": "span",
+                "attrs": [
+                  [
+                    "class",
+                    "seats"
+                  ]
+                ],
+                "children": [],
+                "text": "20 seats left"
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ]
+  }
+]

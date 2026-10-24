@@ -1,0 +1,15 @@
+{
+  "id": "rental-period-label",
+  "version": 1,
+  "split": "heldout",
+  "category": "liquid-syntax",
+  "difficulty": "easy",
+  "family": "rental-period-label",
+  "provenance": "Claude-authored held-out extension task (claude-opus-5-5, batch msgbatch_011GuAnNWgWbYBxKtCbR8jSd, 2026-10-24); kept only after container verification. Themes disjoint from training; never shown to training-data generation.",
+  "runtime_subset": "Core Ruby Liquid with supplied hashes only; or static schema/reference contracts. No Shopify service emulation.",
+  "editable_files": [
+    "snippets/rental-period-label.liquid"
+  ],
+  "prompt": "Fix the snippet snippets/rental-period-label.liquid. It currently always prints the first and second entries, so it shows the wrong end date for longer rentals and does nothing sensible for short lists.\n\nInput (top-level variable only, nothing under section.settings):\n- `periods`: array of strings, ordered chronologically. Never null, but may be empty. Entries are printed verbatim, without trimming, after HTML-escaping with the `escape` filter.\n\nRequired output (no other text and no whitespace outside the element):\n- If `periods` is empty, output nothing (empty string).\n- If `periods` has exactly one entry, output `<p class=\"rental-period\">FIRST only</p>`.\n- If `periods` has two or more entries, output `<p class=\"rental-period\">From FIRST to LAST</p>`.\n\nFIRST is the escaped first entry. LAST is the escaped last entry, which is not necessarily the second one. If the first and last entries have the same text, still use the From/to form when there are two or more entries. Output only the specified elements/attributes; escape dynamic text and attributes. Inter-element whitespace, comments and quote style may vary; leaf text is exact. Change only snippets/rental-period-label.liquid. Do not suppress checks or hardcode case values. All input keys are present.",
+  "evaluator": "render-contract-v1"
+}

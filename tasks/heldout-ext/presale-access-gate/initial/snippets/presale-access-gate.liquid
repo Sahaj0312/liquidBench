@@ -1,0 +1,12 @@
+{%- assign label = presale_label | default: "Early Access" -%}
+{%- assign gate = gate_enabled | default: true -%}
+{%- assign needed = min_orders | default: 1 -%}
+{%- if gate == false -%}
+<div class="presale presale--open"><p>{{ label }} is open to everyone</p></div>
+{%- elsif customer_orders == nil -%}
+<div class="presale presale--locked"><p>Log in to access {{ label }}</p></div>
+{%- elsif customer_tags contains vip_tag or customer_orders >= needed -%}
+<div class="presale presale--granted"><p>Welcome to {{ label }}</p></div>
+{%- else -%}
+<div class="presale presale--locked"><p>Place {{ needed | minus: customer_orders }} more orders to unlock {{ label }}</p></div>
+{%- endif -%}

@@ -1,0 +1,13 @@
+<section class="timeline">
+  <h2>{{ title }}</h2>
+  <p class="tracking">Tracking: {{ tracking_number }}</p>
+  <ol>
+    {%- for e in events -%}
+      <li class="step {% if e.done %}step--done{% else %}step--pending{% endif %}">
+        <span>{{ e.label }}</span>
+        <time>{{ e.date }}</time>
+        <p>{{ e.note }}</p>
+      </li>
+    {%- endfor -%}
+  </ol>
+</section>
