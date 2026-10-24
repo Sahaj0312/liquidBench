@@ -59,3 +59,7 @@ infrastructure error stops the phase and is reported.
 - **Primary comparison:** tuned against base on the **primary set**, meaning the original suite plus the primary extension tasks. The test (exact McNemar, α = 0.05) and the interval are unchanged.
 - **All held-out tasks:** the same comparison on every held-out task is reported, labelled exploratory.
 - **What runs:** every audited-clear extension task still runs in every arm. Clustering decides only which tasks enter the primary test.
+
+## Addition 2 (before freezing, before any held-out attempt)
+
+The first ambiguity-audit pass (batch `msgbatch_01T6mb9j7ssX2PfvZQDu4xbV`) ran without extended thinking, averaging 270 output tokens per task. It flagged 2 of the 78 tasks. A second pass (batch `msgbatch_01PVLoGGAxXeZunFL2CMWTZQ`) audits the remaining 76 with adaptive thinking. A task is kept only if both passes judged it clear. Theme clustering (Addition 1) runs after both passes.

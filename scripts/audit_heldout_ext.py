@@ -5,7 +5,9 @@ solutions fail). It does not show the prompt determines the graded result. Each
 task goes to Claude with exactly what the agent sees, plus the reference and the
 expected results, and Claude judges whether the result follows uniquely from the
 prompt. Tasks judged ambiguous, or whose audit did not complete, are moved out of
-tasks/heldout-ext before freezing. Tasks are never edited.
+tasks/heldout-ext before freezing. Tasks are never edited. The first pass ran
+without extended thinking; the second pass uses adaptive thinking, and a task stays
+only if every pass judged it clear.
 uv run python scripts/audit_heldout_ext.py submit --cap 50
 uv run python scripts/audit_heldout_ext.py collect --batch-id msgbatch_... --cap 50
 """
@@ -23,7 +25,7 @@ from liquidbench.heldout import EXTENSION
 from liquidbench.task import discover_tasks
 
 MODEL = "claude-opus-5-5"
-MAX_TOKENS = 12000
+MAX_TOKENS = 32000
 OUT = Path("runs/heldout-ext-audit")
 REJECTED = Path("runs/heldout-ext-rejected")
 
@@ -152,6 +154,7 @@ def submit(args):
             params=MessageCreateParamsNonStreaming(
                 model=MODEL,
                 max_tokens=MAX_TOKENS,
+                thinking={"type": "adaptive"},
                 output_config={
                     "effort": "high",
                     "format": {"type": "json_schema", "schema": AUDIT_SCHEMA},
@@ -168,6 +171,8 @@ def submit(args):
                 "batch_id": batch.id,
                 "purpose": "heldout-ext-audit",
                 "model": MODEL,
+                "thinking": "adaptive",
+                "max_tokens": MAX_TOKENS,
                 "submitted_utc": datetime.now(timezone.utc).isoformat(),
                 "requests": [{"custom_id": t.manifest["id"]} for t in tasks],
                 "worst_case_usd": reserve,
