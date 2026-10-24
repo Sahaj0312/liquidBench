@@ -9,7 +9,7 @@ from .evaluators import get_evaluator
 
 
 # Held-out tasks evaluate final models only; never use them to author training data.
-SPLITS = {"development", "heldout"}
+SPLITS = {"development", "heldout", "train"}
 
 
 def safe_name(name: str) -> bool:

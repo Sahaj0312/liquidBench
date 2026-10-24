@@ -3,7 +3,10 @@ name = "liquidbench"
 version = "0.1.0"
 description = "Controlled offline Liquid coding-agent experiments"
 requires-python = ">=3.11"
-dependencies = ["httpx==0.28.1"]
+dependencies = [
+    "anthropic==2.3.0",
+    "httpx==0.28.1",
+]
 
 [project.scripts]
 liquidbench = "liquidbench.cli:main"

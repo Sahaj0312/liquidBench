@@ -1,0 +1,22 @@
+{
+  "purpose": "Teacher trajectory collection in the unchanged Qwen harness and budgets; Claude via ClaudeProvider; Qwen-tokenizer accounting; wall-clock limits raised for API latency (not part of the student example)",
+  "endpoint": "https://api.anthropic.com/v1",
+  "model": "claude (teacher; see trajectory metadata)",
+  "model_revision": "Claude API model ID recorded per trajectory",
+  "image": "liquidbench-runtime:0.1",
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "seed": 42,
+  "max_turns": 12,
+  "max_total_tokens": 393216,
+  "max_output_tokens": 1024,
+  "max_seconds": 900,
+  "request_timeout": 180,
+  "provider_retries": 2,
+  "input_usd_per_million": null,
+  "output_usd_per_million": null,
+  "max_context_tokens": 32768,
+  "token_counting": "conservative_bytes",
+  "response_format": "text",
+  "skills": null
+}
