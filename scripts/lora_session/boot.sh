@@ -1,6 +1,9 @@
 set -euo pipefail
 trap 'echo "STAGE failed at line $LINENO" | tee -a /pilot-evidence/stages.log; sleep infinity' ERR
 umask 077
+# RUN names the adapter and served model; DATA is the uploaded SFT split.
+RUN=${RUN:-lora-v1}
+DATA=${DATA:-runs/training/sft}
 mkdir -p /pilot-evidence /run/sshd /root/.ssh /workspace/upload
 nvidia-smi -q > /pilot-evidence/nvidia-smi.txt
 df -h > /pilot-evidence/disk.txt
@@ -39,11 +42,11 @@ cd /workspace/upload
 python3 capture-model.py
 echo "STAGE train" | tee -a /pilot-evidence/stages.log
 SNAPSHOT=/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-Coder-7B-Instruct/snapshots/c03e6d358207e414f1eca0bb1891e29f1db0e242
-PYTHONPATH=src python3 scripts/train_lora.py --model "$SNAPSHOT" --data runs/training/sft --out /workspace/lora-v1 > >(tee /pilot-evidence/train.log) 2>&1 || {
+PYTHONPATH=src python3 scripts/train_lora.py --model "$SNAPSHOT" --data "$DATA" --out "/workspace/$RUN" > >(tee /pilot-evidence/train.log) 2>&1 || {
   # Keep SSH up for evidence retrieval; a container exit would rerun this script.
   echo "STAGE train-failed" | tee -a /pilot-evidence/stages.log
   exec sleep infinity
 }
 echo "STAGE serve" | tee -a /pilot-evidence/stages.log
-printf '%s\n' '["vllm", "serve", "/workspace/lora-v1/merged", "--served-model-name", "liquidbench-lora-v1", "--dtype", "bfloat16", "--kv-cache-dtype", "auto", "--max-model-len", "32768", "--max-num-seqs", "1", "--tensor-parallel-size", "1", "--gpu-memory-utilization", "0.9", "--generation-config", "vllm", "--structured-outputs-config", "{\"backend\":\"xgrammar\"}", "--seed", "42", "--host", "0.0.0.0", "--port", "8000"]' > /pilot-evidence/command.json
-exec vllm serve /workspace/lora-v1/merged --served-model-name liquidbench-lora-v1 --dtype bfloat16 --kv-cache-dtype auto --max-model-len 32768 --max-num-seqs 1 --tensor-parallel-size 1 --gpu-memory-utilization 0.9 --generation-config vllm --structured-outputs-config '{"backend":"xgrammar"}' --seed 42 --host 0.0.0.0 --port 8000 > >(tee /pilot-evidence/server.log) 2>&1
+printf '%s\n' '["vllm", "serve", "/workspace/'"$RUN"'/merged", "--served-model-name", "liquidbench-'"$RUN"'", "--dtype", "bfloat16", "--kv-cache-dtype", "auto", "--max-model-len", "32768", "--max-num-seqs", "1", "--tensor-parallel-size", "1", "--gpu-memory-utilization", "0.9", "--generation-config", "vllm", "--structured-outputs-config", "{\"backend\":\"xgrammar\"}", "--seed", "42", "--host", "0.0.0.0", "--port", "8000"]' > /pilot-evidence/command.json
+exec vllm serve "/workspace/$RUN/merged" --served-model-name "liquidbench-$RUN" --dtype bfloat16 --kv-cache-dtype auto --max-model-len 32768 --max-num-seqs 1 --tensor-parallel-size 1 --gpu-memory-utilization 0.9 --generation-config vllm --structured-outputs-config '{"backend":"xgrammar"}' --seed 42 --host 0.0.0.0 --port 8000 > >(tee /pilot-evidence/server.log) 2>&1
