@@ -43,3 +43,19 @@ infrastructure error stops the phase and is reported.
 - **All results:** every arm, every task, both repetitions, including null or negative results.
 - **Exclusions:** the list of tasks removed by the audit, with the audit's reasons.
 - **Cost:** API and GPU cost.
+
+## Addition 1 (before the extension was frozen and before any held-out attempt)
+
+**Observed problem.** Authoring sampled each held-out theme in several requests, each with a different angle. As a result, the 78 container-verified extension tasks contain several tasks about the same storefront feature; for example, seven are about the social feed or the lookbook. Such tasks are correlated, and the McNemar test assumes independent pairs.
+
+**Theme clusters.** `scripts/cluster_heldout_ext.py` groups the tasks into theme clusters and writes the result to `docs/heldout/theme-clusters.json`. The rules:
+
+- Two themes belong to the same cluster when they share any non-generic word stem, applied transitively. This errs toward merging.
+- Each task is assigned to the theme of its own authoring request that best matches its family name.
+- The earliest-authored task in each cluster that survives the audit is marked **primary**.
+
+**Changes to the analysis.**
+
+- **Primary comparison:** tuned against base on the **primary set**, meaning the original suite plus the primary extension tasks. The test (exact McNemar, α = 0.05) and the interval are unchanged.
+- **All held-out tasks:** the same comparison on every held-out task is reported, labelled exploratory.
+- **What runs:** every audited-clear extension task still runs in every arm. Clustering decides only which tasks enter the primary test.

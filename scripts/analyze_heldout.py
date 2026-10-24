@@ -3,7 +3,9 @@
 Reads the two phase summaries, scores repetition 1, checks repetition agreement, and
 runs exact two-sided McNemar tests. The interval for a paired pass-rate difference
 is conditional on the discordant count: a Clopper-Pearson interval for b/(b+c),
-mapped to (b+c)/n * (2p - 1).
+mapped to (b+c)/n * (2p - 1). The primary group is the original suite plus one
+extension task per theme cluster (docs/heldout/theme-clusters.json), so its tasks are
+not near-duplicates of each other; the group of all tasks is exploratory.
 uv run python scripts/analyze_heldout.py --base runs/heldout/base --tuned runs/heldout/tuned
 """
 
@@ -14,11 +16,20 @@ from math import comb
 from pathlib import Path
 
 COMPARISONS = [
-    ("tuned", "base", "primary"),
-    ("base_skills", "base", "exploratory"),
-    ("tuned_skills", "tuned", "exploratory"),
-    ("tuned_skills", "base", "exploratory"),
+    ("tuned", "base"),
+    ("base_skills", "base"),
+    ("tuned_skills", "tuned"),
+    ("tuned_skills", "base"),
 ]
+
+
+def primary_tasks(tasks, suites, clusters):
+    """Original tasks plus the extension tasks the cluster file marks primary."""
+    marked = {d["task"]: d["primary"] for d in clusters["decisions"]}
+    extension = {t for t in tasks if suites[t] == "extension"}
+    if extension != set(marked):
+        raise SystemExit("Theme clusters do not cover exactly the extension tasks")
+    return [t for t in tasks if suites[t] == "original" or marked[t]]
 
 
 def binom_cdf(k, n):
@@ -114,6 +125,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", type=Path, required=True)
     parser.add_argument("--tuned", type=Path, required=True)
+    parser.add_argument("--clusters", type=Path, default=Path("docs/heldout/theme-clusters.json"))
     parser.add_argument("--out", type=Path, default=Path("docs/heldout/results.json"))
     args = parser.parse_args()
     runs = load([args.base, args.tuned])
@@ -136,7 +148,10 @@ def main():
     disagreements = sorted(
         (arm, t) for arm in arms for t in tasks if passed[(arm, 1)][t] != passed[(arm, 2)][t]
     )
-    groups = {"all": tasks}
+    clusters = json.loads(args.clusters.read_text())
+    primary = primary_tasks(tasks, meta, clusters)
+    cluster_of = {d["task"]: d["cluster"] for d in clusters["decisions"]}
+    groups = {"primary": primary, "all": tasks}
     for suite in sorted(set(meta.values())):
         groups[f"suite:{suite}"] = [t for t in tasks if meta[t] == suite]
     for category in sorted(set(categories.values())):
@@ -144,35 +159,38 @@ def main():
     report = {
         "plan": "docs/heldout/analysis-plan.md",
         "scored_repetition": 1,
+        "primary_set": {"tasks": len(primary), "of": len(tasks)},
         "repetition_disagreements": disagreements,
         "pass_counts": {arm: sum(rep1[arm].values()) for arm in arms},
         "comparisons": [
             {
                 "treated": treated,
                 "control": control,
-                "status": status,
+                "status": "primary"
+                if (treated, control, group) == ("tuned", "base", "primary")
+                else "exploratory",
                 "group": group,
                 **compare(rep1, treated, control, members),
             }
-            for treated, control, status in COMPARISONS
+            for treated, control in COMPARISONS
             for group, members in groups.items()
         ],
-        "primary_both_repetitions": compare(both, "tuned", "base", tasks),
+        "primary_both_repetitions": compare(both, "tuned", "base", primary),
         "behavior_rep1": behavior(runs, evaluators),
         "per_task": {
             t: {
                 "suite": meta[t],
                 "category": categories[t],
+                "cluster": cluster_of.get(t),
+                "primary_set": t in primary,
                 **{arm: [passed[(arm, 1)][t], passed[(arm, 2)][t]] for arm in arms},
             }
             for t in tasks
         },
     }
     args.out.write_text(json.dumps(report, indent=2) + "\n")
-    primary = next(
-        c for c in report["comparisons"] if c["status"] == "primary" and c["group"] == "all"
-    )
-    print(json.dumps({"pass_counts": report["pass_counts"], "primary": primary}, indent=2))
+    headline = next(c for c in report["comparisons"] if c["status"] == "primary")
+    print(json.dumps({"pass_counts": report["pass_counts"], "primary": headline}, indent=2))
 
 
 if __name__ == "__main__":
