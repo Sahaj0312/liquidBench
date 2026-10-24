@@ -1,8 +1,8 @@
 """Run a Claude teacher on training tasks in the unchanged Qwen harness; keep clean passes.
 
 Kept examples are the exact student-format conversations (Qwen system prompt, task,
-JSON actions, tool results) that passed the hidden grader with no protocol errors
-or truncated actions, and fit Qwen's 32K context. Spend is capped by the ledger.
+JSON actions, tool results) that passed the hidden grader, read the target before
+the first write, had no protocol errors or truncated actions, and fit Qwen's 32K context. Spend is capped by the ledger.
 uv run --with anthropic --with transformers==5.19.0 --with tokenizers==0.23.3 \
   --with jinja2==3.1.6 python scripts/collect_trajectories.py --model claude-sonnet-5-5 --cap 3
 """
@@ -72,10 +72,12 @@ def main():
         }
         prompt_tokens = provider.qwen_prompt_tokens(transcript[:-1]) if transcript else 0
         info["qwen_context_tokens"] = prompt_tokens
+        # The habit Milestone 6 and the diagnostic showed missing: read before editing.
         keep = (
             result["status"] == "passed"
             and info["protocol_errors"] == 0
             and info["truncations"] == 0
+            and info["read_before_write"]
             and prompt_tokens + config["max_output_tokens"] <= config["max_context_tokens"]
         )
         if keep:
