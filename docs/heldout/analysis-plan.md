@@ -63,3 +63,15 @@ infrastructure error stops the phase and is reported.
 ## Addition 2 (before freezing, before any held-out attempt)
 
 The first ambiguity-audit pass (batch `msgbatch_01T6mb9j7ssX2PfvZQDu4xbV`) ran without extended thinking, averaging 270 output tokens per task. It flagged 2 of the 78 tasks. A second pass (batch `msgbatch_01PVLoGGAxXeZunFL2CMWTZQ`) audits the remaining 76 with adaptive thinking. A task is kept only if both passes judged it clear. Theme clustering (Addition 1) runs after both passes.
+
+## Addition 3 (after the first base run stopped, before any tuned attempt)
+
+The first base run (`runs/heldout/base`, Pod `ug888pmiezmfss`) stopped after 167 of 400 attempts. Attempt 167 (`size-guide-units`, base + skills, repetition 1) was recorded as an infrastructure error. The trace shows the model produced a full 1,024-token response on each of 9 turns, about 30 s each. With 26 s left, the runner cut the request timeout to fit the 300 s attempt deadline. The request then timed out, and the retry loop raised "Attempt deadline reached during provider retries" as a provider error. The server stayed healthy throughout. Under the Milestone 6 plan this is a deadline termination ("operational missingness, not a model failure"), not an infrastructure fault.
+
+Changes:
+
+- **Runner:** a request that the attempt deadline leaves no time to retry now ends the attempt with termination `time_budget` (status failed, as for every other budget termination). It no longer raises an infrastructure error. A genuine server hang that coincides with the deadline is classified the same way; any real outage still fails the next attempt's requests and stops the phase. Test: `test_request_cut_short_by_attempt_deadline_is_time_budget`.
+- **Base phase:** rerun from the first attempt in the frozen order, into `runs/heldout/base-r2`, with a fresh preflight on the same Pod and serving command. Nothing from the stopped run is resumed, merged or replaced. The stopped run is kept as evidence; its 166 completed attempts are compared with the rerun as a same-host determinism check.
+- **Disclosure:** before this addition, the per-attempt log of the stopped run was visible. Repetition 1 pass counts over its first 83 tasks were base 12, base + skills 14. No tuned attempt has run. Nothing in the tests, groups or primary comparison changes.
+
+The measured pace (43.6 s per attempt) means both phases cannot finish within the approved session. The tuned phase runs in a later session that is approved separately. It reruns the base and tuned development checks (8/20 and 10/20) on its host before any held-out attempt. If that session also reruns the base phase, the tuned-versus-base comparison uses the same-host base run, and the cross-host base agreement is reported.

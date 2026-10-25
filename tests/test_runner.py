@@ -164,3 +164,30 @@ def test_preserves_edits_when_provider_fails_after_write(tmp_path):
     assert result["status"] == "infrastructure_error"
     assert result["snapshot_captured"]
     assert (destination / "final/snippets/product-card.liquid").read_text() == "partial work"
+
+
+def test_request_cut_short_by_attempt_deadline_is_time_budget(tmp_path, monkeypatch):
+    clock = [0.0]
+    monkeypatch.setattr("liquidbench.runner.time.monotonic", lambda: clock[0])
+
+    class SlowProvider(ScriptedProvider):
+        def complete(self, messages, max_tokens, timeout):
+            clock[0] += timeout
+            raise ProviderError("ReadTimeout", True)
+
+    config = load_config(ROOT / "configs/local-smoke.json")
+    config.update(max_seconds=10, request_timeout=90, provider_retries=2)
+    task = Task.load(ROOT / "tasks/dev/product-card")
+    _, result = run(
+        task,
+        config,
+        tmp_path,
+        provider=SlowProvider([]),
+        sandbox_factory=MemorySandbox,
+        resolve_image=lambda _: "sha256:test",
+        grader=lambda task, files, image: {"passed": False, "checks": []},
+    )
+    assert result["status"] == "failed"
+    assert result["termination"] == "time_budget"
+    assert result["model_calls"] == 1
+    assert result["provider_errors"] == ["ReadTimeout"]

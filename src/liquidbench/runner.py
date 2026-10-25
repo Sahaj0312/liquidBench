@@ -366,15 +366,15 @@ def run(
                                 limit=config["max_context_tokens"],
                             )
                             break
+                        reply = None
                         for retry in range(config["provider_retries"] + 1):
                             timeout = min(
                                 config["request_timeout"],
                                 config["max_seconds"] - (time.monotonic() - start),
                             )
+                            # The attempt deadline, not the server, cut this request short.
                             if timeout <= 0:
-                                raise ProviderError(
-                                    "Attempt deadline reached during provider retries"
-                                )
+                                break
                             event(
                                 "model_request",
                                 turn=turn,
@@ -396,6 +396,10 @@ def run(
                                 event("provider_error", error=str(exc), retryable=exc.retryable)
                                 if not exc.retryable or retry == config["provider_retries"]:
                                     raise
+                        if reply is None:
+                            reason = "time_budget"
+                            event("time_budget", during="provider_request")
+                            break
                         for access in result["skill_accesses"] + result["context_exposures"]:
                             if access["first_model_turn"] is None:
                                 access["first_model_turn"] = turn
