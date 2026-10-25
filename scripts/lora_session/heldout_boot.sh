@@ -4,6 +4,29 @@ umask 077
 # Held-out session: serve the pinned base model, then on request swap to the merged
 # LoRA adapter. vLLM runs as a child so a swap never restarts the container.
 mkdir -p /pilot-evidence /run/sshd /root/.ssh /workspace/upload
+# Host-side deadline: the Pod removes itself with its pod-scoped key even if the
+# controlling machine is asleep or gone. Delete first; stop if delete is refused.
+cat > /pilot-evidence/pod_api.py <<'PODAPI'
+import json, os, sys, urllib.request
+base = "https://api.runpod.io/v2/pods/" + os.environ["RUNPOD_POD_ID"]
+calls = {
+    "check": [("GET", base, None)],
+    "deadline": [("DELETE", base, None), ("POST", base + "/action", b'{"action":"stop"}')],
+}[sys.argv[1]]
+for method, url, body in calls:
+    request = urllib.request.Request(url, data=body, method=method, headers={
+        "Authorization": "Bearer " + os.environ["RUNPOD_API_KEY"],
+        "Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            print(json.dumps({"call": method, "status": response.status}), flush=True)
+            break
+    except Exception as exc:
+        print(json.dumps({"call": method, "error": str(exc)}), flush=True)
+PODAPI
+python3 /pilot-evidence/pod_api.py check | tee /pilot-evidence/pod-api-check.json
+( sleep "${DEADLINE_SECONDS:?}"; echo "STAGE deadline" >> /pilot-evidence/stages.log
+  python3 /pilot-evidence/pod_api.py deadline >> /pilot-evidence/stages.log 2>&1 ) &
 nvidia-smi -q > /pilot-evidence/nvidia-smi.txt
 df -h > /pilot-evidence/disk.txt
 free -h > /pilot-evidence/memory.txt
