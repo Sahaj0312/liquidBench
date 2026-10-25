@@ -71,6 +71,7 @@ The first base run (`runs/heldout/base`, Pod `ug888pmiezmfss`) stopped after 167
 Changes:
 
 - **Runner:** a request that the attempt deadline leaves no time to retry now ends the attempt with termination `time_budget` (status failed, as for every other budget termination). It no longer raises an infrastructure error. A genuine server hang that coincides with the deadline is classified the same way; any real outage still fails the next attempt's requests and stops the phase. Test: `test_request_cut_short_by_attempt_deadline_is_time_budget`.
+- **Plan re-freeze:** the frozen plan pins a digest of the Python source, so the runner change required regenerating `experiments/heldout-plan.json`. Only `python_source_digest` changed (`334dfde8…` → `02975843…`); attempts, order, configs and task digests are identical. In `docs/heldout/initial-counts.json` only `plan_sha256` changed (`49cfadff…` → `c345d514…`); every token count is identical.
 - **Base phase:** rerun from the first attempt in the frozen order, into `runs/heldout/base-r2`, with a fresh preflight on the same Pod and serving command. Nothing from the stopped run is resumed, merged or replaced. The stopped run is kept as evidence; its 166 completed attempts are compared with the rerun as a same-host determinism check.
 - **Disclosure:** before this addition, the per-attempt log of the stopped run was visible. Repetition 1 pass counts over its first 83 tasks were base 12, base + skills 14. No tuned attempt has run. Nothing in the tests, groups or primary comparison changes.
 
