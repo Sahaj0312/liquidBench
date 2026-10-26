@@ -1,0 +1,312 @@
+{
+  "plan": "docs/heldout/analysis-plan.md Addition 4 (exploratory)",
+  "scored_repetition": 1,
+  "pass_counts": {
+    "base": 20,
+    "base_skills": 21,
+    "claude": 94,
+    "claude_skills": 93,
+    "tuned": 39,
+    "tuned_skills": 40
+  },
+  "comparisons": [
+    {
+      "treated": "claude_skills",
+      "control": "claude",
+      "group": "primary",
+      "treated_passes": 54,
+      "control_passes": 54,
+      "tasks": 58,
+      "treated_only": 0,
+      "control_only": 0,
+      "difference": 0.0,
+      "interval95": [
+        0.0,
+        0.0
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "claude_skills",
+      "control": "claude",
+      "group": "all",
+      "treated_passes": 93,
+      "control_passes": 94,
+      "tasks": 100,
+      "treated_only": 1,
+      "control_only": 2,
+      "difference": -0.01,
+      "interval95": [
+        -0.029495774480423242,
+        0.024342040556985235
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "claude_skills",
+      "control": "claude",
+      "group": "suite:extension",
+      "treated_passes": 69,
+      "control_passes": 70,
+      "tasks": 76,
+      "treated_only": 1,
+      "control_only": 2,
+      "difference": -0.013157894736842105,
+      "interval95": [
+        -0.038810229579504266,
+        0.032029000732875304
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "claude_skills",
+      "control": "claude",
+      "group": "suite:original",
+      "treated_passes": 24,
+      "control_passes": 24,
+      "tasks": 24,
+      "treated_only": 0,
+      "control_only": 0,
+      "difference": 0.0,
+      "interval95": [
+        0.0,
+        0.0
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "claude",
+      "control": "tuned",
+      "group": "primary",
+      "treated_passes": 54,
+      "control_passes": 20,
+      "tasks": 58,
+      "treated_only": 34,
+      "control_only": 0,
+      "difference": 0.5862068965517241,
+      "interval95": [
+        0.46566174397219207,
+        0.5862068965517241
+      ],
+      "p": 1.1641532182693481e-10
+    },
+    {
+      "treated": "claude",
+      "control": "tuned",
+      "group": "all",
+      "treated_passes": 94,
+      "control_passes": 39,
+      "tasks": 100,
+      "treated_only": 56,
+      "control_only": 1,
+      "difference": 0.55,
+      "interval95": [
+        0.4629348002432217,
+        0.569493756278298
+      ],
+      "p": 8.049116928532385e-16
+    },
+    {
+      "treated": "claude",
+      "control": "tuned",
+      "group": "suite:extension",
+      "treated_passes": 70,
+      "control_passes": 26,
+      "tasks": 76,
+      "treated_only": 45,
+      "control_only": 1,
+      "difference": 0.5789473684210527,
+      "interval95": [
+        0.4657235795392751,
+        0.604597083106197
+      ],
+      "p": 1.3358203432289883e-12
+    },
+    {
+      "treated": "claude",
+      "control": "tuned",
+      "group": "suite:original",
+      "treated_passes": 24,
+      "control_passes": 13,
+      "tasks": 24,
+      "treated_only": 11,
+      "control_only": 0,
+      "difference": 0.4583333333333333,
+      "interval95": [
+        0.19716202649169173,
+        0.4583333333333333
+      ],
+      "p": 0.0009765625
+    },
+    {
+      "treated": "claude",
+      "control": "base",
+      "group": "primary",
+      "treated_passes": 54,
+      "control_passes": 10,
+      "tasks": 58,
+      "treated_only": 44,
+      "control_only": 0,
+      "difference": 0.7586206896551724,
+      "interval95": [
+        0.6366042293242297,
+        0.7586206896551724
+      ],
+      "p": 1.1368683772161603e-13
+    },
+    {
+      "treated": "claude",
+      "control": "base",
+      "group": "all",
+      "treated_passes": 94,
+      "control_passes": 20,
+      "tasks": 100,
+      "treated_only": 74,
+      "control_only": 0,
+      "difference": 0.74,
+      "interval95": [
+        0.6680311279677755,
+        0.74
+      ],
+      "p": 1.0587911840678754e-22
+    },
+    {
+      "treated": "claude",
+      "control": "base",
+      "group": "suite:extension",
+      "treated_passes": 70,
+      "control_passes": 11,
+      "tasks": 76,
+      "treated_only": 59,
+      "control_only": 0,
+      "difference": 0.7763157894736842,
+      "interval95": [
+        0.6822124958928933,
+        0.7763157894736842
+      ],
+      "p": 3.469446951953614e-18
+    },
+    {
+      "treated": "claude",
+      "control": "base",
+      "group": "suite:original",
+      "treated_passes": 24,
+      "control_passes": 9,
+      "tasks": 24,
+      "treated_only": 15,
+      "control_only": 0,
+      "difference": 0.625,
+      "interval95": [
+        0.3524757988618324,
+        0.625
+      ],
+      "p": 6.103515625e-05
+    }
+  ],
+  "repetition_disagreements": [
+    [
+      "claude",
+      "engraving-availability"
+    ],
+    [
+      "claude",
+      "event-schedule-list"
+    ],
+    [
+      "claude",
+      "featured-collection-tabs"
+    ],
+    [
+      "claude",
+      "sample-request-eligibility"
+    ],
+    [
+      "claude_skills",
+      "engraving-availability"
+    ],
+    [
+      "claude_skills",
+      "gift-registry-items"
+    ],
+    [
+      "claude_skills",
+      "lookbook-grid"
+    ],
+    [
+      "claude_skills",
+      "pricing-table"
+    ],
+    [
+      "claude_skills",
+      "seasonal-closure-notice"
+    ]
+  ],
+  "attempts_with_skill_reads": {
+    "base": {
+      "attempts": 200,
+      "with_reads": 0
+    },
+    "base_skills": {
+      "attempts": 200,
+      "with_reads": 0
+    },
+    "tuned": {
+      "attempts": 200,
+      "with_reads": 0
+    },
+    "tuned_skills": {
+      "attempts": 200,
+      "with_reads": 0
+    },
+    "claude": {
+      "attempts": 200,
+      "with_reads": 0
+    },
+    "claude_skills": {
+      "attempts": 200,
+      "with_reads": 1
+    }
+  },
+  "served_models": {
+    "claude-sonnet-5-5": 2026
+  },
+  "behavior_rep1": {
+    "claude": {
+      "attempts": 100,
+      "read_before_first_write": 100,
+      "validated": 100,
+      "turn_budget": 0,
+      "protocol_errors": 0,
+      "rendered_tasks": 58,
+      "final_render": 42
+    },
+    "claude_skills": {
+      "attempts": 100,
+      "read_before_first_write": 100,
+      "validated": 100,
+      "turn_budget": 0,
+      "protocol_errors": 0,
+      "rendered_tasks": 58,
+      "final_render": 42
+    }
+  },
+  "claude_failures_rep1": {
+    "claude": [
+      "engraving-availability",
+      "featured-collection-tabs",
+      "gift-registry-items",
+      "sample-request-eligibility",
+      "seasonal-closure-notice",
+      "warehouse-availability-list"
+    ],
+    "claude_skills": [
+      "featured-collection-tabs",
+      "gift-registry-items",
+      "lookbook-grid",
+      "sample-request-eligibility",
+      "seasonal-closure-notice",
+      "volume-discount-ladder",
+      "warehouse-availability-list"
+    ]
+  }
+}

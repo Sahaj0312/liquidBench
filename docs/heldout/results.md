@@ -122,3 +122,63 @@ Both are in `docs/heldout/audit.json` and `runs/heldout-ext-rejected/`. No task 
   - session 02: about $5.63
 
   Session 02 billing read $5.04 at deletion while still lagging. The figure above is 9.33 h at $0.604/h including disk.
+
+## Frontier reference: Sonnet 5.5 (exploratory, Addition 4)
+
+This reference was added after the four arms were scored. It runs `claude-sonnet-5-5` in the same harness, tasks, order and budgets as the Qwen arms, with and without the on-demand skills. Its results are in [`reference-claude.json`](reference-claude.json), produced by:
+
+```
+uv run python scripts/analyze_heldout_claude.py --base runs/heldout/base-s2 --tuned runs/heldout/tuned-s2 --claude runs/heldout/claude
+```
+
+The run:
+
+- 400 attempts in total, with 0 infrastructure errors.
+- Every one of the 2,026 requests was served by `claude-sonnet-5-5`.
+- Cost: $8.55, plus $0.07 for a 4-attempt smoke test on development tasks.
+
+**Skills were almost never read.** Across 1,200 skills-arm attempts in all three models, exactly one attempt opened a skill document. That was Sonnet on `pricing-table`, reading `liquid-theme-standards/SKILL.md`, and the attempt still failed.
+
+| Model | Skills-arm attempts | Attempts that read a skill |
+|---|---|---|
+| Qwen base | 200 | 0 |
+| LoRA v1 | 200 | 0 |
+| Sonnet 5.5 | 200 | 1 |
+
+So with skills offered on demand, as an index the agent may consult, no model used them. This study therefore cannot say whether the skills' content helps. It shows only that offering them on demand in this harness does not get them read. Milestone 6 put the skills directly in the 7B model's context, and it did worse: 3 wins and 22 losses against baseline.
+
+**Repetition 1 results:**
+
+| Arm | All 100 | Primary 58 | Original 24 | Extension 76 |
+|---|---|---|---|---|
+| Sonnet | 94 | 54 | 24 | 70 |
+| Sonnet + skills | 93 | 54 | 24 | 69 |
+| LoRA v1 | 39 | 20 | 13 | 26 |
+| Qwen base | 20 | 10 | 9 | 11 |
+
+| Comparison | Group | Treated only | Control only | Difference (points) | 95% interval | p |
+|---|---|---|---|---|---|---|
+| Sonnet + skills vs Sonnet | all | 1 | 2 | −1.0 | [−2.9, +2.4] | 1.0 |
+| Sonnet vs LoRA v1 | primary | 34 | 0 | +58.6 | [+46.6, +58.6] | <0.0001 |
+| Sonnet vs LoRA v1 | original | 11 | 0 | +45.8 | [+19.7, +45.8] | 0.001 |
+| Sonnet vs Qwen base | primary | 44 | 0 | +75.9 | [+63.7, +75.9] | <0.0001 |
+
+**What this shows:**
+
+- **The fine-tune closes part of the gap.** LoRA v1 moves the 7B model from 20 to 39 of 100, against Sonnet's 94. That recovers about a quarter of the distance from base to frontier. Every task the tuned model passes, Sonnet also passes, except one.
+- **The suite is near ceiling for frontier models.**
+  - Sonnet passes all 24 hand-written original tasks.
+  - It passes 20 of 21 theme-modification tasks, the category where every Qwen arm passes 2 or 3.
+  - Its 6 failures in repetition 1: `engraving-availability`, `featured-collection-tabs`, `gift-registry-items`, `sample-request-eligibility`, `seasonal-closure-notice`, `warehouse-availability-list`.
+
+  To separate frontier models, the next suite version needs harder tasks.
+- **Sonnet's work habits are clean in every attempt.**
+  - It read the target before writing, validated, never ran out of turns, and made no protocol errors.
+  - Its actions are schema-constrained, so protocol errors are not comparable with Qwen's.
+  - It rendered after its last write in 42 of 58 rendered tasks, against 18 for LoRA v1 and 2 for base.
+- **Its repetitions disagree more than Qwen's.** 9 of 200 task-arm pairs differ, compared with 2 of 400 for Qwen. That is expected: Sonnet runs with thinking enabled and is not deterministic.
+
+**Caveats:**
+
+- `claude-opus-5-5` authored the extension tasks, and Claude teachers produced LoRA v1's training trajectories, though on training tasks only.
+- The cleanest Sonnet comparison is the hand-written original suite: 24 of 24, against 13 for LoRA v1 and 9 for base.
