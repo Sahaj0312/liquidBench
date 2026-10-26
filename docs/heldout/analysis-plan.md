@@ -76,3 +76,40 @@ Changes:
 - **Disclosure:** before this addition, the per-attempt log of the stopped run was visible. Repetition 1 pass counts over its first 83 tasks were base 12, base + skills 14. No tuned attempt has run. Nothing in the tests, groups or primary comparison changes.
 
 The measured pace (43.6 s per attempt) means both phases cannot finish within the approved session. The tuned phase runs in a later session that is approved separately. It reruns the base and tuned development checks (8/20 and 10/20) on its host before any held-out attempt. If that session also reruns the base phase, the tuned-versus-base comparison uses the same-host base run, and the cross-host base agreement is reported.
+
+## Addition 4 (after both phases were scored, before any Claude attempt)
+
+**Why.** In the scored phases, neither skills arm opened a single skill document: 0 reads in 400 attempts. The null skills result therefore shows that the 7B model ignores optional documents. It does not show whether the skills help. The skills are written for frontier agents, so this addition measures them on one.
+
+**What runs.** This is an exploratory reference, outside the four-arm study, and nothing in Additions 1–3 or the scored results changes. There are two arms, `claude` and `claude_skills`, both using `claude-sonnet-5-5` through `ClaudeProvider`.
+
+- **Order:** the frozen base-phase order (`experiments/heldout-plan.json`), with base mapped to `claude` and base + skills mapped to `claude_skills`. Both repetitions run, with no retries, replacements or resumes.
+- **Settings shared with the Qwen arms:**
+  - the harness, system prompt, tasks and graders;
+  - 12 turns, 1,024 output tokens per action, and a 32K context counted with the Qwen tokenizer;
+  - the on-demand skills at `483f969`.
+- **Differences, needed by the API:**
+  - Actions are structured JSON (a schema rather than JSON mode).
+  - Adaptive thinking at effort low, as in trajectory collection, with no teacher note.
+  - Attempt limit 900 s and request timeout 180 s, for API latency.
+- **Spend:** capped at $30 by a separate ledger (`runs/heldout-claude/ledger.jsonl`). A call the cap refuses stops the phase, and the run is reported as incomplete.
+
+**Analysis.** Repetition 1 is scored, with exact McNemar tests and intervals as above. All comparisons are exploratory and uncorrected:
+
+1. `claude_skills` against `claude`;
+2. `claude` against `tuned`;
+3. `claude` against `base`.
+
+Each is reported on the primary set, all tasks, and each suite.
+
+**Also reported:**
+
+- skill-document reads per arm;
+- disagreement between repetitions;
+- the behavior metrics;
+- the served model ID.
+
+**Caveats, stated with the results:**
+
+- `claude-opus-5-5` authored the extension tasks, and Claude teachers produced the training trajectories, though on training tasks only. The original suite, which was hand-written, is the cleanest comparison.
+- Claude at temperature 0 with thinking is not deterministic, so its repetitions are a variability check rather than a determinism check.

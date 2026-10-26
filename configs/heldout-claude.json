@@ -1,0 +1,22 @@
+{
+  "purpose": "Held-out exploratory frontier reference (Addition 4); final-model evaluation only",
+  "endpoint": "https://api.anthropic.com/v1",
+  "model": "claude-sonnet-5-5",
+  "model_revision": "claude-sonnet-5-5 via ClaudeProvider (effort low, structured JSON actions); served model id recorded per request",
+  "image": "liquidbench-runtime:0.1",
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "seed": 42,
+  "max_turns": 12,
+  "max_total_tokens": 393216,
+  "max_output_tokens": 1024,
+  "max_seconds": 900,
+  "request_timeout": 180,
+  "provider_retries": 2,
+  "input_usd_per_million": null,
+  "output_usd_per_million": null,
+  "max_context_tokens": 32768,
+  "token_counting": "vllm",
+  "response_format": "json_object",
+  "skills": null
+}
