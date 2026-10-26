@@ -1,0 +1,2891 @@
+{
+  "plan": "docs/heldout/analysis-plan.md",
+  "scored_repetition": 1,
+  "primary_set": {
+    "tasks": 58,
+    "of": 100
+  },
+  "repetition_disagreements": [
+    [
+      "tuned",
+      "local-currency-notice"
+    ],
+    [
+      "tuned_skills",
+      "lookbook-grid-defaults"
+    ]
+  ],
+  "pass_counts": {
+    "base": 20,
+    "base_skills": 21,
+    "tuned": 39,
+    "tuned_skills": 40
+  },
+  "comparisons": [
+    {
+      "treated": "tuned",
+      "control": "base",
+      "status": "primary",
+      "group": "primary",
+      "treated_passes": 20,
+      "control_passes": 10,
+      "tasks": 58,
+      "treated_only": 10,
+      "control_only": 0,
+      "difference": 0.1724137931034483,
+      "interval95": [
+        0.06603548006249627,
+        0.1724137931034483
+      ],
+      "p": 0.001953125
+    },
+    {
+      "treated": "tuned",
+      "control": "base",
+      "status": "exploratory",
+      "group": "all",
+      "treated_passes": 39,
+      "control_passes": 20,
+      "tasks": 100,
+      "treated_only": 21,
+      "control_only": 2,
+      "difference": 0.19,
+      "interval95": [
+        0.101025505481671,
+        0.22507341562257704
+      ],
+      "p": 6.604194641113281e-05
+    },
+    {
+      "treated": "tuned",
+      "control": "base",
+      "status": "exploratory",
+      "group": "suite:extension",
+      "treated_passes": 26,
+      "control_passes": 11,
+      "tasks": 76,
+      "treated_only": 17,
+      "control_only": 2,
+      "difference": 0.19736842105263158,
+      "interval95": [
+        0.08431166777161703,
+        0.24349391781411123
+      ],
+      "p": 0.000728607177734375
+    },
+    {
+      "treated": "tuned",
+      "control": "base",
+      "status": "exploratory",
+      "group": "suite:original",
+      "treated_passes": 13,
+      "control_passes": 9,
+      "tasks": 24,
+      "treated_only": 4,
+      "control_only": 0,
+      "difference": 0.16666666666666666,
+      "interval95": [
+        -0.03412154520549156,
+        0.16666666666666666
+      ],
+      "p": 0.125
+    },
+    {
+      "treated": "tuned",
+      "control": "base",
+      "status": "exploratory",
+      "group": "category:liquid-syntax",
+      "treated_passes": 6,
+      "control_passes": 2,
+      "tasks": 19,
+      "treated_only": 4,
+      "control_only": 0,
+      "difference": 0.21052631578947367,
+      "interval95": [
+        -0.04310089920693671,
+        0.21052631578947367
+      ],
+      "p": 0.125
+    },
+    {
+      "treated": "tuned",
+      "control": "base",
+      "status": "exploratory",
+      "group": "category:rendering",
+      "treated_passes": 3,
+      "control_passes": 1,
+      "tasks": 18,
+      "treated_only": 2,
+      "control_only": 0,
+      "difference": 0.1111111111111111,
+      "interval95": [
+        -0.07597469266479578,
+        0.1111111111111111
+      ],
+      "p": 0.5
+    },
+    {
+      "treated": "tuned",
+      "control": "base",
+      "status": "exploratory",
+      "group": "category:section-schema",
+      "treated_passes": 22,
+      "control_passes": 13,
+      "tasks": 27,
+      "treated_only": 10,
+      "control_only": 1,
+      "difference": 0.3333333333333333,
+      "interval95": [
+        0.07106821578724365,
+        0.40553417078874393
+      ],
+      "p": 0.01171875
+    },
+    {
+      "treated": "tuned",
+      "control": "base",
+      "status": "exploratory",
+      "group": "category:theme-modification",
+      "treated_passes": 2,
+      "control_passes": 2,
+      "tasks": 21,
+      "treated_only": 1,
+      "control_only": 1,
+      "difference": 0.0,
+      "interval95": [
+        -0.0928420729345857,
+        0.0928420729345857
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "tuned",
+      "control": "base",
+      "status": "exploratory",
+      "group": "category:theme-references",
+      "treated_passes": 6,
+      "control_passes": 2,
+      "tasks": 15,
+      "treated_only": 4,
+      "control_only": 0,
+      "difference": 0.26666666666666666,
+      "interval95": [
+        -0.054594472328786496,
+        0.26666666666666666
+      ],
+      "p": 0.125
+    },
+    {
+      "treated": "base_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "primary",
+      "treated_passes": 11,
+      "control_passes": 10,
+      "tasks": 58,
+      "treated_only": 3,
+      "control_only": 2,
+      "difference": 0.017241379310344827,
+      "interval95": [
+        -0.06092537937333222,
+        0.07711293956442809
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "base_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "all",
+      "treated_passes": 21,
+      "control_passes": 20,
+      "tasks": 100,
+      "treated_only": 4,
+      "control_only": 3,
+      "difference": 0.01,
+      "interval95": [
+        -0.044232780530388385,
+        0.05614164101804888
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "base_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "suite:extension",
+      "treated_passes": 12,
+      "control_passes": 11,
+      "tasks": 76,
+      "treated_only": 2,
+      "control_only": 1,
+      "difference": 0.013157894736842105,
+      "interval95": [
+        -0.032029000732875304,
+        0.038810229579504266
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "base_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "suite:original",
+      "treated_passes": 9,
+      "control_passes": 9,
+      "tasks": 24,
+      "treated_only": 2,
+      "control_only": 2,
+      "difference": 0.0,
+      "interval95": [
+        -0.144138004503819,
+        0.14413800450381897
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "base_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "category:liquid-syntax",
+      "treated_passes": 1,
+      "control_passes": 2,
+      "tasks": 19,
+      "treated_only": 0,
+      "control_only": 1,
+      "difference": -0.05263157894736842,
+      "interval95": [
+        -0.05263157894736842,
+        0.04999999999999998
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "base_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "category:rendering",
+      "treated_passes": 0,
+      "control_passes": 1,
+      "tasks": 18,
+      "treated_only": 0,
+      "control_only": 1,
+      "difference": -0.05555555555555555,
+      "interval95": [
+        -0.05555555555555555,
+        0.05277777777777776
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "base_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "category:section-schema",
+      "treated_passes": 14,
+      "control_passes": 13,
+      "tasks": 27,
+      "treated_only": 2,
+      "control_only": 1,
+      "difference": 0.037037037037037035,
+      "interval95": [
+        -0.09015570576661197,
+        0.10924360918675274
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "base_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "category:theme-modification",
+      "treated_passes": 2,
+      "control_passes": 2,
+      "tasks": 21,
+      "treated_only": 0,
+      "control_only": 0,
+      "difference": 0.0,
+      "interval95": [
+        0.0,
+        0.0
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "base_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "category:theme-references",
+      "treated_passes": 4,
+      "control_passes": 2,
+      "tasks": 15,
+      "treated_only": 2,
+      "control_only": 0,
+      "difference": 0.13333333333333333,
+      "interval95": [
+        -0.09116963119775495,
+        0.13333333333333333
+      ],
+      "p": 0.5
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "tuned",
+      "status": "exploratory",
+      "group": "primary",
+      "treated_passes": 19,
+      "control_passes": 20,
+      "tasks": 58,
+      "treated_only": 0,
+      "control_only": 1,
+      "difference": -0.017241379310344827,
+      "interval95": [
+        -0.017241379310344827,
+        0.01637931034482758
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "tuned",
+      "status": "exploratory",
+      "group": "all",
+      "treated_passes": 40,
+      "control_passes": 39,
+      "tasks": 100,
+      "treated_only": 3,
+      "control_only": 2,
+      "difference": 0.01,
+      "interval95": [
+        -0.03533672003653269,
+        0.044725504947368294
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "tuned",
+      "status": "exploratory",
+      "group": "suite:extension",
+      "treated_passes": 28,
+      "control_passes": 26,
+      "tasks": 76,
+      "treated_only": 3,
+      "control_only": 1,
+      "difference": 0.02631578947368421,
+      "interval95": [
+        -0.03219784740176385,
+        0.0519674249252937
+      ],
+      "p": 0.625
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "tuned",
+      "status": "exploratory",
+      "group": "suite:original",
+      "treated_passes": 12,
+      "control_passes": 13,
+      "tasks": 24,
+      "treated_only": 0,
+      "control_only": 1,
+      "difference": -0.041666666666666664,
+      "interval95": [
+        -0.041666666666666664,
+        0.03958333333333332
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "tuned",
+      "status": "exploratory",
+      "group": "category:liquid-syntax",
+      "treated_passes": 4,
+      "control_passes": 6,
+      "tasks": 19,
+      "treated_only": 0,
+      "control_only": 2,
+      "difference": -0.10526315789473684,
+      "interval95": [
+        -0.10526315789473684,
+        0.07197602462980647
+      ],
+      "p": 0.5
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "tuned",
+      "status": "exploratory",
+      "group": "category:rendering",
+      "treated_passes": 3,
+      "control_passes": 3,
+      "tasks": 18,
+      "treated_only": 0,
+      "control_only": 0,
+      "difference": 0.0,
+      "interval95": [
+        0.0,
+        0.0
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "tuned",
+      "status": "exploratory",
+      "group": "category:section-schema",
+      "treated_passes": 23,
+      "control_passes": 22,
+      "tasks": 27,
+      "treated_only": 1,
+      "control_only": 0,
+      "difference": 0.037037037037037035,
+      "interval95": [
+        -0.03518518518518518,
+        0.037037037037037035
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "tuned",
+      "status": "exploratory",
+      "group": "category:theme-modification",
+      "treated_passes": 3,
+      "control_passes": 2,
+      "tasks": 21,
+      "treated_only": 1,
+      "control_only": 0,
+      "difference": 0.047619047619047616,
+      "interval95": [
+        -0.04523809523809523,
+        0.047619047619047616
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "tuned",
+      "status": "exploratory",
+      "group": "category:theme-references",
+      "treated_passes": 7,
+      "control_passes": 6,
+      "tasks": 15,
+      "treated_only": 1,
+      "control_only": 0,
+      "difference": 0.06666666666666667,
+      "interval95": [
+        -0.06333333333333332,
+        0.06666666666666667
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "primary",
+      "treated_passes": 19,
+      "control_passes": 10,
+      "tasks": 58,
+      "treated_only": 9,
+      "control_only": 0,
+      "difference": 0.15517241379310345,
+      "interval95": [
+        0.05081365338208668,
+        0.15517241379310345
+      ],
+      "p": 0.00390625
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "all",
+      "treated_passes": 40,
+      "control_passes": 20,
+      "tasks": 100,
+      "treated_only": 21,
+      "control_only": 1,
+      "difference": 0.2,
+      "interval95": [
+        0.11948446502624123,
+        0.2194939350883076
+      ],
+      "p": 1.0967254638671875e-05
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "suite:extension",
+      "treated_passes": 28,
+      "control_passes": 11,
+      "tasks": 76,
+      "treated_only": 18,
+      "control_only": 1,
+      "difference": 0.2236842105263158,
+      "interval95": [
+        0.11985967290239286,
+        0.24933418559791032
+      ],
+      "p": 7.62939453125e-05
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "suite:original",
+      "treated_passes": 12,
+      "control_passes": 9,
+      "tasks": 24,
+      "treated_only": 3,
+      "control_only": 0,
+      "difference": 0.125,
+      "interval95": [
+        -0.051899556544678344,
+        0.125
+      ],
+      "p": 0.25
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "category:liquid-syntax",
+      "treated_passes": 4,
+      "control_passes": 2,
+      "tasks": 19,
+      "treated_only": 2,
+      "control_only": 0,
+      "difference": 0.10526315789473684,
+      "interval95": [
+        -0.07197602462980654,
+        0.10526315789473684
+      ],
+      "p": 0.5
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "category:rendering",
+      "treated_passes": 3,
+      "control_passes": 1,
+      "tasks": 18,
+      "treated_only": 2,
+      "control_only": 0,
+      "difference": 0.1111111111111111,
+      "interval95": [
+        -0.07597469266479578,
+        0.1111111111111111
+      ],
+      "p": 0.5
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "category:section-schema",
+      "treated_passes": 23,
+      "control_passes": 13,
+      "tasks": 27,
+      "treated_only": 10,
+      "control_only": 0,
+      "difference": 0.37037037037037035,
+      "interval95": [
+        0.1418539942083253,
+        0.37037037037037035
+      ],
+      "p": 0.001953125
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "category:theme-modification",
+      "treated_passes": 3,
+      "control_passes": 2,
+      "tasks": 21,
+      "treated_only": 2,
+      "control_only": 1,
+      "difference": 0.047619047619047616,
+      "interval95": [
+        -0.11591447884278683,
+        0.14045606895439638
+      ],
+      "p": 1.0
+    },
+    {
+      "treated": "tuned_skills",
+      "control": "base",
+      "status": "exploratory",
+      "group": "category:theme-references",
+      "treated_passes": 7,
+      "control_passes": 2,
+      "tasks": 15,
+      "treated_only": 5,
+      "control_only": 0,
+      "difference": 0.3333333333333333,
+      "interval95": [
+        -0.014549166736654332,
+        0.3333333333333333
+      ],
+      "p": 0.0625
+    }
+  ],
+  "primary_both_repetitions": {
+    "treated_passes": 20,
+    "control_passes": 10,
+    "tasks": 58,
+    "treated_only": 10,
+    "control_only": 0,
+    "difference": 0.1724137931034483,
+    "interval95": [
+      0.06603548006249627,
+      0.1724137931034483
+    ],
+    "p": 0.001953125
+  },
+  "behavior_rep1": {
+    "base": {
+      "attempts": 100,
+      "read_before_first_write": 74,
+      "validated": 85,
+      "turn_budget": 32,
+      "protocol_errors": 9,
+      "rendered_tasks": 58,
+      "final_render": 2
+    },
+    "base_skills": {
+      "attempts": 100,
+      "read_before_first_write": 86,
+      "validated": 89,
+      "turn_budget": 35,
+      "protocol_errors": 9,
+      "rendered_tasks": 58,
+      "final_render": 2
+    },
+    "tuned": {
+      "attempts": 100,
+      "read_before_first_write": 100,
+      "validated": 98,
+      "turn_budget": 16,
+      "protocol_errors": 18,
+      "rendered_tasks": 58,
+      "final_render": 18
+    },
+    "tuned_skills": {
+      "attempts": 100,
+      "read_before_first_write": 100,
+      "validated": 98,
+      "turn_budget": 12,
+      "protocol_errors": 18,
+      "rendered_tasks": 58,
+      "final_render": 17
+    }
+  },
+  "per_task": {
+    "allergen-badges": {
+      "suite": "extension",
+      "category": "rendering",
+      "cluster": "allergen badges | trust badge row section | trust badges section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "app-download-banner": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "app-download-panel": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "app-promo-platforms": {
+      "suite": "extension",
+      "category": "theme-modification",
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "award-list-edges": {
+      "suite": "extension",
+      "category": "theme-modification",
+      "cluster": "award list section | awards section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "award-list-tiers": {
+      "suite": "extension",
+      "category": "theme-modification",
+      "cluster": "award list section | awards section",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "awards-count-list": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "award list section | awards section",
+      "primary_set": false,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "awards-showcase": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "award list section | awards section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "b2b-quantity-minimum": {
+      "suite": "extension",
+      "category": "liquid-syntax",
+      "cluster": "B2B quantity minimum",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "back-to-top-icon": {
+      "suite": "extension",
+      "category": "theme-references",
+      "cluster": "back-to-top icon",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "before-after-slider": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "before-after slider",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "blog-comment-labels": {
+      "suite": "extension",
+      "category": "theme-references",
+      "cluster": "blog comment labels",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "breadcrumb-trail": {
+      "suite": "original",
+      "category": "rendering",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "bundle-contents-list": {
+      "suite": "extension",
+      "category": "rendering",
+      "cluster": "bundle contents list",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "card-sale-badge": {
+      "suite": "original",
+      "category": "theme-modification",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "cart-assets": {
+      "suite": "original",
+      "category": "theme-references",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "cart-drawer-script": {
+      "suite": "extension",
+      "category": "theme-references",
+      "cluster": "cart drawer script",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "cart-labels": {
+      "suite": "original",
+      "category": "theme-references",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "collection-grid-schema": {
+      "suite": "original",
+      "category": "section-schema",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "color-palette-chips": {
+      "suite": "extension",
+      "category": "rendering",
+      "cluster": "color palette chips",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "color-scheme-schema": {
+      "suite": "original",
+      "category": "section-schema",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "compliance-warning": {
+      "suite": "extension",
+      "category": "liquid-syntax",
+      "cluster": "product compliance warning",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "contact-page-labels": {
+      "suite": "extension",
+      "category": "theme-references",
+      "cluster": "contact page labels",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "cookie-consent-labels": {
+      "suite": "extension",
+      "category": "theme-references",
+      "cluster": "cookie banner labels | event banner section | event listing section | event schedule list | store events calendar",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "currency-selector-labels": {
+      "suite": "extension",
+      "category": "theme-references",
+      "cluster": "currency selector labels | local currency notice",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "discount-label": {
+      "suite": "original",
+      "category": "liquid-syntax",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "donation-round-up": {
+      "suite": "extension",
+      "category": "liquid-syntax",
+      "cluster": "donation round-up prompt",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "engraving-availability": {
+      "suite": "extension",
+      "category": "liquid-syntax",
+      "cluster": "engraving availability | warehouse availability list",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "event-banner-status": {
+      "suite": "extension",
+      "category": "theme-modification",
+      "cluster": "cookie banner labels | event banner section | event listing section | event schedule list | store events calendar",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "event-listing-escaped": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "cookie banner labels | event banner section | event listing section | event schedule list | store events calendar",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "event-schedule-list": {
+      "suite": "extension",
+      "category": "rendering",
+      "cluster": "cookie banner labels | event banner section | event listing section | event schedule list | store events calendar",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "faq-details": {
+      "suite": "original",
+      "category": "theme-modification",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "featured-collection-tabs": {
+      "suite": "extension",
+      "category": "theme-modification",
+      "cluster": "featured collection tabs",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "footer-schema": {
+      "suite": "original",
+      "category": "section-schema",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "gift-card-balance-notice": {
+      "suite": "extension",
+      "category": "liquid-syntax",
+      "cluster": "gift card balance notice | gift card page labels | gift registry items",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "gift-registry-items": {
+      "suite": "extension",
+      "category": "rendering",
+      "cluster": "gift card balance notice | gift card page labels | gift registry items",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "gift-wrap-eligibility": {
+      "suite": "original",
+      "category": "liquid-syntax",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "grid-columns": {
+      "suite": "original",
+      "category": "theme-modification",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "hero-cta": {
+      "suite": "original",
+      "category": "theme-modification",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "how-it-works-trimmed": {
+      "suite": "extension",
+      "category": "theme-modification",
+      "cluster": "how-it-works steps section",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "initials-avatar": {
+      "suite": "original",
+      "category": "rendering",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "installment-plan-label": {
+      "suite": "extension",
+      "category": "liquid-syntax",
+      "cluster": "installment plan label | pricing plans section | pricing table section | tiered pricing table",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "lightbox-stylesheet": {
+      "suite": "extension",
+      "category": "theme-references",
+      "cluster": "lightbox stylesheet",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "local-currency-notice": {
+      "suite": "extension",
+      "category": "liquid-syntax",
+      "cluster": "currency selector labels | local currency notice",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "logo-asset": {
+      "suite": "original",
+      "category": "theme-references",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "lookbook-gallery": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "lookbook-grid": {
+      "suite": "extension",
+      "category": "theme-modification",
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "lookbook-grid-defaults": {
+      "suite": "extension",
+      "category": "theme-modification",
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        true,
+        false
+      ]
+    },
+    "lookbook-tag-strip": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary_set": false,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "lookbook-trimmed": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary_set": true,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "lookbook-wrapped": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary_set": false,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "made-to-order-lead-time": {
+      "suite": "extension",
+      "category": "liquid-syntax",
+      "cluster": "made-to-order lead time | milestones timeline section | order status labels | order tracking timeline | timeline section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "milestones-timeline": {
+      "suite": "extension",
+      "category": "theme-modification",
+      "cluster": "made-to-order lead time | milestones timeline section | order status labels | order tracking timeline | timeline section",
+      "primary_set": false,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "mto-lead-time": {
+      "suite": "extension",
+      "category": "liquid-syntax",
+      "cluster": "made-to-order lead time | milestones timeline section | order status labels | order tracking timeline | timeline section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "not-found-labels": {
+      "suite": "extension",
+      "category": "theme-references",
+      "cluster": "not-found page labels",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "order-status-labels": {
+      "suite": "extension",
+      "category": "theme-references",
+      "cluster": "made-to-order lead time | milestones timeline section | order status labels | order tracking timeline | timeline section",
+      "primary_set": false,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "order-tracking-timeline": {
+      "suite": "extension",
+      "category": "rendering",
+      "cluster": "made-to-order lead time | milestones timeline section | order status labels | order tracking timeline | timeline section",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "pagination-window": {
+      "suite": "original",
+      "category": "rendering",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "podcast-embed": {
+      "suite": "extension",
+      "category": "theme-modification",
+      "cluster": "podcast embed section | podcast episode section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "podcast-embed-episodes": {
+      "suite": "extension",
+      "category": "theme-modification",
+      "cluster": "podcast embed section | podcast episode section",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "podcast-episode-list": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "podcast embed section | podcast episode section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "podcast-season-embeds": {
+      "suite": "extension",
+      "category": "theme-modification",
+      "cluster": "podcast embed section | podcast episode section",
+      "primary_set": false,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "presale-access-gate": {
+      "suite": "extension",
+      "category": "liquid-syntax",
+      "cluster": "pre-sale access gate",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "press-mentions": {
+      "suite": "extension",
+      "category": "theme-modification",
+      "cluster": "press mentions section | press quotes section",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "press-quotes": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "press mentions section | press quotes section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "price-format": {
+      "suite": "original",
+      "category": "rendering",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "price-render": {
+      "suite": "original",
+      "category": "theme-references",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "pricing-plans-grid": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "installment plan label | pricing plans section | pricing table section | tiered pricing table",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "pricing-table": {
+      "suite": "extension",
+      "category": "theme-modification",
+      "cluster": "installment plan label | pricing plans section | pricing table section | tiered pricing table",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "product-dimension-list": {
+      "suite": "extension",
+      "category": "rendering",
+      "cluster": "product dimension list",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "product-reviews-script": {
+      "suite": "extension",
+      "category": "theme-references",
+      "cluster": "product reviews script | review summary",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "promo-grid": {
+      "suite": "extension",
+      "category": "theme-modification",
+      "cluster": "app download section | app promo section | lookbook grid section | lookbook section | promo grid section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "quick-view-script": {
+      "suite": "extension",
+      "category": "theme-references",
+      "cluster": "quick view script",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "rating-stars": {
+      "suite": "original",
+      "category": "rendering",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "rental-period-label": {
+      "suite": "extension",
+      "category": "liquid-syntax",
+      "cluster": "rental period label",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "returns-window-eligibility": {
+      "suite": "extension",
+      "category": "liquid-syntax",
+      "cluster": "returns window eligibility | sample request eligibility | student discount eligibility | volume discount ladder",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "review-rating-summary": {
+      "suite": "extension",
+      "category": "rendering",
+      "cluster": "product reviews script | review summary",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "review-summary": {
+      "suite": "extension",
+      "category": "rendering",
+      "cluster": "product reviews script | review summary",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "sale-countdown": {
+      "suite": "original",
+      "category": "theme-modification",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "sample-request-eligibility": {
+      "suite": "extension",
+      "category": "liquid-syntax",
+      "cluster": "returns window eligibility | sample request eligibility | student discount eligibility | volume discount ladder",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "seasonal-closure-notice": {
+      "suite": "extension",
+      "category": "liquid-syntax",
+      "cluster": "seasonal closure notice",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "size-chart-rows": {
+      "suite": "extension",
+      "category": "rendering",
+      "cluster": "size chart rows | size guide labels | size guide section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "size-guide-panel": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "size chart rows | size guide labels | size guide section",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "size-guide-units": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "size chart rows | size guide labels | size guide section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "size-label": {
+      "suite": "original",
+      "category": "liquid-syntax",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "slideshow-blocks-schema": {
+      "suite": "original",
+      "category": "section-schema",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "social-feed-counts": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "social feed section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "social-feed-grid": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "social feed section",
+      "primary_set": false,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "social-feed-section": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "social feed section",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "social-feed-strip": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "social feed section",
+      "primary_set": false,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "social-feed-wall": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "social feed section",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "stock-badge": {
+      "suite": "original",
+      "category": "liquid-syntax",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "store-events-calendar": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "cookie banner labels | event banner section | event listing section | event schedule list | store events calendar",
+      "primary_set": false,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "store-hours": {
+      "suite": "original",
+      "category": "liquid-syntax",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "testimonials-schema": {
+      "suite": "original",
+      "category": "section-schema",
+      "cluster": null,
+      "primary_set": true,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        true,
+        true
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "timeline-wrapped": {
+      "suite": "extension",
+      "category": "section-schema",
+      "cluster": "made-to-order lead time | milestones timeline section | order status labels | order tracking timeline | timeline section",
+      "primary_set": false,
+      "base": [
+        true,
+        true
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        true,
+        true
+      ],
+      "tuned_skills": [
+        true,
+        true
+      ]
+    },
+    "trust-badge-row": {
+      "suite": "extension",
+      "category": "theme-modification",
+      "cluster": "allergen badges | trust badge row section | trust badges section",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "volume-discount-ladder": {
+      "suite": "extension",
+      "category": "rendering",
+      "cluster": "returns window eligibility | sample request eligibility | student discount eligibility | volume discount ladder",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "warehouse-availability": {
+      "suite": "extension",
+      "category": "rendering",
+      "cluster": "engraving availability | warehouse availability list",
+      "primary_set": false,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    },
+    "warehouse-availability-list": {
+      "suite": "extension",
+      "category": "rendering",
+      "cluster": "engraving availability | warehouse availability list",
+      "primary_set": true,
+      "base": [
+        false,
+        false
+      ],
+      "base_skills": [
+        false,
+        false
+      ],
+      "tuned": [
+        false,
+        false
+      ],
+      "tuned_skills": [
+        false,
+        false
+      ]
+    }
+  }
+}
