@@ -2,7 +2,11 @@
 
 A Python harness for controlled experiments on offline Liquid coding tasks. The research design is in [brief.txt](brief.txt).
 
-LiquidBench implements 20 **development** tasks, a modular grader, and an agent protocol with explicit context accounting. The runner gives an agent isolated tools, submits its final files to a separate grader, and saves the grade, trace, patch, token usage, latency, and estimated inference cost. No held-out benchmark or research results are claimed yet. The [7B pilot](docs/calibration/milestone-4-results.md) passed 2/5 tasks. The completed [Milestone 5 paired experiment](docs/calibration/milestone-5-results.md) scored **2/5 baseline versus 0/5 with full pinned skills**, using 9.07× as many treatment tokens. All ten attempts and cleanup evidence are preserved; post-training has not begun.
+LiquidBench implements 20 **development** tasks, a modular grader, and an agent protocol with explicit context accounting. The runner gives an agent isolated tools, submits its final files to a separate grader, and saves the grade, trace, patch, token usage, latency, and estimated inference cost. The [7B pilot](docs/calibration/milestone-4-results.md) passed 2/5 tasks. The completed [Milestone 5 paired experiment](docs/calibration/milestone-5-results.md) scored **2/5 baseline versus 0/5 with full pinned skills**, using 9.07× as many treatment tokens. All ten attempts and cleanup evidence are preserved.
+
+## Results
+
+On [100 held-out tasks](docs/heldout/results.md), a LoRA v1 fine-tune of Qwen2.5-Coder-7B-Instruct passes **39**, against **20** for the base model. On the pre-registered primary set of 58 tasks, the result is 20 against 10, with no task passing only for base; exact McNemar p = 0.002. Offering the pinned skills on demand changed neither model by more than one task, and neither model ever read a skill document. As an exploratory reference, Sonnet 5.5 passes 94. Multi-file theme modification separates the models most clearly: the 7B arms pass 2–3 of 21, Sonnet 20. The [analysis plan](docs/heldout/analysis-plan.md) was written before any held-out attempt; its additions are dated and never edits. Session records: [01](docs/heldout/session-01.md), [02](docs/heldout/session-02.md).
 
 The original five tasks are below; the [Milestone 6 catalog and frozen loading study](docs/calibration/milestone-6-plan.md) lists all 20, exact token feasibility, repetitions and compute scenarios. [All 240 Milestone 6 attempts are complete](docs/calibration/milestone-6-results.md), with verified GPU/storage cleanup. Further paid execution requires fresh approval.
 
@@ -157,9 +161,13 @@ The [predeclared study](docs/calibration/milestone-6-plan.md) completed 20 tasks
 
 A frozen four-condition pilot (`original`, `clarified`, `reference`, `neutral`) tests whether Milestone 6's skills result reflects the model's Liquid ability, the tool instructions, or the loading strategy. It covers 5 balanced tasks, 4 position-balanced repetitions and 80 attempts. The relevant upstream reference is selected only from the public prompt and a heading index, then delivered in full. The neutral control matches it exactly in tokens. See the [plan, controls, cost and validity concerns](docs/diagnostic/plan.md) and the [benchmark audit](docs/diagnostic/benchmark-audit.md). All 80 attempts ran in one A40 session (about $0.49 estimated, resources deleted and verified). [Results](docs/diagnostic/results.md): original **8/20**, clarified 4/20, reference 4/20, neutral 0/20, deterministic across repetitions. Any context placed before the task cut read-before-write from 20/20 to 4–8/20. Relevant content beat equal-length noise (4–0) but not no context. Three tasks failed in every arm. Milestone 6 is unchanged. No fine-tuning started.
 
+## Post-training
+
+[Stage 1](docs/training/stage1.md) generated 149 training tasks with themes disjoint from the held-out suites. Claude teachers then ran them in the unchanged Qwen harness, and only clean passes that read before writing were kept: 129 train and 14 validation trajectories. [LoRA v1](docs/training/lora-v1-dev.md) (BF16, r 16, 3 epochs) raised the development split from 8/20 to 10/20. [LoRA v2](docs/training/lora-v2-dev.md) recollected render-checking traces and scored 9/20, so v1 was selected before the held-out plan was written. Training data passes `assert_not_heldout()`.
+
 ## Held-out benchmark
 
-[24 frozen held-out tasks](docs/heldout/README.md) in `tasks/heldout/` cover 5 domains: 7 easy, 11 medium and 6 hard. They are reserved for the final base / skills / fine-tuned / fine-tuned + skills comparison. All 270 grader verdicts (references, plausible-wrong and adversarial submissions) are correct. The suite is frozen by digest and must never be shown to training-data generation.
+[24 frozen held-out tasks](docs/heldout/README.md) in `tasks/heldout/` cover 5 domains: 7 easy, 11 medium and 6 hard. A further 76 Claude-authored extension tasks, audited for ambiguity and checked for overlap with training, are frozen in `docs/heldout/extension-manifest.json`. Both suites were used once, for the final base / skills / fine-tuned / fine-tuned + skills comparison ([results](docs/heldout/results.md)). All 270 grader verdicts (references, plausible-wrong and adversarial submissions) are correct. The suite is frozen by digest and must never be shown to training-data generation.
 
 ## Development
 

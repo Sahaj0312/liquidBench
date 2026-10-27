@@ -70,9 +70,7 @@ def main():
         },
         "served_models": dict(served),
         "behavior_rep1": {
-            arm: row
-            for arm, row in behavior(runs, evaluators).items()
-            if arm.startswith("claude")
+            arm: row for arm, row in behavior(runs, evaluators).items() if arm.startswith("claude")
         },
         "claude_failures_rep1": {
             arm: sorted(t for t in tasks if not rep1[arm][t]) for arm in ("claude", "claude_skills")
